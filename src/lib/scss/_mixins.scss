@@ -1,0 +1,29 @@
+@import 'colors';
+@import 'functions';
+
+@mixin big-button-style($factor: 1){
+    $px: calc(px(1) / $factor);
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    background-color: $title-bg;
+    color: $title-color;
+    padding: 0 0.25em;
+    border: $px solid black;
+    border-radius: 10 * $px;
+    filter:saturate(0.25) brightness(0.25);
+    box-shadow: inset rgba(255,255,255, 0.25) -5 * $px 5 * $px 5 * $px,
+        inset rgba(0, 0, 0, 0.5) 5 * $px -5 * $px 5 * $px;
+    transition: filter 0.2s linear, box-shadow 0.01s linear;
+    font-family: title-font();
+}
+
+@mixin big-button-style-hover() {
+    filter:saturate(1) brightness(1);
+}
+
+@mixin big-button-style-active() {
+    filter:saturate(0.7) brightness(0.7);
+    box-shadow: inset rgba(0, 0, 0, 0.75) -5px 5px 5px,
+        inset rgba(0, 0, 0, 0.75) 5px -5px 5px;
+}

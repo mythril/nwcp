@@ -5,5 +5,17 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: `
+			  @import '$lib/scss/variables';
+			  @import '$lib/scss/mixins';
+			  @import '$lib/scss/functions';
+			  @import '$lib/scss/colors';
+			`,
+			}
+		},
 	}
 });
