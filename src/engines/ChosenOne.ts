@@ -20,6 +20,8 @@ export function SpecialAbbreviation(special: Special): string {
     }
 }
 
+export type Attributes = Map<Special, number>;
+
 export enum CombatSkills {
     SmallGuns = "Small Guns",
     BigGuns = "Big Guns",
@@ -49,3 +51,5 @@ export enum PassiveSkills {
 
 export const Skills = { ...CombatSkills, ...ActiveSkills, ...PassiveSkills };
 export type Skills = typeof Skills;
+export type SkillSet = Map<Skills, number>;
+

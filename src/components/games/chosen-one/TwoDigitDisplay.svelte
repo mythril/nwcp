@@ -2,8 +2,13 @@
 	import OneDigitDisplay from "./OneDigitDisplay.svelte";
 
     export let value:number;
-    let tensDigit = Math.floor(value / 10);
-    let onesDigit = Math.round(value - (tensDigit * 10));
+    
+    let tensDigit:number;
+    let onesDigit:number;
+    $:{
+        tensDigit = Math.floor(value / 10);
+        onesDigit = Math.round(value - (tensDigit * 10));
+    }
 </script>
 
 <div class="twodigit">
