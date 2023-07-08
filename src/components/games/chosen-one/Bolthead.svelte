@@ -35,32 +35,27 @@
             top:50%;
             position:absolute;
             width:100%;
-            height:2px;
-            margin-top:-1px;
+            height:px(2);
+            margin-top:px(-1);
             background-color:rgba(#000, 0.5);
+            transform-origin:center;
         }
         &:nth-of-type(6n)::after {
-            transform-origin:center;
             transform:rotate(25deg);
         }
         &:nth-of-type(6n+1)::after {
-            transform-origin:center;
             transform:rotate(50deg);
         }
         &:nth-of-type(6n+2)::after {
-            transform-origin:center;
             transform:rotate(75deg);
         }
         &:nth-of-type(6n+3)::after {
-            transform-origin:center;
             transform:rotate(100deg);
         }
         &:nth-of-type(6n+4)::after {
-            transform-origin:center;
             transform:rotate(125deg);
         }
         &:nth-of-type(6n+5)::after {
-            transform-origin:center;
             transform:rotate(150deg);
         }
     }

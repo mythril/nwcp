@@ -102,7 +102,7 @@
         <div class="label">
             CHAR POINTS
         </div>
-        <TwoDigitDisplay value={Math.round((Math.random() * 10) + 1)} />
+        <TwoDigitDisplay value={Math.round((Math.random() * 9) + 1)} />
         <Bolthead dir="tl" />
         <Bolthead dir="tr" />
         <Bolthead dir="bl" />
