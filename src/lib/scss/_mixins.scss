@@ -24,6 +24,6 @@
 
 @mixin big-button-style-active() {
     filter:saturate(0.7) brightness(0.7);
-    box-shadow: inset rgba(0, 0, 0, 0.75) -5px 5px 5px,
-        inset rgba(0, 0, 0, 0.75) 5px -5px 5px;
+    box-shadow: inset rgba(0, 0, 0, 0.75) px(-5) px(5) px(5),
+        inset rgba(0, 0, 0, 0.75) px(5) px(-5) px(5);
 }

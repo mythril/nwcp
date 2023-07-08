@@ -45,13 +45,13 @@
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
 		grid-template-rows: repeat(33, 1fr);
-		grid-column-gap: 0px;
-		grid-row-gap: 0px;
-		position:fixed;
-		left:1em;
-		right:1em;
-		top:1em;
-		bottom:1em;
+		grid-column-gap: 0;
+		grid-row-gap: 0;
+		position:absolute;
+		top:0;
+		bottom:0;
+		left:0;
+		right:0;
 	}
 	.chooser {
 		width: 100%;
