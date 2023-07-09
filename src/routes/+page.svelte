@@ -7,6 +7,7 @@
 	let planner: HTMLDivElement;
 	let width: number;
 	let height: number;
+	let dom: HTMLHtmlElement;
 
 	function originalFontSizeScaled(width: number) {
 		// return width / 71;
@@ -29,8 +30,11 @@
 			planner.style.width = width + 'px';
 			planner.style.height = height + 'px';
 
-			// allows me to scale things with ems later on
-			planner.style.setProperty(
+			if (!dom) {
+				dom = document.querySelector('html') as HTMLHtmlElement;
+			}
+			// allows me to scale things with rems later on
+			dom.style.setProperty(
 				'font-size',
 				originalFontSizeScaled(width) + 'px'
 			);

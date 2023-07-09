@@ -55,7 +55,7 @@
 	}
 	.chooser {
 		width: 100%;
-		font-size: $size-factor * 1em;
+		font-size: $size-factor * 1rem;
 		text-transform: uppercase;
 		grid-area: 1 / 4 / 2 / 6;
 		display: flex;
@@ -68,7 +68,7 @@
 		display: none;
 	}
 	.chooser label {
-		@include big-button-style($size-factor);
+		@include big-button-style();
 	}
 
 	.chooser label:hover,
@@ -91,8 +91,8 @@
 		margin:0;
 		bottom:100%;
 		$chosen-size: 3;
-		font-size: $chosen-size * 1em;
-		@include big-button-style($chosen-size);
+		font-size: $chosen-size * 1rem;
+		@include big-button-style();
 		text-transform: uppercase;
 		font-weight:normal;
 		transition:bottom 0.2s linear;

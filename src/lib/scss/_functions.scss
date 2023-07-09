@@ -11,5 +11,5 @@
 }
 
 @function px($pixels) {
-    @return calc($pixels / 12) * 1em;
+    @return calc($pixels / 12) * 1rem;
 }

@@ -138,7 +138,7 @@
 		.name,
 		.age,
 		.sex {
-			@include big-button-style(3);
+			@include big-button-style();
 			@include big-button-style-hover();
 		}
 		.name {

@@ -1,19 +1,18 @@
 @import 'colors';
 @import 'functions';
 
-@mixin big-button-style($factor: 1){
-    $px: calc(px(1) / $factor);
+@mixin big-button-style(){
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
     background-color: $title-bg;
     color: $title-color;
-    padding: 0 0.25em;
-    border: $px solid black;
-    border-radius: 10 * $px;
+    padding: 0 0.25rem;
+    border: px(1) solid black;
+    border-radius: px(5);
     filter:saturate(0.25) brightness(0.25);
-    box-shadow: inset rgba(255,255,255, 0.25) -5 * $px 5 * $px 5 * $px,
-        inset rgba(0, 0, 0, 0.5) 5 * $px -5 * $px 5 * $px;
+    box-shadow: inset rgba(255,255,255, 0.25) px(-5) px(5) px(5),
+        inset rgba(0, 0, 0, 0.5) px(5) px(-5) px(5);
     transition: filter 0.2s linear, box-shadow 0.01s linear;
     font-family: title-font();
 }
