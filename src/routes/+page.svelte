@@ -33,11 +33,14 @@
 			if (!dom) {
 				dom = document.querySelector('html') as HTMLHtmlElement;
 			}
-			// allows me to scale things with rems later on
-			dom.style.setProperty(
-				'font-size',
-				originalFontSizeScaled(width) + 'px'
-			);
+
+			if (dom) {
+				// allows me to scale things with rems later on
+				dom.style.setProperty(
+					'font-size',
+					originalFontSizeScaled(width) + 'px'
+				);
+			}
 		}
 	}
 </script>

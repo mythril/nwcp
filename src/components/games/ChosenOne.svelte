@@ -206,6 +206,8 @@
 		@include slate();
 		border-radius: px(2);
 		border-bottom-left-radius: px(9) px(5);
+		padding: 0;
+		padding-left: px(4);
 	}
 	.char-points {
 		grid-area: 17 / 1 / 20 / 2;

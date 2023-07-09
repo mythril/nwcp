@@ -24,8 +24,8 @@
     .window{
         display:block;
         overflow:hidden;
-        width:px(48);
-        height:px(30);
+        width:px(50);
+        height:px(35);
         border-top: px(3) solid darken($root-bg, 10%);
         border-right: px(3) solid darken($root-bg, 10%);
         border-left: px(3) solid lighten($root-bg, 10%);
@@ -36,7 +36,7 @@
         height:100%;
         width:px(90);
         position:relative;
-        left:px(-11);
+        left:px(-9);
     }
 </style>
 

@@ -7,7 +7,7 @@
     user-select: none; /* Standard syntax */
     background-color: $title-bg;
     color: $title-color;
-    padding: 0 0.25rem;
+    padding: 0 px(8);
     border: px(1) solid black;
     border-radius: px(5);
     filter:saturate(0.25) brightness(0.25);

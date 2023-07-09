@@ -51,10 +51,9 @@
 	}
 	.label {
 		color: $title-color;
-		width: px(18);
 		text-align: center;
 		font-family: title-font();
-		font-size: px(36);
+		font-size: px(30);
 	}
 	.twodigit-attr {
 		position: relative;
@@ -64,26 +63,26 @@
 			top: 50%;
 			content: ' ';
 			background-color: $title-color;
-			margin-top: px(-2);
-			height: px(4);
+			margin-top: px(-1.5);
+			height: px(3);
 		}
 		&::after {
 			left: 105%;
-			width: px(10);
+			width: px(6);
 		}
 		&::before {
 			right: 105%;
-			width: px(15);
+			width: px(10);
 		}
 	}
 	.description {
 		background-color: $terminal-bg;
 		color: $terminal-text;
-		width: px(55);
+		width: px(72);
 		height: px(28);
 		line-height: px(28);
 		text-align: left;
-		padding-left: px(4);
+		padding-left: px(6);
 		border-top: px(3) solid darken($root-bg, 20%);
 		border-right: px(3) solid lighten($root-bg, 10%);
 		border-left: px(3) solid lighten($root-bg, 25%);
@@ -92,6 +91,8 @@
 	.manipulators {
 		display: flex;
 		flex-direction: column;
+		height:px(32);
+		filter:drop-shadow(0 px(1) px(0) #000) drop-shadow(px(-1) px(1) px(0) #000)  drop-shadow(px(1) px(1) px(0) #000);
 		button {
 			display: block;
 			box-sizing: border-box;
@@ -99,13 +100,13 @@
 			margin: 0;
 			padding: 0;
 			color: transparent;
-			height: px(20);
-			width: px(30);
+			height: px(14);
+			width: px(21);
 			background-color: $root-bg;
 			border-radius: px(3) px(4);
 			line-height: px(14);
-			box-shadow: inset px(-3) px(3) px(3) px(1) rgba(255, 255, 255, 0.25),
-				inset px(3) px(-3) px(3) 0 rgba(darken($root-bg, 50%), 0.5),
+			box-shadow: inset px(-3) px(1) px(3) px(0) rgba(255, 255, 255, 0.25),
+				inset px(1) px(-3) px(3) 0 rgba(darken($root-bg, 50%), 0.5),
 				px(-3) px(3) px(3) 0 rgba(0, 0, 0, 0.5);
 			&.incr,
 			&.decr {
@@ -118,6 +119,7 @@
 				}
 			}
 			&.incr {
+				margin-bottom:px(1);
 				&::after {
 					width: px(2);
 					top: 20%;

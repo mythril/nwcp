@@ -31,21 +31,21 @@
 <style lang="scss">
 	.digit {
 		position: relative;
-		font-size: px(22);
-		line-height: 1;
+		font-size: px(23);
+		font-weight:400;
+		line-height: px(30);
 		width:px(22);
 		border-top-left-radius: px(6) px(22);
 		border-bottom-left-radius: px(6) px(22);
-		padding: px(2) px(7) px(5) px(3);
+		padding: px(2) px(7) px(5) px(6);
 		background-color: hsl(0, 0%, 50%);
 		color: hsl(0, 0%, 93%);
-		margin-left: px(-5);
+		margin-left: px(-12);
 		font-family: label-font();
-		text-shadow: px(1) px(1) px(0) rgba(0, 0, 0, 0.5), px(1) px(-1) px(0) rgba(0, 0, 0, 0.5),
-			px(-1) px(1) px(0) rgba(0, 0, 0, 0.5), px(-1) px(-1) px(0) rgba(0, 0, 0, 0.5);
-		box-shadow: inset 0 px(1) px(4) px(1) rgba(0, 0, 0, 0.5),
-			px(-0.5) 0 px(0.4) px(0.1) rgba(255, 255, 255, 0.35), px(-1) 0 px(0.5) 0 rgba(0, 0, 0, 0.5),
-			inset 0 px(-6) px(2) 0 rgba(0, 0, 0, 0.8), inset 0 px(6) px(2) 0 rgba(0, 0, 0, 0.8);
+		text-shadow: text-outline(rgba(0, 0, 0, 0.8), true);
+		box-shadow: inset 0 px(15) px(2) px(2) rgba(0, 0, 0, 0.5),
+			px(-0.5) 0 px(0.6) px(0.1) rgba(255, 255, 255, 0.35), px(-1) 0 px(0.5) 0 rgba(0, 0, 0, 0.25),
+			inset 0 px(-11) px(2) 0 rgba(0, 0, 0, 0.8), inset 0 px(6) px(2) 0 rgba(0, 0, 0, 0.8);
 	}
 	.prev,
 	.current,

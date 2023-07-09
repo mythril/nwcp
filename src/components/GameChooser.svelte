@@ -40,7 +40,6 @@
 </div>
 
 <style lang="scss">
-	$size-factor: 3;
 	.root {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
@@ -55,7 +54,7 @@
 	}
 	.chooser {
 		width: 100%;
-		font-size: $size-factor * 1rem;
+		font-size: px(36);
 		text-transform: uppercase;
 		grid-area: 1 / 4 / 2 / 6;
 		display: flex;
@@ -90,8 +89,7 @@
 		padding:0;
 		margin:0;
 		bottom:100%;
-		$chosen-size: 3;
-		font-size: $chosen-size * 1rem;
+		font-size: px(36);
 		@include big-button-style();
 		text-transform: uppercase;
 		font-weight:normal;
