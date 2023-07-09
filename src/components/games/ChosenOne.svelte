@@ -126,6 +126,7 @@
 		bottom: 0;
 		top: 0;
 		right: 0;
+		filter:drop-shadow(px(-5) px(5) px(3) #000);
 	}
 
 	.name-age-sex {
@@ -153,7 +154,7 @@
 	}
 
 	@function basic-box-shadow() {
-		@return px(-10) px(10) px(6) 0 rgba(0, 0, 0, 0.75),
+		@return
 			inset px(-4) px(4) px(2) 0 rgba(255, 255, 255, 0.125),
 			inset px(4) px(-4) px(5) px(0) rgba(darken($root-bg, 30%), 0.3);
 	}
