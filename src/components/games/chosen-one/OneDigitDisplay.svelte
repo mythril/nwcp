@@ -32,9 +32,9 @@
 	.digit {
 		position: relative;
 		font-size: px(23);
-		font-weight:400;
+		font-weight: 400;
 		line-height: px(30);
-		width:px(22);
+		width: px(22);
 		border-top-left-radius: px(6) px(22);
 		border-bottom-left-radius: px(6) px(22);
 		padding: px(2) px(7) px(5) px(6);
@@ -49,16 +49,16 @@
 	}
 	.prev,
 	.current,
-	.next{
-		position:absolute;
+	.next {
+		position: absolute;
 	}
-	.current{
-		top:0%;
+	.current {
+		top: 0%;
 	}
 	.prev {
-		top:-100%;
+		top: -100%;
 	}
-	.next{
-		top:100%;
+	.next {
+		top: 100%;
 	}
 </style>

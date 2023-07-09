@@ -91,8 +91,9 @@
 	.manipulators {
 		display: flex;
 		flex-direction: column;
-		height:px(32);
-		filter:drop-shadow(0 px(1) px(0) #000) drop-shadow(px(-1) px(1) px(0) #000)  drop-shadow(px(1) px(1) px(0) #000);
+		height: px(32);
+		filter: drop-shadow(0 px(1) px(0) #000) drop-shadow(px(-1) px(1) px(0) #000)
+			drop-shadow(px(1) px(1) px(0) #000);
 		button {
 			display: block;
 			box-sizing: border-box;
@@ -119,7 +120,7 @@
 				}
 			}
 			&.incr {
-				margin-bottom:px(1);
+				margin-bottom: px(1);
 				&::after {
 					width: px(2);
 					top: 20%;

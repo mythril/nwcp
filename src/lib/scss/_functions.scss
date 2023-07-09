@@ -1,24 +1,22 @@
 @function title-font() {
-    @return 'Lilita One', sans-serif;
+	@return 'Lilita One', sans-serif;
 }
 
 @function terminal-font() {
-    @return 'Bruno Ace', sans-serif;
+	@return 'Bruno Ace', sans-serif;
 }
 
 @function label-font() {
-    @return 'Lato', sans-serif;
+	@return 'Lato', sans-serif;
 }
 
 @function px($pixels) {
-    $originalFontSizeInPixels: 12;
-    @return calc($pixels / $originalFontSizeInPixels) * 1rem;
+	$originalFontSizeInPixels: 12;
+	@return calc($pixels / $originalFontSizeInPixels) * 1rem;
 }
 
-@function text-outline($color: #000, $soft: false){
-    $blur: if($soft, 1, 0);
-    @return px(1) px(1) px($blur) $color,
-    px(-1) px(1) px($blur) $color,
-    px(1) px(-1) px($blur) $color,
-    px(-1) px(-1) px($blur) $color;
+@function text-outline($color: #000, $soft: false) {
+	$blur: if($soft, 1, 0);
+	@return px(1) px(1) px($blur) $color, px(-1) px(1) px($blur) $color, px(1) px(-1) px($blur) $color,
+		px(-1) px(-1) px($blur) $color;
 }

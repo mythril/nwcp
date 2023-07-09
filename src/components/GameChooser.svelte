@@ -46,11 +46,11 @@
 		grid-template-rows: repeat(33, 1fr);
 		grid-column-gap: 0;
 		grid-row-gap: 0;
-		position:absolute;
-		top:0;
-		bottom:0;
-		left:0;
-		right:0;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
 	}
 	.chooser {
 		width: 100%;
@@ -81,29 +81,29 @@
 
 	.chosen {
 		grid-area: 1 / 1 / 2 / 4;
-		position:relative;
-		overflow:hidden;
+		position: relative;
+		overflow: hidden;
 	}
 	.chosen h1 {
-		position:absolute;
-		padding:0;
-		margin:0;
-		bottom:100%;
+		position: absolute;
+		padding: 0;
+		margin: 0;
+		bottom: 100%;
 		font-size: px(36);
 		@include big-button-style();
 		text-transform: uppercase;
-		font-weight:normal;
-		transition:bottom 0.2s linear;
+		font-weight: normal;
+		transition: bottom 0.2s linear;
 	}
 	.chosen h1.selected {
 		@include big-button-style-hover();
-		bottom:0;
+		bottom: 0;
 	}
 	.chosen h1.selected ~ h1 {
 		bottom: -100%;
 	}
 	.page {
 		grid-area: 2 / 1 / 34 / 6;
-		position:relative;
+		position: relative;
 	}
 </style>

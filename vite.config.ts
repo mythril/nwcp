@@ -15,8 +15,8 @@ export default defineConfig({
 			  @import '$lib/scss/mixins';
 			  @import '$lib/scss/functions';
 			  @import '$lib/scss/colors';
-			`,
+			`
 			}
-		},
+		}
 	}
 });

@@ -36,10 +36,7 @@
 
 			if (dom) {
 				// allows me to scale things with rems later on
-				dom.style.setProperty(
-					'font-size',
-					originalFontSizeScaled(width) + 'px'
-				);
+				dom.style.setProperty('font-size', originalFontSizeScaled(width) + 'px');
 			}
 		}
 	}
@@ -58,6 +55,6 @@
 		position: relative;
 		background-color: $root-bg;
 		border: 0;
-		margin:0 auto;
+		margin: 0 auto;
 	}
 </style>
