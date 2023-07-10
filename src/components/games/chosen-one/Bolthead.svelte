@@ -25,17 +25,18 @@
     border-radius: 100%;
     background-color: #777;
     box-shadow: px(-1) px(1) px(1) 0 rgba(0, 0, 0, 1),
-      inset px($thirdSize) px(-$thirdSize) px(1) 0 rgba(0, 0, 0, 0.7),
-      inset px(-$thirdSize) px($thirdSize) px(1) 0 rgba(255, 255, 255, 0.25);
+      inset px($thirdSize) px(-$thirdSize) px(1) 0 rgba(0, 0, 0, 0.9),
+      inset px(-$thirdSize) px($thirdSize) px(1) 0 rgba(255, 255, 255, 0.5),
+      inset px(1) px(-1) px(1) 0 rgba(255, 255, 255, 0.7);
     &::after {
       content: ' ';
       top: 50%;
       position: absolute;
       width: 100%;
       height: px(0);
-      margin-top: px(-1);
-      border-top: px(1) solid rgba(#000, 0.5);
-      border-bottom: px(1) solid rgba(#fff, 0.25);
+      margin-top: px(-2);
+      border-top: px(2) solid rgba(#000, 0.5);
+      border-bottom: px(2) solid rgba(#fff, 0.25);
       transform-origin: center;
     }
     &:nth-of-type(6n)::after {

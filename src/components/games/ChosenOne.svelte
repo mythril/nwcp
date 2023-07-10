@@ -42,9 +42,9 @@
     </div>
     <Bolthead dir="tl" />
     <Bolthead dir="tr" />
-    <Bolthead dir="bl" />
     <Bolthead dir="br" />
     <Bolthead dir="ml" />
+    <Bolthead dir="bl" />
     <Bolthead dir="mr" />
   </div>
   <div class="derived-stats">
@@ -96,9 +96,9 @@
     </div>
     <Bolthead dir="ml" />
     <Bolthead dir="tr" />
+    <Bolthead dir="bl" />
     <Bolthead dir="tl" />
     <Bolthead dir="br" />
-    <Bolthead dir="bl" />
     <Bolthead dir="mr" />
   </div>
   <div class="char-points">
@@ -220,6 +220,9 @@
     justify-content: space-evenly;
     align-items: center;
     .label {
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10 and IE 11 */
+      user-select: none; /* Standard syntax */
       font-family: title-font();
       color: $title-color;
       font-size: px(30);

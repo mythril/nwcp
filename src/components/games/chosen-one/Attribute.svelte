@@ -56,10 +56,14 @@
     align-items: center;
   }
   .label {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
     color: $title-color;
     text-align: center;
     font-family: title-font();
     font-size: px(30);
+    width:px(40);
   }
   .twodigit-attr {
     position: relative;
@@ -82,6 +86,9 @@
     }
   }
   .description {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
     background-color: $terminal-bg;
     color: $terminal-text;
     width: px(72);
@@ -101,6 +108,9 @@
     filter: drop-shadow(0 px(1) px(0) #000) drop-shadow(px(-1) px(1) px(0) #000)
       drop-shadow(px(1) px(1) px(0) #000);
     button {
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10 and IE 11 */
+      user-select: none; /* Standard syntax */
       display: block;
       box-sizing: border-box;
       border: 0;
