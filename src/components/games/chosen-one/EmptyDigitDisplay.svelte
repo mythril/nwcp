@@ -1,24 +1,10 @@
-<script lang="ts">
-  import {spring} from 'svelte/motion';
-  export let value: number;
-  
-  const current = spring();
-  current.stiffness = 0.5;
-  current.damping = 0.8;
-  $: current.set(value);
-
-  // @TODO write a spring that doesn't bounce to -1 when it wraps
-  $: offset = $current % 1;
-
-</script>
 
 <div class="digit">
-  <div class="animwrap" style="transform: translate(0, {100 * offset}%)">
+  <div class="animwrap">
     <div class="hidden">
-      {Math.floor($current + 1)}
+
     </div>
     <div class="current">
-      {Math.floor($current)}
     </div>
   </div>
 </div>
@@ -46,13 +32,8 @@
       px(-1) 0 px(0.5) 0 rgba(0, 0, 0, 0.25),
       inset 0 px(-11) px(2) 0 rgba(0, 0, 0, 0.8),
       inset 0 px(6) px(2) 0 rgba(0, 0, 0, 0.8);
-    .hidden,
-    .current{
+    .next{
       height:px(35);
-    }
-    .hidden {
-      top: -100%;
-      user-select:none;
     }
   }
   .animwrap {

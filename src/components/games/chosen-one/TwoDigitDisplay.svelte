@@ -1,4 +1,5 @@
 <script lang="ts">
+  import EmptyDigitDisplay from './EmptyDigitDisplay.svelte';
   import OneDigitDisplay from './OneDigitDisplay.svelte';
 
   export let value: number;
@@ -13,10 +14,10 @@
 
 <div class="window">
   <div class="twodigit">
-    <OneDigitDisplay />
+    <EmptyDigitDisplay />
     <OneDigitDisplay value={tensDigit} />
     <OneDigitDisplay value={onesDigit} />
-    <OneDigitDisplay />
+    <EmptyDigitDisplay />
   </div>
 </div>
 
