@@ -29,7 +29,7 @@
     {label}
   </div>
   <div class="twodigit-attr">
-    <TwoDigitDisplay {value} />
+    <TwoDigitDisplay class="boogers" {value} />
   </div>
   <div class="description">
     {descriptors[value - 1]}
@@ -102,8 +102,11 @@
     display: flex;
     flex-direction: column;
     height: px(32);
-    filter: drop-shadow(0 px(1) px(0) #000) drop-shadow(px(-1) px(1) px(0) #000)
-      drop-shadow(px(1) px(1) px(0) #000);
+    // filter: 
+    //   drop-shadow(px(0) px(1) px(0) #000) 
+    //   drop-shadow(px(-1) px(1) px(0) #000)
+    //   drop-shadow(px(0) px(3) px(1) #000)
+    //   drop-shadow(px(1) px(1) px(0) #000);
     button {
       appearance: none;
       user-select: none;
@@ -117,9 +120,19 @@
       background-color: $root-bg;
       border-radius: px(3) px(4);
       line-height: px(14);
-      box-shadow: inset px(-3) px(1) px(3) px(0) rgba(255, 255, 255, 0.25),
-        inset px(1) px(-3) px(3) 0 rgba(darken($root-bg, 50%), 0.5),
-        px(-3) px(3) px(3) 0 rgba(0, 0, 0, 0.5);
+      box-shadow:
+        px(-3) px(3) px(3) px(-3) rgba(255, 255, 255, 0.5) inset,
+        px(3) px(-3) px(3) px(-1) rgba(darken($root-bg, 50%), 0.5) inset,
+        px(0) px(3) px(2) px(1) #000,
+        px(0) px(0) px(0) px(0) rgba(#000, 0);
+      transition:box-shadow 0.1s linear;
+      &:active{
+        box-shadow:
+          px(-3) px(3) px(3) px(-3) rgba(#000, 0.5) inset,
+          px(3) px(-3) px(3) px(-1) rgba(darken($root-bg, 50%), 0.5) inset,
+          px(0) px(3) px(2) px(1) #000,
+          px(-3) px(0) px(1) px(-1) rgba(#fff, 0.25);
+      }
       &.incr,
       &.decr {
         position: relative;

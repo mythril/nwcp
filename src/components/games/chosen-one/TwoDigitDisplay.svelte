@@ -12,7 +12,7 @@
   }
 </script>
 
-<div class="window">
+<div class={"window " + $$props.class}>
   <div class="twodigit">
     <EmptyDigitDisplay />
     <OneDigitDisplay value={tensDigit} />

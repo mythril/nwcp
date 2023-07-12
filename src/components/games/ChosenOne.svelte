@@ -200,20 +200,51 @@
   .parent {
     @include size-ref(px(855), px(642), true);
     display: grid;
-    grid-template-columns: repeat(2, 26.0625%) 45.875%;
+    grid-template-columns: repeat(2, 26.3125%) 46.375%;
     grid-template-rows: repeat(30, 1fr);
-    grid-column-gap: 1%;
-    grid-row-gap: px(7);
+    grid-column-gap: 0.5%;
+    grid-row-gap: px(5);
+    grid-template-areas:
+      'nas nas skills'
+      'nas nas skills'
+      'special health skills'
+      'special health skills'
+      'special health skills'
+      'special health skills'
+      'special health skills'
+      'special health skills'
+      'special health skills'
+      'special health skills'
+      'special derived skills'
+      'special derived skills'
+      'special derived skills'
+      'special derived skills'
+      'special derived skills'
+      'special derived skills'
+      'special derived help'
+      'points derived help'
+      'points derived help'
+      'points derived help'
+      'traits traits help'
+      'traits traits help'
+      'traits traits help'
+      'traits traits help'
+      'traits traits help'
+      'traits traits help'
+      'traits traits help'
+      'traits traits help'
+      'traits traits buttons'
+      'traits traits buttons';
     position: absolute;
     left: 0;
     bottom: 0;
     top: 0;
     right: 0;
-    filter: drop-shadow(px(-5) px(5) px(3) #000);
+    filter: drop-shadow(px(-5) px(5) px(3) #000) drop-shadow(px(-5) px(5) px(3) #000);
   }
 
   .name-age-sex {
-    grid-area: 1 / 1 / 3 / 3;
+    grid-area: nas;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -237,8 +268,9 @@
   }
 
   @function basic-box-shadow() {
-    @return inset px(-4) px(4) px(2) 0 rgba(255, 255, 255, 0.125),
-      inset px(4) px(-4) px(5) px(0) rgba(darken($root-bg, 30%), 0.3);
+    @return 
+      px(-4) px(4) px(2) px(-3) rgba(255, 255, 255, 0.25) inset,
+      px(4) px(-4) px(5) px(-5) rgba(darken($root-bg, 30%), 0.3) inset;
   }
 
   @mixin slate() {
@@ -274,8 +306,9 @@
       line-height: 1.7;
       background-color: $terminal-bg;
       border-radius: px(8) px(7);
-      box-shadow: px(-4) px(4) px(4) px(0) rgba(255, 255, 255, 0.2),
-        px(4) px(-4) px(4) px(0) rgba(0, 0, 0, 0.25);
+      box-shadow: 
+        px(-4) px(4) px(4) px(-2) rgba(255, 255, 255, 0.2),
+        px(4) px(-4) px(4) px(-2) rgba(0, 0, 0, 0.5);
       @include terminal-font();
       color: $terminal-text-unmarked;
       .highlighted {
@@ -286,7 +319,7 @@
 
   .special {
     @include size-ref(px(214), px(312), true);
-    grid-area: 3 / 1 / 18 / 2;
+    grid-area: special;
     @include slate();
     border-radius: px(2);
     border-bottom-left-radius: px(9) px(5);
@@ -311,44 +344,44 @@
     }
   }
   .health {
-    grid-area: 3 / 2 / 11 / 3;
+    grid-area: health;
     @include slate();
     @include monitor();
     border-radius: px(7);
   }
   .derived-stats {
-    grid-area: 11 / 2 / 21 / 3;
+    grid-area: derived;
     @include slate();
     @include monitor();
     border-radius: px(7);
   }
   .tagged-skills {
-    grid-area: 1 / 3 / 17 / 4;
+    grid-area: skills;
     background-color: purple;
   }
   .traits {
-    grid-area: 21 / 1 / 31 / 3;
+    grid-area: traits;
     .flanges {
       height: 92%;
-      .flange{
-        background-color:#43281d;
+      .flange {
+        background-color: #43281d;
         width: px(12);
         height: px(15);
-        margin-bottom:px(2);
+        margin-bottom: px(2);
       }
       .flangeset-left,
       .flangeset-right {
         position: absolute;
-        top:35%;
+        top: 35%;
       }
       .flangeset-left {
         left: px(-7);
         .flange {
           border-top-left-radius: px(2);
           border-bottom-left-radius: px(2);
-          box-shadow:
-            px(0) px(3) px(2) px(-2) rgba(#fff, .25) inset,
-            px(3) px(-3) px(2) px(0) darken(#43281d, 5%) inset;
+          box-shadow: 
+            px(0) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
+            px(3) px(-3) px(2) px(-2) darken(#43281d, 5%) inset;
         }
         .flange:first-child {
           border-top-left-radius: px(4);
@@ -362,9 +395,9 @@
         .flange {
           border-top-right-radius: px(2);
           border-bottom-right-radius: px(2);
-          box-shadow:
-            px(-3) px(3) px(2) px(-2) rgba(#fff, .25) inset,
-            px(0) px(-3) px(2) px(0) darken(#43281d, 5%) inset;
+          box-shadow: 
+          px(-3) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
+            px(0) px(-3) px(2) px(-2) darken(#43281d, 5%) inset;
         }
         .flange:first-child {
           border-top-right-radius: px(4);
@@ -378,6 +411,7 @@
       height: 100%;
       display: flex;
       flex-flow: row;
+      padding-top: px(4);
       background: linear-gradient(
         0.25turn,
         darken(#43281d, 20%) 0%,
@@ -445,7 +479,9 @@
       left: px(-3);
       right: px(-3);
       background-color: $root-bg;
-      box-shadow: basic-box-shadow();
+      box-shadow: 
+        basic-box-shadow(),
+        px(0) px(-6) px(3) px(-2) rgba(#000, 0.25) inset;
     }
     &::before {
       border-top-left-radius: px(15);
@@ -453,6 +489,7 @@
       border-bottom-left-radius: px(5);
       border-bottom-right-radius: px(5);
       content: 'Optional Traits';
+      filter: drop-shadow(px(-3) px(3) px(2) rgba(#000, 0.7));
       top: 0;
       padding: 0;
       padding-left: px(40);
@@ -475,35 +512,40 @@
     }
     input[type='checkbox'] {
       appearance: none;
+      transition: box-shadow 0.1s linear;
       margin: px(3) px(9);
       padding: 0;
       box-sizing: border-box;
       background-color: #580000;
-      box-shadow: px(-1) px(1) px(1) px(0) rgba(#fff, 0.25) inset,
+      box-shadow: 
+        px(-2) px(2) px(1) px(-1) rgba(#fff, 0.25) inset,
         px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
-        px(-6) px(-3) px(0) px(0) #383838 inset,
-        px(6) px(3) px(0) px(0) #383838 inset,
-        px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset;
+        px(-6) px(-3) px(0) px(0) #2D2B25 inset,
+        px(6) px(3) px(0) px(0) #2D2B25 inset,
+        px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
+        px(0) px(0) px(0) px(1) rgba(#000, 0.25);
       width: px(20);
       height: px(12);
       border-radius: px(3);
       border: px(1) solid #040c00;
       &:active {
         background-color: #fc3030;
-        box-shadow: px(0) px(0) px(0) px(0) rgba(#fff, 0.25) inset,
+        box-shadow:
+          px(0) px(0) px(1) px(-1) rgba(#fff, 0.25) inset,
           px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
-          px(-6) px(-3) px(0) px(0) #383838 inset,
-          px(6) px(3) px(0) px(0) #383838 inset,
-          px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset;
+          px(-6) px(-3) px(0) px(0) #2D2B25 inset,
+          px(6) px(3) px(0) px(0) #2D2B25 inset,
+          px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
+          px(0) px(0) px(0) px(0) rgba(#000, 0.25);
       }
     }
   }
   .help {
-    grid-area: 17 / 3 / 29 / 4;
+    grid-area: help;
     background-color: yellow;
   }
   .buttons {
-    grid-area: 29 / 3 / 31 / 4;
+    grid-area: buttons;
     background-color: red;
   }
 </style>
