@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { Special, SpecialAbbreviation } from '../../engines/ChosenOne';
+  import {
+    Special,
+    SpecialAbbreviation,
+    Traits,
+    type TraitSet
+  } from '../../engines/ChosenOne';
   import Attribute from './chosen-one/Attribute.svelte';
   import Bolthead from './chosen-one/Bolthead.svelte';
   import TwoDigitDisplay from './chosen-one/TwoDigitDisplay.svelte';
@@ -7,6 +12,11 @@
   let name = 'NONE';
   let age = 25;
   let sex = 'MALE';
+
+  let chosenTraits: string[] = [];
+  let traits = Object.keys(Traits) as (keyof typeof Traits)[];
+  let leftTraits = traits.slice(0, 8);
+  let rightTraits = traits.slice(8, 16);
 </script>
 
 <div class="parent">
@@ -109,7 +119,50 @@
     <Bolthead dir="bl" />
     <Bolthead dir="br" />
   </div>
-  <div class="traits" />
+  <div class="traits">
+    <div class="flanges">
+      <div class="terminal">
+        <div class="leftTraits">
+          {#each leftTraits as trait}
+            <div class="trait">
+              <input
+                type="checkbox"
+                bind:group={chosenTraits}
+                value={trait}
+              />
+              <div
+                data-trait={trait}
+                role="link"
+                tabindex="0"
+                class={chosenTraits.includes(trait) ? 'selected' : ''}
+              >
+                {Traits[trait]}
+              </div>
+            </div>
+          {/each}
+        </div>
+        <div class="rightTraits">
+          {#each rightTraits as trait}
+            <div class="trait">
+              <input
+                type="checkbox"
+                bind:group={chosenTraits}
+                value={trait}
+              />
+              <div
+                data-trait={trait}
+                role="link"
+                tabindex="0"
+                class={chosenTraits.includes(trait) ? 'selected' : ''}
+              >
+                {Traits[trait]}
+              </div>
+            </div>
+          {/each}
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="tagged-skills" />
   <div class="help" />
   <div class="buttons" />
@@ -164,7 +217,7 @@
     box-shadow: basic-box-shadow();
   }
 
-  @mixin display() {
+  @mixin monitor() {
     & {
       position: relative;
     }
@@ -231,13 +284,13 @@
   .health {
     grid-area: 3 / 2 / 11 / 3;
     @include slate();
-    @include display();
+    @include monitor();
     border-radius: px(7);
   }
   .derived-stats {
     grid-area: 11 / 2 / 20 / 3;
     @include slate();
-    @include display();
+    @include monitor();
     border-radius: px(7);
   }
   .tagged-skills {
@@ -245,8 +298,121 @@
     background-color: purple;
   }
   .traits {
+    .flanges{
+      height:92%;
+    }
+    .terminal{
+      height:100%;
+      display:flex;
+      flex-flow:row;
+      background:linear-gradient(.25turn,darken( #43281d, 20%) 0%, #43281d 1%, #43281d 6%,lighten(#43281d, 20%) 6%, $terminal-bg 6.8%, $terminal-bg 93.1%, #43281d 94%, #43281d 99%, mix(#43281d, #fff, 80%) 99.9%);
+    }
+    border-radius: px(15);
     grid-area: 20 / 1 / 31 / 3;
-    background-color: gold;
+    background-color: $root-bg;
+    margin: px(10);
+    margin-top: 0;
+    padding: 0;
+    padding-top: px(30) * 1.5;
+    background-color: #43281d;
+    // background-image: url('traits.png');
+    // background-position:50%;
+    // background-size: cover;
+    position: relative;
+    color: $terminal-text;
+    [data-trait] {
+      &:focus {
+        color: $terminal-text-active;
+      }
+      &.selected {
+        color: $terminal-text-selected;
+        &:focus {
+          color: $terminal-text-selected-active;
+        }
+      }
+    }
+    .trait{
+      position:relative;
+      input{
+        position:absolute;
+      }
+    }
+    .leftTraits{
+      width:60%;
+      [data-trait]{
+        padding-left:px(38 + 2);
+      }
+      input{
+        left:0;
+      }
+    }
+    .rightTraits{
+      width:40%;
+      [data-trait]{
+        padding-right:px(38 + 16);
+      }
+      input{
+        right:0;
+      }
+    }
+    &::after,
+    &::before {
+      position: absolute;
+      left: px(-3);
+      right: px(-3);
+      background-color: $root-bg;
+      box-shadow: basic-box-shadow();
+    }
+    &::before {
+      border-top-left-radius: px(15);
+      border-top-right-radius: px(15);
+      border-bottom-left-radius: px(5);
+      border-bottom-right-radius: px(5);
+      content: 'Optional Traits';
+      top: 0;
+      padding: 0;
+      padding-left: px(40);
+      margin: 0;
+      font-family: title-font();
+      color: $title-color;
+      text-transform: uppercase;
+      font-size: px(30);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+    &::after {
+      content: ' ';
+      height: px(20);
+      bottom: 0;
+      border-bottom-left-radius: px(15);
+      border-bottom-right-radius: px(15);
+      border-top-left-radius: px(2);
+      border-top-right-radius: px(2);
+    }
+    input[type='checkbox'] {
+      appearance: none;
+      margin: 0 px(9);
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #580000;
+      box-shadow: px(-1) px(1) px(1) px(0) rgba(#fff, 0.25) inset,
+        px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
+        px(-6) px(-3) px(0) px(0) #383838 inset,
+        px(6) px(3) px(0) px(0) #383838 inset,
+        px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset;
+      width: px(20);
+      height: px(12);
+      border-radius: px(3);
+      border: px(1) solid #040c00;
+      &:active {
+        background-color: #fc3030;
+        box-shadow: px(0) px(0) px(0) px(0) rgba(#fff, 0.25) inset,
+          px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
+          px(-6) px(-3) px(0) px(0) #383838 inset,
+          px(6) px(3) px(0) px(0) #383838 inset,
+          px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset;
+      }
+    }
   }
   .help {
     grid-area: 17 / 3 / 29 / 4;

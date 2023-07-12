@@ -32,9 +32,6 @@
       px(-1) 0 px(0.5) 0 rgba(0, 0, 0, 0.25),
       inset 0 px(-11) px(2) 0 rgba(0, 0, 0, 0.8),
       inset 0 px(6) px(2) 0 rgba(0, 0, 0, 0.8);
-    .next{
-      height:px(35);
-    }
   }
   .animwrap {
     position: absolute;

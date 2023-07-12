@@ -1,14 +1,17 @@
-export enum Special {
-  Strength = 'Strength',
-  Perception = 'Perception',
-  Endurance = 'Endurance',
-  Charimsa = 'Charisma',
-  Intelligence = 'Intelligence',
-  Agility = 'Agility',
-  Luck = 'Luck'
-}
+export const Special = {
+  Strength: 'Strength',
+  Perception: 'Perception',
+  Endurance: 'Endurance',
+  Charimsa: 'Charisma',
+  Intelligence: 'Intelligence',
+  Agility: 'Agility',
+  Luck: 'Luck'
+} as const;
 
-export function SpecialAbbreviation(special: Special): string {
+type ObjectValues<T> = T[keyof T];
+export type SPECIAL = ObjectValues<typeof Special>;
+
+export function SpecialAbbreviation(special: SPECIAL): string {
   switch (special) {
     case Special.Strength:
       return 'ST';
@@ -27,35 +30,58 @@ export function SpecialAbbreviation(special: Special): string {
   }
 }
 
-export type Attributes = Map<Special, number>;
+export type Attributes = Map<SPECIAL, number>;
 
-export enum CombatSkills {
-  SmallGuns = 'Small Guns',
-  BigGuns = 'Big Guns',
-  EnergyWeapons = 'Energy Weapons',
-  Unarmed = 'Unarmed',
-  MeleeWeapons = 'Melee Weapons',
-  Throwing = 'Throwing'
-}
+export const CombatSkills = {
+  SmallGuns: 'Small Guns',
+  BigGuns: 'Big Guns',
+  EnergyWeapons: 'Energy Weapons',
+  Unarmed: 'Unarmed',
+  MeleeWeapons: 'Melee Weapons',
+  Throwing: 'Throwing'
+} as const;
 
-export enum ActiveSkills {
-  FirstAid = 'First Aid',
-  Doctor = 'Doctor',
-  Sneak = 'Sneak',
-  LockPick = 'Lockpick',
-  Steal = 'Steal',
-  Traps = 'Traps',
-  Science = 'Science',
-  Repair = 'Repair'
-}
+export const ActiveSkills = {
+  FirstAid : 'First Aid',
+  Doctor : 'Doctor',
+  Sneak : 'Sneak',
+  LockPick : 'Lockpick',
+  Steal : 'Steal',
+  Traps : 'Traps',
+  Science : 'Science',
+  Repair : 'Repair'
+} as const;
 
-export enum PassiveSkills {
-  Speech = 'Speech',
-  Barder = 'Barter',
-  Gambling = 'Gambling',
-  Outdoorsman = 'Outdoorsman'
-}
+export const PassiveSkills = {
+  Speech : 'Speech',
+  Barder : 'Barter',
+  Gambling : 'Gambling',
+  Outdoorsman : 'Outdoorsman'
+} as const;
 
-export const Skills = { ...CombatSkills, ...ActiveSkills, ...PassiveSkills };
-export type Skills = typeof Skills;
-export type SkillSet = Map<Skills, number>;
+export const Skills = { ...CombatSkills, ...ActiveSkills, ...PassiveSkills } as const;
+export type SKILLS = ObjectValues<typeof Skills>;
+export type SkillSet = Map<SKILLS, number>;
+
+export const Traits = {
+  FastMetabolism : 'Fast Metabolism',
+  Bruiser : 'Bruiser',
+  SmallFrame : 'Small Frame',
+  OneHander : 'One Hander',
+  Finesse : 'Finesse',
+  Kamikaze : 'Kamikaze',
+  HeavyHanded : 'Heavy Handed',
+  FastShot : 'Fast Shot',
+  BloodyMess : 'Bloody Mess',
+  Jinxed : 'Jinxed',
+  GoodNatured : 'Good Natured',
+  ChemReliant : 'Chem Reliant',
+  ChemResistant : 'Chem Resistant',
+  SexAppeal : 'Sex Appeal',
+  Skilled : 'Skilled',
+  Gifted : 'Gifted',
+} as const;
+
+export type TRAITS = ObjectValues<typeof Traits>;
+export type TraitSet = Map<TRAITS, boolean>;
+
