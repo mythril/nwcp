@@ -52,13 +52,12 @@
     padding: px(0) px(0);
     display: flex;
     width: 100%;
+    height:px(44);
     justify-content: space-between;
     align-items: center;
   }
   .label {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    user-select: none;
     color: $title-color;
     text-align: center;
     font-family: title-font();
@@ -86,12 +85,12 @@
     }
   }
   .description {
-    user-select: none; /* Standard syntax */
+    user-select: none;
+    @include terminal-font();
+    line-height: px(22);
     background-color: $terminal-bg;
-    color: $terminal-text;
     width: px(70);
     height: px(28);
-    line-height: px(22);
     text-align: left;
     padding-left: px(6);
     border-top: px(3) solid darken($root-bg, 20%);

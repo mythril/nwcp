@@ -17,6 +17,13 @@
   font-family: title-font();
 }
 
+@mixin terminal-font() {
+  font-family: terminal-font();
+  line-height:1.7;
+  color: $terminal-text;
+  text-rendering: geometricPrecision;
+}
+
 @mixin big-button-style-hover() {
   filter: saturate(1) brightness(1);
 }

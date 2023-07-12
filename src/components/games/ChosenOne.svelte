@@ -121,6 +121,18 @@
   </div>
   <div class="traits">
     <div class="flanges">
+      <div class="flangeset-left">
+        <div class="flange" />
+        <div class="flange" />
+        <div class="flange" />
+        <div class="flange" />
+      </div>
+      <div class="flangeset-right">
+        <div class="flange" />
+        <div class="flange" />
+        <div class="flange" />
+        <div class="flange" />
+      </div>
       <div class="terminal">
         <div class="leftTraits">
           {#each leftTraits as trait}
@@ -171,15 +183,15 @@
 <style lang="scss">
   @mixin size-ref($w, $h, $disabled: false) {
     @if $disabled == false {
-      position:relative;
-      z-index:1;
-      &::after{
+      position: relative;
+      z-index: 1;
+      &::after {
         content: ' ';
-        position:absolute;
-        left:0;
-        top:0%;
-        width:$w;
-        height:$h;
+        position: absolute;
+        left: 0;
+        top: 0%;
+        width: $w;
+        height: $h;
         outline: px(1) dashed pink;
       }
     }
@@ -253,7 +265,7 @@
       td {
         padding-left: px(12);
       }
-      padding: px(0) px(7);
+      padding: px(7);
       position: absolute;
       top: 5%;
       bottom: 5%;
@@ -264,7 +276,7 @@
       border-radius: px(8) px(7);
       box-shadow: px(-4) px(4) px(4) px(0) rgba(255, 255, 255, 0.2),
         px(4) px(-4) px(4) px(0) rgba(0, 0, 0, 0.25);
-      text-rendering: geometricPrecision;
+      @include terminal-font();
       color: $terminal-text-unmarked;
       .highlighted {
         color: $terminal-text;
@@ -273,29 +285,29 @@
   }
 
   .special {
-    @include size-ref(px(214), px(312),true);
-    grid-area: 3 / 1 / 17 / 2;
+    @include size-ref(px(214), px(312), true);
+    grid-area: 3 / 1 / 18 / 2;
     @include slate();
     border-radius: px(2);
     border-bottom-left-radius: px(9) px(5);
     padding: px(6) px(7);
   }
   .char-points {
-    grid-area: 17 / 1 / 20 / 2;
+    grid-area: 18 / 1 / 21 / 2;
     position: relative;
     @include slate();
     border-radius: px(2);
     border-bottom-left-radius: px(5) px(3);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding-left: px(4);
+    padding-right: px(16);
     align-items: center;
     .label {
-      -webkit-user-select: none; /* Safari */
-      -ms-user-select: none; /* IE 10 and IE 11 */
       user-select: none; /* Standard syntax */
       font-family: title-font();
       color: $title-color;
-      font-size: px(30);
+      font-size: px(22);
     }
   }
   .health {
@@ -305,7 +317,7 @@
     border-radius: px(7);
   }
   .derived-stats {
-    grid-area: 11 / 2 / 20 / 3;
+    grid-area: 11 / 2 / 21 / 3;
     @include slate();
     @include monitor();
     border-radius: px(7);
@@ -315,23 +327,77 @@
     background-color: purple;
   }
   .traits {
-    .flanges{
-      height:92%;
+    grid-area: 21 / 1 / 31 / 3;
+    .flanges {
+      height: 92%;
+      .flange{
+        background-color:#43281d;
+        width: px(12);
+        height: px(15);
+        margin-bottom:px(2);
+      }
+      .flangeset-left,
+      .flangeset-right {
+        position: absolute;
+        top:35%;
+      }
+      .flangeset-left {
+        left: px(-7);
+        .flange {
+          border-top-left-radius: px(2);
+          border-bottom-left-radius: px(2);
+          box-shadow:
+            px(0) px(3) px(2) px(-2) rgba(#fff, .25) inset,
+            px(3) px(-3) px(2) px(0) darken(#43281d, 5%) inset;
+        }
+        .flange:first-child {
+          border-top-left-radius: px(4);
+        }
+        .flange:last-child {
+          border-bottom-left-radius: px(4);
+        }
+      }
+      .flangeset-right {
+        right: px(-8);
+        .flange {
+          border-top-right-radius: px(2);
+          border-bottom-right-radius: px(2);
+          box-shadow:
+            px(-3) px(3) px(2) px(-2) rgba(#fff, .25) inset,
+            px(0) px(-3) px(2) px(0) darken(#43281d, 5%) inset;
+        }
+        .flange:first-child {
+          border-top-right-radius: px(4);
+        }
+        .flange:last-child {
+          border-bottom-right-radius: px(4);
+        }
+      }
     }
-    .terminal{
-      line-height:1.7;
-      height:100%;
-      display:flex;
-      flex-flow:row;
-      background:linear-gradient(.25turn,darken( #43281d, 20%) 0%, #43281d 1%, #43281d 6%,lighten(#43281d, 20%) 6%, $terminal-bg 6.8%, $terminal-bg 93.1%, #43281d 94%, #43281d 99%, mix(#43281d, #fff, 80%) 99.9%);
+    .terminal {
+      height: 100%;
+      display: flex;
+      flex-flow: row;
+      background: linear-gradient(
+        0.25turn,
+        darken(#43281d, 20%) 0%,
+        #43281d 1%,
+        #43281d 7.2%,
+        lighten(#43281d, 20%) 8%,
+        $terminal-bg 8%,
+        $terminal-bg 91.5%,
+        #43281d 92.3%,
+        #43281d 99%,
+        mix(#43281d, #fff, 80%) 99.9%
+      );
+      @include terminal-font();
     }
     border-radius: px(15);
-    grid-area: 20 / 1 / 31 / 3;
     background-color: $root-bg;
     margin: px(10);
     margin-top: 0;
     padding: 0;
-    padding-top: px(30) * 1.5;
+    padding-top: px(22) * 1.5;
     background-color: #43281d;
     // background-image: url('traits.png');
     // background-position:50%;
@@ -349,28 +415,28 @@
         }
       }
     }
-    .trait{
-      position:relative;
-      input{
-        position:absolute;
+    .trait {
+      position: relative;
+      input {
+        position: absolute;
       }
     }
-    .leftTraits{
-      width:60%;
-      [data-trait]{
-        padding-left:px(38 + 2);
+    .leftTraits {
+      width: 60%;
+      [data-trait] {
+        padding-left: px(38 + 2);
       }
-      input{
-        left:0;
+      input {
+        left: 0;
       }
     }
-    .rightTraits{
-      width:40%;
-      [data-trait]{
-        padding-right:px(38 + 16);
+    .rightTraits {
+      width: 40%;
+      [data-trait] {
+        padding-right: px(38 + 16);
       }
-      input{
-        right:0;
+      input {
+        right: 0;
       }
     }
     &::after,
@@ -394,7 +460,7 @@
       font-family: title-font();
       color: $title-color;
       text-transform: uppercase;
-      font-size: px(30);
+      font-size: px(22);
       line-height: 1.5;
       font-weight: 400;
     }
