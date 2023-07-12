@@ -11,7 +11,12 @@
 }
 
 @function px($pixels) {
-  $originalFontSizeInPixels: 12;
+  $originalFontSizeInPixels: 10;
+  @return calc($pixels / $originalFontSizeInPixels) * 1rem;
+}
+
+@function fpx($pixels) {
+  $originalFontSizeInPixels: 10;
   @return calc($pixels / $originalFontSizeInPixels) * 1rem;
 }
 

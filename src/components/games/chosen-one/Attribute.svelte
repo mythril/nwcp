@@ -49,7 +49,7 @@
 <style lang="scss">
   .attribute {
     box-sizing: border-box;
-    padding: px(5) px(9);
+    padding: px(0) px(0);
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -86,14 +86,12 @@
     }
   }
   .description {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
     background-color: $terminal-bg;
     color: $terminal-text;
-    width: px(72);
+    width: px(70);
     height: px(28);
-    line-height: px(28);
+    line-height: px(22);
     text-align: left;
     padding-left: px(6);
     border-top: px(3) solid darken($root-bg, 20%);

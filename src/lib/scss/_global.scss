@@ -7,6 +7,9 @@ body,
   padding: 0;
   background-color: $root-bg;
 }
+*{
+  box-sizing:border-box;
+}
 
 //locks a landscape view
 @media screen and (orientation: portrait) {

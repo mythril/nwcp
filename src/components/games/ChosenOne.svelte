@@ -169,7 +169,22 @@
 </div>
 
 <style lang="scss">
+  @mixin size-ref($w, $h) {
+    position:relative;
+    z-index:1;
+    &::after{
+      content: ' ';
+      position:absolute;
+      left:0;
+      top:0%;
+      width:$w;
+      height:$h;
+      outline: px(1) dashed pink;
+    }
+  }
+
   .parent {
+    @include size-ref(px(855), px(642));
     display: grid;
     grid-template-columns: repeat(2, 26.0625%) 45.875%;
     grid-template-rows: repeat(30, 1fr);
@@ -188,7 +203,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    font-size: px(27);
+    font-size: px(22);
     line-height: 1.5;
     .name,
     .age,
@@ -236,7 +251,7 @@
       td {
         padding-left: px(12);
       }
-      padding: px(4) px(7);
+      padding: px(0) px(7);
       position: absolute;
       top: 5%;
       bottom: 5%;
@@ -256,12 +271,12 @@
   }
 
   .special {
+    @include size-ref(px(214), px(312));
     grid-area: 3 / 1 / 17 / 2;
     @include slate();
     border-radius: px(2);
     border-bottom-left-radius: px(9) px(5);
     padding: 0;
-    padding-left: px(4);
   }
   .char-points {
     grid-area: 17 / 1 / 20 / 2;
@@ -302,6 +317,7 @@
       height:92%;
     }
     .terminal{
+      line-height:1.7;
       height:100%;
       display:flex;
       flex-flow:row;
@@ -391,7 +407,7 @@
     }
     input[type='checkbox'] {
       appearance: none;
-      margin: 0 px(9);
+      margin: px(3) px(9);
       padding: 0;
       box-sizing: border-box;
       background-color: #580000;
