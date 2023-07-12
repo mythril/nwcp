@@ -169,22 +169,24 @@
 </div>
 
 <style lang="scss">
-  @mixin size-ref($w, $h) {
-    position:relative;
-    z-index:1;
-    &::after{
-      content: ' ';
-      position:absolute;
-      left:0;
-      top:0%;
-      width:$w;
-      height:$h;
-      outline: px(1) dashed pink;
+  @mixin size-ref($w, $h, $disabled: false) {
+    @if $disabled == false {
+      position:relative;
+      z-index:1;
+      &::after{
+        content: ' ';
+        position:absolute;
+        left:0;
+        top:0%;
+        width:$w;
+        height:$h;
+        outline: px(1) dashed pink;
+      }
     }
   }
 
   .parent {
-    @include size-ref(px(855), px(642));
+    @include size-ref(px(855), px(642), true);
     display: grid;
     grid-template-columns: repeat(2, 26.0625%) 45.875%;
     grid-template-rows: repeat(30, 1fr);
@@ -271,12 +273,12 @@
   }
 
   .special {
-    @include size-ref(px(214), px(312));
+    @include size-ref(px(214), px(312),true);
     grid-area: 3 / 1 / 17 / 2;
     @include slate();
     border-radius: px(2);
     border-bottom-left-radius: px(9) px(5);
-    padding: 0;
+    padding: px(6) px(7);
   }
   .char-points {
     grid-area: 17 / 1 / 20 / 2;

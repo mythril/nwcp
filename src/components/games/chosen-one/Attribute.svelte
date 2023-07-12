@@ -106,17 +106,15 @@
     filter: drop-shadow(0 px(1) px(0) #000) drop-shadow(px(-1) px(1) px(0) #000)
       drop-shadow(px(1) px(1) px(0) #000);
     button {
-      -webkit-user-select: none; /* Safari */
-      -ms-user-select: none; /* IE 10 and IE 11 */
-      user-select: none; /* Standard syntax */
+      appearance: none;
+      user-select: none;
       display: block;
-      box-sizing: border-box;
       border: 0;
       margin: 0;
       padding: 0;
       color: transparent;
-      height: px(14);
-      width: px(21);
+      height: px(13);
+      width: px(20);
       background-color: $root-bg;
       border-radius: px(3) px(4);
       line-height: px(14);

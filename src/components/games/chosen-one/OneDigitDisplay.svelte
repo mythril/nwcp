@@ -1,59 +1,32 @@
 <script lang="ts">
   import {spring} from 'svelte/motion';
+  import EmptyDigitDisplay from './EmptyDigitDisplay.svelte';
   export let value: number;
   
   const current = spring();
-  current.stiffness = 0.5;
-  current.damping = 0.8;
+  current.stiffness = 0.8;
+  current.damping = 0.9;
   $: current.set(value);
 
-  // @TODO write a spring that doesn't bounce to -1 when it wraps
   $: offset = $current % 1;
 
 </script>
 
-<div class="digit">
+<EmptyDigitDisplay>
   <div class="animwrap" style="transform: translate(0, {100 * offset}%)">
     <div class="hidden">
-      {Math.floor($current + 1)}
+      {Math.floor(($current + 11) % 10)}
     </div>
     <div class="current">
-      {Math.floor($current)}
+      {Math.floor(($current) + 10) % 10}
     </div>
   </div>
-</div>
+</EmptyDigitDisplay>
 
 <style lang="scss">
-  .digit {
-    box-sizing:border-box;
-    position: relative;
-    font-size: px(23);
-    font-weight: 400;
-    line-height: px(30);
-    width: px(30);
-    height:100%;
-    border-top-left-radius: px(6) px(22);
-    border-bottom-left-radius: px(6) px(22);
-    background-color: hsl(0, 0%, 50%);
-    color: hsl(0, 0%, 93%);
-    padding-left: px(5);
-    margin-left: px(-8);
-    left:px(-3);
-    font-family: label-font();
-    text-shadow: text-outline(rgba(0, 0, 0, 0.8), true);
-    box-shadow: inset 0 px(15) px(2) px(2) rgba(0, 0, 0, 0.5),
-      px(-0.5) 0 px(0.6) px(0.1) rgba(255, 255, 255, 0.35),
-      px(-1) 0 px(0.5) 0 rgba(0, 0, 0, 0.25),
-      inset 0 px(-11) px(2) 0 rgba(0, 0, 0, 0.8),
-      inset 0 px(6) px(2) 0 rgba(0, 0, 0, 0.8);
-    .hidden,
-    .current{
-      height:px(35);
-    }
-    .hidden {
-      top: -100%;
-      user-select:none;
-    }
+  .hidden {
+    top: -100%;
+    user-select:none;
   }
   .animwrap {
     position: absolute;

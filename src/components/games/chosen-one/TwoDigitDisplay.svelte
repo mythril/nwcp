@@ -37,6 +37,6 @@
     height: 100%;
     width: px(90);
     position: relative;
-    left: px(-9);
+    left: px(-5);
   }
 </style>
