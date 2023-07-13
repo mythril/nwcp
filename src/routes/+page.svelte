@@ -50,14 +50,30 @@
   bind:innerHeight
 />
 
+
 <div
   class="planner"
   bind:this={planner}
 >
+<svg>
+  <filter id="grain">
+      <feTurbulence
+        type='fractalNoise'
+        baseFrequency='0.375'
+        numOctaves='6'
+        stitchTiles='stitch'
+        seed="1"
+      />
+      <feBlend in="SourceGraphic" in2="grain" mode="multiply" />
+    </filter>
+  </svg>
   <GameChooser />
 </div>
 
 <style lang="scss">
+  :global(body) {
+    filter: url(#grain);
+   }
   .planner {
     font-family: terminal-font();
     display: block;
