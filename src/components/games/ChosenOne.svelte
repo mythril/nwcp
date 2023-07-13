@@ -1,5 +1,6 @@
 <script lang="ts">
   import {
+    Skills,
     Special,
     SpecialAbbreviation,
     Traits,
@@ -113,7 +114,9 @@
   </div>
   <div class="char-points">
     <div class="label">CHAR POINTS</div>
-    <TwoDigitDisplay value={Math.round(Math.random() * 9 + 1)} />
+    <div class="dorkyborder">
+      <TwoDigitDisplay value={Math.round(Math.random() * 9 + 1)} />
+    </div>
     <Bolthead dir="tl" />
     <Bolthead dir="tr" />
     <Bolthead dir="bl" />
@@ -175,7 +178,34 @@
       </div>
     </div>
   </div>
-  <div class="tagged-skills" />
+  <div class="tagged-skills">
+    <div class="title">Skills</div>
+    <div class="skills">
+      {#each Object.values(Skills) as skill}
+        <div class="skill">
+          <div class="button">
+            <input
+              type="checkbox"
+              name=""
+              id=""
+            />
+          </div>
+          <div class="label">
+            {skill}
+          </div>
+          <div class="value">
+            {(Math.random() * 150 + 1).toFixed(0)}%
+          </div>
+        </div>
+      {/each}
+    </div>
+    <div class="skills-remaining">
+      <div class="label">Tag Skills</div>
+      <div class="unused">
+        <TwoDigitDisplay value={3} />
+      </div>
+    </div>
+  </div>
   <div class="help" />
   <div class="buttons" />
 </div>
@@ -240,7 +270,8 @@
     bottom: 0;
     top: 0;
     right: 0;
-    filter: drop-shadow(px(-5) px(5) px(3) #000) drop-shadow(px(-5) px(5) px(3) #000);
+    filter: drop-shadow(px(-5) px(5) px(3) #000)
+      drop-shadow(px(-5) px(5) px(3) #000);
   }
 
   .name-age-sex {
@@ -268,8 +299,7 @@
   }
 
   @function basic-box-shadow() {
-    @return 
-      px(-4) px(4) px(2) px(-3) rgba(255, 255, 255, 0.25) inset,
+    @return px(-4) px(4) px(2) px(-3) rgba(255, 255, 255, 0.25) inset,
       px(4) px(-4) px(5) px(-5) rgba(darken($root-bg, 30%), 0.3) inset;
   }
 
@@ -306,8 +336,7 @@
       line-height: 1.7;
       background-color: $terminal-bg;
       border-radius: px(8) px(7);
-      box-shadow: 
-        px(-4) px(4) px(4) px(-2) rgba(255, 255, 255, 0.2),
+      box-shadow: px(-4) px(4) px(4) px(-2) rgba(255, 255, 255, 0.2),
         px(4) px(-4) px(4) px(-2) rgba(0, 0, 0, 0.5);
       @include terminal-font();
       color: $terminal-text-unmarked;
@@ -326,6 +355,12 @@
     padding: px(6) px(7);
   }
   .char-points {
+    .dorkyborder {
+      border-top: px(3) solid darken($root-bg, 10%);
+      border-right: px(3) solid darken($root-bg, 10%);
+      border-left: px(3) solid lighten($root-bg, 10%);
+      border-bottom: px(3) solid lighten($root-bg, 10%);
+    }
     grid-area: 18 / 1 / 21 / 2;
     position: relative;
     @include slate();
@@ -356,8 +391,126 @@
     border-radius: px(7);
   }
   .tagged-skills {
+    position: relative;
+    padding-top: px(16);
+    .skills-remaining {
+      position: absolute;
+      bottom: 0;
+      height: px(44);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $title-bg;
+      border-top-left-radius: px(2);
+      border-top-right-radius: px(2);
+      border-bottom-left-radius: px(15);
+      border-bottom-right-radius: px(15);
+      box-shadow:
+        px(2) px(-2) px(2) px(-1) rgba(#000, 0.5) inset,
+        px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5) inset;
+      .unused{
+        border-radius:px(2);
+        overflow:hidden;
+        box-shadow:
+          px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5),
+          px(2) px(-2) px(2) px(-1) rgba(#000, 0.5);
+      }
+      :global(.remaining) {
+        border: 0;
+      }
+      .label {
+        font-family: title-font();
+        color: $title-color;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: px(22);
+        padding-right: px(10);
+      }
+    }
+    &::before {
+      content: 'Skills';
+      box-shadow:
+        px(2) px(-2) px(2) px(-1) rgba(#000, 0.5) inset,
+        px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5) inset;
+      padding-left: px(58);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: px(28);
+      background-color: $title-bg;
+      font-family: title-font();
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: px(22);
+      color: $title-color;
+      border-top-left-radius: px(15);
+      border-top-right-radius: px(15);
+      border-bottom-left-radius: px(2);
+      border-bottom-right-radius: px(2);
+    }
+
     grid-area: skills;
-    background-color: purple;
+    .skills {
+      display: flex;
+      flex-flow: column;
+      margin: 0 auto;
+      width: 97%;
+      height: 87%;
+      padding: 0;
+      @include terminal-font();
+      line-height: 1.48;
+      .skill {
+        display: flex;
+        flex-flow: row;
+      }
+      .button {
+        width: px(39);
+        max-height: px(14);
+        background-color: red;
+      }
+      .label,
+      .value {
+        background-color: $terminal-bg;
+      }
+      .label {
+        width: px(38 * 7);
+        padding-left: px(15);
+      }
+      .value {
+        text-align: right;
+        padding-right: px(45);
+        width: px(38 * 2 + 1);
+      }
+    }
+    input[type='checkbox'] {
+      appearance: none;
+      transition: box-shadow 0.1s linear;
+      margin: px(1) px(9);
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #580000;
+      box-shadow: px(-2) px(2) px(1) px(-1) rgba(#fff, 0.25) inset,
+        px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
+        px(-6) px(-3) px(0) px(0) #2d2b25 inset,
+        px(6) px(3) px(0) px(0) #2d2b25 inset,
+        px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
+        px(0) px(0) px(0) px(1) rgba(#000, 0.25);
+      width: px(20);
+      height: px(12);
+      border-radius: px(3);
+      border: px(1) solid #040c00;
+      &:active {
+        background-color: #fc3030;
+        box-shadow: px(0) px(0) px(1) px(-1) rgba(#fff, 0.25) inset,
+          px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
+          px(-6) px(-3) px(0) px(0) #2d2b25 inset,
+          px(6) px(3) px(0) px(0) #2d2b25 inset,
+          px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
+          px(0) px(0) px(0) px(0) rgba(#000, 0.25);
+      }
+    }
   }
   .traits {
     grid-area: traits;
@@ -379,8 +532,7 @@
         .flange {
           border-top-left-radius: px(2);
           border-bottom-left-radius: px(2);
-          box-shadow: 
-            px(0) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
+          box-shadow: px(0) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
             px(3) px(-3) px(2) px(-2) darken(#43281d, 5%) inset;
         }
         .flange:first-child {
@@ -395,8 +547,7 @@
         .flange {
           border-top-right-radius: px(2);
           border-bottom-right-radius: px(2);
-          box-shadow: 
-          px(-3) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
+          box-shadow: px(-3) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
             px(0) px(-3) px(2) px(-2) darken(#43281d, 5%) inset;
         }
         .flange:first-child {
@@ -479,8 +630,7 @@
       left: px(-3);
       right: px(-3);
       background-color: $root-bg;
-      box-shadow: 
-        basic-box-shadow(),
+      box-shadow: basic-box-shadow(),
         px(0) px(-6) px(3) px(-2) rgba(#000, 0.25) inset;
     }
     &::before {
@@ -517,11 +667,10 @@
       padding: 0;
       box-sizing: border-box;
       background-color: #580000;
-      box-shadow: 
-        px(-2) px(2) px(1) px(-1) rgba(#fff, 0.25) inset,
+      box-shadow: px(-2) px(2) px(1) px(-1) rgba(#fff, 0.25) inset,
         px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
-        px(-6) px(-3) px(0) px(0) #2D2B25 inset,
-        px(6) px(3) px(0) px(0) #2D2B25 inset,
+        px(-6) px(-3) px(0) px(0) #2d2b25 inset,
+        px(6) px(3) px(0) px(0) #2d2b25 inset,
         px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
         px(0) px(0) px(0) px(1) rgba(#000, 0.25);
       width: px(20);
@@ -530,11 +679,10 @@
       border: px(1) solid #040c00;
       &:active {
         background-color: #fc3030;
-        box-shadow:
-          px(0) px(0) px(1) px(-1) rgba(#fff, 0.25) inset,
+        box-shadow: px(0) px(0) px(1) px(-1) rgba(#fff, 0.25) inset,
           px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
-          px(-6) px(-3) px(0) px(0) #2D2B25 inset,
-          px(6) px(3) px(0) px(0) #2D2B25 inset,
+          px(-6) px(-3) px(0) px(0) #2d2b25 inset,
+          px(6) px(3) px(0) px(0) #2d2b25 inset,
           px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
           px(0) px(0) px(0) px(0) rgba(#000, 0.25);
       }

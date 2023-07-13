@@ -4,12 +4,11 @@
   export let value: number;
   
   const current = spring();
-  current.stiffness = 0.8;
+  current.stiffness = 0.7;
   current.damping = 0.9;
   
-  //@TODO: track down animation flicker when transitiong from 9 to 0
   $: current.set(value);
-  $: offset = $current % 1;
+  $: offset = ($current + 10) % 1;
 
 </script>
 
@@ -26,7 +25,7 @@
 
 <style lang="scss">
   .hidden {
-    top: -100%;
+    // top: -100%;
     user-select:none;
   }
   .animwrap {

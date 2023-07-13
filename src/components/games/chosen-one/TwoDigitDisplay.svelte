@@ -12,7 +12,7 @@
   }
 </script>
 
-<div class={"window " + $$props.class}>
+<div class={"window"}>
   <div class="twodigit">
     <EmptyDigitDisplay />
     <OneDigitDisplay value={tensDigit} />
@@ -21,16 +21,13 @@
   </div>
 </div>
 
+
 <style lang="scss">
   .window {
     display: block;
     overflow: hidden;
-    width: px(50);
-    height: px(35);
-    border-top: px(3) solid darken($root-bg, 10%);
-    border-right: px(3) solid darken($root-bg, 10%);
-    border-left: px(3) solid lighten($root-bg, 10%);
-    border-bottom: px(3) solid lighten($root-bg, 10%);
+    width: px(44);
+    height: px(29);
   }
   .twodigit {
     display: flex;

@@ -29,7 +29,9 @@
     {label}
   </div>
   <div class="twodigit-attr">
-    <TwoDigitDisplay class="boogers" {value} />
+    <div class="dorkyborder">
+      <TwoDigitDisplay {value} />
+    </div>
   </div>
   <div class="description">
     {descriptors[value - 1]}
@@ -52,7 +54,7 @@
     padding: px(0) px(0);
     display: flex;
     width: 100%;
-    height:px(44);
+    height: px(44);
     justify-content: space-between;
     align-items: center;
   }
@@ -62,7 +64,7 @@
     text-align: center;
     font-family: title-font();
     font-size: px(30);
-    width:px(40);
+    width: px(40);
   }
   .twodigit-attr {
     position: relative;
@@ -102,8 +104,8 @@
     display: flex;
     flex-direction: column;
     height: px(32);
-    // filter: 
-    //   drop-shadow(px(0) px(1) px(0) #000) 
+    // filter:
+    //   drop-shadow(px(0) px(1) px(0) #000)
     //   drop-shadow(px(-1) px(1) px(0) #000)
     //   drop-shadow(px(0) px(3) px(1) #000)
     //   drop-shadow(px(1) px(1) px(0) #000);
@@ -120,15 +122,12 @@
       background-color: $root-bg;
       border-radius: px(3) px(4);
       line-height: px(14);
-      box-shadow:
-        px(-3) px(3) px(3) px(-3) rgba(255, 255, 255, 0.5) inset,
+      box-shadow: px(-3) px(3) px(3) px(-3) rgba(255, 255, 255, 0.5) inset,
         px(3) px(-3) px(3) px(-1) rgba(darken($root-bg, 50%), 0.5) inset,
-        px(0) px(3) px(2) px(1) #000,
-        px(0) px(0) px(0) px(0) rgba(#000, 0);
-      transition:box-shadow 0.1s linear;
-      &:active{
-        box-shadow:
-          px(-3) px(3) px(3) px(-3) rgba(#000, 0.5) inset,
+        px(0) px(3) px(2) px(1) #000, px(0) px(0) px(0) px(0) rgba(#000, 0);
+      transition: box-shadow 0.1s linear;
+      &:active {
+        box-shadow: px(-3) px(3) px(3) px(-3) rgba(#000, 0.5) inset,
           px(3) px(-3) px(3) px(-1) rgba(darken($root-bg, 50%), 0.5) inset,
           px(0) px(3) px(2) px(1) #000,
           px(-3) px(0) px(1) px(-1) rgba(#fff, 0.25);
@@ -164,5 +163,11 @@
         }
       }
     }
+  }
+  .dorkyborder {
+    border-top: px(3) solid darken($root-bg, 10%);
+    border-right: px(3) solid darken($root-bg, 10%);
+    border-left: px(3) solid lighten($root-bg, 10%);
+    border-bottom: px(3) solid lighten($root-bg, 10%);
   }
 </style>
