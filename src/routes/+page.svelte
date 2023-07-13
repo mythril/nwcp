@@ -54,7 +54,7 @@
   class="planner"
   bind:this={planner}
 >
-<svg>
+<svg style="position:absolute;z-index:-1;opacity:0">
   <filter id="variance">
     <feTurbulence
       type='fractalNoise'

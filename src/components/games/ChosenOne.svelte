@@ -22,21 +22,36 @@
 
 <svg>
   <filter id="paper">
-    <feTurbulence x="0" y="0" baseFrequency="0.01" numOctaves="5" seed="1" />
-    <feDisplacementMap in="SourceGraphic" scale="10" />
+    <feTurbulence
+      x="0"
+      y="0"
+      baseFrequency="0.01"
+      numOctaves="5"
+      seed="1"
+    />
+    <feDisplacementMap
+      in="SourceGraphic"
+      scale="10"
+    />
   </filter>
 </svg>
 
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
-      {name}
+      <div class="label">
+        {name}
+      </div>
     </div>
     <div class="age">
-      AGE {age}
+      <div class="label">
+        AGE {age}
+      </div>
     </div>
     <div class="sex">
-      {sex}
+      <div class="label">
+        {sex}
+      </div>
     </div>
   </div>
   <div class="special">
@@ -296,6 +311,10 @@
       @include big-button-style();
       @include big-button-style-hover();
     }
+    .label{
+      -webkit-mask-image: url('$lib/images/mask.png');
+      mask-image: url('$lib/images/mask.png');
+    }
     .name {
       width: 36%;
     }
@@ -383,6 +402,8 @@
     .label {
       user-select: none; /* Standard syntax */
       font-family: title-font();
+      -webkit-mask-image: url('$lib/images/mask.png');
+      mask-image: url('$lib/images/mask.png');
       color: $title-color;
       font-size: px(22);
     }
@@ -415,14 +436,12 @@
       border-top-right-radius: px(2);
       border-bottom-left-radius: px(15);
       border-bottom-right-radius: px(15);
-      box-shadow:
-        px(2) px(-2) px(2) px(-1) rgba(#000, 0.5) inset,
+      box-shadow: px(2) px(-2) px(2) px(-1) rgba(#000, 0.5) inset,
         px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5) inset;
-      .unused{
-        border-radius:px(2);
-        overflow:hidden;
-        box-shadow:
-          px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5),
+      .unused {
+        border-radius: px(2);
+        overflow: hidden;
+        box-shadow: px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5),
           px(2) px(-2) px(2) px(-1) rgba(#000, 0.5);
       }
       :global(.remaining) {
@@ -430,6 +449,8 @@
       }
       .label {
         font-family: title-font();
+        -webkit-mask-image: url('$lib/images/mask.png');
+        mask-image: url('$lib/images/mask.png');
         color: $title-color;
         font-weight: 400;
         text-transform: uppercase;
@@ -438,26 +459,35 @@
       }
     }
     &::before {
-      content: 'Skills';
-      box-shadow:
-        px(2) px(-2) px(2) px(0) rgba(#000, 0.9) inset,
+      content: ' ';
+      box-shadow: px(2) px(-2) px(2) px(0) rgba(#000, 0.9) inset,
         px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5) inset;
-      padding-left: px(58);
       position: absolute;
       left: 0;
       right: 0;
       top: 0;
       height: px(28);
       background-color: $title-bg;
+      border-top-left-radius: px(15);
+      border-top-right-radius: px(15);
+      border-bottom-left-radius: px(2);
+      border-bottom-right-radius: px(2);
+    }
+    &::after {
+      content: 'Skills';
+      padding-left: px(58);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: px(28);
       font-family: title-font();
       font-weight: 400;
       text-transform: uppercase;
       font-size: px(22);
       color: $title-color;
-      border-top-left-radius: px(15);
-      border-top-right-radius: px(15);
-      border-bottom-left-radius: px(2);
-      border-bottom-right-radius: px(2);
+      -webkit-mask-image: url('$lib/images/mask.png');
+      mask-image: url('$lib/images/mask.png');
     }
 
     grid-area: skills;
@@ -470,7 +500,19 @@
       padding: 0;
       @include terminal-font();
       line-height: 1.48;
-      background: linear-gradient(0.25turn, #0c0c0c 0%, #3c3c3c 2.1%, #0e0d09 3.7%, #343220 7.4%, #343220 8.4%, #545454 8.7%, $terminal-bg 9%, $terminal-bg 95.8%, #6b6b6b 98.4%, #1c1c1c 100%);
+      background: linear-gradient(
+        0.25turn,
+        #0c0c0c 0%,
+        #3c3c3c 2.1%,
+        #0e0d09 3.7%,
+        #343220 7.4%,
+        #343220 8.4%,
+        #545454 8.7%,
+        $terminal-bg 9%,
+        $terminal-bg 95.8%,
+        #6b6b6b 98.4%,
+        #1c1c1c 100%
+      );
       .skill {
         display: flex;
         flex-flow: row;
@@ -526,6 +568,22 @@
     grid-area: traits;
     .flanges {
       height: 92%;
+      position:relative;
+      &::before{
+        position:absolute;
+        bottom:100%;
+        content: 'Optional Traits';
+        font-family: title-font();
+        color: $title-color;
+        text-transform: uppercase;
+        -webkit-mask-image: url('$lib/images/mask.png');
+        mask-image: url('$lib/images/mask.png');
+        font-size: px(22);
+        line-height: 1.5;
+        font-weight: 400;
+        padding: 0;
+        padding-left: px(40);
+      }
       .flange {
         background-color: #43281d;
         width: px(12);
@@ -625,14 +683,14 @@
         left: 0;
       }
       .trait {
-        &::after{
+        &::after {
           content: ' ';
-          position:absolute;
-          top:px(8);
-          left:px(30);
-          width:px(5);
-          height:px(2);
-          background-color:rgba(#000, 0.25);
+          position: absolute;
+          top: px(8);
+          left: px(30);
+          width: px(5);
+          height: px(2);
+          background-color: rgba(#000, 0.25);
         }
       }
     }
@@ -644,15 +702,15 @@
       input {
         right: 0;
       }
-      .trait{
-        &::after{
+      .trait {
+        &::after {
           content: ' ';
-          position:absolute;
-          top:px(8);
-          right:px(30);
-          width:px(5);
-          height:px(2);
-          background-color:rgba(#000, 0.25);
+          position: absolute;
+          top: px(8);
+          right: px(30);
+          width: px(5);
+          height: px(2);
+          background-color: rgba(#000, 0.25);
         }
       }
     }
@@ -670,18 +728,20 @@
       border-top-right-radius: px(15);
       border-bottom-left-radius: px(5);
       border-bottom-right-radius: px(5);
-      content: 'Optional Traits';
       filter: drop-shadow(px(-3) px(3) px(2) rgba(#000, 0.7));
+      // content: 'Optional Traits';
+      // font-family: title-font();
+      // color: $title-color;
+      // text-transform: uppercase;
+      // font-size: px(22);
+      // line-height: 1.5;
+      // font-weight: 400;
+      // padding: 0;
+      // padding-left: px(40);
+      height:px(33);
+      content: ' ';
       top: 0;
-      padding: 0;
-      padding-left: px(40);
       margin: 0;
-      font-family: title-font();
-      color: $title-color;
-      text-transform: uppercase;
-      font-size: px(22);
-      line-height: 1.5;
-      font-weight: 400;
     }
     &::after {
       content: ' ';
@@ -724,35 +784,39 @@
     padding: px(8) px(10);
     grid-area: help;
     border: px(1) solid rgba(#000, 0.5);
-    box-shadow:
-      px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5),
+    box-shadow: px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5),
       px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset;
-    .paper-bg{
-      width:100%;
-      height:100%;
-      box-shadow:
-        px(0) px(0) px(3) px(1) rgba(#000, 0.25) inset;
-      background: 
-        linear-gradient(
-          0.30turn,
-          rgba(#947c60, 0.0),
-          rgba(#997530, 0.25) px(300), 
-          rgba(#ac8044, 0.25) px(310), 
+    .paper-bg {
+      width: 100%;
+      height: 100%;
+      box-shadow: px(0) px(0) px(3) px(1) rgba(#000, 0.25) inset;
+      background: linear-gradient(
+          0.3turn,
+          rgba(#947c60, 0),
+          rgba(#997530, 0.25) px(300),
+          rgba(#ac8044, 0.25) px(310),
           rgba(#7c6818, 0.25) px(312),
-          rgba(#947c60, 0.25) px(322)),
-          linear-gradient(
+          rgba(#947c60, 0.25) px(322)
+        ),
+        linear-gradient(
           0.32turn,
-          rgba(#947c60, 0.0),
-          rgba(#997530, 0.25) px(400), 
-          rgba(#ac8044, 0.25) px(410), 
+          rgba(#947c60, 0),
+          rgba(#997530, 0.25) px(400),
+          rgba(#ac8044, 0.25) px(410),
           rgba(#7c6818, 0.25) px(412),
           rgba(#947c60, 0.25) px(422),
-          rgba(#ac8044, 0.25) px(425), 
+          rgba(#ac8044, 0.25) px(425),
           rgba(#7c6818, 0.25) px(432),
           rgba(#947c60, 0.25) px(440)
-          ),
-        linear-gradient(0.25turn,#947c60,#997530 px(212), #ac8044 px(223), #7c6818 px(225),#947c60 px(240))
-        ;
+        ),
+        linear-gradient(
+          0.25turn,
+          #947c60,
+          #997530 px(212),
+          #ac8044 px(223),
+          #7c6818 px(225),
+          #947c60 px(240)
+        );
       filter: url(#paper);
     }
   }

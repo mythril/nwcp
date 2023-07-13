@@ -27,6 +27,7 @@
 <div class="attribute">
   <div class="label">
     {label}
+    <!-- <img src="src/images/mask.svg" alt="blah" /> -->
   </div>
   <div class="twodigit-attr">
     <div class="dorkyborder">
@@ -65,6 +66,8 @@
     font-family: title-font();
     font-size: px(30);
     width: px(40);
+    -webkit-mask-image:url('$lib/images/mask.png');
+    mask-image:url('$lib/images/mask.png');
   }
   .twodigit-attr {
     position: relative;
