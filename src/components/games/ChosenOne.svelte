@@ -431,7 +431,7 @@
     &::before {
       content: 'Skills';
       box-shadow:
-        px(2) px(-2) px(2) px(-1) rgba(#000, 0.5) inset,
+        px(2) px(-2) px(2) px(0) rgba(#000, 0.9) inset,
         px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5) inset;
       padding-left: px(58);
       position: absolute;
@@ -461,6 +461,7 @@
       padding: 0;
       @include terminal-font();
       line-height: 1.48;
+      background: linear-gradient(0.25turn, #0c0c0c 0%, #3c3c3c 2.1%, #0e0d09 3.7%, #343220 7.4%, #343220 8.4%, #545454 8.7%, $terminal-bg 9%, $terminal-bg 95.8%, #6b6b6b 98.4%, #1c1c1c 100%);
       .skill {
         display: flex;
         flex-flow: row;
@@ -468,12 +469,12 @@
       .button {
         width: px(39);
         max-height: px(14);
-        background-color: red;
+        // background-color: red;
       }
-      .label,
-      .value {
-        background-color: $terminal-bg;
-      }
+      // .label,
+      // .value {
+      //   background-color: $terminal-bg;
+      // }
       .label {
         width: px(38 * 7);
         padding-left: px(15);
@@ -614,6 +615,17 @@
       input {
         left: 0;
       }
+      .trait {
+        &::after{
+          content: ' ';
+          position:absolute;
+          top:px(8);
+          left:px(30);
+          width:px(5);
+          height:px(2);
+          background-color:rgba(#000, 0.25);
+        }
+      }
     }
     .rightTraits {
       width: 40%;
@@ -622,6 +634,17 @@
       }
       input {
         right: 0;
+      }
+      .trait{
+        &::after{
+          content: ' ';
+          position:absolute;
+          top:px(8);
+          right:px(30);
+          width:px(5);
+          height:px(2);
+          background-color:rgba(#000, 0.25);
+        }
       }
     }
     &::after,
@@ -690,7 +713,10 @@
   }
   .help {
     grid-area: help;
-    background-color: yellow;
+    border: px(1) solid rgba(#000, 0.5);
+    box-shadow:
+      px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5),
+      px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset;
   }
   .buttons {
     grid-area: buttons;
