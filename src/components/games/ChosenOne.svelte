@@ -20,6 +20,13 @@
   let rightTraits = traits.slice(8, 16);
 </script>
 
+<svg>
+  <filter id="paper">
+    <feTurbulence x="0" y="0" baseFrequency="0.01" numOctaves="5" seed="1" />
+    <feDisplacementMap in="SourceGraphic" scale="10" />
+  </filter>
+</svg>
+
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
@@ -206,7 +213,9 @@
       </div>
     </div>
   </div>
-  <div class="help" />
+  <div class="help">
+    <div class="paper-bg" />
+  </div>
   <div class="buttons" />
 </div>
 
@@ -712,11 +721,40 @@
     }
   }
   .help {
+    padding: px(8) px(10);
     grid-area: help;
     border: px(1) solid rgba(#000, 0.5);
     box-shadow:
       px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5),
       px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset;
+    .paper-bg{
+      width:100%;
+      height:100%;
+      box-shadow:
+        px(0) px(0) px(3) px(1) rgba(#000, 0.25) inset;
+      background: 
+        linear-gradient(
+          0.30turn,
+          rgba(#947c60, 0.0),
+          rgba(#997530, 0.25) px(300), 
+          rgba(#ac8044, 0.25) px(310), 
+          rgba(#7c6818, 0.25) px(312),
+          rgba(#947c60, 0.25) px(322)),
+          linear-gradient(
+          0.32turn,
+          rgba(#947c60, 0.0),
+          rgba(#997530, 0.25) px(400), 
+          rgba(#ac8044, 0.25) px(410), 
+          rgba(#7c6818, 0.25) px(412),
+          rgba(#947c60, 0.25) px(422),
+          rgba(#ac8044, 0.25) px(425), 
+          rgba(#7c6818, 0.25) px(432),
+          rgba(#947c60, 0.25) px(440)
+          ),
+        linear-gradient(0.25turn,#947c60,#997530 px(212), #ac8044 px(223), #7c6818 px(225),#947c60 px(240))
+        ;
+      filter: url(#paper);
+    }
   }
   .buttons {
     grid-area: buttons;
