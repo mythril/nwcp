@@ -10,7 +10,6 @@
   let dom: HTMLHtmlElement;
 
   function originalFontSizeScaled(width: number) {
-    // return width / 71;
     return width / 85;
   }
 
@@ -56,23 +55,46 @@
   bind:this={planner}
 >
 <svg>
+  <filter id="variance">
+    <feTurbulence
+      type='fractalNoise'
+      baseFrequency='0.01'
+      numOctaves='1'
+      stitchTiles='stitch'
+      seed="1"
+    />
+    <feColorMatrix 
+      in="variance"
+      type="saturate" 
+      values="0.0"
+    />
+    <feBlend 
+      in="SourceGraphic" 
+      in2="variance" 
+      mode="multiply"
+    />
+  </filter>
   <filter id="grain">
-      <feTurbulence
-        type='fractalNoise'
-        baseFrequency='0.375'
-        numOctaves='6'
-        stitchTiles='stitch'
-        seed="1"
-      />
-      <feBlend in="SourceGraphic" in2="grain" mode="multiply" />
-    </filter>
-  </svg>
+    <feTurbulence
+      type='fractalNoise'
+      baseFrequency='0.375'
+      numOctaves='6'
+      stitchTiles='stitch'
+      seed="1"
+    />
+    <feBlend 
+      in="SourceGraphic" 
+      in2="grain" 
+      mode="multiply"
+    />
+  </filter>
+</svg>
   <GameChooser />
 </div>
 
 <style lang="scss">
   :global(body) {
-    filter: url(#grain);
+    filter: url(#variance) url(#grain);
    }
   .planner {
     font-family: terminal-font();
