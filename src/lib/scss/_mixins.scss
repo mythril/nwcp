@@ -11,8 +11,7 @@
   border: px(1) solid black;
   border-radius: px(5);
   filter: saturate(0.25) brightness(0.25);
-  box-shadow: 
-    px(-5) px(5) px(5) px(-5) rgba(255, 255, 255, 0.7) inset,
+  box-shadow: px(-5) px(5) px(5) px(-5) rgba(255, 255, 255, 0.7) inset,
     px(5) px(-5) px(5) px(-3) rgba(0, 0, 0, 0.5) inset;
   transition: filter 0.2s linear, box-shadow 0.01s linear;
   font-family: title-font();
@@ -20,9 +19,9 @@
 
 @mixin terminal-font() {
   font-family: terminal-font();
-  line-height:1.7;
+  line-height: 1.7;
   color: $terminal-text;
-  font-weight:700;
+  font-weight: 700;
   text-rendering: geometricPrecision;
 }
 
@@ -32,7 +31,7 @@
   -webkit-mask-image: url('$lib/images/mask.png');
   mask-image: url('$lib/images/mask.png');
   color: $title-color;
-  font-weight:400;
+  font-weight: 400;
   text-transform: uppercase;
 }
 
@@ -42,7 +41,45 @@
 
 @mixin big-button-style-active() {
   filter: saturate(0.7) brightness(0.7);
-  box-shadow:
-    px(-5) px(5) px(5) rgba(0, 0, 0, 0.75) inset,
+  box-shadow: px(-5) px(5) px(5) rgba(0, 0, 0, 0.75) inset,
     px(5) px(-5) px(5) rgba(0, 0, 0, 0.75) inset;
+}
+
+@mixin push-button($size) {
+  width: px($size);
+  height: px($size);
+  border: 0;
+  outline: 0;
+  border-radius: 100%;
+  $f: math.div($size, 2);
+  $d: 10;
+  transition: box-shadow 0.1s linear;
+  box-shadow: px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 1),
+    px(2) px(-2) px(1) px(($f * math.div(2, $d)) - 3) rgba(0, 0, 0, 0.75) inset,
+    px(-2) px(2) px(1) px(($f * math.div(2, $d)) - 3) rgba(128, 128, 128, 0.75)
+      inset,
+    0 0 0 px($f * math.div(3, $d)) rgb(48, 48, 48) inset,
+    0 0 0 px($f * math.div(4, $d)) rgb(63, 0, 0) inset,
+    px(-2) px(2) px(1) px(($f * math.div(5, $d)) - 3) rgba(220, 0, 0, 1) inset,
+    px(2) px(-2) px(3) px(($f * math.div(5, $d)) - 4) rgba(255, 0, 0, 1) inset,
+    0 0 0 px($f * math.div(5, $d)) rgb(100, 0, 0) inset,
+    0 0 0 px($d + 2) rgb(89, 0, 0) inset,
+    0 0 px(0) px($f) hsl(0deg, 0%, 0%) inset,
+    0 0 0 px(math.div($f, $d)) hsl(0deg, 0%, 10%) inset;
+}
+@mixin push-button-active($size) {
+  $f: math.div($size, 2);
+  $d: 10;
+  box-shadow: px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 100%),
+    px(2) px(-2) px(1) px(($f * math.div(2, $d)) - 3) rgba(0, 0, 0, 0) inset,
+    px(-2) px(2) px(1) px(($f * math.div(2, $d)) - 3) rgba(128, 128, 128, 0.75)
+      inset,
+    0 0 0 px($f * math.div(3, $d)) rgb(48, 48, 48) inset,
+    0 0 0 px($f * math.div(4, $d)) rgb(63, 0, 0) inset,
+    px(-2) px(2) px(1) px(($f * math.div(5, $d)) - 3) rgba(220, 0, 0, 0) inset,
+    px(2) px(-2) px(3) px(($f * math.div(5, $d)) - 4) rgba(255, 0, 0, 0) inset,
+    0 0 0 px($f * math.div(5, $d)) rgb(100, 0, 0) inset,
+    0 0 0 px($d + 2) rgb(89, 0, 0) inset,
+    0 0 px(0) px($f) hsl(0deg, 0%, 0%) inset,
+    0 0 0 px(math.div($f, $d)) hsl(0deg, 0%, 10%) inset;
 }

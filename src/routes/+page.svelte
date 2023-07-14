@@ -49,48 +49,50 @@
   bind:innerHeight
 />
 
-
 <div
   class="planner"
   bind:this={planner}
 >
-<svg style="position:absolute;z-index:-1;opacity:0">
-  <filter id="variance">
-    <feTurbulence
-      type='fractalNoise'
-      baseFrequency='0.1'
-      numOctaves='1'
-      stitchTiles='stitch'
-      seed="1"
-    />
-    <feColorMatrix 
-      type="saturate" 
-      values="0.5"
-    />
-    <feBlend 
-      in="SourceGraphic" 
-      in2="variance" 
-      mode="multiply"
-    />
-  </filter>
-  <filter id="grain">
-    <feTurbulence
-      type='fractalNoise'
-      baseFrequency='0.375'
-      numOctaves='6'
-      stitchTiles='stitch'
-      seed="1"
-    />
-    <feBlend 
-      in="SourceGraphic" 
-      in2="grain" 
-      mode="multiply"
-    />
-  </filter>
-  <filter id="thin-out">
-    <feMorphology operator="erode" radius=1 />
-  </filter>
-</svg>
+  <svg style="position:absolute;z-index:-1;opacity:0">
+    <filter id="variance">
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.1"
+        numOctaves="1"
+        stitchTiles="stitch"
+        seed="1"
+      />
+      <feColorMatrix
+        type="saturate"
+        values="0.5"
+      />
+      <feBlend
+        in="SourceGraphic"
+        in2="variance"
+        mode="multiply"
+      />
+    </filter>
+    <filter id="grain">
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.375"
+        numOctaves="6"
+        stitchTiles="stitch"
+        seed="1"
+      />
+      <feBlend
+        in="SourceGraphic"
+        in2="grain"
+        mode="multiply"
+      />
+    </filter>
+    <filter id="thin-out">
+      <feMorphology
+        operator="erode"
+        radius="1"
+      />
+    </filter>
+  </svg>
   <GameChooser />
 </div>
 

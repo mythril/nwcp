@@ -3,8 +3,7 @@
     Skills,
     Special,
     SpecialAbbreviation,
-    Traits,
-    type TraitSet
+    Traits
   } from '../../engines/ChosenOne';
   import Attribute from './chosen-one/Attribute.svelte';
   import Bolthead from './chosen-one/Bolthead.svelte';
@@ -231,10 +230,74 @@
   <div class="help">
     <div class="paper-bg" />
     <div class="content">
-      noise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise here
+      noise here noise herenoise here noise herenoise here noise herenoise here
+      noise herenoise here noise herenoise here noise herenoise here noise
+      herenoise here noise herenoise here noise herenoise here noise herenoise
+      here noise herenoise here noise herenoise here noise herenoise here noise
+      herenoise here noise herenoise here noise herenoise here noise herenoise
+      here noise herenoise here noise herenoise here noise herenoise here noise
+      herenoise here noise here
     </div>
   </div>
-  <div class="buttons" />
+  <div class="buttons">
+    <button class="perks">
+      <Bolthead
+        dir="tl"
+        size={4}
+      />
+      <Bolthead
+        dir="tr"
+        size={4}
+      />
+      <Bolthead
+        dir="br"
+        size={4}
+      />
+      <Bolthead
+        dir="bl"
+        size={4}
+      />
+      <div class="label">Perks</div>
+    </button>
+    <button class="items">
+      <Bolthead
+        dir="tr"
+        size={4}
+      />
+      <Bolthead
+        dir="bl"
+        size={4}
+      />
+      <Bolthead
+        dir="br"
+        size={4}
+      />
+      <Bolthead
+        dir="tl"
+        size={4}
+      />
+      <div class="label">Items</div></button
+    >
+    <button class="stats">
+      <Bolthead
+        dir="tl"
+        size={4}
+      />
+      <Bolthead
+        dir="br"
+        size={4}
+      />
+      <Bolthead
+        dir="bl"
+        size={4}
+      />
+      <Bolthead
+        dir="tr"
+        size={4}
+      />
+      <div class="label">Stats</div></button
+    >
+  </div>
 </div>
 
 <style lang="scss">
@@ -314,7 +377,7 @@
       @include big-button-style();
       @include big-button-style-hover();
     }
-    .label{
+    .label {
       @include worn-text();
     }
     .name {
@@ -555,10 +618,10 @@
     grid-area: traits;
     .flanges {
       height: 92%;
-      position:relative;
-      &::before{
-        position:absolute;
-        bottom:100%;
+      position: relative;
+      &::before {
+        position: absolute;
+        bottom: 100%;
         content: 'Optional Traits';
         @include worn-text();
         font-size: px(22);
@@ -573,7 +636,7 @@
       }
       .flangeset-left,
       .flangeset-right {
-        filter:blur(1px);
+        filter: blur(1px);
         position: absolute;
         top: 26%;
       }
@@ -582,17 +645,11 @@
         .flange {
           border-top-left-radius: px(2);
           border-bottom-left-radius: px(2);
-          box-shadow:
-            px(0) px(3) px(2) px(-2) rgba(#fff, 0.0) inset
-            ,
-            px(3) px(-3) px(4) px(-1) darken(#43281d, 50%) inset
-            ;
-          &:first-child{
-            box-shadow:
-            px(0) px(3) px(2) px(-2) rgba(#fff, 0.25) inset
-            ,
-            px(3) px(-3) px(4) px(-1) darken(#43281d, 50%) inset
-            ;
+          box-shadow: px(0) px(3) px(2) px(-2) rgba(#fff, 0) inset,
+            px(3) px(-3) px(4) px(-1) darken(#43281d, 50%) inset;
+          &:first-child {
+            box-shadow: px(0) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
+              px(3) px(-3) px(4) px(-1) darken(#43281d, 50%) inset;
           }
         }
         .flange:first-child {
@@ -607,17 +664,11 @@
         .flange {
           border-top-right-radius: px(2);
           border-bottom-right-radius: px(2);
-          box-shadow: 
-            px(-3) px(0) px(2) px(-2) rgba(#fff, 0.25) inset
-            ,
-            px(0) px(-3) px(2) px(-1) darken(#43281d, 50%) inset
-            ;
-          &:first-child{
-            box-shadow: 
-              px(-3) px(2) px(2) px(-2) rgba(#fff, 0.25) inset
-              ,
-              px(0) px(-3) px(3) px(-1) darken(#43281d, 50%) inset
-              ;
+          box-shadow: px(-3) px(0) px(2) px(-2) rgba(#fff, 0.25) inset,
+            px(0) px(-3) px(2) px(-1) darken(#43281d, 50%) inset;
+          &:first-child {
+            box-shadow: px(-3) px(2) px(2) px(-2) rgba(#fff, 0.25) inset,
+              px(0) px(-3) px(3) px(-1) darken(#43281d, 50%) inset;
           }
         }
         .flange:first-child {
@@ -731,7 +782,7 @@
       border-bottom-left-radius: px(5);
       border-bottom-right-radius: px(5);
       filter: drop-shadow(px(-3) px(3) px(2) rgba(#000, 0.7));
-      height:px(33);
+      height: px(33);
       content: ' ';
       top: 0;
       margin: 0;
@@ -774,7 +825,7 @@
     }
   }
   .help {
-    position:relative;
+    position: relative;
     padding: px(8) px(10);
     grid-area: help;
     border: px(1) solid rgba(#000, 0.5);
@@ -783,14 +834,14 @@
     .content {
       z-index: 1;
       position: absolute;
-      left:0;
-      top:0;
-      bottom:0;
-      right:0;
-      padding:px(17) px(20);
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      padding: px(17) px(20);
     }
     .paper-bg {
-      position:relative;
+      position: relative;
       z-index: 0;
       width: 100%;
       height: 100%;
@@ -827,6 +878,47 @@
   }
   .buttons {
     grid-area: buttons;
-    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: px(10);
+    button {
+      position: relative;
+      padding: px(0) px(10);
+      display: block;
+      appearance: none;
+      background-color: $root-bg;
+      border: 0;
+      &::after {
+        content: ' ';
+        position: absolute;
+        left: px(12);
+        top: px(5);
+        @include push-button(18);
+      }
+      &:active::after {
+        @include push-button-active(18);
+      }
+      .label {
+        @include worn-text();
+        font-size: px(22);
+        text-align: left;
+        padding-left: px(25);
+      }
+      border-top-right-radius: px(2);
+      border-bottom-right-radius: px(10) px(4);
+      border-top-left-radius: px(2);
+      border-bottom-left-radius: px(10) px(4);
+      box-shadow: px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset,
+        px(-1) px(-1) px(0) px(-3) rgba(#000, 0.5) inset;
+      &.perks {
+        width: px(140);
+      }
+      &.items {
+        width: px(120);
+      }
+      &.stats {
+        width: px(120);
+      }
+    }
   }
 </style>

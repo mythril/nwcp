@@ -1,41 +1,47 @@
 <script lang="ts">
-  import {spring} from 'svelte/motion';
+  import { spring } from 'svelte/motion';
   import EmptyDigitDisplay from './EmptyDigitDisplay.svelte';
   export let value: number;
-  
+
   const current = spring();
   current.stiffness = 0.5;
   current.damping = 1;
   current.precision = 0.1;
-  
+
   $: current.set(value);
   $: offset = modulo($current, 1);
 
-	function modulo(n:number, m:number) {
-		return ((n % m) + m) % m;
-	}
+  function modulo(n: number, m: number) {
+    return ((n % m) + m) % m;
+  }
 </script>
 
 <EmptyDigitDisplay>
-  <div class="animwrap" style="transform: translate(0, {100 * offset}%)">
-    <div aria-hidden="true" class="hidden">
+  <div
+    class="animwrap"
+    style="transform: translate(0, {100 * offset}%)"
+  >
+    <div
+      aria-hidden="true"
+      class="hidden"
+    >
       {Math.floor(($current + 11) % 10)}
     </div>
     <div class="current">
-      {Math.floor(($current) + 10) % 10}
+      {Math.floor($current + 10) % 10}
     </div>
   </div>
 </EmptyDigitDisplay>
 
 <style lang="scss">
   .hidden {
-    user-select:none;
+    user-select: none;
   }
   .animwrap {
     position: absolute;
     top: -100%;
-    display:flex;
-    flex-flow:column;
-    transition:top 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: flex;
+    flex-flow: column;
+    transition: top 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 </style>

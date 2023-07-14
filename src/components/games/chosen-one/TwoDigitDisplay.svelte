@@ -12,7 +12,7 @@
   }
 </script>
 
-<div class={"window"}>
+<div class={'window'}>
   <div class="twodigit">
     <EmptyDigitDisplay />
     <OneDigitDisplay value={tensDigit} />
@@ -20,7 +20,6 @@
     <EmptyDigitDisplay />
   </div>
 </div>
-
 
 <style lang="scss">
   .window {
