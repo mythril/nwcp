@@ -1,8 +1,10 @@
 <script lang="ts">
   export let dir: string;
+  export let size:number = 8;
 </script>
 
 <div
+  style="--in-size: {size}"
   class:bolthead={true}
   class:tl={dir == 'tl'}
   class:tr={dir == 'tr'}
@@ -13,23 +15,23 @@
 />
 
 <style lang="scss">
-  $size: 10;
-  $offset: $size - 5;
-  $thirdSize: math.div($size, 3);
-  $halfSize: math.div($size, 2);
   .bolthead {
+    --size: calc(var(--in-size) * #{px(1)});
+    --offset: calc(var(--size) / 2);
+    --thirdSize: calc(var(--size) / 3);
+    --halfSize: calc(var(--size) / 2);
     filter:blur(px(0.5));
     position: absolute;
     display: block;
-    width: px($size);
-    height: px($size);
+    width: var(--size);
+    height: var(--size);
     border-radius: 100%;
     background-color: #777;
     box-shadow: 
       px(0) px(0) px(3) 0 rgba(0, 0, 0, 1),
       px(-1) px(1) px(1) 0 rgba(0, 0, 0, 1),
-      px($thirdSize) px(-$thirdSize) px(1) 0 rgba(0, 0, 0, 0.9) inset,
-      px(-$thirdSize) px($thirdSize) px(1) 0 rgba(255, 255, 255, 0.5) inset,
+      var(--thirdSize) calc(-1 * var(--thirdSize)) px(1) 0 rgba(0, 0, 0, 0.9) inset,
+      calc(-1 * var(--thirdSize)) var(--thirdSize) px(1) 0 rgba(255, 255, 255, 0.5) inset,
       px(1) px(-1) px(1) 0 rgba(255, 255, 255, 0.7) inset;
     &::after {
       content: ' ';
@@ -37,7 +39,6 @@
       position: absolute;
       width: 100%;
       height: px(0);
-      margin-top: px(-2);
       border-top: px(2) solid rgba(#000, 0.5);
       border-bottom: px(2) solid rgba(#fff, 0.25);
       transform-origin: center;
@@ -62,29 +63,29 @@
     }
   }
   .tl {
-    left: px($offset);
-    top: px($offset);
+    left: var(--offset);
+    top: var(--offset);
   }
   .tr {
-    right: px($offset);
-    top: px($offset);
+    right: var(--offset);
+    top: var(--offset);
   }
   .bl {
-    left: px($offset);
-    bottom: px($offset);
+    left: var(--offset);
+    bottom: var(--offset);
   }
   .br {
-    right: px($offset);
-    bottom: px($offset);
+    right: var(--offset);
+    bottom: var(--offset);
   }
   .ml {
-    left: px($offset);
+    left: var(--offset);
     top: 50%;
-    margin-top: -$halfSize;
+    margin-top: calc(-1 * var(--halfSize));
   }
   .mr {
-    right: px($offset);
+    right: var(--offset);
     top: 50%;
-    margin-top: -$halfSize;
+    margin-top: calc(-1 * var(--halfSize));
   }
 </style>
