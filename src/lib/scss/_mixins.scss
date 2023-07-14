@@ -22,7 +22,18 @@
   font-family: terminal-font();
   line-height:1.7;
   color: $terminal-text;
+  font-weight:700;
   text-rendering: geometricPrecision;
+}
+
+@mixin worn-text() {
+  user-select: none; /* Standard syntax */
+  font-family: title-font();
+  -webkit-mask-image: url('$lib/images/mask.png');
+  mask-image: url('$lib/images/mask.png');
+  color: $title-color;
+  font-weight:400;
+  text-transform: uppercase;
 }
 
 @mixin big-button-style-hover() {

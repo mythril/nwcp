@@ -87,6 +87,9 @@
       mode="multiply"
     />
   </filter>
+  <filter id="thin-out">
+    <feMorphology operator="erode" radius=1 />
+  </filter>
 </svg>
   <GameChooser />
 </div>

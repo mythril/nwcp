@@ -60,14 +60,10 @@
     align-items: center;
   }
   .label {
-    user-select: none;
-    color: $title-color;
     text-align: center;
-    font-family: title-font();
+    @include worn-text();
     font-size: px(30);
     width: px(40);
-    -webkit-mask-image:url('$lib/images/mask.png');
-    mask-image:url('$lib/images/mask.png');
   }
   .twodigit-attr {
     position: relative;

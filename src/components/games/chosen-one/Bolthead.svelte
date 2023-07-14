@@ -18,6 +18,7 @@
   $thirdSize: math.div($size, 3);
   $halfSize: math.div($size, 2);
   .bolthead {
+    filter:blur(px(0.5));
     position: absolute;
     display: block;
     width: px($size);

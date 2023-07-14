@@ -13,11 +13,12 @@
       in2="grain" 
       mode="multiply"
     />
+    <feMorphology operator="dilate" radius="1" />
     <feColorMatrix type="luminanceToAlpha" />
     <feComponentTransfer>
       <feFuncA 
         type="table" 
-        tableValues="-1 0.5 1 -1" 
+        tableValues="-50 0.5 1 -1" 
       />
     </feComponentTransfer>
     </filter>

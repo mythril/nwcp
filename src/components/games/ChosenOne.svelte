@@ -230,6 +230,9 @@
   </div>
   <div class="help">
     <div class="paper-bg" />
+    <div class="content">
+      noise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise herenoise here noise here
+    </div>
   </div>
   <div class="buttons" />
 </div>
@@ -254,41 +257,41 @@
   .parent {
     @include size-ref(px(855), px(642), true);
     display: grid;
-    grid-template-columns: repeat(2, 26.3125%) 46.375%;
+    grid-template-columns: 25.5625% 25.5625% 1% 46.375%;
     grid-template-rows: repeat(30, 1fr);
     grid-column-gap: 0.5%;
     grid-row-gap: px(5);
     grid-template-areas:
-      'nas nas skills'
-      'nas nas skills'
-      'special health skills'
-      'special health skills'
-      'special health skills'
-      'special health skills'
-      'special health skills'
-      'special health skills'
-      'special health skills'
-      'special health skills'
-      'special derived skills'
-      'special derived skills'
-      'special derived skills'
-      'special derived skills'
-      'special derived skills'
-      'special derived skills'
-      'special derived help'
-      'points derived help'
-      'points derived help'
-      'points derived help'
-      'traits traits help'
-      'traits traits help'
-      'traits traits help'
-      'traits traits help'
-      'traits traits help'
-      'traits traits help'
-      'traits traits help'
-      'traits traits help'
-      'traits traits buttons'
-      'traits traits buttons';
+      'nas nas . skills'
+      'nas nas . skills'
+      'special health . skills'
+      'special health . skills'
+      'special health . skills'
+      'special health . skills'
+      'special health . skills'
+      'special health . skills'
+      'special health . skills'
+      'special health . skills'
+      'special derived . skills'
+      'special derived . skills'
+      'special derived . skills'
+      'special derived . skills'
+      'special derived . skills'
+      'special derived . skills'
+      'special derived . help'
+      'points derived . help'
+      'points derived . help'
+      'points derived . help'
+      'traits traits . help'
+      'traits traits . help'
+      'traits traits . help'
+      'traits traits . help'
+      'traits traits . help'
+      'traits traits . help'
+      'traits traits . help'
+      'traits traits . help'
+      'traits traits . buttons'
+      'traits traits . buttons';
     position: absolute;
     left: 0;
     bottom: 0;
@@ -312,8 +315,7 @@
       @include big-button-style-hover();
     }
     .label{
-      -webkit-mask-image: url('$lib/images/mask.png');
-      mask-image: url('$lib/images/mask.png');
+      @include worn-text();
     }
     .name {
       width: 36%;
@@ -345,7 +347,6 @@
       th,
       td,
       tr {
-        font-weight: normal;
         text-align: left;
         padding: 0;
         border: 0;
@@ -400,12 +401,8 @@
     padding-right: px(16);
     align-items: center;
     .label {
-      user-select: none; /* Standard syntax */
-      font-family: title-font();
-      -webkit-mask-image: url('$lib/images/mask.png');
-      mask-image: url('$lib/images/mask.png');
-      color: $title-color;
-      font-size: px(22);
+      @include worn-text();
+      font-size: px(23);
     }
   }
   .health {
@@ -448,12 +445,7 @@
         border: 0;
       }
       .label {
-        font-family: title-font();
-        -webkit-mask-image: url('$lib/images/mask.png');
-        mask-image: url('$lib/images/mask.png');
-        color: $title-color;
-        font-weight: 400;
-        text-transform: uppercase;
+        @include worn-text();
         font-size: px(22);
         padding-right: px(10);
       }
@@ -481,13 +473,8 @@
       right: 0;
       top: 0;
       height: px(28);
-      font-family: title-font();
-      font-weight: 400;
-      text-transform: uppercase;
+      @include worn-text();
       font-size: px(22);
-      color: $title-color;
-      -webkit-mask-image: url('$lib/images/mask.png');
-      mask-image: url('$lib/images/mask.png');
     }
 
     grid-area: skills;
@@ -573,25 +560,20 @@
         position:absolute;
         bottom:100%;
         content: 'Optional Traits';
-        font-family: title-font();
-        color: $title-color;
-        text-transform: uppercase;
-        -webkit-mask-image: url('$lib/images/mask.png');
-        mask-image: url('$lib/images/mask.png');
+        @include worn-text();
         font-size: px(22);
         line-height: 1.5;
-        font-weight: 400;
         padding: 0;
         padding-left: px(40);
       }
       .flange {
         background-color: #43281d;
         width: px(12);
-        height: px(15);
-        margin-bottom: px(2);
+        height: px(17);
       }
       .flangeset-left,
       .flangeset-right {
+        filter:blur(1px);
         position: absolute;
         top: 26%;
       }
@@ -600,8 +582,18 @@
         .flange {
           border-top-left-radius: px(2);
           border-bottom-left-radius: px(2);
-          box-shadow: px(0) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
-            px(3) px(-3) px(2) px(-2) darken(#43281d, 5%) inset;
+          box-shadow:
+            px(0) px(3) px(2) px(-2) rgba(#fff, 0.0) inset
+            ,
+            px(3) px(-3) px(4) px(-1) darken(#43281d, 50%) inset
+            ;
+          &:first-child{
+            box-shadow:
+            px(0) px(3) px(2) px(-2) rgba(#fff, 0.25) inset
+            ,
+            px(3) px(-3) px(4) px(-1) darken(#43281d, 50%) inset
+            ;
+          }
         }
         .flange:first-child {
           border-top-left-radius: px(4);
@@ -611,12 +603,22 @@
         }
       }
       .flangeset-right {
-        right: px(-8);
+        right: px(-7);
         .flange {
           border-top-right-radius: px(2);
           border-bottom-right-radius: px(2);
-          box-shadow: px(-3) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
-            px(0) px(-3) px(2) px(-2) darken(#43281d, 5%) inset;
+          box-shadow: 
+            px(-3) px(0) px(2) px(-2) rgba(#fff, 0.25) inset
+            ,
+            px(0) px(-3) px(2) px(-1) darken(#43281d, 50%) inset
+            ;
+          &:first-child{
+            box-shadow: 
+              px(-3) px(2) px(2) px(-2) rgba(#fff, 0.25) inset
+              ,
+              px(0) px(-3) px(3) px(-1) darken(#43281d, 50%) inset
+              ;
+          }
         }
         .flange:first-child {
           border-top-right-radius: px(4);
@@ -729,15 +731,6 @@
       border-bottom-left-radius: px(5);
       border-bottom-right-radius: px(5);
       filter: drop-shadow(px(-3) px(3) px(2) rgba(#000, 0.7));
-      // content: 'Optional Traits';
-      // font-family: title-font();
-      // color: $title-color;
-      // text-transform: uppercase;
-      // font-size: px(22);
-      // line-height: 1.5;
-      // font-weight: 400;
-      // padding: 0;
-      // padding-left: px(40);
       height:px(33);
       content: ' ';
       top: 0;
@@ -781,33 +774,45 @@
     }
   }
   .help {
+    position:relative;
     padding: px(8) px(10);
     grid-area: help;
     border: px(1) solid rgba(#000, 0.5);
     box-shadow: px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5),
       px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset;
+    .content {
+      z-index: 1;
+      position: absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      right:0;
+      padding:px(17) px(20);
+    }
     .paper-bg {
+      position:relative;
+      z-index: 0;
       width: 100%;
       height: 100%;
-      box-shadow: px(0) px(0) px(3) px(1) rgba(#000, 0.25) inset;
+      box-shadow: px(0) px(0) px(1) px(1) rgba(#000, 1) inset;
       background: linear-gradient(
           0.3turn,
           rgba(#947c60, 0),
-          rgba(#997530, 0.25) px(300),
-          rgba(#ac8044, 0.25) px(310),
-          rgba(#7c6818, 0.25) px(312),
-          rgba(#947c60, 0.25) px(322)
+          rgba(#997530, 0) px(300),
+          rgba(#ac8044, 0.35) px(310),
+          rgba(#7c6818, 0.35) px(312),
+          rgba(#947c60, 0.35) px(322)
         ),
         linear-gradient(
           0.32turn,
           rgba(#947c60, 0),
-          rgba(#997530, 0.25) px(400),
-          rgba(#ac8044, 0.25) px(410),
-          rgba(#7c6818, 0.25) px(412),
-          rgba(#947c60, 0.25) px(422),
-          rgba(#ac8044, 0.25) px(425),
-          rgba(#7c6818, 0.25) px(432),
-          rgba(#947c60, 0.25) px(440)
+          rgba(#997530, 0) px(400),
+          rgba(#ac8044, 0.75) px(410),
+          rgba(#7c6818, 0.75) px(412),
+          rgba(#947c60, 0.75) px(422),
+          rgba(#ac8044, 0.75) px(425),
+          rgba(#7c6818, 0.75) px(432),
+          rgba(#947c60, 0.75) px(440)
         ),
         linear-gradient(
           0.25turn,
