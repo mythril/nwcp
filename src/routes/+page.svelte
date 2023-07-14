@@ -58,15 +58,14 @@
   <filter id="variance">
     <feTurbulence
       type='fractalNoise'
-      baseFrequency='0.01'
+      baseFrequency='0.1'
       numOctaves='1'
       stitchTiles='stitch'
       seed="1"
     />
     <feColorMatrix 
-      in="variance"
       type="saturate" 
-      values="0.0"
+      values="0.5"
     />
     <feBlend 
       in="SourceGraphic" 
