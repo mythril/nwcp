@@ -593,7 +593,7 @@
       .flangeset-left,
       .flangeset-right {
         position: absolute;
-        top: 35%;
+        top: 26%;
       }
       .flangeset-left {
         left: px(-7);

@@ -4,17 +4,21 @@
   export let value: number;
   
   const current = spring();
-  current.stiffness = 0.7;
-  current.damping = 0.9;
+  current.stiffness = 0.5;
+  current.damping = 1;
+  current.precision = 0.1;
   
   $: current.set(value);
-  $: offset = ($current + 10) % 1;
+  $: offset = modulo($current, 1);
 
+	function modulo(n:number, m:number) {
+		return ((n % m) + m) % m;
+	}
 </script>
 
 <EmptyDigitDisplay>
   <div class="animwrap" style="transform: translate(0, {100 * offset}%)">
-    <div class="hidden">
+    <div aria-hidden="true" class="hidden">
       {Math.floor(($current + 11) % 10)}
     </div>
     <div class="current">
@@ -25,7 +29,6 @@
 
 <style lang="scss">
   .hidden {
-    // top: -100%;
     user-select:none;
   }
   .animwrap {

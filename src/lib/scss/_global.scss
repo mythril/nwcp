@@ -1,4 +1,5 @@
 @import 'colors';
+
 html,
 body,
 :root {
@@ -7,8 +8,24 @@ body,
   padding: 0;
   background-color: $root-bg;
 }
-*{
-  box-sizing:border-box;
+
+body {
+  filter: 
+    url(#variance) 
+    url(#grain)
+    saturate(1)
+    brightness(2) 
+    contrast(1.01);
+}
+
+@-moz-document url-prefix() {
+  body{
+    filter: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 //locks a landscape view

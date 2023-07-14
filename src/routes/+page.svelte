@@ -93,9 +93,6 @@
 </div>
 
 <style lang="scss">
-  :global(body) {
-    filter: url(#variance) url(#grain);
-   }
   .planner {
     font-family: terminal-font();
     display: block;
