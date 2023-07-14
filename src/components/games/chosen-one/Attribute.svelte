@@ -77,12 +77,12 @@
       height: px(3);
     }
     &::after {
-      left: 105%;
-      width: px(6);
+      left: px(51);
+      width: px(5);
     }
     &::before {
-      right: 105%;
-      width: px(10);
+      right: px(51);
+      width: px(8);
     }
   }
   .description {

@@ -66,6 +66,9 @@
         type="saturate"
         values="0.5"
       />
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0.5 0.5 0.5 1"/>
+      </feComponentTransfer>
       <feBlend
         in="SourceGraphic"
         in2="variance"

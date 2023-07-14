@@ -317,6 +317,34 @@
     }
   }
 
+  @mixin checkbox-button() {
+    appearance: none;
+    transition: box-shadow 0.1s linear;
+    margin: px(1) px(9);
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #580000;
+    box-shadow: px(-2) px(2) px(1) px(-1) rgba(#fff, 0.25) inset,
+      px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
+      px(-6) px(-3) px(0) px(0) #2d2b25 inset,
+      px(6) px(3) px(0) px(0) #2d2b25 inset,
+      px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
+      px(0) px(0) px(0) px(1) rgba(#000, 0.25);
+    width: px(20);
+    height: px(12);
+    border-radius: px(3);
+    border: px(1) solid #040c00;
+    &:active {
+      background-color: #fc3030;
+      box-shadow: px(0) px(0) px(1) px(-1) rgba(#fff, 0.25) inset,
+        px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
+        px(-6) px(-3) px(0) px(0) #2d2b25 inset,
+        px(6) px(3) px(0) px(0) #2d2b25 inset,
+        px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
+        px(0) px(0) px(0) px(0) rgba(#000, 0.25);
+    }
+  }
+
   .parent {
     @include size-ref(px(855), px(642), true);
     display: grid;
@@ -587,34 +615,15 @@
       }
     }
     input[type='checkbox'] {
-      appearance: none;
-      transition: box-shadow 0.1s linear;
-      margin: px(1) px(9);
-      padding: 0;
-      box-sizing: border-box;
-      background-color: #580000;
-      box-shadow: px(-2) px(2) px(1) px(-1) rgba(#fff, 0.25) inset,
-        px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
-        px(-6) px(-3) px(0) px(0) #2d2b25 inset,
-        px(6) px(3) px(0) px(0) #2d2b25 inset,
-        px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
-        px(0) px(0) px(0) px(1) rgba(#000, 0.25);
-      width: px(20);
-      height: px(12);
-      border-radius: px(3);
-      border: px(1) solid #040c00;
-      &:active {
-        background-color: #fc3030;
-        box-shadow: px(0) px(0) px(1) px(-1) rgba(#fff, 0.25) inset,
-          px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
-          px(-6) px(-3) px(0) px(0) #2d2b25 inset,
-          px(6) px(3) px(0) px(0) #2d2b25 inset,
-          px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
-          px(0) px(0) px(0) px(0) rgba(#000, 0.25);
-      }
+      @include checkbox-button();
     }
   }
   .traits {
+    // $ruddy: #43281d;
+    // $ruddy: #412520;
+    // $ruddy: #381B15;
+    // $ruddy: #383328;
+    $ruddy: mix(#383328, #43281d);
     grid-area: traits;
     .flanges {
       height: 92%;
@@ -623,6 +632,7 @@
         position: absolute;
         bottom: 100%;
         content: 'Optional Traits';
+        z-index: 1;
         @include worn-text();
         font-size: px(22);
         line-height: 1.5;
@@ -630,7 +640,7 @@
         padding-left: px(40);
       }
       .flange {
-        background-color: #43281d;
+        background-color: $ruddy;
         width: px(12);
         height: px(17);
       }
@@ -646,10 +656,10 @@
           border-top-left-radius: px(2);
           border-bottom-left-radius: px(2);
           box-shadow: px(0) px(3) px(2) px(-2) rgba(#fff, 0) inset,
-            px(3) px(-3) px(4) px(-1) darken(#43281d, 50%) inset;
+            px(3) px(-3) px(4) px(-1) darken($ruddy, 50%) inset;
           &:first-child {
             box-shadow: px(0) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
-              px(3) px(-3) px(4) px(-1) darken(#43281d, 50%) inset;
+              px(3) px(-3) px(4) px(-1) darken($ruddy, 50%) inset;
           }
         }
         .flange:first-child {
@@ -665,10 +675,10 @@
           border-top-right-radius: px(2);
           border-bottom-right-radius: px(2);
           box-shadow: px(-3) px(0) px(2) px(-2) rgba(#fff, 0.25) inset,
-            px(0) px(-3) px(2) px(-1) darken(#43281d, 50%) inset;
+            px(0) px(-3) px(2) px(-1) darken($ruddy, 50%) inset;
           &:first-child {
             box-shadow: px(-3) px(2) px(2) px(-2) rgba(#fff, 0.25) inset,
-              px(0) px(-3) px(3) px(-1) darken(#43281d, 50%) inset;
+              px(0) px(-3) px(3) px(-1) darken($ruddy, 50%) inset;
           }
         }
         .flange:first-child {
@@ -686,15 +696,15 @@
       padding-top: px(4);
       background: linear-gradient(
         0.25turn,
-        darken(#43281d, 20%) 0%,
-        #43281d 1%,
-        #43281d 7.2%,
-        lighten(#43281d, 20%) 8%,
+        darken($ruddy, 20%) 0%,
+        $ruddy 1%,
+        $ruddy 7.2%,
+        lighten($ruddy, 20%) 8%,
         $terminal-bg 8%,
         $terminal-bg 91.5%,
-        #43281d 92.3%,
-        #43281d 99%,
-        mix(#43281d, #fff, 80%) 99.9%
+        $ruddy 92.3%,
+        $ruddy 99%,
+        mix($ruddy, #fff, 80%) 99.9%
       );
       @include terminal-font();
     }
@@ -704,7 +714,7 @@
     margin-top: 0;
     padding: 0;
     padding-top: px(22) * 1.5;
-    background-color: #43281d;
+    background-color: $ruddy;
     // background-image: url('traits.png');
     // background-position:50%;
     // background-size: cover;
@@ -769,19 +779,19 @@
     }
     &::after,
     &::before {
+      z-index: 1;
       position: absolute;
       left: px(-3);
       right: px(-3);
       background-color: $root-bg;
-      box-shadow: basic-box-shadow(),
-        px(0) px(-6) px(3) px(-2) rgba(#000, 0.25) inset;
     }
     &::before {
-      border-top-left-radius: px(15);
-      border-top-right-radius: px(15);
+      border-top-left-radius: px(13);
+      border-top-right-radius: px(13);
       border-bottom-left-radius: px(5);
       border-bottom-right-radius: px(5);
-      filter: drop-shadow(px(-3) px(3) px(2) rgba(#000, 0.7));
+      box-shadow: basic-box-shadow(), px(0) px(6) px(3) px(0) rgba(#000, 0.4),
+        px(0) px(-4) px(2) px(0) rgba(#000, 0.4) inset;
       height: px(33);
       content: ' ';
       top: 0;
@@ -795,33 +805,11 @@
       border-bottom-right-radius: px(15);
       border-top-left-radius: px(2);
       border-top-right-radius: px(2);
+      box-shadow: basic-box-shadow(),
+        px(0) px(-4) px(2) px(0) rgba(#000, 0.4) inset;
     }
     input[type='checkbox'] {
-      appearance: none;
-      transition: box-shadow 0.1s linear;
-      margin: px(3) px(9);
-      padding: 0;
-      box-sizing: border-box;
-      background-color: #580000;
-      box-shadow: px(-2) px(2) px(1) px(-1) rgba(#fff, 0.25) inset,
-        px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
-        px(-6) px(-3) px(0) px(0) #2d2b25 inset,
-        px(6) px(3) px(0) px(0) #2d2b25 inset,
-        px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
-        px(0) px(0) px(0) px(1) rgba(#000, 0.25);
-      width: px(20);
-      height: px(12);
-      border-radius: px(3);
-      border: px(1) solid #040c00;
-      &:active {
-        background-color: #fc3030;
-        box-shadow: px(0) px(0) px(1) px(-1) rgba(#fff, 0.25) inset,
-          px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
-          px(-6) px(-3) px(0) px(0) #2d2b25 inset,
-          px(6) px(3) px(0) px(0) #2d2b25 inset,
-          px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
-          px(0) px(0) px(0) px(0) rgba(#000, 0.25);
-      }
+      @include checkbox-button();
     }
   }
   .help {
