@@ -4,10 +4,10 @@
     Special,
     SpecialAbbreviation,
     Traits
-  } from '../../engines/ChosenOne';
-  import Attribute from './chosen-one/Attribute.svelte';
-  import Bolthead from './chosen-one/Bolthead.svelte';
-  import TwoDigitDisplay from './chosen-one/TwoDigitDisplay.svelte';
+  } from '$lib/engines/ChosenOne';
+  import Attribute from './Attribute.svelte';
+  import Bolthead from './Bolthead.svelte';
+  import TwoDigitDisplay from './TwoDigitDisplay.svelte';
 
   let name = 'NONE';
   let age = 25;
