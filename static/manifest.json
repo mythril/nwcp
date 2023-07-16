@@ -1,0 +1,18 @@
+{
+  "short_name": "NWCP",
+  "name": "VaultDweller Character Planner",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "nwcp.svg",
+      "type": "image/svg+xml",
+      "sizes": "128x128"
+    }
+  ],
+  "background_color": "#383020",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#383020",
+  "shortcuts": [],
+  "description": "The best looking characters this side of the glow."
+}
