@@ -34,19 +34,27 @@
 
   onMount(async () => {
     // let svg = await loadImage(mask);
+    let cache = await window.caches.open('cache-' + version);
     canvas.width = 250;
     canvas.height = 75;
     let ctx = canvas.getContext('2d');
     if (ctx === null) {
       return;
     }
+
+    const rq = new Request('/generated/worn-text.png');
+
+    let found = await cache.match(rq);
+
+    if (found !== undefined) {
+      return;
+    }
     
     ctx.filter = 'url(#worn-mask)';
     ctx.fillRect(250, 75, 250, 75);
     canvas.toBlob(async (blob) => {
-      let cache = await window.caches.open('cache-' + version);
       cache.put(
-        new Request('/generated/worn-text.png'),
+        rq,
         new Response(blob, {status:200, statusText: "OK"})
       );
     });
@@ -89,3 +97,4 @@
 <canvas
   bind:this={canvas}
 />
+

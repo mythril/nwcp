@@ -1,6 +1,9 @@
 <script lang="ts">
   import '../lib/scss/_global.scss';
   import {page} from '$app/stores'
+  import { onMount } from 'svelte'
+  import { pwaInfo } from 'virtual:pwa-info'
+  
 
   let innerWidth: number;
   let innerHeight: number;
@@ -13,6 +16,27 @@
     return width / 85;
   }
 
+  onMount(async () => {
+    if (pwaInfo) {
+      const { registerSW } = await import('virtual:pwa-register')
+      registerSW({
+        immediate: true,
+        onRegistered(r) {
+          // uncomment following code if you want check for updates
+          // r && setInterval(() => {
+          //    console.log('Checking for sw update')
+          //    r.update()
+          // }, 20000 /* 20s for testing purposes */)
+          console.log(`SW Registered: ${r}`)
+        },
+        onRegisterError(error) {
+          console.log('SW registration error', error)
+        }
+      })
+    }
+  })
+  
+  $: webManifest = pwaInfo ? pwaInfo.webManifest.linkTag : ''
   $: {
     if (planner) {
       let maxWidth = Math.max(innerHeight, innerWidth);
@@ -50,6 +74,11 @@
     SoleSurvivor: ['4', 'VaultDweller 4']
   };
 </script>
+
+<svelte:head>
+    {@html webManifest}
+</svelte:head>
+
 
 <svelte:window
   bind:innerWidth
@@ -153,7 +182,7 @@
   .page {
     // this maintains an aspect ratio similar to the original game
     width:px(855);
-    height:px(855 * 1/1.3333333);
+    height:px(855 * 0.75);
     
     grid-area: 2 / 1 / 34 / 6;
     position: relative;

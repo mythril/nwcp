@@ -28,8 +28,8 @@
 @mixin worn-text() {
   user-select: none; /* Standard syntax */
   font-family: title-font();
-  -webkit-mask-image: url('$lib/images/mask.png');
-  mask-image: url('$lib/images/mask.png');
+  -webkit-mask-image: url('/generated/worn-text.png');
+  mask-image: url('/generated/worn-text.png');
   color: $title-color;
   font-weight: 400;
   text-transform: uppercase;
