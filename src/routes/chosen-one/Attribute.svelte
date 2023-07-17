@@ -102,11 +102,6 @@
     display: flex;
     flex-direction: column;
     height: px(32);
-    // filter:
-    //   drop-shadow(px(0) px(1) px(0) #000)
-    //   drop-shadow(px(-1) px(1) px(0) #000)
-    //   drop-shadow(px(0) px(3) px(1) #000)
-    //   drop-shadow(px(1) px(1) px(0) #000);
     button {
       appearance: none;
       user-select: none;

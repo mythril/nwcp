@@ -2,9 +2,7 @@
 @import 'functions';
 
 @mixin big-button-style() {
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  user-select: none;
   background-color: $title-bg;
   color: $title-color;
   padding: 0 px(8);
@@ -26,7 +24,7 @@
 }
 
 @mixin worn-text() {
-  user-select: none; /* Standard syntax */
+  user-select: none;
   font-family: title-font();
   -webkit-mask-image: url('/generated/worn-text.png');
   mask-image: url('/generated/worn-text.png');

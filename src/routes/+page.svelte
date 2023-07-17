@@ -1,72 +1,50 @@
 <script lang="ts">
-  // import mask from '$lib/images/mask.svg';
   import { onMount } from 'svelte';
   import { version } from '$app/environment';
 
   let canvas: HTMLCanvasElement;
-  // type Img = {
-  //   img: HTMLImageElement;
-  //   width: number;
-  //   height: number;
-  // };
-
-  // async function loadImage(url: string): Promise<Img> {
-  //   const img: Img = {
-  //     img: new Image(),
-  //     width: -1,
-  //     height: -1
-  //   };
-  //   return new Promise((resolve, reject) => {
-  //     img.img.onload = () => {
-  //       try {
-  //         document.body.appendChild(img.img);
-  //         img.width = img.img.width;
-  //         img.height = img.img.height;
-  //         document.body.removeChild(img.img);
-  //         resolve(img);
-  //       } catch (e) {
-  //         reject(e);
-  //       }
-  //     };
-  //     img.img.src = url;
-  //   });
-  // }
+  const cacheDescriptors = [
+    {
+      name: 'worn-text',
+      width: 250,
+      height: 75
+    },
+  ];
 
   onMount(async () => {
-    // let svg = await loadImage(mask);
     let cache = await window.caches.open('cache-' + version);
-    canvas.width = 250;
-    canvas.height = 75;
+
     let ctx = canvas.getContext('2d');
     if (ctx === null) {
-      return;
+        return;
+      }
+
+    for(const desc of cacheDescriptors) {
+      ctx.filter = 'url()';
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.width = desc.width;
+      canvas.height = desc.height;
+
+      const rq = new Request(`/generated/${desc.name}.png`);
+
+      let found = await cache.match(rq);
+
+      if (found !== undefined) {
+        continue;
+      }
+
+      ctx.filter = `url(#${desc.name})`;
+      ctx.fillRect(desc.width, desc.height, desc.width, desc.height);
+      canvas.toBlob(async (blob) => {
+        cache.put(rq, new Response(blob, { status: 200, statusText: 'OK' }));
+      });
     }
-
-    const rq = new Request('/generated/worn-text.png');
-
-    let found = await cache.match(rq);
-
-    if (found !== undefined) {
-      return;
-    }
-    
-    ctx.filter = 'url(#worn-mask)';
-    ctx.fillRect(250, 75, 250, 75);
-    canvas.toBlob(async (blob) => {
-      cache.put(
-        rq,
-        new Response(blob, {status:200, statusText: "OK"})
-      );
-    });
   });
 </script>
 
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 250 75"
->
+<svg xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="worn-mask">
+    <filter id="worn-text">
       <feTurbulence
         type="fractalNoise"
         baseFrequency="0.09"
@@ -76,7 +54,7 @@
       />
       <feBlend
         in="SourceGraphic"
-        in2="worn-mask"
+        in2="worn-text"
         mode="multiply"
       />
       <feMorphology
@@ -94,7 +72,4 @@
   </defs>
 </svg>
 
-<canvas
-  bind:this={canvas}
-/>
-
+<canvas bind:this={canvas} />
