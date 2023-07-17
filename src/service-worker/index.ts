@@ -3,8 +3,8 @@
 /// <reference lib="esnext" />
 /// <reference lib="webworker" />
 
-const sw = /** @type {ServiceWorkerGlobalScope} */ /** @type {unknown} */ self;
-declare var self: ServiceWorkerGlobalScope;
+// const sw = /** @type {ServiceWorkerGlobalScope} */ /** @type {unknown} */ self;
+declare let self: ServiceWorkerGlobalScope;
 
 import { build, files, version } from '$service-worker';
 
@@ -39,7 +39,7 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   async function orUnavailable(p: Promise<Response | undefined>) {
-    let r = await p;
+    const r = await p;
     if (r !== undefined) {
       return r;
     }

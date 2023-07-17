@@ -1,7 +1,15 @@
 <script lang="ts">
   import '../lib/scss/_global.scss';
-  import {page} from '$app/stores'
-  
+  import { page } from '$app/stores';
+  import GeneratedImageCacher from '$lib/components/GeneratedImageCacher.svelte';
+
+  const cacheDescriptors = [
+    {
+      name: 'worn-text',
+      width: 250,
+      height: 75
+    }
+  ];
 
   let innerWidth: number;
   let innerHeight: number;
@@ -69,11 +77,11 @@
     </div>
     <div class="chooser">
       {#each Object.keys(games) as value (value)}
-        <a 
-          class:label={true} 
+        <a
+          class:label={true}
           href={'/' + value}
           class:selected={$page.url.pathname === '/' + value}
-          >
+        >
           {games[value][0]}
         </a>
       {/each}
@@ -83,6 +91,38 @@
     </div>
   </div>
 </div>
+
+<GeneratedImageCacher {cacheDescriptors}>
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="worn-text">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.09"
+          numOctaves="6"
+          stitchTiles="stitch"
+          seed="1"
+        />
+        <feBlend
+          in="SourceGraphic"
+          in2="worn-text"
+          mode="multiply"
+        />
+        <feMorphology
+          operator="dilate"
+          radius="1"
+        />
+        <feColorMatrix type="luminanceToAlpha" />
+        <feComponentTransfer>
+          <feFuncA
+            type="table"
+            tableValues="-50 0.5 1 -1"
+          />
+        </feComponentTransfer>
+      </filter>
+    </defs>
+  </svg>
+</GeneratedImageCacher>
 
 <style lang="scss">
   .planner {
@@ -149,13 +189,13 @@
   }
   .chooser,
   .chosen {
-    display:none;
+    display: none;
   }
   .page {
     // this maintains an aspect ratio similar to the original game
-    width:px(855);
-    height:px(855 * 0.75);
-    
+    width: px(855);
+    height: px(855 * 0.75);
+
     grid-area: 2 / 1 / 34 / 6;
     position: relative;
   }
