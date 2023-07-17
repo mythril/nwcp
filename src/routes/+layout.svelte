@@ -154,7 +154,6 @@
     // this maintains an aspect ratio similar to the original game
     width:px(855);
     height:px(855 * 1/1.3333333);
-
     
     grid-area: 2 / 1 / 34 / 6;
     position: relative;

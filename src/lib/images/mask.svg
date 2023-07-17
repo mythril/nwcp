@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 250 75">
   <defs>
-  <filter id="grain" >
+  <filter id="worn" >
     <feTurbulence
       type='fractalNoise'
       baseFrequency='0.09'
@@ -11,7 +11,7 @@
     />
     <feBlend 
       in="SourceGraphic" 
-      in2="grain" 
+      in2="worn" 
       mode="multiply"
     />
     <feMorphology operator="dilate" radius="1" />
@@ -31,6 +31,6 @@
         width="250" 
         height="75" 
         fill="transparent"
-        style="filter:url(#grain)"
+        style="filter:url(#worn)"
         />
 </svg>
