@@ -27,7 +27,6 @@
 <div class="attribute">
   <div class="label">
     {label}
-    <!-- <img src="src/images/mask.svg" alt="blah" /> -->
   </div>
   <div class="twodigit-attr">
     <div class="dorkyborder">

@@ -552,12 +552,7 @@
       .button {
         width: px(39);
         max-height: px(14);
-        // background-color: red;
       }
-      // .label,
-      // .value {
-      //   background-color: $terminal-bg;
-      // }
       .label {
         width: px(38 * 7);
         padding-left: px(15);
@@ -669,9 +664,6 @@
     padding: 0;
     padding-top: px(22) * 1.5;
     background-color: $ruddy;
-    // background-image: url('traits.png');
-    // background-position:50%;
-    // background-size: cover;
     position: relative;
     color: $terminal-text;
     [data-trait] {
