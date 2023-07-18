@@ -8,7 +8,8 @@
     {
       name: 'worn-text',
       width: 250,
-      height: 75
+      height: 75,
+      applyToProperties: ['mask-image', '-webkit-mask-image']
     }
   ];
 
@@ -121,9 +122,7 @@
 </div>
 
 <div class="overlay">
-<canvas
-  bind:this={canvas}
-/>
+  <canvas bind:this={canvas} />
 </div>
 
 <GeneratedImageCacher {cacheDescriptors}>

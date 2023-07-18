@@ -25,7 +25,7 @@
 </script>
 
 <div class="attribute">
-  <div class="label">
+  <div class="label worn-text">
     {label}
   </div>
   <div class="twodigit-attr">
@@ -60,7 +60,6 @@
   }
   .label {
     text-align: center;
-    @include worn-text();
     font-size: px(30);
     width: px(40);
   }

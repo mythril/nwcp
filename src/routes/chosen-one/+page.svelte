@@ -38,17 +38,17 @@
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
-      <div class="label">
+      <div class="worn-text">
         {name}
       </div>
     </div>
     <div class="age">
-      <div class="label">
+      <div class="worn-text">
         AGE {age}
       </div>
     </div>
     <div class="sex">
-      <div class="label">
+      <div class="worn-text">
         {sex}
       </div>
     </div>
@@ -134,7 +134,7 @@
     <Bolthead dir="mr" />
   </div>
   <div class="char-points">
-    <div class="label">CHAR POINTS</div>
+    <div class="label worn-text">CHAR POINTS</div>
     <div class="dorkyborder">
       <TwoDigitDisplay value={Math.round(Math.random() * 9 + 1)} />
     </div>
@@ -145,6 +145,7 @@
   </div>
   <div class="traits">
     <div class="flanges">
+      <div class="before worn-text">Optional traits</div>
       <div class="flangeset-left">
         <div class="flange" />
         <div class="flange" />
@@ -221,11 +222,12 @@
       {/each}
     </div>
     <div class="skills-remaining">
-      <div class="label">Tag Skills</div>
+      <div class="label worn-text">Tag Skills</div>
       <div class="unused">
         <TwoDigitDisplay value={3} />
       </div>
     </div>
+    <div class="after worn-text">Skills</div>
   </div>
   <div class="help">
     <div class="paper-bg" />
@@ -257,7 +259,7 @@
         dir="bl"
         size={4}
       />
-      <div class="label">Perks</div>
+      <div class="label worn-text">Perks</div>
     </button>
     <button class="items">
       <Bolthead
@@ -276,7 +278,7 @@
         dir="tl"
         size={4}
       />
-      <div class="label">Items</div></button
+      <div class="label worn-text">Items</div></button
     >
     <button class="stats">
       <Bolthead
@@ -295,7 +297,7 @@
         dir="tr"
         size={4}
       />
-      <div class="label">Stats</div></button
+      <div class="label worn-text">Stats</div></button
     >
   </div>
 </div>
@@ -359,9 +361,6 @@
     .sex {
       @include big-button-style();
       @include big-button-style-hover();
-    }
-    .label {
-      @include worn-text();
     }
     .name {
       width: 36%;
@@ -446,7 +445,6 @@
     padding-right: px(16);
     align-items: center;
     .label {
-      @include worn-text();
       font-size: px(23);
     }
   }
@@ -490,7 +488,6 @@
         border: 0;
       }
       .label {
-        @include worn-text();
         font-size: px(22);
         padding-right: px(10);
       }
@@ -510,15 +507,13 @@
       border-bottom-left-radius: px(2);
       border-bottom-right-radius: px(2);
     }
-    &::after {
-      content: 'Skills';
+    .after {
       padding-left: px(58);
       position: absolute;
       left: 0;
       right: 0;
       top: 0;
       height: px(28);
-      @include worn-text();
       font-size: px(22);
     }
 
@@ -577,12 +572,10 @@
     .flanges {
       height: 92%;
       position: relative;
-      &::before {
+      .before {
         position: absolute;
         bottom: 100%;
-        content: 'Optional Traits';
         z-index: 1;
-        @include worn-text();
         font-size: px(22);
         line-height: 1.5;
         padding: 0;
@@ -833,7 +826,6 @@
         @include push-button-active(18);
       }
       .label {
-        @include worn-text();
         font-size: px(22);
         text-align: left;
         padding-left: px(25);

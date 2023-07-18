@@ -23,16 +23,6 @@
   text-rendering: geometricPrecision;
 }
 
-@mixin worn-text() {
-  user-select: none;
-  font-family: title-font();
-  -webkit-mask-image: url('/generated/worn-text.png');
-  mask-image: url('/generated/worn-text.png');
-  color: $title-color;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
 @mixin big-button-style-hover() {
   filter: saturate(1) brightness(1);
 }
