@@ -1,17 +1,12 @@
 <script lang="ts">
-  export let dir: string;
+  export let dir: 'tl' | 'tr' | 'bl' | 'br' | 'ml' | 'mr';
   export let size = 8;
 </script>
 
 <div
   style="--in-size: {size}"
   class:bolthead={true}
-  class:tl={dir == 'tl'}
-  class:tr={dir == 'tr'}
-  class:bl={dir == 'bl'}
-  class:br={dir == 'br'}
-  class:ml={dir == 'ml'}
-  class:mr={dir == 'mr'}
+  class={dir}
 />
 
 <style lang="scss">
