@@ -593,14 +593,14 @@
       }
       .flangeset-left {
         left: px(-7);
-        &::after{
+        &::after {
           content: ' ';
           background-color: $ruddy;
-          position:absolute;
-          left:px(10);
-          top:0;
-          bottom:0;
-          width:px(5)
+          position: absolute;
+          left: px(10);
+          top: 0;
+          bottom: 0;
+          width: px(5);
         }
         .flange {
           border-top-left-radius: px(2);
@@ -621,14 +621,14 @@
       }
       .flangeset-right {
         right: px(-7);
-        &::after{
+        &::after {
           content: ' ';
           background-color: $ruddy;
-          position:absolute;
-          right:px(7);
-          top:0;
-          bottom:0;
-          width:px(5)
+          position: absolute;
+          right: px(7);
+          top: 0;
+          bottom: 0;
+          width: px(5);
         }
         .flange {
           border-top-right-radius: px(2);
