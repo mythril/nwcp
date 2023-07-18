@@ -25,11 +25,15 @@ export default ({ mode }: { mode: string }) => {
       }
     },
     server: {
-      host: "nwcp.local",
+      host: 'nwcp.local',
       port: 8080,
       https: {
-        cert: process.env.VITE_CERT_FILE ? fs.readFileSync(process.env.VITE_CERT_FILE) : undefined,
-        key: process.env.VITE_KEY_FILE ? fs.readFileSync(process.env.VITE_KEY_FILE) : undefined,
+        cert: process.env.VITE_CERT_FILE
+          ? fs.readFileSync(process.env.VITE_CERT_FILE)
+          : undefined,
+        key: process.env.VITE_KEY_FILE
+          ? fs.readFileSync(process.env.VITE_KEY_FILE)
+          : undefined
       }
     },
     build: {
