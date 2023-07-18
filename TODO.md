@@ -41,7 +41,6 @@ Overall goals:
 - [ ] Build basic, text based, item chooser
 - [ ] Build perk chooser
 
-
 ### Done
 
 - [x] speed up full screen filter and restore look to FF
