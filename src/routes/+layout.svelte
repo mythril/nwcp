@@ -2,6 +2,7 @@
   import '../lib/scss/_global.scss';
   import { page } from '$app/stores';
   import GeneratedImageCacher from '$lib/components/GeneratedImageCacher.svelte';
+  import { onMount } from 'svelte';
 
   const cacheDescriptors = [
     {
@@ -18,11 +19,36 @@
   let height: number;
   let dom: HTMLHtmlElement;
 
+  let canvas: HTMLCanvasElement;
+
   function originalFontSizeScaled(width: number) {
     return width / 85;
   }
 
+  function renderOverLay() {
+    if (!canvas) {
+      return;
+    }
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      return;
+    }
+    ctx.filter = 'url(#variance)';
+    ctx.beginPath();
+    ctx.moveTo(-100, -100);
+    ctx.lineTo(-50, -50);
+    ctx.stroke();
+    ctx.filter = 'url(#grain)';
+    ctx.beginPath();
+    ctx.moveTo(-100, -100);
+    ctx.lineTo(-50, -50);
+    ctx.stroke();
+  }
+
   $: {
+    renderOverLay();
     if (planner) {
       let maxWidth = Math.max(innerHeight, innerWidth);
       let maxHeight = Math.min(innerHeight, innerWidth);
@@ -58,6 +84,8 @@
     Courier: ['NV', 'The Courier'],
     SoleSurvivor: ['4', 'VaultDweller 4']
   };
+
+  onMount(renderOverLay);
 </script>
 
 <svelte:window
@@ -90,6 +118,12 @@
       <slot />
     </div>
   </div>
+</div>
+
+<div class="overlay">
+<canvas
+  bind:this={canvas}
+/>
 </div>
 
 <GeneratedImageCacher {cacheDescriptors}>
@@ -198,5 +232,15 @@
 
     grid-area: 2 / 1 / 34 / 6;
     position: relative;
+  }
+
+  .overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    mix-blend-mode: multiply;
   }
 </style>

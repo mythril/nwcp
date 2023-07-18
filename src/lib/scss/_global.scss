@@ -9,16 +9,11 @@ body,
   background-color: $root-bg;
 }
 
+
 body {
-  filter: url(#variance) url(#grain) saturate(1) brightness(2) contrast(1.01);
   height: 100vh;
   overflow: hidden;
-}
-
-@-moz-document url-prefix() {
-  body {
-    filter: none;
-  }
+  filter:brightness(1.3);
 }
 
 * {
