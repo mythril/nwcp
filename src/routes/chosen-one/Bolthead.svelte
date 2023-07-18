@@ -20,7 +20,6 @@
     --offset: calc(var(--size) / 2);
     --thirdSize: calc(var(--size) / 3);
     --halfSize: calc(var(--size) / 2);
-    filter: blur(px(0.5));
     position: absolute;
     display: block;
     width: var(--size);
