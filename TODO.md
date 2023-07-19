@@ -7,7 +7,6 @@ Overall goals:
 
 ### To do
 
-- [ ] De-wrap the main panel
 - [ ] Add 'help' info
 - [ ] Add age setter
 - [ ] Add name setter
@@ -15,6 +14,7 @@ Overall goals:
 - [ ] Refactor scss, maybe consider alternative tech with better minification
 - [ ] Figure out more modern way to convey invalid choices (bonk animation/noise for spinners, for example)
 - [ ] Match tag / trait buttons better
+- [ ] Extract push button and make it resizable
 - [ ] Build an event sourced store, keeping track of the character development as a log instead of just mangling an object
 - [ ] Make the first event: create character
 - [ ] Build filter to add random blotchy grooves into the background
@@ -43,5 +43,6 @@ Overall goals:
 
 ### Done
 
+- [x] De-wrap the main panel
 - [x] speed up full screen filter and restore look to FF
 - [x] speed up image generator and put in data URL fallback
