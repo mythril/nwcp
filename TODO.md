@@ -8,6 +8,7 @@ Overall goals:
 ### To do
 
 - [ ] Add 'help' info
+- [ ] Set up pre-commit hooks
 - [ ] Add age setter
 - [ ] Add name setter
 - [ ] Refactor `/chosen-one` route into components for each section

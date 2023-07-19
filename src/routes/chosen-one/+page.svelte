@@ -232,12 +232,11 @@
   <div class="help">
     <div class="paper-bg" />
     <div class="content">
-      <h3 class="title">
-        Strength
-      </h3>
+      <h3 class="title">Strength</h3>
       <div class="desc">
-        Raw physical strength. A high Strength is good for physical characters. Modifies: Hit Points, Melee Damage, and Carry Weight.
-    </div>
+        Raw physical strength. A high Strength is good for physical characters.
+        Modifies: Hit Points, Melee Damage, and Carry Weight.
+      </div>
     </div>
   </div>
   <div class="buttons">
@@ -784,16 +783,16 @@
       padding: px(17) px(20);
       .title {
         font-family: label-font();
-        padding:0;
-        width:100%;
+        padding: 0;
+        width: 100%;
         border-bottom: px(2) solid #000;
-        margin:0;
-        margin-bottom:px(10);
+        margin: 0;
+        margin-bottom: px(10);
         font-size: px(30);
-        line-height: 1.5
+        line-height: 1.5;
       }
-      .desc{
-        font-weight:700;
+      .desc {
+        font-weight: 700;
         width: px(200);
         height: px(160);
       }
