@@ -24,13 +24,13 @@
     }
     color: hsl(0, 0%, 93%);
     font-family: label-font();
+    font-weight:700;
     text-shadow: text-outline(rgba(0, 0, 0, 0.8), true);
     left: px(-3);
-    padding-left: px(4);
+    padding-left: px(5);
     margin-left: px(-8);
     box-sizing: border-box;
-    font-size: px(22);
-    font-weight: 400;
+    font-size: px(28);
     line-height: px(28);
     width: px(27);
     text-align: right;
