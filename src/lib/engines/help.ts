@@ -1,75 +1,75 @@
-{
+export const CharacterHelpLookup = {
   "Small Guns": [
     "The use, care and general knowledge of small firearms - pistols, SMGs and rifles.",
-    "+ (4 x AG)"
+    "5% + (4 x AG)"
   ],
   "Big Guns": [
     "The operation and maintenance of really big guns - miniguns, rocket launchers, flamethrowers and such.",
-    "+ (2 x AG)"
+    "0% + (2 x AG)"
   ],
   "Energy Weapons": [
     "The care and feeding of energy-based weapons.  How to arm and operate weapons that use laser or plasma technology.",
-    "+ (2 xAG)"
+    "0% + (2 x AG)"
   ],
   "Unarmed": [
     "A combination of martial arts, boxing and other hand-to-hand martial arts.  Combat with your hands and feet.",
-    "+ (2 x (AG + ST))"
+    "30% + (2 x (AG + ST))"
   ],
   "Melee Weapons": [
     "Using non-ranged weapons in hand-to-hand, or melee combat - knives, sledgehammers, spears, clubs and so on.",
-    "+ (2 x (AG + ST))"
+    "20% + (2 x (AG + ST))"
   ],
   "Throwing": [
     "The skill of muscle-propelled ranged weapons, such as throwing knives, spears and grenades.",
-    "+ (4 x AG)"
+    "0% + (4 x AG)"
   ],
-  "First aid": [
+  "First Aid": [
     "General healing skill.  Used to heal small cuts, abrasions and other minor ills.  In game terms, the use of first aid can heal more hit points over time than just rest.",
-    "+ (2 x (PE + IN))"
+    "0% + (2 x (PE + IN))"
   ],
   "Doctor": [
     "The healing of major wounds and crippled limbs.  Without this skill, it will take a much longer period of time to restore crippled limbs to use.",
-    "+ (PE + IN)"
+    "5% + (PE + IN)"
   ],
   "Sneak": [
     "Quiet movement, and the ability to remain unnoticed. If successful, you will be much harder to locate. You cannot run and sneak at the same time.",
-    "+ (3 x AG)"
+    "5% + (3 x AG)"
   ],
   "Lockpick": [
     "The skill of opening locks without the proper key. The use of lock-picks or electronic lock-picks will greatly enhance this skill.",
-    "+ (PE + AG)"
+    "10% + (PE + AG)"
   ],
   "Steal": [
     "The ability to make the things of others your own.  Can be used to steal from people or places.",
-    "+ (3 x AG)"
+    "0% + (3 x AG)"
   ],
   "Traps": [
     "The finding and removal of traps.  Also the setting of explosives for demolition purposes.",
-    "+ (PE + AG)"
+    "10% + (PE + AG)"
   ],
   "Science": [
     "Covers a variety of high technology skills, such as computers, biology, physics and geology.",
-    "+ (4 x IN)"
+    "0% + (4 x IN)"
   ],
   "Repair": [
     "The practical application of the Science skill for fixing broken equipment, machinery and electronics.",
-    "+ (3 x IN)"
+    "0% + (3 x IN)"
   ],
   "Speech": [
     "The ability to communicate in a practical and efficient manner. The skill of convincing others that your position is correct. The ability to lie and not get caught.",
-    "+ (5 x CH)"
+    "0% + (5 x CH)"
   ],
   "Barter": [
     "Trading and trade-related tasks. The ability to get better prices for items you sell, and lower prices for items you buy.",
-    "+ (4 x CH)"
+    "0% + (4 x CH)"
   ],
   "Gambling": [
     "The knowledge and practical skills related to wagering. The skill at cards, dice and other games.",
-    "+ (5 x LK)"
+    "0% + (5 x LK)"
   ],
   "Outdoorsman": [
     "Practical knowledge of the outdoors, and the ability to live off the land. The knowledge of plants and animals.",
-    "+ (2 x (EN + IN))"
+    "0% + (2 x (EN + IN))"
   ],
   "Strength": "Raw physical strength. A high Strength is good for physical characters. Modifies: Hit Points, Melee Damage, and Carry Weight.",
   "Perception": "The ability to see, hear, taste and notice unusual things. A high Perception is important for a sharpshooter.  Modifies: Sequence and ranged combat distance modifiers.",
@@ -139,4 +139,5 @@
   "Crippled Left Leg": "Your character has a crippled left leg.",
   "Level": "The general competency of the player character. A measure of your experience and abilities.",
   "Experience": "A reward for completing specific tasks, or defeating enemies in combat. More experience points are required to attain higher Levels."
-}
+};
+

@@ -96,6 +96,9 @@
     border-right: px(3) solid lighten($root-bg, 10%);
     border-left: px(3) solid lighten($root-bg, 25%);
     border-bottom: px(3) solid lighten($root-bg, 40%);
+    :global(.activeHelpSubject) & {
+      color: $terminal-text-active;
+    }
   }
   .manipulators {
     display: flex;

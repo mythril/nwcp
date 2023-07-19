@@ -33,7 +33,7 @@
     font-size: px(28);
     line-height: px(28);
     width: px(27);
-    text-align: right;
+    text-align: center;
     height: 100%;
   }
 </style>

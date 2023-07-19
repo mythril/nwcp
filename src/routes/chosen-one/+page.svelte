@@ -7,6 +7,8 @@
   } from '$lib/engines/ChosenOne';
   import Attribute from './Attribute.svelte';
   import Bolthead from './Bolthead.svelte';
+  import Help from './Help.svelte';
+  import HelpSource from './HelpSource.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
 
   let name = 'NONE';
@@ -14,7 +16,7 @@
   let sex = 'MALE';
 
   let chosenTraits: string[] = [];
-  let traits = Object.keys(Traits) as (keyof typeof Traits)[];
+  let traits = Object.keys(Traits);
   let leftTraits = traits.slice(0, 8);
   let rightTraits = traits.slice(8, 16);
 </script>
@@ -55,10 +57,12 @@
   </div>
   <div class="special">
     {#each Object.values(Special) as attr}
-      <Attribute
-        label={SpecialAbbreviation(attr)}
-        value={Math.round(Math.random() * 9 + 1)}
-      />
+      <HelpSource subject={attr}>
+        <Attribute
+          label={SpecialAbbreviation(attr)}
+          value={Math.round(Math.random() * 9 + 1)}
+        />
+      </HelpSource>
     {/each}
   </div>
   <div class="health">
@@ -134,18 +138,22 @@
     <Bolthead dir="mr" />
   </div>
   <div class="char-points">
-    <div class="label worn-text">CHAR POINTS</div>
-    <div class="dorkyborder">
-      <TwoDigitDisplay value={Math.round(Math.random() * 9 + 1)} />
-    </div>
-    <Bolthead dir="tl" />
-    <Bolthead dir="tr" />
-    <Bolthead dir="bl" />
-    <Bolthead dir="br" />
+    <HelpSource subject="Character Points">
+      <div class="label worn-text">CHAR POINTS</div>
+      <div class="dorkyborder">
+        <TwoDigitDisplay value={Math.round(Math.random() * 9 + 1)} />
+      </div>
+      <Bolthead dir="tl" />
+      <Bolthead dir="tr" />
+      <Bolthead dir="bl" />
+      <Bolthead dir="br" />
+    </HelpSource>
   </div>
   <div class="traits">
     <div class="flanges">
-      <div class="before worn-text">Optional traits</div>
+      <div class="before worn-text">
+        <HelpSource subject="Optional Traits">Optional traits</HelpSource>
+      </div>
       <div class="flangeset-left">
         <div class="flange" />
         <div class="flange" />
@@ -162,38 +170,42 @@
         <div class="leftTraits">
           {#each leftTraits as trait}
             <div class="trait">
-              <input
-                type="checkbox"
-                bind:group={chosenTraits}
-                value={trait}
-              />
-              <div
-                data-trait={trait}
-                role="link"
-                tabindex="0"
-                class={chosenTraits.includes(trait) ? 'selected' : ''}
-              >
-                {Traits[trait]}
-              </div>
+              <HelpSource subject={Traits[trait]}>
+                <input
+                  type="checkbox"
+                  bind:group={chosenTraits}
+                  value={trait}
+                />
+                <div
+                  data-trait={trait}
+                  role="link"
+                  tabindex="0"
+                  class={chosenTraits.includes(trait) ? 'selected' : ''}
+                >
+                  {Traits[trait]}
+                </div>
+              </HelpSource>
             </div>
           {/each}
         </div>
         <div class="rightTraits">
           {#each rightTraits as trait}
             <div class="trait">
-              <input
-                type="checkbox"
-                bind:group={chosenTraits}
-                value={trait}
-              />
-              <div
-                data-trait={trait}
-                role="link"
-                tabindex="0"
-                class={chosenTraits.includes(trait) ? 'selected' : ''}
-              >
-                {Traits[trait]}
-              </div>
+              <HelpSource subject={Traits[trait]}>
+                <input
+                  type="checkbox"
+                  bind:group={chosenTraits}
+                  value={trait}
+                />
+                <div
+                  data-trait={trait}
+                  role="link"
+                  tabindex="0"
+                  class={chosenTraits.includes(trait) ? 'selected' : ''}
+                >
+                  {Traits[trait]}
+                </div>
+              </HelpSource>
             </div>
           {/each}
         </div>
@@ -201,43 +213,41 @@
     </div>
   </div>
   <div class="tagged-skills">
-    <div class="title">Skills</div>
     <div class="skills">
       {#each Object.values(Skills) as skill}
         <div class="skill">
-          <div class="button">
-            <input
-              type="checkbox"
-              name=""
-              id=""
-            />
-          </div>
-          <div class="label">
-            {skill}
-          </div>
-          <div class="value">
-            {(Math.random() * 150 + 1).toFixed(0)}%
-          </div>
+          <HelpSource subject={skill}>
+            <div class="button">
+              <input
+                type="checkbox"
+                name=""
+                id=""
+              />
+            </div>
+            <div class="label">
+              {skill}
+            </div>
+            <div class="value">
+              {(Math.random() * 150 + 1).toFixed(0)}%
+            </div>
+          </HelpSource>
         </div>
       {/each}
     </div>
     <div class="skills-remaining">
-      <div class="label worn-text">Tag Skills</div>
-      <div class="unused">
-        <TwoDigitDisplay value={3} />
-      </div>
+      <HelpSource subject={'Tag Skills'}>
+        <div class="label worn-text">Tag Skills</div>
+        <div class="unused">
+          <TwoDigitDisplay value={3} />
+        </div>
+      </HelpSource>
     </div>
-    <div class="after worn-text">Skills</div>
+    <div class="after worn-text">
+      <HelpSource subject="Skills">Skills</HelpSource>
+    </div>
   </div>
   <div class="help">
-    <div class="paper-bg" />
-    <div class="content">
-      <h3 class="title">Strength</h3>
-      <div class="desc">
-        Raw physical strength. A high Strength is good for physical characters.
-        Modifies: Hit Points, Melee Damage, and Carry Weight.
-      </div>
-    </div>
+    <Help />
   </div>
   <div class="buttons">
     <button class="perks">
@@ -460,7 +470,6 @@
   }
   .tagged-skills {
     position: relative;
-    padding-top: px(16);
     .skills-remaining {
       position: absolute;
       bottom: 0;
@@ -519,10 +528,10 @@
     .skills {
       display: flex;
       flex-flow: column;
-      margin: 0 auto;
       width: 97%;
       height: 87%;
-      padding: 0;
+      padding: px(15) 0;
+      margin: px(13) auto;
       @include terminal-font();
       line-height: 1.48;
       background: linear-gradient(
@@ -674,15 +683,15 @@
     background-color: $ruddy;
     position: relative;
     color: $terminal-text;
-    [data-trait] {
-      &:focus {
-        color: $terminal-text-active;
+    .activeHelpSubject [data-trait] {
+      color: $terminal-text-active;
+      &.selected{
+        color: $terminal-text-selected-active;
       }
+    }
+    [data-trait] {
       &.selected {
         color: $terminal-text-selected;
-        &:focus {
-          color: $terminal-text-selected-active;
-        }
       }
     }
     .trait {
@@ -773,65 +782,6 @@
     border: px(1) solid rgba(#000, 0.5);
     box-shadow: px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5),
       px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset;
-    .content {
-      z-index: 1;
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      padding: px(17) px(20);
-      .title {
-        font-family: label-font();
-        padding: 0;
-        width: 100%;
-        border-bottom: px(2) solid #000;
-        margin: 0;
-        margin-bottom: px(10);
-        font-size: px(30);
-        line-height: 1.5;
-      }
-      .desc {
-        font-weight: 700;
-        width: px(200);
-        height: px(160);
-      }
-    }
-    .paper-bg {
-      position: relative;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      box-shadow: px(0) px(0) px(1) px(1) rgba(#000, 1) inset;
-      background: linear-gradient(
-          0.3turn,
-          rgba(#947c60, 0),
-          rgba(#997530, 0) px(300),
-          rgba(#ac8044, 0.35) px(310),
-          rgba(#7c6818, 0.35) px(312),
-          rgba(#947c60, 0.35) px(322)
-        ),
-        linear-gradient(
-          0.32turn,
-          rgba(#947c60, 0),
-          rgba(#997530, 0) px(400),
-          rgba(#ac8044, 0.75) px(410),
-          rgba(#7c6818, 0.75) px(412),
-          rgba(#947c60, 0.75) px(422),
-          rgba(#ac8044, 0.75) px(425),
-          rgba(#7c6818, 0.75) px(432),
-          rgba(#947c60, 0.75) px(440)
-        ),
-        linear-gradient(
-          0.25turn,
-          #947c60,
-          #997530 px(212),
-          #ac8044 px(223),
-          #7c6818 px(225),
-          #947c60 px(240)
-        );
-      filter: url(#paper);
-    }
   }
   .buttons {
     grid-area: buttons;

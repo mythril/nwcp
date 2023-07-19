@@ -1,8 +1,14 @@
-export const Special = {
+import { CharacterHelpLookup } from "./help";
+import { PerkHelpLookup } from "./perks";
+
+// ensures there are help entries for each attribute
+type SpecialEnum = { [key: string]: keyof typeof HelpLookup }
+
+export const Special: SpecialEnum = {
   Strength: 'Strength',
   Perception: 'Perception',
   Endurance: 'Endurance',
-  Charimsa: 'Charisma',
+  Charisma: 'Charisma',
   Intelligence: 'Intelligence',
   Agility: 'Agility',
   Luck: 'Luck'
@@ -19,7 +25,7 @@ export function SpecialAbbreviation(special: SPECIAL): string {
       return 'PE';
     case Special.Endurance:
       return 'EN';
-    case Special.Charimsa:
+    case Special.Charisma:
       return 'CH';
     case Special.Intelligence:
       return 'IN';
@@ -27,6 +33,8 @@ export function SpecialAbbreviation(special: SPECIAL): string {
       return 'AG';
     case Special.Luck:
       return 'LK';
+    default:
+      return '';
   }
 }
 
@@ -54,12 +62,15 @@ export const ActiveSkills = {
 
 export const PassiveSkills = {
   Speech: 'Speech',
-  Barder: 'Barter',
+  Barter: 'Barter',
   Gambling: 'Gambling',
   Outdoorsman: 'Outdoorsman'
 } as const;
 
-export const Skills = {
+// ensures there are help entries for each skill
+type SkillsEnum = { [key: string]: keyof typeof HelpLookup }
+
+export const Skills: SkillsEnum = {
   ...CombatSkills,
   ...ActiveSkills,
   ...PassiveSkills
@@ -67,7 +78,10 @@ export const Skills = {
 export type SKILLS = ObjectValues<typeof Skills>;
 export type SkillSet = Map<SKILLS, number>;
 
-export const Traits = {
+// ensures there are help entries for each trait
+type TraitsEnum = { [key: string]: keyof typeof HelpLookup }
+
+export const Traits : TraitsEnum = {
   FastMetabolism: 'Fast Metabolism',
   Bruiser: 'Bruiser',
   SmallFrame: 'Small Frame',
@@ -88,3 +102,5 @@ export const Traits = {
 
 export type TRAITS = ObjectValues<typeof Traits>;
 export type TraitSet = Map<TRAITS, boolean>;
+
+export const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup }

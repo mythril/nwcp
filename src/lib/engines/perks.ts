@@ -1,4 +1,4 @@
-{
+export const PerkHelpLookup = {
   "Awareness": "With Awareness, you are given detailed information about any critter you examine.  You see their exact hit points and information about any weapon they are equipped with.",
   "Bonus HtH Attacks": "You have learned the secret arts of the East, or you just punch faster.  In any case, your Hand-to-Hand attacks cost 1 AP less to perform.",
   "Bonus HtH Damage": "Experience in unarmed combat has given you the edge when it comes to damage.  You cause +2 points of damage with hand-to-hand and melee attacks for each level of this Perk.",
