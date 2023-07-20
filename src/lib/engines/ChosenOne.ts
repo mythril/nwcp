@@ -1,8 +1,8 @@
-import { CharacterHelpLookup } from "./help";
-import { PerkHelpLookup } from "./perks";
+import { CharacterHelpLookup } from './help';
+import { PerkHelpLookup } from './perks';
 
 // ensures there are help entries for each attribute
-type SpecialEnum = { [key: string]: keyof typeof HelpLookup }
+type SpecialEnum = { [key: string]: keyof typeof HelpLookup };
 
 export const Special: SpecialEnum = {
   Strength: 'Strength',
@@ -68,7 +68,7 @@ export const PassiveSkills = {
 } as const;
 
 // ensures there are help entries for each skill
-type SkillsEnum = { [key: string]: keyof typeof HelpLookup }
+type SkillsEnum = { [key: string]: keyof typeof HelpLookup };
 
 export const Skills: SkillsEnum = {
   ...CombatSkills,
@@ -109,28 +109,25 @@ export const AilmentStatus: AilmentStatusEnum = {
   Poisoned: 'Poisoned',
   Radiated: 'Radiated',
   EyeDamage: 'Eye Damage',
-  CrippledRightArm: "Crippled Right Arm",
-  CrippledLeftArm: "Crippled Left Arm",
-  CrippledRightLeg: "Crippled Right Leg",
-  CrippledLeftLeg: "Crippled Left Leg",
+  CrippledRightArm: 'Crippled Right Arm',
+  CrippledLeftArm: 'Crippled Left Arm',
+  CrippledRightLeg: 'Crippled Right Leg',
+  CrippledLeftLeg: 'Crippled Left Leg'
 };
 
 type DerivedStatsEnum = { [key: string]: keyof typeof HelpLookup };
 
 export const DerivedStats: DerivedStatsEnum = {
-  ArmorClass: "Armor Class",
-  ActionPoints: "Action Points",
-  CarryWeight: "Carry Weight",
-  MeleeDamage: "Melee Damage",
-  DamageRes: "Damage Res.",
-  PoisonRes: "Poison Res.",
-  RadiationRes: "Radiation Res.",
-  Sequence: "Sequence",
-  HealingRate: "Healing Rate",
-  CriticalChance: "Critical Chance",
+  ArmorClass: 'Armor Class',
+  ActionPoints: 'Action Points',
+  CarryWeight: 'Carry Weight',
+  MeleeDamage: 'Melee Damage',
+  DamageRes: 'Damage Res.',
+  PoisonRes: 'Poison Res.',
+  RadiationRes: 'Radiation Res.',
+  Sequence: 'Sequence',
+  HealingRate: 'Healing Rate',
+  CriticalChance: 'Critical Chance'
 };
 
-
-export const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup }
-
-
+export const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };

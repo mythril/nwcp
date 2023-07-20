@@ -1,13 +1,13 @@
 <script lang="ts">
-  import type { HelpLookup } from "$lib/engines/ChosenOne";
-  import { helpSubject } from "./stores";
+  import type { HelpLookup } from '$lib/engines/ChosenOne';
+  import { helpSubject } from './stores';
 
-  export let subject : keyof typeof HelpLookup;
-  let activeHelpSubject = subject === $helpSubject
+  export let subject: keyof typeof HelpLookup;
+  let activeHelpSubject = subject === $helpSubject;
   $: activeHelpSubject = subject === $helpSubject;
 </script>
 
-<div 
+<div
   role="link"
   tabindex="0"
   data-help-subject={subject}
@@ -28,6 +28,6 @@
 
 <style lang="scss">
   div {
-    display:contents;
+    display: contents;
   }
 </style>

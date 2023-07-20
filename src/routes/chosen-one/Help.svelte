@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { helpSubject, helpText } from "./stores";
+  import { helpSubject, helpText } from './stores';
 
-  let text = "";
-  let extra = "";
+  let text = '';
+  let extra = '';
   $: {
-    if (typeof $helpText === "string") {
+    if (typeof $helpText === 'string') {
       text = $helpText;
-      extra = "";
+      extra = '';
     } else {
       text = $helpText[0];
       extra = $helpText[1];
@@ -43,13 +43,13 @@
       margin-bottom: px(10);
       font-size: px(30);
       line-height: 1.5;
-      .extra{
+      .extra {
         &:not(:empty)::before {
           content: 'Base: ';
         }
         font-family: terminal-font();
-        font-weight:700;
-        font-size:px(10);
+        font-weight: 700;
+        font-size: px(10);
       }
     }
     .help {

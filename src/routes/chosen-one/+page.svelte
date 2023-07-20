@@ -576,8 +576,8 @@
         display: flex;
         flex-flow: row;
       }
-      .activeHelpSubject .skill{
-        color:$terminal-text-active;
+      .activeHelpSubject .skill {
+        color: $terminal-text-active;
       }
       .button {
         width: px(39);

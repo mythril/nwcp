@@ -8,7 +8,7 @@ Overall goals:
 ### To do
 
 - [ ] Try to figure out why worn-text image doesn't render sometimes
-- [ ] Set up pre-commit hooks
+- [x] Set up pre-commit hooks
 - [ ] Add age setter
 - [ ] Add name setter
 - [ ] Refactor `/chosen-one` route into components for each section
