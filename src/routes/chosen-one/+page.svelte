@@ -69,25 +69,26 @@
   </div>
   <div class="health">
     <div class="display">
-        <HelpSource subject="Hit Points">
-          <div
+      <HelpSource subject="Hit Points">
+        <div
           role="link"
           tabindex="0"
-          class="highlighted"
         >
-            Hit Points 30/30
-          </div>
-        </HelpSource>
-      {#each Object.values(AilmentStatus) as ailment}
-        <HelpSource subject={ailment}>
-          <div
-            role="link"
-            tabindex="0"
-          >
-            {ailment}
-          </div>
-        </HelpSource>
-      {/each}
+          Hit Points 30/30
+        </div>
+      </HelpSource>
+      <div class="ailments">
+        {#each Object.values(AilmentStatus) as ailment}
+          <HelpSource subject={ailment}>
+            <div
+              role="link"
+              tabindex="0"
+            >
+              {ailment}
+            </div>
+          </HelpSource>
+        {/each}
+      </div>
     </div>
     <Bolthead dir="tl" />
     <Bolthead dir="tr" />
@@ -113,8 +114,10 @@
                 </HelpSource>
               </th>
               <td>
-                {Math.round(Math.random() * 150) +
-                  (Math.random() > 0.25 ? '' : '%')}
+                <HelpSource subject={derived}>
+                  {Math.round(Math.random() * 150) +
+                    (Math.random() > 0.25 ? '' : '%')}
+                </HelpSource>
               </td>
             </tr>
           {/each}
@@ -225,8 +228,8 @@
     </HelpSource>
     <div class="skills">
       {#each Object.values(Skills) as skill}
-        <div class="skill">
-          <HelpSource subject={skill}>
+        <HelpSource subject={skill}>
+          <div class="skill">
             <div class="button">
               <input
                 type="checkbox"
@@ -240,8 +243,8 @@
             <div class="value">
               {(Math.random() * 150 + 1).toFixed(0)}%
             </div>
-          </HelpSource>
-        </div>
+          </div>
+        </HelpSource>
       {/each}
     </div>
     <div class="skills-remaining">
@@ -433,11 +436,6 @@
       border-radius: px(8) px(7);
       box-shadow: px(-4) px(4) px(4) px(-2) rgba(255, 255, 255, 0.2),
         px(4) px(-4) px(4) px(-2) rgba(0, 0, 0, 0.5);
-      @include terminal-font();
-      color: $terminal-text-unmarked;
-      .highlighted {
-        color: $terminal-text;
-      }
     }
   }
 
@@ -473,12 +471,26 @@
     grid-area: health;
     @include slate();
     @include monitor();
+    @include terminal-font();
     border-radius: px(7);
+    :global(.activeHelpSubject) {
+      color: $terminal-text-active;
+    }
+    .ailments {
+      color: $terminal-text-unmarked;
+      :global(.activeHelpSubject) {
+        color: $terminal-text-unmarked-active;
+      }
+    }
   }
   .derived-stats {
     grid-area: derived;
     @include slate();
     @include monitor();
+    @include terminal-font();
+    :global(.activeHelpSubject) {
+      color: $terminal-text-active;
+    }
     border-radius: px(7);
   }
   .tagged-skills {
@@ -563,6 +575,9 @@
       .skill {
         display: flex;
         flex-flow: row;
+      }
+      .activeHelpSubject .skill{
+        color:$terminal-text-active;
       }
       .button {
         width: px(39);
