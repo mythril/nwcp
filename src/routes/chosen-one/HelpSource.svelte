@@ -19,11 +19,14 @@
   on:keydown={() => {
     helpSubject.set(subject);
   }}
+  on:focusin={() => {
+    helpSubject.set(subject);
+  }}
 >
   <slot />
 </div>
 
-<style>
+<style lang="scss">
   div {
     display:contents;
   }

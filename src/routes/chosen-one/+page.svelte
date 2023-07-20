@@ -139,7 +139,13 @@
   </div>
   <div class="char-points">
     <HelpSource subject="Character Points">
-      <div class="label worn-text">CHAR POINTS</div>
+      <div
+        role="link"
+        tabindex="0"
+        class="label worn-text"
+      >
+        CHAR POINTS
+      </div>
       <div class="dorkyborder">
         <TwoDigitDisplay value={Math.round(Math.random() * 9 + 1)} />
       </div>
@@ -151,9 +157,15 @@
   </div>
   <div class="traits">
     <div class="flanges">
-      <div class="before worn-text">
-        <HelpSource subject="Optional Traits">Optional traits</HelpSource>
-      </div>
+      <HelpSource subject="Optional Traits">
+        <div
+          role="link"
+          tabindex="0"
+          class="before worn-text"
+        >
+          Optional traits
+        </div>
+      </HelpSource>
       <div class="flangeset-left">
         <div class="flange" />
         <div class="flange" />
@@ -179,7 +191,6 @@
                 <div
                   data-trait={trait}
                   role="link"
-                  tabindex="0"
                   class={chosenTraits.includes(trait) ? 'selected' : ''}
                 >
                   {Traits[trait]}
@@ -200,7 +211,6 @@
                 <div
                   data-trait={trait}
                   role="link"
-                  tabindex="0"
                   class={chosenTraits.includes(trait) ? 'selected' : ''}
                 >
                   {Traits[trait]}
@@ -213,6 +223,15 @@
     </div>
   </div>
   <div class="tagged-skills">
+    <HelpSource subject="Skills">
+      <div
+        role="link"
+        tabindex="0"
+        class="before worn-text"
+      >
+        Skills
+      </div>
+    </HelpSource>
     <div class="skills">
       {#each Object.values(Skills) as skill}
         <div class="skill">
@@ -236,15 +255,19 @@
     </div>
     <div class="skills-remaining">
       <HelpSource subject={'Tag Skills'}>
-        <div class="label worn-text">Tag Skills</div>
+        <div
+          role="link"
+          tabindex="0"
+          class="label worn-text"
+        >
+          Tag Skills
+        </div>
         <div class="unused">
           <TwoDigitDisplay value={3} />
         </div>
       </HelpSource>
     </div>
-    <div class="after worn-text">
-      <HelpSource subject="Skills">Skills</HelpSource>
-    </div>
+
   </div>
   <div class="help">
     <Help />
@@ -514,7 +537,7 @@
       border-bottom-left-radius: px(2);
       border-bottom-right-radius: px(2);
     }
-    .after {
+    .before {
       padding-left: px(58);
       position: absolute;
       left: 0;
@@ -685,7 +708,7 @@
     color: $terminal-text;
     .activeHelpSubject [data-trait] {
       color: $terminal-text-active;
-      &.selected{
+      &.selected {
         color: $terminal-text-selected-active;
       }
     }
