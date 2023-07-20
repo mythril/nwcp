@@ -7,7 +7,7 @@ Overall goals:
 
 ### To do
 
-- [ ] Add 'help' info
+- [ ] Try to figure out why worn-text image doesn't render sometimes
 - [ ] Set up pre-commit hooks
 - [ ] Add age setter
 - [ ] Add name setter
@@ -44,6 +44,7 @@ Overall goals:
 
 ### Done
 
+- [x] Add 'help' info
 - [x] De-wrap the main panel
 - [x] speed up full screen filter and restore look to FF
 - [x] speed up image generator and put in data URL fallback
