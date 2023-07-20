@@ -1,5 +1,7 @@
 <script lang="ts">
   import {
+    AilmentStatus,
+    DerivedStats,
     Skills,
     Special,
     SpecialAbbreviation,
@@ -67,14 +69,25 @@
   </div>
   <div class="health">
     <div class="display">
-      <div class="highlighted">Hit Points 30/30</div>
-      <div>Poisoned</div>
-      <div>Radiated</div>
-      <div>Eye Damage</div>
-      <div>Crippled Right Arm</div>
-      <div>Crippled Left Arm</div>
-      <div>Crippled Right Leg</div>
-      <div>Crippled Left Leg</div>
+        <HelpSource subject="Hit Points">
+          <div
+          role="link"
+          tabindex="0"
+          class="highlighted"
+        >
+            Hit Points 30/30
+          </div>
+        </HelpSource>
+      {#each Object.values(AilmentStatus) as ailment}
+        <HelpSource subject={ailment}>
+          <div
+            role="link"
+            tabindex="0"
+          >
+            {ailment}
+          </div>
+        </HelpSource>
+      {/each}
     </div>
     <Bolthead dir="tl" />
     <Bolthead dir="tr" />
@@ -87,46 +100,24 @@
     <div class="display">
       <table class="highlighted">
         <tbody>
-          <tr>
-            <th> Armor class </th>
-            <td> 5 </td>
-          </tr>
-          <tr>
-            <th> Action Points </th>
-            <td> 7 </td>
-          </tr>
-          <tr>
-            <th> Carry Weight </th>
-            <td> 150 </td>
-          </tr>
-          <tr>
-            <th> Melee Damage </th>
-            <td> 1 </td>
-          </tr>
-          <tr>
-            <th> Damage Res. </th>
-            <td> 0% </td>
-          </tr>
-          <tr>
-            <th> Poison Res. </th>
-            <td> 25% </td>
-          </tr>
-          <tr>
-            <th> Radiation Res. </th>
-            <td> 10% </td>
-          </tr>
-          <tr>
-            <th> Sequence </th>
-            <td> 10 </td>
-          </tr>
-          <tr>
-            <th> Healing Rate </th>
-            <td> 1 </td>
-          </tr>
-          <tr>
-            <th> Critical Chance </th>
-            <td> 5% </td>
-          </tr>
+          {#each Object.values(DerivedStats) as derived}
+            <tr>
+              <th>
+                <HelpSource subject={derived}>
+                  <div
+                    role="link"
+                    tabindex="0"
+                  >
+                    {derived}
+                  </div>
+                </HelpSource>
+              </th>
+              <td>
+                {Math.round(Math.random() * 150) +
+                  (Math.random() > 0.25 ? '' : '%')}
+              </td>
+            </tr>
+          {/each}
         </tbody>
       </table>
     </div>
@@ -267,7 +258,6 @@
         </div>
       </HelpSource>
     </div>
-
   </div>
   <div class="help">
     <Help />

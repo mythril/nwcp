@@ -79,9 +79,9 @@ export type SKILLS = ObjectValues<typeof Skills>;
 export type SkillSet = Map<SKILLS, number>;
 
 // ensures there are help entries for each trait
-type TraitsEnum = { [key: string]: keyof typeof HelpLookup }
+type TraitsEnum = { [key: string]: keyof typeof HelpLookup };
 
-export const Traits : TraitsEnum = {
+export const Traits: TraitsEnum = {
   FastMetabolism: 'Fast Metabolism',
   Bruiser: 'Bruiser',
   SmallFrame: 'Small Frame',
@@ -103,4 +103,34 @@ export const Traits : TraitsEnum = {
 export type TRAITS = ObjectValues<typeof Traits>;
 export type TraitSet = Map<TRAITS, boolean>;
 
+type AilmentStatusEnum = { [key: string]: keyof typeof HelpLookup };
+
+export const AilmentStatus: AilmentStatusEnum = {
+  Poisoned: 'Poisoned',
+  Radiated: 'Radiated',
+  EyeDamage: 'Eye Damage',
+  CrippledRightArm: "Crippled Right Arm",
+  CrippledLeftArm: "Crippled Left Arm",
+  CrippledRightLeg: "Crippled Right Leg",
+  CrippledLeftLeg: "Crippled Left Leg",
+};
+
+type DerivedStatsEnum = { [key: string]: keyof typeof HelpLookup };
+
+export const DerivedStats: DerivedStatsEnum = {
+  ArmorClass: "Armor Class",
+  ActionPoints: "Action Points",
+  CarryWeight: "Carry Weight",
+  MeleeDamage: "Melee Damage",
+  DamageRes: "Damage Res.",
+  PoisonRes: "Poison Res.",
+  RadiationRes: "Radiation Res.",
+  Sequence: "Sequence",
+  HealingRate: "Healing Rate",
+  CriticalChance: "Critical Chance",
+};
+
+
 export const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup }
+
+
