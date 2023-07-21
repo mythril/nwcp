@@ -8,9 +8,11 @@
     Traits
   } from '$lib/engines/ChosenOne';
   import Attribute from './Attribute.svelte';
+  import SlateButton from './SlateButton.svelte';
   import Bolthead from './Bolthead.svelte';
   import Help from './Help.svelte';
   import HelpSource from './HelpSource.svelte';
+  import Name from './Name.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
 
   let name = 'NONE';
@@ -42,19 +44,17 @@
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
-      <div class="worn-text">
-        {name}
-      </div>
+      <Name {name} />
     </div>
     <div class="age">
-      <div class="worn-text">
+      <SlateButton>
         AGE {age}
-      </div>
+      </SlateButton>
     </div>
     <div class="sex">
-      <div class="worn-text">
+      <SlateButton>
         {sex}
-      </div>
+      </SlateButton>
     </div>
   </div>
   <div class="special">
@@ -377,15 +377,6 @@
     grid-area: nas;
     display: flex;
     justify-content: center;
-    text-align: center;
-    font-size: px(22);
-    line-height: 1.5;
-    .name,
-    .age,
-    .sex {
-      @include big-button-style();
-      @include big-button-style-hover();
-    }
     .name {
       width: 36%;
     }
