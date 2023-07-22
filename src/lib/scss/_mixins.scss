@@ -9,7 +9,6 @@
   text-rendering: geometricPrecision;
 }
 
-
 @mixin push-button($size) {
   width: px($size);
   height: px($size);
@@ -91,4 +90,14 @@
       outline: px(1) dashed pink;
     }
   }
+}
+
+@function basic-box-shadow() {
+  @return px(-4) px(4) px(2) px(-3) rgba(255, 255, 255, 0.25) inset,
+    px(4) px(-4) px(5) px(-5) rgba(darken($root-bg, 30%), 0.3) inset;
+}
+
+@mixin slate() {
+  background-color: $root-bg;
+  box-shadow: basic-box-shadow();
 }

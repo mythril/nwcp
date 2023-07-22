@@ -7,6 +7,10 @@
 
 <style lang="scss">
   button {
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    text-transform: uppercase;
     user-select: none;
     background-color: $title-bg;
     color: $title-color;

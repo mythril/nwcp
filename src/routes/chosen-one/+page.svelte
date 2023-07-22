@@ -14,8 +14,9 @@
   import HelpSource from './HelpSource.svelte';
   import Name from './Name.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
+  import PlateButton from './PlateButton.svelte';
 
-  let name = 'NONE';
+  let name = '';
   let age = 25;
   let sex = 'MALE';
 
@@ -266,63 +267,9 @@
     <Help />
   </div>
   <div class="buttons">
-    <button class="perks">
-      <Bolthead
-        dir="tl"
-        size={4}
-      />
-      <Bolthead
-        dir="tr"
-        size={4}
-      />
-      <Bolthead
-        dir="br"
-        size={4}
-      />
-      <Bolthead
-        dir="bl"
-        size={4}
-      />
-      <div class="label worn-text">Perks</div>
-    </button>
-    <button class="items">
-      <Bolthead
-        dir="tr"
-        size={4}
-      />
-      <Bolthead
-        dir="bl"
-        size={4}
-      />
-      <Bolthead
-        dir="br"
-        size={4}
-      />
-      <Bolthead
-        dir="tl"
-        size={4}
-      />
-      <div class="label worn-text">Items</div></button
-    >
-    <button class="stats">
-      <Bolthead
-        dir="tl"
-        size={4}
-      />
-      <Bolthead
-        dir="br"
-        size={4}
-      />
-      <Bolthead
-        dir="bl"
-        size={4}
-      />
-      <Bolthead
-        dir="tr"
-        size={4}
-      />
-      <div class="label worn-text">Stats</div></button
-    >
+    <PlateButton class="perks">Perks</PlateButton>
+    <PlateButton class="items">Items</PlateButton>
+    <PlateButton class="stats">Stats</PlateButton>
   </div>
 </div>
 
@@ -386,16 +333,6 @@
     .sex {
       width: 24%;
     }
-  }
-
-  @function basic-box-shadow() {
-    @return px(-4) px(4) px(2) px(-3) rgba(255, 255, 255, 0.25) inset,
-      px(4) px(-4) px(5) px(-5) rgba(darken($root-bg, 30%), 0.3) inset;
-  }
-
-  @mixin slate() {
-    background-color: $root-bg;
-    box-shadow: basic-box-shadow();
   }
 
   @mixin monitor() {
@@ -807,43 +744,14 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: px(10);
-    button {
-      position: relative;
-      padding: px(0) px(10);
-      display: block;
-      appearance: none;
-      background-color: $root-bg;
-      border: 0;
-      &::after {
-        content: ' ';
-        position: absolute;
-        left: px(12);
-        top: px(5);
-        @include push-button(18);
-      }
-      &:active::after {
-        @include push-button-active(18);
-      }
-      .label {
-        font-size: px(22);
-        text-align: left;
-        padding-left: px(25);
-      }
-      border-top-right-radius: px(2);
-      border-bottom-right-radius: px(10) px(4);
-      border-top-left-radius: px(2);
-      border-bottom-left-radius: px(10) px(4);
-      box-shadow: px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset,
-        px(-1) px(-1) px(0) px(-3) rgba(#000, 0.5) inset;
-      &.perks {
-        width: px(140);
-      }
-      &.items {
-        width: px(120);
-      }
-      &.stats {
-        width: px(120);
-      }
+    :global(.perks) {
+      width: px(140);
+    }
+    :global(.items) {
+      width: px(120);
+    }
+    :global(.stats) {
+      width: px(120);
     }
   }
 </style>

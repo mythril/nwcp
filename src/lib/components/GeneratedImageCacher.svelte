@@ -49,6 +49,8 @@
           return;
         }
 
+        // @TODO find out whether this can be in <svelte:head>
+        // @TODO check for the style element and delete it if already present
         const style = document.createElement('style');
         style.id = `generated-style-node-${desc.name}`;
 

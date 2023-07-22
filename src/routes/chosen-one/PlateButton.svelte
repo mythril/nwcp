@@ -2,7 +2,10 @@
   import Bolthead from './Bolthead.svelte';
 </script>
 
-<button class={$$props.class}>
+<button
+  on:click
+  class={$$props.class}
+>
   <Bolthead
     dir="tl"
     size={4}

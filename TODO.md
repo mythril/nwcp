@@ -8,11 +8,12 @@ Overall goals:
 ### To do
 
 - [ ] Try to figure out why worn-text image doesn't render sometimes
-- [x] Set up pre-commit hooks
 - [ ] Add age setter
-- [ ] Add name setter
+- [ ] Add level up button
+- [ ] reconsider screen orientation locking
 - [ ] Refactor `/chosen-one` route into components for each section
 - [ ] Refactor scss, maybe consider alternative tech with better minification
+- [ ] See if you can reduce initial page-weight via help json splitting
 - [ ] Figure out more modern way to convey invalid choices (bonk animation/noise for spinners, for example)
 - [ ] Match tag / trait buttons better
 - [ ] Extract push button and make it resizable
@@ -25,6 +26,7 @@ Overall goals:
 - [ ] Figure out a way for end users to preserve their character creations
   - third party storage services that the user can opt in to?
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
+- [ ] Cache fullscreen filter image and rebuild/re-cache when page is resized
 
 ### Maybe
 
@@ -44,6 +46,8 @@ Overall goals:
 
 ### Done
 
+- [x] Add name setter
+- [x] Set up pre-commit hooks
 - [x] Add 'help' info
 - [x] De-wrap the main panel
 - [x] speed up full screen filter and restore look to FF

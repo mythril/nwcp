@@ -78,7 +78,7 @@
       color: transparent;
       background-color: transparent;
       &:focus {
-        outline:0;
+        outline: 0;
       }
     }
     .display {
