@@ -2,7 +2,9 @@
   import PlateButton from './PlateButton.svelte';
 
   let showEdit = false;
-  export let cancelListener = () => {};
+  export let cancelListener = () => {
+    //intentional
+  };
   let cancel = () => {
     cancelListener();
     showEdit = false;

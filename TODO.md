@@ -9,6 +9,7 @@ Overall goals:
 
 - [ ] Try to figure out why worn-text image doesn't render sometimes
 - [ ] Add age setter
+- [ ] Add sex setter
 - [ ] Add level up button
 - [ ] reconsider screen orientation locking
 - [ ] Refactor `/chosen-one` route into components for each section
