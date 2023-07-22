@@ -1,3 +1,5 @@
+import clickFile from '$lib/sounds/click.wav';
+
 export function blobToDataURL(blob: Blob): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
@@ -7,3 +9,8 @@ export function blobToDataURL(blob: Blob): Promise<string> {
     reader.readAsDataURL(blob);
   });
 }
+
+const clickAudio = new Audio(clickFile);
+export function clickSound() {
+  clickAudio.play();
+};

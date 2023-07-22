@@ -1,8 +1,11 @@
-<script>
+<script lang="ts">
   import Bolthead from './Bolthead.svelte';
+  import { clickSound } from "$lib/utils";
+
 </script>
 
 <button
+  on:click={clickSound}
   on:click
   class={$$props.class}
 >

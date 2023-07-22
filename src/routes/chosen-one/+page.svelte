@@ -15,6 +15,7 @@
   import Name from './Name.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
   import PlateButton from './PlateButton.svelte';
+  import { clickSound } from '$lib/utils';
 
   let name = '';
   let age = 25;
@@ -180,6 +181,7 @@
               <HelpSource subject={Traits[trait]}>
                 <input
                   type="checkbox"
+                  on:click={clickSound}
                   bind:group={chosenTraits}
                   value={trait}
                 />
@@ -200,6 +202,7 @@
               <HelpSource subject={Traits[trait]}>
                 <input
                   type="checkbox"
+                  on:click={clickSound}
                   bind:group={chosenTraits}
                   value={trait}
                 />
@@ -234,6 +237,7 @@
             <div class="button">
               <input
                 type="checkbox"
+                on:click={clickSound}
                 name=""
                 id=""
               />
