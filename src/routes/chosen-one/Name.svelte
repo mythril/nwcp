@@ -40,6 +40,7 @@
 
 <style lang="scss">
   :global(.input-name) {
+    font-weight: 700;
     width: 100%;
     margin: 0 auto;
     font-size: px(10);

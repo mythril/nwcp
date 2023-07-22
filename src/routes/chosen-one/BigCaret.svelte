@@ -52,20 +52,17 @@
 <style lang="scss">
   .wrapper {
     position: relative;
-    line-height: inherit;
-    font-size: inherit;
     width: 100%;
     height: 100%;
     .display,
     input {
-      width: 100%;
-      height: 100%;
       border: 0;
       margin: 0;
       padding: 0;
       display: block;
       font-size: 1em;
       font-family: inherit;
+      line-height: inherit;
     }
     input {
       z-index: 1;
