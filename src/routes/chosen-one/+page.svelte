@@ -328,14 +328,15 @@
     grid-area: nas;
     display: flex;
     justify-content: center;
+    // width: 93.75%;
     .name {
-      width: 36%;
+      width: (46.66 * 0.9375) * 1%;
     }
     .age {
-      width: 24%;
+      width: (26.66% * 0.9375) * 1;
     }
     .sex {
-      width: 24%;
+      width: (26.66% * 0.9375) * 1;
     }
   }
 

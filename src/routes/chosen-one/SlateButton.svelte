@@ -1,9 +1,11 @@
 <script lang="ts">
-  import { clickSound } from "$lib/utils";
-
+  import { clickSound } from '$lib/utils';
 </script>
 
-<button on:click={clickSound} on:click >
+<button
+  on:click={clickSound}
+  on:click
+>
   <slot />
 </button>
 

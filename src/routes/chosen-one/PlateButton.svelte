@@ -1,7 +1,6 @@
 <script lang="ts">
   import Bolthead from './Bolthead.svelte';
-  import { clickSound } from "$lib/utils";
-
+  import { clickSound } from '$lib/utils';
 </script>
 
 <button
