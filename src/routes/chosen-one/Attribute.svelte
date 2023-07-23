@@ -16,12 +16,8 @@
     'Exclnt',
     'Heroic'
   ];
-  function incr() {
-    value = value < 10 ? value + 1 : value;
-  }
-  function decr() {
-    value = value > min ? value - 1 : value;
-  }
+  let attr: TwoDigitDisplay;
+  let descIndex = 0;
 </script>
 
 <div class="attribute">
@@ -30,20 +26,28 @@
   </div>
   <div class="two-digit-attr">
     <div class="dorky-border">
-      <TwoDigitDisplay {value} />
+      <TwoDigitDisplay
+        bind:this={attr}
+        initial={value}
+        onChange={(val) => {
+          descIndex = val - 1;
+        }}
+        {min}
+        max={10}
+      />
     </div>
   </div>
   <div class="description">
-    {descriptors[value - 1]}
+    {descriptors[descIndex]}
   </div>
   <div class="manipulators">
     <button
       class="incr"
-      on:click={incr}>+</button
+      on:click={attr.increment}>+</button
     >
     <button
       class="decr"
-      on:click={decr}>-</button
+      on:click={attr.decrement}>-</button
     >
   </div>
 </div>

@@ -1,8 +1,84 @@
 <script lang="ts">
+  import { bonkSound } from '$lib/utils';
   import EmptyDigitDisplay from './EmptyDigitDisplay.svelte';
   import OneDigitDisplay from './OneDigitDisplay.svelte';
 
-  export let value: number;
+  export let initial: number;
+  export let min: number;
+  export let max: number;
+  let realMin: number;
+  let realMax: number;
+  let value = 0;
+
+  $: {
+    realMin = Math.max(Math.round(min), 1);
+    realMax = Math.min(Math.round(max), 99);
+  }
+
+  export let onChange = (_val: number) => {
+    //intentional
+  };
+
+  export const increment = () => {
+    if (value + 1 > realMax) {
+      try {
+        bonkSound();
+      } catch {
+        //intentional, nothing to do, expected
+      }
+      bonkUp();
+      return false;
+    }
+    value += 1;
+    onChange(value);
+    return true;
+  };
+
+  export const decrement = () => {
+    if (value - 1 < realMin) {
+      try {
+        bonkSound();
+      } catch {
+        //intentional, nothing to do, expected
+      }
+      bonkDown();
+      return false;
+    }
+    value -= 1;
+    onChange(value);
+    return true;
+  };
+
+  const bonkDown = () => {
+    // @TODO add bonk animation
+  };
+
+  const bonkUp = () => {
+    // @TODO add bonk animation
+  };
+
+  export const set = (newVal: number) => {
+    if (newVal < realMin) {
+      return false;
+    }
+    if (newVal > realMin) {
+      return false;
+    }
+    let flips = Math.round(newVal) - value;
+    let flip = flips > 0 ? increment : decrement;
+
+    const doFlips = (howMany: number) => {
+      if (howMany < 1) return;
+      flip();
+      setTimeout(() => doFlips(howMany - 1), 1);
+    };
+    doFlips(flips);
+    return true;
+  };
+
+  if (!set(initial)) {
+    throw 'Could not set initial value. Check your min & max.';
+  }
 
   let tensDigit: number;
   let onesDigit: number;

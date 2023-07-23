@@ -74,7 +74,11 @@
         </div>
       </PlateButton>
       <div class="age-display">
-        <TwoDigitDisplay value={tmp} />
+        <TwoDigitDisplay
+          initial={tmp}
+          min={16}
+          max={35}
+        />
       </div>
       <PlateButton
         pushButton={false}

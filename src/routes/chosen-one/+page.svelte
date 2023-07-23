@@ -141,7 +141,11 @@
         CHAR POINTS
       </div>
       <div class="dorky-border">
-        <TwoDigitDisplay value={Math.round(Math.random() * 9 + 1)} />
+        <TwoDigitDisplay
+          initial={Math.round(Math.random() * 9 + 1)}
+          min={0}
+          max={70}
+        />
       </div>
       <Bolthead dir="tl" />
       <Bolthead dir="tr" />
@@ -260,7 +264,11 @@
           Tag Skills
         </div>
         <div class="unused">
-          <TwoDigitDisplay value={3} />
+          <TwoDigitDisplay
+            initial={3}
+            min={0}
+            max={3}
+          />
         </div>
       </HelpSource>
     </div>
