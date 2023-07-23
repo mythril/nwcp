@@ -1,8 +1,10 @@
 <script lang="ts">
   import { clickSound } from '$lib/utils';
+  export let checked = false;
 </script>
 
 <button
+  class:checked
   on:click={clickSound}
   on:click
 >
@@ -34,6 +36,7 @@
     display: block;
     width: 100%;
     height: 100%;
+    &.checked,
     &:active {
       filter: saturate(0.7) brightness(0.7);
       box-shadow: px(-5) px(5) px(5) rgba(0, 0, 0, 0.75) inset,

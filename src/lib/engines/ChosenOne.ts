@@ -75,6 +75,7 @@ export const Skills: SkillsEnum = {
   ...ActiveSkills,
   ...PassiveSkills
 } as const;
+
 export type SKILLS = ObjectValues<typeof Skills>;
 export type SkillSet = Map<SKILLS, number>;
 
@@ -113,7 +114,7 @@ export const AilmentStatus: AilmentStatusEnum = {
   CrippledLeftArm: 'Crippled Left Arm',
   CrippledRightLeg: 'Crippled Right Leg',
   CrippledLeftLeg: 'Crippled Left Leg'
-};
+} as const;
 
 type DerivedStatsEnum = { [key: string]: keyof typeof HelpLookup };
 
@@ -128,6 +129,13 @@ export const DerivedStats: DerivedStatsEnum = {
   Sequence: 'Sequence',
   HealingRate: 'Healing Rate',
   CriticalChance: 'Critical Chance'
-};
+} as const;
 
 export const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };
+
+export const Sex = {
+  Male: 'Male',
+  Female: 'Female'
+} as const;
+
+export type SEX = ObjectValues<typeof Sex>;

@@ -13,7 +13,10 @@
   };
 
   onMount(() => {
-    show = () => dlg.show();
+    show = () => {
+      text = name;
+      dlg.show();
+    };
   });
 </script>
 

@@ -2,24 +2,26 @@
   import {
     AilmentStatus,
     DerivedStats,
+    Sex,
     Skills,
     Special,
     SpecialAbbreviation,
     Traits
   } from '$lib/engines/ChosenOne';
   import Attribute from './Attribute.svelte';
-  import SlateButton from './SlateButton.svelte';
   import Bolthead from './Bolthead.svelte';
   import Help from './Help.svelte';
   import HelpSource from './HelpSource.svelte';
-  import Name from './Name.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
   import PlateButton from './PlateButton.svelte';
   import { clickSound } from '$lib/utils';
+  import NameChanger from './NameChanger.svelte';
+  import AgeChanger from './AgeChanger.svelte';
+  import SexChanger from './SexChanger.svelte';
 
   let name = '';
   let age = 25;
-  let sex = 'MALE';
+  let sex = Sex.Male;
 
   let chosenTraits: string[] = [];
   let traits = Object.keys(Traits);
@@ -46,17 +48,13 @@
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
-      <Name {name} />
+      <NameChanger {name} />
     </div>
     <div class="age">
-      <SlateButton>
-        AGE {age}
-      </SlateButton>
+      <AgeChanger {age} />
     </div>
     <div class="sex">
-      <SlateButton>
-        {sex}
-      </SlateButton>
+      <SexChanger {sex} />
     </div>
   </div>
   <div class="special">
