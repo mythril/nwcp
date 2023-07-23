@@ -8,6 +8,16 @@
 
   let dlg: MiniDialog;
   let text = '';
+
+  const commit = () => {
+    name = text;
+    return true;
+  };
+
+  const cancel = () => {
+    text = name;
+  };
+
   let show = () => {
     //intentional
   };
@@ -20,16 +30,11 @@
   });
 </script>
 
-<div>
+<div class="root">
   <MiniDialog
     bind:this={dlg}
-    commitListener={() => {
-      name = text;
-      return true;
-    }}
-    cancelListener={() => {
-      text = name;
-    }}
+    commitListener={commit}
+    cancelListener={cancel}
   >
     <BigCaret
       class="input-name"
@@ -57,7 +62,7 @@
     background-color: $terminal-bg;
     color: $terminal-text;
   }
-  div {
+  .root {
     height: 100%;
   }
 </style>

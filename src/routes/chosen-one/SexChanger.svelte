@@ -18,6 +18,7 @@
 
   const commit = () => {
     sex = tmp;
+    return true;
   };
 
   let show = () => {
@@ -32,16 +33,11 @@
   });
 </script>
 
-<div>
+<div class="root">
   <MiniDialog
     bind:this={dlg}
-    commitListener={() => {
-      commit();
-      return true;
-    }}
-    cancelListener={() => {
-      cancel();
-    }}
+    commitListener={commit}
+    cancelListener={cancel}
   >
     <div class="buttons">
       <SlateButton
@@ -68,7 +64,7 @@
 </div>
 
 <style lang="scss">
-  div {
+  .root {
     height: 100%;
   }
   .buttons {

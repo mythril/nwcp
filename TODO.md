@@ -8,8 +8,7 @@ Overall goals:
 ### To do
 
 - [ ] Try to figure out why worn-text image doesn't render sometimes
-- [ ] Add age setter
-- [ ] Add sex setter
+- [ ] Add inert / other a11y features (mini dialogs need attention)
 - [ ] Add level up button
 - [ ] reconsider screen orientation locking
 - [ ] Refactor `/chosen-one` route into components for each section
@@ -47,6 +46,8 @@ Overall goals:
 
 ### Done
 
+- [x] Add age setter
+- [x] Add sex setter
 - [x] Add name setter
 - [x] Set up pre-commit hooks
 - [x] Add 'help' info
