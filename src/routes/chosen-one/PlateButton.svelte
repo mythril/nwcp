@@ -1,12 +1,13 @@
 <script lang="ts">
   import Bolthead from './Bolthead.svelte';
-  import { clickSound } from '$lib/utils';
+  export let pushButton = true;
+  export let wornText = true;
 </script>
 
 <button
-  on:click={clickSound}
   on:click
-  class={$$props.class}
+  class:pushButton
+  class={'button ' + $$props.class}
 >
   <Bolthead
     dir="tl"
@@ -24,33 +25,38 @@
     dir="bl"
     size={4}
   />
-  <div class="label worn-text">
+  <div class="label {wornText ? 'worn-text' : ''}">
     <slot />
   </div>
 </button>
 
 <style lang="scss">
-  button {
+  .button {
     position: relative;
     padding: px(0) px(10);
     display: block;
     appearance: none;
     background-color: $root-bg;
     border: 0;
-    &::after {
-      content: ' ';
-      position: absolute;
-      left: px(12);
-      top: px(5);
-      @include push-button(18);
-    }
-    &:active::after {
-      @include push-button-active(18);
+    &.pushButton {
+      &::after {
+        content: ' ';
+        position: absolute;
+        left: px(12);
+        top: px(5);
+        @include push-button(18);
+      }
+      &:active::after {
+        @include push-button-active(18);
+      }
+      .label {
+        padding-left: px(25);
+      }
     }
     .label {
       font-size: px(22);
       text-align: left;
-      padding-left: px(25);
+      width: 100%;
     }
     border-top-right-radius: px(2);
     border-bottom-right-radius: px(10) px(4);
