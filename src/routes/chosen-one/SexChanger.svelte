@@ -59,7 +59,9 @@
     </div>
   </MiniDialog>
   <SlateButton on:click={show}>
-    {sex}
+    <div class="worn-text">
+      {sex}
+    </div>
   </SlateButton>
 </div>
 

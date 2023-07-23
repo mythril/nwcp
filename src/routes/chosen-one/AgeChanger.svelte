@@ -92,7 +92,9 @@
     </div>
   </MiniDialog>
   <SlateButton on:click={show}>
-    Age {age}
+    <div class="worn-text">
+      Age {age}
+    </div>
   </SlateButton>
 </div>
 

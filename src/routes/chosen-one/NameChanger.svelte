@@ -42,7 +42,9 @@
     />
   </MiniDialog>
   <SlateButton on:click={show}>
-    {name || 'none'}
+    <div class="worn-text">
+      {name || 'none'}
+    </div>
   </SlateButton>
 </div>
 
