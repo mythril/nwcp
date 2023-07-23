@@ -44,7 +44,9 @@
 
 <div class="relative">
   {#if showEdit}
-    <div class="backdrop" />
+    <div
+      class="backdrop"
+    />
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <div
       role="dialog"
@@ -72,6 +74,7 @@
     right: -100vw;
     bottom: -100vh;
     z-index: 2;
+    background-color: rgba(#000, 0.75);
   }
   .edit {
     position: absolute;
