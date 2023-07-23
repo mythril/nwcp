@@ -35,10 +35,12 @@ async function preloader() {
 preloader();
 
 export function clickSound() {
+  clickAudio.currentTime = 0;
   clickAudio.play();
 }
 
 export function bonkSound() {
+  bonkAudio.currentTime = 0;
   bonkAudio.play();
 }
 
