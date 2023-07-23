@@ -44,9 +44,7 @@
 
 <div class="relative">
   {#if showEdit}
-    <div
-      class="backdrop"
-    />
+    <div class="backdrop" />
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <div
       role="dialog"

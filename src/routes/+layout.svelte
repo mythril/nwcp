@@ -22,6 +22,8 @@
   let canvas: HTMLCanvasElement;
 
   function originalFontSizeScaled(width: number) {
+    // @TODO re-balance around 640x480 at some time (width / 64)
+    // also requires redefinition of scss px() function
     return width / 85;
   }
 
@@ -50,8 +52,8 @@
   $: {
     renderOverLay();
     if (planner) {
-      let maxWidth = Math.max(innerHeight, innerWidth);
-      let maxHeight = Math.min(innerHeight, innerWidth);
+      let maxWidth = Math.max(innerWidth, 640);
+      let maxHeight = Math.max(innerHeight, 480);
 
       // maintains the aspect ratio I desire for the "window"
       if (maxWidth * (4 / 5) > maxHeight) {

@@ -6,11 +6,11 @@
   const current = spring();
   current.stiffness = 0.5;
   current.damping = 1;
-  current.precision = 0.1;
+  current.precision = 0.01;
   const bonk = spring();
   bonk.stiffness = 0.5;
   bonk.damping = 1;
-  bonk.precision = 0.1;
+  bonk.precision = 0.01;
 
   $: current.set(value);
   $: offset = modulo($current, 1) + $bonk;

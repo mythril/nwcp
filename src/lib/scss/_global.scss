@@ -11,7 +11,7 @@ body,
 
 body {
   height: 100vh;
-  overflow: hidden;
+  overflow-y: hidden;
   filter: brightness(1.3);
 }
 
@@ -20,18 +20,18 @@ body {
 }
 
 //locks a landscape view
-@media screen and (orientation: portrait) {
-  html {
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    width: 100vh;
-    height: 100vw;
-    overflow-x: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
-  }
-}
+// @media screen and (orientation: portrait) {
+//   html {
+//     transform: rotate(-90deg);
+//     transform-origin: left top;
+//     width: 100vh;
+//     height: 100vw;
+//     overflow-x: hidden;
+//     position: absolute;
+//     top: 100%;
+//     left: 0;
+//   }
+// }
 
 .worn-text {
   user-select: none;
