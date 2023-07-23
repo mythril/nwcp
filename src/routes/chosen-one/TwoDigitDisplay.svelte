@@ -26,7 +26,7 @@
       } catch {
         //intentional, nothing to do, expected
       }
-      bonkUp();
+      onesDigitDisplay.bonkUp();
       return false;
     }
     value += 1;
@@ -41,20 +41,12 @@
       } catch {
         //intentional, nothing to do, expected
       }
-      bonkDown();
+      onesDigitDisplay.bonkDown();
       return false;
     }
     value -= 1;
     onChange(value);
     return true;
-  };
-
-  const bonkDown = () => {
-    // @TODO add bonk animation
-  };
-
-  const bonkUp = () => {
-    // @TODO add bonk animation
   };
 
   export const set = (newVal: number) => {
@@ -70,7 +62,7 @@
     const doFlips = (howMany: number) => {
       if (howMany < 1) return;
       flip();
-      setTimeout(() => doFlips(howMany - 1), 1);
+      setTimeout(() => doFlips(howMany - 1), 0);
     };
     doFlips(flips);
     return true;
@@ -86,13 +78,21 @@
     tensDigit = Math.floor(value / 10);
     onesDigit = Math.round(value - tensDigit * 10);
   }
+  let tensDigitDisplay: OneDigitDisplay;
+  let onesDigitDisplay: OneDigitDisplay;
 </script>
 
 <div class={'window'}>
   <div class="two-digit">
     <EmptyDigitDisplay />
-    <OneDigitDisplay value={tensDigit} />
-    <OneDigitDisplay value={onesDigit} />
+    <OneDigitDisplay
+      bind:this={tensDigitDisplay}
+      value={tensDigit}
+    />
+    <OneDigitDisplay
+      bind:this={onesDigitDisplay}
+      value={onesDigit}
+    />
     <EmptyDigitDisplay />
   </div>
 </div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { clickSound } from '$lib/utils';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
 
   export let label: string;
@@ -43,11 +44,19 @@
   <div class="manipulators">
     <button
       class="incr"
-      on:click={attr.increment}>+</button
+      on:click={() => {
+        if (attr.increment()) {
+          clickSound();
+        }
+      }}>+</button
     >
     <button
       class="decr"
-      on:click={attr.decrement}>-</button
+      on:click={() => {
+        if (attr.decrement()) {
+          clickSound();
+        }
+      }}>-</button
     >
   </div>
 </div>

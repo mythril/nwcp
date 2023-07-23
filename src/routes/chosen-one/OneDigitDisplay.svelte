@@ -7,13 +7,31 @@
   current.stiffness = 0.5;
   current.damping = 1;
   current.precision = 0.1;
+  const bonk = spring();
+  bonk.stiffness = 0.5;
+  bonk.damping = 1;
+  bonk.precision = 0.1;
 
   $: current.set(value);
-  $: offset = modulo($current, 1);
+  $: offset = modulo($current, 1) + $bonk;
 
   function modulo(n: number, m: number) {
     return ((n % m) + m) % m;
   }
+
+  export const bonkUp = () => {
+    bonk.set(0.1);
+    setTimeout(() => {
+      bonk.set(0);
+    }, 50);
+  };
+
+  export const bonkDown = () => {
+    bonk.set(-0.1);
+    setTimeout(() => {
+      bonk.set(0);
+    }, 50);
+  };
 </script>
 
 <EmptyDigitDisplay>
@@ -29,6 +47,12 @@
     </div>
     <div class="current">
       {Math.floor($current + 10) % 10}
+    </div>
+    <div
+      aria-hidden="true"
+      class="hidden"
+    >
+      {Math.floor(($current + 9) % 10)}
     </div>
   </div>
 </EmptyDigitDisplay>

@@ -9,6 +9,7 @@
 
   export let age = 25;
   let tmp = 25;
+  let ageDisplay: TwoDigitDisplay;
 
   let dlg: MiniDialog;
 
@@ -26,19 +27,13 @@
   };
 
   const increment = () => {
-    tmp += 1;
-    if (tmp > 35) {
-      tmp = 35;
-    } else {
+    if (ageDisplay.increment()) {
       clickSound();
     }
   };
 
   const decrement = () => {
-    tmp -= 1;
-    if (tmp < 16) {
-      tmp = 16;
-    } else {
+    if (ageDisplay.decrement()) {
       clickSound();
     }
   };
@@ -75,9 +70,11 @@
       </PlateButton>
       <div class="age-display">
         <TwoDigitDisplay
+          bind:this={ageDisplay}
           initial={tmp}
           min={16}
           max={35}
+          onChange={(v) => (tmp = v)}
         />
       </div>
       <PlateButton

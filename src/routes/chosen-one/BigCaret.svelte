@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { bonkSound, clickSound } from '$lib/utils';
   import { onMount } from 'svelte';
 
   export let value = '';
@@ -7,20 +8,32 @@
     text.value = '';
     event.preventDefault();
     if (value.length > 10) {
+      bonkSound();
       return;
     }
     if (event.key.length === 1) {
       value = value + event.key;
+      clickSound();
     }
   }
 
   function controlKeys(event: KeyboardEvent) {
     text.value = '';
     if (event.keyCode === 46 || event.keyCode === 8) {
+      if (value.length === 0) {
+        bonkSound();
+      } else {
+        clickSound();
+      }
       value = value.slice(0, -1);
       return;
     }
     if (event.code === 'Backspace' || event.code === 'Delete') {
+      if (value.length === 0) {
+        bonkSound();
+      } else {
+        clickSound();
+      }
       value = value.slice(0, -1);
       return;
     }
