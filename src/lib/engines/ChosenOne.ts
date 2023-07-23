@@ -1,3 +1,4 @@
+import type { ObjectValues } from '$lib/utils';
 import { CharacterHelpLookup } from './help';
 import { PerkHelpLookup } from './perks';
 
@@ -14,7 +15,6 @@ export const Special: SpecialEnum = {
   Luck: 'Luck'
 } as const;
 
-type ObjectValues<T> = T[keyof T];
 export type SPECIAL = ObjectValues<typeof Special>;
 
 export function SpecialAbbreviation(special: SPECIAL): string {
