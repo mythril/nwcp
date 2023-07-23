@@ -82,7 +82,7 @@
   let onesDigitDisplay: OneDigitDisplay;
 </script>
 
-<div class={'window'}>
+<div class="window">
   <div class="two-digit">
     <EmptyDigitDisplay />
     <OneDigitDisplay

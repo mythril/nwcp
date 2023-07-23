@@ -7,12 +7,13 @@
   current.stiffness = 0.5;
   current.damping = 1;
   current.precision = 0.01;
-  const bonk = spring();
+
+  const bonk = spring(0);
   bonk.stiffness = 0.5;
   bonk.damping = 1;
   bonk.precision = 0.01;
 
-  $: current.set(value);
+  $: $current = value;
   $: offset = modulo($current, 1) + $bonk;
 
   function modulo(n: number, m: number) {
@@ -20,16 +21,16 @@
   }
 
   export const bonkUp = () => {
-    bonk.set(0.1);
+    $bonk = 0.1;
     setTimeout(() => {
-      bonk.set(0);
+      $bonk = 0;
     }, 50);
   };
 
   export const bonkDown = () => {
-    bonk.set(-0.1);
+    $bonk = -0.1;
     setTimeout(() => {
-      bonk.set(0);
+      $bonk = 0;
     }, 50);
   };
 </script>
@@ -37,7 +38,7 @@
 <EmptyDigitDisplay>
   <div
     class="anim-wrap"
-    style="transform: translate(0, {100 * offset}%)"
+    style="--offset: {100 * offset}"
   >
     <div
       aria-hidden="true"
@@ -67,5 +68,6 @@
     display: flex;
     flex-flow: column;
     transition: top 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: translate(0, calc(var(--offset) * 1%));
   }
 </style>
