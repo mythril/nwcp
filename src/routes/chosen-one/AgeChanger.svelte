@@ -8,7 +8,6 @@
   import { clickSound } from '$lib/utils';
 
   export let age = 25;
-  export let showDialog = false;
   let tmp = 25;
 
   let dlg: MiniDialog;
@@ -49,9 +48,6 @@
       cancel();
       dlg.show();
     };
-    if (showDialog) {
-      show();
-    }
   });
 </script>
 

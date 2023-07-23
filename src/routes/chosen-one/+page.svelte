@@ -51,10 +51,7 @@
       <NameChanger {name} />
     </div>
     <div class="age">
-      <AgeChanger
-        showDialog
-        {age}
-      />
+      <AgeChanger {age} />
     </div>
     <div class="sex">
       <SexChanger {sex} />
