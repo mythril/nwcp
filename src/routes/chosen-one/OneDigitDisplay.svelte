@@ -18,7 +18,7 @@
 
 <EmptyDigitDisplay>
   <div
-    class="animwrap"
+    class="anim-wrap"
     style="transform: translate(0, {100 * offset}%)"
   >
     <div
@@ -37,7 +37,7 @@
   .hidden {
     user-select: none;
   }
-  .animwrap {
+  .anim-wrap {
     position: absolute;
     top: -100%;
     display: flex;

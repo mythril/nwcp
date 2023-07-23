@@ -9,7 +9,6 @@ Overall goals:
 
 - [ ] Try to figure out why worn-text image doesn't render sometimes
 - [ ] Add inert / other a11y features (mini dialogs need attention)
-- [ ] Add level up button
 - [ ] reconsider screen orientation locking
 - [ ] Refactor `/chosen-one` route into components for each section
 - [ ] Refactor scss, maybe consider alternative tech with better minification
@@ -26,7 +25,7 @@ Overall goals:
 - [ ] Figure out a way for end users to preserve their character creations
   - third party storage services that the user can opt in to?
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
-- [ ] Cache fullscreen filter image and rebuild/re-cache when page is resized
+- [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
 
 ### Maybe
 
@@ -40,6 +39,7 @@ Overall goals:
 
 ### After first release
 
+- [ ] Add level up button
 - [ ] Build post-creation (level up) interface
 - [ ] Build basic, text based, item chooser
 - [ ] Build perk chooser

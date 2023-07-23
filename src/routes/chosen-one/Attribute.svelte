@@ -28,8 +28,8 @@
   <div class="label worn-text">
     {label}
   </div>
-  <div class="twodigit-attr">
-    <div class="dorkyborder">
+  <div class="two-digit-attr">
+    <div class="dorky-border">
       <TwoDigitDisplay {value} />
     </div>
   </div>
@@ -63,7 +63,7 @@
     font-size: px(30);
     width: px(40);
   }
-  .twodigit-attr {
+  .two-digit-attr {
     position: relative;
     &::after,
     &::before {
@@ -159,7 +159,7 @@
       }
     }
   }
-  .dorkyborder {
+  .dorky-border {
     border-top: px(3) solid darken($root-bg, 10%);
     border-right: px(3) solid darken($root-bg, 10%);
     border-left: px(3) solid lighten($root-bg, 10%);

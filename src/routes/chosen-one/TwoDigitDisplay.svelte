@@ -13,7 +13,7 @@
 </script>
 
 <div class={'window'}>
-  <div class="twodigit">
+  <div class="two-digit">
     <EmptyDigitDisplay />
     <OneDigitDisplay value={tensDigit} />
     <OneDigitDisplay value={onesDigit} />
@@ -28,7 +28,7 @@
     width: px(44);
     height: px(29);
   }
-  .twodigit {
+  .two-digit {
     display: flex;
     height: 100%;
     width: px(90);

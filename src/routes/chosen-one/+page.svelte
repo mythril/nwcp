@@ -143,7 +143,7 @@
       >
         CHAR POINTS
       </div>
-      <div class="dorkyborder">
+      <div class="dorky-border">
         <TwoDigitDisplay value={Math.round(Math.random() * 9 + 1)} />
       </div>
       <Bolthead dir="tl" />
@@ -163,13 +163,13 @@
           Optional traits
         </div>
       </HelpSource>
-      <div class="flangeset-left">
+      <div class="flange-set-left">
         <div class="flange" />
         <div class="flange" />
         <div class="flange" />
         <div class="flange" />
       </div>
-      <div class="flangeset-right">
+      <div class="flange-set-right">
         <div class="flange" />
         <div class="flange" />
         <div class="flange" />
@@ -381,7 +381,7 @@
     padding: px(6) px(7);
   }
   .char-points {
-    .dorkyborder {
+    .dorky-border {
       border-top: px(3) solid darken($root-bg, 10%);
       border-right: px(3) solid darken($root-bg, 10%);
       border-left: px(3) solid lighten($root-bg, 10%);
@@ -555,12 +555,12 @@
         width: px(12);
         height: px(17);
       }
-      .flangeset-left,
-      .flangeset-right {
+      .flange-set-left,
+      .flange-set-right {
         position: absolute;
         top: 26%;
       }
-      .flangeset-left {
+      .flange-set-left {
         left: px(-7);
         &::after {
           content: ' ';
@@ -588,7 +588,7 @@
           border-bottom-left-radius: px(4);
         }
       }
-      .flangeset-right {
+      .flange-set-right {
         right: px(-7);
         &::after {
           content: ' ';
