@@ -1,5 +1,4 @@
 <script lang="ts">
-  import '../lib/scss/_global.scss';
   import GeneratedImageCacher from '$lib/components/GeneratedImageCacher.svelte';
   import { onMount } from 'svelte';
 
@@ -161,6 +160,12 @@
     pointer-events: none;
     mix-blend-mode: multiply;
   }
+
+  :root {
+    /* global var */
+    --px: #{px(1)};
+  }
+
   /* prettier-ignore */
   :root {
     /* colors (only) */
@@ -202,6 +207,41 @@
     --title-font: 'Lilita One', sans-serif;
     --terminal-font: 'Bruno Ace', sans-serif;
     --label-font: 'Saira Extra Condensed', sans-serif;
+  }
+
+  /* prettier-ignore */
+  :root {
+    /* named box-shadow segments (only) */
+    --shadow-border-width: 1;
+    --shadow-border-color: #000;
+    --shadow-border:
+      0 0 0 calc(var(--shadow-border-width) * var(--px)) var(--shadow-border-color);
+    --light-source:
+      calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) calc(-5 * var(--px)) rgba(255, 255, 255, 0.7) inset,
+      calc(5 * var(--px)) calc(-5 * var(--px)) calc(5 * var(--px)) calc(-3 * var(--px)) rgba(0, 0, 0, 0.5) inset;
+    --sharp-light-source:
+      calc(-2 * var(--px)) calc(2 * var(--px)) calc(2 * var(--px)) calc(-1 * var(--px)) rgba(255, 255, 255, 0.5) inset,
+      calc(2 * var(--px)) calc(-2 * var(--px)) calc(2 * var(--px)) 0 rgba(0, 0, 0, 0.9) inset;
+    --light-source-clear:
+      0 0 0 0 rgba(255, 255, 255, 0) inset,
+      0 0 0 0 rgba(0, 0, 0, 0) inset;
+    --sunken:
+      calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75) inset,
+      calc(5 * var(--px)) calc(-5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75) inset;
+    --sunken-clear:
+      0 0 0 rgba(0, 0, 0, 0) inset, 0 0 0 rgba(0, 0, 0, 0) inset;
+    --cast-shadow:
+      calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75);
+    --cast-shadow-clear:
+      0 0 0 0 rgba(0, 0, 0, 0);
+    --inset:
+      calc(2 * var(--px)) calc(-2 * var(--px)) calc(2 * var(--px)) calc(-1 * var(--px)) rgba(0, 0, 0, 0.5),
+      calc(-2 * var(--px)) calc(2 * var(--px)) calc(2 * var(--px)) calc(-1 * var(--px)) rgba(255, 255, 255, 0.5);
+    --underbelly-shadow:
+      0 calc(-4 * var(--px)) calc(2 * var(--px)) 0 rgba(0, 0, 0, 0.4) inset;
+    --basic-box-shadow:
+      calc(-4 * var(--px)) calc(4 * var(--px)) calc(2 * var(--px)) calc(-3 * var(--px)) rgba(255, 255, 255, 0.25) inset,
+      calc(4 * var(--px)) calc(-4 * var(--px)) calc(5 * var(--px)) calc(-5 * var(--px)) rgba(0, 0, 0, 0.3) inset;
   }
 
   :global(:root),
@@ -257,5 +297,32 @@
         px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
         px(0) px(0) px(0) px(0) rgba(#000, 0.25);
     }
+  }
+
+  :global(.dorky-border) {
+    border-top: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
+    border-left: px(4) solid hsl(var(--bg-hs), calc(var(--bg-l) + 45%));
+    border-right: px(4) solid hsl(var(--bg-hs), calc(var(--bg-l) + 5%));
+    border-bottom: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) + 25%));
+  }
+
+  :global(body) {
+    height: 100vh;
+    overflow-y: hidden;
+    filter: brightness(1.3);
+  }
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(.worn-text) {
+    user-select: none;
+    font-family: var(--title-font);
+    -webkit-mask-image: url('/generated/worn-text.png');
+    mask-image: url('/generated/worn-text.png');
+    color: hsl(var(--title-color));
+    font-weight: 400;
+    text-transform: uppercase;
   }
 </style>

@@ -16,9 +16,7 @@ export default ({ mode }: { mode: string }) => {
         scss: {
           additionalData: `
 			  @use 'sass:math';
-			  @import '$lib/scss/variables';
-			  @import '$lib/scss/mixins';
-			  @import '$lib/scss/functions';
+			  @import '$lib/scss/global';
 			`
         }
       }
