@@ -57,7 +57,7 @@
     line-height: 1.6;
     padding-left: 1em;
     padding-right: 1em;
-    background-color: $terminal-bg;
+    background-color: hsl(var(--terminal-bg));
     color: $terminal-text;
   }
   .root {

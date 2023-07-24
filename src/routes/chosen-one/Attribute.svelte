@@ -100,7 +100,7 @@
     user-select: none;
     @include terminal-font();
     line-height: px(22);
-    background-color: $terminal-bg;
+    background-color: hsl(var(--terminal-bg));
     width: px(70);
     height: px(28);
     text-align: left;

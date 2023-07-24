@@ -171,13 +171,15 @@
     --title-bg-hs: 0, 0%;
     --title-bg-l: 22%;
     --title-bg: var(--title-bg-hs), var(--title-bg-l);
+    --terminal-bg-hs: 100, 100%;
+    --terminal-bg-l: 2.4%;
+    --terminal-bg: var(--terminal-bg-hs), var(--terminal-bg-l);
     --terminal-color: #3cf800;
     --terminal-selected: #a0a0a0;
     --terminal-faded: #183018;
     --terminal-color-active: #fcfc7c;
     --terminal-selected-active: #fcfcfc;
     --terminal-faded-active: #707820;
-    --terminal-bg: #040c00;
   }
   :global(:root),
   :global(html),

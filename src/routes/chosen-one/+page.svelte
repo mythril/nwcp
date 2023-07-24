@@ -371,7 +371,7 @@
       left: 7%;
       right: 7%;
       line-height: 1.7;
-      background-color: $terminal-bg;
+      background-color: hsl(var(--terminal-bg));
       border-radius: px(8) px(7);
       box-shadow: var(--inset);
     }
@@ -500,8 +500,8 @@
         #343220 7.4%,
         #343220 8.4%,
         #545454 8.7%,
-        $terminal-bg 9%,
-        $terminal-bg 95.8%,
+        hsl(var(--terminal-bg)) 9%,
+        hsl(var(--terminal-bg)) 95.8%,
         #6b6b6b 98.4%,
         #1c1c1c 100%
       );
@@ -635,8 +635,8 @@
         $ruddy 1%,
         $ruddy 7.2%,
         lighten($ruddy, 20%) 8%,
-        $terminal-bg 8%,
-        $terminal-bg 91.5%,
+        hsl(var(--terminal-bg)) 8%,
+        hsl(var(--terminal-bg)) 91.5%,
         $ruddy 92.3%,
         $ruddy 99%,
         mix($ruddy, #fff, 80%) 99.9%
