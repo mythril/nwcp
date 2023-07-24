@@ -135,7 +135,7 @@
 
 <style lang="scss">
   .planner {
-    font-family: terminal-font();
+    font-family: var(--terminal-font);
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -163,6 +163,7 @@
   }
   /* prettier-ignore */
   :root {
+    /* colors (only) */
     --bg-hs: 40, 27.3%;
     --bg-l: 17.3%;
     --bg: var(--bg-hs), var(--bg-l);
@@ -194,6 +195,15 @@
     --terminal-faded-active-l: 29.8%;
     --terminal-faded-active: var(--terminal-faded-active-hs), var(--terminal-faded-active-l);
   }
+
+  /* prettier-ignore */
+  :root {
+    /* fonts (only) */
+    --title-font: 'Lilita One', sans-serif;
+    --terminal-font: 'Bruno Ace', sans-serif;
+    --label-font: 'Saira Extra Condensed', sans-serif;
+  }
+
   :global(:root),
   :global(html),
   :global(body) {

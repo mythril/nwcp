@@ -1,8 +1,7 @@
-@import 'colors';
 @import 'functions';
 
 @mixin terminal-font() {
-  font-family: terminal-font();
+  font-family: var(--terminal-font);
   line-height: 1.7;
   color: hsl(var(--terminal-color));
   font-weight: 700;

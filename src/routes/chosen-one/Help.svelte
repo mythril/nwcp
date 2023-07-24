@@ -35,7 +35,7 @@
     right: 0;
     padding: px(17) px(20);
     .subject {
-      font-family: label-font();
+      font-family: var(--label-font);
       padding: 0;
       width: 100%;
       border-bottom: px(2) solid #000;
@@ -47,7 +47,7 @@
         &:not(:empty)::before {
           content: 'Base: ';
         }
-        font-family: terminal-font();
+        font-family: var(--terminal-font);
         font-weight: 700;
         font-size: px(10);
       }

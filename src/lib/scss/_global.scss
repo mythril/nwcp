@@ -1,5 +1,3 @@
-@import 'colors';
-
 /* prettier-ignore */
 :root {
   --px: #{px(1)};
@@ -54,7 +52,7 @@ body {
 
 .worn-text {
   user-select: none;
-  font-family: title-font();
+  font-family: var(--title-font);
   -webkit-mask-image: url('/generated/worn-text.png');
   mask-image: url('/generated/worn-text.png');
   color: hsl(var(--title-color));

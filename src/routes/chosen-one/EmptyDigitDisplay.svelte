@@ -25,7 +25,7 @@
       filter: blur(px(0.5));
     }
     color: hsl(0, 0%, 93%);
-    font-family: label-font();
+    font-family: var(--label-font);
     font-weight: 700;
     text-shadow: text-outline(rgba(0, 0, 0, 0.8), true);
     left: px(-3);

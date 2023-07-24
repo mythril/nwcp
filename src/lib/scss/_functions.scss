@@ -1,15 +1,3 @@
-@function title-font() {
-  @return 'Lilita One', sans-serif;
-}
-
-@function terminal-font() {
-  @return 'Bruno Ace', sans-serif;
-}
-
-@function label-font() {
-  @return 'Saira Extra Condensed', sans-serif;
-}
-
 @function px($pixels) {
   $originalFontSizeInPixels: 10;
   @return calc($pixels / $originalFontSizeInPixels) * 1rem;

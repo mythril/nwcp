@@ -30,7 +30,7 @@
       var(--light-source),
       var(--sunken-clear);
     transition: filter 0.2s linear, box-shadow 0.01s linear;
-    font-family: title-font();
+    font-family: var(--title-font);
     text-align: center;
     font-size: px(22);
     line-height: 1.5;
