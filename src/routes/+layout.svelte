@@ -177,7 +177,9 @@
     --terminal-color-hs: 105.5, 100%;
     --terminal-color-l: 48.6%;
     --terminal-color: var(--terminal-color-hs), var(--terminal-color-l);
-    --terminal-selected: #a0a0a0;
+    --terminal-selected-hs: 0, 0%;
+    --terminal-selected-l: 62.7%;
+    --terminal-selected: var(--terminal-selected-hs), var(--terminal-selected-l);
     --terminal-faded: #183018;
     --terminal-color-active: #fcfc7c;
     --terminal-selected-active: #fcfcfc;

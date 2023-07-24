@@ -660,7 +660,7 @@
     }
     [data-trait] {
       &.selected {
-        color: $terminal-text-selected;
+        color: hsl(var(--terminal-selected));
       }
     }
     .trait {
