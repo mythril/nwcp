@@ -27,7 +27,12 @@
     color: hsl(0, 0%, 93%);
     font-family: var(--label-font);
     font-weight: 700;
-    text-shadow: text-outline(rgba(0, 0, 0, 0.8), true);
+    /* prettier-ignore */
+    text-shadow: 
+      px(1) px(1) 0 rgba(0, 0, 0, 0.8),
+      px(-1) px(1) 0 rgba(0, 0, 0, 0.8),
+      px(1) px(-1) 0 rgba(0, 0, 0, 0.8),
+      px(-1) px(-1) 0 rgba(0, 0, 0, 0.8);
     left: px(-3);
     padding-left: px(5);
     margin-left: px(-8);

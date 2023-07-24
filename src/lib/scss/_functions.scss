@@ -2,9 +2,3 @@
   $originalFontSizeInPixels: 10;
   @return calc($pixels / $originalFontSizeInPixels) * 1rem;
 }
-
-@function text-outline($color: #000, $soft: false) {
-  $blur: if($soft, 1, 0);
-  @return px(1) px(1) px($blur) $color, px(-1) px(1) px($blur) $color,
-    px(1) px(-1) px($blur) $color, px(-1) px(-1) px($blur) $color;
-}
