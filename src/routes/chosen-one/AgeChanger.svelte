@@ -68,7 +68,7 @@
           </div>
         </div>
       </PlateButton>
-      <div class="age-display">
+      <div class="dorky-border">
         <TwoDigitDisplay
           bind:this={ageDisplay}
           initial={tmp}
@@ -108,12 +108,6 @@
     gap: px(4);
     align-items: center;
   }
-  .age-display {
-    border-top: px(3) solid darken($root-bg, 10%);
-    border-left: px(4) solid lighten($root-bg, 45%);
-    border-right: px(4) solid lighten($root-bg, 5%);
-    border-bottom: px(3) solid lighten($root-bg, 25%);
-  }
   .plate {
     width: px(25);
     height: px(25);
@@ -124,18 +118,18 @@
       height: px(15);
       padding: px(2) 0;
       transition: box-shadow 0.1s linear;
-      box-shadow: inset px(-1) px(1) px(2) px(0) rgba(#fff, 0.4),
-        px(-5) px(5) px(5) px(0) rgba(#000, 0.95),
-        px(0) px(0) px(0) px(1) darken($root-bg, 10%),
-        px(0) px(0) px(1) px(1) darken($root-bg, 2%),
-        px(0) px(0) px(3) px(1) lighten($root-bg, 5%);
+      box-shadow:
+        var(--light-source),
+        var(--cast-shadow),
+        var(--shadow-border),
+        var(--inset);
       &:active {
-        box-shadow: inset px(0) px(0) px(0) px(0) rgba(#fff, 0),
-          px(0) px(0) px(0) px(0) rgba(#000, 0),
-          px(0) px(0) px(0) px(1) darken($root-bg, 10%),
-          px(0) px(0) px(1) px(1) darken($root-bg, 2%),
-          px(0) px(0) px(3) px(1) lighten($root-bg, 5%);
-      }
+        box-shadow:
+          var(--light-source-clear),
+          var(--cast-shadow-clear),
+          var(--shadow-border),
+          var(--inset);
+    }
     }
     :global(svg) {
       fill: $title-color;

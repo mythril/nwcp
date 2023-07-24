@@ -85,7 +85,7 @@
     top: 0;
     z-index: 3;
     background-color: $root-bg;
-    box-shadow: basic-box-shadow(),
+    box-shadow: var(--basic-box-shadow),
       inset px(5) px(-5) px(5) px(0) rgba(#000, 0.75);
     .main {
       margin-bottom: px(8);

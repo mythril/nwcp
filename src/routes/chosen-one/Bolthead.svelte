@@ -11,6 +11,7 @@
 
 <style lang="scss">
   .bolthead {
+    // @TODO use scale instead of this gibberish
     --size: calc(var(--in-size) * #{px(1)});
     --offset: calc(var(--size) / 2);
     --thirdSize: calc(var(--size) / 3);
@@ -23,8 +24,7 @@
     background-color: #777;
     box-shadow: px(0) px(0) px(3) 0 rgba(0, 0, 0, 1),
       px(-1) px(1) px(1) 0 rgba(0, 0, 0, 1),
-      var(--thirdSize) calc(-1 * var(--thirdSize)) px(1) 0 rgba(0, 0, 0, 0.9)
-        inset,
+      var(--thirdSize) calc(-1 * var(--thirdSize)) px(1) 0 rgba(0, 0, 0, 0.9) inset,
       calc(-1 * var(--thirdSize)) var(--thirdSize) px(1) 0
         rgba(255, 255, 255, 0.5) inset,
       px(1) px(-1) px(1) 0 rgba(255, 255, 255, 0.7) inset;

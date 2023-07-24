@@ -5,6 +5,7 @@
 
 <button
   class:checked
+  class={'button ' + $$props.class}
   on:click={clickSound}
   on:click
 >
@@ -12,7 +13,7 @@
 </button>
 
 <style lang="scss">
-  button {
+  .button {
     overflow: hidden;
     text-overflow: clip;
     white-space: nowrap;
@@ -23,9 +24,10 @@
     padding: 0 px(8);
     border-radius: px(5);
     border-width: 0;
-    box-shadow: px(0) px(0) px(0) px(1) rgba(#000, 1),
-      px(-5) px(5) px(5) px(-5) rgba(255, 255, 255, 0.7) inset,
-      px(5) px(-5) px(5) px(-3) rgba(0, 0, 0, 0.5) inset;
+    box-shadow: 
+      var(--shadow-border),
+      var(--light-source),
+      var(--sunken-clear);
     transition: filter 0.2s linear, box-shadow 0.01s linear;
     font-family: title-font();
     text-align: center;
@@ -40,9 +42,10 @@
     &.checked,
     &:active {
       filter: saturate(0.7) brightness(0.7);
-      box-shadow: px(0) px(0) px(0) px(1) rgba(#000, 1),
-        px(-5) px(5) px(5) rgba(0, 0, 0, 0.75) inset,
-        px(5) px(-5) px(5) rgba(0, 0, 0, 0.75) inset;
+      box-shadow: 
+        var(--shadow-border),
+        var(--light-source-clear),
+        var(--sunken);
     }
   }
 

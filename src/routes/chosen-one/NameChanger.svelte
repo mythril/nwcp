@@ -37,7 +37,7 @@
     cancelListener={cancel}
   >
     <BigCaret
-      class="input-name"
+      class="input-name dorky-border"
       bind:value={text}
     />
   </MiniDialog>
@@ -57,10 +57,6 @@
     line-height: 1.6;
     padding-left: 1em;
     padding-right: 1em;
-    border-top: px(3) solid darken($root-bg, 10%);
-    border-left: px(4) solid lighten($root-bg, 45%);
-    border-right: px(4) solid lighten($root-bg, 5%);
-    border-bottom: px(3) solid lighten($root-bg, 25%);
     background-color: $terminal-bg;
     color: $terminal-text;
   }

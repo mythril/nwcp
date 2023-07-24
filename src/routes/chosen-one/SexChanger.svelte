@@ -42,6 +42,7 @@
     <div class="buttons">
       <SlateButton
         checked={tmp === Sex.Male}
+        class="sex-btn"
         on:click={() => (tmp = Sex.Male)}
       >
         <div class="worn-text">
@@ -50,6 +51,7 @@
       </SlateButton>
       <SlateButton
         checked={tmp === Sex.Female}
+        class="sex-btn"
         on:click={() => (tmp = Sex.Female)}
       >
         <div class="worn-text">
@@ -78,6 +80,23 @@
       height: px(45);
       padding: px(0);
       padding-top: px(4);
+    }
+    :global(.sex-btn) {
+      box-shadow: 
+        var(--shadow-border),
+        var(--light-source),
+        var(--sunken-clear),
+        var(--cast-shadow),
+        var(--inset);
+    }
+    :global(.sex-btn.checked),
+    :global(.sex-btn:active) {
+      box-shadow:
+        var(--shadow-border),
+        var(--light-source-clear),
+        var(--sunken),
+        var(--cast-shadow-clear),
+        var(--inset);
     }
   }
   .buttons .worn-text :global(svg) {

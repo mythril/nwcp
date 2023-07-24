@@ -9,6 +9,49 @@ body,
   background-color: $root-bg;
 }
 
+:root {
+  --px: #{px(1)};
+  --shadow-border-width: 1;
+  --shadow-border-color: #000;
+  --shadow-border: 0 0 0 calc(var(--shadow-border-width) * var(--px)) var(--shadow-border-color);
+  --light-source:
+    calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) calc(-5 * var(--px)) rgba(255, 255, 255, 0.7) inset,
+    calc(5 * var(--px)) calc(-5 * var(--px)) calc(5 * var(--px)) calc(-3 * var(--px)) rgba(0, 0, 0, 0.5) inset;
+  --sharp-light-source:
+    calc(-2 * var(--px)) calc(2 * var(--px)) calc(2 * var(--px)) calc(-1 * var(--px)) rgba(255, 255, 255, 0.5) inset,
+    calc(2 * var(--px)) calc(-2 * var(--px)) calc(2 * var(--px)) 0 rgba(0, 0, 0, 0.9) inset;
+  --light-source-clear:
+    0 0 0 0 rgba(255, 255, 255, 0) inset,
+    0 0 0 0 rgba(0, 0, 0, 0) inset;
+  --sunken:
+    calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75) inset,
+    calc(5 * var(--px)) calc(-5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75) inset;
+  --sunken-clear:
+    0 0 0 rgba(0, 0, 0, 0) inset,
+    0 0 0 rgba(0, 0, 0, 0) inset;
+  --cast-shadow:
+    calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75);
+  --cast-shadow-clear:
+    0 0 0 0 rgba(0, 0, 0, 0);
+  --inset:
+    calc(2 * var(--px)) calc(-2 * var(--px)) calc(2 * var(--px)) calc(-1 * var(--px)) rgba(0, 0, 0, 0.5),
+    calc(-2 * var(--px)) calc(2 * var(--px)) calc(2 * var(--px)) calc(-1 * var(--px)) rgba(255, 255, 255, 0.5);
+  --underbelly-shadow:
+    0 calc(-4 * var(--px)) calc(2 * var(--px)) 0 rgba(0, 0, 0, 0.4) inset;
+  --basic-box-shadow:
+    calc(-4 * var(--px)) calc(4 * var(--px)) calc(2 * var(--px)) calc(-3 * var(--px)) rgba(255, 255, 255, 0.25) inset,
+    calc(4 * var(--px)) calc(-4 * var(--px)) calc(5 * var(--px)) calc(-5 * var(--px)) rgba(0, 0, 0, 0.3) inset;
+
+
+}
+
+.dorky-border {
+  border-top: px(3) solid darken($root-bg, 10%);
+  border-left: px(4) solid lighten($root-bg, 45%);
+  border-right: px(4) solid lighten($root-bg, 5%);
+  border-bottom: px(3) solid lighten($root-bg, 25%);
+}
+
 body {
   height: 100vh;
   overflow-y: hidden;
@@ -18,20 +61,6 @@ body {
 * {
   box-sizing: border-box;
 }
-
-//locks a landscape view
-// @media screen and (orientation: portrait) {
-//   html {
-//     transform: rotate(-90deg);
-//     transform-origin: left top;
-//     width: 100vh;
-//     height: 100vw;
-//     overflow-x: hidden;
-//     position: absolute;
-//     top: 100%;
-//     left: 0;
-//   }
-// }
 
 .worn-text {
   user-select: none;

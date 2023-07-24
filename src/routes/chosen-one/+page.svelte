@@ -140,7 +140,7 @@
       >
         CHAR POINTS
       </div>
-      <div class="dorky-border">
+      <div class="inset-border">
         <TwoDigitDisplay
           initial={Math.round(Math.random() * 9 + 1)}
           min={0}
@@ -373,8 +373,7 @@
       line-height: 1.7;
       background-color: $terminal-bg;
       border-radius: px(8) px(7);
-      box-shadow: px(-4) px(4) px(4) px(-2) rgba(255, 255, 255, 0.2),
-        px(4) px(-4) px(4) px(-2) rgba(0, 0, 0, 0.5);
+      box-shadow: var(--inset);
     }
   }
 
@@ -386,10 +385,9 @@
     padding: px(6) px(7);
   }
   .char-points {
-    .dorky-border {
+    .inset-border {
       border-radius: px(2);
-      box-shadow: px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5),
-        px(2) px(-2) px(2) px(-1) rgba(#000, 0.5);
+      box-shadow: var(--inset);
     }
     grid-area: 18 / 1 / 21 / 2;
     position: relative;
@@ -446,13 +444,11 @@
       border-top-right-radius: px(2);
       border-bottom-left-radius: px(15);
       border-bottom-right-radius: px(15);
-      box-shadow: px(2) px(-2) px(2) px(-1) rgba(#000, 0.5) inset,
-        px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5) inset;
+      box-shadow: var(--sharp-light-source);
       .unused {
         border-radius: px(2);
         overflow: hidden;
-        box-shadow: px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5),
-          px(2) px(-2) px(2) px(-1) rgba(#000, 0.5);
+        box-shadow: var(--inset);
       }
       :global(.remaining) {
         border: 0;
@@ -464,8 +460,7 @@
     }
     &::before {
       content: ' ';
-      box-shadow: px(2) px(-2) px(2) px(0) rgba(#000, 0.9) inset,
-        px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5) inset;
+      box-shadow: var(--sharp-light-source);
       position: absolute;
       left: 0;
       right: 0;
@@ -719,8 +714,9 @@
       border-top-right-radius: px(13);
       border-bottom-left-radius: px(5);
       border-bottom-right-radius: px(5);
-      box-shadow: basic-box-shadow(), px(0) px(6) px(3) px(0) rgba(#000, 0.4),
-        px(0) px(-4) px(2) px(0) rgba(#000, 0.4) inset;
+      box-shadow: var(--basic-box-shadow), 
+        px(0) px(6) px(3) px(0) rgba(#000, 0.4),
+        var(--underbelly-shadow);
       height: px(33);
       content: ' ';
       top: 0;
@@ -734,8 +730,8 @@
       border-bottom-right-radius: px(15);
       border-top-left-radius: px(2);
       border-top-right-radius: px(2);
-      box-shadow: basic-box-shadow(),
-        px(0) px(-4) px(2) px(0) rgba(#000, 0.4) inset;
+      box-shadow: var(--basic-box-shadow),
+        var(--underbelly-shadow);
     }
     input[type='checkbox'] {
       @include checkbox-button();

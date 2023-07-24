@@ -26,7 +26,7 @@
     {label}
   </div>
   <div class="two-digit-attr">
-    <div class="dorky-border">
+    <div class="two-digit-border">
       <TwoDigitDisplay
         bind:this={attr}
         initial={value}
@@ -38,7 +38,7 @@
       />
     </div>
   </div>
-  <div class="description">
+  <div class="description dorky-border">
     {descriptors[descIndex]}
   </div>
   <div class="manipulators">
@@ -105,10 +105,6 @@
     height: px(28);
     text-align: left;
     padding-left: px(6);
-    border-top: px(3) solid darken($root-bg, 20%);
-    border-right: px(3) solid lighten($root-bg, 10%);
-    border-left: px(3) solid lighten($root-bg, 25%);
-    border-bottom: px(3) solid lighten($root-bg, 40%);
     :global(.activeHelpSubject) & {
       color: $terminal-text-active;
     }
@@ -130,7 +126,8 @@
       background-color: $root-bg;
       border-radius: px(3) px(4);
       line-height: px(14);
-      box-shadow: px(-3) px(3) px(3) px(-3) rgba(255, 255, 255, 0.5) inset,
+      box-shadow: 
+        px(-3) px(3) px(3) px(-3) rgba(255, 255, 255, 0.5) inset,
         px(3) px(-3) px(3) px(-1) rgba(darken($root-bg, 50%), 0.5) inset,
         px(0) px(3) px(2) px(1) #000, px(0) px(0) px(0) px(0) rgba(#000, 0);
       transition: box-shadow 0.1s linear;
@@ -172,7 +169,7 @@
       }
     }
   }
-  .dorky-border {
+  .two-digit-border {
     border-top: px(3) solid darken($root-bg, 10%);
     border-right: px(3) solid darken($root-bg, 10%);
     border-left: px(3) solid lighten($root-bg, 10%);
