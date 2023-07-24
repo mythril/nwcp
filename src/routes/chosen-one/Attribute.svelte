@@ -106,7 +106,7 @@
     text-align: left;
     padding-left: px(6);
     :global(.activeHelpSubject) & {
-      color: $terminal-text-active;
+      color: hsl(var(--terminal-color-active));
     }
   }
   .manipulators {

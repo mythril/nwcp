@@ -183,7 +183,10 @@
     --terminal-faded-hs: 120, 33.3%;
     --terminal-faded-l: 14.1%;
     --terminal-faded: var(--terminal-faded-hs), var(--terminal-faded-l);
-    --terminal-color-active: #fcfc7c;
+    --terminal-color-active-hs: 60, 95.5%;
+    --terminal-color-active-l: 73.7%;
+    --terminal-color-active: var(--terminal-color-active-hs),
+      var(--terminal-color-active-l);
     --terminal-selected-active: #fcfcfc;
     --terminal-faded-active: #707820;
   }

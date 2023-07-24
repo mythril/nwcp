@@ -410,7 +410,7 @@
     @include terminal-font();
     border-radius: px(7);
     :global(.activeHelpSubject) {
-      color: $terminal-text-active;
+      color: hsl(var(--terminal-color-active));
     }
     .ailments {
       color: hsl(var(--terminal-faded));
@@ -425,7 +425,7 @@
     @include monitor();
     @include terminal-font();
     :global(.activeHelpSubject) {
-      color: $terminal-text-active;
+      color: hsl(var(--terminal-color-active));
     }
     border-radius: px(7);
   }
@@ -510,7 +510,7 @@
         flex-flow: row;
       }
       .activeHelpSubject .skill {
-        color: $terminal-text-active;
+        color: hsl(var(--terminal-color-active));
       }
       .button {
         width: px(39);
@@ -653,7 +653,7 @@
     position: relative;
     color: hsl(var(--terminal-color));
     .activeHelpSubject [data-trait] {
-      color: $terminal-text-active;
+      color: hsl(var(--terminal-color-active));
       &.selected {
         color: $terminal-text-selected-active;
       }
