@@ -57,7 +57,7 @@
       <SexChanger {sex} />
     </div>
   </div>
-  <div class="special">
+  <div class="special slate">
     {#each Object.values(Special) as attr}
       <HelpSource subject={attr}>
         <Attribute
@@ -67,7 +67,7 @@
       </HelpSource>
     {/each}
   </div>
-  <div class="health terminal-font-defaults">
+  <div class="health slate monitor terminal-font-defaults">
     <div class="display">
       <HelpSource subject="Hit Points">
         <div
@@ -97,7 +97,7 @@
     <Bolthead dir="bl" />
     <Bolthead dir="mr" />
   </div>
-  <div class="derived-stats terminal-font-defaults">
+  <div class="derived-stats slate monitor terminal-font-defaults">
     <div class="display">
       <table class="highlighted">
         <tbody>
@@ -131,7 +131,7 @@
     <Bolthead dir="br" />
     <Bolthead dir="mr" />
   </div>
-  <div class="char-points">
+  <div class="char-points slate">
     <HelpSource subject="Character Points">
       <div
         role="link"
@@ -183,6 +183,7 @@
               <HelpSource subject={Traits[trait]}>
                 <input
                   type="checkbox"
+                  class="checkbox-button"
                   on:click={clickSound}
                   bind:group={chosenTraits}
                   value={trait}
@@ -204,6 +205,7 @@
               <HelpSource subject={Traits[trait]}>
                 <input
                   type="checkbox"
+                  class="checkbox-button"
                   on:click={clickSound}
                   bind:group={chosenTraits}
                   value={trait}
@@ -239,6 +241,7 @@
             <div class="button">
               <input
                 type="checkbox"
+                class="checkbox-button"
                 on:click={clickSound}
                 name=""
                 id=""
@@ -346,7 +349,7 @@
     }
   }
 
-  @mixin monitor() {
+  .monitor {
     & {
       position: relative;
     }
@@ -379,7 +382,6 @@
 
   .special {
     grid-area: special;
-    @include slate();
     border-radius: px(2);
     border-bottom-left-radius: px(9) px(5);
     padding: px(6) px(7);
@@ -391,7 +393,6 @@
     }
     grid-area: 18 / 1 / 21 / 2;
     position: relative;
-    @include slate();
     border-radius: px(2);
     border-bottom-left-radius: px(5) px(3);
     display: flex;
@@ -405,8 +406,6 @@
   }
   .health {
     grid-area: health;
-    @include slate();
-    @include monitor();
     border-radius: px(7);
     :global(.activeHelpSubject) {
       color: hsl(var(--terminal-color-active));
@@ -420,8 +419,6 @@
   }
   .derived-stats {
     grid-area: derived;
-    @include slate();
-    @include monitor();
     :global(.activeHelpSubject) {
       color: hsl(var(--terminal-color-active));
     }
@@ -522,9 +519,6 @@
         padding-right: px(45);
         width: px(38 * 2 + 1);
       }
-    }
-    input[type='checkbox'] {
-      @include checkbox-button();
     }
   }
   .traits {
@@ -740,9 +734,6 @@
       box-shadow:
         var(--basic-box-shadow),
         var(--underbelly-shadow);
-    }
-    input[type='checkbox'] {
-      @include checkbox-button();
     }
   }
   .help {

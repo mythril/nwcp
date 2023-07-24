@@ -220,4 +220,42 @@
     font-weight: 700;
     text-rendering: geometricPrecision;
   }
+
+  :global(.slate) {
+    background-color: hsl(var(--bg));
+    box-shadow: var(--basic-box-shadow);
+  }
+
+  :global(.checkbox-button) {
+    appearance: none;
+    transition: box-shadow 0.1s linear;
+    margin: px(1) px(9);
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #580000;
+    // @TODO figure this out
+    /* prettier-ignore */
+    box-shadow:
+      px(-2) px(2) px(1) px(-1) rgba(#fff, 0.25) inset,
+      px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
+      px(-6) px(-3) px(0) px(0) #2d2b25 inset,
+      px(6) px(3) px(0) px(0) #2d2b25 inset,
+      px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
+      px(0) px(0) px(0) px(1) rgba(#000, 0.25);
+    width: px(20);
+    height: px(12);
+    border-radius: px(3);
+    border: px(1) solid #040c00;
+    &:active {
+      background-color: #fc3030;
+      /* prettier-ignore */
+      box-shadow: 
+        px(0) px(0) px(1) px(-1) rgba(#fff, 0.25) inset,
+        px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
+        px(-6) px(-3) px(0) px(0) #2d2b25 inset,
+        px(6) px(3) px(0) px(0) #2d2b25 inset,
+        px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
+        px(0) px(0) px(0) px(0) rgba(#000, 0.25);
+    }
+  }
 </style>
