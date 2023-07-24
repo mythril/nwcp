@@ -1,6 +1,5 @@
 import type { ObjectValues } from '$lib/utils';
 import { CharacterHelpLookup } from './help';
-import { PerkHelpLookup } from './perks';
 
 // ensures there are help entries for each attribute
 type SpecialEnum = { [key: string]: keyof typeof HelpLookup };
@@ -131,7 +130,8 @@ export const DerivedStats: DerivedStatsEnum = {
   CriticalChance: 'Critical Chance'
 } as const;
 
-export const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };
+// @TODO add perks back en when we can actually use perks
+export const HelpLookup = { ...CharacterHelpLookup /*, ...PerkHelpLookup*/ };
 
 export const Sex = {
   Male: 'Male',

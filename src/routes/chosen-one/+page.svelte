@@ -387,10 +387,9 @@
   }
   .char-points {
     .dorky-border {
-      border-top: px(3) solid darken($root-bg, 10%);
-      border-right: px(3) solid darken($root-bg, 10%);
-      border-left: px(3) solid lighten($root-bg, 10%);
-      border-bottom: px(3) solid lighten($root-bg, 10%);
+      border-radius: px(2);
+      box-shadow: px(-2) px(2) px(2) px(-1) rgba(#fff, 0.5),
+        px(2) px(-2) px(2) px(-1) rgba(#000, 0.5);
     }
     grid-area: 18 / 1 / 21 / 2;
     position: relative;
@@ -746,8 +745,8 @@
     position: relative;
     padding: px(8) px(10);
     grid-area: help;
-    border: px(1) solid rgba(#000, 0.5);
-    box-shadow: px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5),
+    box-shadow: px(0) px(0) px(0) px(1) rgba(#000, 0.5),
+      px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5),
       px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset;
   }
   .buttons {

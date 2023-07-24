@@ -7,25 +7,25 @@ Overall goals:
 
 ### To do
 
-- [ ] Try to figure out why worn-text image doesn't render sometimes
 - [ ] Add inert / other a11y features (mini dialogs need attention)
-- [ ] reconsider screen orientation locking
 - [ ] Refactor `/chosen-one` route into components for each section
 - [ ] Refactor scss, maybe consider alternative tech with better minification
 - [ ] See if you can reduce initial page-weight via help json splitting
-- [ ] Figure out more modern way to convey invalid choices (bonk animation/noise for spinners, for example)
-- [ ] Match tag / trait buttons better
-- [ ] Extract push button and make it resizable
-- [ ] Build an event sourced store, keeping track of the character development as a log instead of just mangling an object
 - [ ] Make the first event: create character
-- [ ] Build filter to add random blotchy grooves into the background
-- [ ] Improve logo
-- [ ] Add an about page
-- [ ] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
 - [ ] Figure out a way for end users to preserve their character creations
   - third party storage services that the user can opt in to?
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
+- [ ] Add an about page
+- [ ] Redirect from base route to `/chosen-one` on temporary basis
+
+### Visuals
+
+- [ ] Match tag / trait buttons better
+- [ ] Extract push button and make it resizable
+- [ ] Improve look of sex setter buttons
+- [ ] Build filter to add random blotchy grooves into the background
+- [ ] Improve logo
 
 ### Maybe
 
@@ -39,13 +39,18 @@ Overall goals:
 
 ### After first release
 
+- [ ] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
 - [ ] Add level up button
+- [ ] Build an event sourced store, keeping track of the character development as a log instead of just mangling an object
 - [ ] Build post-creation (level up) interface
 - [ ] Build basic, text based, item chooser
 - [ ] Build perk chooser
 
 ### Done
 
+- [x] Figure out more modern way to convey invalid choices (bonk animation/noise for spinners, for example)
+- [x] Try to figure out why worn-text image doesn't render sometimes
+- [x] reconsider screen orientation locking
 - [x] Add age setter
 - [x] Add sex setter
 - [x] Add name setter

@@ -21,9 +21,10 @@
     background-color: $title-bg;
     color: $title-color;
     padding: 0 px(8);
-    border: px(1) solid black;
     border-radius: px(5);
-    box-shadow: px(-5) px(5) px(5) px(-5) rgba(255, 255, 255, 0.7) inset,
+    border-width: 0;
+    box-shadow: px(0) px(0) px(0) px(1) rgba(#000, 1),
+      px(-5) px(5) px(5) px(-5) rgba(255, 255, 255, 0.7) inset,
       px(5) px(-5) px(5) px(-3) rgba(0, 0, 0, 0.5) inset;
     transition: filter 0.2s linear, box-shadow 0.01s linear;
     font-family: title-font();
@@ -39,7 +40,8 @@
     &.checked,
     &:active {
       filter: saturate(0.7) brightness(0.7);
-      box-shadow: px(-5) px(5) px(5) rgba(0, 0, 0, 0.75) inset,
+      box-shadow: px(0) px(0) px(0) px(1) rgba(#000, 1),
+        px(-5) px(5) px(5) rgba(0, 0, 0, 0.75) inset,
         px(5) px(-5) px(5) rgba(0, 0, 0, 0.75) inset;
     }
   }
