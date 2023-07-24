@@ -134,7 +134,7 @@
       }
     }
     :global(svg) {
-      fill: $title-color;
+      fill: hsl(var(--title-color));
       max-width: 100%;
       max-height: 100%;
     }

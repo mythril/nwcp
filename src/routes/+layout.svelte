@@ -165,7 +165,9 @@
     --bg-hs: 40, 27.3%;
     --bg-l: 17.3%;
     --bg: var(--bg-hs), var(--bg-l);
-    --title-color: #7c6818;
+    --title-color-hs: 48, 67.6%;
+    --title-color-l: 29%;
+    --title-color: var(--title-color-hs), var(--title-color-l);
     --title-bg: #383838;
     --terminal-color: #3cf800;
     --terminal-selected: #a0a0a0;

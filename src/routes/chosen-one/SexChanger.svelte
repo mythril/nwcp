@@ -104,8 +104,8 @@
   .buttons .worn-text :global(svg) {
     max-width: 80%;
     max-height: 80%;
-    fill: $title-color;
-    stroke: darken($title-color, 20%);
+    fill: hsl(var(--title-color));
+    stroke: hsl(var(--title-color-hs), calc(var(--title-color-l) - 20%));
     stroke-width: px(0.2);
   }
 </style>

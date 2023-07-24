@@ -83,7 +83,7 @@
       position: absolute;
       top: 50%;
       content: ' ';
-      background-color: $title-color;
+      background-color: hsl(var(--title-color));
       margin-top: px(-1.5);
       height: px(3);
     }
@@ -148,7 +148,7 @@
         &::before {
           content: ' ';
           position: absolute;
-          background-color: $title-color;
+          background-color: hsl(var(--title-color));
         }
       }
       &.incr {

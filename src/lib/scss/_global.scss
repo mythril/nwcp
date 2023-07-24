@@ -57,7 +57,7 @@ body {
   font-family: title-font();
   -webkit-mask-image: url('/generated/worn-text.png');
   mask-image: url('/generated/worn-text.png');
-  color: $title-color;
+  color: hsl(var(--title-color));
   font-weight: 400;
   text-transform: uppercase;
 }

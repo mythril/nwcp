@@ -20,7 +20,7 @@
     text-transform: uppercase;
     user-select: none;
     background-color: $title-bg;
-    color: $title-color;
+    color: hsl(var(--title-color));
     padding: 0 px(8);
     border-radius: px(5);
     border-width: 0;
