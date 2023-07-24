@@ -82,6 +82,7 @@
       padding-top: px(4);
     }
     :global(.sex-btn) {
+      /* prettier-ignore */
       box-shadow: 
         var(--shadow-border),
         var(--light-source),
@@ -91,6 +92,7 @@
     }
     :global(.sex-btn.checked),
     :global(.sex-btn:active) {
+      /* prettier-ignore */
       box-shadow:
         var(--shadow-border),
         var(--light-source-clear),

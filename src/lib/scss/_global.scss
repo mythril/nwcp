@@ -9,11 +9,13 @@ body,
   background-color: $root-bg;
 }
 
+/* prettier-ignore */
 :root {
   --px: #{px(1)};
   --shadow-border-width: 1;
   --shadow-border-color: #000;
-  --shadow-border: 0 0 0 calc(var(--shadow-border-width) * var(--px)) var(--shadow-border-color);
+  --shadow-border:
+    0 0 0 calc(var(--shadow-border-width) * var(--px)) var(--shadow-border-color);
   --light-source:
     calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) calc(-5 * var(--px)) rgba(255, 255, 255, 0.7) inset,
     calc(5 * var(--px)) calc(-5 * var(--px)) calc(5 * var(--px)) calc(-3 * var(--px)) rgba(0, 0, 0, 0.5) inset;
@@ -27,8 +29,7 @@ body,
     calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75) inset,
     calc(5 * var(--px)) calc(-5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75) inset;
   --sunken-clear:
-    0 0 0 rgba(0, 0, 0, 0) inset,
-    0 0 0 rgba(0, 0, 0, 0) inset;
+    0 0 0 rgba(0, 0, 0, 0) inset, 0 0 0 rgba(0, 0, 0, 0) inset;
   --cast-shadow:
     calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75);
   --cast-shadow-clear:
@@ -41,8 +42,6 @@ body,
   --basic-box-shadow:
     calc(-4 * var(--px)) calc(4 * var(--px)) calc(2 * var(--px)) calc(-3 * var(--px)) rgba(255, 255, 255, 0.25) inset,
     calc(4 * var(--px)) calc(-4 * var(--px)) calc(5 * var(--px)) calc(-5 * var(--px)) rgba(0, 0, 0, 0.3) inset;
-
-
 }
 
 .dorky-border {

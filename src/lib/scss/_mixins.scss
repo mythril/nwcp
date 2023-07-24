@@ -18,10 +18,11 @@
   $f: math.div($size, 2);
   $d: 10;
   transition: box-shadow 0.1s linear;
-  box-shadow: px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 1),
+  /* prettier-ignore */
+  box-shadow: 
+    px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 1),
     px(2) px(-2) px(1) px(($f * math.div(2, $d)) - 3) rgba(0, 0, 0, 0.75) inset,
-    px(-2) px(2) px(1) px(($f * math.div(2, $d)) - 3) rgba(128, 128, 128, 0.75)
-      inset,
+    px(-2) px(2) px(1) px(($f * math.div(2, $d)) - 3) rgba(128, 128, 128, 0.75) inset,
     0 0 0 px($f * math.div(3, $d)) rgb(48, 48, 48) inset,
     0 0 0 px($f * math.div(4, $d)) rgb(63, 0, 0) inset,
     px(-2) px(2) px(1) px(($f * math.div(5, $d)) - 3) rgba(220, 0, 0, 1) inset,
@@ -34,10 +35,11 @@
 @mixin push-button-active($size) {
   $f: math.div($size, 2);
   $d: 10;
-  box-shadow: px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 100%),
+  /* prettier-ignore */
+  box-shadow: 
+    px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 100%),
     px(2) px(-2) px(1) px(($f * math.div(2, $d)) - 3) rgba(0, 0, 0, 0) inset,
-    px(-2) px(2) px(1) px(($f * math.div(2, $d)) - 3) rgba(128, 128, 128, 0.75)
-      inset,
+    px(-2) px(2) px(1) px(($f * math.div(2, $d)) - 3) rgba(128, 128, 128, 0.75) inset,
     0 0 0 px($f * math.div(3, $d)) rgb(48, 48, 48) inset,
     0 0 0 px($f * math.div(4, $d)) rgb(63, 0, 0) inset,
     px(-2) px(2) px(1) px(($f * math.div(5, $d)) - 3) rgba(220, 0, 0, 0) inset,
@@ -55,7 +57,10 @@
   padding: 0;
   box-sizing: border-box;
   background-color: #580000;
-  box-shadow: px(-2) px(2) px(1) px(-1) rgba(#fff, 0.25) inset,
+  // @TODO figure this out
+  /* prettier-ignore */
+  box-shadow:
+    px(-2) px(2) px(1) px(-1) rgba(#fff, 0.25) inset,
     px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
     px(-6) px(-3) px(0) px(0) #2d2b25 inset,
     px(6) px(3) px(0) px(0) #2d2b25 inset,
@@ -67,7 +72,9 @@
   border: px(1) solid #040c00;
   &:active {
     background-color: #fc3030;
-    box-shadow: px(0) px(0) px(1) px(-1) rgba(#fff, 0.25) inset,
+    /* prettier-ignore */
+    box-shadow: 
+      px(0) px(0) px(1) px(-1) rgba(#fff, 0.25) inset,
       px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
       px(-6) px(-3) px(0) px(0) #2d2b25 inset,
       px(6) px(3) px(0) px(0) #2d2b25 inset,
@@ -91,7 +98,6 @@
     }
   }
 }
-
 
 @mixin slate() {
   background-color: $root-bg;

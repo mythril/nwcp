@@ -573,10 +573,14 @@
         .flange {
           border-top-left-radius: px(2);
           border-bottom-left-radius: px(2);
-          box-shadow: px(0) px(3) px(2) px(-2) rgba(#fff, 0) inset,
+          /* prettier-ignore */
+          box-shadow:
+            px(0) px(3) px(2) px(-2) rgba(#fff, 0) inset,
             px(3) px(-3) px(4) px(-1) darken($ruddy, 50%) inset;
           &:first-child {
-            box-shadow: px(0) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
+            /* prettier-ignore */
+            box-shadow:
+              px(0) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
               px(3) px(-3) px(4) px(-1) darken($ruddy, 50%) inset;
           }
         }
@@ -601,10 +605,14 @@
         .flange {
           border-top-right-radius: px(2);
           border-bottom-right-radius: px(2);
-          box-shadow: px(-3) px(0) px(2) px(-2) rgba(#fff, 0.25) inset,
+          /* prettier-ignore */
+          box-shadow:
+            px(-3) px(0) px(2) px(-2) rgba(#fff, 0.25) inset,
             px(0) px(-3) px(2) px(-1) darken($ruddy, 50%) inset;
           &:first-child {
-            box-shadow: px(-3) px(2) px(2) px(-2) rgba(#fff, 0.25) inset,
+            /* prettier-ignore */
+            box-shadow:
+              px(-3) px(2) px(2) px(-2) rgba(#fff, 0.25) inset,
               px(0) px(-3) px(3) px(-1) darken($ruddy, 50%) inset;
           }
         }
@@ -714,7 +722,9 @@
       border-top-right-radius: px(13);
       border-bottom-left-radius: px(5);
       border-bottom-right-radius: px(5);
-      box-shadow: var(--basic-box-shadow), 
+      /* prettier-ignore */
+      box-shadow: 
+        var(--basic-box-shadow),
         px(0) px(6) px(3) px(0) rgba(#000, 0.4),
         var(--underbelly-shadow);
       height: px(33);
@@ -730,7 +740,9 @@
       border-bottom-right-radius: px(15);
       border-top-left-radius: px(2);
       border-top-right-radius: px(2);
-      box-shadow: var(--basic-box-shadow),
+      /* prettier-ignore */
+      box-shadow:
+        var(--basic-box-shadow),
         var(--underbelly-shadow);
     }
     input[type='checkbox'] {
@@ -741,7 +753,9 @@
     position: relative;
     padding: px(8) px(10);
     grid-area: help;
-    box-shadow: px(0) px(0) px(0) px(1) rgba(#000, 0.5),
+    /* prettier-ignore */
+    box-shadow: 
+      px(0) px(0) px(0) px(1) rgba(#000, 0.5),
       px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5),
       px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset;
   }

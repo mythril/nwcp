@@ -22,11 +22,12 @@
     height: var(--size);
     border-radius: 100%;
     background-color: #777;
-    box-shadow: px(0) px(0) px(3) 0 rgba(0, 0, 0, 1),
+    /* prettier-ignore */
+    box-shadow: 
+      px(0) px(0) px(3) 0 rgba(0, 0, 0, 1),
       px(-1) px(1) px(1) 0 rgba(0, 0, 0, 1),
       var(--thirdSize) calc(-1 * var(--thirdSize)) px(1) 0 rgba(0, 0, 0, 0.9) inset,
-      calc(-1 * var(--thirdSize)) var(--thirdSize) px(1) 0
-        rgba(255, 255, 255, 0.5) inset,
+      calc(-1 * var(--thirdSize)) var(--thirdSize) px(1) 0 rgba(255, 255, 255, 0.5) inset,
       px(1) px(-1) px(1) 0 rgba(255, 255, 255, 0.7) inset;
     &::after {
       content: ' ';

@@ -24,7 +24,8 @@
     padding: 0 px(8);
     border-radius: px(5);
     border-width: 0;
-    box-shadow: 
+    /* prettier-ignore */
+    box-shadow:
       var(--shadow-border),
       var(--light-source),
       var(--sunken-clear);
@@ -42,7 +43,8 @@
     &.checked,
     &:active {
       filter: saturate(0.7) brightness(0.7);
-      box-shadow: 
+      /* prettier-ignore */
+      box-shadow:
         var(--shadow-border),
         var(--light-source-clear),
         var(--sunken);

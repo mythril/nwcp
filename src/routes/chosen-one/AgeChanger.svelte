@@ -118,18 +118,20 @@
       height: px(15);
       padding: px(2) 0;
       transition: box-shadow 0.1s linear;
-      box-shadow:
+      /* prettier-ignore */
+      box-shadow: 
         var(--light-source),
         var(--cast-shadow),
         var(--shadow-border),
         var(--inset);
       &:active {
-        box-shadow:
+        /* prettier-ignore */
+        box-shadow: 
           var(--light-source-clear),
           var(--cast-shadow-clear),
           var(--shadow-border),
           var(--inset);
-    }
+      }
     }
     :global(svg) {
       fill: $title-color;
