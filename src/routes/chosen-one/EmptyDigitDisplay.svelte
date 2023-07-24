@@ -15,7 +15,9 @@
       border-top-left-radius: px(6) px(22);
       border-bottom-left-radius: px(6) px(22);
       background-color: hsl(0, 0%, 50%);
-      box-shadow: inset 0 px(15) px(2) px(2) rgba(0, 0, 0, 0.5),
+      /* prettier-ignore */
+      box-shadow: 
+        inset 0 px(15) px(2) px(2) rgba(0, 0, 0, 0.5),
         px(-0.5) 0 px(0.6) px(0.1) rgba(255, 255, 255, 0.35),
         px(-1) 0 px(0.5) 0 rgba(0, 0, 0, 0.25),
         inset 0 px(-11) px(2) 0 rgba(0, 0, 0, 0.8),

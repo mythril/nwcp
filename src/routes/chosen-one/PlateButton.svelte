@@ -1,10 +1,12 @@
 <script lang="ts">
+  import { clickSound } from '$lib/utils';
   import Bolthead from './Bolthead.svelte';
   export let pushButton = true;
   export let wornText = true;
 </script>
 
 <button
+  on:click={clickSound}
   on:click
   class:pushButton
   class={'button ' + $$props.class}
@@ -62,7 +64,9 @@
     border-bottom-right-radius: px(10) px(4);
     border-top-left-radius: px(2);
     border-bottom-left-radius: px(10) px(4);
-    box-shadow: px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset,
+    /* prettier-ignore */
+    box-shadow: 
+      px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset,
       px(-1) px(-1) px(0) px(-3) rgba(#000, 0.5) inset;
   }
 </style>
