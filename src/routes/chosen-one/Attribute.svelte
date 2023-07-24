@@ -38,7 +38,7 @@
       />
     </div>
   </div>
-  <div class="description dorky-border">
+  <div class="description terminal-font-defaults dorky-border">
     {descriptors[descIndex]}
   </div>
   <div class="manipulators">
@@ -98,7 +98,6 @@
   }
   .description {
     user-select: none;
-    @include terminal-font();
     line-height: px(22);
     background-color: hsl(var(--terminal-bg));
     width: px(70);

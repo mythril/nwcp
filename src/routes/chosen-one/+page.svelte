@@ -67,7 +67,7 @@
       </HelpSource>
     {/each}
   </div>
-  <div class="health">
+  <div class="health terminal-font-defaults">
     <div class="display">
       <HelpSource subject="Hit Points">
         <div
@@ -97,7 +97,7 @@
     <Bolthead dir="bl" />
     <Bolthead dir="mr" />
   </div>
-  <div class="derived-stats">
+  <div class="derived-stats terminal-font-defaults">
     <div class="display">
       <table class="highlighted">
         <tbody>
@@ -176,7 +176,7 @@
         <div class="flange" />
         <div class="flange" />
       </div>
-      <div class="terminal">
+      <div class="terminal terminal-font-defaults">
         <div class="leftTraits">
           {#each leftTraits as trait}
             <div class="trait">
@@ -232,7 +232,7 @@
         Skills
       </div>
     </HelpSource>
-    <div class="skills">
+    <div class="skills terminal-font-defaults">
       {#each Object.values(Skills) as skill}
         <HelpSource subject={skill}>
           <div class="skill">
@@ -407,7 +407,6 @@
     grid-area: health;
     @include slate();
     @include monitor();
-    @include terminal-font();
     border-radius: px(7);
     :global(.activeHelpSubject) {
       color: hsl(var(--terminal-color-active));
@@ -423,7 +422,6 @@
     grid-area: derived;
     @include slate();
     @include monitor();
-    @include terminal-font();
     :global(.activeHelpSubject) {
       color: hsl(var(--terminal-color-active));
     }
@@ -490,7 +488,6 @@
       height: 87%;
       padding: px(15) 0;
       margin: px(13) auto;
-      @include terminal-font();
       line-height: 1.48;
       background: linear-gradient(
         0.25turn,
@@ -641,7 +638,6 @@
         $ruddy 99%,
         mix($ruddy, #fff, 80%) 99.9%
       );
-      @include terminal-font();
     }
     border-radius: px(15);
     background-color: hsl(var(--bg));

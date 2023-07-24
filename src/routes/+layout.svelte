@@ -212,4 +212,13 @@
     padding: 0;
     background-color: hsl(var(--bg));
   }
+
+  :global(.terminal-font-defaults) {
+    font-family: var(--terminal-font);
+    line-height: 1.7;
+    color: hsl(var(--terminal-color));
+    font-weight: 700;
+    text-rendering: geometricPrecision;
+  }
+
 </style>
