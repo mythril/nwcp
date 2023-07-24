@@ -415,7 +415,7 @@
     .ailments {
       color: hsl(var(--terminal-faded));
       :global(.activeHelpSubject) {
-        color: $terminal-text-unmarked-active;
+        color: hsl(var(--terminal-faded-active));
       }
     }
   }
@@ -655,7 +655,7 @@
     .activeHelpSubject [data-trait] {
       color: hsl(var(--terminal-color-active));
       &.selected {
-        color: $terminal-text-selected-active;
+        color: hsl(var(--terminal-selected-active));
       }
     }
     [data-trait] {

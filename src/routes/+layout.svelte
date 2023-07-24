@@ -161,6 +161,7 @@
     pointer-events: none;
     mix-blend-mode: multiply;
   }
+  /* prettier-ignore */
   :root {
     --bg-hs: 40, 27.3%;
     --bg-l: 17.3%;
@@ -185,10 +186,13 @@
     --terminal-faded: var(--terminal-faded-hs), var(--terminal-faded-l);
     --terminal-color-active-hs: 60, 95.5%;
     --terminal-color-active-l: 73.7%;
-    --terminal-color-active: var(--terminal-color-active-hs),
-      var(--terminal-color-active-l);
-    --terminal-selected-active: #fcfcfc;
-    --terminal-faded-active: #707820;
+    --terminal-color-active: var(--terminal-color-active-hs), var(--terminal-color-active-l);
+    --terminal-selected-active-hs: 0, 0%;
+    --terminal-selected-active-l: 98.8%;
+    --terminal-selected-active: var(--terminal-selected-active-hs), var(--terminal-selected-active-l);
+    --terminal-faded-active-hs: 65.5, 57.9%;
+    --terminal-faded-active-l: 29.8%;
+    --terminal-faded-active: var(--terminal-faded-active-hs), var(--terminal-faded-active-l);
   }
   :global(:root),
   :global(html),
