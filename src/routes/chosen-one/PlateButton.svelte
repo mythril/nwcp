@@ -13,19 +13,19 @@
 >
   <Bolthead
     dir="tl"
-    size={4}
+    size={5}
   />
   <Bolthead
     dir="tr"
-    size={4}
+    size={5}
   />
   <Bolthead
     dir="br"
-    size={4}
+    size={5}
   />
   <Bolthead
     dir="bl"
-    size={4}
+    size={5}
   />
   <div class="label {wornText ? 'worn-text' : ''}">
     <slot />

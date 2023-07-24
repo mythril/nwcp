@@ -12,9 +12,8 @@
 <style lang="scss">
   .bolthead {
     // @TODO use scale instead of this gibberish
-    --size: calc(var(--in-size) * #{px(1)});
+    --size: #{px(8)};
     --offset: calc(var(--size) / 2);
-    --thirdSize: calc(var(--size) / 3);
     --halfSize: calc(var(--size) / 2);
     position: absolute;
     display: block;
@@ -22,64 +21,87 @@
     height: var(--size);
     border-radius: 100%;
     background-color: #777;
+    transform-origin: center;
+    transform: scale(calc(var(--in-size) / 8));
+    filter: brightness(0.8);
     /* prettier-ignore */
     box-shadow: 
       px(0) px(0) px(3) 0 rgba(0, 0, 0, 1),
       px(-1) px(1) px(1) 0 rgba(0, 0, 0, 1),
-      var(--thirdSize) calc(-1 * var(--thirdSize)) px(1) 0 rgba(0, 0, 0, 0.9) inset,
-      calc(-1 * var(--thirdSize)) var(--thirdSize) px(1) 0 rgba(255, 255, 255, 0.5) inset,
+      px(3) px(-3) px(1) 0 rgba(0, 0, 0, 0.9) inset,
+      px(-3) px(3) px(1) 0 rgba(255, 255, 255, 0.5) inset,
       px(1) px(-1) px(1) 0 rgba(255, 255, 255, 0.7) inset;
+    --rotation-scrambling: 0deg;
     &::after {
       content: ' ';
-      top: 50%;
+      top: 0;
+      left: 0;
       position: absolute;
       width: 100%;
-      height: px(0);
-      border-top: px(2) solid rgba(#000, 0.5);
-      border-bottom: px(2) solid rgba(#fff, 0.25);
+      height: 100%;
+      border-radius: 100%;
+      opacity: 0.35;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(0, 0, 0, 0) 37.5%,
+        rgba(0, 0, 0, 1) 37.5%,
+        rgba(0, 0, 0, 1) 50%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(255, 255, 255, 1) 62.5%,
+        rgba(0, 0, 0, 0) 62.5%,
+        rgba(0, 0, 0, 0) 100%
+      );
       transform-origin: center;
+      transform: rotate(var(--rotation-scrambling));
     }
     &:nth-of-type(6n)::after {
-      transform: rotate(25deg);
+      --rotation-scrambling: 25deg;
     }
     &:nth-of-type(6n + 1)::after {
-      transform: rotate(50deg);
+      --rotation-scrambling: 50deg;
     }
     &:nth-of-type(6n + 2)::after {
-      transform: rotate(75deg);
+      --rotation-scrambling: 75deg;
     }
     &:nth-of-type(6n + 3)::after {
-      transform: rotate(100deg);
+      --rotation-scrambling: 100deg;
     }
     &:nth-of-type(6n + 4)::after {
-      transform: rotate(125deg);
+      --rotation-scrambling: 125deg;
     }
     &:nth-of-type(6n + 5)::after {
-      transform: rotate(150deg);
+      --rotation-scrambling: 150deg;
     }
   }
   .tl {
+    transform-origin: top left;
     left: var(--offset);
     top: var(--offset);
   }
   .tr {
+    transform-origin: top right;
     right: var(--offset);
     top: var(--offset);
   }
   .bl {
+    transform-origin: bottom left;
     left: var(--offset);
     bottom: var(--offset);
   }
   .br {
+    transform-origin: bottom right;
     right: var(--offset);
     bottom: var(--offset);
   }
   .ml {
+    transform-origin: center left;
     left: var(--offset);
     top: 50%;
     margin-top: calc(-1 * var(--halfSize));
   }
   .mr {
+    transform-origin: center right;
     right: var(--offset);
     top: 50%;
     margin-top: calc(-1 * var(--halfSize));
