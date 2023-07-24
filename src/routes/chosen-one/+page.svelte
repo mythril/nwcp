@@ -413,7 +413,7 @@
       color: $terminal-text-active;
     }
     .ailments {
-      color: $terminal-text-unmarked;
+      color: hsl(var(--terminal-faded));
       :global(.activeHelpSubject) {
         color: $terminal-text-unmarked-active;
       }

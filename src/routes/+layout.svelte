@@ -180,7 +180,9 @@
     --terminal-selected-hs: 0, 0%;
     --terminal-selected-l: 62.7%;
     --terminal-selected: var(--terminal-selected-hs), var(--terminal-selected-l);
-    --terminal-faded: #183018;
+    --terminal-faded-hs: 120, 33.3%;
+    --terminal-faded-l: 14.1%;
+    --terminal-faded: var(--terminal-faded-hs), var(--terminal-faded-l);
     --terminal-color-active: #fcfc7c;
     --terminal-selected-active: #fcfcfc;
     --terminal-faded-active: #707820;
