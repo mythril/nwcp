@@ -644,7 +644,7 @@
       @include terminal-font();
     }
     border-radius: px(15);
-    background-color: $root-bg;
+    background-color: hsl(var(--bg));
     margin: px(10);
     margin-top: 0;
     padding: 0;
@@ -715,7 +715,7 @@
       position: absolute;
       left: px(-3);
       right: px(-3);
-      background-color: $root-bg;
+      background-color: hsl(var(--bg));
     }
     &::before {
       border-top-left-radius: px(13);

@@ -140,7 +140,7 @@
     flex-flow: column;
     justify-content: center;
     position: relative;
-    background-color: $root-bg;
+    background-color: hsl(var(--bg));
     border: 0;
     margin: 0 auto;
   }
@@ -160,5 +160,27 @@
     right: 0;
     pointer-events: none;
     mix-blend-mode: multiply;
+  }
+  :root {
+    --bg-hs: 40, 27.3%;
+    --bg-l: 17.3%;
+    --bg: var(--bg-hs), var(--bg-l);
+    --title-color: #7c6818;
+    --title-bg: #383838;
+    --terminal-color: #3cf800;
+    --terminal-selected: #a0a0a0;
+    --terminal-faded: #183018;
+    --terminal-color-active: #fcfc7c;
+    --terminal-selected-active: #fcfcfc;
+    --terminal-faded-active: #707820;
+    --terminal-bg: #040c00;
+  }
+  :global(:root),
+  :global(html),
+  :global(body) {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background-color: hsl(var(--bg));
   }
 </style>

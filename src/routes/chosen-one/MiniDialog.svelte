@@ -84,7 +84,7 @@
     padding-bottom: px(9);
     top: 0;
     z-index: 3;
-    background-color: $root-bg;
+    background-color: hsl(var(--bg));
     box-shadow: var(--basic-box-shadow),
       inset px(5) px(-5) px(5) px(0) rgba(#000, 0.75);
     .main {

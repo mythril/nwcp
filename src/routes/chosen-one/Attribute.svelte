@@ -123,13 +123,13 @@
       color: transparent;
       height: px(13);
       width: px(20);
-      background-color: $root-bg;
+      background-color: hsl(var(--bg));
       border-radius: px(3) px(4);
       line-height: px(14);
       /* prettier-ignore */
       box-shadow: 
         px(-3) px(3) px(3) px(-3) rgba(255, 255, 255, 0.5) inset,
-        px(3) px(-3) px(3) px(-1) rgba(darken($root-bg, 50%), 0.5) inset,
+        px(3) px(-3) px(3) px(-1) rgba(0, 0, 0, 0.5) inset,
         px(0) px(3) px(2) px(1) #000,
         px(0) px(0) px(0) px(0) rgba(#000, 0);
       transition: box-shadow 0.1s linear;
@@ -137,7 +137,7 @@
         /* prettier-ignore */
         box-shadow: 
           px(-3) px(3) px(3) px(-3) rgba(#000, 0.5) inset,
-          px(3) px(-3) px(3) px(-1) rgba(darken($root-bg, 50%), 0.5) inset,
+          px(3) px(-3) px(3) px(-1) rgba(0, 0, 0, 0.5) inset,
           px(0) px(3) px(2) px(1) #000,
           px(-3) px(0) px(1) px(-1) rgba(#fff, 0.25);
       }
@@ -174,9 +174,9 @@
     }
   }
   .two-digit-border {
-    border-top: px(3) solid darken($root-bg, 10%);
-    border-right: px(3) solid darken($root-bg, 10%);
-    border-left: px(3) solid lighten($root-bg, 10%);
-    border-bottom: px(3) solid lighten($root-bg, 10%);
+    border-top: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
+    border-right: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
+    border-left: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) + 10%));
+    border-bottom: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) + 10%));
   }
 </style>

@@ -1,14 +1,5 @@
 @import 'colors';
 
-html,
-body,
-:root {
-  border: 0;
-  margin: 0;
-  padding: 0;
-  background-color: $root-bg;
-}
-
 /* prettier-ignore */
 :root {
   --px: #{px(1)};
@@ -45,10 +36,10 @@ body,
 }
 
 .dorky-border {
-  border-top: px(3) solid darken($root-bg, 10%);
-  border-left: px(4) solid lighten($root-bg, 45%);
-  border-right: px(4) solid lighten($root-bg, 5%);
-  border-bottom: px(3) solid lighten($root-bg, 25%);
+  border-top: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
+  border-left: px(4) solid hsl(var(--bg-hs), calc(var(--bg-l) + 45%));
+  border-right: px(4) solid hsl(var(--bg-hs), calc(var(--bg-l) + 5%));
+  border-bottom: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) + 25%));
 }
 
 body {

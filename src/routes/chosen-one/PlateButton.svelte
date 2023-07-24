@@ -38,7 +38,7 @@
     padding: px(0) px(10);
     display: block;
     appearance: none;
-    background-color: $root-bg;
+    background-color: hsl(var(--bg));
     border: 0;
     &.pushButton {
       &::after {
