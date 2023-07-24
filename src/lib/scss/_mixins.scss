@@ -1,46 +1,5 @@
 @import 'functions';
 
-@mixin push-button($size) {
-  width: px($size);
-  height: px($size);
-  border: 0;
-  outline: 0;
-  border-radius: 100%;
-  $f: math.div($size, 2);
-  $d: 10;
-  transition: box-shadow 0.1s linear;
-  /* prettier-ignore */
-  box-shadow: 
-    px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 1),
-    px(2) px(-2) px(1) px(($f * math.div(2, $d)) - 3) rgba(0, 0, 0, 0.75) inset,
-    px(-2) px(2) px(1) px(($f * math.div(2, $d)) - 3) rgba(128, 128, 128, 0.75) inset,
-    0 0 0 px($f * math.div(3, $d)) rgb(48, 48, 48) inset,
-    0 0 0 px($f * math.div(4, $d)) rgb(63, 0, 0) inset,
-    px(-2) px(2) px(1) px(($f * math.div(5, $d)) - 3) rgba(220, 0, 0, 1) inset,
-    px(2) px(-2) px(3) px(($f * math.div(5, $d)) - 4) rgba(255, 0, 0, 1) inset,
-    0 0 0 px($f * math.div(5, $d)) rgb(100, 0, 0) inset,
-    0 0 0 px($d + 2) rgb(89, 0, 0) inset,
-    0 0 px(0) px($f) hsl(0deg, 0%, 0%) inset,
-    0 0 0 px(math.div($f, $d)) hsl(0deg, 0%, 10%) inset;
-}
-@mixin push-button-active($size) {
-  $f: math.div($size, 2);
-  $d: 10;
-  /* prettier-ignore */
-  box-shadow: 
-    px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 100%),
-    px(2) px(-2) px(1) px(($f * math.div(2, $d)) - 3) rgba(0, 0, 0, 0) inset,
-    px(-2) px(2) px(1) px(($f * math.div(2, $d)) - 3) rgba(128, 128, 128, 0.75) inset,
-    0 0 0 px($f * math.div(3, $d)) rgb(48, 48, 48) inset,
-    0 0 0 px($f * math.div(4, $d)) rgb(63, 0, 0) inset,
-    px(-2) px(2) px(1) px(($f * math.div(5, $d)) - 3) rgba(220, 0, 0, 0) inset,
-    px(2) px(-2) px(3) px(($f * math.div(5, $d)) - 4) rgba(255, 0, 0, 0) inset,
-    0 0 0 px($f * math.div(5, $d)) rgb(100, 0, 0) inset,
-    0 0 0 px($d + 2) rgb(89, 0, 0) inset,
-    0 0 px(0) px($f) hsl(0deg, 0%, 0%) inset,
-    0 0 0 px(math.div($f, $d)) hsl(0deg, 0%, 10%) inset;
-}
-
 @mixin checkbox-button() {
   appearance: none;
   transition: box-shadow 0.1s linear;

@@ -7,7 +7,7 @@ Overall goals:
 
 ### To do
 
-- [ ] Add inert / other a11y features (mini dialogs need attention)
+- [ ] Add inert / other a11y features (mini dialogs need attention, use portals and body/document listeners)
 - [ ] Refactor `/chosen-one` route into components for each section
 - [ ] Refactor scss, maybe consider alternative tech with better minification
 - [ ] See if you can reduce initial page-weight via help json splitting

@@ -46,10 +46,40 @@
         position: absolute;
         left: px(12);
         top: px(5);
-        @include push-button(18);
+        width: px(18);
+        height: px(18);
+        border: 0;
+        outline: 0;
+        border-radius: 100%;
+        transition: box-shadow 0.1s linear;
+        /* prettier-ignore */
+        box-shadow: 
+          px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 1),
+          px(2) px(-2) px(1) px((9 * math.div(2, 10)) - 3) rgba(0, 0, 0, 0.75) inset,
+          px(-2) px(2) px(1) px((9 * math.div(2, 10)) - 3) rgba(128, 128, 128, 0.75) inset,
+          0 0 0 px(9 * math.div(3, 10)) rgb(48, 48, 48) inset,
+          0 0 0 px(9 * math.div(4, 10)) rgb(63, 0, 0) inset,
+          px(-2) px(2) px(1) px((9 * math.div(5, 10)) - 3) rgba(220, 0, 0, 1) inset,
+          px(2) px(-2) px(3) px((9 * math.div(5, 10)) - 4) rgba(255, 0, 0, 1) inset,
+          0 0 0 px(9 * math.div(5, 10)) rgb(100, 0, 0) inset,
+          0 0 0 px(10 + 2) rgb(89, 0, 0) inset,
+          0 0 px(0) px(9) hsl(0deg, 0%, 0%) inset,
+          0 0 0 px(math.div(9, 10)) hsl(0deg, 0%, 10%) inset;
       }
       &:active::after {
-        @include push-button-active(18);
+        /* prettier-ignore */
+        box-shadow: 
+          px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 100%),
+          px(2) px(-2) px(1) px((9 * math.div(2, 10)) - 3) rgba(0, 0, 0, 0) inset,
+          px(-2) px(2) px(1) px((9 * math.div(2, 10)) - 3) rgba(128, 128, 128, 0.75) inset,
+          0 0 0 px(9 * math.div(3, 10)) rgb(48, 48, 48) inset,
+          0 0 0 px(9 * math.div(4, 10)) rgb(63, 0, 0) inset,
+          px(-2) px(2) px(1) px((9 * math.div(5, 10)) - 3) rgba(220, 0, 0, 0) inset,
+          px(2) px(-2) px(3) px((9 * math.div(5, 10)) - 4) rgba(255, 0, 0, 0) inset,
+          0 0 0 px(9 * math.div(5, 10)) rgb(100, 0, 0) inset,
+          0 0 0 px(10 + 2) rgb(89, 0, 0) inset,
+          0 0 px(0) px(9) hsl(0deg, 0%, 0%) inset,
+          0 0 0 px(math.div(9, 10)) hsl(0deg, 0%, 10%) inset;
       }
       .label {
         padding-left: px(25);

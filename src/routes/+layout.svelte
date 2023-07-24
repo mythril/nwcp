@@ -220,5 +220,4 @@
     font-weight: 700;
     text-rendering: geometricPrecision;
   }
-
 </style>
