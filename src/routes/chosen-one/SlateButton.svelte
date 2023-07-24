@@ -19,7 +19,7 @@
     white-space: nowrap;
     text-transform: uppercase;
     user-select: none;
-    background-color: $title-bg;
+    background-color: hsl(var(--title-bg));
     color: hsl(var(--title-color));
     padding: 0 px(8);
     border-radius: px(5);

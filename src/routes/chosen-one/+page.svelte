@@ -439,7 +439,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: $title-bg;
+      background-color: hsl(var(--title-bg));
       border-top-left-radius: px(2);
       border-top-right-radius: px(2);
       border-bottom-left-radius: px(15);
@@ -466,7 +466,7 @@
       right: 0;
       top: 0;
       height: px(28);
-      background-color: $title-bg;
+      background-color: hsl(var(--title-bg));
       border-top-left-radius: px(15);
       border-top-right-radius: px(15);
       border-bottom-left-radius: px(2);
