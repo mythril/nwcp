@@ -174,7 +174,9 @@
     --terminal-bg-hs: 100, 100%;
     --terminal-bg-l: 2.4%;
     --terminal-bg: var(--terminal-bg-hs), var(--terminal-bg-l);
-    --terminal-color: #3cf800;
+    --terminal-color-hs: 105.5, 100%;
+    --terminal-color-l: 48.6%;
+    --terminal-color: var(--terminal-color-hs), var(--terminal-color-l);
     --terminal-selected: #a0a0a0;
     --terminal-faded: #183018;
     --terminal-color-active: #fcfc7c;

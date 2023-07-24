@@ -651,7 +651,7 @@
     padding-top: px(22) * 1.5;
     background-color: $ruddy;
     position: relative;
-    color: $terminal-text;
+    color: hsl(var(--terminal-color));
     .activeHelpSubject [data-trait] {
       color: $terminal-text-active;
       &.selected {

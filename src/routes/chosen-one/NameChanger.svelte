@@ -58,7 +58,7 @@
     padding-left: 1em;
     padding-right: 1em;
     background-color: hsl(var(--terminal-bg));
-    color: $terminal-text;
+    color: hsl(var(--terminal-color));
   }
   .root {
     height: 100%;

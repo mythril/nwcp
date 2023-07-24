@@ -106,7 +106,7 @@
     }
     input:focus + .display .value::after {
       width: 0.5em;
-      background-color: $terminal-text;
+      background-color: hsl(var(--terminal-color));
       animation: cursor-blink 0.3s steps(2, start) infinite;
     }
     @keyframes cursor-blink {

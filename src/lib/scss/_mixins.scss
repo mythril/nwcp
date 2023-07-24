@@ -4,7 +4,7 @@
 @mixin terminal-font() {
   font-family: terminal-font();
   line-height: 1.7;
-  color: $terminal-text;
+  color: hsl(var(--terminal-color));
   font-weight: 700;
   text-rendering: geometricPrecision;
 }
