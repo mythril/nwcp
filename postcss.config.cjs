@@ -4,7 +4,10 @@ const config = {
   plugins: [
     require('postcss-nested'),
     require('@davidwells/postcss-math'),
-    autoprefixer
+    autoprefixer,
+    require('cssnano')({
+      preset: 'default',
+    }),
   ]
 };
 

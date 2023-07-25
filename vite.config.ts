@@ -11,18 +11,9 @@ export default ({ mode }: { mode: string }) => {
     test: {
       include: ['src/**/*.{test,spec}.{js,ts}']
     },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `
-			  @use 'sass:math';
-			`
-        }
-      }
-    },
     server: {
-      host: 'nwcp.local',
-      port: 8080,
+      host: process.env.VITE_DEV_HOST || 'localhost',
+      port: parseInt(process.env.VITE_DEV_PORT || '8080', 10),
       https: {
         cert: process.env.VITE_CERT_FILE
           ? fs.readFileSync(process.env.VITE_CERT_FILE)
