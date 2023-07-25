@@ -74,12 +74,12 @@
   .buttons {
     display: flex;
     align-items: stretch;
-    gap: px(10);
+    gap: 10rem;
     .worn-text {
-      width: px(45);
-      height: px(45);
-      padding: px(0);
-      padding-top: px(4);
+      width: 45rem;
+      height: 45rem;
+      padding: 0rem;
+      padding-top: 4rem;
     }
     :global(.sex-btn) {
       /* prettier-ignore */
@@ -106,6 +106,6 @@
     max-height: 80%;
     fill: hsl(var(--title-color));
     stroke: hsl(var(--title-color-hs), calc(var(--title-color-l) - 20%));
-    stroke-width: px(0.2);
+    stroke-width: 0.2rem;
   }
 </style>

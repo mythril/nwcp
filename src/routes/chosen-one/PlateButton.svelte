@@ -35,7 +35,7 @@
 <style lang="scss">
   .button {
     position: relative;
-    padding: px(0) px(10);
+    padding: 0rem 10rem;
     display: block;
     appearance: none;
     background-color: hsl(var(--bg));
@@ -44,59 +44,59 @@
       &::after {
         content: ' ';
         position: absolute;
-        left: px(12);
-        top: px(5);
-        width: px(18);
-        height: px(18);
+        left: 12rem;
+        top: 5rem;
+        width: 18rem;
+        height: 18rem;
         border: 0;
         outline: 0;
         border-radius: 100%;
         transition: box-shadow 0.1s linear;
         /* prettier-ignore */
         box-shadow: 
-          px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 1),
-          px(2) px(-2) px(1) px((9 * math.div(2, 10)) - 3) rgba(0, 0, 0, 0.75) inset,
-          px(-2) px(2) px(1) px((9 * math.div(2, 10)) - 3) rgba(128, 128, 128, 0.75) inset,
-          0 0 0 px(9 * math.div(3, 10)) rgb(48, 48, 48) inset,
-          0 0 0 px(9 * math.div(4, 10)) rgb(63, 0, 0) inset,
-          px(-2) px(2) px(1) px((9 * math.div(5, 10)) - 3) rgba(220, 0, 0, 1) inset,
-          px(2) px(-2) px(3) px((9 * math.div(5, 10)) - 4) rgba(255, 0, 0, 1) inset,
-          0 0 0 px(9 * math.div(5, 10)) rgb(100, 0, 0) inset,
-          0 0 0 px(10 + 2) rgb(89, 0, 0) inset,
-          0 0 px(0) px(9) hsl(0deg, 0%, 0%) inset,
-          0 0 0 px(math.div(9, 10)) hsl(0deg, 0%, 10%) inset;
+          -1rem 1rem 2rem 0rem hsla(0deg, 0%, 0%, 1),
+          2rem -2rem 1rem ((9rem * math.div(2, 10)) - 3) rgba(0, 0, 0, 0.75) inset,
+          -2rem 2rem 1rem ((9rem * math.div(2, 10)) - 3) rgba(128, 128, 128, 0.75) inset,
+          0 0 0 (9rem * math.div(3, 10)) rgb(48, 48, 48) inset,
+          0 0 0 (9rem * math.div(4, 10)) rgb(63, 0, 0) inset,
+          -2rem 2rem 1rem ((9rem * math.div(5, 10)) - 3) rgba(220, 0, 0, 1) inset,
+          2rem -2rem 3rem ((9rem * math.div(5, 10)) - 4) rgba(255, 0, 0, 1) inset,
+          0 0 0 (9rem * math.div(5, 10)) rgb(100, 0, 0) inset,
+          0 0 0 (10rem + 2) rgb(89, 0, 0) inset,
+          0 0 0rem 9rem hsl(0deg, 0%, 0%) inset,
+          0 0 0 (math.div(9rem, 10)) hsl(0deg, 0%, 10%) inset;
       }
       &:active::after {
         /* prettier-ignore */
         box-shadow: 
-          px(-1) px(1) px(2) px(0) hsla(0deg, 0%, 0%, 100%),
-          px(2) px(-2) px(1) px((9 * math.div(2, 10)) - 3) rgba(0, 0, 0, 0) inset,
-          px(-2) px(2) px(1) px((9 * math.div(2, 10)) - 3) rgba(128, 128, 128, 0.75) inset,
-          0 0 0 px(9 * math.div(3, 10)) rgb(48, 48, 48) inset,
-          0 0 0 px(9 * math.div(4, 10)) rgb(63, 0, 0) inset,
-          px(-2) px(2) px(1) px((9 * math.div(5, 10)) - 3) rgba(220, 0, 0, 0) inset,
-          px(2) px(-2) px(3) px((9 * math.div(5, 10)) - 4) rgba(255, 0, 0, 0) inset,
-          0 0 0 px(9 * math.div(5, 10)) rgb(100, 0, 0) inset,
-          0 0 0 px(10 + 2) rgb(89, 0, 0) inset,
-          0 0 px(0) px(9) hsl(0deg, 0%, 0%) inset,
-          0 0 0 px(math.div(9, 10)) hsl(0deg, 0%, 10%) inset;
+          -1rem 1rem 2rem 0rem hsla(0deg, 0%, 0%, 100%),
+          2rem -2rem 1rem ((9rem * math.div(2, 10)) - 3) rgba(0, 0, 0, 0) inset,
+          -2rem 2rem 1rem ((9rem * math.div(2, 10)) - 3) rgba(128, 128, 128, 0.75) inset,
+          0 0 0 (9rem * math.div(3, 10)) rgb(48, 48, 48) inset,
+          0 0 0 (9rem * math.div(4, 10)) rgb(63, 0, 0) inset,
+          -2rem 2rem 1rem ((9rem * math.div(5, 10)) - 3) rgba(220, 0, 0, 0) inset,
+          2rem -2rem 3rem ((9rem * math.div(5, 10)) - 4) rgba(255, 0, 0, 0) inset,
+          0 0 0 (9rem * math.div(5, 10)) rgb(100, 0, 0) inset,
+          0 0 0 (10rem + 2) rgb(89, 0, 0) inset,
+          0 0 0rem 9rem hsl(0deg, 0%, 0%) inset,
+          0 0 0 (math.div(9rem, 10)) hsl(0deg, 0%, 10%) inset;
       }
       .label {
-        padding-left: px(25);
+        padding-left: 25rem;
       }
     }
     .label {
-      font-size: px(22);
+      font-size: 22rem;
       text-align: left;
       width: 100%;
     }
-    border-top-right-radius: px(2);
-    border-bottom-right-radius: px(10) px(4);
-    border-top-left-radius: px(2);
-    border-bottom-left-radius: px(10) px(4);
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 10rem 4rem;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 10rem 4rem;
     /* prettier-ignore */
     box-shadow: 
-      px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset,
-      px(-1) px(-1) px(0) px(-3) rgba(#000, 0.5) inset;
+      -1rem 1rem 2rem -1rem rgba(#fff, 0.5) inset,
+      -1rem -1rem 0rem -3rem rgba(#000, 0.5) inset;
   }
 </style>

@@ -53,7 +53,7 @@
     font-weight: 700;
     width: 100%;
     margin: 0 auto;
-    font-size: px(10);
+    font-size: 10rem;
     line-height: 1.6;
     padding-left: 1em;
     padding-right: 1em;

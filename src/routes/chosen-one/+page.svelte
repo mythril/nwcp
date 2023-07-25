@@ -292,7 +292,7 @@
     grid-template-columns: 25.5625% 25.5625% 1% 46.375%;
     grid-template-rows: repeat(30, 1fr);
     grid-column-gap: 0.5%;
-    grid-row-gap: px(5);
+    grid-row-gap: 5rem;
     grid-template-areas:
       'nas nas . skills'
       'nas nas . skills'
@@ -329,8 +329,7 @@
     bottom: 0;
     top: 0;
     right: 0;
-    filter: drop-shadow(px(-5) px(5) px(3) #000)
-      drop-shadow(px(-5) px(5) px(3) #000);
+    filter: drop-shadow(-5rem 5rem 3rem #000) drop-shadow(-5rem 5rem 3rem #000);
   }
 
   .name-age-sex {
@@ -365,9 +364,9 @@
         border-spacing: 0;
       }
       td {
-        padding-left: px(12);
+        padding-left: 12rem;
       }
-      padding: px(7);
+      padding: 7rem;
       position: absolute;
       top: 5%;
       bottom: 5%;
@@ -375,38 +374,38 @@
       right: 7%;
       line-height: 1.7;
       background-color: hsl(var(--terminal-bg));
-      border-radius: px(8) px(7);
+      border-radius: 8rem 7rem;
       box-shadow: var(--inset);
     }
   }
 
   .special {
     grid-area: special;
-    border-radius: px(2);
-    border-bottom-left-radius: px(9) px(5);
-    padding: px(6) px(7);
+    border-radius: 2rem;
+    border-bottom-left-radius: 9rem 5rem;
+    padding: 6rem 7rem;
   }
   .char-points {
     .inset-border {
-      border-radius: px(2);
+      border-radius: 2rem;
       box-shadow: var(--inset);
     }
     grid-area: 18 / 1 / 21 / 2;
     position: relative;
-    border-radius: px(2);
-    border-bottom-left-radius: px(5) px(3);
+    border-radius: 2rem;
+    border-bottom-left-radius: 5rem 3rem;
     display: flex;
     justify-content: space-between;
-    padding-left: px(4);
-    padding-right: px(16);
+    padding-left: 4rem;
+    padding-right: 16rem;
     align-items: center;
     .label {
-      font-size: px(23);
+      font-size: 23rem;
     }
   }
   .health {
     grid-area: health;
-    border-radius: px(7);
+    border-radius: 7rem;
     :global(.activeHelpSubject) {
       color: hsl(var(--terminal-color-active));
     }
@@ -422,26 +421,26 @@
     :global(.activeHelpSubject) {
       color: hsl(var(--terminal-color-active));
     }
-    border-radius: px(7);
+    border-radius: 7rem;
   }
   .tagged-skills {
     position: relative;
     .skills-remaining {
       position: absolute;
       bottom: 0;
-      height: px(44);
+      height: 44rem;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: hsl(var(--title-bg));
-      border-top-left-radius: px(2);
-      border-top-right-radius: px(2);
-      border-bottom-left-radius: px(15);
-      border-bottom-right-radius: px(15);
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
+      border-bottom-left-radius: 15rem;
+      border-bottom-right-radius: 15rem;
       box-shadow: var(--sharp-light-source);
       .unused {
-        border-radius: px(2);
+        border-radius: 2rem;
         overflow: hidden;
         box-shadow: var(--inset);
       }
@@ -449,8 +448,8 @@
         border: 0;
       }
       .label {
-        font-size: px(22);
-        padding-right: px(10);
+        font-size: 22rem;
+        padding-right: 10rem;
       }
     }
     &::before {
@@ -460,21 +459,21 @@
       left: 0;
       right: 0;
       top: 0;
-      height: px(28);
+      height: 28rem;
       background-color: hsl(var(--title-bg));
-      border-top-left-radius: px(15);
-      border-top-right-radius: px(15);
-      border-bottom-left-radius: px(2);
-      border-bottom-right-radius: px(2);
+      border-top-left-radius: 15rem;
+      border-top-right-radius: 15rem;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
     }
     .before {
-      padding-left: px(58);
+      padding-left: 58rem;
       position: absolute;
       left: 0;
       right: 0;
       top: 0;
-      height: px(28);
-      font-size: px(22);
+      height: 28rem;
+      font-size: 22rem;
     }
 
     grid-area: skills;
@@ -483,8 +482,8 @@
       flex-flow: column;
       width: 97%;
       height: 87%;
-      padding: px(15) 0;
-      margin: px(13) auto;
+      padding: 15rem 0;
+      margin: 13rem auto;
       line-height: 1.48;
       background: linear-gradient(
         0.25turn,
@@ -507,17 +506,17 @@
         color: hsl(var(--terminal-color-active));
       }
       .button {
-        width: px(39);
-        max-height: px(14);
+        width: 39rem;
+        max-height: 14rem;
       }
       .label {
-        width: px(38 * 7);
-        padding-left: px(15);
+        width: 266rem;
+        padding-left: 15rem;
       }
       .value {
         text-align: right;
-        padding-right: px(45);
-        width: px(38 * 2 + 1);
+        padding-right: 45rem;
+        width: 77rem;
       }
     }
   }
@@ -535,15 +534,15 @@
         position: absolute;
         bottom: 100%;
         z-index: 1;
-        font-size: px(22);
+        font-size: 22rem;
         line-height: 1.5;
         padding: 0;
-        padding-left: px(40);
+        padding-left: 40rem;
       }
       .flange {
         background-color: $ruddy;
-        width: px(12);
-        height: px(17);
+        width: 12rem;
+        height: 17rem;
       }
       .flange-set-left,
       .flange-set-right {
@@ -551,67 +550,67 @@
         top: 26%;
       }
       .flange-set-left {
-        left: px(-7);
+        left: -7rem;
         &::after {
           content: ' ';
           background-color: $ruddy;
           position: absolute;
-          left: px(10);
+          left: 10rem;
           top: 0;
           bottom: 0;
-          width: px(5);
+          width: 5rem;
         }
         .flange {
-          border-top-left-radius: px(2);
-          border-bottom-left-radius: px(2);
+          border-top-left-radius: 2rem;
+          border-bottom-left-radius: 2rem;
           /* prettier-ignore */
           box-shadow:
-            px(0) px(3) px(2) px(-2) rgba(#fff, 0) inset,
-            px(3) px(-3) px(4) px(-1) darken($ruddy, 50%) inset;
+            0rem 3rem 2rem -2rem rgba(#fff, 0) inset,
+            3rem -3rem 4rem -1rem darken($ruddy, 50%) inset;
           &:first-child {
             /* prettier-ignore */
             box-shadow:
-              px(0) px(3) px(2) px(-2) rgba(#fff, 0.25) inset,
-              px(3) px(-3) px(4) px(-1) darken($ruddy, 50%) inset;
+              0rem 3rem 2rem -2rem rgba(#fff, 0.25) inset,
+              3rem -3rem 4rem -1rem darken($ruddy, 50%) inset;
           }
         }
         .flange:first-child {
-          border-top-left-radius: px(4);
+          border-top-left-radius: 4rem;
         }
         .flange:last-child {
-          border-bottom-left-radius: px(4);
+          border-bottom-left-radius: 4rem;
         }
       }
       .flange-set-right {
-        right: px(-7);
+        right: -7rem;
         &::after {
           content: ' ';
           background-color: $ruddy;
           position: absolute;
-          right: px(7);
+          right: 7rem;
           top: 0;
           bottom: 0;
-          width: px(5);
+          width: 5rem;
         }
         .flange {
-          border-top-right-radius: px(2);
-          border-bottom-right-radius: px(2);
+          border-top-right-radius: 2rem;
+          border-bottom-right-radius: 2rem;
           /* prettier-ignore */
           box-shadow:
-            px(-3) px(0) px(2) px(-2) rgba(#fff, 0.25) inset,
-            px(0) px(-3) px(2) px(-1) darken($ruddy, 50%) inset;
+            -3rem 0rem 2rem -2rem rgba(#fff, 0.25) inset,
+            0rem -3rem 2rem -1rem darken($ruddy, 50%) inset;
           &:first-child {
             /* prettier-ignore */
             box-shadow:
-              px(-3) px(2) px(2) px(-2) rgba(#fff, 0.25) inset,
-              px(0) px(-3) px(3) px(-1) darken($ruddy, 50%) inset;
+              -3rem 2rem 2rem -2rem rgba(#fff, 0.25) inset,
+              0rem -3rem 3rem -1rem darken($ruddy, 50%) inset;
           }
         }
         .flange:first-child {
-          border-top-right-radius: px(4);
+          border-top-right-radius: 4rem;
         }
         .flange:last-child {
-          border-bottom-right-radius: px(4);
+          border-bottom-right-radius: 4rem;
         }
       }
     }
@@ -619,7 +618,7 @@
       height: 100%;
       display: flex;
       flex-flow: row;
-      padding-top: px(4);
+      padding-top: 4rem;
       background: linear-gradient(
         0.25turn,
         darken($ruddy, 20%) 0%,
@@ -633,12 +632,12 @@
         mix($ruddy, #fff, 80%) 99.9%
       );
     }
-    border-radius: px(15);
+    border-radius: 15rem;
     background-color: hsl(var(--bg));
-    margin: px(10);
+    margin: 10rem;
     margin-top: 0;
     padding: 0;
-    padding-top: px(22) * 1.5;
+    padding-top: 22rem * 1.5;
     background-color: $ruddy;
     position: relative;
     color: hsl(var(--terminal-color));
@@ -662,7 +661,7 @@
     .leftTraits {
       width: 60%;
       [data-trait] {
-        padding-left: px(38 + 2);
+        padding-left: 40rem;
       }
       input {
         left: 0;
@@ -671,10 +670,10 @@
         &::after {
           content: ' ';
           position: absolute;
-          top: px(8);
-          left: px(30);
-          width: px(5);
-          height: px(2);
+          top: 8rem;
+          left: 30rem;
+          width: 5rem;
+          height: 2rem;
           background-color: rgba(#000, 0.25);
         }
       }
@@ -682,7 +681,7 @@
     .rightTraits {
       width: 40%;
       [data-trait] {
-        padding-right: px(38 + 16);
+        padding-right: 54rem;
       }
       input {
         right: 0;
@@ -691,10 +690,10 @@
         &::after {
           content: ' ';
           position: absolute;
-          top: px(8);
-          right: px(30);
-          width: px(5);
-          height: px(2);
+          top: 8rem;
+          right: 30rem;
+          width: 5rem;
+          height: 2rem;
           background-color: rgba(#000, 0.25);
         }
       }
@@ -703,33 +702,33 @@
     &::before {
       z-index: 1;
       position: absolute;
-      left: px(-3);
-      right: px(-3);
+      left: -3rem;
+      right: -3rem;
       background-color: hsl(var(--bg));
     }
     &::before {
-      border-top-left-radius: px(13);
-      border-top-right-radius: px(13);
-      border-bottom-left-radius: px(5);
-      border-bottom-right-radius: px(5);
+      border-top-left-radius: 13rem;
+      border-top-right-radius: 13rem;
+      border-bottom-left-radius: 5rem;
+      border-bottom-right-radius: 5rem;
       /* prettier-ignore */
       box-shadow: 
         var(--basic-box-shadow),
-        px(0) px(6) px(3) px(0) rgba(#000, 0.4),
+        0rem 6rem 3rem 0rem rgba(#000, 0.4),
         var(--underbelly-shadow);
-      height: px(33);
+      height: 33rem;
       content: ' ';
       top: 0;
       margin: 0;
     }
     &::after {
       content: ' ';
-      height: px(20);
+      height: 20rem;
       bottom: 0;
-      border-bottom-left-radius: px(15);
-      border-bottom-right-radius: px(15);
-      border-top-left-radius: px(2);
-      border-top-right-radius: px(2);
+      border-bottom-left-radius: 15rem;
+      border-bottom-right-radius: 15rem;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
       /* prettier-ignore */
       box-shadow:
         var(--basic-box-shadow),
@@ -738,27 +737,27 @@
   }
   .help {
     position: relative;
-    padding: px(8) px(10);
+    padding: 8rem 10rem;
     grid-area: help;
     /* prettier-ignore */
     box-shadow: 
-      px(0) px(0) px(0) px(1) rgba(#000, 0.5),
-      px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5),
-      px(-1) px(1) px(2) px(-1) rgba(#fff, 0.5) inset;
+      0rem 0rem 0rem 1rem rgba(#000, 0.5),
+      -1rem 1rem 2rem -1rem rgba(#fff, 0.5),
+      -1rem 1rem 2rem -1rem rgba(#fff, 0.5) inset;
   }
   .buttons {
     grid-area: buttons;
     display: flex;
     justify-content: space-between;
-    margin-bottom: px(10);
+    margin-bottom: 10rem;
     :global(.perks) {
-      width: px(140);
+      width: 140rem;
     }
     :global(.items) {
-      width: px(120);
+      width: 120rem;
     }
     :global(.stats) {
-      width: px(120);
+      width: 120rem;
     }
   }
 </style>

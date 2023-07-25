@@ -99,9 +99,9 @@
       content: ' ';
       display: inline-block;
       vertical-align: text-top;
-      width: px(1);
+      width: 1rem;
       height: 1em;
-      margin-left: px(1);
+      margin-left: 1rem;
       background-color: transparent;
     }
     input:focus + .display .value::after {

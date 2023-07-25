@@ -11,8 +11,7 @@
 
 <style lang="scss">
   .bolthead {
-    // @TODO use scale instead of this gibberish
-    --size: #{px(8)};
+    --size: 8rem;
     --offset: calc(var(--size) / 2);
     --halfSize: calc(var(--size) / 2);
     position: absolute;
@@ -26,11 +25,11 @@
     filter: brightness(0.8);
     /* prettier-ignore */
     box-shadow: 
-      px(0) px(0) px(3) 0 rgba(0, 0, 0, 1),
-      px(-1) px(1) px(1) 0 rgba(0, 0, 0, 1),
-      px(3) px(-3) px(1) 0 rgba(0, 0, 0, 0.9) inset,
-      px(-3) px(3) px(1) 0 rgba(255, 255, 255, 0.5) inset,
-      px(1) px(-1) px(1) 0 rgba(255, 255, 255, 0.7) inset;
+      0rem 0rem 3rem 0 rgba(0, 0, 0, 1),
+      -1rem 1rem 1rem 0 rgba(0, 0, 0, 1),
+      3rem -3rem 1rem 0 rgba(0, 0, 0, 0.9) inset,
+      -3rem 3rem 1rem 0 rgba(255, 255, 255, 0.5) inset,
+      1rem -1rem 1rem 0 rgba(255, 255, 255, 0.7) inset;
     --rotation-scrambling: 0deg;
     &::after {
       content: ' ';

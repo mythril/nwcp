@@ -12,34 +12,34 @@
       top: 0;
       right: 0;
       bottom: 0;
-      border-top-left-radius: px(6) px(22);
-      border-bottom-left-radius: px(6) px(22);
+      border-top-left-radius: 6rem 22rem;
+      border-bottom-left-radius: 6rem 22rem;
       background-color: hsl(0, 0%, 50%);
       /* prettier-ignore */
       box-shadow: 
-        inset 0 px(15) px(2) px(2) rgba(0, 0, 0, 0.5),
-        px(-0.5) 0 px(0.6) px(0.1) rgba(255, 255, 255, 0.35),
-        px(-1) 0 px(0.5) 0 rgba(0, 0, 0, 0.25),
-        inset 0 px(-11) px(2) 0 rgba(0, 0, 0, 0.8),
-        inset 0 px(6) px(2) 0 rgba(0, 0, 0, 0.8);
-      filter: blur(px(0.5));
+        inset 0 15rem 2rem 2rem rgba(0, 0, 0, 0.5),
+        -0.5rem 0 0.6rem 0.1rem rgba(255, 255, 255, 0.35),
+        -1rem 0 0.5rem 0 rgba(0, 0, 0, 0.25),
+        inset 0 -11rem 2rem 0 rgba(0, 0, 0, 0.8),
+        inset 0 6rem 2rem 0 rgba(0, 0, 0, 0.8);
+      filter: blur(0.5rem);
     }
     color: hsl(0, 0%, 93%);
     font-family: var(--label-font);
     font-weight: 700;
     /* prettier-ignore */
     text-shadow: 
-      px(1) px(1) 0 rgba(0, 0, 0, 0.8),
-      px(-1) px(1) 0 rgba(0, 0, 0, 0.8),
-      px(1) px(-1) 0 rgba(0, 0, 0, 0.8),
-      px(-1) px(-1) 0 rgba(0, 0, 0, 0.8);
-    left: px(-3);
-    padding-left: px(5);
-    margin-left: px(-8);
+      1rem 1rem 0 rgba(0, 0, 0, 0.8),
+      -1rem 1rem 0 rgba(0, 0, 0, 0.8),
+      1rem -1rem 0 rgba(0, 0, 0, 0.8),
+      -1rem -1rem 0 rgba(0, 0, 0, 0.8);
+    left: -3rem;
+    padding-left: 5rem;
+    margin-left: -8rem;
     box-sizing: border-box;
-    font-size: px(28);
-    line-height: px(28);
-    width: px(27);
+    font-size: 28rem;
+    line-height: 28rem;
+    width: 27rem;
     text-align: center;
     height: 100%;
   }

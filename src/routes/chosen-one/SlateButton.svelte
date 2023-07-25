@@ -21,8 +21,8 @@
     user-select: none;
     background-color: hsl(var(--title-bg));
     color: hsl(var(--title-color));
-    padding: 0 px(8);
-    border-radius: px(5);
+    padding: 0 8rem;
+    border-radius: 5rem;
     border-width: 0;
     /* prettier-ignore */
     box-shadow:
@@ -32,7 +32,7 @@
     transition: filter 0.2s linear, box-shadow 0.01s linear;
     font-family: var(--title-font);
     text-align: center;
-    font-size: px(22);
+    font-size: 22rem;
     line-height: 1.5;
     appearance: none;
     padding: 0;

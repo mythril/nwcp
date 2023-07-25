@@ -64,17 +64,17 @@
 <style lang="scss">
   .attribute {
     box-sizing: border-box;
-    padding: px(0) px(0);
+    padding: 0rem 0rem;
     display: flex;
     width: 100%;
-    height: px(44);
+    height: 44rem;
     justify-content: space-between;
     align-items: center;
   }
   .label {
     text-align: center;
-    font-size: px(30);
-    width: px(40);
+    font-size: 30rem;
+    width: 40rem;
   }
   .two-digit-attr {
     position: relative;
@@ -84,26 +84,26 @@
       top: 50%;
       content: ' ';
       background-color: hsl(var(--title-color));
-      margin-top: px(-1.5);
-      height: px(3);
+      margin-top: -1.5rem;
+      height: 3rem;
     }
     &::after {
-      left: px(51);
-      width: px(5);
+      left: 51rem;
+      width: 5rem;
     }
     &::before {
-      right: px(51);
-      width: px(8);
+      right: 51rem;
+      width: 8rem;
     }
   }
   .description {
     user-select: none;
-    line-height: px(22);
+    line-height: 22rem;
     background-color: hsl(var(--terminal-bg));
-    width: px(70);
-    height: px(28);
+    width: 70rem;
+    height: 28rem;
     text-align: left;
-    padding-left: px(6);
+    padding-left: 6rem;
     :global(.activeHelpSubject) & {
       color: hsl(var(--terminal-color-active));
     }
@@ -111,7 +111,7 @@
   .manipulators {
     display: flex;
     flex-direction: column;
-    height: px(32);
+    height: 32rem;
     button {
       appearance: none;
       user-select: none;
@@ -120,25 +120,25 @@
       margin: 0;
       padding: 0;
       color: transparent;
-      height: px(13);
-      width: px(20);
+      height: 13rem;
+      width: 20rem;
       background-color: hsl(var(--bg));
-      border-radius: px(3) px(4);
-      line-height: px(14);
+      border-radius: 3rem 4rem;
+      line-height: 14rem;
       /* prettier-ignore */
       box-shadow: 
-        px(-3) px(3) px(3) px(-3) rgba(255, 255, 255, 0.5) inset,
-        px(3) px(-3) px(3) px(-1) rgba(0, 0, 0, 0.5) inset,
-        px(0) px(3) px(2) px(1) #000,
-        px(0) px(0) px(0) px(0) rgba(#000, 0);
+        -3rem 3rem 3rem -3rem rgba(255, 255, 255, 0.5) inset,
+        3rem -3rem 3rem -1rem rgba(0, 0, 0, 0.5) inset,
+        0rem 3rem 2rem 1rem #000,
+        0rem 0rem 0rem 0rem rgba(#000, 0);
       transition: box-shadow 0.1s linear;
       &:active {
         /* prettier-ignore */
         box-shadow: 
-          px(-3) px(3) px(3) px(-3) rgba(#000, 0.5) inset,
-          px(3) px(-3) px(3) px(-1) rgba(0, 0, 0, 0.5) inset,
-          px(0) px(3) px(2) px(1) #000,
-          px(-3) px(0) px(1) px(-1) rgba(#fff, 0.25);
+          -3rem 3rem 3rem -3rem rgba(#000, 0.5) inset,
+          3rem -3rem 3rem -1rem rgba(0, 0, 0, 0.5) inset,
+          0rem 3rem 2rem 1rem #000,
+          -3rem 0rem 1rem -1rem rgba(#fff, 0.25);
       }
       &.incr,
       &.decr {
@@ -151,13 +151,13 @@
         }
       }
       &.incr {
-        margin-bottom: px(1);
+        margin-bottom: 1rem;
         &::after {
-          width: px(2);
+          width: 2rem;
           top: 20%;
           bottom: 20%;
           left: 50%;
-          margin-left: px(-2);
+          margin-left: -2rem;
         }
       }
       &.incr,
@@ -166,16 +166,16 @@
           top: 50%;
           left: 20%;
           right: 20%;
-          margin-top: px(-1);
-          height: px(2);
+          margin-top: -1rem;
+          height: 2rem;
         }
       }
     }
   }
   .two-digit-border {
-    border-top: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
-    border-right: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
-    border-left: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) + 10%));
-    border-bottom: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) + 10%));
+    border-top: 3rem solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
+    border-right: 3rem solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
+    border-left: 3rem solid hsl(var(--bg-hs), calc(var(--bg-l) + 10%));
+    border-bottom: 3rem solid hsl(var(--bg-hs), calc(var(--bg-l) + 10%));
   }
 </style>

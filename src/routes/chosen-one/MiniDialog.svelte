@@ -77,23 +77,23 @@
   .edit {
     position: absolute;
     min-width: 100%;
-    left: px(2);
-    padding-top: px(13);
-    padding-left: px(20);
-    padding-right: px(20);
-    padding-bottom: px(9);
+    left: 2rem;
+    padding-top: 13rem;
+    padding-left: 20rem;
+    padding-right: 20rem;
+    padding-bottom: 9rem;
     top: 0;
     z-index: 3;
     background-color: hsl(var(--bg));
     box-shadow: var(--basic-box-shadow),
-      inset px(5) px(-5) px(5) px(0) rgba(#000, 0.75);
+      inset 5rem -5rem 5rem 0rem rgba(#000, 0.75);
     .main {
-      margin-bottom: px(8);
+      margin-bottom: 8rem;
     }
   }
   :global(.btn-done) {
     width: 100%;
-    filter: drop-shadow(px(-1) px(2) px(2) #000);
+    filter: drop-shadow(-1rem 2rem 2rem #000);
   }
   .relative {
     position: relative;

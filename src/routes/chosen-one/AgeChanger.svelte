@@ -100,23 +100,23 @@
 
 <style lang="scss">
   .root :global(.outer-plate) {
-    filter: drop-shadow(px(-1) px(1) px(1) #000);
+    filter: drop-shadow(-1rem 1rem 1rem #000);
     border-radius: 0;
   }
   .age-editor {
     display: flex;
-    gap: px(4);
+    gap: 4rem;
     align-items: center;
   }
   .plate {
-    width: px(25);
-    height: px(25);
+    width: 25rem;
+    height: 25rem;
 
     .button {
       position: relative;
-      top: px(5);
-      height: px(15);
-      padding: px(2) 0;
+      top: 5rem;
+      height: 15rem;
+      padding: 2rem 0;
       transition: box-shadow 0.1s linear;
       /* prettier-ignore */
       box-shadow: 

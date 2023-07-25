@@ -101,14 +101,14 @@
   .window {
     display: block;
     overflow: hidden;
-    width: px(44);
-    height: px(29);
+    width: 44rem;
+    height: 29rem;
   }
   .two-digit {
     display: flex;
     height: 100%;
-    width: px(90);
+    width: 90rem;
     position: relative;
-    left: px(-5);
+    left: -5rem;
   }
 </style>

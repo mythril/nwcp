@@ -21,9 +21,8 @@
   let canvas: HTMLCanvasElement;
 
   function originalFontSizeScaled(width: number) {
-    // @TODO re-balance around 640x480 at some time (width / 64)
-    // also requires redefinition of scss px() function
-    return width / 85;
+    // @TODO re-balance around 640x480 at some time
+    return width / 855;
   }
 
   function renderOverLay() {
@@ -135,6 +134,7 @@
 <style lang="scss">
   .planner {
     font-family: var(--terminal-font);
+    font-size: 10rem;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -145,8 +145,8 @@
   }
   .page {
     // this maintains an aspect ratio similar to the original game
-    width: px(855);
-    height: px(855 * 0.75);
+    width: 855rem;
+    height: 641.25rem; // 855 * 0.75
 
     position: relative;
   }
@@ -159,11 +159,6 @@
     right: 0;
     pointer-events: none;
     mix-blend-mode: multiply;
-  }
-
-  :root {
-    /* global var */
-    --px: #{px(1)};
   }
 
   /* prettier-ignore */
@@ -215,33 +210,33 @@
     --shadow-border-width: 1;
     --shadow-border-color: #000;
     --shadow-border:
-      0 0 0 calc(var(--shadow-border-width) * var(--px)) var(--shadow-border-color);
+      0 0 0 calc(var(--shadow-border-width) * 1rem) var(--shadow-border-color);
     --light-source:
-      calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) calc(-5 * var(--px)) rgba(255, 255, 255, 0.7) inset,
-      calc(5 * var(--px)) calc(-5 * var(--px)) calc(5 * var(--px)) calc(-3 * var(--px)) rgba(0, 0, 0, 0.5) inset;
+      calc(-5 * 1rem) calc(5 * 1rem) calc(5 * 1rem) calc(-5 * 1rem) rgba(255, 255, 255, 0.7) inset,
+      calc(5 * 1rem) calc(-5 * 1rem) calc(5 * 1rem) calc(-3 * 1rem) rgba(0, 0, 0, 0.5) inset;
     --sharp-light-source:
-      calc(-2 * var(--px)) calc(2 * var(--px)) calc(2 * var(--px)) calc(-1 * var(--px)) rgba(255, 255, 255, 0.5) inset,
-      calc(2 * var(--px)) calc(-2 * var(--px)) calc(2 * var(--px)) 0 rgba(0, 0, 0, 0.9) inset;
+      calc(-2 * 1rem) calc(2 * 1rem) calc(2 * 1rem) calc(-1 * 1rem) rgba(255, 255, 255, 0.5) inset,
+      calc(2 * 1rem) calc(-2 * 1rem) calc(2 * 1rem) 0 rgba(0, 0, 0, 0.9) inset;
     --light-source-clear:
       0 0 0 0 rgba(255, 255, 255, 0) inset,
       0 0 0 0 rgba(0, 0, 0, 0) inset;
     --sunken:
-      calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75) inset,
-      calc(5 * var(--px)) calc(-5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75) inset;
+      calc(-5 * 1rem) calc(5 * 1rem) calc(5 * 1rem) rgba(0, 0, 0, 0.75) inset,
+      calc(5 * 1rem) calc(-5 * 1rem) calc(5 * 1rem) rgba(0, 0, 0, 0.75) inset;
     --sunken-clear:
       0 0 0 rgba(0, 0, 0, 0) inset, 0 0 0 rgba(0, 0, 0, 0) inset;
     --cast-shadow:
-      calc(-5 * var(--px)) calc(5 * var(--px)) calc(5 * var(--px)) rgba(0, 0, 0, 0.75);
+      calc(-5 * 1rem) calc(5 * 1rem) calc(5 * 1rem) rgba(0, 0, 0, 0.75);
     --cast-shadow-clear:
       0 0 0 0 rgba(0, 0, 0, 0);
     --inset:
-      calc(2 * var(--px)) calc(-2 * var(--px)) calc(2 * var(--px)) calc(-1 * var(--px)) rgba(0, 0, 0, 0.5),
-      calc(-2 * var(--px)) calc(2 * var(--px)) calc(2 * var(--px)) calc(-1 * var(--px)) rgba(255, 255, 255, 0.5);
+      calc(2 * 1rem) calc(-2 * 1rem) calc(2 * 1rem) calc(-1 * 1rem) rgba(0, 0, 0, 0.5),
+      calc(-2 * 1rem) calc(2 * 1rem) calc(2 * 1rem) calc(-1 * 1rem) rgba(255, 255, 255, 0.5);
     --underbelly-shadow:
-      0 calc(-4 * var(--px)) calc(2 * var(--px)) 0 rgba(0, 0, 0, 0.4) inset;
+      0 calc(-4 * 1rem) calc(2 * 1rem) 0 rgba(0, 0, 0, 0.4) inset;
     --basic-box-shadow:
-      calc(-4 * var(--px)) calc(4 * var(--px)) calc(2 * var(--px)) calc(-3 * var(--px)) rgba(255, 255, 255, 0.25) inset,
-      calc(4 * var(--px)) calc(-4 * var(--px)) calc(5 * var(--px)) calc(-5 * var(--px)) rgba(0, 0, 0, 0.3) inset;
+      calc(-4 * 1rem) calc(4 * 1rem) calc(2 * 1rem) calc(-3 * 1rem) rgba(255, 255, 255, 0.25) inset,
+      calc(4 * 1rem) calc(-4 * 1rem) calc(5 * 1rem) calc(-5 * 1rem) rgba(0, 0, 0, 0.3) inset;
   }
 
   :global(:root),
@@ -269,41 +264,41 @@
   :global(.checkbox-button) {
     appearance: none;
     transition: box-shadow 0.1s linear;
-    margin: px(1) px(9);
+    margin: 1rem 9rem;
     padding: 0;
     box-sizing: border-box;
     background-color: #580000;
     // @TODO figure this out
     /* prettier-ignore */
     box-shadow:
-      px(-2) px(2) px(1) px(-1) rgba(#fff, 0.25) inset,
-      px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
-      px(-6) px(-3) px(0) px(0) #2d2b25 inset,
-      px(6) px(3) px(0) px(0) #2d2b25 inset,
-      px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
-      px(0) px(0) px(0) px(1) rgba(#000, 0.25);
-    width: px(20);
-    height: px(12);
-    border-radius: px(3);
-    border: px(1) solid #040c00;
+      -2rem 2rem 1rem -1rem rgba(#fff, 0.25) inset,
+      1rem -1rem 1rem 0rem rgba(#000, 0.25) inset,
+      -6rem -3rem 0rem 0rem #2d2b25 inset,
+      6rem 3rem 0rem 0rem #2d2b25 inset,
+      6rem -3rem 1rem 1rem rgba(#fff, 0.25) inset,
+      0rem 0rem 0rem 1rem rgba(#000, 0.25);
+    width: 20rem;
+    height: 12rem;
+    border-radius: 3rem;
+    border: 1rem solid #040c00;
     &:active {
       background-color: #fc3030;
       /* prettier-ignore */
       box-shadow: 
-        px(0) px(0) px(1) px(-1) rgba(#fff, 0.25) inset,
-        px(1) px(-1) px(1) px(0) rgba(#000, 0.25) inset,
-        px(-6) px(-3) px(0) px(0) #2d2b25 inset,
-        px(6) px(3) px(0) px(0) #2d2b25 inset,
-        px(6) px(-3) px(1) px(1) rgba(#fff, 0.25) inset,
-        px(0) px(0) px(0) px(0) rgba(#000, 0.25);
+        0rem 0rem 1rem -1rem rgba(#fff, 0.25) inset,
+        1rem -1rem 1rem 0rem rgba(#000, 0.25) inset,
+        -6rem -3rem 0rem 0rem #2d2b25 inset,
+        6rem 3rem 0rem 0rem #2d2b25 inset,
+        6rem -3rem 1rem 1rem rgba(#fff, 0.25) inset,
+        0rem 0rem 0rem 0rem rgba(#000, 0.25);
     }
   }
 
   :global(.dorky-border) {
-    border-top: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
-    border-left: px(4) solid hsl(var(--bg-hs), calc(var(--bg-l) + 45%));
-    border-right: px(4) solid hsl(var(--bg-hs), calc(var(--bg-l) + 5%));
-    border-bottom: px(3) solid hsl(var(--bg-hs), calc(var(--bg-l) + 25%));
+    border-top: 3rem solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
+    border-left: 4rem solid hsl(var(--bg-hs), calc(var(--bg-l) + 45%));
+    border-right: 4rem solid hsl(var(--bg-hs), calc(var(--bg-l) + 5%));
+    border-bottom: 3rem solid hsl(var(--bg-hs), calc(var(--bg-l) + 25%));
   }
 
   :global(body) {
