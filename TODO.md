@@ -8,16 +8,12 @@ Overall goals:
 ### To do
 
 - [ ] Add inert / other a11y features (mini dialogs need attention, use portals and body/document listeners)
-- [ ] Refactor `/chosen-one` route into components for each section
-- [ ] Refactor scss, maybe consider alternative tech with better minification
-- [ ] See if you can reduce initial page-weight via help json splitting
 - [ ] Make the first event: create character
 - [ ] Figure out a way for end users to preserve their character creations
   - third party storage services that the user can opt in to?
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
 - [ ] Add an about page
-- [ ] Redirect from base route to `/chosen-one` on temporary basis
 
 ### Visuals
 
@@ -39,6 +35,7 @@ Overall goals:
 
 ### After first release
 
+- [ ] Refactor `/chosen-one` route into components for each section
 - [ ] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
 - [ ] Add level up button
 - [ ] Build an event sourced store, keeping track of the character development as a log instead of just mangling an object
@@ -48,6 +45,8 @@ Overall goals:
 
 ### Done
 
+- [x] Redirect from base route to `/chosen-one` on temporary basis
+- [x] Refactor scss, maybe consider alternative tech with better minification
 - [x] Figure out more modern way to convey invalid choices (bonk animation/noise for spinners, for example)
 - [x] Try to figure out why worn-text image doesn't render sometimes
 - [x] reconsider screen orientation locking
