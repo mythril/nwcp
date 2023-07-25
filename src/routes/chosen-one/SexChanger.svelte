@@ -67,7 +67,7 @@
   </SlateButton>
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   .root {
     height: 100%;
   }

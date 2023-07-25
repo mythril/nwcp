@@ -48,7 +48,7 @@
   </SlateButton>
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   :global(.input-name) {
     font-weight: 700;
     width: 100%;

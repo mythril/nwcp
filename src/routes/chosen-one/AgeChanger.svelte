@@ -98,7 +98,7 @@
   </SlateButton>
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   .root :global(.outer-plate) {
     filter: drop-shadow(-1rem 1rem 1rem #000);
     border-radius: 0;

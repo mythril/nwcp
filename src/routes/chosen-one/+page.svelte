@@ -286,7 +286,7 @@
   </div>
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   .parent {
     display: grid;
     grid-template-columns: 25.5625% 25.5625% 1% 46.375%;
@@ -336,15 +336,15 @@
     grid-area: nas;
     display: flex;
     justify-content: center;
-    // width: 93.75%;
+    /* width: 93.75%; */
     .name {
-      width: (46.66 * 0.9375) * 1%;
+      width: calc(46.66 * 0.9375%);
     }
     .age {
-      width: (26.66% * 0.9375) * 1;
+      width: calc(26.66 * 0.9375%);
     }
     .sex {
-      width: (26.66% * 0.9375) * 1;
+      width: calc(26.66 * 0.9375%);
     }
   }
 
@@ -521,11 +521,14 @@
     }
   }
   .traits {
-    // $ruddy: #43281d;
-    // $ruddy: #412520;
-    // $ruddy: #381B15;
-    // $ruddy: #383328;
-    $ruddy: mix(#383328, #43281d);
+    /* $ruddy: #43281d; */
+    /* $ruddy: #412520; */
+    /* $ruddy: #381B15; */
+    /* $ruddy: #383328; */
+    /* $ruddy: mix(#383328, #43281d); */
+    --ruddy-hs: 24.4, 27.8%;
+    --ruddy-l: 19%;
+    --ruddy: var(--ruddy-hs), var(--ruddy-l);
     grid-area: traits;
     .flanges {
       height: 92%;
@@ -540,7 +543,7 @@
         padding-left: 40rem;
       }
       .flange {
-        background-color: $ruddy;
+        background-color: hsl(var(--ruddy));
         width: 12rem;
         height: 17rem;
       }
@@ -553,7 +556,7 @@
         left: -7rem;
         &::after {
           content: ' ';
-          background-color: $ruddy;
+          background-color: hsl(var(--ruddy));
           position: absolute;
           left: 10rem;
           top: 0;
@@ -565,13 +568,13 @@
           border-bottom-left-radius: 2rem;
           /* prettier-ignore */
           box-shadow:
-            0 3rem 2rem -2rem rgba(#fff, 0) inset,
-            3rem -3rem 4rem -1rem darken($ruddy, 50%) inset;
+            0 3rem 2rem -2rem rgba(255, 255, 255, 0) inset,
+            3rem -3rem 4rem -1rem hsl(var(--ruddy-hs), calc(var(--ruddy-l) - 50%)) inset;
           &:first-child {
             /* prettier-ignore */
             box-shadow:
-              0 3rem 2rem -2rem rgba(#fff, 0.25) inset,
-              3rem -3rem 4rem -1rem darken($ruddy, 50%) inset;
+              0 3rem 2rem -2rem rgba(255, 255, 255, 0.25) inset,
+              3rem -3rem 4rem -1rem hsl(var(--ruddy-hs), calc(var(--ruddy-l) - 50%)) inset;
           }
         }
         .flange:first-child {
@@ -585,7 +588,7 @@
         right: -7rem;
         &::after {
           content: ' ';
-          background-color: $ruddy;
+          background-color: hsl(var(--ruddy));
           position: absolute;
           right: 7rem;
           top: 0;
@@ -597,13 +600,13 @@
           border-bottom-right-radius: 2rem;
           /* prettier-ignore */
           box-shadow:
-            -3rem 0 2rem -2rem rgba(#fff, 0.25) inset,
-            0 -3rem 2rem -1rem darken($ruddy, 50%) inset;
+            -3rem 0 2rem -2rem rgba(255, 255, 255, 0.25) inset,
+            0 -3rem 2rem -1rem hsl(var(--ruddy-hs), calc(var(--ruddy-l) - 50%)) inset;
           &:first-child {
             /* prettier-ignore */
             box-shadow:
-              -3rem 2rem 2rem -2rem rgba(#fff, 0.25) inset,
-              0 -3rem 3rem -1rem darken($ruddy, 50%) inset;
+              -3rem 2rem 2rem -2rem rgba(255, 255, 255, 0.25) inset,
+              0 -3rem 3rem -1rem hsl(var(--ruddy-hs), calc(var(--ruddy-l) - 50%)) inset;
           }
         }
         .flange:first-child {
@@ -621,24 +624,25 @@
       padding-top: 4rem;
       background: linear-gradient(
         0.25turn,
-        darken($ruddy, 20%) 0%,
-        $ruddy 1%,
-        $ruddy 7.2%,
-        lighten($ruddy, 20%) 8%,
+        hsl(var(--ruddy-hs), calc(var(--ruddy-l) - 20%)) 0%,
+        hsl(var(--ruddy)) 1%,
+        hsl(var(--ruddy)) 7.2%,
+        hsl(var(--ruddy-hs), calc(var(--ruddy-l) + 20%)) 8%,
         hsl(var(--terminal-bg)) 8%,
         hsl(var(--terminal-bg)) 91.5%,
-        $ruddy 92.3%,
-        $ruddy 99%,
-        mix($ruddy, #fff, 80%) 99.9%
+        hsl(var(--ruddy)) 92.3%,
+        hsl(var(--ruddy)) 99%,
+        #65584f 99.9%
       );
+      /* ^ruddy mixed with #fff 80% */
     }
     border-radius: 15rem;
     background-color: hsl(var(--bg));
     margin: 10rem;
     margin-top: 0;
     padding: 0;
-    padding-top: 22rem * 1.5;
-    background-color: $ruddy;
+    padding-top: 33rem;
+    background-color: hsl(var(--ruddy));
     position: relative;
     color: hsl(var(--terminal-color));
     .activeHelpSubject [data-trait] {
@@ -714,7 +718,7 @@
       /* prettier-ignore */
       box-shadow: 
         var(--basic-box-shadow),
-        0 6rem 3rem 0 rgba(#000, 0.4),
+        0 6rem 3rem 0 rgba(0, 0, 0, 0.4),
         var(--underbelly-shadow);
       height: 33rem;
       content: ' ';

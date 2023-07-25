@@ -2,7 +2,7 @@
   <slot />
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   .digit {
     position: relative;
     &::before {

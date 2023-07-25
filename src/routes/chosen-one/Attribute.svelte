@@ -61,7 +61,7 @@
   </div>
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   .attribute {
     box-sizing: border-box;
     padding: 0 0;
@@ -130,15 +130,15 @@
         -3rem 3rem 3rem -3rem rgba(255, 255, 255, 0.5) inset,
         3rem -3rem 3rem -1rem rgba(0, 0, 0, 0.5) inset,
         0 3rem 2rem 1rem #000,
-        0 0 0 0 rgba(#000, 0);
+        0 0 0 0 rgba(0, 0, 0, 0);
       transition: box-shadow 0.1s linear;
       &:active {
         /* prettier-ignore */
         box-shadow: 
-          -3rem 3rem 3rem -3rem rgba(#000, 0.5) inset,
+          -3rem 3rem 3rem -3rem rgba(0, 0, 0, 0.5) inset,
           3rem -3rem 3rem -1rem rgba(0, 0, 0, 0.5) inset,
           0 3rem 2rem 1rem #000,
-          -3rem 0 1rem -1rem rgba(#fff, 0.25);
+          -3rem 0 1rem -1rem rgba(255, 255, 255, 0.25);
       }
       &.incr,
       &.decr {

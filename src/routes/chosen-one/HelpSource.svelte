@@ -26,7 +26,7 @@
   <slot />
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   div {
     display: contents;
   }

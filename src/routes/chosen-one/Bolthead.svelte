@@ -9,7 +9,7 @@
   class={dir}
 />
 
-<style lang="scss">
+<style lang="postcss">
   .bolthead {
     --size: 8rem;
     --offset: calc(var(--size) / 2);

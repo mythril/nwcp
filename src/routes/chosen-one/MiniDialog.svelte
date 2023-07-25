@@ -64,7 +64,7 @@
   {/if}
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   .backdrop {
     position: fixed;
     left: -100vw;
@@ -72,7 +72,7 @@
     right: -100vw;
     bottom: -100vh;
     z-index: 2;
-    background-color: rgba(#000, 0.75);
+    background-color: rgba(0, 0, 0, 0.75);
   }
   .edit {
     position: absolute;
@@ -86,7 +86,7 @@
     z-index: 3;
     background-color: hsl(var(--bg));
     box-shadow: var(--basic-box-shadow),
-      inset 5rem -5rem 5rem 0 rgba(#000, 0.75);
+      inset 5rem -5rem 5rem 0 rgba(0, 0, 0, 0.75);
     .main {
       margin-bottom: 8rem;
     }

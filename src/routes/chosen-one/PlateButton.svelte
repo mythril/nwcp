@@ -32,7 +32,7 @@
   </div>
 </button>
 
-<style lang="scss">
+<style lang="postcss">
   .button {
     position: relative;
     padding: 0 10rem;
@@ -55,31 +55,31 @@
         /* prettier-ignore */
         box-shadow: 
           -1rem 1rem 2rem 0 hsla(0deg, 0%, 0%, 1),
-          2rem -2rem 1rem ((9rem * math.div(2, 10)) - 3) rgba(0, 0, 0, 0.75) inset,
-          -2rem 2rem 1rem ((9rem * math.div(2, 10)) - 3) rgba(128, 128, 128, 0.75) inset,
-          0 0 0 (9rem * math.div(3, 10)) rgb(48, 48, 48) inset,
-          0 0 0 (9rem * math.div(4, 10)) rgb(63, 0, 0) inset,
-          -2rem 2rem 1rem ((9rem * math.div(5, 10)) - 3) rgba(220, 0, 0, 1) inset,
-          2rem -2rem 3rem ((9rem * math.div(5, 10)) - 4) rgba(255, 0, 0, 1) inset,
-          0 0 0 (9rem * math.div(5, 10)) rgb(100, 0, 0) inset,
-          0 0 0 (10rem + 2) rgb(89, 0, 0) inset,
+          2rem -2rem 1rem -1.2rem rgba(0, 0, 0, 0.75) inset,
+          -2rem 2rem 1rem -1.2rem rgba(128, 128, 128, 0.75) inset,
+          0 0 0 2.7rem rgb(48, 48, 48) inset,
+          0 0 0 3.6rem rgb(63, 0, 0) inset,
+          -2rem 2rem 1rem 1.5rem rgba(220, 0, 0, 1) inset,
+          2rem -2rem 3rem 0.5rem rgba(255, 0, 0, 1) inset,
+          0 0 0 4.5rem rgb(100, 0, 0) inset,
+          0 0 0 12rem rgb(89, 0, 0) inset,
           0 0 0 9rem hsl(0deg, 0%, 0%) inset,
-          0 0 0 (math.div(9rem, 10)) hsl(0deg, 0%, 10%) inset;
+          0 0 0 0.9rem hsl(0deg, 0%, 10%) inset;
       }
       &:active::after {
         /* prettier-ignore */
         box-shadow: 
           -1rem 1rem 2rem 0 hsla(0deg, 0%, 0%, 100%),
-          2rem -2rem 1rem ((9rem * math.div(2, 10)) - 3) rgba(0, 0, 0, 0) inset,
-          -2rem 2rem 1rem ((9rem * math.div(2, 10)) - 3) rgba(128, 128, 128, 0.75) inset,
-          0 0 0 (9rem * math.div(3, 10)) rgb(48, 48, 48) inset,
-          0 0 0 (9rem * math.div(4, 10)) rgb(63, 0, 0) inset,
-          -2rem 2rem 1rem ((9rem * math.div(5, 10)) - 3) rgba(220, 0, 0, 0) inset,
-          2rem -2rem 3rem ((9rem * math.div(5, 10)) - 4) rgba(255, 0, 0, 0) inset,
-          0 0 0 (9rem * math.div(5, 10)) rgb(100, 0, 0) inset,
-          0 0 0 (10rem + 2) rgb(89, 0, 0) inset,
+          2rem -2rem 1rem -1.2rem rgba(0, 0, 0, 0) inset,
+          -2rem 2rem 1rem -1.2rem rgba(128, 128, 128, 0.75) inset,
+          0 0 0 2.7rem rgb(48, 48, 48) inset,
+          0 0 0 3.6rem rgb(63, 0, 0) inset,
+          -2rem 2rem 1rem 1.5rem rgba(220, 0, 0, 0) inset,
+          2rem -2rem 3rem 0.5rem rgba(255, 0, 0, 0) inset,
+          0 0 0 4.5rem rgb(100, 0, 0) inset,
+          0 0 0 12rem rgb(89, 0, 0) inset,
           0 0 0 9rem hsl(0deg, 0%, 0%) inset,
-          0 0 0 (math.div(9rem, 10)) hsl(0deg, 0%, 10%) inset;
+          0 0 0 0.9rem hsl(0deg, 0%, 10%) inset;
       }
       .label {
         padding-left: 25rem;
@@ -96,7 +96,7 @@
     border-bottom-left-radius: 10rem 4rem;
     /* prettier-ignore */
     box-shadow: 
-      -1rem 1rem 2rem -1rem rgba(#fff, 0.5) inset,
-      -1rem -1rem 0 -3rem rgba(#000, 0.5) inset;
+      -1rem 1rem 2rem -1rem rgba(255, 255, 255, 0.5) inset,
+      -1rem -1rem 0 -3rem rgba(0,0,0, 0.5) inset;
   }
 </style>

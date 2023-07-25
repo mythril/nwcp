@@ -58,7 +58,7 @@
   </div>
 </EmptyDigitDisplay>
 
-<style lang="scss">
+<style lang="postcss">
   .hidden {
     user-select: none;
   }

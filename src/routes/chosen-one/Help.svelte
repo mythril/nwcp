@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   .content {
     z-index: 1;
     position: absolute;
@@ -63,25 +63,25 @@
     z-index: 0;
     width: 100%;
     height: 100%;
-    box-shadow: 0 0 1rem 1rem rgba(#000, 1) inset;
+    box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 1) inset;
     background: linear-gradient(
         0.3turn,
-        rgba(#947c60, 0),
-        rgba(#997530, 0) 300rem,
-        rgba(#ac8044, 0.35) 310rem,
-        rgba(#7c6818, 0.35) 312rem,
-        rgba(#947c60, 0.35) 322rem
+        hsla(32.3, 21.3%, 47.8%, 0),
+        hsla(39.4, 52.2%, 39.4%, 0) 300rem,
+        hsla(34.6, 43.3%, 47.1%, 0.35) 310rem,
+        hsla(48, 67.6%, 29%, 0.35) 312rem,
+        hsla(32.3, 21.3%, 47.8%, 0.35) 322rem
       ),
       linear-gradient(
         0.32turn,
-        rgba(#947c60, 0),
-        rgba(#997530, 0) 400rem,
-        rgba(#ac8044, 0.75) 410rem,
-        rgba(#7c6818, 0.75) 412rem,
-        rgba(#947c60, 0.75) 422rem,
-        rgba(#ac8044, 0.75) 425rem,
-        rgba(#7c6818, 0.75) 432rem,
-        rgba(#947c60, 0.75) 440rem
+        hsla(32.3, 21.3%, 47.8%, 0),
+        hsla(39.4, 52.2%, 39.4%, 0) 400rem,
+        hsla(34.6, 43.3%, 47.1%, 0.75) 410rem,
+        hsla(48, 67.6%, 29%, 0.75) 412rem,
+        hsla(32.3, 21.3%, 47.8%, 0.75) 422rem,
+        hsla(34.6, 43.3%, 47.1%, 0.75) 425rem,
+        hsla(48, 67.6%, 29%, 0.75) 432rem,
+        hsla(32.3, 21.3%, 47.8%, 0.75) 440rem
       ),
       linear-gradient(
         0.25turn,

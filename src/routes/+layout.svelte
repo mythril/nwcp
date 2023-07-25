@@ -1,4 +1,5 @@
 <script lang="ts">
+  import '../app.postcss';
   import GeneratedImageCacher from '$lib/components/GeneratedImageCacher.svelte';
   import { onMount } from 'svelte';
 
@@ -131,7 +132,7 @@
   </svg>
 </GeneratedImageCacher>
 
-<style lang="scss">
+<style lang="postcss">
   .planner {
     font-family: var(--terminal-font);
     font-size: 10rem;
@@ -143,10 +144,11 @@
     border: 0;
     margin: 0 auto;
   }
+
   .page {
-    // this maintains an aspect ratio similar to the original game
+    /* this maintains an aspect ratio similar to the original game */
     width: 855rem;
-    height: 641.25rem; // 855 * 0.75
+    height: 641.25rem;
 
     position: relative;
   }
@@ -268,15 +270,15 @@
     padding: 0;
     box-sizing: border-box;
     background-color: #580000;
-    // @TODO figure this out
+    /* @TODO figure this out */
     /* prettier-ignore */
-    box-shadow:
-      -2rem 2rem 1rem -1rem rgba(#fff, 0.25) inset,
-      1rem -1rem 1rem 0 rgba(#000, 0.25) inset,
+    box-shadow: 
+      -2rem 2rem 1rem -1rem rgba(255, 255, 255, 0.25) inset,
+      1rem -1rem 1rem 0 rgba(0, 0, 0, 0.25) inset,
       -6rem -3rem 0 0 #2d2b25 inset,
       6rem 3rem 0 0 #2d2b25 inset,
-      6rem -3rem 1rem 1rem rgba(#fff, 0.25) inset,
-      0 0 0 1rem rgba(#000, 0.25);
+      6rem -3rem 1rem 1rem rgba(255, 255, 255, 0.25) inset,
+      0 0 0 1rem rgba(0, 0, 0, 0.25);
     width: 20rem;
     height: 12rem;
     border-radius: 3rem;
@@ -285,12 +287,12 @@
       background-color: #fc3030;
       /* prettier-ignore */
       box-shadow: 
-        0 0 1rem -1rem rgba(#fff, 0.25) inset,
-        1rem -1rem 1rem 0 rgba(#000, 0.25) inset,
+        0 0 1rem -1rem rgba(255, 255, 255, 0.25) inset,
+        1rem -1rem 1rem 0 rgba(0, 0, 0, 0.25) inset,
         -6rem -3rem 0 0 #2d2b25 inset,
         6rem 3rem 0 0 #2d2b25 inset,
-        6rem -3rem 1rem 1rem rgba(#fff, 0.25) inset,
-        0 0 0 0 rgba(#000, 0.25);
+        6rem -3rem 1rem 1rem rgba(255, 255, 255, 0.25) inset,
+        0 0 0 0 rgba(0, 0, 0, 0.25);
     }
   }
 

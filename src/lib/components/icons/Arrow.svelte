@@ -43,7 +43,7 @@
   >
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   .arrow {
     width: 100%;
     height: 100%;

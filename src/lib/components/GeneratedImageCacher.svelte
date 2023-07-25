@@ -82,7 +82,7 @@
   <canvas bind:this={canvas} />
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   .offscreen {
     position: fixed;
     height: 80vh;

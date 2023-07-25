@@ -12,7 +12,7 @@
   <slot />
 </button>
 
-<style lang="scss">
+<style lang="postcss">
   .button {
     overflow: hidden;
     text-overflow: clip;
@@ -50,6 +50,4 @@
         var(--sunken);
     }
   }
-
-  // filter: saturate(0.25) brightness(0.25);
 </style>
