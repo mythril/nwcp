@@ -16,7 +16,6 @@ export default ({ mode }: { mode: string }) => {
         scss: {
           additionalData: `
 			  @use 'sass:math';
-			  @import '$lib/scss/global';
 			`
         }
       }

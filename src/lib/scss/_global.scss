@@ -1,4 +1,0 @@
-@function px($pixels) {
-  $originalFontSizeInPixels: 10;
-  @return calc($pixels / $originalFontSizeInPixels) * 10rem;
-}
