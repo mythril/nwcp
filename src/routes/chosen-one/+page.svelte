@@ -565,12 +565,12 @@
           border-bottom-left-radius: 2rem;
           /* prettier-ignore */
           box-shadow:
-            0rem 3rem 2rem -2rem rgba(#fff, 0) inset,
+            0 3rem 2rem -2rem rgba(#fff, 0) inset,
             3rem -3rem 4rem -1rem darken($ruddy, 50%) inset;
           &:first-child {
             /* prettier-ignore */
             box-shadow:
-              0rem 3rem 2rem -2rem rgba(#fff, 0.25) inset,
+              0 3rem 2rem -2rem rgba(#fff, 0.25) inset,
               3rem -3rem 4rem -1rem darken($ruddy, 50%) inset;
           }
         }
@@ -597,13 +597,13 @@
           border-bottom-right-radius: 2rem;
           /* prettier-ignore */
           box-shadow:
-            -3rem 0rem 2rem -2rem rgba(#fff, 0.25) inset,
-            0rem -3rem 2rem -1rem darken($ruddy, 50%) inset;
+            -3rem 0 2rem -2rem rgba(#fff, 0.25) inset,
+            0 -3rem 2rem -1rem darken($ruddy, 50%) inset;
           &:first-child {
             /* prettier-ignore */
             box-shadow:
               -3rem 2rem 2rem -2rem rgba(#fff, 0.25) inset,
-              0rem -3rem 3rem -1rem darken($ruddy, 50%) inset;
+              0 -3rem 3rem -1rem darken($ruddy, 50%) inset;
           }
         }
         .flange:first-child {
@@ -714,7 +714,7 @@
       /* prettier-ignore */
       box-shadow: 
         var(--basic-box-shadow),
-        0rem 6rem 3rem 0rem rgba(#000, 0.4),
+        0 6rem 3rem 0 rgba(#000, 0.4),
         var(--underbelly-shadow);
       height: 33rem;
       content: ' ';
@@ -741,7 +741,7 @@
     grid-area: help;
     /* prettier-ignore */
     box-shadow: 
-      0rem 0rem 0rem 1rem rgba(#000, 0.5),
+      0 0 0 1rem rgba(#000, 0.5),
       -1rem 1rem 2rem -1rem rgba(#fff, 0.5),
       -1rem 1rem 2rem -1rem rgba(#fff, 0.5) inset;
   }

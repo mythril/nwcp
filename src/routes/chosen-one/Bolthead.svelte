@@ -25,7 +25,7 @@
     filter: brightness(0.8);
     /* prettier-ignore */
     box-shadow: 
-      0rem 0rem 3rem 0 rgba(0, 0, 0, 1),
+      0 0 3rem 0 rgba(0, 0, 0, 1),
       -1rem 1rem 1rem 0 rgba(0, 0, 0, 1),
       3rem -3rem 1rem 0 rgba(0, 0, 0, 0.9) inset,
       -3rem 3rem 1rem 0 rgba(255, 255, 255, 0.5) inset,

@@ -272,11 +272,11 @@
     /* prettier-ignore */
     box-shadow:
       -2rem 2rem 1rem -1rem rgba(#fff, 0.25) inset,
-      1rem -1rem 1rem 0rem rgba(#000, 0.25) inset,
-      -6rem -3rem 0rem 0rem #2d2b25 inset,
-      6rem 3rem 0rem 0rem #2d2b25 inset,
+      1rem -1rem 1rem 0 rgba(#000, 0.25) inset,
+      -6rem -3rem 0 0 #2d2b25 inset,
+      6rem 3rem 0 0 #2d2b25 inset,
       6rem -3rem 1rem 1rem rgba(#fff, 0.25) inset,
-      0rem 0rem 0rem 1rem rgba(#000, 0.25);
+      0 0 0 1rem rgba(#000, 0.25);
     width: 20rem;
     height: 12rem;
     border-radius: 3rem;
@@ -285,12 +285,12 @@
       background-color: #fc3030;
       /* prettier-ignore */
       box-shadow: 
-        0rem 0rem 1rem -1rem rgba(#fff, 0.25) inset,
-        1rem -1rem 1rem 0rem rgba(#000, 0.25) inset,
-        -6rem -3rem 0rem 0rem #2d2b25 inset,
-        6rem 3rem 0rem 0rem #2d2b25 inset,
+        0 0 1rem -1rem rgba(#fff, 0.25) inset,
+        1rem -1rem 1rem 0 rgba(#000, 0.25) inset,
+        -6rem -3rem 0 0 #2d2b25 inset,
+        6rem 3rem 0 0 #2d2b25 inset,
         6rem -3rem 1rem 1rem rgba(#fff, 0.25) inset,
-        0rem 0rem 0rem 0rem rgba(#000, 0.25);
+        0 0 0 0 rgba(#000, 0.25);
     }
   }
 

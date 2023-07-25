@@ -63,7 +63,7 @@
     z-index: 0;
     width: 100%;
     height: 100%;
-    box-shadow: 0rem 0rem 1rem 1rem rgba(#000, 1) inset;
+    box-shadow: 0 0 1rem 1rem rgba(#000, 1) inset;
     background: linear-gradient(
         0.3turn,
         rgba(#947c60, 0),

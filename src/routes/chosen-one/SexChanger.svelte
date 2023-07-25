@@ -78,7 +78,7 @@
     .worn-text {
       width: 45rem;
       height: 45rem;
-      padding: 0rem;
+      padding: 0;
       padding-top: 4rem;
     }
     :global(.sex-btn) {

@@ -86,7 +86,7 @@
     z-index: 3;
     background-color: hsl(var(--bg));
     box-shadow: var(--basic-box-shadow),
-      inset 5rem -5rem 5rem 0rem rgba(#000, 0.75);
+      inset 5rem -5rem 5rem 0 rgba(#000, 0.75);
     .main {
       margin-bottom: 8rem;
     }
