@@ -6,8 +6,8 @@ const config = {
     require('@davidwells/postcss-math'),
     autoprefixer,
     require('cssnano')({
-      preset: 'default',
-    }),
+      preset: 'default'
+    })
   ]
 };
 

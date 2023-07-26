@@ -305,7 +305,6 @@
 
   :global(body) {
     height: 100vh;
-    overflow-y: hidden;
     filter: brightness(1.3);
   }
 

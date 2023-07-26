@@ -678,7 +678,7 @@
           left: 30rem;
           width: 5rem;
           height: 2rem;
-          background-color: rgba(#000, 0.25);
+          background-color: rgba(0, 0, 0, 0.25);
         }
       }
     }
@@ -698,7 +698,7 @@
           right: 30rem;
           width: 5rem;
           height: 2rem;
-          background-color: rgba(#000, 0.25);
+          background-color: rgba(0, 0, 0, 0.25);
         }
       }
     }
@@ -745,9 +745,9 @@
     grid-area: help;
     /* prettier-ignore */
     box-shadow: 
-      0 0 0 1rem rgba(#000, 0.5),
-      -1rem 1rem 2rem -1rem rgba(#fff, 0.5),
-      -1rem 1rem 2rem -1rem rgba(#fff, 0.5) inset;
+      0 0 0 1rem rgba(0, 0, 0, 0.5),
+      -1rem 1rem 2rem -1rem rgba(255, 255, 255, 0.5),
+      -1rem 1rem 2rem -1rem rgba(255, 255, 255, 0.5) inset;
   }
   .buttons {
     grid-area: buttons;
