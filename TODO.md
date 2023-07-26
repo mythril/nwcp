@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] Make background grain as large as the document
 - [ ] Add inert / other a11y features (mini dialogs need attention, use portals and body/document listeners)
 - [ ] Make the first event: create character
 - [ ] Figure out a way for end users to preserve their character creations
