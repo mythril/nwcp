@@ -13,28 +13,17 @@
     }
   ];
 
-  let innerWidth: number;
-  let innerHeight: number;
   let planner: HTMLDivElement;
-  let width: number;
-  let height: number;
   let devicePixelRatio: number;
   let oldRatio: number;
-  let dom: HTMLHtmlElement;
+  let hidden = true;
 
   let canvas: HTMLCanvasElement;
-
-  function originalFontSizeScaled(width: number) {
-    // @TODO re-balance around 640x480 at some time
-    return width / 855;
-  }
 
   function renderOverLay() {
     if (!canvas) {
       return;
     }
-    // canvas.width = innerWidth;
-    // canvas.height = innerHeight;
     canvas.width = document.documentElement.scrollWidth;
     canvas.height = document.documentElement.scrollHeight;
     const ctx = canvas.getContext('2d');
@@ -58,51 +47,29 @@
       oldRatio = devicePixelRatio;
     } else {
       renderOverLay();
-      if (planner) {
-        let maxWidth = Math.max(innerWidth, 640);
-        let maxHeight = Math.max(innerHeight, 480);
-
-        // maintains the aspect ratio I desire for the "window"
-        if (maxWidth * (4 / 5) > maxHeight) {
-          width = maxHeight * 1.25;
-          height = maxHeight;
-        } else {
-          width = maxWidth;
-          height = maxWidth * (4 / 5);
-        }
-        planner.style.width = width + 'px';
-        planner.style.height = height + 'px';
-
-        if (!dom) {
-          dom = document.querySelector('html') as HTMLHtmlElement;
-        }
-
-        if (dom) {
-          // allows me to scale things with rems later on
-          dom.style.setProperty(
-            'font-size',
-            originalFontSizeScaled(width) + 'px'
-          );
-        }
-      }
     }
   }
 
   onMount(() => {
     oldRatio = devicePixelRatio;
     renderOverLay();
+
+    // This allows zooming to happen by freezing the font-size
+    document.documentElement.style.fontSize = getComputedStyle(
+      document.documentElement
+    ).fontSize;
   });
 </script>
 
 <svelte:window
-  bind:innerWidth
-  bind:innerHeight
   bind:devicePixelRatio
+  on:load={() => (hidden = false)}
 />
 
 <div
   class="planner"
   bind:this={planner}
+  {hidden}
 >
   <div class="page">
     <slot />
@@ -158,12 +125,16 @@
     background-color: hsl(var(--bg));
     border: 0;
     margin: 0 auto;
+    width:fit-content;
+    height:100vh;
   }
 
   .page {
     /* this maintains an aspect ratio similar to the original game */
     width: 855rem;
+    min-width: 855rem;
     height: 641.25rem;
+    min-height: 641.25rem;
 
     position: relative;
   }
@@ -264,6 +235,10 @@
 
   :global(body) {
     filter: brightness(1.3);
+  }
+
+  :global(html) {
+    font-size: calc(min(resolve(100 / 675)vh, resolve(100 / 890)vw));
   }
 
   :global(:root),
