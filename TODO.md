@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] Figure out what is going on with worn-text cache and hard refresh
 - [ ] Figure out a way to adjust overlays on resize but not on zoom
 - [ ] Make background grain as large as the document
 - [ ] Add inert / other a11y features (mini dialogs need attention, use portals and body/document listeners)
@@ -16,6 +17,8 @@ Overall goals:
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
 - [ ] Add an about page
+- [ ] Check inline todos
+- [ ] remove console.log
 
 ### Visuals
 

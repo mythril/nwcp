@@ -154,14 +154,15 @@
   }
 
   .overlay {
-    position: fixed;
-    z-index:4;
+    position: absolute;
+    z-index: 4;
     left: 0;
     top: 0;
-    bottom: 0;
-    right: 0;
     pointer-events: none;
     mix-blend-mode: multiply;
+    canvas {
+      width: 100%;
+    }
   }
 
   /* prettier-ignore */
@@ -305,7 +306,8 @@
   }
 
   :global(body) {
-    height: 100vh;
+    min-height: 100vh;
+    min-width: 100vw;
     filter: brightness(1.3);
   }
 
