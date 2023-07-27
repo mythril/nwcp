@@ -61,7 +61,7 @@
     bind:this={anchor}
     class="anchor"
   />
-  <Portal target="body">
+  <Portal target="#modals">
     <div class="backdrop" />
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <div

@@ -47,7 +47,14 @@
 
 <div
   use:portal={target}
+  class={$$props.class + ' portal'}
   hidden
 >
   <slot />
 </div>
+
+<style>
+  .portal {
+    display: contents;
+  }
+</style>

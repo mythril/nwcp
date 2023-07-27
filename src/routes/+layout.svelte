@@ -68,17 +68,20 @@
   on:load={() => (hidden = false)}
 />
 
-<div
-  class="planner"
-  bind:this={planner}
-  {hidden}
->
-  <div class="page">
-    <slot />
+<div id="modals" />
+<div class="app">
+  <div
+    class="planner"
+    bind:this={planner}
+    {hidden}
+  >
+    <div class="page">
+      <slot />
+    </div>
   </div>
 </div>
 
-<Portal target="body">
+<Portal target=".app">
   <div class="overlay">
     <canvas bind:this={canvas} />
   </div>
@@ -117,6 +120,17 @@
 </GeneratedImageCacher>
 
 <style lang="postcss">
+  .app {
+    background-color: hsl(var(--bg));
+    filter: brightness(1.3);
+    font-family: var(--terminal-font);
+    position: relative;
+    width: fit-content;
+    min-width: 100vw;
+    height: fit-content;
+    min-height: 100vh;
+  }
+
   .planner {
     font-family: var(--terminal-font);
     font-size: 10rem;
@@ -128,7 +142,7 @@
     border: 0;
     margin: 0 auto;
     width: fit-content;
-    height: 100vh;
+    min-height: 100vh;
   }
 
   .page {
@@ -148,10 +162,14 @@
     top: 0;
     right: 0;
     bottom: 0;
-    overflow: hidden;
     pointer-events: none;
     mix-blend-mode: multiply;
     canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
       width: 100%;
       height: 100%;
     }
@@ -235,11 +253,6 @@
       calc(4 * 1rem) calc(-4 * 1rem) calc(5 * 1rem) calc(-5 * 1rem) rgba(0, 0, 0, 0.3) inset;
   }
 
-  :global(body) {
-    filter: brightness(1.3);
-    font-family: var(--terminal-font);
-  }
-
   :global(html) {
     font-size: calc(min(resolve(100vh / 675), resolve(100vw / 890)));
   }
@@ -248,14 +261,9 @@
   :global(html),
   :global(body) {
     position: relative;
-    width: 100vw;
-    min-width: fit-content;
-    height: 100vh;
-    min-height: fit-content;
     border: 0;
     margin: 0;
     padding: 0;
-    background-color: hsl(var(--bg));
   }
 
   :global(.terminal-font-defaults) {
