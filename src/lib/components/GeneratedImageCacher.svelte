@@ -85,8 +85,8 @@
 <style lang="postcss">
   .offscreen {
     position: fixed;
-    height: 80vh;
-    width: 80vh;
-    top: -100vh;
+    height: 100vh;
+    width: 100vh;
+    top: -200vh;
   }
 </style>
