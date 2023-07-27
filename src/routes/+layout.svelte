@@ -55,9 +55,11 @@
     renderOverLay();
 
     // This allows zooming to happen by freezing the font-size
-    document.documentElement.style.fontSize = getComputedStyle(
-      document.documentElement
-    ).fontSize;
+    setTimeout(() => {
+      document.documentElement.style.fontSize = getComputedStyle(
+        document.documentElement
+      ).fontSize;
+    }, 1);
   });
 </script>
 
@@ -125,8 +127,8 @@
     background-color: hsl(var(--bg));
     border: 0;
     margin: 0 auto;
-    width:fit-content;
-    height:100vh;
+    width: fit-content;
+    height: 100vh;
   }
 
   .page {
@@ -235,10 +237,11 @@
 
   :global(body) {
     filter: brightness(1.3);
+    font-family: var(--terminal-font);
   }
 
   :global(html) {
-    font-size: calc(min(resolve(100 / 675)vh, resolve(100 / 890)vw));
+    font-size: calc(min(resolve(100vh / 675), resolve(100vw / 890)));
   }
 
   :global(:root),
