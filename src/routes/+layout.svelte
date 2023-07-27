@@ -2,6 +2,7 @@
   import '../app.postcss';
   import GeneratedImageCacher from '$lib/components/GeneratedImageCacher.svelte';
   import { onMount } from 'svelte';
+  import Portal from '$lib/components/Portal.svelte';
 
   const cacheDescriptors = [
     {
@@ -17,6 +18,8 @@
   let planner: HTMLDivElement;
   let width: number;
   let height: number;
+  let devicePixelRatio: number;
+  let oldRatio: number;
   let dom: HTMLHtmlElement;
 
   let canvas: HTMLCanvasElement;
@@ -30,8 +33,10 @@
     if (!canvas) {
       return;
     }
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+    // canvas.width = innerWidth;
+    // canvas.height = innerHeight;
+    canvas.width = document.documentElement.scrollWidth;
+    canvas.height = document.documentElement.scrollHeight;
     const ctx = canvas.getContext('2d');
     if (!ctx) {
       return;
@@ -49,42 +54,50 @@
   }
 
   $: {
-    renderOverLay();
-    if (planner) {
-      let maxWidth = Math.max(innerWidth, 640);
-      let maxHeight = Math.max(innerHeight, 480);
+    if (devicePixelRatio !== oldRatio) {
+      oldRatio = devicePixelRatio;
+    } else {
+      renderOverLay();
+      if (planner) {
+        let maxWidth = Math.max(innerWidth, 640);
+        let maxHeight = Math.max(innerHeight, 480);
 
-      // maintains the aspect ratio I desire for the "window"
-      if (maxWidth * (4 / 5) > maxHeight) {
-        width = maxHeight * 1.25;
-        height = maxHeight;
-      } else {
-        width = maxWidth;
-        height = maxWidth * (4 / 5);
-      }
-      planner.style.width = width + 'px';
-      planner.style.height = height + 'px';
+        // maintains the aspect ratio I desire for the "window"
+        if (maxWidth * (4 / 5) > maxHeight) {
+          width = maxHeight * 1.25;
+          height = maxHeight;
+        } else {
+          width = maxWidth;
+          height = maxWidth * (4 / 5);
+        }
+        planner.style.width = width + 'px';
+        planner.style.height = height + 'px';
 
-      if (!dom) {
-        dom = document.querySelector('html') as HTMLHtmlElement;
-      }
+        if (!dom) {
+          dom = document.querySelector('html') as HTMLHtmlElement;
+        }
 
-      if (dom) {
-        // allows me to scale things with rems later on
-        dom.style.setProperty(
-          'font-size',
-          originalFontSizeScaled(width) + 'px'
-        );
+        if (dom) {
+          // allows me to scale things with rems later on
+          dom.style.setProperty(
+            'font-size',
+            originalFontSizeScaled(width) + 'px'
+          );
+        }
       }
     }
   }
 
-  onMount(renderOverLay);
+  onMount(() => {
+    oldRatio = devicePixelRatio;
+    renderOverLay();
+  });
 </script>
 
 <svelte:window
   bind:innerWidth
   bind:innerHeight
+  bind:devicePixelRatio
 />
 
 <div
@@ -96,9 +109,11 @@
   </div>
 </div>
 
-<div class="overlay">
-  <canvas bind:this={canvas} />
-</div>
+<Portal target="body">
+  <div class="overlay">
+    <canvas bind:this={canvas} />
+  </div>
+</Portal>
 
 <GeneratedImageCacher {cacheDescriptors}>
   <svg xmlns="http://www.w3.org/2000/svg">
@@ -158,10 +173,14 @@
     z-index: 4;
     left: 0;
     top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
     pointer-events: none;
     mix-blend-mode: multiply;
     canvas {
       width: 100%;
+      height: 100%;
     }
   }
 
@@ -243,9 +262,18 @@
       calc(4 * 1rem) calc(-4 * 1rem) calc(5 * 1rem) calc(-5 * 1rem) rgba(0, 0, 0, 0.3) inset;
   }
 
+  :global(body) {
+    filter: brightness(1.3);
+  }
+
   :global(:root),
   :global(html),
   :global(body) {
+    position: relative;
+    width: 100vw;
+    min-width: fit-content;
+    height: 100vh;
+    min-height: fit-content;
     border: 0;
     margin: 0;
     padding: 0;
@@ -303,12 +331,6 @@
     border-left: 4rem solid hsl(var(--bg-hs), calc(var(--bg-l) + 45%));
     border-right: 4rem solid hsl(var(--bg-hs), calc(var(--bg-l) + 5%));
     border-bottom: 3rem solid hsl(var(--bg-hs), calc(var(--bg-l) + 25%));
-  }
-
-  :global(body) {
-    min-height: 100vh;
-    min-width: 100vw;
-    filter: brightness(1.3);
   }
 
   :global(*) {
