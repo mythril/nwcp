@@ -155,6 +155,7 @@
 
   .overlay {
     position: fixed;
+    z-index:4;
     left: 0;
     top: 0;
     bottom: 0;

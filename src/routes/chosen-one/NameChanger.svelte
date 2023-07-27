@@ -52,6 +52,7 @@
   :global(.input-name) {
     font-weight: 700;
     width: 100%;
+    min-width: 145rem;
     margin: 0 auto;
     font-size: 10rem;
     line-height: 1.6;

@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] Figure out a way to adjust overlays on resize but not on zoom
 - [ ] Make background grain as large as the document
 - [ ] Add inert / other a11y features (mini dialogs need attention, use portals and body/document listeners)
 - [ ] Make the first event: create character

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Portal from '$lib/components/Portal.svelte';
+  import { afterUpdate } from 'svelte';
   import PlateButton from './PlateButton.svelte';
 
   let showEdit = false;
@@ -40,15 +42,32 @@
   export const show = () => {
     showEdit = true;
   };
+
+  let anchor: HTMLElement;
+  let left = 0;
+  let top = 0;
+
+  afterUpdate(() => {
+    if (anchor) {
+      let rect = anchor.getBoundingClientRect();
+      left = window.scrollX + rect.left;
+      top = window.scrollY + rect.top;
+    }
+  });
 </script>
 
-<div class="relative">
-  {#if showEdit}
+{#if showEdit}
+  <div
+    bind:this={anchor}
+    class="anchor"
+  />
+  <Portal target="body">
     <div class="backdrop" />
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <div
       role="dialog"
       class="edit"
+      style="left: {left}px; top: {top}px"
       on:keydown={controlKeys}
     >
       <div class="main">
@@ -61,22 +80,21 @@
         >
       </div>
     </div>
-  {/if}
-</div>
+  </Portal>
+{/if}
 
 <style lang="postcss">
   .backdrop {
     position: fixed;
-    left: -100vw;
-    top: -100vh;
-    right: -100vw;
-    bottom: -100vh;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.75);
   }
   .edit {
     position: absolute;
-    min-width: 100%;
     left: 2rem;
     padding-top: 13rem;
     padding-left: 20rem;
@@ -95,8 +113,7 @@
     width: 100%;
     filter: drop-shadow(-1rem 2rem 2rem #000);
   }
-  .relative {
-    position: relative;
+  .anchor {
     width: 100%;
   }
 </style>
