@@ -22,6 +22,17 @@
     //intentional
   };
 
+  function controlKeys(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Enter':
+        commit();
+        dlg.hide();
+        return;
+      default:
+        return;
+    }
+  }
+
   onMount(() => {
     show = () => {
       text = name;
@@ -29,6 +40,8 @@
     };
   });
 </script>
+
+<svelte:body on:keydown={controlKeys} />
 
 <div class="root">
   <MiniDialog

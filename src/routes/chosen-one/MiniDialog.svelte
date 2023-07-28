@@ -1,7 +1,8 @@
 <script lang="ts">
   import Portal from '$lib/components/Portal.svelte';
-  import { afterUpdate } from 'svelte';
+  import { afterUpdate, tick } from 'svelte';
   import PlateButton from './PlateButton.svelte';
+  import { modalShown } from './stores';
 
   let showEdit = false;
   export let cancelListener = () => {
@@ -9,6 +10,7 @@
   };
   let cancel = () => {
     cancelListener();
+    $modalShown = false;
     showEdit = false;
   };
   export let commitListener = () => {
@@ -16,34 +18,54 @@
   };
   let commit = () => {
     if (commitListener()) {
+      $modalShown = false;
       showEdit = false;
     }
   };
   function controlKeys(event: KeyboardEvent) {
-    if (event.keyCode === 27) {
-      cancel();
-      return false;
+    switch (event.code) {
+      case 'Escape':
+        cancel();
+        return;
+      default:
+        return;
     }
-    if (event.code === 'Escape') {
-      cancel();
-      return false;
-    }
-    if (event.keyCode === 13) {
-      commit();
-      return false;
-    }
-    if (event.code === 'Enter') {
-      commit();
-      return false;
-    }
-    return false;
   }
 
-  export const show = () => {
+  export const show = async () => {
+    $modalShown = true;
     showEdit = true;
+    await tick();
+
+    if (!dialog) {
+      return;
+    }
+
+    const focusable = dialog.querySelectorAll<HTMLElement>(` 
+      a[href]:not([tabindex='-1']),
+      area[href]:not([tabindex='-1']),
+      input:not([disabled]):not([tabindex='-1']),
+      select:not([disabled]):not([tabindex='-1']),
+      textarea:not([disabled]):not([tabindex='-1']),
+      button:not([disabled]):not([tabindex='-1']),
+      iframe:not([tabindex='-1']),
+      [tabindex]:not([tabindex='-1'])
+    `);
+
+    for (let f of Array.from(focusable)) {
+      console.log(f);
+      f.focus();
+      break;
+    }
+  };
+
+  export const hide = () => {
+    $modalShown = false;
+    showEdit = false;
   };
 
   let anchor: HTMLElement;
+  let dialog: HTMLElement;
   let left = 0;
   let top = 0;
 
@@ -56,6 +78,8 @@
   });
 </script>
 
+<svelte:body on:keydown={controlKeys} />
+
 {#if showEdit}
   <div
     bind:this={anchor}
@@ -63,12 +87,11 @@
   />
   <Portal target="#modals">
     <div class="backdrop" />
-    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <div
       role="dialog"
       class="edit"
+      bind:this={dialog}
       style="left: {left}px; top: {top}px"
-      on:keydown={controlKeys}
     >
       <div class="main">
         <slot />

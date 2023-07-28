@@ -3,6 +3,7 @@
   import GeneratedImageCacher from '$lib/components/GeneratedImageCacher.svelte';
   import { onMount } from 'svelte';
   import Portal from '$lib/components/Portal.svelte';
+  import { modalShown } from './chosen-one/stores';
 
   const cacheDescriptors = [
     {
@@ -71,9 +72,10 @@
 <div id="modals" />
 <div class="app">
   <div
-    class="planner"
+    id="planner"
     bind:this={planner}
     {hidden}
+    inert={$modalShown}
   >
     <div class="page">
       <slot />
@@ -120,10 +122,13 @@
 </GeneratedImageCacher>
 
 <style lang="postcss">
+  #modals {
+    font-family: var(--terminal-font);
+  }
   .app {
+    font-family: var(--terminal-font);
     background-color: hsl(var(--bg));
     filter: brightness(1.3);
-    font-family: var(--terminal-font);
     position: relative;
     width: fit-content;
     min-width: 100vw;
@@ -131,7 +136,7 @@
     min-height: 100vh;
   }
 
-  .planner {
+  #planner {
     font-family: var(--terminal-font);
     font-size: 10rem;
     display: flex;
@@ -254,6 +259,7 @@
   }
 
   :global(html) {
+    /* attempts to render largest in-frame window possible */
     font-size: calc(min(resolve(100vh / 675), resolve(100vw / 890)));
   }
 

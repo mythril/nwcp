@@ -19,16 +19,7 @@
 
   function controlKeys(event: KeyboardEvent) {
     text.value = '';
-    if (event.keyCode === 46 || event.keyCode === 8) {
-      if (value.length === 0) {
-        bonkSound();
-      } else {
-        clickSound();
-      }
-      value = value.slice(0, -1);
-      return;
-    }
-    if (event.code === 'Backspace' || event.code === 'Delete') {
+    if (event.key === 'Backspace' || event.key === 'Delete') {
       if (value.length === 0) {
         bonkSound();
       } else {

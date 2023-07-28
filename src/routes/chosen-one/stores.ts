@@ -9,3 +9,5 @@ export const helpText = derived(
   helpSubject,
   ($subject) => HelpLookup[$subject]
 );
+
+export const modalShown = writable<boolean>(false);
