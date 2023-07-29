@@ -130,7 +130,6 @@ export const DerivedStats: DerivedStatsEnum = {
   CriticalChance: 'Critical Chance'
 } as const;
 
-// @TODO add perks back en when we can actually use perks
 export const HelpLookup = { ...CharacterHelpLookup /*, ...PerkHelpLookup*/ };
 
 export const Sex = {

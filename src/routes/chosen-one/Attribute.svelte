@@ -38,7 +38,7 @@
       />
     </div>
   </div>
-  <div class="description terminal-font-defaults dorky-border">
+  <div class="description terminal-font-defaults sharp-inset-border">
     {descriptors[descIndex]}
   </div>
   <div class="manipulators">

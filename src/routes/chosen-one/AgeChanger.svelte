@@ -68,7 +68,7 @@
           </div>
         </div>
       </PlateButton>
-      <div class="dorky-border">
+      <div class="sharp-inset-border">
         <TwoDigitDisplay
           bind:this={ageDisplay}
           initial={tmp}

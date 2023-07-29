@@ -8,24 +8,20 @@ Overall goals:
 ### To do
 
 - [ ] Figure out what is going on with worn-text cache and hard refresh
-- [ ] Figure out a way to adjust overlays on resize but not on zoom
-- [ ] Make background grain as large as the document
-- [ ] Add inert / other a11y features (mini dialogs need attention, use portals and body/document listeners)
+- [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
+- [ ] debug service worker quirks - firefox for 1, stickiness for 2
 - [ ] Make the first event: create character
 - [ ] Figure out a way for end users to preserve their character creations
   - third party storage services that the user can opt in to?
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
-- [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
 - [ ] Add an about page
-- [ ] Check inline todos
-- [ ] remove console.log
+- [ ] Build filter to add random blotchy, embossed grooves into the background
 
 ### Visuals
 
 - [ ] Match tag / trait buttons better
 - [ ] Extract push button and make it resizable
 - [ ] Improve look of sex setter buttons
-- [ ] Build filter to add random blotchy grooves into the background
 - [ ] Improve logo
 
 ### Maybe
@@ -50,6 +46,10 @@ Overall goals:
 
 ### Done
 
+- [x] Check inline TODOs
+- [x] Add inert / other a11y features (mini dialogs need attention, use portals and body/document listeners)
+- [x] Make background grain as large as the document
+- [x] Figure out a way to adjust overlays on resize but not on zoom
 - [x] Redirect from base route to `/chosen-one` on temporary basis
 - [x] Refactor scss, maybe consider alternative tech with better minification
 - [x] Figure out more modern way to convey invalid choices (bonk animation/noise for spinners, for example)

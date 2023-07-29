@@ -53,7 +53,6 @@
     `);
 
     for (let f of Array.from(focusable)) {
-      console.log(f);
       f.focus();
       break;
     }

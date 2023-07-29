@@ -13,6 +13,7 @@
   };
 
   export let cacheDescriptors: CacheDescriptor[];
+  let styles: string[] = [];
 
   onMount(async () => {
     let cache = await window.caches.open('cache-' + version);
@@ -49,13 +50,7 @@
           return;
         }
 
-        // @TODO find out whether this can be in <svelte:head>
-        // @TODO check for the style element and delete it if already present
-        const style = document.createElement('style');
-        style.id = `generated-style-node-${desc.name}`;
-
         const dataURL = await blobToDataURL(blob);
-
         const css = `
         .${desc.name} {
           ${(() => {
@@ -67,14 +62,23 @@
           })()}
         }
         `;
-        console.log(css);
-        style.innerHTML = css;
-
-        document.head.appendChild(style);
+        styles.push(css);
+        styles = styles;
       });
     }
   });
 </script>
+
+<svelte:head>
+  {#if styles.length > 0}
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+    {@html `
+      <style type="text/css">
+        ${styles.join('\n')}
+      </style>
+    `}
+  {/if}
+</svelte:head>
 
 <div class="offscreen">
   <slot />

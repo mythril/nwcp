@@ -19,7 +19,12 @@ module.exports = {
     node: true
   },
   rules: {
-    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }]
+    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    'no-warning-comments': [
+      1,
+      { terms: ['todo', 'fixme'], location: 'anywhere' }
+    ],
+    'no-console': ['error']
   },
   overrides: [
     {

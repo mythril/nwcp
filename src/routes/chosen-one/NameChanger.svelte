@@ -50,7 +50,7 @@
     cancelListener={cancel}
   >
     <BigCaret
-      class="input-name dorky-border"
+      class="input-name sharp-inset-border"
       bind:value={text}
     />
   </MiniDialog>
