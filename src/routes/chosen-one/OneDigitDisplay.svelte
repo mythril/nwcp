@@ -67,6 +67,12 @@
     top: -100%;
     display: flex;
     flex-flow: column;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.9),
+      1rem -1rem 0rem rgba(0, 0, 0, 1), 1rem -1rem 2rem rgba(0, 0, 0, 1),
+      -1rem 1rem 2rem rgba(255, 255, 255, 0.25),
+      -1rem 1rem 1rem rgba(255, 255, 255, 0.25);
     transition: top 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transform: translate(0, calc(var(--offset) * 1%));
   }

@@ -24,17 +24,9 @@
         -1rem 0 0.6rem 0.1rem rgba(0, 0, 0, 0.9),
         inset 0 -11rem 2rem 0 rgba(0, 0, 0, 0.8),
         inset 0 6rem 2rem 0 rgba(0, 0, 0, 0.8);
-      /* filter: blur(0.5rem); */
     }
-    color: hsl(0, 0%, 93%);
     font-family: var(--label-font);
     font-weight: 700;
-    /* prettier-ignore */
-    text-shadow: 
-      1rem 1rem 0 rgba(0, 0, 0, 0.8),
-      -1rem 1rem 0 rgba(0, 0, 0, 0.8),
-      1rem -1rem 0 rgba(0, 0, 0, 0.8),
-      -1rem -1rem 0 rgba(0, 0, 0, 0.8);
     left: -3rem;
     padding-left: 4rem;
     margin-left: -8rem;
