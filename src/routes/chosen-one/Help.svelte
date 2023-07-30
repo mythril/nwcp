@@ -15,18 +15,20 @@
   }
 </script>
 
-<div class="paper-bg" />
-<div class="content">
-  <h3 class="subject">
-    {$helpSubject}
-    <span class="extra">{extra}</span>
-  </h3>
-  <div class="help">
-    <div class="text">
-      {text}
-    </div>
-    <div class="image">
-      <Sprite />
+<div class="help">
+  <div class="paper-bg" />
+  <div class="content">
+    <h3 class="subject">
+      {$helpSubject}
+      <span class="extra">{extra}</span>
+    </h3>
+    <div class="info">
+      <div class="text">
+        {text}
+      </div>
+      <div class="image">
+        <Sprite />
+      </div>
     </div>
   </div>
 </div>
@@ -48,6 +50,17 @@
 </svg>
 
 <style lang="postcss">
+  .help{
+    position: relative;
+    padding: 8rem 10rem;
+    width:100%;
+    height:100%;
+    /* prettier-ignore */
+    box-shadow: 
+      0 0 0 1rem rgba(0, 0, 0, 0.5),
+      -1rem 1rem 2rem -1rem rgba(255, 255, 255, 0.5),
+      -1rem 1rem 2rem -1rem rgba(255, 255, 255, 0.5) inset;
+  }
   .content {
     position: absolute;
     isolation: isolate;
@@ -58,9 +71,7 @@
     padding: 17rem 20rem;
     display: flex;
     flex-flow: column;
-    outline: 1px solid red;
     .subject {
-      outline: 1px solid red;
       font-family: var(--label-font);
       padding: 0;
       width: 100%;
@@ -78,7 +89,7 @@
         font-size: 10rem;
       }
     }
-    .help {
+    .info {
       display: flex;
       flex-flow: row;
       font-weight: 700;

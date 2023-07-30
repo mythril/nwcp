@@ -38,7 +38,7 @@
 <Bolthead dir="mr" />
 
 <style lang="postcss">
-  .activeHelpSubject {
+  .display :global(.activeHelpSubject) {
     color: hsl(var(--terminal-color-active));
   }
 </style>
