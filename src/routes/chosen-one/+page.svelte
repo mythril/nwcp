@@ -1,14 +1,6 @@
 <script lang="ts">
-  import {
-    AilmentStatus,
-    DerivedStats,
-    Sex,
-    Skills,
-    Special,
-    SpecialAbbreviation
-  } from '$lib/engines/ChosenOne';
+  import { Sex, Skills, Special, SpecialAbbreviation } from '$lib/engines/ChosenOne';
   import Attribute from './Attribute.svelte';
-  import Bolthead from './Bolthead.svelte';
   import Help from './Help.svelte';
   import HelpSource from './HelpSource.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
@@ -18,6 +10,9 @@
   import AgeChanger from './AgeChanger.svelte';
   import SexChanger from './SexChanger.svelte';
   import OptionalTraits from './OptionalTraits.svelte';
+  import Health from './Health.svelte';
+  import DerivedStats from './DerivedStats.svelte';
+  import CharPoints from './CharPoints.svelte';
 
   let name = '';
   let age = 25;
@@ -46,91 +41,14 @@
       </HelpSource>
     {/each}
   </div>
-  <div class="health slate monitor terminal-font-defaults">
-    <div class="display">
-      <HelpSource subject="Hit Points">
-        <div
-          role="link"
-          tabindex="0"
-        >
-          Hit Points 30/30
-        </div>
-      </HelpSource>
-      <div class="ailments">
-        {#each Object.values(AilmentStatus) as ailment}
-          <HelpSource subject={ailment}>
-            <div
-              role="link"
-              tabindex="0"
-            >
-              {ailment}
-            </div>
-          </HelpSource>
-        {/each}
-      </div>
-    </div>
-    <Bolthead dir="tl" />
-    <Bolthead dir="tr" />
-    <Bolthead dir="br" />
-    <Bolthead dir="ml" />
-    <Bolthead dir="bl" />
-    <Bolthead dir="mr" />
+  <div class="health-section slate monitor terminal-font-defaults">
+    <Health />
   </div>
   <div class="derived-stats slate monitor terminal-font-defaults">
-    <div class="display">
-      <table class="highlighted">
-        <tbody>
-          {#each Object.values(DerivedStats) as derived}
-            <tr>
-              <th>
-                <HelpSource subject={derived}>
-                  <div
-                    role="link"
-                    tabindex="0"
-                  >
-                    {derived}
-                  </div>
-                </HelpSource>
-              </th>
-              <td>
-                <HelpSource subject={derived}>
-                  {Math.round(Math.random() * 150) +
-                    (Math.random() > 0.25 ? '' : '%')}
-                </HelpSource>
-              </td>
-            </tr>
-          {/each}
-        </tbody>
-      </table>
-    </div>
-    <Bolthead dir="ml" />
-    <Bolthead dir="tr" />
-    <Bolthead dir="bl" />
-    <Bolthead dir="tl" />
-    <Bolthead dir="br" />
-    <Bolthead dir="mr" />
+    <DerivedStats />
   </div>
-  <div class="char-points slate">
-    <HelpSource subject="Character Points">
-      <div
-        role="link"
-        tabindex="0"
-        class="label worn-text"
-      >
-        CHAR POINTS
-      </div>
-      <div class="inset-border">
-        <TwoDigitDisplay
-          initial={Math.round(Math.random() * 9 + 1)}
-          min={0}
-          max={70}
-        />
-      </div>
-      <Bolthead dir="tl" />
-      <Bolthead dir="tr" />
-      <Bolthead dir="bl" />
-      <Bolthead dir="br" />
-    </HelpSource>
+  <div class="char-points-section slate">
+    <CharPoints />
   </div>
   <div class="traits-section">
     <OptionalTraits />
@@ -259,35 +177,8 @@
     }
   }
 
-  .monitor {
-    & {
-      position: relative;
-    }
-    & .display {
-      table,
-      th,
-      td,
-      tr {
-        text-align: left;
-        padding: 0;
-        border: 0;
-        table-layout: fixed;
-        border-spacing: 0;
-      }
-      td {
-        padding-left: 12rem;
-      }
-      padding: 7rem;
-      position: absolute;
-      top: 5%;
-      bottom: 5%;
-      left: 7%;
-      right: 7%;
-      line-height: 1.7;
-      background-color: hsl(var(--terminal-bg));
-      border-radius: 8rem 7rem;
-      box-shadow: var(--inset);
-    }
+  .health-section {
+    grid-area: health;
   }
 
   .special {
@@ -296,43 +187,11 @@
     border-bottom-left-radius: 9rem 5rem;
     padding: 6rem 7rem;
   }
-  .char-points {
-    .inset-border {
-      border-radius: 2rem;
-      box-shadow: var(--inset);
-    }
-    grid-area: 18 / 1 / 21 / 2;
-    position: relative;
-    border-radius: 2rem;
-    border-bottom-left-radius: 5rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 4rem;
-    padding-right: 16rem;
-    align-items: center;
-    .label {
-      font-size: 23rem;
-    }
-  }
-  .health {
-    grid-area: health;
-    border-radius: 7rem;
-    :global(.activeHelpSubject) {
-      color: hsl(var(--terminal-color-active));
-    }
-    .ailments {
-      color: hsl(var(--terminal-faded));
-      :global(.activeHelpSubject) {
-        color: hsl(var(--terminal-faded-active));
-      }
-    }
+  .char-points-section {
+    grid-area: points;
   }
   .derived-stats {
     grid-area: derived;
-    :global(.activeHelpSubject) {
-      color: hsl(var(--terminal-color-active));
-    }
-    border-radius: 7rem;
   }
   .tagged-skills {
     position: relative;

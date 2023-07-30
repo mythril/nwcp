@@ -156,6 +156,34 @@ body {
   text-transform: uppercase;
 }
 
-/* svg {
-  display:none;
-} */
+.monitor {
+  border-radius: 7rem;
+  & {
+    position: relative;
+  }
+  & .display {
+    table,
+    th,
+    td,
+    tr {
+      text-align: left;
+      padding: 0;
+      border: 0;
+      table-layout: fixed;
+      border-spacing: 0;
+    }
+    td {
+      padding-left: 12rem;
+    }
+    padding: 7rem;
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 7%;
+    right: 7%;
+    line-height: 1.7;
+    background-color: hsl(var(--terminal-bg));
+    border-radius: 8rem 7rem;
+    box-shadow: var(--inset);
+  }
+}
