@@ -57,9 +57,12 @@
 
     // This allows zooming to happen by freezing the font-size
     setTimeout(() => {
-      document.documentElement.style.fontSize = getComputedStyle(
-        document.documentElement
-      ).fontSize;
+      let cfs = getComputedStyle(document.documentElement).fontSize;
+      document.documentElement.style.fontSize = cfs;
+      document.documentElement.style.setProperty(
+        '--rem-ratio',
+        cfs.replace('px', '')
+      );
     }, 1);
   });
 </script>
@@ -128,7 +131,7 @@
   .app {
     font-family: var(--terminal-font);
     background-color: hsl(var(--bg));
-    filter: brightness(1.3);
+    /* filter: brightness(1.3); */
     position: relative;
     width: fit-content;
     min-width: 100vw;
@@ -168,7 +171,7 @@
     right: 0;
     bottom: 0;
     pointer-events: none;
-    mix-blend-mode: multiply;
+    mix-blend-mode: overlay;
     canvas {
       position: absolute;
       left: 0;

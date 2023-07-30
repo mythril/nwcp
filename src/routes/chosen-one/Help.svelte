@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Sprite from '$lib/components/Sprite.svelte';
   import { helpSubject, helpText } from './stores';
 
   let text = '';
@@ -21,20 +22,45 @@
     <span class="extra">{extra}</span>
   </h3>
   <div class="help">
-    {text}
+    <div class="text">
+      {text}
+    </div>
+    <div class="image">
+      <Sprite />
+    </div>
   </div>
 </div>
 
+<svg>
+  <filter id="paper">
+    <feTurbulence
+      x="0"
+      y="0"
+      baseFrequency="0.01"
+      numOctaves="5"
+      seed="1"
+    />
+    <feDisplacementMap
+      in="SourceGraphic"
+      scale="10"
+    />
+  </filter>
+</svg>
+
 <style lang="postcss">
   .content {
-    z-index: 1;
     position: absolute;
-    left: 0;
+    isolation: isolate;
     top: 0;
-    bottom: 0;
+    left: 0;
     right: 0;
+    bottom: 0;
     padding: 17rem 20rem;
+    display: flex;
+    flex-flow: column;
+    outline: 1px solid red;
     .subject {
+      outline: 1px solid red;
       font-family: var(--label-font);
       padding: 0;
       width: 100%;
@@ -53,14 +79,12 @@
       }
     }
     .help {
+      display: flex;
+      flex-flow: row;
       font-weight: 700;
-      width: 200rem;
-      height: 160rem;
     }
   }
   .paper-bg {
-    position: relative;
-    z-index: 0;
     width: 100%;
     height: 100%;
     box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 1) inset;

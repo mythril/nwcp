@@ -16,6 +16,7 @@ Overall goals:
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Add an about page
 - [ ] Build filter to add random blotchy, embossed grooves into the background
+- [ ] Convert virtually everything to css grids instead of positioned elements (reduce un-needed stacking contexts)
 
 ### Visuals
 

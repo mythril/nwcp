@@ -29,22 +29,6 @@
   let rightTraits = traits.slice(8, 16);
 </script>
 
-<svg>
-  <filter id="paper">
-    <feTurbulence
-      x="0"
-      y="0"
-      baseFrequency="0.01"
-      numOctaves="5"
-      seed="1"
-    />
-    <feDisplacementMap
-      in="SourceGraphic"
-      scale="10"
-    />
-  </filter>
-</svg>
-
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
