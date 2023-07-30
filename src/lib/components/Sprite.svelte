@@ -14,7 +14,7 @@
     opacity: calc(min(var(--rem-ratio, 0), 1));
 
     display: inline-block;
-    background-image: url('$lib/images/sprites.webp');
+    /* background-image: url('$lib/images/sprites.webp'); */
     image-rendering: crisp-edges;
     width: 140rem;
     height: 117rem;

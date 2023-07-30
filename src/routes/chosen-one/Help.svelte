@@ -50,11 +50,11 @@
 </svg>
 
 <style lang="postcss">
-  .help{
+  .help {
     position: relative;
     padding: 8rem 10rem;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     /* prettier-ignore */
     box-shadow: 
       0 0 0 1rem rgba(0, 0, 0, 0.5),
