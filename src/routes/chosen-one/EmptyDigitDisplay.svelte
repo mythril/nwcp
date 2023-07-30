@@ -17,12 +17,14 @@
       background-color: hsl(0, 0%, 50%);
       /* prettier-ignore */
       box-shadow: 
+      -1rem 0 0.6rem 0.1rem rgba(0, 0, 0, 0.9),
         inset 0 15rem 2rem 2rem rgba(0, 0, 0, 0.5),
-        -0.5rem 0 0.6rem 0.1rem rgba(255, 255, 255, 0.35),
-        -1rem 0 0.5rem 0 rgba(0, 0, 0, 0.25),
+        0 0 0 1rem rgba(0, 0, 0, 0.5),
+        -1rem 0 0 1rem rgba(255, 255, 255, 0.15),
+        -1rem 0 0.6rem 0.1rem rgba(0, 0, 0, 0.9),
         inset 0 -11rem 2rem 0 rgba(0, 0, 0, 0.8),
         inset 0 6rem 2rem 0 rgba(0, 0, 0, 0.8);
-      filter: blur(0.5rem);
+      /* filter: blur(0.5rem); */
     }
     color: hsl(0, 0%, 93%);
     font-family: var(--label-font);
@@ -34,11 +36,11 @@
       1rem -1rem 0 rgba(0, 0, 0, 0.8),
       -1rem -1rem 0 rgba(0, 0, 0, 0.8);
     left: -3rem;
-    padding-left: 5rem;
+    padding-left: 4rem;
     margin-left: -8rem;
     box-sizing: border-box;
     font-size: 28rem;
-    line-height: 28rem;
+    line-height: 29rem;
     width: 27rem;
     text-align: center;
     height: 100%;
