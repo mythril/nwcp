@@ -39,24 +39,21 @@
     font-family: var(--terminal-font);
     background-color: hsl(var(--bg));
     /* filter: brightness(1.3); */
+    min-height: 100vh;
     position: relative;
     width: fit-content;
     min-width: 100vw;
-    height: fit-content;
-    min-height: 100vh;
+    display: grid;
+    margin: auto;
   }
 
   #planner {
     font-family: var(--terminal-font);
     font-size: 10rem;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
     background-color: hsl(var(--bg));
     border: 0;
-    margin: 0 auto;
-    width: fit-content;
-    min-height: 100vh;
+    display: grid;
+    margin: auto;
   }
 
   .page {

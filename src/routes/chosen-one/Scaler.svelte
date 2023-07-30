@@ -1,18 +1,38 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  onMount(() => {
+  let devicePixelRatio = 0;
+
+  const setRem = () => {
+    let cfs = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+    // keep the user's zoom level
+    let fontSize = cfs * devicePixelRatio;
+
+    document.documentElement.style.fontSize = fontSize + 'px';
+    document.documentElement.style.setProperty(
+      '--px-ratio',
+      devicePixelRatio.toString()
+    );
+    document.documentElement.style.setProperty(
+      '--rem-ratio',
+      fontSize.toString()
+    );
+  };
+
+  const waitForDevicePixelRatio = () => {
     // This allows zooming to happen by freezing the font-size
-    setTimeout(() => {
-      let cfs = getComputedStyle(document.documentElement).fontSize;
-      document.documentElement.style.fontSize = cfs;
-      document.documentElement.style.setProperty(
-        '--rem-ratio',
-        cfs.replace('px', '')
-      );
-    }, 1);
-  });
+    if (devicePixelRatio !== 0) {
+      setTimeout(setRem, 1);
+    } else {
+      setTimeout(waitForDevicePixelRatio, 20);
+    }
+  };
+
+  onMount(waitForDevicePixelRatio);
 </script>
+
+<svelte:window bind:devicePixelRatio />
 
 <style lang="postcss">
   :global(html) {
