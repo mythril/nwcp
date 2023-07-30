@@ -10,7 +10,7 @@
     <div
       role="link"
       tabindex="0"
-      class="before worn-text"
+      class="title worn-text"
     >
       Skills
     </div>
@@ -60,8 +60,6 @@
 
 <style lang="postcss">
   .skills-remaining {
-    position: absolute;
-    bottom: 0;
     height: 44rem;
     width: 100%;
     display: flex;
@@ -89,10 +87,6 @@
   .title-bg {
     content: ' ';
     box-shadow: var(--sharp-light-source);
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
     height: 28rem;
     background-color: hsl(var(--title-bg));
     border-top-left-radius: 15rem;
@@ -100,12 +94,8 @@
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
   }
-  .before {
+  .title {
     padding-left: 58rem;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
     height: 28rem;
     font-size: 22rem;
   }
@@ -114,9 +104,8 @@
     display: flex;
     flex-flow: column;
     width: 97%;
-    height: 87%;
-    padding: 15rem 0;
-    margin: 13rem auto;
+    padding: 0;
+    margin: 0 auto;
     line-height: 1.48;
     background: linear-gradient(
       0.25turn,

@@ -91,6 +91,10 @@
     position: fixed;
     height: 100vh;
     width: 100vh;
-    top: -200vh;
+    bottom: 200vh;
+    right: 200vw;
+  }
+  .offscreen :global(svg) {
+    display: none;
   }
 </style>

@@ -80,11 +80,6 @@
     calc(4 * 1rem) calc(-4 * 1rem) calc(5 * 1rem) calc(-5 * 1rem) rgba(0, 0, 0, 0.3) inset;
 }
 
-html {
-  /* attempts to render largest in-frame window possible */
-  font-size: calc(min(resolve(100vh / 675), resolve(100vw / 890)));
-}
-
 :root,
 html,
 body {
@@ -144,16 +139,6 @@ body {
   border-left: 4rem solid hsl(var(--bg-hs), calc(var(--bg-l) + 45%));
   border-right: 4rem solid hsl(var(--bg-hs), calc(var(--bg-l) + 5%));
   border-bottom: 3rem solid hsl(var(--bg-hs), calc(var(--bg-l) + 25%));
-}
-
-.worn-text {
-  user-select: none;
-  font-family: var(--title-font);
-  -webkit-mask-image: url('/generated/worn-text.png');
-  mask-image: url('/generated/worn-text.png');
-  color: hsl(var(--title-color));
-  font-weight: 400;
-  text-transform: uppercase;
 }
 
 .monitor {
