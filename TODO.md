@@ -7,7 +7,7 @@ Overall goals:
 
 ### To do
 
-- [ ] Factor screen effect into a component
+- [ ] Fix modal anchoring when zooming in
 - [ ] Figure out what is going on with worn-text cache and hard refresh
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
 - [ ] debug service worker quirks - firefox for 1, stickiness for 2
@@ -17,7 +17,7 @@ Overall goals:
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Add an about page
 - [ ] Build filter to add random blotchy, embossed grooves into the background
-- [ ] Convert virtually everything to css grids instead of positioned elements (reduce un-needed stacking contexts)
+- [ ] Convert virtually everything to css grids / flexbox / (display)table instead of positioned elements (reduce un-needed stacking contexts)
 
 ### Visuals
 
@@ -48,6 +48,7 @@ Overall goals:
 
 ### Done
 
+- [x] Factor screen effect into a component
 - [x] Check inline TODOs
 - [x] Add inert / other a11y features (mini dialogs need attention, use portals and body/document listeners)
 - [x] Make background grain as large as the document

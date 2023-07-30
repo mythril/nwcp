@@ -103,6 +103,16 @@
     overflow: hidden;
     width: 44rem;
     height: 29rem;
+    position: relative;
+    &::after {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      box-shadow: 0 0 11rem rgba(0, 0, 0, 1) inset;
+    }
   }
   .two-digit {
     display: flex;
