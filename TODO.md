@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] Factor screen effect into a component
 - [ ] Figure out what is going on with worn-text cache and hard refresh
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
 - [ ] debug service worker quirks - firefox for 1, stickiness for 2
