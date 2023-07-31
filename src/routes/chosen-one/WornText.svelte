@@ -1,12 +1,13 @@
 <script lang="ts">
   import GeneratedImageCacher from '$lib/components/GeneratedImageCacher.svelte';
+  import './WornText.postcss';
 
   const cacheDescriptors = [
     {
       name: 'worn-text',
       width: 250,
       height: 75,
-      applyToProperties: ['mask-image', '-webkit-mask-image']
+      applyToProperties: ['-webkit-mask-image', 'mask-image']
     }
   ];
 </script>
@@ -42,15 +43,3 @@
     </defs>
   </svg>
 </GeneratedImageCacher>
-
-<style lang="postcss">
-  :global(.worn-text) {
-    user-select: none;
-    font-family: var(--title-font);
-    -webkit-mask-image: url('/generated/worn-text.png');
-    mask-image: url('/generated/worn-text.png');
-    color: hsl(var(--title-color));
-    font-weight: 400;
-    text-transform: uppercase;
-  }
-</style>

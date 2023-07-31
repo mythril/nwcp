@@ -3,10 +3,12 @@
 /// <reference lib="esnext" />
 /// <reference lib="webworker" />
 
-// const sw = /** @type {ServiceWorkerGlobalScope} */ /** @type {unknown} */ self;
 declare let self: ServiceWorkerGlobalScope;
 
+import debug from '$lib/debug';
 import { build, files, version } from '$service-worker';
+
+debug.log('service worker running');
 
 // Create a unique cache name for this deployment
 const CACHE = `cache-${version}`;
@@ -18,20 +20,26 @@ const ASSETS = [
 
 self.addEventListener('install', (event) => {
   // Create a new cache and add all files to it
+  debug.log('service worker installed');
   async function addFilesToCache() {
     const cache = await caches.open(CACHE);
     await cache.addAll(ASSETS);
+    debug.log('cache filled');
   }
 
   event.waitUntil(addFilesToCache());
 });
 
 self.addEventListener('activate', (event) => {
+  debug.log('service worker activated');
   // Remove previous cached data from disk
   async function deleteOldCaches() {
     for (const key of await caches.keys()) {
       if (key !== CACHE) await caches.delete(key);
     }
+    debug.log('cache cleared');
+    await self.clients.claim();
+    debug.log('clients claimed');
   }
 
   event.waitUntil(deleteOldCaches());

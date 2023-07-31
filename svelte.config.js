@@ -11,7 +11,8 @@ export default {
       fallback: 'index.html',
       precompress: false,
       strict: true
-    })
+    }),
+    serviceWorker: { register: false }
   },
   preprocess: [vitePreprocess({})]
 };

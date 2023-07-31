@@ -4,12 +4,31 @@
   import Overlay from './chosen-one/Overlay.svelte';
   import Scaler from './chosen-one/Scaler.svelte';
   import WornText from './chosen-one/WornText.svelte';
+  import { dev } from '$app/environment';
+  import { onMount } from 'svelte';
+  import debug from '$lib/debug';
 
-  let planner: HTMLDivElement;
-  let hidden = true;
+  async function bootUp() {
+    if ('serviceWorker' in navigator) {
+      debug.log('registering service worker');
+      navigator.serviceWorker
+        .register('./service-worker.js', {
+          type: dev ? 'module' : 'classic'
+        })
+        .then(() => {
+          debug.log('service worker registered');
+        });
+      debug.log('registration initiated');
+      if (navigator.serviceWorker.controller) {
+        debug.log('a service worker is installed');
+      }
+      navigator.serviceWorker.oncontrollerchange = () => {
+        debug.log('new service worker activated');
+      };
+    }
+  }
+  onMount(bootUp);
 </script>
-
-<svelte:window on:load={() => (hidden = false)} />
 
 <Scaler />
 
@@ -21,8 +40,6 @@
 <div class="app">
   <div
     id="planner"
-    bind:this={planner}
-    {hidden}
     inert={$modalShown}
   >
     <div class="page">

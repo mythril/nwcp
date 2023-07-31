@@ -24,21 +24,54 @@
     }
 
     for (const desc of cacheDescriptors) {
-      ctx.filter = 'url()';
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      canvas.width = desc.width;
-      canvas.height = desc.height;
-
       const rq = new Request(`/generated/${desc.name}.png`);
 
       let found = await cache.match(rq);
 
       if (found !== undefined) {
-        continue;
+        if ('serviceWorker' in navigator) {
+          if (navigator.serviceWorker.controller) {
+            if (!desc.applyToProperties || desc.applyToProperties.length < 1) {
+              continue;
+            }
+            const generateRules = () => {
+              if (!desc.applyToProperties) {
+                return '';
+              }
+              let result = '';
+              for (let property of desc.applyToProperties) {
+                result += `${property}: url('/generated/${desc.name}.png');\n`;
+              }
+              return result;
+            };
+            const css = `
+            .${desc.name} {
+              ${generateRules()}
+            }
+            `;
+            styles.push(css);
+            styles = styles;
+            continue;
+          } else {
+            // navigator.serviceWorker.controller is null after a hard refresh
+            // which means that the attempt to load generated images will 404
+            // so instead we treat it the same as a first load: render it,
+            // stuff it in the cache it and use it as a data blob in the
+            // generated css rule (see below)
+          }
+        }
       }
 
+      ctx.filter = 'url()';
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.width = desc.width;
+      canvas.height = desc.height;
+
+      // probably need to wrap this in a callback to allow generated images to
+      // customize the results beyond drawing a svg filter to a canvas
       ctx.filter = `url(#${desc.name})`;
       ctx.fillRect(desc.width, desc.height, desc.width, desc.height);
+
       canvas.toBlob(async (blob) => {
         if (!blob) {
           return;
@@ -46,20 +79,23 @@
         let resp = new Response(blob, { status: 200, statusText: 'OK' });
         await cache.put(rq, resp);
 
-        if (!desc.applyToProperties) {
+        if (!desc.applyToProperties || desc.applyToProperties.length < 1) {
           return;
         }
-
+        let generateRules = () => {
+          if (!desc.applyToProperties) {
+            return '';
+          }
+          let result = '';
+          for (let property of desc.applyToProperties) {
+            result += `${property}: url('${dataURL}');\n`;
+          }
+          return result;
+        };
         const dataURL = await blobToDataURL(blob);
         const css = `
         .${desc.name} {
-          ${(() => {
-            let result = '';
-            for (let property of desc.applyToProperties) {
-              result += `${property}: url('${dataURL}') !important;\n`;
-            }
-            return result;
-          })()}
+          ${generateRules()}
         }
         `;
         styles.push(css);
@@ -88,13 +124,13 @@
 
 <style lang="postcss">
   .offscreen {
+    overflow: hidden;
     position: fixed;
+    width: 100vw;
+    max-width: 100vw;
     height: 100vh;
-    width: 100vh;
+    max-height: 100vh;
     bottom: 200vh;
     right: 200vw;
-  }
-  .offscreen :global(svg) {
-    display: none;
   }
 </style>
