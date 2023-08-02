@@ -4,18 +4,6 @@
 
   export let value = '';
   let text: HTMLInputElement;
-  function keyHandler(event: KeyboardEvent) {
-    text.value = '';
-    event.preventDefault();
-    if (value.length > 10) {
-      bonkSound();
-      return;
-    }
-    if (event.key.length === 1) {
-      value = value + event.key;
-      clickSound();
-    }
-  }
 
   function controlKeys(event: KeyboardEvent) {
     text.value = '';
@@ -32,12 +20,21 @@
 
   onMount(() => {
     text.focus();
+    text.addEventListener('input', (ev) => {
+      ev.preventDefault();
+      if (value.length > 10) {
+        bonkSound();
+        return;
+      }
+      value = value + text.value.slice(-1);
+      text.value = '';
+      clickSound();
+    });
   });
 </script>
 
 <div class={$$props.class + ' wrapper'}>
   <input
-    on:keypress={keyHandler}
     on:keydown={controlKeys}
     on:change={() => (text.value = '')}
     bind:this={text}

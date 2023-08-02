@@ -40,7 +40,8 @@
     if (!dialog) {
       return;
     }
-    dialog.scrollIntoView({ behavior: 'smooth' });
+
+    dialog.scrollIntoView(true);
 
     const focusable = dialog.querySelectorAll<HTMLElement>(` 
       a[href]:not([tabindex='-1']),
@@ -69,14 +70,18 @@
   let left = 0;
   let top = 0;
 
-  afterUpdate(() => {
+  const applyAnchoring = () => {
     if (anchor) {
       let rect = anchor.getBoundingClientRect();
       left = window.scrollX + rect.left;
       top = window.scrollY + rect.top;
     }
-  });
+  };
+
+  afterUpdate(applyAnchoring);
 </script>
+
+<svelte:window on:resize={applyAnchoring} />
 
 <svelte:body on:keydown={controlKeys} />
 
@@ -93,14 +98,16 @@
       bind:this={dialog}
       style="left: {left}px; top: {top}px"
     >
-      <div class="main">
-        <slot />
-      </div>
-      <div class="button">
-        <PlateButton
-          class="btn-done"
-          on:click={commit}>Done</PlateButton
-        >
+      <div class="padding-wrapper">
+        <div class="main">
+          <slot />
+        </div>
+        <div class="button">
+          <PlateButton
+            class="btn-done"
+            on:click={commit}>Done</PlateButton
+          >
+        </div>
       </div>
     </div>
   </Portal>
@@ -119,15 +126,19 @@
   .edit {
     position: absolute;
     left: 2rem;
-    padding-top: 13rem;
-    padding-left: 20rem;
-    padding-right: 20rem;
-    padding-bottom: 9rem;
     top: 0;
     z-index: 3;
     background-color: hsl(var(--bg));
     box-shadow: var(--basic-box-shadow),
       inset 5rem -5rem 5rem 0 rgba(0, 0, 0, 0.75);
+    .padding-wrapper {
+      width: 100%;
+      height: 100%;
+      padding-top: 13rem;
+      padding-left: 20rem;
+      padding-right: 20rem;
+      padding-bottom: 9rem;
+    }
     .main {
       margin-bottom: 8rem;
     }
