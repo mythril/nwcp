@@ -14,14 +14,8 @@
 
     // This allows zooming to happen by freezing the font-size
     style.fontSize = fontSize + 'px';
-    style.setProperty(
-      '--px-ratio',
-      devicePixelRatio.toString()
-    );
-    style.setProperty(
-      '--rem-ratio',
-      fontSize.toString()
-    );
+    style.setProperty('--px-ratio', devicePixelRatio.toString());
+    style.setProperty('--rem-ratio', fontSize.toString());
   };
 
   const waitForDevicePixelRatio = () => {

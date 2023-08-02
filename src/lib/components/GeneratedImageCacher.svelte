@@ -121,16 +121,3 @@
 
   <canvas bind:this={canvas} />
 </div>
-
-<style lang="postcss">
-  .offscreen {
-    overflow: hidden;
-    position: fixed;
-    width: 100vw;
-    max-width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
-    bottom: 200vh;
-    right: 200vw;
-  }
-</style>

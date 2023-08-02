@@ -33,21 +33,25 @@
   </div>
 </div>
 
-<svg>
-  <filter id="paper">
-    <feTurbulence
-      x="0"
-      y="0"
-      baseFrequency="0.01"
-      numOctaves="5"
-      seed="1"
-    />
-    <feDisplacementMap
-      in="SourceGraphic"
-      scale="10"
-    />
-  </filter>
-</svg>
+<div class="offscreen">
+  <svg>
+    <defs>
+      <filter id="paper">
+        <feTurbulence
+          x="0"
+          y="0"
+          baseFrequency="0.01"
+          numOctaves="5"
+          seed="1"
+        />
+        <feDisplacementMap
+          in="SourceGraphic"
+          scale="10"
+        />
+      </filter>
+    </defs>
+  </svg>
+</div>
 
 <style lang="postcss">
   .help {

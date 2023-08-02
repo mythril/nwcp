@@ -49,7 +49,7 @@ Overall goals:
 - [x] Refactor `/chosen-one` route into components for each section
 - [x] play UI sounds
 - [x] figure out how to (nope) apply shaders to whole screen, so that we can abandon svg filters (and bring FF back in to the fold) or (yep) improve svg filter performance
-- [x] debug service worker quirks 
+- [x] debug service worker quirks
 - [x] Figure out what is going on with worn-text cache and hard refresh
 - [x] Factor screen effect into a component
 - [x] Check inline TODOs

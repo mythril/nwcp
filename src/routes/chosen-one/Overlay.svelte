@@ -50,48 +50,50 @@
   </div>
 </Portal>
 
-<svg>
-  <defs>
-    <filter id="variance">
-      <feTurbulence
-        type="fractalNoise"
-        baseFrequency="0.1"
-        numOctaves="1"
-        stitchTiles="stitch"
-        seed="1"
-      />
-      <feColorMatrix
-        type="saturate"
-        values="0.5"
-      />
-      <feComponentTransfer>
-        <feFuncA
-          type="table"
-          tableValues="0.5 0.5 0.5 1"
+<div class="offscreen">
+  <svg>
+    <defs>
+      <filter id="variance">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.1"
+          numOctaves="1"
+          stitchTiles="stitch"
+          seed="1"
         />
-      </feComponentTransfer>
-      <feBlend
-        in="SourceGraphic"
-        in2="variance"
-        mode="multiply"
-      />
-    </filter>
-    <filter id="grain">
-      <feTurbulence
-        type="fractalNoise"
-        baseFrequency="0.375"
-        numOctaves="6"
-        stitchTiles="stitch"
-        seed="1"
-      />
-      <feBlend
-        in="SourceGraphic"
-        in2="grain"
-        mode="multiply"
-      />
-    </filter>
-  </defs>
-</svg>
+        <feColorMatrix
+          type="saturate"
+          values="0.5"
+        />
+        <feComponentTransfer>
+          <feFuncA
+            type="table"
+            tableValues="0.5 0.5 0.5 1"
+          />
+        </feComponentTransfer>
+        <feBlend
+          in="SourceGraphic"
+          in2="variance"
+          mode="multiply"
+        />
+      </filter>
+      <filter id="grain">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.375"
+          numOctaves="6"
+          stitchTiles="stitch"
+          seed="1"
+        />
+        <feBlend
+          in="SourceGraphic"
+          in2="grain"
+          mode="multiply"
+        />
+      </filter>
+    </defs>
+  </svg>
+</div>
 
 <style lang="postcss">
   .overlay {
@@ -112,12 +114,5 @@
       width: 100%;
       height: 100%;
     }
-  }
-  svg {
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-    bottom: 200vh;
-    right: 200vw;
   }
 </style>

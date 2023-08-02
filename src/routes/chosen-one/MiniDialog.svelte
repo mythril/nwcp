@@ -40,6 +40,7 @@
     if (!dialog) {
       return;
     }
+    dialog.scrollIntoView({ behavior: 'smooth' });
 
     const focusable = dialog.querySelectorAll<HTMLElement>(` 
       a[href]:not([tabindex='-1']),
