@@ -10,19 +10,21 @@
     // keep the user's zoom level
     let fontSize = cfs * devicePixelRatio;
 
-    document.documentElement.style.fontSize = fontSize + 'px';
-    document.documentElement.style.setProperty(
+    const style = document.documentElement.style;
+
+    // This allows zooming to happen by freezing the font-size
+    style.fontSize = fontSize + 'px';
+    style.setProperty(
       '--px-ratio',
       devicePixelRatio.toString()
     );
-    document.documentElement.style.setProperty(
+    style.setProperty(
       '--rem-ratio',
       fontSize.toString()
     );
   };
 
   const waitForDevicePixelRatio = () => {
-    // This allows zooming to happen by freezing the font-size
     if (devicePixelRatio !== 0) {
       setTimeout(setRem, 1);
     } else {

@@ -10,6 +10,7 @@
     }
     canvas.width = document.documentElement.scrollWidth;
     canvas.height = document.documentElement.scrollHeight;
+
     const ctx = canvas.getContext('2d');
     if (!ctx) {
       return;
@@ -26,19 +27,19 @@
     ctx.stroke();
   }
 
-  let devicePixelRatio: number;
-  let oldRatio: number;
-  $: {
-    if (devicePixelRatio !== oldRatio) {
-      oldRatio = devicePixelRatio;
+  let devicePixelRatio = 0;
+  // this feels like a hack, I'm not certain why it works
+  // it's only a guess that the document is layed out by the time
+  // devicePixelRatio is read and onMount() has fired
+  const waitForDevicePixelRatio = () => {
+    if (devicePixelRatio !== 0) {
+      setTimeout(renderOverLay, 1);
     } else {
-      renderOverLay();
+      setTimeout(waitForDevicePixelRatio, 20);
     }
-  }
-  onMount(() => {
-    oldRatio = devicePixelRatio;
-    renderOverLay();
-  });
+  };
+
+  onMount(waitForDevicePixelRatio);
 </script>
 
 <svelte:window bind:devicePixelRatio />

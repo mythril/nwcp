@@ -7,18 +7,16 @@ Overall goals:
 
 ### To do
 
-- [ ] Fix grain scaling
 - [ ] Fix modal anchoring when zooming in
-- [ ] Figure out what is going on with worn-text cache and hard refresh
+- [ ] add scroll in to view for modal anchoring
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
-- [ ] debug service worker quirks - firefox for 1, stickiness for 2
 - [ ] Make the first event: create character
 - [ ] Figure out a way for end users to preserve their character creations
   - third party storage services that the user can opt in to?
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Add an about page
 - [ ] Build filter to add random blotchy, embossed grooves into the background
-- [ ] Convert virtually everything to css grids / flexbox / (display)table instead of positioned elements (reduce un-needed stacking contexts)
+- [ ] re-scale UI to 640x480 style dimensions, update viewport meta tag
 
 ### Visuals
 
@@ -29,17 +27,15 @@ Overall goals:
 
 ### Maybe
 
+- [ ] Include VB sprites?
 - [ ] Create an intro anim
 - [ ] redirect to '/' when images are not yet generated
 - [ ] Build an svg for 'screen' dialogs
 - [ ] embed stylistically similar music
-- [ ] play UI sounds
-- [ ] figure out how to apply shaders to whole screen, so that we can abandon svg filters (and bring FF back in to the fold)
 - [ ] embed this todo into the released site
 
 ### After first release
 
-- [ ] Refactor `/chosen-one` route into components for each section
 - [ ] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
 - [ ] Add level up button
 - [ ] Build an event sourced store, keeping track of the character development as a log instead of just mangling an object
@@ -49,6 +45,12 @@ Overall goals:
 
 ### Done
 
+- [x] Fix grain scaling
+- [x] Refactor `/chosen-one` route into components for each section
+- [x] play UI sounds
+- [x] figure out how to (nope) apply shaders to whole screen, so that we can abandon svg filters (and bring FF back in to the fold) or (yep) improve svg filter performance
+- [x] debug service worker quirks 
+- [x] Figure out what is going on with worn-text cache and hard refresh
 - [x] Factor screen effect into a component
 - [x] Check inline TODOs
 - [x] Add inert / other a11y features (mini dialogs need attention, use portals and body/document listeners)

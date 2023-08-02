@@ -12,7 +12,8 @@ export default ({ mode }: { mode: string }) => {
       include: ['src/**/*.{test,spec}.{js,ts}']
     },
     server: {
-      host: process.env.VITE_DEV_HOST || 'localhost',
+      // host: process.env.VITE_DEV_HOST || 'localhost',
+      host: true,
       port: parseInt(process.env.VITE_DEV_PORT || '8080', 10),
       https: {
         cert: process.env.VITE_CERT_FILE
