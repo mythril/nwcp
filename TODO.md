@@ -8,7 +8,6 @@ Overall goals:
 ### To do
 
 - [ ] Fix modal anchoring when zooming in
-- [ ] add scroll in to view for modal anchoring
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
 - [ ] Make the first event: create character
 - [ ] Figure out a way for end users to preserve their character creations
@@ -45,6 +44,7 @@ Overall goals:
 
 ### Done
 
+- [x] add scroll in to view for modal anchoring
 - [x] Fix grain scaling
 - [x] Refactor `/chosen-one` route into components for each section
 - [x] play UI sounds

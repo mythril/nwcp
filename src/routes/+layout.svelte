@@ -62,6 +62,7 @@
     min-width: 100vw;
     display: grid;
     margin: auto;
+    overflow: hidden;
   }
 
   #planner {
