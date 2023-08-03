@@ -66,7 +66,7 @@
 
   #planner {
     font-family: var(--terminal-font);
-    font-size: 10rem;
+    font-size: 8rem;
     background-color: hsl(var(--bg));
     border: 0;
     display: grid;
@@ -75,10 +75,10 @@
 
   .page {
     /* this maintains an aspect ratio similar to the original game */
-    width: 855rem;
-    min-width: 855rem;
-    height: 641.25rem;
-    min-height: 641.25rem;
+    width: 640rem;
+    min-width: 640rem;
+    height: 480rem;
+    min-height: 480rem;
     position: relative;
   }
 </style>

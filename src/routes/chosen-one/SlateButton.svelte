@@ -14,6 +14,7 @@
 
 <style lang="postcss">
   .button {
+    position: absolute;
     overflow: hidden;
     text-overflow: clip;
     white-space: nowrap;
@@ -23,23 +24,22 @@
     color: hsl(var(--title-color));
     padding: 0 8rem;
     border-radius: 5rem;
-    border-width: 0;
+    border: 1rem solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
     /* prettier-ignore */
     box-shadow:
-      var(--shadow-border),
       var(--light-source),
       var(--sunken-clear);
     transition: filter 0.2s linear, box-shadow 0.01s linear;
     font-family: var(--title-font);
     text-align: center;
-    font-size: 22rem;
-    line-height: 1.5;
+    font-size: 16rem;
+    line-height: 30rem;
     appearance: none;
     padding: 0;
     margin: 0;
     display: block;
     width: 100%;
-    height: 100%;
+    height: 30rem;
     &.checked,
     &:active {
       filter: saturate(0.7) brightness(0.7);

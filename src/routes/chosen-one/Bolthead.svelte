@@ -1,6 +1,6 @@
 <script lang="ts">
   export let dir: 'tl' | 'tr' | 'bl' | 'br' | 'ml' | 'mr';
-  export let size = 8;
+  export let size = 6;
 </script>
 
 <div

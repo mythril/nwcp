@@ -30,7 +30,9 @@
 <style lang="postcss">
   .char-points {
     width: 100%;
-    height: 100%;
+    /* @TODO should be 50 */
+    /* height: 50rem; */
+    height: 46rem;
     .inset-border {
       border-radius: 2rem;
       box-shadow: var(--inset);
@@ -44,7 +46,7 @@
     padding-right: 16rem;
     align-items: center;
     .label {
-      font-size: 23rem;
+      font-size: 16rem;
     }
   }
 </style>

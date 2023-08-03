@@ -101,9 +101,10 @@
   .window {
     display: block;
     overflow: hidden;
-    width: 44rem;
-    height: 29rem;
+    width: 33rem;
+    height: 22rem;
     position: relative;
+    background: #000;
     &::after {
       content: ' ';
       position: absolute;
@@ -116,8 +117,8 @@
   }
   .two-digit {
     display: flex;
-    height: 100%;
-    width: 90rem;
+    height: 22rem;
+    width: resolve(13rem * 4);
     position: relative;
     left: -5rem;
   }

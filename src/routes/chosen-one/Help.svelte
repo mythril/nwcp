@@ -56,9 +56,10 @@
 <style lang="postcss">
   .help {
     position: relative;
-    padding: 8rem 10rem;
-    width: 100%;
-    height: 100%;
+    padding: 3rem 6rem;
+    width: 289rem;
+    height: 180rem;
+    margin: auto;
     /* prettier-ignore */
     box-shadow: 
       0 0 0 1rem rgba(0, 0, 0, 0.5),
@@ -72,7 +73,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 17rem 20rem;
+    padding: 12rem 15rem;
     display: flex;
     flex-flow: column;
     .subject {
@@ -82,8 +83,8 @@
       border-bottom: 2rem solid #000;
       margin: 0;
       margin-bottom: 10rem;
-      font-size: 30rem;
-      line-height: 1.5;
+      font-size: 21rem;
+      line-height: 35rem;
       .extra {
         &:not(:empty)::before {
           content: 'Base: ';

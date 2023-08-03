@@ -8,6 +8,8 @@ Overall goals:
 ### To do
 
 - [ ] re-format to 640x480 style
+- [ ] fix modals, flanges, char-points height?
+- [ ] fix reflow
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
 - [ ] Make the first event: create character
 - [ ] Figure out a way for end users to preserve their character creations

@@ -68,10 +68,10 @@
 <style lang="postcss">
   .parent {
     display: grid;
-    grid-template-columns: 25.5625% 25.5625% 1% 46.375%;
+    grid-template-columns: 25% 26.125% 2rem 46.375%;
     grid-template-rows: repeat(30, 1fr);
-    grid-column-gap: 0.5%;
-    grid-row-gap: 5rem;
+    grid-column-gap: 3rem;
+    grid-row-gap: 2rem;
     grid-template-areas:
       'nas nas . skills'
       'nas nas . skills'
@@ -108,7 +108,7 @@
     bottom: 0;
     top: 0;
     right: 0;
-    filter: drop-shadow(-5rem 5rem 3rem #000) drop-shadow(-5rem 5rem 3rem #000);
+    filter: drop-shadow(-4rem 4rem 3rem #000) drop-shadow(-4rem 4rem 3rem #000);
   }
 
   .name-age-sex {
@@ -117,41 +117,63 @@
     justify-content: center;
     /* width: 93.75%; */
     .name {
-      width: calc(46.66 * 0.9375%);
+      position: relative;
+      width: 136rem;
     }
     .age {
-      width: calc(26.66 * 0.9375%);
+      position: relative;
+      width: 80rem;
     }
     .sex {
-      width: calc(26.66 * 0.9375%);
+      position: relative;
+      width: 81rem;
     }
   }
 
   .health-section {
     grid-area: health;
+    z-index: -1;
   }
 
   .special {
     grid-area: special;
     border-radius: 2rem;
     border-bottom-left-radius: 9rem 5rem;
-    padding: 6rem 7rem;
+    padding: 4rem 7rem;
+    position: relative;
   }
   .char-points-section {
     grid-area: points;
+    position: relative;
+    /*
+     @TODO this area is not the right size, should 
+     be 50rem tall
+    */
   }
   .derived-stats {
     grid-area: derived;
   }
   .tagged-skills-section {
-    position: relative;
     grid-area: skills;
   }
   .traits-section {
     grid-area: traits;
+    position: relative;
+    /* &::after {
+      pointer-events: none;
+      position: absolute;
+      content: ' ';
+      outline: 1px solid red;
+      top: 0;
+      left: 15rem;
+      height: 149rem;
+      width: 303rem;
+    } */
   }
   .help-section {
     grid-area: help;
+    z-index: -1;
+    display: flex;
   }
   .buttons {
     grid-area: buttons;
@@ -159,13 +181,13 @@
     justify-content: space-between;
     margin-bottom: 10rem;
     :global(.perks) {
-      width: 140rem;
+      width: 108rem;
     }
     :global(.items) {
-      width: 120rem;
+      width: 92rem;
     }
     :global(.stats) {
-      width: 120rem;
+      width: 92rem;
     }
   }
 </style>

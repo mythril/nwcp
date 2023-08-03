@@ -14,29 +14,29 @@
       bottom: 0;
       border-top-left-radius: 6rem 22rem;
       border-bottom-left-radius: 6rem 22rem;
-      background-color: hsl(0, 0%, 50%);
+      background-color: hsl(0, 0%, 35%);
       /* subtle, but fun */
       transform: translateY(calc(var(--offset) * 5rem));
       /* prettier-ignore */
       box-shadow: 
-      -1rem 0 0.6rem 0.1rem rgba(0, 0, 0, 0.9),
-        inset 0 15rem 2rem 2rem rgba(0, 0, 0, 0.5),
-        0 0 0 1rem rgba(0, 0, 0, 0.5),
-        -1rem 0 0 1rem rgba(255, 255, 255, 0.15),
-        -1rem 0 0.6rem 0.1rem rgba(0, 0, 0, 0.9),
-        inset 0 -11rem 2rem 0 rgba(0, 0, 0, 0.8),
-        inset 0 6rem 2rem 0 rgba(0, 0, 0, 0.8);
+      -0.5rem 0 0.3rem 0.05rem rgba(0, 0, 0, 0.7),
+        inset 0 7rem 1rem 1rem rgba(0, 0, 0, 0.5),
+        0 0 0 0.5rem rgba(0, 0, 0, 0.5),
+        -0.5rem 0 0 0.5rem rgba(255, 255, 255, 0.15),
+        -0.5rem 0 0.3rem 0.1rem rgba(0, 0, 0, 0.9),
+        inset 0 -9rem 2rem 0 rgba(0, 0, 0, 0.5),
+        inset 0 6rem 2rem 0 rgba(0, 0, 0, 0.5);
     }
     font-family: var(--label-font);
     font-weight: 700;
     left: -3rem;
-    padding-left: 4rem;
-    margin-left: -8rem;
+    padding-left: 3.5rem;
+    margin-left: -2rem;
     box-sizing: border-box;
-    font-size: 28rem;
-    line-height: 29rem;
-    width: 27rem;
+    font-size: 18rem;
+    line-height: 22rem;
+    width: 16rem;
     text-align: center;
-    height: 100%;
+    height: 22rem;
   }
 </style>

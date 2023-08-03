@@ -60,7 +60,7 @@
 
 <style lang="postcss">
   .skills-remaining {
-    height: 44rem;
+    height: 34rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -80,14 +80,14 @@
       border: 0;
     }
     .label {
-      font-size: 22rem;
+      font-size: 16rem;
       padding-right: 10rem;
     }
   }
   .title-bg {
     content: ' ';
     box-shadow: var(--sharp-light-source);
-    height: 28rem;
+    height: 22rem;
     background-color: hsl(var(--title-bg));
     border-top-left-radius: 15rem;
     border-top-right-radius: 15rem;
@@ -95,9 +95,9 @@
     border-bottom-right-radius: 2rem;
   }
   .title {
-    padding-left: 58rem;
-    height: 28rem;
-    font-size: 22rem;
+    padding-left: 46rem;
+    height: 22rem;
+    font-size: 16rem;
   }
 
   .skills {
@@ -106,7 +106,8 @@
     width: 97%;
     padding: 0;
     margin: 0 auto;
-    line-height: 1.48;
+    line-height: 8rem;
+    height: resolve(18 * 11.5rem);
     background: linear-gradient(
       0.25turn,
       #0c0c0c 0%,
@@ -140,8 +141,11 @@
       padding-right: 45rem;
       width: 77rem;
     }
+    input {
+      margin: 0rem 6rem;
+    }
   }
-  .tag-skills{
-    width:125rem;
+  .tag-skills {
+    width: 90rem;
   }
 </style>

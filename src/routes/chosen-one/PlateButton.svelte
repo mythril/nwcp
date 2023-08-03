@@ -13,19 +13,19 @@
 >
   <Bolthead
     dir="tl"
-    size={5}
+    size={3}
   />
   <Bolthead
     dir="tr"
-    size={5}
+    size={3}
   />
   <Bolthead
     dir="br"
-    size={5}
+    size={3}
   />
   <Bolthead
     dir="bl"
-    size={5}
+    size={3}
   />
   <div class="label {wornText ? 'worn-text' : ''}">
     <slot />
@@ -44,10 +44,10 @@
       &::after {
         content: ' ';
         position: absolute;
-        left: 12rem;
-        top: 5rem;
-        width: 18rem;
-        height: 18rem;
+        left: 13rem;
+        top: 2rem;
+        width: 16rem;
+        height: 16rem;
         border: 0;
         outline: 0;
         border-radius: 100%;
@@ -86,7 +86,7 @@
       }
     }
     .label {
-      font-size: 22rem;
+      font-size: 16rem;
       text-align: left;
       width: 100%;
     }

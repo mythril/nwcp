@@ -45,6 +45,7 @@
     {label}
   </div>
   <div class="two-digit-attr">
+    <div class="beforeDash worn-text" />
     <div class="two-digit-border">
       <TwoDigitDisplay
         bind:this={attr}
@@ -56,6 +57,7 @@
         max={10}
       />
     </div>
+    <div class="afterDash worn-text" />
   </div>
   <div class="description terminal-font-defaults sharp-inset-border">
     {descriptors[descIndex]}
@@ -86,43 +88,43 @@
     padding: 0 0;
     display: flex;
     width: 100%;
-    height: 44rem;
+    height: 33rem;
     justify-content: space-between;
     align-items: center;
   }
   .label {
     text-align: center;
-    font-size: 30rem;
-    width: 40rem;
+    font-size: 22rem;
+    width: 29rem;
   }
   .two-digit-attr {
     position: relative;
-    &::after,
-    &::before {
+    .beforeDash,
+    .afterDash {
       position: absolute;
       top: 50%;
       content: ' ';
       background-color: hsl(var(--title-color));
-      margin-top: -1.5rem;
-      height: 3rem;
+      margin-top: -1rem;
+      height: 2rem;
     }
-    &::after {
-      left: 51rem;
-      width: 5rem;
+    .afterDash {
+      left: 38rem;
+      width: 4rem;
     }
-    &::before {
-      right: 51rem;
-      width: 8rem;
+    .beforeDash {
+      right: 39rem;
+      width: 7rem;
     }
   }
   .description {
     user-select: none;
-    line-height: 22rem;
+    line-height: 18rem;
     background-color: hsl(var(--terminal-bg));
-    width: 70rem;
-    height: 28rem;
+    width: 45rem;
+    height: 24rem;
     text-align: left;
-    padding-left: 6rem;
+    padding-left: 1rem;
     :global(.activeHelpSubject) & {
       color: hsl(var(--terminal-color-active));
     }
@@ -130,6 +132,7 @@
   .manipulators {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 32rem;
     button {
       appearance: none;
@@ -139,8 +142,8 @@
       margin: 0;
       padding: 0;
       color: transparent;
-      height: 13rem;
-      width: 20rem;
+      height: 12rem;
+      width: 16rem;
       background-color: hsl(var(--bg));
       border-radius: 3rem 4rem;
       line-height: 14rem;
