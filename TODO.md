@@ -8,7 +8,6 @@ Overall goals:
 ### To do
 
 - [ ] re-format to 640x480 style
-- [ ] replace svelte spring with gsap or some high-quality animation library that doesn't stutter
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
 - [ ] Make the first event: create character
 - [ ] Figure out a way for end users to preserve their character creations
@@ -45,6 +44,7 @@ Overall goals:
 
 ### Done
 
+- [x] replace svelte spring with gsap or some high-quality animation library that doesn't stutter
 - [x] fix osd keyboard
 - [x] Fix modal anchoring when zooming in
 - [x] add scroll in to view for modal anchoring

@@ -15,6 +15,8 @@
       border-top-left-radius: 6rem 22rem;
       border-bottom-left-radius: 6rem 22rem;
       background-color: hsl(0, 0%, 50%);
+      /* subtle, but fun */
+      transform: translateY(calc(var(--offset) * 5rem));
       /* prettier-ignore */
       box-shadow: 
       -1rem 0 0.6rem 0.1rem rgba(0, 0, 0, 0.9),

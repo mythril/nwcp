@@ -1,62 +1,74 @@
 <script lang="ts">
-  import { spring } from 'svelte/motion';
   import EmptyDigitDisplay from './EmptyDigitDisplay.svelte';
+  import gsap from 'gsap';
+
   export let value: number;
+  let oldValue = value;
 
-  const current = spring();
-  current.stiffness = 0.5;
-  current.damping = 1;
-  current.precision = 0.01;
+  let up: number;
+  let current: number;
+  let down: number;
 
-  const bonk = spring(0);
-  bonk.stiffness = 0.5;
-  bonk.damping = 1;
-  bonk.precision = 0.01;
-
-  $: $current = value;
-  $: offset = modulo($current, 1) + $bonk;
-
-  function modulo(n: number, m: number) {
-    return ((n % m) + m) % m;
+  let offset = 0;
+  $: {
+    up = Math.floor((value + 11) % 10);
+    current = Math.floor(value + 10) % 10;
+    down = Math.floor((value + 9) % 10);
+    offset = oldValue - value;
+    if (value === 9) {
+      up = 0;
+      down = 8;
+    }
+    if (value === 0 && oldValue === 9) {
+      offset = -1;
+    }
+    if (offset === -9) {
+      offset = 1;
+    }
+    gsap.from(varWrap, { '--offset': offset });
+    if (varWrap) {
+      gsap.to(varWrap, { '--offset': 0, duration: 0.6, ease: 'elastic' });
+    }
+    oldValue = value;
   }
 
   export const bonkUp = () => {
-    $bonk = 0.1;
-    setTimeout(() => {
-      $bonk = 0;
-    }, 50);
+    gsap.from(varWrap, { '--offset': 0.2 });
+    gsap.to(varWrap, { '--offset': 0, duration: 0.05 });
   };
 
   export const bonkDown = () => {
-    $bonk = -0.1;
-    setTimeout(() => {
-      $bonk = 0;
-    }, 50);
+    gsap.from(varWrap, { '--offset': -0.2 });
+    gsap.to(varWrap, { '--offset': 0, duration: 0.05 });
   };
+  let varWrap: HTMLDivElement;
 </script>
 
-<EmptyDigitDisplay>
-  <div
-    class="anim-wrap"
-    style="--offset: {100 * offset}"
-  >
-    <div
-      aria-hidden="true"
-      class="hidden"
-    >
-      {Math.floor(($current + 11) % 10)}
+<div
+  bind:this={varWrap}
+  style="--offset: {offset}"
+  class="var-wrap"
+>
+  <EmptyDigitDisplay>
+    <div class="anim-wrap">
+      <div
+        aria-hidden="true"
+        class="hidden"
+      >
+        {up}
+      </div>
+      <div class="current">
+        {current}
+      </div>
+      <div
+        aria-hidden="true"
+        class="hidden"
+      >
+        {down}
+      </div>
     </div>
-    <div class="current">
-      {Math.floor($current + 10) % 10}
-    </div>
-    <div
-      aria-hidden="true"
-      class="hidden"
-    >
-      {Math.floor(($current + 9) % 10)}
-    </div>
-  </div>
-</EmptyDigitDisplay>
+  </EmptyDigitDisplay>
+</div>
 
 <style lang="postcss">
   .hidden {
@@ -74,6 +86,6 @@
       -1rem 1rem 2rem rgba(255, 255, 255, 0.25),
       -1rem 1rem 1rem rgba(255, 255, 255, 0.25);
     transition: top 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transform: translate(0, calc(var(--offset) * 1%));
+    transform: translate(0, calc(var(--offset) * 1em));
   }
 </style>
