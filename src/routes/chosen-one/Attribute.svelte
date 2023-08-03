@@ -33,6 +33,7 @@
         clickSound();
       }
     }
+    ev.preventDefault();
   }
 </script>
 

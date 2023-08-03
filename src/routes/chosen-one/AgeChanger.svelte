@@ -47,6 +47,7 @@
     } else {
       increment();
     }
+    ev.preventDefault();
   }
 
   onMount(() => {

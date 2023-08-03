@@ -55,7 +55,6 @@
   .app {
     font-family: var(--terminal-font);
     background-color: hsl(var(--bg));
-    /* filter: brightness(1.3); */
     min-height: 100vh;
     position: relative;
     width: fit-content;

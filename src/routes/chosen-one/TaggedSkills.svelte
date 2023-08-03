@@ -44,7 +44,7 @@
     <div
       role="link"
       tabindex="0"
-      class="label worn-text"
+      class="label worn-text tag-skills"
     >
       Tag Skills
     </div>
@@ -140,5 +140,8 @@
       padding-right: 45rem;
       width: 77rem;
     }
+  }
+  .tag-skills{
+    width:125rem;
   }
 </style>
