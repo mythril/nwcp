@@ -19,9 +19,27 @@
   ];
   let attr: TwoDigitDisplay;
   let descIndex = 0;
+
+  function wheel(ev: WheelEvent) {
+    if (!attr) {
+      return;
+    }
+    if (ev.deltaY > 0) {
+      if (attr.decrement()) {
+        clickSound();
+      }
+    } else {
+      if (attr.increment()) {
+        clickSound();
+      }
+    }
+  }
 </script>
 
-<div class="attribute">
+<div
+  on:wheel={wheel}
+  class="attribute"
+>
   <div class="label worn-text">
     {label}
   </div>

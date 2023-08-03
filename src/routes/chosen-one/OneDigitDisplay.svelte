@@ -25,11 +25,13 @@
     if (offset === -9) {
       offset = 1;
     }
-    gsap.from(varWrap, { '--offset': offset });
-    if (varWrap) {
-      gsap.to(varWrap, { '--offset': 0, duration: 0.6, ease: 'elastic' });
-    }
     oldValue = value;
+    if (varWrap) {
+      gsap.from(varWrap, { '--offset': offset });
+      if (varWrap) {
+        gsap.to(varWrap, { '--offset': 0, duration: 0.6, ease: 'elastic' });
+      }
+    }
   }
 
   export const bonkUp = () => {

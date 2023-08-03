@@ -38,6 +38,17 @@
     }
   };
 
+  function wheel(ev: WheelEvent) {
+    if (!ageDisplay) {
+      return;
+    }
+    if (ev.deltaY > 0) {
+      decrement();
+    } else {
+      increment();
+    }
+  }
+
   onMount(() => {
     show = () => {
       cancel();
@@ -52,7 +63,10 @@
     commitListener={commit}
     cancelListener={cancel}
   >
-    <div class="age-editor">
+    <div
+      on:wheel={wheel}
+      class="age-editor"
+    >
       <PlateButton
         pushButton={false}
         wornText={false}
