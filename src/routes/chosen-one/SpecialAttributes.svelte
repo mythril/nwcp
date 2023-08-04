@@ -18,7 +18,7 @@
 <style lang="postcss">
   .special {
     border-bottom-left-radius: 9rem 5rem;
-    padding: 0rem 7rem;
+    padding: 2rem 7rem;
     position: relative;
   }
 </style>
