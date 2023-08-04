@@ -137,7 +137,7 @@
       padding-top: 13rem;
       padding-left: 20rem;
       padding-right: 20rem;
-      padding-bottom: 9rem;
+      padding-bottom: 4rem;
     }
     .main {
       margin-bottom: 8rem;

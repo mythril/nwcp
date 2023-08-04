@@ -14,7 +14,7 @@
 
 <style lang="postcss">
   .button {
-    position: absolute;
+    /* position: absolute; */
     overflow: hidden;
     text-overflow: clip;
     white-space: nowrap;

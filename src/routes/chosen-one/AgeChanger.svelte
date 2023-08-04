@@ -75,7 +75,7 @@
         on:click={decrement}
       >
         <div class="plate">
-          <div class="button">
+          <div class="btn">
             <Arrow
               wornText
               dir="Left"
@@ -99,7 +99,7 @@
         on:click={increment}
       >
         <div class="plate">
-          <div class="button">
+          <div class="btn">
             <Arrow wornText />
           </div>
         </div>
@@ -114,23 +114,36 @@
 </div>
 
 <style lang="postcss">
-  .root :global(.outer-plate) {
+  .age-editor :global(.outer-plate) {
     filter: drop-shadow(-1rem 1rem 1rem #000);
     border-radius: 0;
+    padding: 0;
+    width: 39rem;
+    height: 21rem;
+    &:first-child {
+      margin-left: -13rem;
+    }
+    &:last-child {
+      margin-right: -13rem;
+    }
   }
   .age-editor {
     display: flex;
-    gap: 4rem;
+    gap: 3rem;
+    height: 19rem;
     align-items: center;
   }
   .plate {
-    width: 25rem;
+    width: 16rem;
     height: 25rem;
+    margin: auto;
 
-    .button {
+    .btn {
+      background: hsl(var(--bg));
       position: relative;
       top: 5rem;
-      height: 15rem;
+      height: 12rem;
+      width: 17rem;
       padding: 2rem 0;
       transition: box-shadow 0.1s linear;
       /* prettier-ignore */

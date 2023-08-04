@@ -72,16 +72,21 @@
     height: 100%;
   }
   .buttons {
+    width: 99rem;
+    height: 24rem;
     display: flex;
-    align-items: stretch;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
     gap: 10rem;
     .worn-text {
-      width: 45rem;
-      height: 45rem;
-      padding: 0;
-      padding-top: 4rem;
+      padding: 0rem;
+      height: 36rem;
     }
     :global(.sex-btn) {
+      width: 40rem;
+      height: 36rem;
+      margin-top: -5rem;
       /* prettier-ignore */
       box-shadow: 
         var(--shadow-border),
@@ -102,8 +107,9 @@
     }
   }
   .buttons .worn-text :global(svg) {
-    max-width: 80%;
-    max-height: 80%;
+    margin-top: 1rem;
+    max-width: 85%;
+    max-height: 85%;
     fill: hsl(var(--title-color));
     stroke: hsl(var(--title-color-hs), calc(var(--title-color-l) - 20%));
     stroke-width: 0.2rem;
