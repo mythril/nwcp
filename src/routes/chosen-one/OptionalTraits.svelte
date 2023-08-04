@@ -80,11 +80,11 @@
     --ruddy-hs: 24.4, 27.8%;
     --ruddy-l: 19%;
     --ruddy: var(--ruddy-hs), var(--ruddy-l);
+    width: 303rem;
     position: relative;
     border-radius: 15rem;
     background-color: hsl(var(--bg));
-    margin: 10rem 13rem;
-    margin-top: 0;
+    margin: 2rem auto;
     padding: 0;
     background-color: hsl(var(--ruddy));
     position: relative;
@@ -96,13 +96,13 @@
       line-height: 24rem;
       padding: 0;
       padding-left: 40rem;
-      margin-left: -3rem;
-      margin-right: -3rem;
+      margin-left: -2rem;
+      margin-right: -2rem;
       background-color: hsl(var(--bg));
-      border-top-left-radius: 13rem;
-      border-top-right-radius: 13rem;
-      border-bottom-left-radius: 5rem;
-      border-bottom-right-radius: 5rem;
+      border-top-left-radius: 7rem 8rem;
+      border-top-right-radius: 7rem 8rem;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
       /* prettier-ignore */
       box-shadow: 
         var(--basic-box-shadow),
@@ -180,25 +180,22 @@
           position: absolute;
           top: 6rem;
           right: 22rem;
-          width: 6rem;
+          width: 5rem;
           border-top: 1rem solid rgba(0, 0, 0, 0.5);
           border-bottom: 1rem solid rgba(255, 255, 255, 0.15);
         }
       }
     }
     .footer {
-      z-index: 1;
-      position: absolute;
-      left: -3rem;
-      right: -3rem;
+      margin-left: -2rem;
+      margin-right: -2rem;
       background-color: hsl(var(--bg));
       content: ' ';
       height: 15rem;
-      bottom: -15rem;
-      border-bottom-left-radius: 15rem;
-      border-bottom-right-radius: 15rem;
-      border-top-left-radius: 2rem;
-      border-top-right-radius: 2rem;
+      border-bottom-left-radius: 6rem 5rem;
+      border-bottom-right-radius: 6rem 5rem;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
       /* prettier-ignore */
       box-shadow:
         var(--basic-box-shadow),

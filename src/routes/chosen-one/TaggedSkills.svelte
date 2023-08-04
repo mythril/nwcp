@@ -5,121 +5,112 @@
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
 </script>
 
-<HelpSource subject="Skills">
-  <div class="title-bg">
-    <div
-      role="link"
-      tabindex="0"
-      class="title worn-text"
-    >
-      Skills
-    </div>
-  </div>
-</HelpSource>
-<div class="skills terminal-font-defaults">
-  {#each Object.values(Skills) as skill}
-    <HelpSource subject={skill}>
-      <div class="skill">
-        <div class="button">
-          <input
-            type="checkbox"
-            class="checkbox-button"
-            on:click={clickSound}
-            name=""
-            id=""
-          />
-        </div>
-        <div class="label">
-          {skill}
-        </div>
-        <div class="value">
-          {(Math.random() * 150 + 1).toFixed(0)}%
-        </div>
+<div class="skill-content">
+  <HelpSource subject="Skills">
+    <div class="title-bg">
+      <div
+        role="link"
+        tabindex="0"
+        class="title worn-text"
+      >
+        Skills
       </div>
-    </HelpSource>
-  {/each}
-</div>
-<div class="skills-remaining">
-  <HelpSource subject={'Tag Skills'}>
-    <div
-      role="link"
-      tabindex="0"
-      class="label worn-text tag-skills"
-    >
-      Tag Skills
-    </div>
-    <div class="unused">
-      <TwoDigitDisplay
-        initial={3}
-        min={0}
-        max={3}
-      />
     </div>
   </HelpSource>
+  <div class="skills terminal-font-defaults">
+    {#each Object.values(Skills) as skill}
+      <HelpSource subject={skill}>
+        <div class="skill">
+          <div class="button">
+            <input
+              type="checkbox"
+              class="checkbox-button"
+              on:click={clickSound}
+              name=""
+              id=""
+            />
+          </div>
+          <div class="label">
+            {skill}
+          </div>
+          <div class="value">
+            {(Math.random() * 150 + 1).toFixed(0)}%
+          </div>
+        </div>
+      </HelpSource>
+    {/each}
+  </div>
+  <div class="skills-remaining">
+    <HelpSource subject={'Tag Skills'}>
+      <div
+        role="link"
+        tabindex="0"
+        class="label worn-text"
+      >
+        Tag Skills
+      </div>
+      <div class="unused">
+        <TwoDigitDisplay
+          initial={3}
+          min={0}
+          max={3}
+        />
+      </div>
+    </HelpSource>
+  </div>
 </div>
 
 <style lang="postcss">
-  .skills-remaining {
-    height: 34rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: hsl(var(--title-bg));
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    border-bottom-left-radius: 15rem;
-    border-bottom-right-radius: 15rem;
-    box-shadow: var(--sharp-light-source);
-    .unused {
-      border-radius: 2rem;
-      overflow: hidden;
-      box-shadow: var(--inset);
-    }
-    :global(.remaining) {
-      border: 0;
-    }
-    .label {
-      font-size: 16rem;
-      padding-right: 10rem;
-    }
+  .skill-content {
+    width: 292rem;
+    margin: auto;
   }
   .title-bg {
     content: ' ';
     box-shadow: var(--sharp-light-source);
     height: 22rem;
     background-color: hsl(var(--title-bg));
-    border-top-left-radius: 15rem;
-    border-top-right-radius: 15rem;
+    border-top-left-radius: 8rem 9rem;
+    border-top-right-radius: 8rem 9rem;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
   }
   .title {
     padding-left: 46rem;
     height: 22rem;
+    width: 292rem;
     font-size: 16rem;
   }
 
   .skills {
     display: flex;
     flex-flow: column;
-    width: 97%;
+    width: 286rem;
     padding: 0;
     margin: 0 auto;
     line-height: 8rem;
-    height: resolve(18 * 11.5rem);
+    height: 200rem;
     background: linear-gradient(
       0.25turn,
-      #0c0c0c 0%,
-      #3c3c3c 2.1%,
-      #0e0d09 3.7%,
-      #343220 7.4%,
-      #343220 8.4%,
-      #545454 8.7%,
-      hsl(var(--terminal-bg)) 9%,
-      hsl(var(--terminal-bg)) 95.8%,
-      #6b6b6b 98.4%,
-      #1c1c1c 100%
+      hsl(300deg, 11.1%, 14.1%) 0,
+      hsl(314.5, 31.2%, 18.2%) 2rem,
+      hsl(117.6, 23.8%, 20.6%) 3rem,
+      hsl(300, 1.5%, 25.5%) 4rem,
+      hsl(300, 1%, 59.6%) 9rem,
+      hsl(300, 2.5%, 23.3%) 12rem,
+      hsl(33, 13.5%, 29%) 13rem,
+      hsl(33, 13.5%, 29%) 14rem,
+      hsl(40, 18.8%, 31.4%) 15rem,
+      hsl(40, 18.8%, 31.4%) 24rem,
+      hsl(31, 11.9%, 52.4%) 25rem,
+      hsl(var(--terminal-bg)) 26rem,
+      hsl(var(--terminal-bg)) 273rem,
+      hsl(300deg, 11.1%, 14.1%) 274rem,
+      hsl(314.5, 31.2%, 18.2%) 276rem,
+      hsl(117.6, 23.8%, 20.6%) 277rem,
+      hsl(300, 1.5%, 25.5%) 278rem,
+      hsl(300, 1%, 59.6%) 283rem,
+      hsl(300, 2.5%, 23.3%) 286rem
     );
     .skill {
       display: flex;
@@ -130,7 +121,7 @@
     }
     .button {
       width: 39rem;
-      max-height: 14rem;
+      max-height: 11rem;
     }
     .label {
       width: 266rem;
@@ -145,7 +136,26 @@
       margin: 0rem 6rem;
     }
   }
-  .tag-skills {
-    width: 90rem;
+  .skills-remaining {
+    height: 34rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(var(--title-bg));
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    border-bottom-left-radius: 6rem 11rem;
+    border-bottom-right-radius: 6rem 11rem;
+    box-shadow: var(--sharp-light-source);
+    .unused {
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: var(--inset);
+    }
+    .label {
+      width: 90rem;
+      font-size: 16rem;
+      padding-right: 10rem;
+    }
   }
 </style>

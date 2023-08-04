@@ -109,7 +109,7 @@
       height: 2rem;
     }
     .afterDash {
-      left: 38rem;
+      left: 39rem;
       width: 4rem;
     }
     .beforeDash {

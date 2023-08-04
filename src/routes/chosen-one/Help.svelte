@@ -40,7 +40,7 @@
         <feTurbulence
           x="0"
           y="0"
-          baseFrequency="0.01"
+          baseFrequency="0.002"
           numOctaves="5"
           seed="1"
         />
@@ -57,14 +57,14 @@
   .help {
     position: relative;
     padding: 3rem 6rem;
-    width: 289rem;
-    height: 180rem;
-    margin: auto;
+    width: 303rem;
+    height: 190rem;
+    margin-top: -2rem;
     /* prettier-ignore */
     box-shadow: 
       0 0 0 1rem rgba(0, 0, 0, 0.5),
       -1rem 1rem 2rem -1rem rgba(255, 255, 255, 0.5),
-      -1rem 1rem 2rem -1rem rgba(255, 255, 255, 0.5) inset;
+      -1rem 1rem 2rem -1rem rgba(218, 204, 18, 0.5) inset;
   }
   .content {
     position: absolute;
@@ -84,14 +84,14 @@
       margin: 0;
       margin-bottom: 10rem;
       font-size: 21rem;
-      line-height: 35rem;
+      line-height: 33rem;
       .extra {
         &:not(:empty)::before {
           content: 'Base: ';
         }
         font-family: var(--terminal-font);
         font-weight: 700;
-        font-size: 10rem;
+        font-size: 8rem;
       }
     }
     .info {
@@ -101,36 +101,36 @@
     }
   }
   .paper-bg {
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 1) inset;
+    width: 289rem;
+    height: 180rem;
+    box-shadow: 0 0 10rem 5rem hsla(42.4, 100%, 14.7%, 0.4) inset;
     background: linear-gradient(
         0.3turn,
         hsla(32.3, 21.3%, 47.8%, 0),
-        hsla(39.4, 52.2%, 39.4%, 0) 300rem,
-        hsla(34.6, 43.3%, 47.1%, 0.35) 310rem,
-        hsla(48, 67.6%, 29%, 0.35) 312rem,
-        hsla(32.3, 21.3%, 47.8%, 0.35) 322rem
+        hsla(39.4, 52.2%, 39.4%, 0) 228rem,
+        hsla(34.6, 43.3%, 47.1%, 0.35) 235rem,
+        hsla(48, 67.6%, 29%, 0.35) 237rem,
+        hsla(32.3, 21.3%, 47.8%, 0.35) 245rem
       ),
       linear-gradient(
         0.32turn,
         hsla(32.3, 21.3%, 47.8%, 0),
-        hsla(39.4, 52.2%, 39.4%, 0) 400rem,
-        hsla(34.6, 43.3%, 47.1%, 0.75) 410rem,
-        hsla(48, 67.6%, 29%, 0.75) 412rem,
-        hsla(32.3, 21.3%, 47.8%, 0.75) 422rem,
-        hsla(34.6, 43.3%, 47.1%, 0.75) 425rem,
-        hsla(48, 67.6%, 29%, 0.75) 432rem,
-        hsla(32.3, 21.3%, 47.8%, 0.75) 440rem
+        hsla(39.4, 52.2%, 39.4%, 0) 304rem,
+        hsla(34.6, 43.3%, 47.1%, 0.75) 311rem,
+        hsla(48, 67.6%, 29%, 0.75) 313rem,
+        hsla(32.3, 21.3%, 47.8%, 0.75) 320rem,
+        hsla(34.6, 43.3%, 47.1%, 0.75) 323rem,
+        hsla(48, 67.6%, 29%, 0.75) 328rem,
+        hsla(32.3, 21.3%, 47.8%, 0.75) 334rem
       ),
       linear-gradient(
         0.25turn,
         #947c60,
-        #997530 212rem,
-        #ac8044 223rem,
-        #7c6818 225rem,
-        #947c60 240rem
+        #997530 161rem,
+        #ac8044 166rem,
+        #7c6818 167rem,
+        #947c60 175rem
       );
-    filter: url(#paper);
+    filter: url(#paper) saturate(0.8) hue-rotate(5deg) brightness(0.8);
   }
 </style>

@@ -13,6 +13,7 @@
   .bolthead {
     --size: 8rem;
     --offset: calc(var(--size) / 2);
+    --mid-offset: calc(var(--size) / 3);
     --halfSize: calc(var(--size) / 2);
     position: absolute;
     display: block;
@@ -95,13 +96,13 @@
   }
   .ml {
     transform-origin: center left;
-    left: var(--offset);
+    left: var(--mid-offset);
     top: 50%;
     margin-top: calc(-1 * var(--halfSize));
   }
   .mr {
     transform-origin: center right;
-    right: var(--offset);
+    right: var(--mid-offset);
     top: 50%;
     margin-top: calc(-1 * var(--halfSize));
   }

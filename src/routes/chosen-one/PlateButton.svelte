@@ -35,7 +35,9 @@
 <style lang="postcss">
   .button {
     position: relative;
-    padding: 0 10rem;
+    height: 23rem;
+    padding: 0;
+    padding-left: 10rem;
     display: block;
     appearance: none;
     background-color: hsl(var(--bg));
@@ -45,7 +47,7 @@
         content: ' ';
         position: absolute;
         left: 13rem;
-        top: 2rem;
+        top: 3rem;
         width: 16rem;
         height: 16rem;
         border: 0;
