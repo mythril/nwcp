@@ -7,7 +7,7 @@ Overall goals:
 
 ### To do
 
-- [ ] fix modals, flanges, char-points height?
+- [ ] fix paper corruption on zoom
 - [ ] fix reflow
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
 - [ ] Make the first event: create character
@@ -20,7 +20,8 @@ Overall goals:
 
 ### Visuals
 
-- [ ] Match tag / trait buttons better
+- [ ] improve paper background
+- [ ] Match tag / trait buttons better (push state)
 - [ ] Extract push button and make it resizable
 - [ ] Improve look of sex setter buttons
 - [ ] Improve logo
@@ -45,6 +46,7 @@ Overall goals:
 
 ### Done
 
+- [x] fix modals, flanges, char-points height?
 - [x] re-format to 640x480 style
 - [x] replace svelte spring with gsap or some high-quality animation library that doesn't stutter
 - [x] fix osd keyboard
