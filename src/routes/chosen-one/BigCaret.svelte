@@ -84,22 +84,22 @@
       white-space: pre;
     }
     .display .value::after {
-      content: ' ';
-      display: inline-block;
-      vertical-align: text-top;
-      width: 1rem;
-      height: 1em;
-      margin-left: 1rem;
-      background-color: transparent;
+      content: '\2588';
+      display: inline;
+      opacity: 0;
     }
     input:focus + .display .value::after {
       width: 0.5em;
-      background-color: hsl(var(--terminal-color));
-      animation: cursor-blink 0.3s steps(2, start) infinite;
+      /* background-color: hsl(var(--terminal-color)); */
+      animation: 0.3s cursor-blink step-end infinite;
     }
     @keyframes cursor-blink {
+      from,
       to {
-        visibility: hidden;
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
       }
     }
   }

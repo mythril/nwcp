@@ -7,7 +7,6 @@ Overall goals:
 
 ### To do
 
-- [ ] re-format to 640x480 style
 - [ ] fix modals, flanges, char-points height?
 - [ ] fix reflow
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
@@ -46,6 +45,7 @@ Overall goals:
 
 ### Done
 
+- [x] re-format to 640x480 style
 - [x] replace svelte spring with gsap or some high-quality animation library that doesn't stutter
 - [x] fix osd keyboard
 - [x] Fix modal anchoring when zooming in

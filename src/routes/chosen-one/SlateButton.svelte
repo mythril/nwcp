@@ -45,7 +45,6 @@
       filter: saturate(0.7) brightness(0.7);
       /* prettier-ignore */
       box-shadow:
-        var(--shadow-border),
         var(--light-source-clear),
         var(--sunken);
     }

@@ -105,6 +105,7 @@
     bottom: 0;
     pointer-events: none;
     mix-blend-mode: overlay;
+    filter: saturate(0.5);
     canvas {
       position: absolute;
       left: 0;
