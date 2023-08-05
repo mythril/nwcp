@@ -20,6 +20,18 @@
     </div>
   </HelpSource>
   <div class="flanges">
+    <div class="fl-left">
+      <div class="flange" />
+      <div class="flange" />
+      <div class="flange" />
+      <div class="flange" />
+    </div>
+    <div class="fl-right">
+      <div class="flange" />
+      <div class="flange" />
+      <div class="flange" />
+      <div class="flange" />
+    </div>
     <div class="terminal terminal-font-defaults">
       <div class="leftTraits">
         {#each leftTraits as trait}
@@ -71,6 +83,67 @@
 </div>
 
 <style lang="postcss">
+  .fl-left,
+  .fl-right {
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    top: 51rem;
+  }
+
+  .fl-right {
+    right: -6rem;
+    .flange:first-child {
+      border-top-right-radius: 6rem 2rem;
+    }
+    .flange:last-child {
+      border-bottom-right-radius: 6rem 2rem;
+    }
+    .flange {
+      /* prettier-ignore */
+      box-shadow:
+        inset 0 -1rem 1rem 0 rgba(0, 0, 0, 0.6),
+        inset -1rem 1rem 1rem 0 rgba(255,255,255,0.15);
+      &:after {
+        left: -1rem;
+      }
+    }
+  }
+
+  .fl-left {
+    left: -6rem;
+    .flange:first-child {
+      border-top-left-radius: 6rem 2rem;
+    }
+    .flange:last-child {
+      border-bottom-left-radius: 6rem 2rem;
+    }
+    .flange {
+      /* prettier-ignore */
+      box-shadow:
+        inset 1rem -1rem 1rem 0 rgba(0, 0, 0, 0.6),
+        inset 0rem 1rem 1rem 0 rgba(255,255,255,0.15);
+      &:after {
+        right: -1rem;
+      }
+    }
+  }
+
+  .flange {
+    width: 10rem;
+    height: 11rem;
+    background-color: hsl(var(--ruddy));
+    &:after {
+      position: absolute;
+      width: 4rem;
+      top: 0rem;
+      bottom: 0rem;
+      content: ' ';
+      background-color: hsl(var(--ruddy));
+    }
+  }
+
   .traits {
     /* $ruddy: #43281d; */
     /* $ruddy: #412520; */
