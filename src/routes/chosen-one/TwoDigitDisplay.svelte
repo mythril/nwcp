@@ -19,6 +19,10 @@
     //intentional
   };
 
+  export let bonkDown = () => {
+    onesDigitDisplay.bonkDown();
+  };
+
   export const increment = () => {
     if (value + 1 > realMax) {
       try {
@@ -41,7 +45,7 @@
       } catch {
         //intentional, nothing to do, expected
       }
-      onesDigitDisplay.bonkDown();
+      bonkDown();
       return false;
     }
     value -= 1;

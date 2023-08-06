@@ -1,12 +1,24 @@
 <script lang="ts">
   import { Traits } from '$lib/engines/ChosenOne';
-  import { clickSound } from '$lib/utils';
+  import { bonkSound, clickSound } from '$lib/utils';
+  import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
 
-  let chosenTraits: string[] = [];
-  let traits = Object.keys(Traits);
+  let traits = objectKeys(Traits);
+  let chosenTraits: typeof traits = [];
   let leftTraits = traits.slice(0, 8);
   let rightTraits = traits.slice(8, 16);
+
+  const traitHandler = (e: Event) => {
+    const cb = e.target as HTMLInputElement;
+    if (chosenTraits.length >= 2 && cb.checked) {
+      bonkSound();
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+    clickSound();
+  };
 </script>
 
 <div class="traits">
@@ -40,7 +52,7 @@
               <input
                 type="checkbox"
                 class="checkbox-button"
-                on:click={clickSound}
+                on:click={traitHandler}
                 bind:group={chosenTraits}
                 value={trait}
               />
@@ -62,7 +74,7 @@
               <input
                 type="checkbox"
                 class="checkbox-button"
-                on:click={clickSound}
+                on:click={traitHandler}
                 bind:group={chosenTraits}
                 value={trait}
               />

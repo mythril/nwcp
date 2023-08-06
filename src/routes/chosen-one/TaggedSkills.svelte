@@ -1,8 +1,34 @@
-<script>
+<script lang="ts">
   import { Skills } from '$lib/engines/ChosenOne';
-  import { clickSound } from '$lib/utils';
+  import { bonkSound, clickSound } from '$lib/utils';
+  import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
+
+  let skills = objectKeys(Skills);
+  let taggedSkills: typeof skills = [];
+
+  $: {
+    if (tdd) {
+      if (!tdd.set(3 - taggedSkills.length)) {
+        taggedSkills = taggedSkills;
+      }
+    }
+  }
+
+  const skillHandler = (ev: Event) => {
+    const cb = ev.target as HTMLInputElement;
+    if (taggedSkills.length >= 3 && cb.checked) {
+      bonkSound();
+      tdd.set(-1);
+      ev.preventDefault();
+      ev.stopPropagation();
+      return false;
+    }
+    clickSound();
+  };
+
+  let tdd: TwoDigitDisplay;
 </script>
 
 <div class="skill-content">
@@ -18,20 +44,22 @@
     </div>
   </HelpSource>
   <div class="skills terminal-font-defaults">
-    {#each Object.values(Skills) as skill}
-      <HelpSource subject={skill}>
-        <div class="skill">
+    {#each skills as key}
+      <HelpSource subject={Skills[key]}>
+        <div class="skill {taggedSkills.includes(key) ? 'selected' : ''}">
           <div class="button">
             <input
               type="checkbox"
               class="checkbox-button"
-              on:click={clickSound}
+              on:click={skillHandler}
+              bind:group={taggedSkills}
+              value={key}
               name=""
               id=""
             />
           </div>
           <div class="label">
-            {skill}
+            {Skills[key]}
           </div>
           <div class="value">
             {(Math.random() * 150 + 1).toFixed(0)}%
@@ -51,6 +79,7 @@
       </div>
       <div class="unused">
         <TwoDigitDisplay
+          bind:this={tdd}
           initial={3}
           min={0}
           max={3}
@@ -118,6 +147,12 @@
     }
     .activeHelpSubject .skill {
       color: hsl(var(--terminal-color-active));
+    }
+    .selected {
+      color: hsl(var(--terminal-selected));
+    }
+    .activeHelpSubject .selected {
+      color: hsl(var(--terminal-selected-active));
     }
     .button {
       width: 39rem;
