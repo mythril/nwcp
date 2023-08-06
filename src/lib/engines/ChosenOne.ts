@@ -40,6 +40,8 @@ export function SpecialAbbreviation(
       return 'AG';
     case Special.Luck:
       return 'LK';
+    default:
+      return '';
   }
 }
 
