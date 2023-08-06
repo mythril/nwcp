@@ -4,13 +4,14 @@
   import SlateButton from './SlateButton.svelte';
   import Male from '$lib/components/icons/Male.svelte';
   import Female from '$lib/components/icons/Female.svelte';
-  import { Sex, type SEX } from '$lib/engines/ChosenOne';
+  import { Sex } from '$lib/engines/ChosenOne';
+  import type { ObjectValues } from '$lib/utils';
 
-  export let sex: SEX = Sex.Male;
+  export let sex: ObjectValues<typeof Sex> = Sex.Male;
 
   let dlg: MiniDialog;
 
-  let tmp: SEX = Sex.Male;
+  let tmp: ObjectValues<typeof Sex> = Sex.Male;
 
   const cancel = () => {
     tmp = sex;

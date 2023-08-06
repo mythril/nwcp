@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { HelpLookup } from '$lib/engines/ChosenOne';
+  import type { CharacterHelpLookup } from '$lib/engines/help';
   import { helpSubject } from './stores';
 
-  export let subject: keyof typeof HelpLookup;
+  export let subject: keyof typeof CharacterHelpLookup;
   let activeHelpSubject = subject === $helpSubject;
   $: activeHelpSubject = subject === $helpSubject;
 </script>

@@ -2,7 +2,10 @@ import type { ObjectValues } from '$lib/utils';
 import { assert, type Equals } from 'tsafe';
 import type { CharacterHelpLookup } from './help';
 
-type HelpKeys = keyof typeof CharacterHelpLookup;
+type RequiresHelp<T> = Equals<
+  Extract<keyof typeof CharacterHelpLookup, ObjectValues<T>>,
+  ObjectValues<T>
+>;
 
 export const Special = {
   Strength: 'Strength',
@@ -14,13 +17,14 @@ export const Special = {
   Luck: 'Luck'
 } as const;
 
-export type SPECIAL = ObjectValues<typeof Special>;
+// type error below indicates that not all values in
+// Special are represented in CharacterHelpLookup
+// Could be a typo or missing help entry
+assert<RequiresHelp<typeof Special>>();
 
-// ensures there are help entries for each attribute
-type SpecialHelp = Extract<HelpKeys, SPECIAL>;
-assert<Equals<SpecialHelp, SPECIAL>>();
-
-export function SpecialAbbreviation(special: SPECIAL): string {
+export function SpecialAbbreviation(
+  special: ObjectValues<typeof Special>
+): string {
   switch (special) {
     case Special.Strength:
       return 'ST';
@@ -36,12 +40,10 @@ export function SpecialAbbreviation(special: SPECIAL): string {
       return 'AG';
     case Special.Luck:
       return 'LK';
-    default:
-      return '';
   }
 }
 
-export type Attributes = Record<SPECIAL, number>;
+export type Attributes = Record<ObjectValues<typeof Special>, number>;
 
 export const CombatSkills = {
   SmallGuns: 'Small Guns',
@@ -76,12 +78,12 @@ export const Skills = {
   ...PassiveSkills
 } as const;
 
-export type SKILLS = ObjectValues<typeof Skills>;
-export type SkillSet = Record<SKILLS, number>;
+export type SkillSet = Record<ObjectValues<typeof Skills>, number>;
 
-// ensures there are help entries for each skill
-type SkillsHelp = Extract<HelpKeys, SKILLS>;
-assert<Equals<SkillsHelp, SKILLS>>();
+// type error below indicates that not all values in
+// Skills are represented in CharacterHelpLookup
+// Could be a typo or missing help entry
+assert<RequiresHelp<typeof Skills>>();
 
 export const Traits = {
   FastMetabolism: 'Fast Metabolism',
@@ -102,12 +104,12 @@ export const Traits = {
   Gifted: 'Gifted'
 } as const;
 
-export type TRAITS = ObjectValues<typeof Traits>;
-export type TraitSet = Map<TRAITS, boolean>;
+export type TraitSet = Map<ObjectValues<typeof Traits>, boolean>;
 
-// ensures there are help entries for each trait
-type TraitsHelp = Extract<HelpKeys, TRAITS>;
-assert<Equals<TraitsHelp, TRAITS>>();
+// type error below indicates that not all values in
+// Traits are represented in CharacterHelpLookup
+// Could be a typo or missing help entry
+assert<RequiresHelp<typeof Traits>>();
 
 export const AilmentStatus = {
   Poisoned: 'Poisoned',
@@ -119,15 +121,12 @@ export const AilmentStatus = {
   CrippledLeftLeg: 'Crippled Left Leg'
 } as const;
 
-export type AILMENT_STATUSES = ObjectValues<typeof AilmentStatus>;
+// type error below indicates that not all values in
+// AilmentStatus are represented in CharacterHelpLookup
+// Could be a typo or missing help entry
+assert<RequiresHelp<typeof AilmentStatus>>();
 
-// ensures there are help entries for each ailment status
-type AilmentHelp = Extract<HelpKeys, AILMENT_STATUSES>;
-assert<Equals<AilmentHelp, AILMENT_STATUSES>>();
-
-type DerivedStatsEnum = { [key: string]: HelpKeys };
-
-export const DerivedStats: DerivedStatsEnum = {
+export const DerivedStats = {
   ArmorClass: 'Armor Class',
   ActionPoints: 'Action Points',
   CarryWeight: 'Carry Weight',
@@ -140,15 +139,12 @@ export const DerivedStats: DerivedStatsEnum = {
   CriticalChance: 'Critical Chance'
 } as const;
 
-export type DERIVED_STATS = ObjectValues<typeof DerivedStats>;
-
-// ensures there are help entries for each derived stat entry
-type DerivedStatsHelp = Extract<HelpKeys, DERIVED_STATS>;
-assert<Equals<DerivedStatsHelp, DERIVED_STATS>>();
+// type error below indicates that not all values in
+// DerivedStats are represented in CharacterHelpLookup
+// Could be a typo or missing help entry
+assert<RequiresHelp<typeof DerivedStats>>();
 
 export const Sex = {
   Male: 'Male',
   Female: 'Female'
 } as const;
-
-export type SEX = ObjectValues<typeof Sex>;

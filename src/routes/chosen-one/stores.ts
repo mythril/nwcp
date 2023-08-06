@@ -23,7 +23,7 @@ export const attributes = writable<Attributes>({
   [Special.Luck]: 5
 });
 
-export const charPointsRemaining = derived(attributes, (a) => {
-  const cpr = Object.values(a).reduce((a, b) => a + b, 0);
+export const charPointsRemaining = derived(attributes, (attrs) => {
+  const cpr = Object.values(attrs).reduce((a, b) => a + b, 0);
   return 40 - cpr;
 });
