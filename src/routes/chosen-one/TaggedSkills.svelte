@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { Skills } from '$lib/engines/ChosenOne';
+  import { Skill } from '$lib/engines/ChosenOne';
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
 
-  let skills = objectKeys(Skills);
+  let skills = objectKeys(Skill);
   let taggedSkills: typeof skills = [];
 
   $: {
@@ -45,7 +45,7 @@
   </HelpSource>
   <div class="skills terminal-font-defaults">
     {#each skills as key}
-      <HelpSource subject={Skills[key]}>
+      <HelpSource subject={Skill[key]}>
         <div class="skill {taggedSkills.includes(key) ? 'selected' : ''}">
           <div class="button">
             <input
@@ -59,7 +59,7 @@
             />
           </div>
           <div class="label">
-            {Skills[key]}
+            {Skill[key]}
           </div>
           <div class="value">
             {(Math.random() * 150 + 1).toFixed(0)}%

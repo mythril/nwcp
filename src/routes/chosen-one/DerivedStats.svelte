@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DerivedStats } from '$lib/engines/ChosenOne';
+  import { DerivedStat } from '$lib/engines/ChosenOne';
   import Bolthead from './Bolthead.svelte';
   import HelpSource from './HelpSource.svelte';
 </script>
@@ -8,7 +8,7 @@
   <div class="display">
     <table class="highlighted">
       <tbody>
-        {#each Object.values(DerivedStats) as derived}
+        {#each Object.values(DerivedStat) as derived}
           <tr>
             <th>
               <HelpSource subject={derived}>

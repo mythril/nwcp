@@ -2,7 +2,7 @@ import type { ObjectValues } from '$lib/utils';
 import { assert, type Equals } from 'tsafe';
 import type { CharacterHelpLookup } from './help';
 
-type RequiresHelp<T> = Equals<
+type HasHelpEntriesForEvery<T> = Equals<
   Extract<keyof typeof CharacterHelpLookup, ObjectValues<T>>,
   ObjectValues<T>
 >;
@@ -20,7 +20,7 @@ export const Special = {
 // type error below indicates that not all values in
 // Special are represented in CharacterHelpLookup
 // Could be a typo or missing help entry
-assert<RequiresHelp<typeof Special>>();
+assert<HasHelpEntriesForEvery<typeof Special>>();
 
 export function SpecialAbbreviation(
   special: ObjectValues<typeof Special>
@@ -47,7 +47,7 @@ export function SpecialAbbreviation(
 
 export type Attributes = Record<ObjectValues<typeof Special>, number>;
 
-export const CombatSkills = {
+export const CombatSkill = {
   SmallGuns: 'Small Guns',
   BigGuns: 'Big Guns',
   EnergyWeapons: 'Energy Weapons',
@@ -56,7 +56,7 @@ export const CombatSkills = {
   Throwing: 'Throwing'
 } as const;
 
-export const ActiveSkills = {
+export const ActiveSkill = {
   FirstAid: 'First Aid',
   Doctor: 'Doctor',
   Sneak: 'Sneak',
@@ -67,27 +67,27 @@ export const ActiveSkills = {
   Repair: 'Repair'
 } as const;
 
-export const PassiveSkills = {
+export const PassiveSkill = {
   Speech: 'Speech',
   Barter: 'Barter',
   Gambling: 'Gambling',
   Outdoorsman: 'Outdoorsman'
 } as const;
 
-export const Skills = {
-  ...CombatSkills,
-  ...ActiveSkills,
-  ...PassiveSkills
+export const Skill = {
+  ...CombatSkill,
+  ...ActiveSkill,
+  ...PassiveSkill
 } as const;
 
-export type SkillSet = Record<ObjectValues<typeof Skills>, number>;
+export type SkillSet = Record<ObjectValues<typeof Skill>, number>;
 
 // type error below indicates that not all values in
 // Skills are represented in CharacterHelpLookup
 // Could be a typo or missing help entry
-assert<RequiresHelp<typeof Skills>>();
+assert<HasHelpEntriesForEvery<typeof Skill>>();
 
-export const Traits = {
+export const Trait = {
   FastMetabolism: 'Fast Metabolism',
   Bruiser: 'Bruiser',
   SmallFrame: 'Small Frame',
@@ -106,12 +106,12 @@ export const Traits = {
   Gifted: 'Gifted'
 } as const;
 
-export type TraitSet = Map<ObjectValues<typeof Traits>, boolean>;
+export type TraitSet = Map<ObjectValues<typeof Trait>, boolean>;
 
 // type error below indicates that not all values in
 // Traits are represented in CharacterHelpLookup
 // Could be a typo or missing help entry
-assert<RequiresHelp<typeof Traits>>();
+assert<HasHelpEntriesForEvery<typeof Trait>>();
 
 export const AilmentStatus = {
   Poisoned: 'Poisoned',
@@ -126,9 +126,9 @@ export const AilmentStatus = {
 // type error below indicates that not all values in
 // AilmentStatus are represented in CharacterHelpLookup
 // Could be a typo or missing help entry
-assert<RequiresHelp<typeof AilmentStatus>>();
+assert<HasHelpEntriesForEvery<typeof AilmentStatus>>();
 
-export const DerivedStats = {
+export const DerivedStat = {
   ArmorClass: 'Armor Class',
   ActionPoints: 'Action Points',
   CarryWeight: 'Carry Weight',
@@ -144,7 +144,7 @@ export const DerivedStats = {
 // type error below indicates that not all values in
 // DerivedStats are represented in CharacterHelpLookup
 // Could be a typo or missing help entry
-assert<RequiresHelp<typeof DerivedStats>>();
+assert<HasHelpEntriesForEvery<typeof DerivedStat>>();
 
 export const Sex = {
   Male: 'Male',

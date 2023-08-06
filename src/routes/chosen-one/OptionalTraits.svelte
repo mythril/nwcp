@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { Traits } from '$lib/engines/ChosenOne';
+  import { Trait } from '$lib/engines/ChosenOne';
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
 
-  let traits = objectKeys(Traits);
+  let traits = objectKeys(Trait);
   let chosenTraits: typeof traits = [];
   let leftTraits = traits.slice(0, 8);
   let rightTraits = traits.slice(8, 16);
@@ -48,7 +48,7 @@
       <div class="leftTraits">
         {#each leftTraits as trait}
           <div class="trait">
-            <HelpSource subject={Traits[trait]}>
+            <HelpSource subject={Trait[trait]}>
               <input
                 type="checkbox"
                 class="checkbox-button"
@@ -61,7 +61,7 @@
                 role="link"
                 class={chosenTraits.includes(trait) ? 'selected' : ''}
               >
-                {Traits[trait]}
+                {Trait[trait]}
               </div>
             </HelpSource>
           </div>
@@ -70,7 +70,7 @@
       <div class="rightTraits">
         {#each rightTraits as trait}
           <div class="trait">
-            <HelpSource subject={Traits[trait]}>
+            <HelpSource subject={Trait[trait]}>
               <input
                 type="checkbox"
                 class="checkbox-button"
@@ -83,7 +83,7 @@
                 role="link"
                 class={chosenTraits.includes(trait) ? 'selected' : ''}
               >
-                {Traits[trait]}
+                {Trait[trait]}
               </div>
             </HelpSource>
           </div>
