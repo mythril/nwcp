@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] use types to enforce help entries, try Pick & some equality library
 - [ ] fix paper corruption on zoom
 - [ ] fix reflow
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized

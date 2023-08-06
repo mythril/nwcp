@@ -34,14 +34,22 @@ async function preloader() {
 }
 preloader();
 
-export function clickSound() {
+export async function clickSound() {
   clickAudio.currentTime = 0;
-  clickAudio.play();
+  try {
+    await clickAudio.play();
+  } catch (e) {
+    // silence the useless error
+  }
 }
 
-export function bonkSound() {
+export async function bonkSound() {
   bonkAudio.currentTime = 0;
-  bonkAudio.play();
+  try {
+    await bonkAudio.play();
+  } catch (e) {
+    // silence the useless error
+  }
 }
 
 export type ObjectValues<T> = T[keyof T];

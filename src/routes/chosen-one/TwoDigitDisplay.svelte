@@ -11,7 +11,7 @@
   let value = 0;
 
   $: {
-    realMin = Math.max(Math.round(min), 1);
+    realMin = Math.max(Math.round(min), 0);
     realMax = Math.min(Math.round(max), 99);
   }
 
@@ -49,22 +49,30 @@
     return true;
   };
 
+  let howMany = 0;
+
   export const set = (newVal: number) => {
+    let flips = Math.round(newVal) - value;
+    let flip = flips > 0 ? increment : decrement;
+    howMany = flips;
+
+    const doFlips = () => {
+      if (howMany === 0) return;
+      flip();
+      if (howMany > 0) {
+        howMany -= 1;
+      } else if (howMany < 0) {
+        howMany += 1;
+      }
+      setTimeout(() => doFlips(), 0);
+    };
+    doFlips();
     if (newVal < realMin) {
       return false;
     }
-    if (newVal > realMin) {
+    if (newVal > realMax) {
       return false;
     }
-    let flips = Math.round(newVal) - value;
-    let flip = flips > 0 ? increment : decrement;
-
-    const doFlips = (howMany: number) => {
-      if (howMany < 1) return;
-      flip();
-      setTimeout(() => doFlips(howMany - 1), 0);
-    };
-    doFlips(flips);
     return true;
   };
 

@@ -2,6 +2,15 @@
   import Bolthead from './Bolthead.svelte';
   import HelpSource from './HelpSource.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
+  import { charPointsRemaining } from './stores';
+
+  let tdd: TwoDigitDisplay;
+
+  charPointsRemaining.subscribe((val) => {
+    if (tdd) {
+      tdd.set(val);
+    }
+  });
 </script>
 
 <div class="char-points">
@@ -15,7 +24,8 @@
     </div>
     <div class="inset-border">
       <TwoDigitDisplay
-        initial={Math.round(Math.random() * 9 + 1)}
+        initial={5}
+        bind:this={tdd}
         min={0}
         max={70}
       />

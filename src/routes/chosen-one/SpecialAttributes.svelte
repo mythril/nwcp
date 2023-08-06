@@ -2,6 +2,7 @@
   import { Special, SpecialAbbreviation } from '$lib/engines/ChosenOne';
   import Attribute from './Attribute.svelte';
   import HelpSource from './HelpSource.svelte';
+  import { attributes, charPointsRemaining } from './stores';
 </script>
 
 <div class="special">
@@ -9,7 +10,12 @@
     <HelpSource subject={attr}>
       <Attribute
         label={SpecialAbbreviation(attr)}
-        value={Math.round(Math.random() * 9 + 1)}
+        value={$attributes[attr]}
+        charPointsRemaining={$charPointsRemaining}
+        onChange={(a) => {
+          $attributes[attr] = a;
+          $attributes = $attributes;
+        }}
       />
     </HelpSource>
   {/each}

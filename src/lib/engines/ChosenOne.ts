@@ -2,9 +2,9 @@ import type { ObjectValues } from '$lib/utils';
 import { CharacterHelpLookup } from './help';
 
 // ensures there are help entries for each attribute
-type SpecialEnum = { [key: string]: keyof typeof HelpLookup };
+// type SpecialEnum = { [key: string]: keyof typeof HelpLookup };
 
-export const Special: SpecialEnum = {
+export const Special = {
   Strength: 'Strength',
   Perception: 'Perception',
   Endurance: 'Endurance',
@@ -37,7 +37,7 @@ export function SpecialAbbreviation(special: SPECIAL): string {
   }
 }
 
-export type Attributes = Map<SPECIAL, number>;
+export type Attributes = Record<SPECIAL, number>;
 
 export const CombatSkills = {
   SmallGuns: 'Small Guns',

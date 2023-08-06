@@ -5,6 +5,7 @@
   export let label: string;
   export let value: number;
   export let min = 1;
+  export let charPointsRemaining = 10;
   let descriptors = [
     'V.Bad',
     'Bad',
@@ -35,6 +36,10 @@
     }
     ev.preventDefault();
   }
+
+  export let onChange = (_val: number) => {
+    //intentional
+  };
 </script>
 
 <div
@@ -52,9 +57,10 @@
         initial={value}
         onChange={(val) => {
           descIndex = val - 1;
+          onChange(val);
         }}
         {min}
-        max={10}
+        max={Math.min(10, value + charPointsRemaining)}
       />
     </div>
     <div class="afterDash worn-text" />
