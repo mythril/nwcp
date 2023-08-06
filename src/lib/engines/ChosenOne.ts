@@ -1,8 +1,8 @@
 import type { ObjectValues } from '$lib/utils';
-import { CharacterHelpLookup } from './help';
+import { assert, type Equals } from 'tsafe';
+import type { CharacterHelpLookup } from './help';
 
-// ensures there are help entries for each attribute
-// type SpecialEnum = { [key: string]: keyof typeof HelpLookup };
+type HelpKeys = keyof typeof CharacterHelpLookup;
 
 export const Special = {
   Strength: 'Strength',
@@ -15,6 +15,10 @@ export const Special = {
 } as const;
 
 export type SPECIAL = ObjectValues<typeof Special>;
+
+// ensures there are help entries for each attribute
+type SpecialHelp = Extract<HelpKeys, SPECIAL>;
+assert<Equals<SpecialHelp, SPECIAL>>();
 
 export function SpecialAbbreviation(special: SPECIAL): string {
   switch (special) {
@@ -66,22 +70,20 @@ export const PassiveSkills = {
   Outdoorsman: 'Outdoorsman'
 } as const;
 
-// ensures there are help entries for each skill
-type SkillsEnum = { [key: string]: keyof typeof HelpLookup };
-
-export const Skills: SkillsEnum = {
+export const Skills = {
   ...CombatSkills,
   ...ActiveSkills,
   ...PassiveSkills
 } as const;
 
 export type SKILLS = ObjectValues<typeof Skills>;
-export type SkillSet = Map<SKILLS, number>;
+export type SkillSet = Record<SKILLS, number>;
 
-// ensures there are help entries for each trait
-type TraitsEnum = { [key: string]: keyof typeof HelpLookup };
+// ensures there are help entries for each skill
+type SkillsHelp = Extract<HelpKeys, SKILLS>;
+assert<Equals<SkillsHelp, SKILLS>>();
 
-export const Traits: TraitsEnum = {
+export const Traits = {
   FastMetabolism: 'Fast Metabolism',
   Bruiser: 'Bruiser',
   SmallFrame: 'Small Frame',
@@ -103,9 +105,11 @@ export const Traits: TraitsEnum = {
 export type TRAITS = ObjectValues<typeof Traits>;
 export type TraitSet = Map<TRAITS, boolean>;
 
-type AilmentStatusEnum = { [key: string]: keyof typeof HelpLookup };
+// ensures there are help entries for each trait
+type TraitsHelp = Extract<HelpKeys, TRAITS>;
+assert<Equals<TraitsHelp, TRAITS>>();
 
-export const AilmentStatus: AilmentStatusEnum = {
+export const AilmentStatus = {
   Poisoned: 'Poisoned',
   Radiated: 'Radiated',
   EyeDamage: 'Eye Damage',
@@ -115,7 +119,13 @@ export const AilmentStatus: AilmentStatusEnum = {
   CrippledLeftLeg: 'Crippled Left Leg'
 } as const;
 
-type DerivedStatsEnum = { [key: string]: keyof typeof HelpLookup };
+export type AILMENT_STATUSES = ObjectValues<typeof AilmentStatus>;
+
+// ensures there are help entries for each ailment status
+type AilmentHelp = Extract<HelpKeys, AILMENT_STATUSES>;
+assert<Equals<AilmentHelp, AILMENT_STATUSES>>();
+
+type DerivedStatsEnum = { [key: string]: HelpKeys };
 
 export const DerivedStats: DerivedStatsEnum = {
   ArmorClass: 'Armor Class',
@@ -130,7 +140,11 @@ export const DerivedStats: DerivedStatsEnum = {
   CriticalChance: 'Critical Chance'
 } as const;
 
-export const HelpLookup = { ...CharacterHelpLookup /*, ...PerkHelpLookup*/ };
+export type DERIVED_STATS = ObjectValues<typeof DerivedStats>;
+
+// ensures there are help entries for each derived stat entry
+type DerivedStatsHelp = Extract<HelpKeys, DERIVED_STATS>;
+assert<Equals<DerivedStatsHelp, DERIVED_STATS>>();
 
 export const Sex = {
   Male: 'Male',
