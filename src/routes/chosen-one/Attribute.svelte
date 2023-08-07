@@ -1,11 +1,15 @@
 <script lang="ts">
   import { clickSound } from '$lib/utils';
+  import { createEventDispatcher } from 'svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
 
   export let label: string;
   export let value: number;
   export let min = 1;
   export let charPointsRemaining = 10;
+
+  let dispatcher = createEventDispatcher();
+
   let descriptors = [
     'V.Bad',
     'Bad',
@@ -23,18 +27,30 @@
 
   $: descIndex = value - 1;
 
+  const increment = () => {
+    if (attr.increment()) {
+      clickSound();
+    } else {
+      if (charPointsRemaining === 0) {
+        dispatcher('charPointsRemainingBonk', {label, value});
+      }
+    }
+  };
+
+  const decrement = () => {
+    if (attr.decrement()) {
+      clickSound();
+    }
+  };
+
   function wheel(ev: WheelEvent) {
     if (!attr) {
       return;
     }
     if (ev.deltaY > 0) {
-      if (attr.decrement()) {
-        clickSound();
-      }
+      decrement();
     } else {
-      if (attr.increment()) {
-        clickSound();
-      }
+      increment();
     }
     ev.preventDefault();
   }
@@ -65,19 +81,11 @@
   <div class="manipulators">
     <button
       class="incr"
-      on:click={() => {
-        if (attr.increment()) {
-          clickSound();
-        }
-      }}>+</button
+      on:click={increment}>+</button
     >
     <button
       class="decr"
-      on:click={() => {
-        if (attr.decrement()) {
-          clickSound();
-        }
-      }}>-</button
+      on:click={decrement}>-</button
     >
   </div>
 </div>

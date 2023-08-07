@@ -11,6 +11,7 @@
       <Attribute
         label={SpecialAbbreviation(attr)}
         bind:value={$attributes[attr]}
+        on:charPointsRemainingBonk
         charPointsRemaining={$charPointsRemaining}
       />
     </HelpSource>

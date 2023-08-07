@@ -15,6 +15,12 @@
   let name = '';
   let age = 25;
   let sex = Sex.Male;
+  let charPoints : CharPoints;
+  const charPointsRemainingBonk = () => {
+    if (charPoints) {
+      charPoints.bonkDown();
+    }
+  };
 </script>
 
 <div class="parent">
@@ -30,7 +36,7 @@
     </div>
   </div>
   <div class="special-section slate">
-    <SpecialAttributes />
+    <SpecialAttributes on:charPointsRemainingBonk={charPointsRemainingBonk} />
   </div>
   <div class="health-section slate monitor terminal-font-defaults">
     <Health />
@@ -39,7 +45,7 @@
     <DerivedStats />
   </div>
   <div class="char-points-section slate">
-    <CharPoints />
+    <CharPoints bind:this={charPoints} />
   </div>
   <div class="traits-section">
     <OptionalTraits />
@@ -51,9 +57,9 @@
     <Help />
   </div>
   <div class="buttons">
-    <PlateButton class="perks">Perks</PlateButton>
-    <PlateButton class="items">Items</PlateButton>
-    <PlateButton class="stats">Stats</PlateButton>
+    <PlateButton class="perks">About</PlateButton>
+    <PlateButton class="items">Save</PlateButton>
+    <PlateButton class="stats">Load</PlateButton>
   </div>
 </div>
 

@@ -7,11 +7,6 @@ Overall goals:
 
 ### To do
 
-- [ ] see what can be converted to value binding
-- [ ] make validation errors propagate reactively
-- [ ] improve shadows and highlights (check modals)
-- [ ] fix paper corruption on zoom
-- [ ] fix reflow
 - [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
 - [ ] Make the first event: create character
 - [ ] Figure out a way for end users to preserve their character creations
@@ -49,6 +44,11 @@ Overall goals:
 
 ### Done
 
+- [x] improve shadows and highlights (check modals)
+- [x] make validation errors propagate reactively
+- [x] fix paper corruption on zoom (seems to only happen in dev)
+- [x] fix reflow
+- [x] see what can be converted to value binding
 - [x] use types to enforce help entries, try Pick & some equality library
 - [x] fix modals, flanges, char-points height?
 - [x] re-format to 640x480 style

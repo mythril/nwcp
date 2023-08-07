@@ -130,7 +130,7 @@
     z-index: 3;
     background-color: hsl(var(--bg));
     box-shadow: var(--basic-box-shadow),
-      inset 5rem -5rem 5rem 0 rgba(0, 0, 0, 0.75);
+      inset 4rem -4rem 4rem -4rem rgba(0, 0, 0, 0.75);
     .padding-wrapper {
       width: 100%;
       height: 100%;

@@ -6,6 +6,12 @@
 
   let tdd: TwoDigitDisplay;
 
+  export const bonkDown = () => {
+    if (tdd) {
+      tdd.set(-1);
+    }
+  };
+
   charPointsRemaining.subscribe((val) => {
     if (tdd) {
       tdd.set(val);
