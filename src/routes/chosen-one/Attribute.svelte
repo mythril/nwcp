@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { clickSound } from '$lib/utils';
+  import { clickSound, createDebouncer } from '$lib/utils';
   import { createEventDispatcher } from 'svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
 
@@ -43,7 +43,12 @@
     }
   };
 
+  let wheelCanFire = createDebouncer();
   function wheel(ev: WheelEvent) {
+    ev.preventDefault();
+    if (!wheelCanFire()) {
+      return;
+    }
     if (!attr) {
       return;
     }
@@ -52,7 +57,6 @@
     } else {
       increment();
     }
-    ev.preventDefault();
   }
 </script>
 

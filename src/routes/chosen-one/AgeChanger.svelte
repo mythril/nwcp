@@ -5,7 +5,7 @@
   import Arrow from '$lib/components/icons/Arrow.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
   import PlateButton from './PlateButton.svelte';
-  import { clickSound } from '$lib/utils';
+  import { clickSound, createDebouncer } from '$lib/utils';
 
   export let age = 25;
   let tmp = 25;
@@ -38,7 +38,12 @@
     }
   };
 
+  let wheelCanFire = createDebouncer();
   function wheel(ev: WheelEvent) {
+    ev.preventDefault();
+    if (!wheelCanFire()) {
+      return;
+    }
     if (!ageDisplay) {
       return;
     }
@@ -47,7 +52,6 @@
     } else {
       increment();
     }
-    ev.preventDefault();
   }
 
   onMount(() => {
