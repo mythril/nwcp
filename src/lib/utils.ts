@@ -1,6 +1,10 @@
 import clickFile from '$lib/sounds/click2.wav';
 import bonkFile from '$lib/sounds/bonk.wav';
 
+export const Raise = (message: string): never => {
+  throw message;
+};
+
 export function blobToDataURL(blob: Blob): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     const reader = new FileReader();

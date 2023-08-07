@@ -2,11 +2,9 @@
   context="module"
   lang="ts"
 >
-  import { tick } from 'svelte';
+  import { Raise } from '$lib/utils';
 
-  const Raise = (message: string): never => {
-    throw message;
-  };
+  import { tick } from 'svelte';
 
   type Target = HTMLElement | string;
 
@@ -15,7 +13,7 @@
     to.appendChild(node);
   }
 
-  /** @type {import('svelte/action').Action<HTMLElement, string>}  */
+  /** @type {import('svelte/action').Action<HTMLElement, Target>}  */
   export function portal(node: HTMLElement, target: Target = 'body') {
     let destination: HTMLElement;
 

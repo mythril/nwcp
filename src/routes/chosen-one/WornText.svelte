@@ -1,16 +1,14 @@
 <script lang="ts">
   import GeneratedImageCacher from '$lib/components/GeneratedImageCacher.svelte';
   import './WornText.postcss';
-
-  const desc = {
-    name: 'worn-text',
-    width: 250,
-    height: 75,
-    applyToProperties: ['-webkit-mask-image', 'mask-image']
-  };
 </script>
 
-<GeneratedImageCacher {desc}>
+<GeneratedImageCacher
+  name="worn-text"
+  width={250}
+  height={75}
+  applyToProperties={['-webkit-mask-image', 'mask-image']}
+>
   <svg>
     <defs>
       <filter id="worn-text">

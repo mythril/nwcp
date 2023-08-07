@@ -8,15 +8,10 @@
     getCached
   } from '$lib/GeneratedImageTools';
 
-  let canvas: HTMLCanvasElement;
-
-  type GeneratorDescriptor = {
-    name: string;
-    width: number;
-    height: number;
-    applyToProperties: string[] | undefined;
-  };
-  let rendered = false;
+  export let name: string;
+  export let width: number;
+  export let height: number;
+  export let applyToProperties: string[] = [];
 
   export let render = (
     ctx: CanvasRenderingContext2D,
@@ -28,7 +23,10 @@
     ctx.fillRect(width, height, width, height);
   };
 
-  export let desc: GeneratorDescriptor;
+  let canvas: HTMLCanvasElement;
+
+  // Use rendered to remove the support materials from the document when done
+  let rendered = false;
   let styles: string[] = [];
 
   onMount(async () => {
@@ -46,11 +44,11 @@
       canvas.height = height;
     };
 
-    let found = await getCached(desc.name);
+    let found = await getCached(name);
 
     if (found !== undefined) {
       if (canRelyOnServiceWorker()) {
-        styles.push(generateCachedCSS(desc.name, desc.applyToProperties));
+        styles.push(generateCachedCSS(name, applyToProperties));
         styles = styles;
         // it's in the cache, and the service worker is present, so move on
         rendered = true;
@@ -64,12 +62,12 @@
       }
     }
 
-    resetCanvas(desc.width, desc.height);
+    resetCanvas(width, height);
 
-    render(ctx, desc.name, desc.width, desc.height);
+    render(ctx, name, width, height);
 
-    const dataURL = await cacheCanvasSnapshotGetData(canvas, desc.name);
-    styles.push(generateDataUrlCSS(desc.name, desc.applyToProperties, dataURL));
+    const dataURL = await cacheCanvasSnapshotGetData(canvas, name);
+    styles.push(generateDataUrlCSS(name, applyToProperties, dataURL));
     styles = styles;
 
     rendered = true;
