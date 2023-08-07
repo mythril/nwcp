@@ -32,7 +32,7 @@
       clickSound();
     } else {
       if (charPointsRemaining === 0) {
-        dispatcher('charPointsRemainingBonk', {label, value});
+        dispatcher('charPointsRemainingBonk', { label, value });
       }
     }
   };

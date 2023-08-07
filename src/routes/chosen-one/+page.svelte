@@ -15,7 +15,7 @@
   let name = '';
   let age = 25;
   let sex = Sex.Male;
-  let charPoints : CharPoints;
+  let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
     if (charPoints) {
       charPoints.bonkDown();
@@ -57,9 +57,9 @@
     <Help />
   </div>
   <div class="buttons">
-    <PlateButton class="perks">About</PlateButton>
-    <PlateButton class="items">Save</PlateButton>
-    <PlateButton class="stats">Load</PlateButton>
+    <PlateButton class="about">About</PlateButton>
+    <PlateButton class="save">Save</PlateButton>
+    <PlateButton class="load">Load</PlateButton>
   </div>
 </div>
 
@@ -139,13 +139,13 @@
     grid-area: buttons;
     display: flex;
     justify-content: space-between;
-    :global(.perks) {
+    :global(.about) {
       width: 108rem;
     }
-    :global(.items) {
+    :global(.save) {
       width: 92rem;
     }
-    :global(.stats) {
+    :global(.load) {
       width: 92rem;
     }
   }
