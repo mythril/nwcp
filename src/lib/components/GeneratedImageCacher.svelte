@@ -1,107 +1,78 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { version } from '$app/environment';
-  import { blobToDataURL } from '$lib/utils';
+  import {
+    cacheCanvasSnapshotGetData,
+    canRelyOnServiceWorker,
+    generateCachedCSS,
+    generateDataUrlCSS,
+    getCached
+  } from '$lib/GeneratedImageTools';
 
   let canvas: HTMLCanvasElement;
 
-  type CacheDescriptor = {
+  type GeneratorDescriptor = {
     name: string;
     width: number;
     height: number;
     applyToProperties: string[] | undefined;
   };
+  let rendered = false;
 
-  export let cacheDescriptors: CacheDescriptor[];
+  export let render = (
+    ctx: CanvasRenderingContext2D,
+    name: string,
+    width: number,
+    height: number
+  ) => {
+    ctx.filter = `url(#${name})`;
+    ctx.fillRect(width, height, width, height);
+  };
+
+  export let desc: GeneratorDescriptor;
   let styles: string[] = [];
 
   onMount(async () => {
-    let cache = await window.caches.open('cache-' + version);
-
     let ctx = canvas.getContext('2d');
     if (ctx === null) {
       return;
     }
-
-    for (const desc of cacheDescriptors) {
-      const rq = new Request(`/generated/${desc.name}.png`);
-
-      let found = await cache.match(rq);
-
-      if (found !== undefined) {
-        if ('serviceWorker' in navigator) {
-          if (navigator.serviceWorker.controller) {
-            if (!desc.applyToProperties || desc.applyToProperties.length < 1) {
-              continue;
-            }
-            const generateRules = () => {
-              if (!desc.applyToProperties) {
-                return '';
-              }
-              let result = '';
-              for (let property of desc.applyToProperties) {
-                result += `${property}: url('/generated/${desc.name}.png');\n`;
-              }
-              return result;
-            };
-            const css = `
-            .${desc.name} {
-              ${generateRules()}
-            }
-            `;
-            styles.push(css);
-            styles = styles;
-            continue;
-          } else {
-            // navigator.serviceWorker.controller is null after a hard refresh
-            // which means that the attempt to load generated images will 404
-            // so instead we treat it the same as a first load: render it,
-            // stuff it in the cache it and use it as a data blob in the
-            // generated css rule (see below)
-          }
-        }
+    const resetCanvas = (width: number, height: number) => {
+      if (ctx === null) {
+        return;
       }
-
       ctx.filter = 'url()';
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      canvas.width = desc.width;
-      canvas.height = desc.height;
+      canvas.width = width;
+      canvas.height = height;
+    };
 
-      // probably need to wrap this in a callback to allow generated images to
-      // customize the results beyond drawing a svg filter to a canvas
-      ctx.filter = `url(#${desc.name})`;
-      ctx.fillRect(desc.width, desc.height, desc.width, desc.height);
+    let found = await getCached(desc.name);
 
-      canvas.toBlob(async (blob) => {
-        if (!blob) {
-          return;
-        }
-        let resp = new Response(blob, { status: 200, statusText: 'OK' });
-        await cache.put(rq, resp);
-
-        if (!desc.applyToProperties || desc.applyToProperties.length < 1) {
-          return;
-        }
-        let generateRules = () => {
-          if (!desc.applyToProperties) {
-            return '';
-          }
-          let result = '';
-          for (let property of desc.applyToProperties) {
-            result += `${property}: url('${dataURL}');\n`;
-          }
-          return result;
-        };
-        const dataURL = await blobToDataURL(blob);
-        const css = `
-        .${desc.name} {
-          ${generateRules()}
-        }
-        `;
-        styles.push(css);
+    if (found !== undefined) {
+      if (canRelyOnServiceWorker()) {
+        styles.push(generateCachedCSS(desc.name, desc.applyToProperties));
         styles = styles;
-      });
+        // it's in the cache, and the service worker is present, so move on
+        rendered = true;
+        return;
+      } else {
+        // navigator.serviceWorker.controller is null after a hard refresh
+        // which means that the attempt to load generated images will 404
+        // so instead we treat it the same as a first load: render it,
+        // stuff it in the cache and use it as a data url in the
+        // generated css rule (see below)
+      }
     }
+
+    resetCanvas(desc.width, desc.height);
+
+    render(ctx, desc.name, desc.width, desc.height);
+
+    const dataURL = await cacheCanvasSnapshotGetData(canvas, desc.name);
+    styles.push(generateDataUrlCSS(desc.name, desc.applyToProperties, dataURL));
+    styles = styles;
+
+    rendered = true;
   });
 </script>
 
@@ -109,15 +80,15 @@
   {#if styles.length > 0}
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     {@html `
-      <style type="text/css">
-        ${styles.join('\n')}
-      </style>
+      <style type="text/css">${styles.join('\n')}</style>
     `}
   {/if}
 </svelte:head>
 
-<div class="offscreen">
-  <slot />
+{#if !rendered}
+  <div class="offscreen">
+    <slot />
 
-  <canvas bind:this={canvas} />
-</div>
+    <canvas bind:this={canvas} />
+  </div>
+{/if}
