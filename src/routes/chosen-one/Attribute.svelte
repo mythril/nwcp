@@ -21,6 +21,8 @@
   let attr: TwoDigitDisplay;
   let descIndex = 0;
 
+  $: descIndex = value - 1;
+
   function wheel(ev: WheelEvent) {
     if (!attr) {
       return;
@@ -36,10 +38,6 @@
     }
     ev.preventDefault();
   }
-
-  export let onChange = (_val: number) => {
-    //intentional
-  };
 </script>
 
 <div
@@ -54,11 +52,7 @@
     <div class="two-digit-border">
       <TwoDigitDisplay
         bind:this={attr}
-        initial={value}
-        onChange={(val) => {
-          descIndex = val - 1;
-          onChange(val);
-        }}
+        bind:value
         {min}
         max={Math.min(10, value + charPointsRemaining)}
       />

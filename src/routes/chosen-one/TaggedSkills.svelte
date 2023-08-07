@@ -80,7 +80,7 @@
       <div class="unused">
         <TwoDigitDisplay
           bind:this={tdd}
-          initial={3}
+          value={3}
           min={0}
           max={3}
         />

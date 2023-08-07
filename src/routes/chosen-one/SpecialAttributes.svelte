@@ -10,12 +10,8 @@
     <HelpSource subject={attr}>
       <Attribute
         label={SpecialAbbreviation(attr)}
-        value={$attributes[attr]}
+        bind:value={$attributes[attr]}
         charPointsRemaining={$charPointsRemaining}
-        onChange={(a) => {
-          $attributes[attr] = a;
-          $attributes = $attributes;
-        }}
       />
     </HelpSource>
   {/each}

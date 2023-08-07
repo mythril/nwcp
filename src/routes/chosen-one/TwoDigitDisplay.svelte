@@ -3,21 +3,16 @@
   import EmptyDigitDisplay from './EmptyDigitDisplay.svelte';
   import OneDigitDisplay from './OneDigitDisplay.svelte';
 
-  export let initial: number;
+  export let value = 0;
   export let min: number;
   export let max: number;
   let realMin: number;
   let realMax: number;
-  let value = 0;
 
   $: {
     realMin = Math.max(Math.round(min), 0);
     realMax = Math.min(Math.round(max), 99);
   }
-
-  export let onChange = (_val: number) => {
-    //intentional
-  };
 
   export let bonkDown = () => {
     onesDigitDisplay.bonkDown();
@@ -34,7 +29,6 @@
       return false;
     }
     value += 1;
-    onChange(value);
     return true;
   };
 
@@ -49,7 +43,6 @@
       return false;
     }
     value -= 1;
-    onChange(value);
     return true;
   };
 
@@ -80,7 +73,7 @@
     return true;
   };
 
-  if (!set(initial)) {
+  if (!set(value)) {
     throw 'Could not set initial value. Check your min & max.';
   }
 

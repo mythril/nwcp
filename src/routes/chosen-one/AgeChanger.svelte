@@ -86,10 +86,9 @@
       <div class="sharp-inset-border">
         <TwoDigitDisplay
           bind:this={ageDisplay}
-          initial={tmp}
+          bind:value={tmp}
           min={16}
           max={35}
-          onChange={(v) => (tmp = v)}
         />
       </div>
       <PlateButton

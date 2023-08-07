@@ -24,7 +24,7 @@
     </div>
     <div class="inset-border">
       <TwoDigitDisplay
-        initial={5}
+        value={5}
         bind:this={tdd}
         min={0}
         max={70}
