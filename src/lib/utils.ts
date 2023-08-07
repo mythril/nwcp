@@ -52,24 +52,24 @@ export async function bonkSound() {
   }
 }
 
-// This is a fast debouncer, in that it allows the event to fire before the 
+// This is a fast debouncer, in that it allows the event to fire before the
 // grace period has elapsed, instead of after. Intended to be 1 instance per
-// handler, though unless you have a crazy amount of handlers that fire over 
+// handler, though unless you have a crazy amount of handlers that fire over
 // each other it probably wouldn't matter much
 // returns true if the event should be handled, false if called before then
-// debounce period has not elapsed since the last time the function returned 
+// debounce period has not elapsed since the last time the function returned
 // true
 export function createDebouncer(debouncePeriodMS = 100) {
   return (function () {
-    let lastFired = 0;
+    let debounceExpiry = 0;
     return function () {
-      if (+(new Date) < lastFired) {
+      if (+new Date() < debounceExpiry) {
         return false;
       }
-      lastFired = +(new Date) + debouncePeriodMS;
+      debounceExpiry = +new Date() + debouncePeriodMS;
       return true;
     };
-  }());
+  })();
 }
 
 export type ObjectValues<T> = T[keyof T];
