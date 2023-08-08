@@ -4,18 +4,18 @@
   import SlateButton from './SlateButton.svelte';
   import BigCaret from './BigCaret.svelte';
 
-  export let name = '';
+  export let value = '';
 
   let dlg: MiniDialog;
   let text = '';
 
   const commit = () => {
-    name = text;
+    value = text;
     return true;
   };
 
   const cancel = () => {
-    text = name;
+    text = value;
   };
 
   let show = () => {
@@ -35,7 +35,7 @@
 
   onMount(() => {
     show = () => {
-      text = name;
+      text = value;
       dlg.show();
     };
   });
@@ -56,7 +56,7 @@
   </MiniDialog>
   <SlateButton on:click={show}>
     <div class="worn-text">
-      {name || 'none'}
+      {value || 'none'}
     </div>
   </SlateButton>
 </div>

@@ -4,21 +4,21 @@
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
+  import { taggedSkills } from './stores';
 
   let skills = objectKeys(Skill);
-  let taggedSkills: typeof skills = [];
 
   $: {
     if (tdd) {
-      if (!tdd.set(3 - taggedSkills.length)) {
-        taggedSkills = taggedSkills;
+      if (!tdd.set(3 - $taggedSkills.length)) {
+        $taggedSkills = $taggedSkills;
       }
     }
   }
 
   const skillHandler = (ev: Event) => {
     const cb = ev.target as HTMLInputElement;
-    if (taggedSkills.length >= 3 && cb.checked) {
+    if ($taggedSkills.length >= 3 && cb.checked) {
       bonkSound();
       tdd.set(-1);
       ev.preventDefault();
@@ -46,14 +46,16 @@
   <div class="skills terminal-font-defaults">
     {#each skills as key}
       <HelpSource subject={Skill[key]}>
-        <div class="skill {taggedSkills.includes(key) ? 'selected' : ''}">
+        <div
+          class="skill {$taggedSkills.includes(Skill[key]) ? 'selected' : ''}"
+        >
           <div class="button">
             <input
               type="checkbox"
               class="checkbox-button"
               on:click={skillHandler}
-              bind:group={taggedSkills}
-              value={key}
+              bind:group={$taggedSkills}
+              value={Skill[key]}
               name=""
               id=""
             />

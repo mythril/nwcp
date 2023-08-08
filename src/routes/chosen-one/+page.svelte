@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Sex } from '$lib/engines/ChosenOne';
   import Help from './Help.svelte';
   import PlateButton from './PlateButton.svelte';
   import NameChanger from './NameChanger.svelte';
@@ -11,10 +10,8 @@
   import CharPoints from './CharPoints.svelte';
   import TaggedSkills from './TaggedSkills.svelte';
   import SpecialAttributes from './SpecialAttributes.svelte';
+  import { age, name, sex } from './stores';
 
-  let name = '';
-  let age = 25;
-  let sex = Sex.Male;
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
     if (charPoints) {
@@ -23,16 +20,29 @@
   };
 </script>
 
+<!--
+<div class="store-debug">
+  Name: {$name}
+  Age: {$age}
+  Sex: {$sex}
+  {#each Object.values(Special) as attr}
+  {"\n  " + attr}: {$attributes[attr]}
+  {/each}
+  Traits: {$chosenTraits}
+  Tagged Skills: {$taggedSkills}
+</div>
+-->
+
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
-      <NameChanger {name} />
+      <NameChanger bind:value={$name} />
     </div>
     <div class="age">
-      <AgeChanger {age} />
+      <AgeChanger bind:value={$age} />
     </div>
     <div class="sex">
-      <SexChanger {sex} />
+      <SexChanger bind:value={$sex} />
     </div>
   </div>
   <div class="special-section slate">
@@ -149,4 +159,13 @@
       width: 92rem;
     }
   }
+  /* .store-debug{
+    white-space: pre;
+    position: absolute;
+    z-index:10;
+    left:340rem;
+    top:260rem;
+    background-color:#fff;
+    width: 300rem;
+  } */
 </style>

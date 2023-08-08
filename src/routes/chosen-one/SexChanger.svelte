@@ -7,18 +7,18 @@
   import { Sex } from '$lib/engines/ChosenOne';
   import type { ObjectValues } from '$lib/utils';
 
-  export let sex: ObjectValues<typeof Sex> = Sex.Male;
+  export let value: ObjectValues<typeof Sex> = Sex.Male;
 
   let dlg: MiniDialog;
 
   let tmp: ObjectValues<typeof Sex> = Sex.Male;
 
   const cancel = () => {
-    tmp = sex;
+    tmp = value;
   };
 
   const commit = () => {
-    sex = tmp;
+    value = tmp;
     return true;
   };
 
@@ -63,7 +63,7 @@
   </MiniDialog>
   <SlateButton on:click={show}>
     <div class="worn-text">
-      {sex}
+      {value}
     </div>
   </SlateButton>
 </div>

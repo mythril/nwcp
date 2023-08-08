@@ -7,25 +7,18 @@ Overall goals:
 
 ### To do
 
-- [ ] Cache full-screen filter image and rebuild/re-cache when page is resized
+- [ ] Build filter to add random blotchy, embossed grooves into the background
+- [ ] Improve paper background
+- [ ] Match tag / trait buttons better (push state)
 - [ ] Make the first event: create character
 - [ ] Figure out a way for end users to preserve their character creations
   - third party storage services that the user can opt in to?
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Add an about page
-- [ ] Build filter to add random blotchy, embossed grooves into the background
-- [ ] re-scale UI to 640x480 style dimensions, update viewport meta tag
-
-### Visuals
-
-- [ ] improve paper background
-- [ ] Match tag / trait buttons better (push state)
-- [ ] Extract push button and make it resizable
-- [ ] Improve look of sex setter buttons
-- [ ] Improve logo
 
 ### Maybe
 
+- [ ] Extract push button and make it resizable
 - [ ] Include VB sprites?
 - [ ] Create an intro anim
 - [ ] redirect to '/' when images are not yet generated
@@ -44,6 +37,10 @@ Overall goals:
 
 ### Done
 
+- [x] Improve look of sex setter buttons
+- [x] Improve logo
+- [x] re-scale UI to 640x480 style dimensions
+- [x] Cache full-screen filter image and rebuild/re-cache when page is resized
 - [x] improve shadows and highlights (check modals)
 - [x] make validation errors propagate reactively
 - [x] fix paper corruption on zoom (seems to only happen in dev)

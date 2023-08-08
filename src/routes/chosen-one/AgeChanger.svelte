@@ -7,19 +7,19 @@
   import PlateButton from './PlateButton.svelte';
   import { clickSound, createDebouncer } from '$lib/utils';
 
-  export let age = 25;
+  export let value = 25;
   let tmp = 25;
   let ageDisplay: TwoDigitDisplay;
 
   let dlg: MiniDialog;
 
   const commit = () => {
-    age = tmp;
+    value = tmp;
     return true;
   };
 
   const cancel = () => {
-    tmp = age;
+    tmp = value;
   };
 
   let show = () => {
@@ -111,7 +111,7 @@
   </MiniDialog>
   <SlateButton on:click={show}>
     <div class="worn-text">
-      Age {age}
+      Age {value}
     </div>
   </SlateButton>
 </div>

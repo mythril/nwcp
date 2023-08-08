@@ -3,15 +3,15 @@
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
+  import { chosenTraits } from './stores';
 
   let traits = objectKeys(Trait);
-  let chosenTraits: typeof traits = [];
   let leftTraits = traits.slice(0, 8);
   let rightTraits = traits.slice(8, 16);
 
   const traitHandler = (e: Event) => {
     const cb = e.target as HTMLInputElement;
-    if (chosenTraits.length >= 2 && cb.checked) {
+    if ($chosenTraits.length >= 2 && cb.checked) {
       bonkSound();
       e.preventDefault();
       e.stopPropagation();
@@ -53,13 +53,13 @@
                 type="checkbox"
                 class="checkbox-button"
                 on:click={traitHandler}
-                bind:group={chosenTraits}
-                value={trait}
+                bind:group={$chosenTraits}
+                value={Trait[trait]}
               />
               <div
                 data-trait={trait}
                 role="link"
-                class={chosenTraits.includes(trait) ? 'selected' : ''}
+                class={$chosenTraits.includes(Trait[trait]) ? 'selected' : ''}
               >
                 {Trait[trait]}
               </div>
@@ -75,13 +75,13 @@
                 type="checkbox"
                 class="checkbox-button"
                 on:click={traitHandler}
-                bind:group={chosenTraits}
-                value={trait}
+                bind:group={$chosenTraits}
+                value={Trait[trait]}
               />
               <div
                 data-trait={trait}
                 role="link"
-                class={chosenTraits.includes(trait) ? 'selected' : ''}
+                class={$chosenTraits.includes(Trait[trait]) ? 'selected' : ''}
               >
                 {Trait[trait]}
               </div>
