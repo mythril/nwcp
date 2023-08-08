@@ -1,38 +1,28 @@
-# create-svelte
+# VaultDweller Character Planner
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Roadmap
 
-## Creating a project
+- Chosen One
+  - Leveling up will be supported at some point
+  - Consumable effects (Chems, etc)
+  - Game play acquired perks / bonuses
+  - Gear stats
+- (Vault Dweller) Eventually plan to support Vault Dweller characters on the '/vault-dweller' Url path
+- (Courier) Eventually plan to support Courier characters on the '/courier' Url path
+- (Lone Wanderer) Eventually plan to support Courier characters on the '/lone-wanderer' Url path
+- Default path will have a game menu when there is a need for it
+- (Sole Survivor) I do not see any reason to ever support Sole Survivor
+- Linkable builds via hash-url serialization (limited by maximum URL length 2,083 chars)
+- Minimal Accounts
+- Cloud saves
+- Linkable builds via cloud saves
+- Event sourced data store will be the method of storage. (Journaled events style)
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Contributing
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- This is my first non-trivial project using Svelte and a few other technologies, if I'm using bad practices, I'll hear you out on the subject. However this is not a guarantee I will implement your suggestions.
+- Not intended to be a pixel perfect replica of the UI, even if it is close; Complaints in this arena will likely be ignored.
+- I will only accept contributions that fit the existing style of the project.
+- Code that is not formatted and linted will be rejected.
+- I ask that you use a spell checker in vscode if you use vscode, but I'm a bit more lax on this subject. There are already settings for [Code Spell Checker
+  ](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) in this repository.
