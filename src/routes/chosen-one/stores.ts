@@ -1,7 +1,7 @@
 import { writable, derived } from 'svelte/store';
 import { CharacterHelpLookup } from '$lib/engines/help';
 import { PerkHelpLookup } from '$lib/engines/perks';
-import { Special, type Attributes, Skill, Trait, Sex } from '$lib/engines/ChosenOne';
+import { Special, type Attributes, Skill, Trait, Sex } from '$lib/engines/ChosenOne/main';
 import type { ObjectValues } from '$lib/utils';
 const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };
 

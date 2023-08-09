@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Special, SpecialAbbreviation } from '$lib/engines/ChosenOne';
+  import { Special, SpecialAbbreviation } from '$lib/engines/ChosenOne/main';
   import Attribute from './Attribute.svelte';
   import HelpSource from './HelpSource.svelte';
   import { attributes, charPointsRemaining } from './stores';

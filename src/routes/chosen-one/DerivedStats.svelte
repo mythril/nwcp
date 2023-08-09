@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DerivedStat } from '$lib/engines/ChosenOne';
+  import { DerivedStat } from '$lib/engines/ChosenOne/main';
   import Bolthead from './Bolthead.svelte';
   import HelpSource from './HelpSource.svelte';
 </script>

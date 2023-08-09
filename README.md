@@ -1,12 +1,13 @@
 # VaultDweller Character Planner
 
-## Roadmap
+## Road-map
 
 - Chosen One
   - Leveling up will be supported at some point
-  - Consumable effects (Chems, etc)
+  - Consumable effects (Chems, books, etc)
   - Game play acquired perks / bonuses
   - Gear stats
+  - Difficulty manipulation and other common exploits
 - (Vault Dweller) Eventually plan to support Vault Dweller characters on the '/vault-dweller' Url path
 - (Courier) Eventually plan to support Courier characters on the '/courier' Url path
 - (Lone Wanderer) Eventually plan to support Courier characters on the '/lone-wanderer' Url path

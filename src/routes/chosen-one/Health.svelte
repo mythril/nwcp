@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { AilmentStatus } from '$lib/engines/ChosenOne';
+  import { AilmentStatus } from '$lib/engines/ChosenOne/main';
   import Bolthead from './Bolthead.svelte';
   import HelpSource from './HelpSource.svelte';
 </script>

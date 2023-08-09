@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Skill } from '$lib/engines/ChosenOne';
+  import { Skill } from '$lib/engines/ChosenOne/main';
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';

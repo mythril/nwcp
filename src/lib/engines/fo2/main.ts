@@ -1,6 +1,7 @@
 import type { ObjectValues } from '$lib/utils';
 import { assert, type Equals } from 'tsafe';
-import type { CharacterHelpLookup } from './help';
+import type { CharacterHelpLookup } from '../help';
+import type { Game } from '../all';
 
 type HasHelpEntriesForEvery<T> = Equals<
   Extract<keyof typeof CharacterHelpLookup, ObjectValues<T>>,
@@ -150,3 +151,15 @@ export const Sex = {
   Male: 'Male',
   Female: 'Female'
 } as const;
+
+
+export type LVL1Character = {
+  game: (ObjectValues<typeof Game> & {}),
+  name: string,
+  age: number,
+  sex: (ObjectValues<typeof Sex> & {}),
+  attributes: Attributes,
+  traits: (ObjectValues<typeof Trait> & {} | undefined)[],
+  tagged: (ObjectValues<typeof Skill> & {} | undefined)[]
+};
+

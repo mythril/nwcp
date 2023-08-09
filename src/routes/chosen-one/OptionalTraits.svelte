@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Trait } from '$lib/engines/ChosenOne';
+  import { Trait } from '$lib/engines/ChosenOne/main';
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
