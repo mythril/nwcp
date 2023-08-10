@@ -152,14 +152,12 @@ export const Sex = {
   Female: 'Female'
 } as const;
 
-
 export type LVL1Character = {
-  game: (ObjectValues<typeof Game> & {}),
-  name: string,
-  age: number,
-  sex: (ObjectValues<typeof Sex> & {}),
-  attributes: Attributes,
-  traits: (ObjectValues<typeof Trait> & {} | undefined)[],
-  tagged: (ObjectValues<typeof Skill> & {} | undefined)[]
+  game: ObjectValues<typeof Game> & {};
+  name: string;
+  age: number;
+  sex: ObjectValues<typeof Sex> & {};
+  attributes: Attributes;
+  traits: ((ObjectValues<typeof Trait> & {}) | undefined)[];
+  tagged: ((ObjectValues<typeof Skill> & {}) | undefined)[];
 };
-

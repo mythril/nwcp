@@ -20,6 +20,15 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        types: {
+          // un-ban a type that's banned by default
+          '{}': false
+        }
+      }
+    ],
     'no-warning-comments': [
       1,
       { terms: ['todo', 'fixme'], location: 'anywhere' }

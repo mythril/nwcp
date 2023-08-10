@@ -1,10 +1,39 @@
-const development = import.meta.env.DEV;
+let enabled = import.meta.env.DEV;
+
+const debugPojo = {
+  enable: {
+    writable: false,
+    configurable: false,
+    value: () => {
+      enabled = true;
+    }
+  },
+  disable: {
+    writable: false,
+    configurable: false,
+    value: () => {
+      enabled = false;
+    }
+  },
+  isEnabled: {
+    writable: false,
+    configurable: false,
+    value: () => {
+      return enabled;
+    }
+  }
+};
+
+const debugProto = Object.create(console, debugPojo);
 
 const handler = {
-  get(target: typeof console, prop: symbol | string) {
+  get(target: typeof debugProto, prop: symbol | string) {
     const field =
       prop in target ? target[prop as keyof typeof target] : undefined;
-    if (!development) {
+    if (
+      !enabled &&
+      !Object.prototype.hasOwnProperty.call(debugPojo, prop.toString())
+    ) {
       return () => {
         //noop
       };
@@ -16,6 +45,6 @@ const handler = {
   }
 };
 
-const debug = new Proxy(console, handler);
+const debug = new Proxy(debugProto, handler);
 
 export default debug;
