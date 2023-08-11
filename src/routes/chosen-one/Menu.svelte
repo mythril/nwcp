@@ -1,6 +1,6 @@
 <script lang="ts">
   import Modal from './Modal.svelte';
-  import Button from './Buttons/Button.svelte';
+  import FlatButton from './Buttons/FlatButton.svelte';
   import Bolthead from './Bolthead.svelte';
   let menu: HTMLElement;
   let modal: Modal;
@@ -35,7 +35,7 @@
       <Bolthead dir="br" />
       <div class="padding-wrapper">
         <slot />
-        <Button on:click={hide}>Done</Button>
+        <FlatButton on:click={hide}>Done</FlatButton>
       </div>
     </div>
   </div>
@@ -51,6 +51,10 @@
     background-color: hsl(var(--menu-bg));
     font-size: 16rem;
     line-height: 29rem;
+    /* prettier-ignore */
+    box-shadow:
+      inset -3rem -4rem 2rem 1rem rgba(0,0,0, 0.50),
+      inset 3rem 4rem 2rem 1rem rgba(255,255,255, 0.20);
   }
   .padding-wrapper {
     display: flex;

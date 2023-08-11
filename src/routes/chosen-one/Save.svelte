@@ -2,7 +2,7 @@
   import { charToBase64, packer } from '$lib/codec';
   import { Game } from '$lib/engines/all';
   import type { UnfinishedChar } from '$lib/engines/ChosenOne/main';
-  import Button from './Buttons/Button.svelte';
+  import FlatButton from './Buttons/FlatButton.svelte';
   import Menu from './Menu.svelte';
   import PlateButton from './PlateButton.svelte';
   import {
@@ -52,11 +52,11 @@
 </script>
 
 <Menu bind:this={menu}>
-  <Button on:click={saveToDisk}>Save To Disk</Button>
-  <Button
+  <FlatButton on:click={saveToDisk}>Save To Disk</FlatButton>
+  <FlatButton
     type="link"
     href={'#' + charHash}
-    target="_blank">Link to char</Button
+    target="_blank">Link to char</FlatButton
   >
 </Menu>
 

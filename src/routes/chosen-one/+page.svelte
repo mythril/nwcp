@@ -23,6 +23,7 @@
   import { base64ToChar, unpacker } from '$lib/codec';
   import type { Skill, Trait, UnfinishedChar } from '$lib/engines/ChosenOne/main';
   import type { ObjectValues } from '$lib/utils';
+  import { objectKeys } from 'tsafe';
 
   let fileInput: HTMLInputElement;
 
@@ -37,7 +38,10 @@
     $name = char.name;
     $age = char.age;
     $sex = char.sex;
-    $attributes = char.attributes;
+    //$attributes
+    for (let key of objectKeys($attributes)) {
+      $attributes[key] = char.attributes[key];
+    }
     const isTrait = (
       item: ObjectValues<typeof Trait> | undefined
     ): item is ObjectValues<typeof Trait> => {
@@ -53,7 +57,7 @@
   };
 
   onMount(() => {
-    if (window.location.hash) {
+    if (window.location.hash.length > 1) {
       loadFromChar(base64ToChar(window.location.hash.slice(1)));
     }
   });
