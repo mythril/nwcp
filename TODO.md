@@ -7,12 +7,11 @@ Overall goals:
 
 ### To do
 
+- [ ] consider replacing anim lib with [css tweening](https://news.ycombinator.com/item?id=36442797)
 - [ ] Build filter to add random blotchy, embossed grooves into the background
 - [ ] Improve paper background
 - [ ] Match tag / trait buttons better (push state)
 - [ ] Make the first event: create character
-- [ ] Figure out a way for end users to preserve their character creations
-  - third party storage services that the user can opt in to?
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Add an about page
 
@@ -37,6 +36,7 @@ Overall goals:
 
 ### Done
 
+- [x] Figure out a way for end users to preserve their character creations
 - [x] Improve look of sex setter buttons
 - [x] Improve logo
 - [x] re-scale UI to 640x480 style dimensions

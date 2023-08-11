@@ -10,7 +10,21 @@
   import CharPoints from './CharPoints.svelte';
   import TaggedSkills from './TaggedSkills.svelte';
   import SpecialAttributes from './SpecialAttributes.svelte';
-  import { age, name, sex } from './stores';
+  import {
+    age,
+    attributes,
+    chosenTraits,
+    name,
+    sex,
+    taggedSkills
+  } from './stores';
+  import Save from './Save.svelte';
+  import { onMount } from 'svelte';
+  import { base64ToChar, unpacker } from '$lib/codec';
+  import type { Skill, Trait, UnfinishedChar } from '$lib/engines/ChosenOne/main';
+  import type { ObjectValues } from '$lib/utils';
+
+  let fileInput: HTMLInputElement;
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -18,6 +32,42 @@
       charPoints.bonkDown();
     }
   };
+
+  const loadFromChar = (char: UnfinishedChar) => {
+    $name = char.name;
+    $age = char.age;
+    $sex = char.sex;
+    $attributes = char.attributes;
+    const isTrait = (
+      item: ObjectValues<typeof Trait> | undefined
+    ): item is ObjectValues<typeof Trait> => {
+      return !!item;
+    };
+    $chosenTraits = char.traits.filter(isTrait);
+    const isTaggedSkill = (
+      item: ObjectValues<typeof Skill> | undefined
+    ): item is ObjectValues<typeof Skill> => {
+      return !!item;
+    };
+    $taggedSkills = char.tagged.filter(isTaggedSkill);
+  };
+
+  onMount(() => {
+    if (window.location.hash) {
+      loadFromChar(base64ToChar(window.location.hash.slice(1)));
+    }
+  });
+
+  let files: FileList;
+
+  $: if (files != null && files.length > 0) {
+    files
+      ?.item(0)
+      ?.arrayBuffer()
+      .then((data: ArrayBuffer) => {
+        loadFromChar(unpacker(new Uint8Array(data)));
+      });
+  }
 </script>
 
 <!--
@@ -68,8 +118,25 @@
   </div>
   <div class="buttons">
     <PlateButton class="about">About</PlateButton>
-    <PlateButton class="save">Save</PlateButton>
-    <PlateButton class="load">Load</PlateButton>
+    <Save />
+    <PlateButton
+      class="load"
+      on:click={() => {
+        if (fileInput) {
+          fileInput.click();
+        }
+      }}
+    >
+      <div class="offscreen">
+        <input
+          bind:this={fileInput}
+          bind:files
+          accept=".nwcp"
+          type="file"
+        />
+      </div>
+      Load</PlateButton
+    >
   </div>
 </div>
 
