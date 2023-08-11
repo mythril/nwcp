@@ -1,128 +1,60 @@
 <script lang="ts">
-  import Portal from '$lib/components/Portal.svelte';
-  import { afterUpdate, tick } from 'svelte';
   import PlateButton from './PlateButton.svelte';
-  import { modalShown } from './stores';
+  import { anchor } from '$lib/actions/anchor';
+  import Modal from './Modal.svelte';
+  let dialog: HTMLElement;
+  let modal: Modal;
 
-  let showEdit = false;
   export let cancelListener = () => {
     //intentional
-  };
-  let cancel = () => {
-    cancelListener();
-    $modalShown = false;
-    showEdit = false;
   };
   export let commitListener = () => {
     return true;
   };
-  let commit = () => {
-    if (commitListener()) {
-      $modalShown = false;
-      showEdit = false;
-    }
-  };
-  function controlKeys(event: KeyboardEvent) {
-    switch (event.code) {
-      case 'Escape':
-        cancel();
-        return;
-      default:
-        return;
-    }
-  }
-
   export const show = async () => {
-    $modalShown = true;
-    showEdit = true;
-    await tick();
+    if (modal) {
+      await modal.show();
+      if (!dialog) {
+        return;
+      }
 
-    if (!dialog) {
-      return;
-    }
-
-    dialog.scrollIntoView(true);
-
-    const focusable = dialog.querySelectorAll<HTMLElement>(` 
-      a[href]:not([tabindex='-1']),
-      area[href]:not([tabindex='-1']),
-      input:not([disabled]):not([tabindex='-1']),
-      select:not([disabled]):not([tabindex='-1']),
-      textarea:not([disabled]):not([tabindex='-1']),
-      button:not([disabled]):not([tabindex='-1']),
-      iframe:not([tabindex='-1']),
-      [tabindex]:not([tabindex='-1'])
-    `);
-
-    for (let f of Array.from(focusable)) {
-      f.focus();
-      break;
+      dialog.scrollIntoView(true);
     }
   };
-
-  export const hide = () => {
-    $modalShown = false;
-    showEdit = false;
-  };
-
-  let anchor: HTMLElement;
-  let dialog: HTMLElement;
-  let left = 0;
-  let top = 0;
-
-  const applyAnchoring = () => {
-    if (anchor) {
-      let rect = anchor.getBoundingClientRect();
-      left = window.scrollX + rect.left;
-      top = window.scrollY + rect.top;
+  export const hide = async () => {
+    if (modal) {
+      modal.hide();
     }
   };
-
-  afterUpdate(applyAnchoring);
 </script>
 
-<svelte:window on:resize={applyAnchoring} />
-
-<svelte:body on:keydown={controlKeys} />
-
-{#if showEdit}
+<div use:anchor={dialog} />
+<Modal
+  {cancelListener}
+  {commitListener}
+  bind:this={modal}
+>
   <div
-    bind:this={anchor}
-    class="anchor"
-  />
-  <Portal target="#modals">
-    <div class="backdrop" />
-    <div
-      role="dialog"
-      class="edit"
-      bind:this={dialog}
-      style="left: {left}px; top: {top}px"
-    >
-      <div class="padding-wrapper">
-        <div class="main">
-          <slot />
-        </div>
-        <div class="button">
-          <PlateButton
-            class="btn-done"
-            on:click={commit}>Done</PlateButton
-          >
-        </div>
+    role="dialog"
+    class="edit"
+    bind:this={dialog}
+    style="left: var(--anchor-left); top: var(--anchor-top)"
+  >
+    <div class="padding-wrapper">
+      <div class="main">
+        <slot />
+      </div>
+      <div class="button">
+        <PlateButton
+          class="btn-done"
+          on:click={() => modal.commit()}>Done</PlateButton
+        >
       </div>
     </div>
-  </Portal>
-{/if}
+  </div>
+</Modal>
 
 <style lang="postcss">
-  .backdrop {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.75);
-  }
   .edit {
     position: absolute;
     left: 2rem;
@@ -146,8 +78,5 @@
   :global(.btn-done) {
     width: 100%;
     filter: drop-shadow(-1rem 2rem 2rem #000);
-  }
-  .anchor {
-    width: 100%;
   }
 </style>
