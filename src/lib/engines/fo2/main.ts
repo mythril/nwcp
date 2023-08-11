@@ -152,7 +152,7 @@ export const Sex = {
   Female: 'Female'
 } as const;
 
-export type LVL1Character = {
+export type UnfinishedChar = {
   game: ObjectValues<typeof Game> & {};
   name: string;
   age: number;

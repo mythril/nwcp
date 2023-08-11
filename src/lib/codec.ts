@@ -3,7 +3,7 @@ import {
   Sex,
   Trait,
   Skill,
-  type LVL1Character,
+  type UnfinishedChar,
   Special
 } from '$lib/engines/ChosenOne/main';
 import type { ObjectValues } from './utils';
@@ -75,14 +75,14 @@ const sortedSkills = Object.freeze(Object.values(Skill).sort());
 type FixedDescriptor = {
   name: string;
   bits: number;
-  encoder: (char: LVL1Character) => number;
-  decoder: (alreadyAligned: number, mut: LVL1Character) => void;
+  encoder: (char: UnfinishedChar) => number;
+  decoder: (alreadyAligned: number, mut: UnfinishedChar) => void;
 };
 
 type VariableDescriptor = {
   name: string;
-  encoder: (char: LVL1Character) => Uint8Array;
-  decoder: (data: Uint8Array, mut: LVL1Character) => void;
+  encoder: (char: UnfinishedChar) => Uint8Array;
+  decoder: (data: Uint8Array, mut: UnfinishedChar) => void;
 };
 
 type PackingDescriptor = FixedDescriptor | VariableDescriptor;
@@ -96,7 +96,7 @@ const gameDescriptor: FixedDescriptor = {
   // in case they decide to make 31 games
   bits: 5,
   encoder: () => gameToInt('Chosen One'),
-  decoder: (data: number, char: LVL1Character) => {
+  decoder: (data: number, char: UnfinishedChar) => {
     char.game = intToGame(data);
     if (char.game !== Game.ChosenOne) {
       throw 'This game is not yet supported.';
@@ -124,11 +124,11 @@ OrderedDescriptors.push(versionDescriptor);
 
 const nameDescriptor: VariableDescriptor = {
   name: 'name',
-  encoder: (char: LVL1Character) => {
+  encoder: (char: UnfinishedChar) => {
     const encoder = new TextEncoder();
     return encoder.encode(char.name.trim().slice(0, 11));
   },
-  decoder: (data: Uint8Array, mut: LVL1Character) => {
+  decoder: (data: Uint8Array, mut: UnfinishedChar) => {
     const decoder = new TextDecoder();
     mut.name = decoder.decode(data);
   }
@@ -139,8 +139,8 @@ const specialsDescriptor: FixedDescriptor[] = sortedSpecial.map((key) => {
     name: key,
     // maximum is 10, so 2^4 = 16 > 10
     bits: 4,
-    encoder: (char: LVL1Character) => char.attributes[key],
-    decoder: (a: number, mut: LVL1Character) => {
+    encoder: (char: UnfinishedChar) => char.attributes[key],
+    decoder: (a: number, mut: UnfinishedChar) => {
       mut.attributes[key] = a;
     }
   };
@@ -152,8 +152,8 @@ const sexDescriptor: FixedDescriptor = {
   name: 'sex',
   // it's a literal binary
   bits: 1,
-  encoder: (char: LVL1Character) => sexToInt(char.sex),
-  decoder: (data: number, mut: LVL1Character) => {
+  encoder: (char: UnfinishedChar) => sexToInt(char.sex),
+  decoder: (data: number, mut: UnfinishedChar) => {
     mut.sex = intToSex(data);
   }
 };
@@ -165,8 +165,8 @@ const ageDescriptor: FixedDescriptor = {
   // valid age range is 16-35 so we can subtract 16 from age, giving us a
   // range of 19, 5 bits can fit up to 32.
   bits: 5,
-  encoder: (char: LVL1Character) => char.age - 16,
-  decoder: (data: number, mut: LVL1Character) => {
+  encoder: (char: UnfinishedChar) => char.age - 16,
+  decoder: (data: number, mut: UnfinishedChar) => {
     mut.age = data + 16;
   }
 };
@@ -179,14 +179,14 @@ const traitsDescriptor: FixedDescriptor[] = [0, 1].map((idx) => {
     // there are 16 possible traits, which are optional
     // forcing us to use an extra bit
     bits: 5,
-    encoder: (char: LVL1Character) => {
+    encoder: (char: UnfinishedChar) => {
       const trait = char.traits[idx];
       if (!trait) {
         return 0;
       }
       return sortedTraits.indexOf(trait) + 1;
     },
-    decoder: (t: number, mut: LVL1Character) => {
+    decoder: (t: number, mut: UnfinishedChar) => {
       if (t > 0) {
         mut.traits[idx] = sortedTraits[t - 1];
       } else {
@@ -204,14 +204,14 @@ const taggedDescriptor: FixedDescriptor[] = [0, 1, 2].map((idx) => {
     // there are 18 possible skills to choose from
     // 2^5 = 32
     bits: 5,
-    encoder: (char: LVL1Character) => {
+    encoder: (char: UnfinishedChar) => {
       const skill = char.tagged[idx];
       if (!skill) {
         return 0;
       }
       return sortedSkills.indexOf(skill) + 1;
     },
-    decoder: (s: number, mut: LVL1Character) => {
+    decoder: (s: number, mut: UnfinishedChar) => {
       if (s > 0) {
         mut.tagged[idx] = sortedSkills[s - 1];
       } else {
@@ -233,7 +233,7 @@ function b2s(b: number, l = 8) {
   return '0b' + b.toString(2).padStart(l, '0');
 }
 
-export function packer(char: LVL1Character) {
+export function packer(char: UnfinishedChar) {
   debug.disable();
   const buffer: number[] = [];
   let desc: PackingDescriptor;
@@ -314,7 +314,7 @@ export function packer(char: LVL1Character) {
 
 export function unpacker(packed: Uint8Array) {
   debug.disable();
-  const mut: LVL1Character = {
+  const mut: UnfinishedChar = {
     name: '',
     game: Game.VaultDweller,
     tagged: [undefined, undefined, undefined],
@@ -384,4 +384,12 @@ export function base64ToBytes(base64: string) {
 export function bytesToBase64(bytes: Uint8Array) {
   const binString = Array.from(bytes, (x) => String.fromCodePoint(x)).join('');
   return btoa(binString);
+}
+
+export function charToBase64(char: UnfinishedChar) {
+  return bytesToBase64(packer(char));
+}
+
+export function base64ToChar(base64: string) {
+  return unpacker(base64ToBytes(base64));
 }
