@@ -14,16 +14,18 @@
     age,
     attributes,
     chosenTraits,
+    errorMessage,
     name,
     sex,
     taggedSkills
   } from './stores';
   import Save from './Save.svelte';
   import { onMount } from 'svelte';
-  import { base64ToChar, unpacker } from '$lib/codec';
+  import { CodecError, base64ToChar, unpacker } from '$lib/codec';
   import type { Skill, Trait, UnfinishedChar } from '$lib/engines/ChosenOne/main';
   import type { ObjectValues } from '$lib/typeUtils';
   import { objectKeys } from 'tsafe';
+  import debug from '$lib/debug';
 
   let fileInput: HTMLInputElement;
 
@@ -57,8 +59,17 @@
   };
 
   onMount(() => {
-    if (window.location.hash.length > 1) {
-      loadFromChar(base64ToChar(window.location.hash.slice(1)));
+    try {
+      if (window.location.hash.length > 1) {
+        loadFromChar(base64ToChar(window.location.hash.slice(1)));
+      }
+    } catch (err) {
+      let em = 'Unknown error.';
+      if (err instanceof CodecError) {
+        em = err.message;
+      }
+      $errorMessage = em;
+      debug.error(err);
     }
   });
 

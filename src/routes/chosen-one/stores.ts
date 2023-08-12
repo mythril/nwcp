@@ -25,6 +25,8 @@ export const helpText = derived(
   ($subject) => HelpLookup[$subject]
 );
 
+export const errorMessage = writable<string>('');
+
 export const modalShown = writable<boolean>(false);
 
 export const attributes = writable<Attributes>({
@@ -76,9 +78,7 @@ export const displayAttributes = derived(
     }
 
     if (correctionsNeeded) {
-      // setTimeout(() => {
       attributes.set(attrs);
-      // }, 1);
     }
 
     return display;

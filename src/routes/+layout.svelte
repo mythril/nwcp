@@ -7,6 +7,7 @@
   import { dev } from '$app/environment';
   import { onMount } from 'svelte';
   import debug from '$lib/debug';
+  import ErrorMessage from './chosen-one/ErrorMessage.svelte';
 
   async function bootUp() {
     if ('serviceWorker' in navigator) {
@@ -35,6 +36,8 @@
 <Overlay />
 
 <WornText />
+
+<ErrorMessage />
 
 <div id="modals" />
 <div class="app">

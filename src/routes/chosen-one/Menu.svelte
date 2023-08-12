@@ -16,7 +16,15 @@
       menu.scrollIntoView(true);
     }
   };
+
+  export let onClose = () => {
+    return true;
+  };
+
   export const hide = async () => {
+    if (!onClose()) {
+      return;
+    }
     if (modal) {
       modal.hide();
     }

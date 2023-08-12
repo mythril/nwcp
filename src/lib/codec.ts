@@ -9,6 +9,8 @@ import {
 import type { ObjectValues } from './typeUtils';
 import debug from './debug';
 
+export class CodecError extends Error {}
+
 const currentVersion = 1; // increment on incompatible updates
 
 const gameToInt = (game: ObjectValues<typeof Game> & {}) => {
@@ -25,7 +27,7 @@ const gameToInt = (game: ObjectValues<typeof Game> & {}) => {
     case Game.Courier:
       return 31;
     default:
-      throw 'Unrecognized game.';
+      throw new CodecError('Unrecognized game.');
   }
 };
 const intToGame = (packed: number) => {
@@ -42,7 +44,7 @@ const intToGame = (packed: number) => {
     case 31:
       return Game.Courier;
     default:
-      throw 'Unrecognized game.';
+      throw new CodecError('Unrecognized game.');
   }
 };
 
@@ -53,7 +55,7 @@ const sexToInt = (sex: ObjectValues<typeof Sex> & {}) => {
     case Sex.Male:
       return 1;
     default:
-      throw 'Unrecognized sex.';
+      throw new CodecError('Unrecognized sex.');
   }
 };
 
@@ -64,7 +66,7 @@ const intToSex = (s: number) => {
     case 1:
       return Sex.Male;
     default:
-      throw 'Unrecognized sex.';
+      throw new CodecError('Unrecognized sex.');
   }
 };
 
@@ -99,7 +101,7 @@ const gameDescriptor: FixedDescriptor = {
   decoder: (data: number, char: UnfinishedChar) => {
     char.game = intToGame(data);
     if (char.game !== Game.ChosenOne) {
-      throw 'This game is not yet supported.';
+      throw new CodecError('This game is not yet supported.');
     }
   }
 };
@@ -113,10 +115,12 @@ const versionDescriptor: FixedDescriptor = {
   encoder: () => currentVersion,
   decoder: (a: number) => {
     if (a === 0) {
-      throw 'Invalid NWCP file version.';
+      throw new CodecError('Invalid NWCP file version.');
     }
     if (a > currentVersion)
-      throw 'This character plan requires a more up to date NWCP release.';
+      throw new CodecError(
+        'This character plan requires a more up to date NWCP release.'
+      );
   }
 };
 
