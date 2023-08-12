@@ -82,6 +82,7 @@ export const Skill = {
 } as const;
 
 export type SkillSet = Record<ObjectValues<typeof Skill>, number>;
+export type TaggedSkills = (ObjectValues<typeof Skill> & {})[];
 
 // type error below indicates that not all values in
 // Skills are represented in CharacterHelpLookup
@@ -107,7 +108,7 @@ export const Trait = {
   Gifted: 'Gifted'
 } as const;
 
-export type TraitSet = Map<ObjectValues<typeof Trait>, boolean>;
+export type ChosenTraits = (ObjectValues<typeof Trait> & {})[];
 
 // type error below indicates that not all values in
 // Traits are represented in CharacterHelpLookup

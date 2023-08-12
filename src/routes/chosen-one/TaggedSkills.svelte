@@ -4,7 +4,7 @@
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
-  import { taggedSkills } from './stores';
+  import { baseSkills, taggedSkills } from './stores';
 
   let skills = objectKeys(Skill);
 
@@ -64,7 +64,7 @@
             {Skill[key]}
           </div>
           <div class="value">
-            {(Math.random() * 150 + 1).toFixed(0)}%
+            {$baseSkills[Skill[key]]}%
           </div>
         </div>
       </HelpSource>
