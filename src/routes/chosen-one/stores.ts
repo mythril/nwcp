@@ -46,8 +46,8 @@ export const charPointsRemaining = derived(attributes, (attrs) => {
 });
 
 export const baseSkills = derived(
-  [attributes, chosenTraits],
-  ([attrs, traits]) => {
+  [attributes, chosenTraits, taggedSkills],
+  ([attrs, traits, tagged]) => {
     const base: SkillSet = {
       [Skill.Barter]: 4 * attrs[Special.Charisma],
       [Skill.BigGuns]: 2 * attrs[Special.Agility],
@@ -89,6 +89,10 @@ export const baseSkills = derived(
       for (const skill of Object.values(Skill)) {
         base[skill] -= 10;
       }
+    }
+
+    for (const taggedSkill of tagged) {
+      base[taggedSkill] += 20;
     }
 
     return base;
