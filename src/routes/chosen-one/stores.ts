@@ -1,6 +1,7 @@
 import { writable, derived } from 'svelte/store';
 import { CharacterHelpLookup } from '$lib/engines/help';
 import { PerkHelpLookup } from '$lib/engines/perks';
+import { objectKeys } from 'tsafe/objectKeys';
 import {
   Special,
   type Attributes,
@@ -10,7 +11,9 @@ import {
   type SkillSet,
   Skill,
   Trait,
-  CombatSkill
+  CombatSkill,
+  type DerivedStats,
+  DerivedStat
 } from '$lib/engines/ChosenOne/main';
 import type { ObjectValues } from '$lib/typeUtils';
 const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };
@@ -48,7 +51,7 @@ export const charPointsRemaining = derived(attributes, (attrs) => {
 export const displayAttributes = derived(
   [attributes, chosenTraits],
   ([attrs, traits]) => {
-    const display = { ...attrs };
+    const display: Attributes = { ...attrs };
 
     if (traits.includes(Trait.Bruiser)) {
       display[Special.Strength] += 2;
@@ -137,5 +140,68 @@ export const baseSkills = derived(
 );
 
 export const maxHitPoints = derived(attributes, (attrs) => {
-  return 15 + attrs[Special.Strength] + (2 * attrs[Special.Endurance]);
+  return 15 + attrs[Special.Strength] + 2 * attrs[Special.Endurance];
+});
+
+export const derivedStatsReal = derived(
+  [displayAttributes, chosenTraits],
+  ([attrs, traits]) => {
+    const stats: DerivedStats = {
+      [DerivedStat.ActionPoints]:
+        5 +
+        Math.floor(attrs[Special.Agility] / 2) +
+        (traits.includes(Trait.Bruiser) ? -2 : 0),
+      [DerivedStat.ArmorClass]: traits.includes(Trait.Kamikaze)
+        ? 0
+        : attrs[Special.Agility],
+      [DerivedStat.CarryWeight]:
+        25 +
+        (traits.includes(Trait.SmallFrame) ? 15 : 25) * attrs[Special.Strength],
+      [DerivedStat.CriticalChance]:
+        attrs[Special.Luck] + (traits.includes(Trait.Finesse) ? 10 : 0),
+      [DerivedStat.DamageRes]: 0,
+      [DerivedStat.HealingRate]:
+        Math.floor(attrs[Special.Endurance] / 3) +
+        (traits.includes(Trait.FastMetabolism) ? 2 : 0),
+      [DerivedStat.MeleeDamage]:
+        Math.max(attrs[Special.Strength] - 5, 1) +
+        (traits.includes(Trait.HeavyHanded) ? 4 : 0),
+      [DerivedStat.PoisonRes]: traits.includes(Trait.FastMetabolism)
+        ? 0
+        : attrs[Special.Endurance] * 5,
+      [DerivedStat.RadiationRes]: traits.includes(Trait.FastMetabolism)
+        ? 0
+        : attrs[Special.Endurance] * 2,
+      [DerivedStat.Sequence]:
+        2 * attrs[Special.Perception] +
+        (traits.includes(Trait.Kamikaze) ? 5 : 0)
+    };
+    return stats;
+  }
+);
+
+export const derivedStatsDisplay = derived(derivedStatsReal, (derivedStats) => {
+  const stats: { [key in ObjectValues<typeof DerivedStat>]: string } = {
+    [DerivedStat.ActionPoints]: '',
+    [DerivedStat.ArmorClass]: '',
+    [DerivedStat.CarryWeight]: '',
+    [DerivedStat.CriticalChance]: '',
+    [DerivedStat.DamageRes]: '',
+    [DerivedStat.HealingRate]: '',
+    [DerivedStat.MeleeDamage]: '',
+    [DerivedStat.PoisonRes]: '',
+    [DerivedStat.RadiationRes]: '',
+    [DerivedStat.Sequence]: ''
+  };
+
+  for (const stat of objectKeys(derivedStats)) {
+    stats[stat] = derivedStats[stat].toString();
+  }
+
+  stats[DerivedStat.DamageRes] += '%';
+  stats[DerivedStat.PoisonRes] += '%';
+  stats[DerivedStat.RadiationRes] += '%';
+  stats[DerivedStat.CriticalChance] += '%';
+
+  return stats;
 });

@@ -143,6 +143,8 @@ export const DerivedStat = {
   CriticalChance: 'Critical Chance'
 } as const;
 
+export type DerivedStats = Record<ObjectValues<typeof DerivedStat>, number>;
+
 // type error below indicates that not all values in
 // DerivedStats are represented in CharacterHelpLookup
 // Could be a typo or missing help entry

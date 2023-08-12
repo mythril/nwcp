@@ -2,6 +2,7 @@
   import { DerivedStat } from '$lib/engines/ChosenOne/main';
   import Bolthead from './Bolthead.svelte';
   import HelpSource from './HelpSource.svelte';
+  import { derivedStatsDisplay } from './stores';
 </script>
 
 <div class="section">
@@ -22,8 +23,7 @@
             </th>
             <td>
               <HelpSource subject={derived}>
-                {Math.round(Math.random() * 150) +
-                  (Math.random() > 0.25 ? '' : '%')}
+                {$derivedStatsDisplay[derived]}
               </HelpSource>
             </td>
           </tr>
