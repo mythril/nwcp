@@ -6,6 +6,7 @@
   export let value = 0;
   export let min: number;
   export let max: number;
+  export let display: number | undefined = undefined;
   let realMin: number;
   let realMax: number;
 
@@ -80,8 +81,8 @@
   let tensDigit: number;
   let onesDigit: number;
   $: {
-    tensDigit = Math.floor(value / 10);
-    onesDigit = Math.round(value - tensDigit * 10);
+    tensDigit = Math.floor((display || value) / 10);
+    onesDigit = Math.round((display || value) - tensDigit * 10);
   }
   let tensDigitDisplay: OneDigitDisplay;
   let onesDigitDisplay: OneDigitDisplay;

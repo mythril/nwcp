@@ -2,7 +2,7 @@
   import { Special, SpecialAbbreviation } from '$lib/engines/ChosenOne/main';
   import Attribute from './Attribute.svelte';
   import HelpSource from './HelpSource.svelte';
-  import { attributes, charPointsRemaining } from './stores';
+  import { attributes, charPointsRemaining, displayAttributes } from './stores';
 </script>
 
 <div class="special">
@@ -11,6 +11,7 @@
       <Attribute
         label={SpecialAbbreviation(attr)}
         bind:value={$attributes[attr]}
+        bind:display={$displayAttributes[attr]}
         on:charPointsRemainingBonk
         charPointsRemaining={$charPointsRemaining}
       />

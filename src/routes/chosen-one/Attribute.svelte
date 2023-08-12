@@ -5,6 +5,7 @@
 
   export let label: string;
   export let value: number;
+  export let display: number;
   export let min = 1;
   export let charPointsRemaining = 10;
 
@@ -25,7 +26,7 @@
   let attr: TwoDigitDisplay;
   let descIndex = 0;
 
-  $: descIndex = value - 1;
+  $: descIndex = display - 1;
 
   const increment = () => {
     if (attr.increment()) {
@@ -73,6 +74,7 @@
       <TwoDigitDisplay
         bind:this={attr}
         bind:value
+        bind:display
         {min}
         max={Math.min(10, value + charPointsRemaining)}
       />

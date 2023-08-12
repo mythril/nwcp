@@ -40,60 +40,50 @@ export const age = writable<number>(25);
 export const sex = writable<ObjectValues<typeof Sex>>(Sex.Male);
 export const name = writable<string>('');
 
-export const charPointsRemaining = derived(
+export const charPointsRemaining = derived(attributes, (attrs) => {
+  const cpr = Object.values(attrs).reduce((a, b) => a + b, 0);
+  return 40 - cpr;
+});
+
+export const displayAttributes = derived(
   [attributes, chosenTraits],
   ([attrs, traits]) => {
-    const cpr = Object.values(attrs).reduce((a, b) => a + b, 0);
-    let max = 40;
+    const display = { ...attrs };
 
     if (traits.includes(Trait.Bruiser)) {
-      max += 2;
+      display[Special.Strength] += 2;
     }
 
     if (traits.includes(Trait.Gifted)) {
-      max += 7;
+      for (const attr of Object.values(Special)) {
+        display[attr] += 1;
+      }
     }
 
     if (traits.includes(Trait.SmallFrame)) {
-      max += 1;
+      display[Special.Agility] += 1;
     }
 
-    return max - cpr;
+    let correctionsNeeded = false;
+    for (const attr of Object.values(Special)) {
+      if (display[attr] > 10) {
+        attrs[attr] = attrs[attr] - (display[attr] - attrs[attr]);
+        correctionsNeeded = true;
+      }
+    }
+
+    if (correctionsNeeded) {
+      // setTimeout(() => {
+      attributes.set(attrs);
+      // }, 1);
+    }
+
+    return display;
   }
 );
 
-/*
-export const statMinimums = derived(chosenTraits, (traits) => {
-  const mins = {
-    [Special.Strength]: 1,
-    [Special.Perception]: 1,
-    [Special.Endurance]: 1,
-    [Special.Charisma]: 1,
-    [Special.Intelligence]: 1,
-    [Special.Agility]: 1,
-    [Special.Luck]: 1
-  };
-
-  if (traits.includes(Trait.Bruiser)) {
-    mins[Special.Strength] += 2;
-  }
-
-  if (traits.includes(Trait.Gifted)) {
-    for (const attr of Object.values(Special)) {
-      mins[attr] += 1;
-    }
-  }
-
-  if (traits.includes(Trait.SmallFrame)) {
-    mins[Special.Agility] += 1;
-  }
-
-  return mins;
-});
-*/
-
 export const baseSkills = derived(
-  [attributes, chosenTraits, taggedSkills],
+  [displayAttributes, chosenTraits, taggedSkills],
   ([attrs, traits, tagged]) => {
     const base: SkillSet = {
       [Skill.Barter]: 4 * attrs[Special.Charisma],
