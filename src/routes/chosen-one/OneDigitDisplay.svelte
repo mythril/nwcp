@@ -10,7 +10,18 @@
   let down: number;
 
   let offset = 0;
-  async function asyncUpdate(val: number) {
+
+  let varWrap: HTMLDivElement;
+
+  const fromTo = async (f = '0', t = '0') => {
+    varWrap.style.setProperty('transition-property', '');
+    varWrap.style.setProperty('--digit-offset', f);
+    await sleep(1); // allows the above commands to be rendered to the dom
+    varWrap.style.setProperty('transition-property', '--digit-offset');
+    varWrap.style.setProperty('--digit-offset', t);
+  };
+
+  function update(val: number) {
     up = Math.floor((val + 11) % 10);
     current = Math.floor(val + 10) % 10;
     down = Math.floor((val + 9) % 10);
@@ -27,34 +38,18 @@
     }
     oldValue = val;
     if (varWrap) {
-      let s = varWrap.style;
-      s.setProperty('transition-property', '');
-      s.setProperty('--digit-offset', offset.toString());
-      await sleep(1);
-      s.setProperty('transition-property', '--digit-offset');
-      s.setProperty('--digit-offset', '0');
+      fromTo(offset.toString());
     }
   }
-  $: asyncUpdate(value);
+  $: update(value);
 
-  export const bonkUp = async () => {
-    let s = varWrap.style;
-    s.setProperty('transition-property', '');
-    s.setProperty('--digit-offset', '0.2');
-    await sleep(1);
-    s.setProperty('transition-property', '--digit-offset');
-    s.setProperty('--digit-offset', '0');
+  export const bonkUp = () => {
+    fromTo('0.2');
   };
 
-  export const bonkDown = async () => {
-    let s = varWrap.style;
-    s.setProperty('transition-property', '');
-    s.setProperty('--digit-offset', '-0.2');
-    await sleep(1);
-    s.setProperty('transition-property', '--digit-offset');
-    s.setProperty('--digit-offset', '0');
+  export const bonkDown = () => {
+    fromTo('-0.2');
   };
-  let varWrap: HTMLDivElement;
 </script>
 
 <div
@@ -95,7 +90,7 @@
   .var-wrap {
     --digit-offset: 0;
     transition-duration: 0.1s;
-    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition-timing-function: easeOutElastic;
   }
   .anim-wrap {
     position: absolute;
