@@ -77,3 +77,9 @@ export function createDebouncer(debouncePeriodMS = 100) {
 }
 
 export type ObjectValues<T> = T[keyof T];
+
+export async function sleep(ms: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}

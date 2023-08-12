@@ -16,7 +16,7 @@
       border-bottom-left-radius: 6rem 22rem;
       background-color: hsl(0, 0%, 35%);
       /* subtle, but fun */
-      transform: translateY(calc(var(--offset) * 5rem));
+      transform: translateY(calc(var(--digit-offset) * 1rem));
       /* prettier-ignore */
       box-shadow: 
       -0.5rem 0 0.3rem 0.05rem rgba(0, 0, 0, 0.7),

@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { sleep } from '$lib/utils';
   import EmptyDigitDisplay from './EmptyDigitDisplay.svelte';
-  import gsap from 'gsap';
 
   export let value: number;
   let oldValue = value;
@@ -10,45 +10,56 @@
   let down: number;
 
   let offset = 0;
-  $: {
-    up = Math.floor((value + 11) % 10);
-    current = Math.floor(value + 10) % 10;
-    down = Math.floor((value + 9) % 10);
-    offset = oldValue - value;
-    if (value === 9) {
+  async function asyncUpdate(val: number) {
+    up = Math.floor((val + 11) % 10);
+    current = Math.floor(val + 10) % 10;
+    down = Math.floor((val + 9) % 10);
+    offset = oldValue - val;
+    if (val === 9) {
       up = 0;
       down = 8;
     }
-    if (value === 0 && oldValue === 9) {
+    if (val === 0 && oldValue === 9) {
       offset = -1;
     }
     if (offset === -9) {
       offset = 1;
     }
-    oldValue = value;
+    oldValue = val;
     if (varWrap) {
-      gsap.from(varWrap, { '--offset': offset });
-      if (varWrap) {
-        gsap.to(varWrap, { '--offset': 0, duration: 0.6, ease: 'elastic' });
-      }
+      let s = varWrap.style;
+      s.setProperty('transition-property', '');
+      s.setProperty('--digit-offset', offset.toString());
+      await sleep(1);
+      s.setProperty('transition-property', '--digit-offset');
+      s.setProperty('--digit-offset', '0');
     }
   }
+  $: asyncUpdate(value);
 
-  export const bonkUp = () => {
-    gsap.from(varWrap, { '--offset': 0.2 });
-    gsap.to(varWrap, { '--offset': 0, duration: 0.05 });
+  export const bonkUp = async () => {
+    let s = varWrap.style;
+    s.setProperty('transition-property', '');
+    s.setProperty('--digit-offset', '0.2');
+    await sleep(1);
+    s.setProperty('transition-property', '--digit-offset');
+    s.setProperty('--digit-offset', '0');
   };
 
-  export const bonkDown = () => {
-    gsap.from(varWrap, { '--offset': -0.2 });
-    gsap.to(varWrap, { '--offset': 0, duration: 0.05 });
+  export const bonkDown = async () => {
+    let s = varWrap.style;
+    s.setProperty('transition-property', '');
+    s.setProperty('--digit-offset', '-0.2');
+    await sleep(1);
+    s.setProperty('transition-property', '--digit-offset');
+    s.setProperty('--digit-offset', '0');
   };
   let varWrap: HTMLDivElement;
 </script>
 
 <div
   bind:this={varWrap}
-  style="--offset: {offset}"
+  style="--digit-offset: {offset}"
   class="var-wrap"
 >
   <EmptyDigitDisplay>
@@ -73,8 +84,18 @@
 </div>
 
 <style lang="postcss">
+  @property --digit-offset {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+  }
   .hidden {
     user-select: none;
+  }
+  .var-wrap {
+    --digit-offset: 0;
+    transition-duration: 0.1s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
   .anim-wrap {
     position: absolute;
@@ -94,7 +115,6 @@
       0rem 1rem 2rem rgba(255, 255, 255, 0.15),
       -1rem 0rem 2rem rgba(255, 255, 255, 0.15),
       -1rem 1rem 1rem rgba(255, 255, 255, 0.25);
-    transition: top 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transform: translate(0, calc(var(--offset) * 50%));
+    transform: translate(0, calc(var(--digit-offset) * 50%));
   }
 </style>
