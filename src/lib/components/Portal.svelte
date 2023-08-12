@@ -45,7 +45,7 @@
 
 <div
   use:portal={target}
-  class={$$props.class + ' portal'}
+  class={'portal ' + ($$props.class || '')}
   hidden
 >
   <slot />

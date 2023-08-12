@@ -9,7 +9,7 @@
   on:click={clickSound}
   on:click
   class:pushButton
-  class={'button ' + $$props.class}
+  class={'button ' + ($$props.class || '')}
 >
   <Bolthead
     dir="tl"

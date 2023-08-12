@@ -11,7 +11,7 @@
   role="link"
   tabindex="0"
   data-help-subject={subject}
-  class={$$props.class}
+  class={$$props.class || ''}
   class:activeHelpSubject
   on:click={() => {
     helpSubject.set(subject);

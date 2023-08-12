@@ -5,7 +5,7 @@
 
 <button
   class:checked
-  class={'button ' + $$props.class}
+  class={'button ' + ($$props.class || '')}
   on:click={clickSound}
   on:click
 >

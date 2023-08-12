@@ -33,7 +33,7 @@
   });
 </script>
 
-<div class={$$props.class + ' wrapper'}>
+<div class={'wrapper ' + ($$props.class || '')}>
   <input
     on:keydown={controlKeys}
     on:change={() => (text.value = '')}
