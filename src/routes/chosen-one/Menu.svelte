@@ -62,10 +62,10 @@
     gap: 6rem;
   }
   .centering {
-    position: fixed;
+    position: absolute;
     z-index: 2;
-    height: 100vh;
-    width: 100vw;
+    height: 480rem;
+    width: 640rem;
     display: grid;
   }
 </style>
