@@ -12,7 +12,7 @@ import {
   Trait,
   CombatSkill
 } from '$lib/engines/ChosenOne/main';
-import type { ObjectValues } from '$lib/utils';
+import type { ObjectValues } from '$lib/typeUtils';
 const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };
 
 export const helpSubject = writable<keyof typeof HelpLookup>('Strength');
@@ -135,3 +135,7 @@ export const baseSkills = derived(
     return base;
   }
 );
+
+export const maxHitPoints = derived(attributes, (attrs) => {
+  return 15 + attrs[Special.Strength] + (2 * attrs[Special.Endurance]);
+});

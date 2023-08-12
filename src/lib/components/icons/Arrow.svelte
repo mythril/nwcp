@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ObjectValues } from '$lib/utils';
+  import type { ObjectValues } from '$lib/typeUtils';
 
   export let stout = false;
   export let wornText = false;

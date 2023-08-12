@@ -22,7 +22,7 @@
   import { onMount } from 'svelte';
   import { base64ToChar, unpacker } from '$lib/codec';
   import type { Skill, Trait, UnfinishedChar } from '$lib/engines/ChosenOne/main';
-  import type { ObjectValues } from '$lib/utils';
+  import type { ObjectValues } from '$lib/typeUtils';
   import { objectKeys } from 'tsafe';
 
   let fileInput: HTMLInputElement;

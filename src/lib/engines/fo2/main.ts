@@ -1,4 +1,4 @@
-import type { ObjectValues } from '$lib/utils';
+import type { ObjectValues } from '$lib/typeUtils';
 import { assert, type Equals } from 'tsafe';
 import type { CharacterHelpLookup } from '../help';
 import type { Game } from '../all';
@@ -82,7 +82,7 @@ export const Skill = {
 } as const;
 
 export type SkillSet = Record<ObjectValues<typeof Skill>, number>;
-export type TaggedSkills = (ObjectValues<typeof Skill> & {})[];
+export type TaggedSkills = ObjectValues<typeof Skill>[];
 
 // type error below indicates that not all values in
 // Skills are represented in CharacterHelpLookup

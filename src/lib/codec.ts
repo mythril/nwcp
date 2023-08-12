@@ -6,7 +6,7 @@ import {
   type UnfinishedChar,
   Special
 } from '$lib/engines/ChosenOne/main';
-import type { ObjectValues } from './utils';
+import type { ObjectValues } from './typeUtils';
 import debug from './debug';
 
 const currentVersion = 1; // increment on incompatible updates

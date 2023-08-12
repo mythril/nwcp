@@ -5,7 +5,7 @@
   import Male from '$lib/components/icons/Male.svelte';
   import Female from '$lib/components/icons/Female.svelte';
   import { Sex } from '$lib/engines/ChosenOne/main';
-  import type { ObjectValues } from '$lib/utils';
+  import type { ObjectValues } from '$lib/typeUtils';
 
   export let value: ObjectValues<typeof Sex> = Sex.Male;
 
