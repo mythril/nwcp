@@ -2,6 +2,7 @@
   import Modal from './Modal.svelte';
   import FlatButton from './Buttons/FlatButton.svelte';
   import Bolthead from './Bolthead.svelte';
+  import Portal from '$lib/components/Portal.svelte';
   let menu: HTMLElement;
   let modal: Modal;
 
@@ -23,22 +24,24 @@
 </script>
 
 <Modal bind:this={modal}>
-  <div class="centering">
-    <div
-      role="dialog"
-      class="menu"
-      bind:this={menu}
-    >
-      <Bolthead dir="tl" />
-      <Bolthead dir="tr" />
-      <Bolthead dir="bl" />
-      <Bolthead dir="br" />
-      <div class="padding-wrapper">
-        <slot />
-        <FlatButton on:click={hide}>Done</FlatButton>
+  <Portal target="#planner">
+    <div class="centering">
+      <div
+        role="dialog"
+        class="menu"
+        bind:this={menu}
+      >
+        <Bolthead dir="tl" />
+        <Bolthead dir="tr" />
+        <Bolthead dir="bl" />
+        <Bolthead dir="br" />
+        <div class="padding-wrapper">
+          <slot />
+          <FlatButton on:click={hide}>Done</FlatButton>
+        </div>
       </div>
     </div>
-  </div>
+  </Portal>
 </Modal>
 
 <style lang="postcss">

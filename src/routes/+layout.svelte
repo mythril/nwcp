@@ -38,11 +38,11 @@
 
 <div id="modals" />
 <div class="app">
-  <div
-    id="planner"
-    inert={$modalShown}
-  >
-    <div class="page">
+  <div id="planner">
+    <div
+      class="interface"
+      inert={$modalShown}
+    >
       <slot />
     </div>
   </div>
@@ -74,7 +74,7 @@
     position: relative;
   }
 
-  .page {
+  .interface {
     /* this maintains an aspect ratio similar to the original game */
     width: 640rem;
     min-width: 640rem;

@@ -1,6 +1,7 @@
 <script lang="ts">
   export let row = 12;
   export let col = 4;
+  /* decided to abandon sprites because I have no idea about legality of using game-derived assets. */
 </script>
 
 <div

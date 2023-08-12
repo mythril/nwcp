@@ -7,7 +7,6 @@ Overall goals:
 
 ### To do
 
-- [ ] consider replacing anim lib with [css tweening](https://news.ycombinator.com/item?id=36442797)
 - [ ] Build filter to add random blotchy, embossed grooves into the background
 - [ ] Improve paper background
 - [ ] Match tag / trait buttons better (push state)
@@ -36,6 +35,7 @@ Overall goals:
 
 ### Done
 
+- [x] consider replacing anim lib with [css tweening](https://news.ycombinator.com/item?id=36442797) - big win, saved ~70k on build (down from 412k to 344k)
 - [x] Figure out a way for end users to preserve their character creations
 - [x] Improve look of sex setter buttons
 - [x] Improve logo

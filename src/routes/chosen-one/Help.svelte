@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Sprite from '$lib/components/Sprite.svelte';
   import { helpSubject, helpText } from './stores';
 
   let text = '';
@@ -26,9 +25,7 @@
       <div class="text">
         {text}
       </div>
-      <div class="image">
-        <Sprite />
-      </div>
+      <div class="image" />
     </div>
   </div>
 </div>
