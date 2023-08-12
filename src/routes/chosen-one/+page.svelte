@@ -81,6 +81,13 @@
       ?.arrayBuffer()
       .then((data: ArrayBuffer) => {
         loadFromChar(unpacker(new Uint8Array(data)));
+      }).catch((err) => {
+        let em = 'Unknown error.';
+        if (err instanceof CodecError) {
+          em = err.message;
+        }
+        $errorMessage = em;
+        debug.error(err);
       });
   }
 </script>
