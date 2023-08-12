@@ -95,6 +95,9 @@
       display: flex;
       flex-flow: row;
       font-weight: 700;
+      .text {
+        width: 155rem;
+      }
     }
   }
   .paper-bg {

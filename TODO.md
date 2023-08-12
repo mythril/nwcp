@@ -7,6 +7,8 @@ Overall goals:
 
 ### To do
 
+- [ ] come up with a better solution for managing character points
+- [ ] flesh out remaining derived stats
 - [ ] Build filter to add random blotchy, embossed grooves into the background
 - [ ] Improve paper background
 - [ ] Match tag / trait buttons better (push state)
