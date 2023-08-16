@@ -36,7 +36,7 @@
     <div class="centering">
       <div
         role="dialog"
-        class="menu"
+        class="menu brightness-variance b-offset-11"
         bind:this={menu}
       >
         <Bolthead dir="tl" />

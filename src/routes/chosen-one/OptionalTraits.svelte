@@ -26,7 +26,7 @@
     <div
       role="link"
       tabindex="0"
-      class="title"
+      class="title brightness-variance b-offset-3"
     >
       <div class="worn-text">Optional traits</div>
     </div>
@@ -91,7 +91,7 @@
       </div>
     </div>
   </div>
-  <div class="footer" />
+  <div class="footer brightness-variance b-offset-4" />
 </div>
 
 <style lang="postcss">

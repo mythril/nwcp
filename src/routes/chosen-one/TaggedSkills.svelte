@@ -33,7 +33,7 @@
 
 <div class="skill-content">
   <HelpSource subject="Skills">
-    <div class="title-bg">
+    <div class="title-bg brightness-variance b-offset-5">
       <div
         role="link"
         tabindex="0"
@@ -70,7 +70,7 @@
       </HelpSource>
     {/each}
   </div>
-  <div class="skills-remaining">
+  <div class="skills-remaining brightness-variance b-offset-6">
     <HelpSource subject={'Tag Skills'}>
       <div
         role="link"

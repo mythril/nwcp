@@ -36,7 +36,7 @@
 >
   <div
     role="dialog"
-    class="edit"
+    class="edit brightness-variance b-offset-10"
     bind:this={dialog}
     style="left: var(--anchor-left); top: var(--anchor-top)"
   >

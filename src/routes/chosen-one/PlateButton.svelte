@@ -9,7 +9,7 @@
   on:click={clickSound}
   on:click
   class:pushButton
-  class={'button ' + ($$props.class || '')}
+  class={'button brightness-variance b-offset-8 ' + ($$props.class || '')}
 >
   <Bolthead
     dir="tl"

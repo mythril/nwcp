@@ -54,7 +54,7 @@
     {height}
     name="overlay"
     {render}
-    applyToProperties={['background']}
+    applyToProperties={['background-image']}
   >
     <svg>
       <defs>
@@ -103,6 +103,7 @@
 
 <style lang="postcss">
   .overlay {
+    background-position: center;
     position: absolute;
     z-index: 4;
     left: 0;

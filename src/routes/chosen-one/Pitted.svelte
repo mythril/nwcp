@@ -14,11 +14,16 @@
       <filter
         style="color-interpolation-filters:sRGB"
         id="pitted"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
       >
         <feTurbulence
           baseFrequency="0.01 0.015"
           numOctaves="5"
           type="fractalNoise"
+          stitchTiles="stitch"
           seed="126"
         />
         <feColorMatrix type="luminanceToAlpha" />
@@ -55,8 +60,8 @@
           />
         </feComponentTransfer>
         <feOffset
-          dx="0.5"
-          dy="-0.5"
+          dx="1"
+          dy="-1"
           preserveAlpha="false"
         />
         <feGaussianBlur
@@ -64,8 +69,8 @@
           result="neWhite"
         />
         <feOffset
-          dx="-0.5"
-          dy="0.5"
+          dx="-1"
+          dy="1"
           in="compressedToBlack"
           preserveAlpha="false"
         />
@@ -89,12 +94,47 @@
           in2="neWhite"
           operator="xor"
         />
-        <feComponentTransfer>
+        <feComponentTransfer result="pitting">
           <feFuncA
             type="table"
             tableValues="0 0.6"
           />
         </feComponentTransfer>
+        <feTurbulence
+          baseFrequency="0.00125 0.0025"
+          numOctaves="5"
+          type="fractalNoise"
+          stitchTiles="stitch"
+        />
+        <feComponentTransfer>
+          <feFuncR
+            type="table"
+            tableValues="0 0.05"
+          />
+          <feFuncG
+            type="table"
+            tableValues="0 0.12"
+          />
+          <feFuncB
+            type="table"
+            tableValues="0"
+          />
+          <feFuncA
+            type="table"
+            tableValues="0 0.4"
+          />
+        </feComponentTransfer>
+        <feComponentTransfer result="colors">
+          <feFuncA
+            type="table"
+            tableValues="0 0.7 1 0.2 "
+          />
+        </feComponentTransfer>
+        <feBlend
+          in="pitting"
+          in2="colors"
+          mode="normal"
+        />
       </filter>
     </defs>
   </svg>

@@ -5,7 +5,7 @@
 
 <button
   class:checked
-  class={'button ' + ($$props.class || '')}
+  class={'button brightness-variance b-offset-7 ' + ($$props.class || '')}
   on:click={clickSound}
   on:click
 >

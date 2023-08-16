@@ -26,7 +26,6 @@
   import type { ObjectValues } from '$lib/typeUtils';
   import { objectKeys } from 'tsafe';
   import debug from '$lib/debug';
-  import Pitted from './Pitted.svelte';
 
   let fileInput: HTMLInputElement;
 
@@ -107,8 +106,6 @@
 </div>
 -->
 
-<Pitted />
-
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
@@ -121,16 +118,20 @@
       <SexChanger bind:value={$sex} />
     </div>
   </div>
-  <div class="special-section slate">
+  <div class="special-section slate brightness-variance b-offset-1">
     <SpecialAttributes on:charPointsRemainingBonk={charPointsRemainingBonk} />
   </div>
-  <div class="health-section slate monitor terminal-font-defaults">
+  <div
+    class="health-section slate monitor terminal-font-defaults brightness-variance"
+  >
     <Health />
   </div>
-  <div class="derived-stats slate monitor terminal-font-defaults">
+  <div
+    class="derived-stats slate monitor terminal-font-defaults brightness-variance b-offset-1"
+  >
     <DerivedStats />
   </div>
-  <div class="char-points-section slate">
+  <div class="char-points-section slate brightness-variance b-offset-2">
     <CharPoints bind:this={charPoints} />
   </div>
   <div class="traits-section">

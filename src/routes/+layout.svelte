@@ -8,6 +8,8 @@
   import { onMount } from 'svelte';
   import debug from '$lib/debug';
   import ErrorMessage from './chosen-one/ErrorMessage.svelte';
+  import Pitted from './chosen-one/Pitted.svelte';
+  import BrightnessVariance from './chosen-one/BrightnessVariance.svelte';
 
   async function bootUp() {
     if ('serviceWorker' in navigator) {
@@ -36,6 +38,10 @@
 <Overlay />
 
 <WornText />
+
+<Pitted />
+
+<BrightnessVariance />
 
 <ErrorMessage />
 

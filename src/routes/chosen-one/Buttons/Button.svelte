@@ -7,7 +7,7 @@
 {#if type === 'button'}
   <button
     on:click
-    class={'btn ' + ($$props.class || '')}
+    class={'btn brightness-variance b-offset-12 ' + ($$props.class || '')}
   >
     <slot />
   </button>
@@ -16,7 +16,7 @@
     {href}
     {target}
     on:click
-    class={'btn ' + ($$props.class || '')}
+    class={'btn brightness-variance b-offset-12 ' + ($$props.class || '')}
   >
     <slot />
   </a>
