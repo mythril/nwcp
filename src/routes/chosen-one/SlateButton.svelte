@@ -14,7 +14,14 @@
 
 <style lang="postcss">
   .button {
-    /* position: absolute; */
+    /* prettier-ignore */
+    --slb-light-source:
+      inset -5rem 5rem 3rem -4rem rgba(255, 255, 255, 0.4),
+      inset 5rem -5rem 3rem -3rem rgba(0, 0, 0, 0.7);
+    /* prettier-ignore */
+    --slb-light-source-clear:
+      inset 0 0 0 0 rgba(255, 255, 255, 0),
+      inset 0 0 0 0 rgba(0, 0, 0, 0);
     overflow: hidden;
     text-overflow: clip;
     white-space: nowrap;
@@ -27,7 +34,7 @@
     border: 1rem solid hsl(var(--bg-hs), calc(var(--bg-l) - 10%));
     /* prettier-ignore */
     box-shadow:
-      var(--light-source),
+      var(--slb-light-source),
       var(--sunken-clear);
     transition: filter 0.2s linear, box-shadow 0.01s linear;
     font-family: var(--title-font);
@@ -45,7 +52,7 @@
       filter: saturate(0.7) brightness(0.7);
       /* prettier-ignore */
       box-shadow:
-        var(--light-source-clear),
+        var(--slb-light-source-clear),
         var(--sunken);
     }
   }

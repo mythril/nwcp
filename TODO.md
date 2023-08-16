@@ -9,7 +9,6 @@ Overall goals:
 
 - [ ] Figure out a way to show currently hidden derived stats
 - [ ] Add difficulty selector
-- [ ] Build filter to add random blotchy color variation
 - [ ] Improve paper background
 - [ ] Match tag / trait buttons better (push state)
 - [ ] Make the first event: create character
@@ -37,6 +36,7 @@ Overall goals:
 
 ### Done
 
+- [x] Build filter to add random blotchy color variation
 - [x] Build filter to add embossed grooves into the background
 - [x] come up with a better solution for managing character points
 - [x] flesh out remaining derived stats

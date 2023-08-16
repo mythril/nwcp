@@ -5,8 +5,8 @@
 
 <GeneratedImageCacher
   name="brightness-variance"
-  width={640 * 4}
-  height={480 * 4}
+  width={640 * 2}
+  height={480 * 2}
   applyToProperties={['background-image']}
 >
   <svg>

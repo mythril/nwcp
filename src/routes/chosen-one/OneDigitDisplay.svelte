@@ -89,6 +89,7 @@
   }
   .var-wrap {
     --digit-offset: 0;
+    will-change: --digit-offset;
     transition-duration: 0.1s;
     transition-timing-function: easeOutElastic;
   }
@@ -111,5 +112,6 @@
       -1rem 0rem 2rem rgba(255, 255, 255, 0.15),
       -1rem 1rem 1rem rgba(255, 255, 255, 0.25);
     transform: translate(0, calc(var(--digit-offset) * 50%));
+    will-change: transform;
   }
 </style>

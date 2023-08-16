@@ -5,8 +5,8 @@
 
 <GeneratedImageCacher
   name="pitted"
-  width={640 * 4}
-  height={480 * 4}
+  width={640 * 3}
+  height={480 * 3}
   applyToProperties={['background-image']}
 >
   <svg>
@@ -24,7 +24,7 @@
           numOctaves="5"
           type="fractalNoise"
           stitchTiles="stitch"
-          seed="126"
+          seed="112"
         />
         <feColorMatrix type="luminanceToAlpha" />
         <feColorMatrix
@@ -60,21 +60,21 @@
           />
         </feComponentTransfer>
         <feOffset
-          dx="1"
-          dy="-1"
+          dx="0.5"
+          dy="-0.5"
           preserveAlpha="false"
         />
         <feGaussianBlur
-          stdDeviation="0.5"
+          stdDeviation="0.25"
           result="neWhite"
         />
         <feOffset
-          dx="-1"
-          dy="1"
+          dx="-0.5"
+          dy="0.5"
           in="compressedToBlack"
           preserveAlpha="false"
         />
-        <feGaussianBlur stdDeviation="0.5" />
+        <feGaussianBlur stdDeviation="0.25" />
         <feComponentTransfer result="swBlack">
           <feFuncR
             type="table"
