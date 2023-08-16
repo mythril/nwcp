@@ -31,14 +31,17 @@
           />
           <feFuncB
             type="table"
-            tableValues="0"
+            tableValues="0 0.25"
           />
           <feFuncA
             type="table"
-            tableValues="0 0.5"
+            tableValues="0 0.35"
           />
         </feComponentTransfer>
-        <feColorMatrix type="luminanceToAlpha" />
+        <feColorMatrix
+          type="saturate"
+          values="0"
+        />
         <feComponentTransfer>
           <feFuncA
             type="table"
