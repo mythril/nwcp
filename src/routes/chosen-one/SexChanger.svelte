@@ -83,6 +83,7 @@
     .worn-text {
       padding: 0rem;
       height: 36rem;
+      transform: none;
     }
     :global(.sex-btn) {
       width: 40rem;

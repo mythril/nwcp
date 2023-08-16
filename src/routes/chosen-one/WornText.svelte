@@ -18,10 +18,11 @@
           numOctaves="6"
           stitchTiles="stitch"
           seed="1"
+          result="noise"
         />
         <feBlend
           in="SourceGraphic"
-          in2="worn-text"
+          in2="noise"
           mode="multiply"
         />
         <feMorphology
@@ -31,8 +32,8 @@
         <feColorMatrix type="luminanceToAlpha" />
         <feComponentTransfer>
           <feFuncA
-            type="table"
-            tableValues="-50 0.5 1 -1"
+            type="discrete"
+            tableValues="0 0 1 0.7 0 1 "
           />
         </feComponentTransfer>
       </filter>

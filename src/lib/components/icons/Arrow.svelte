@@ -47,6 +47,7 @@
   .arrow {
     width: 100%;
     height: 100%;
+    transform: none;
   }
   .arrow svg {
     width: 100%;

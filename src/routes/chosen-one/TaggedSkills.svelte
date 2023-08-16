@@ -37,9 +37,9 @@
       <div
         role="link"
         tabindex="0"
-        class="title worn-text"
+        class="title"
       >
-        Skills
+        <div class="worn-text">Skills</div>
       </div>
     </div>
   </HelpSource>
@@ -108,6 +108,7 @@
   }
   .title {
     padding-left: 46rem;
+    padding-top: 1rem;
     height: 22rem;
     width: 292rem;
     font-size: 16rem;
