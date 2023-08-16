@@ -26,6 +26,7 @@
   import type { ObjectValues } from '$lib/typeUtils';
   import { objectKeys } from 'tsafe';
   import debug from '$lib/debug';
+  import Pitted from './Pitted.svelte';
 
   let fileInput: HTMLInputElement;
 
@@ -81,7 +82,8 @@
       ?.arrayBuffer()
       .then((data: ArrayBuffer) => {
         loadFromChar(unpacker(new Uint8Array(data)));
-      }).catch((err) => {
+      })
+      .catch((err) => {
         let em = 'Unknown error.';
         if (err instanceof CodecError) {
           em = err.message;
@@ -104,6 +106,8 @@
   Tagged Skills: {$taggedSkills}
 </div>
 -->
+
+<Pitted />
 
 <div class="parent">
   <div class="name-age-sex">

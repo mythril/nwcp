@@ -7,9 +7,9 @@ Overall goals:
 
 ### To do
 
-- [ ] come up with a better solution for managing character points
-- [ ] flesh out remaining derived stats
-- [ ] Build filter to add random blotchy, embossed grooves into the background
+- [ ] Figure out a way to show currently hidden derived stats
+- [ ] Add difficulty selector
+- [ ] Build filter to add random blotchy color variation
 - [ ] Improve paper background
 - [ ] Match tag / trait buttons better (push state)
 - [ ] Make the first event: create character
@@ -37,6 +37,9 @@ Overall goals:
 
 ### Done
 
+- [x] Build filter to add embossed grooves into the background
+- [x] come up with a better solution for managing character points
+- [x] flesh out remaining derived stats
 - [x] consider replacing anim lib with [css tweening](https://news.ycombinator.com/item?id=36442797) - big win, saved ~70k on build (down from 412k to 344k)
 - [x] Figure out a way for end users to preserve their character creations
 - [x] Improve look of sex setter buttons

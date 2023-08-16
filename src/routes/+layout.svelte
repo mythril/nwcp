@@ -40,7 +40,7 @@
 <ErrorMessage />
 
 <div id="modals" />
-<div class="app">
+<div class="app pitted">
   <div id="planner">
     <div
       class="interface"
@@ -70,7 +70,6 @@
   #planner {
     font-family: var(--terminal-font);
     font-size: 8rem;
-    background-color: hsl(var(--bg));
     border: 0;
     display: grid;
     margin: auto;
