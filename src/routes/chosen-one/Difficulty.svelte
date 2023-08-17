@@ -48,7 +48,7 @@
     background-color: hsl(var(--bg));
   }
   :global(.diffClose) {
-    filter: drop-shadow(-5rem 5rem 5rem rgba(0 0, 0, 1));
+    filter: drop-shadow(-5rem 5rem 5rem rgba(0, 0, 0, 1));
   }
   .difficulty {
     position: relative;
@@ -60,6 +60,6 @@
     /* prettier-ignore */
     box-shadow: var(--slb-light-source);
     background-position: 50rem 110rem;
-    filter: drop-shadow(-5rem 5rem 5rem rgba(0 0, 0, 1));
+    filter: drop-shadow(-5rem 5rem 5rem rgba(0, 0, 0, 1));
   }
 </style>

@@ -60,8 +60,8 @@
           />
         </feComponentTransfer>
         <feOffset
-          dx="0.5"
-          dy="-0.5"
+          dx="1"
+          dy="-1"
           preserveAlpha="false"
         />
         <feGaussianBlur
@@ -69,8 +69,8 @@
           result="neWhite"
         />
         <feOffset
-          dx="-0.5"
-          dy="0.5"
+          dx="-1"
+          dy="1"
           in="compressedToBlack"
           preserveAlpha="false"
         />
@@ -94,6 +94,7 @@
           in2="neWhite"
           operator="xor"
         />
+        <feMorphology operator="erode" radius="1" />
         <feComponentTransfer result="pitting">
           <feFuncA
             type="table"
@@ -117,7 +118,7 @@
           />
           <feFuncB
             type="table"
-            tableValues="0"
+            tableValues="0 0"
           />
           <feFuncA
             type="table"

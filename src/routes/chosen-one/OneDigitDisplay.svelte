@@ -17,7 +17,7 @@
     varWrap.style.setProperty('transition-property', '');
     varWrap.style.setProperty('--digit-offset', f);
     await sleep(1); // allows the above commands to be rendered to the dom
-    varWrap.style.setProperty('transition-property', '--digit-offset');
+    varWrap.style.setProperty('transition-property', '--digit-offset, transform');
     varWrap.style.setProperty('--digit-offset', t);
   };
 
@@ -112,6 +112,9 @@
       -1rem 0rem 2rem rgba(255, 255, 255, 0.15),
       -1rem 1rem 1rem rgba(255, 255, 255, 0.25);
     transform: translate(0, calc(var(--digit-offset) * 50%));
-    will-change: transform;
+    transition-property: transform;
+    transition-duration: 0.1s;
+    transition-timing-function: cubic-bezier(0, 1.2, 0, 0.79);
+    will-change: --digit-offset, transform;
   }
 </style>

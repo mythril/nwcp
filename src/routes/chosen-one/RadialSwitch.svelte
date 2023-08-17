@@ -120,7 +120,7 @@
     height: 40rem;
     transform: rotate(calc(-60deg + (var(--rsi) * 60deg)));
     transform-origin: 50% 58%;
-    transition-property: --rsi;
+    transition-property: --rsi, transform;
     transition-duration: 0.1s;
     transition-timing-function: ease-in-out;
   }
