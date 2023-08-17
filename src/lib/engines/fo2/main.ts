@@ -155,8 +155,15 @@ export const Sex = {
   Female: 'Female'
 } as const;
 
+export const Difficulty = {
+  Easy: 'Easy',
+  Normal: 'Normal',
+  Hard: 'Hard'
+} as const;
+
 export type UnfinishedChar = {
   game: ObjectValues<typeof Game> & {};
+  difficulty: ObjectValues<typeof Difficulty> & {};
   name: string;
   age: number;
   sex: ObjectValues<typeof Sex> & {};

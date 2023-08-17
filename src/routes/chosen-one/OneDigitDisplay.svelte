@@ -91,7 +91,7 @@
     --digit-offset: 0;
     will-change: --digit-offset;
     transition-duration: 0.1s;
-    transition-timing-function: easeOutElastic;
+    transition-timing-function: cubic-bezier(0, 1.2, 0, 0.79);
   }
   .anim-wrap {
     position: absolute;

@@ -26,6 +26,7 @@
   import type { ObjectValues } from '$lib/typeUtils';
   import { objectKeys } from 'tsafe';
   import debug from '$lib/debug';
+  import Options from './Options.svelte';
 
   let fileInput: HTMLInputElement;
 
@@ -144,7 +145,7 @@
     <Help />
   </div>
   <div class="buttons">
-    <PlateButton class="about">About</PlateButton>
+    <Options />
     <Save />
     <PlateButton
       class="load"
@@ -242,16 +243,8 @@
     width: 303rem;
     grid-area: buttons;
     display: flex;
-    justify-content: space-between;
-    :global(.about) {
-      width: 108rem;
-    }
-    :global(.save) {
-      width: 92rem;
-    }
-    :global(.load) {
-      width: 92rem;
-    }
+    justify-content: stretch;
+    gap: 2rem;
   }
   /* .store-debug{
     white-space: pre;

@@ -36,12 +36,12 @@
   .button {
     position: relative;
     height: 23rem;
-    padding: 0;
-    padding-left: 10rem;
+    padding: 0 10rem;
     display: block;
     appearance: none;
     background-color: hsl(var(--bg));
     border: 0;
+    flex-grow: 1;
     &.pushButton {
       &::after {
         content: ' ';

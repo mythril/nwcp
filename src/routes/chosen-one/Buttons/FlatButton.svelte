@@ -10,7 +10,7 @@
   {type}
   {href}
   {target}
-  class="flat-btn"
+  class="flat-btn brightness-variance b-offset-12"
   on:click
 >
   <div class="worn-text">
@@ -26,7 +26,7 @@
     font-size: inherit;
     display: block;
     border: 0;
-    padding: 0;
+    padding: 0 10rem;
     text-decoration: none;
     text-align: center;
     line-height: inherit;

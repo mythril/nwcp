@@ -3,7 +3,8 @@ import {
   type UnfinishedChar,
   Skill,
   Sex,
-  Special
+  Special,
+  Difficulty
 } from '$lib/engines/ChosenOne/main';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
@@ -38,6 +39,7 @@ const charGen = (): UnfinishedChar => {
 
   return {
     game: Game.ChosenOne,
+    difficulty: faker.helpers.arrayElement(Object.values(Difficulty)),
     name: faker.person.firstName(sex === 'female' ? 'female' : 'male'),
     age: faker.number.int({ min: 16, max: 35 }),
     sex: sex === 'female' ? Sex.Female : Sex.Male,

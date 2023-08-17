@@ -4,7 +4,8 @@ import {
   Trait,
   Skill,
   type UnfinishedChar,
-  Special
+  Special,
+  Difficulty
 } from '$lib/engines/ChosenOne/main';
 import type { ObjectValues } from './typeUtils';
 import debug from './debug';
@@ -67,6 +68,32 @@ const intToSex = (s: number) => {
       return Sex.Male;
     default:
       throw new CodecError('Unrecognized sex.');
+  }
+};
+
+const difficultyToInt = (diff: ObjectValues<typeof Difficulty> & {}) => {
+  switch (diff) {
+    case Difficulty.Easy:
+      return 0;
+    case Difficulty.Normal:
+      return 1;
+    case Difficulty.Hard:
+      return 2;
+    default:
+      throw new CodecError('Unrecognized difficulty.');
+  }
+};
+
+const intToDifficulty = (d: number) => {
+  switch (d) {
+    case 0:
+      return Difficulty.Easy;
+    case 1:
+      return Difficulty.Normal;
+    case 2:
+      return Difficulty.Hard;
+    default:
+      throw new CodecError('Unrecognized difficulty.');
   }
 };
 
@@ -137,6 +164,17 @@ const nameDescriptor: VariableDescriptor = {
     mut.name = decoder.decode(data);
   }
 };
+
+const difficultyDescriptor: FixedDescriptor = {
+  name: 'difficulty',
+  bits: 2,
+  encoder: (char: UnfinishedChar) => difficultyToInt(char.difficulty),
+  decoder: (data: number, mut: UnfinishedChar) => {
+    mut.difficulty = intToDifficulty(data);
+  }
+};
+
+OrderedDescriptors.push(difficultyDescriptor);
 
 const specialsDescriptor: FixedDescriptor[] = sortedSpecial.map((key) => {
   return {
@@ -321,6 +359,7 @@ export function unpacker(packed: Uint8Array) {
   const mut: UnfinishedChar = {
     name: '',
     game: Game.VaultDweller,
+    difficulty: Difficulty.Normal,
     tagged: [undefined, undefined, undefined],
     traits: [undefined, undefined],
     age: 0,

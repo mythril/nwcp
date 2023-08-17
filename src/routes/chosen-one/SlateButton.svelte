@@ -14,14 +14,6 @@
 
 <style lang="postcss">
   .button {
-    /* prettier-ignore */
-    --slb-light-source:
-      inset -5rem 5rem 3rem -4rem rgba(255, 255, 255, 0.4),
-      inset 5rem -5rem 3rem -3rem rgba(0, 0, 0, 0.7);
-    /* prettier-ignore */
-    --slb-light-source-clear:
-      inset 0 0 0 0 rgba(255, 255, 255, 0),
-      inset 0 0 0 0 rgba(0, 0, 0, 0);
     overflow: hidden;
     text-overflow: clip;
     white-space: nowrap;

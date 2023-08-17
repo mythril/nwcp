@@ -6,6 +6,8 @@
   let menu: HTMLElement;
   let modal: Modal;
 
+  export let showBolts = true;
+
   export const show = async () => {
     if (modal) {
       await modal.show();
@@ -36,16 +38,24 @@
     <div class="centering">
       <div
         role="dialog"
-        class="menu brightness-variance b-offset-11"
+        class={'menu ' +
+          ($$props.class || ' brightness-variance b-offset-11 default')}
         bind:this={menu}
       >
-        <Bolthead dir="tl" />
-        <Bolthead dir="tr" />
-        <Bolthead dir="bl" />
-        <Bolthead dir="br" />
+        {#if showBolts}
+          <Bolthead dir="tl" />
+          <Bolthead dir="tr" />
+          <Bolthead dir="bl" />
+          <Bolthead dir="br" />
+        {/if}
         <div class="padding-wrapper">
           <slot />
-          <FlatButton on:click={hide}>Done</FlatButton>
+          <slot
+            name="closeButton"
+            hider={hide}
+          >
+            <FlatButton on:click={hide}>Done</FlatButton>
+          </slot>
         </div>
       </div>
     </div>
@@ -54,14 +64,15 @@
 
 <style lang="postcss">
   .menu {
-    width: 164rem;
     height: fit-content;
     margin: auto;
-    padding: 19rem 17rem;
     position: relative;
-    background-color: hsl(var(--menu-bg));
     font-size: 16rem;
+  }
+  .default {
+    padding: 19rem 17rem;
     line-height: 29rem;
+    background-color: hsl(var(--menu-bg));
     /* prettier-ignore */
     box-shadow:
       inset -3rem -4rem 2rem 1rem rgba(0,0,0, 0.50),

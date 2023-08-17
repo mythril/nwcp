@@ -9,6 +9,7 @@
     age,
     attributes,
     chosenTraits,
+    difficulty,
     name,
     sex,
     taggedSkills
@@ -19,6 +20,7 @@
   function openMenu() {
     char = {
       game: Game.ChosenOne,
+      difficulty: $difficulty,
       name: $name,
       age: $age,
       sex: $sex,

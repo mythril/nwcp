@@ -13,7 +13,10 @@ import {
   Trait,
   CombatSkill,
   type DerivedStats,
-  DerivedStat
+  DerivedStat,
+  Difficulty,
+  PassiveSkill,
+  ActiveSkill
 } from '$lib/engines/ChosenOne/main';
 import type { ObjectValues } from '$lib/typeUtils';
 const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };
@@ -29,6 +32,10 @@ export const errorMessage = writable<string>('');
 
 export const modalShown = writable<boolean>(false);
 
+export const difficulty = writable<ObjectValues<typeof Difficulty> & {}>(
+  Difficulty.Normal
+);
+
 export const attributes = writable<Attributes>({
   [Special.Strength]: 5,
   [Special.Perception]: 5,
@@ -42,7 +49,7 @@ export const attributes = writable<Attributes>({
 export const taggedSkills = writable<TaggedSkills>([]);
 export const chosenTraits = writable<ChosenTraits>([]);
 export const age = writable<number>(25);
-export const sex = writable<ObjectValues<typeof Sex>>(Sex.Male);
+export const sex = writable<ObjectValues<typeof Sex> & {}>(Sex.Male);
 export const name = writable<string>('');
 
 export const charPointsRemaining = derived(attributes, (attrs) => {
@@ -86,8 +93,8 @@ export const displayAttributes = derived(
 );
 
 export const baseSkills = derived(
-  [displayAttributes, chosenTraits, taggedSkills],
-  ([attrs, traits, tagged]) => {
+  [displayAttributes, chosenTraits, taggedSkills, difficulty],
+  ([attrs, traits, tagged, diff]) => {
     const base: SkillSet = {
       [Skill.Barter]: 4 * attrs[Special.Charisma],
       [Skill.BigGuns]: 2 * attrs[Special.Agility],
@@ -133,6 +140,27 @@ export const baseSkills = derived(
 
     for (const taggedSkill of tagged) {
       base[taggedSkill] += 20;
+    }
+
+    {
+      let bonus: number;
+      switch (diff) {
+        case Difficulty.Easy:
+          bonus = 20;
+          break;
+        case Difficulty.Normal:
+          bonus = 0;
+          break;
+        case Difficulty.Hard:
+          bonus = -10;
+          break;
+      }
+      for (const k of Object.values(ActiveSkill)) {
+        base[k] += bonus;
+      }
+      for (const k of Object.values(PassiveSkill)) {
+        base[k] += bonus;
+      }
     }
 
     return base;
