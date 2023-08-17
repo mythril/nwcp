@@ -126,14 +126,22 @@ body {
     content: ' ';
     position: absolute;
     background-color: #580000;
-    transition: background-color 0.2s linear;
+    transition: background-color 0.1s linear;
     left: 5rem;
     top: 3rem;
     width: 5rem;
     height: 2rem;
-    box-shadow: -1rem 1rem 0rem 0rem rgba(0, 0, 0, 0.25) inset,
+    /* prettier-ignore */
+    box-shadow: 
+      -1rem 1rem 0rem 0rem rgba(0, 0, 0, 0.25) inset,
       1rem -1rem 0rem 0rem rgba(0, 0, 0, 0.25),
       -1rem 1rem 0rem 0rem rgba(255, 255, 255, 0.15);
+  }
+  &:active {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0) inset,
+      2rem -2rem 1rem -1rem rgba(0, 0, 0, 0.25) inset,
+      1rem -1rem 1rem 0 rgba(0, 0, 0, 0.25) inset,
+      0 0 1rem 1rem rgba(0, 0, 0, 0.25);
   }
   &:active:after {
     background-color: #fc3030;

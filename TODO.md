@@ -10,8 +10,6 @@ Overall goals:
 - [ ] Figure out a way to show currently hidden derived stats
 - [ ] Add difficulty selector
 - [ ] Improve paper background
-- [ ] Match tag / trait buttons better (push state)
-- [ ] Make the first event: create character
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Add an about page
 
@@ -27,6 +25,7 @@ Overall goals:
 
 ### After first release
 
+- [ ] Make the first event: create character
 - [ ] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
 - [ ] Add level up button
 - [ ] Build an event sourced store, keeping track of the character development as a log instead of just mangling an object
@@ -36,6 +35,7 @@ Overall goals:
 
 ### Done
 
+- [x] Match tag / trait buttons better (push state)
 - [x] Build filter to add random blotchy color variation
 - [x] Build filter to add embossed grooves into the background
 - [x] come up with a better solution for managing character points
