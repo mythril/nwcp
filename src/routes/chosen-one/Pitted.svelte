@@ -94,7 +94,10 @@
           in2="neWhite"
           operator="xor"
         />
-        <feMorphology operator="erode" radius="1" />
+        <feMorphology
+          operator="erode"
+          radius="1"
+        />
         <feComponentTransfer result="pitting">
           <feFuncA
             type="table"

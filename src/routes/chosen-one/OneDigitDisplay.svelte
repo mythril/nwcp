@@ -17,7 +17,10 @@
     varWrap.style.setProperty('transition-property', '');
     varWrap.style.setProperty('--digit-offset', f);
     await sleep(1); // allows the above commands to be rendered to the dom
-    varWrap.style.setProperty('transition-property', '--digit-offset, transform');
+    varWrap.style.setProperty(
+      'transition-property',
+      '--digit-offset, transform'
+    );
     varWrap.style.setProperty('--digit-offset', t);
   };
 

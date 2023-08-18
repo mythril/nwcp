@@ -51,6 +51,7 @@
     filter: drop-shadow(-5rem 5rem 5rem rgba(0, 0, 0, 1));
   }
   .difficulty {
+    color: #0f0f0f;
     position: relative;
     width: 190rem;
     height: 77rem;

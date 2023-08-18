@@ -7,6 +7,7 @@
   let index: number;
   let dir = 1;
 
+  index = options.indexOf(value);
   $: {
     index = options.indexOf(value);
     if (index < 0) {
@@ -31,7 +32,79 @@
         return;
     }
   }
+
+  function createLabelHandler(option: string) {
+    return function labelHandler() {
+      let nIdx = options.indexOf(option);
+      let count = Math.abs(index - nIdx);
+      let delay = 100 / count;
+      value = option;
+      const doClicks = () => {
+        if (count > 0) {
+          clickSound();
+          count -= 1;
+          if (count > 0) {
+            setTimeout(doClicks, delay);
+          }
+        }
+      };
+      doClicks();
+    };
+  }
 </script>
+
+<div class="offscreen">
+  <svg>
+    <defs>
+      <filter id="radial">
+        <feSpecularLighting
+          in="SourceGraphic"
+          lighting-color="#fff"
+          specularExponent="50"
+          result="specLight1"
+        >
+          <fePointLight
+            x="75"
+            y="-75"
+            z="85"
+          />
+        </feSpecularLighting>
+        <feGaussianBlur
+          stdDeviation="1"
+          result="blur1"
+        />
+        <feSpecularLighting
+          in="SourceGraphic"
+          lighting-color="#fff"
+          specularExponent="50"
+          result="specLight2"
+        >
+          <feDistantLight
+            azimuth="135"
+            elevation="140"
+          />
+        </feSpecularLighting>
+        <feComposite
+          in="specLight1"
+          in2="SourceGraphic"
+          operator="arithmetic"
+          k1="0"
+          k2="1"
+          k3="1"
+          k4="0"
+        />
+        <feComposite
+          in2="SourceGraphic"
+          operator="in"
+        />
+        <feBlend
+          in2="SourceGraphic"
+          mode="luminosity"
+        />
+      </filter>
+    </defs>
+  </svg>
+</div>
 
 <div class="radial-menu">
   <div
@@ -42,21 +115,34 @@
     on:click={clickHandler}
     on:keydown={keyHandler}
   >
-    <svg viewBox="0 0 24 26">
+    <svg viewBox="0 0 9.5 11.6">
       <g transform="translate(-76.7 -52.8)">
         <circle
-          cx="88.7"
-          cy="66.9"
-          r="12"
+          cx="81.5"
+          cy="58.6"
+          r="4.5"
         />
+      </g>
+    </svg>
+  </div>
+  <div
+    role="button"
+    tabindex="0"
+    class="switch-wrap"
+    style={`--rsi: ${index}`}
+    on:click={clickHandler}
+    on:keydown={keyHandler}
+  >
+    <svg viewBox="0 0 9.5 11.6">
+      <g transform="translate(-76.7 -52.8)">
         <path
-          d="m87.7 53.7-5 24a.9.9 50.8 0 0 .9 1.1h10.3a.9.9 129.2 0 0 .8-1l-5-24.1a1 1 0 0 0-2 0z"
+          d="m81.1 53.3-2 9.8a.4.4 50.8 0 0 .4.5h4a.4.4 129.2 0 0 .4-.5l-2-9.8a.4.4 0 0 0-.8 0z"
         />
       </g>
     </svg>
   </div>
   {#each options as option}
-    <button on:click={() => (value = option)}>{option}</button>
+    <button on:click={createLabelHandler(option)}>{option}</button>
   {/each}
 </div>
 
@@ -114,14 +200,18 @@
     initial-value: 0;
   }
   .switch-wrap {
+    filter: url(#radial) drop-shadow(-5rem 5rem 5rem black);
     margin: auto;
     grid-area: switch;
     width: 40rem;
     height: 40rem;
-    transform: rotate(calc(-60deg + (var(--rsi) * 60deg)));
-    transform-origin: 50% 58%;
-    transition-property: --rsi, transform;
-    transition-duration: 0.1s;
-    transition-timing-function: ease-in-out;
+    svg {
+      fill: currentColor;
+      transform: rotate(calc(-60deg + (var(--rsi) * 60deg)));
+      transform-origin: 50% 50%;
+      transition-property: --rsi, transform;
+      transition-duration: 0.1s;
+      transition-timing-function: ease-in-out;
+    }
   }
 </style>

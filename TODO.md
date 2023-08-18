@@ -8,7 +8,6 @@ Overall goals:
 ### To do
 
 - [ ] Figure out a way to show currently hidden derived stats
-- [ ] Add difficulty selector
 - [ ] Improve paper background
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Add an about page
@@ -35,6 +34,7 @@ Overall goals:
 
 ### Done
 
+- [x] Add difficulty selector
 - [x] Match tag / trait buttons better (push state)
 - [x] Build filter to add random blotchy color variation
 - [x] Build filter to add embossed grooves into the background
