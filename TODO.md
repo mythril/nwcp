@@ -7,13 +7,16 @@ Overall goals:
 
 ### To do
 
-- [ ] Figure out a way to show currently hidden derived stats
-- [ ] Improve paper background
-- [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
+- [ ] "Level button" style toast should appear with some info
+- [ ] Restore done button with toast to let user know nothing implemented
 - [ ] Add an about page
 
 ### Maybe
 
+- [ ] Escape should bring up options menu
+- [ ] Figure out a way to show currently hidden derived stats
+- [ ] Improve paper background
+- [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Extract push button and make it resizable
 - [ ] Include VB sprites?
 - [ ] Create an intro anim
@@ -34,6 +37,7 @@ Overall goals:
 
 ### Done
 
+- [x] Save / load should be merged into options menu
 - [x] Add difficulty selector
 - [x] Match tag / trait buttons better (push state)
 - [x] Build filter to add random blotchy color variation

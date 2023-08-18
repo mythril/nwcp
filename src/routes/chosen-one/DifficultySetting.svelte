@@ -54,7 +54,6 @@
     color: #0f0f0f;
     position: relative;
     width: 190rem;
-    height: 77rem;
     padding: 3rem 10rem;
     background-color: hsl(var(--bg));
     border-radius: 4rem;

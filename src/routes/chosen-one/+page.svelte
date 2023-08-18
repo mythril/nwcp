@@ -10,25 +10,8 @@
   import CharPoints from './CharPoints.svelte';
   import TaggedSkills from './TaggedSkills.svelte';
   import SpecialAttributes from './SpecialAttributes.svelte';
-  import {
-    age,
-    attributes,
-    chosenTraits,
-    errorMessage,
-    name,
-    sex,
-    taggedSkills
-  } from './stores';
-  import Save from './Save.svelte';
-  import { onMount } from 'svelte';
-  import { CodecError, base64ToChar, unpacker } from '$lib/codec';
-  import type { Skill, Trait, UnfinishedChar } from '$lib/engines/ChosenOne/main';
-  import type { ObjectValues } from '$lib/typeUtils';
-  import { objectKeys } from 'tsafe';
-  import debug from '$lib/debug';
+  import { age, name, sex } from './stores';
   import Options from './Options.svelte';
-
-  let fileInput: HTMLInputElement;
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -36,62 +19,6 @@
       charPoints.bonkDown();
     }
   };
-
-  const loadFromChar = (char: UnfinishedChar) => {
-    $name = char.name;
-    $age = char.age;
-    $sex = char.sex;
-    //$attributes
-    for (let key of objectKeys($attributes)) {
-      $attributes[key] = char.attributes[key];
-    }
-    const isTrait = (
-      item: ObjectValues<typeof Trait> | undefined
-    ): item is ObjectValues<typeof Trait> => {
-      return !!item;
-    };
-    $chosenTraits = char.traits.filter(isTrait);
-    const isTaggedSkill = (
-      item: ObjectValues<typeof Skill> | undefined
-    ): item is ObjectValues<typeof Skill> => {
-      return !!item;
-    };
-    $taggedSkills = char.tagged.filter(isTaggedSkill);
-  };
-
-  onMount(() => {
-    try {
-      if (window.location.hash.length > 1) {
-        loadFromChar(base64ToChar(window.location.hash.slice(1)));
-      }
-    } catch (err) {
-      let em = 'Unknown error.';
-      if (err instanceof CodecError) {
-        em = err.message;
-      }
-      $errorMessage = em;
-      debug.error(err);
-    }
-  });
-
-  let files: FileList;
-
-  $: if (files != null && files.length > 0) {
-    files
-      ?.item(0)
-      ?.arrayBuffer()
-      .then((data: ArrayBuffer) => {
-        loadFromChar(unpacker(new Uint8Array(data)));
-      })
-      .catch((err) => {
-        let em = 'Unknown error.';
-        if (err instanceof CodecError) {
-          em = err.message;
-        }
-        $errorMessage = em;
-        debug.error(err);
-      });
-  }
 </script>
 
 <!--
@@ -146,25 +73,8 @@
   </div>
   <div class="buttons">
     <Options />
-    <Save />
-    <PlateButton
-      class="load"
-      on:click={() => {
-        if (fileInput) {
-          fileInput.click();
-        }
-      }}
-    >
-      <div class="offscreen">
-        <input
-          bind:this={fileInput}
-          bind:files
-          accept=".nwcp"
-          type="file"
-        />
-      </div>
-      Load</PlateButton
-    >
+    <PlateButton>Done</PlateButton>
+    <PlateButton>About</PlateButton>
   </div>
 </div>
 

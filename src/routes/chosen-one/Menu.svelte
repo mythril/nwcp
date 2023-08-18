@@ -7,10 +7,12 @@
   let modal: Modal;
 
   export let showBolts = true;
+  let shown = false;
 
   export const show = async () => {
     if (modal) {
       await modal.show();
+      shown = true;
       if (!menu) {
         return;
       }
@@ -29,6 +31,15 @@
     }
     if (modal) {
       modal.hide();
+      shown = false;
+    }
+  };
+
+  export const toggle = async () => {
+    if (shown) {
+      return await hide();
+    } else {
+      return await show();
     }
   };
 </script>
