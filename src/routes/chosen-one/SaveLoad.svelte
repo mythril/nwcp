@@ -16,7 +16,11 @@
   } from './stores';
   import { onMount } from 'svelte';
   import { CodecError, base64ToChar, unpacker } from '$lib/codec';
-  import type { Skill, Trait, UnfinishedChar } from '$lib/engines/ChosenOne/main';
+  import type {
+    Skill,
+    Trait,
+    UnfinishedChar
+  } from '$lib/engines/ChosenOne/main';
   import type { ObjectValues } from '$lib/typeUtils';
   import { objectKeys } from 'tsafe';
   import debug from '$lib/debug';
