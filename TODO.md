@@ -7,15 +7,18 @@ Overall goals:
 
 ### To do
 
-- [ ] "Level button" style toast should appear with some info
-- [ ] Restore done button with toast to let user know nothing implemented
 - [ ] Add an about page
+- [ ] add a better confirm dialog
+- [ ] add a modal stack manager
+- [ ] escape should leave a modal if it has a clean way to leave
+- [ ] Escape should bring up options menu when nothing is already open
+- [ ] Consider a real responsive design
 
 ### Maybe
 
-- [ ] Escape should bring up options menu
+- [ ] improve flat menu look
 - [ ] Figure out a way to show currently hidden derived stats
-- [ ] Improve paper background
+- [ ] Improve paper background (has issues with resizing?)
 - [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Extract push button and make it resizable
 - [ ] Include VB sprites?
@@ -37,6 +40,8 @@ Overall goals:
 
 ### Done
 
+- [x] Restore done button with toast to let user know nothing implemented
+- [x] "Level button" style toast should appear with some info
 - [x] Save / load should be merged into options menu
 - [x] Add difficulty selector
 - [x] Match tag / trait buttons better (push state)

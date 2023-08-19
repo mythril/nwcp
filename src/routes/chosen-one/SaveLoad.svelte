@@ -11,7 +11,8 @@
     errorMessage,
     name,
     sex,
-    taggedSkills
+    taggedSkills,
+    toast
   } from './stores';
   import { onMount } from 'svelte';
   import { CodecError, base64ToChar, unpacker } from '$lib/codec';
@@ -57,16 +58,25 @@
       URL.revokeObjectURL(url);
       a.remove();
     }, 1000);
+    menu.hide();
   };
 
-  const copyToClipboard = (e: MouseEvent) => {
+  const copyToClipboard = async (e: MouseEvent) => {
     if (!e.target) {
       return;
     }
     const charLink = window.location.href.split('#')[0] + '#' + charHash;
-    navigator.clipboard.writeText(charLink);
+    try {
+      await navigator.clipboard.writeText(charLink);
+      toast.success({ message: 'CHARACTER LINK COPIED' });
+    } catch (err) {
+      if (err instanceof Error) {
+        toast.error(err);
+      }
+    }
     e.preventDefault();
     e.stopPropagation();
+    menu.hide();
     return false;
   };
 
@@ -92,6 +102,7 @@
       return !!item;
     };
     $taggedSkills = char.tagged.filter(isTaggedSkill);
+    menu.hide();
   };
 
   onMount(() => {

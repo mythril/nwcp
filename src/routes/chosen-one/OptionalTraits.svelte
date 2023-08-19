@@ -3,7 +3,7 @@
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
-  import { chosenTraits } from './stores';
+  import { chosenTraits, toast } from './stores';
 
   let traits = objectKeys(Trait);
   let leftTraits = traits.slice(0, 8);
@@ -13,6 +13,7 @@
     const cb = e.target as HTMLInputElement;
     if ($chosenTraits.length >= 2 && cb.checked) {
       bonkSound();
+      toast.error({ message: 'YOU CAN CHOOSE A MAXIMUM OF 2 TRAITS' });
       e.preventDefault();
       e.stopPropagation();
       return false;

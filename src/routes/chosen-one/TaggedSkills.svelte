@@ -4,7 +4,7 @@
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
   import TwoDigitDisplay from './TwoDigitDisplay.svelte';
-  import { baseSkills, taggedSkills } from './stores';
+  import { baseSkills, taggedSkills, toast } from './stores';
 
   let skills = objectKeys(Skill);
 
@@ -20,6 +20,7 @@
     const cb = ev.target as HTMLInputElement;
     if ($taggedSkills.length >= 3 && cb.checked) {
       bonkSound();
+      toast.error({ message: 'YOU MUST TAG 3 SKILLS' });
       tdd.set(-1);
       ev.preventDefault();
       ev.stopPropagation();

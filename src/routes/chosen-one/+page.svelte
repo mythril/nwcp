@@ -10,8 +10,9 @@
   import CharPoints from './CharPoints.svelte';
   import TaggedSkills from './TaggedSkills.svelte';
   import SpecialAttributes from './SpecialAttributes.svelte';
-  import { age, name, sex } from './stores';
+  import { age, name, sex, toast } from './stores';
   import Options from './Options.svelte';
+  import Toast from './Toast.svelte';
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -73,9 +74,12 @@
   </div>
   <div class="buttons">
     <Options />
-    <PlateButton>Done</PlateButton>
+    <PlateButton on:click={() => toast.show({ message: 'Not implemented yet' })}
+      >Done</PlateButton
+    >
     <PlateButton>About</PlateButton>
   </div>
+  <Toast />
 </div>
 
 <style lang="postcss">
