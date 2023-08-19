@@ -50,7 +50,6 @@
 
 {#if showDialog}
   <Portal target="#modals">
-    <div class="backdrop" />
     <div
       class="focus-grabber"
       use:grabFocus

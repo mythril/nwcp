@@ -22,19 +22,6 @@
   };
 </script>
 
-<!--
-<div class="store-debug">
-  Name: {$name}
-  Age: {$age}
-  Sex: {$sex}
-  {#each Object.values(Special) as attr}
-  {"\n  " + attr}: {$attributes[attr]}
-  {/each}
-  Traits: {$chosenTraits}
-  Tagged Skills: {$taggedSkills}
-</div>
--->
-
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
@@ -111,7 +98,6 @@
     grid-area: nas;
     display: flex;
     justify-content: center;
-    /* width: 93.75%; */
     .name {
       position: relative;
       width: 136rem;
@@ -160,13 +146,4 @@
     justify-content: stretch;
     gap: 2rem;
   }
-  /* .store-debug{
-    white-space: pre;
-    position: absolute;
-    z-index:10;
-    left:340rem;
-    top:260rem;
-    background-color:#fff;
-    width: 300rem;
-  } */
 </style>

@@ -13,6 +13,7 @@ Overall goals:
 - [ ] escape should leave a modal if it has a clean way to leave
 - [ ] Escape should bring up options menu when nothing is already open
 - [ ] Consider a real responsive design
+- [ ] consider file-save progressive enhancement
 
 ### Maybe
 

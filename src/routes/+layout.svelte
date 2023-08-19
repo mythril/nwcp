@@ -45,7 +45,11 @@
 
 <ErrorMessage />
 
-<div id="modals" />
+<div id="modals">
+  {#if $modalShown}
+    <div id="backdrop" />
+  {/if}
+</div>
 <div class="app pitted">
   <div id="planner">
     <div
@@ -60,6 +64,15 @@
 <style lang="postcss">
   #modals {
     font-family: var(--terminal-font);
+  }
+  #backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.75);
   }
   .app {
     font-family: var(--terminal-font);

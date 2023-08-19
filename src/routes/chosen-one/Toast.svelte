@@ -29,6 +29,7 @@
 <style lang="postcss">
   .toast-wrap {
     position: absolute;
+    z-index: 3;
     bottom: 50rem;
     right: 50rem;
     /* prettier-ignore */
@@ -36,24 +37,29 @@
       linear-gradient(
         0.25turn,
         #3c3c3c 0,
-        #3c3c3c 10rem,
-        transparent 10rem
+        #3c3c3c 9rem,
+        black 9rem,
+        black 10rem,
+        transparent 11rem
       ),
       linear-gradient(
         0.75turn,
         #3c3c3c 0,
-        #3c3c3c 10rem,
+        #3c3c3c 9rem,
+        black 9rem,
+        black 10rem,
         transparent 10rem
       ),
       repeating-linear-gradient(
         -45deg,
         var(--banding, hsl(60, 95.5%, 73.7%)) 0,
-        var(--banding, hsl(60, 95.5%, 73.7%)) 10rem,
+        var(--banding, hsl(60, 95.5%, 73.7%)) 9rem,
         #1c1c1c 10rem,
-        #1c1c1c 20rem
+        #1c1c1c 19rem,
+        var(--banding, hsl(60, 95.5%, 73.7%)) 20rem
       )
 ;
-    padding: 3rem;
+    padding: 3rem 5rem;
     /* prettier-ignore */
     box-shadow:
       -5rem 5rem 5rem black,
