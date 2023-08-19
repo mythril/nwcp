@@ -44,7 +44,7 @@
   };
 </script>
 
-<Modal bind:this={modal}>
+<Modal on:hide bind:this={modal}>
   <Portal target="#planner">
     <div class="centering">
       <div

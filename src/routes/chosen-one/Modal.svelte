@@ -1,8 +1,10 @@
 <script lang="ts">
   import { grabFocus } from '$lib/actions/grabFocus';
   import Portal from '$lib/components/Portal.svelte';
-  import { tick } from 'svelte';
+  import { createEventDispatcher, tick } from 'svelte';
   import { modalShown } from './stores';
+
+  const dispatch = createEventDispatcher();
 
   let showDialog = false;
   export let cancelListener = () => {
@@ -43,7 +45,9 @@
 
   export const hide = () => {
     $modalShown = false;
-    showDialog = false;
+    if (dispatch('hide')) {
+      showDialog = false;
+    }
   };
 </script>
 

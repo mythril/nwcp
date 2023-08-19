@@ -18,6 +18,7 @@
 <Menu
   showBolts={false}
   class="difficultyMenu pitted"
+  on:hide
   bind:this={menu}
 >
   <div class="difficulty pitted">
