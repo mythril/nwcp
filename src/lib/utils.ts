@@ -1,5 +1,5 @@
-import clickFile from '$lib/sounds/click2.wav';
-import bonkFile from '$lib/sounds/bonk.wav';
+import clickFile from '$lib/sounds/click2.wav?inline';
+import bonkFile from '$lib/sounds/bonk.wav?inline';
 
 export const Raise = (message: string): never => {
   throw new Error(message);
