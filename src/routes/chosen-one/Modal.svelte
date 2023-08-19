@@ -17,6 +17,7 @@
     $modalShown = false;
     showDialog = false;
   };
+  
   export const commit = () => {
     if (commitListener()) {
       $modalShown = false;

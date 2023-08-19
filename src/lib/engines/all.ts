@@ -1,7 +1,7 @@
-export const Game = {
-  Courier: 'The Courier',
-  VaultDweller: 'VaultDweller',
+export const Role = {
+  Courier: 'Courier',
+  VaultDweller: 'Vault Dweller',
   ChosenOne: 'Chosen One',
   LoneWanderer: 'Lone Wanderer',
-  Warrior: 'The Warrior'
+  Warrior: 'Warrior'
 } as const;

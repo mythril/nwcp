@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Game } from '$lib/engines/all';
+  import { Role } from '$lib/engines/all';
   import { Special, Difficulty, Sex } from '$lib/engines/ChosenOne/main';
   import FlatButton from './Buttons/FlatButton.svelte';
   import DifficultySetting from './DifficultySetting.svelte';
@@ -40,7 +40,7 @@
     }
     saveLoad.loadFromChar({
       age: 25,
-      game: Game.ChosenOne,
+      role: Role.ChosenOne,
       difficulty: Difficulty.Normal,
       name: '',
       sex: Sex.Male,

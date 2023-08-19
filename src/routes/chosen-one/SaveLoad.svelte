@@ -1,6 +1,6 @@
 <script lang="ts">
   import { charToBase64, packer } from '$lib/codec';
-  import { Game } from '$lib/engines/all';
+  import { Role } from '$lib/engines/all';
   import FlatButton from './Buttons/FlatButton.svelte';
   import Menu from './Menu.svelte';
   import {
@@ -28,7 +28,7 @@
 
   export const show = () => {
     char = {
-      game: Game.ChosenOne,
+      role: Role.ChosenOne,
       difficulty: $difficulty,
       name: $name,
       age: $age,
@@ -46,7 +46,7 @@
   const saveToDisk = () => {
     const packed = packer(char);
     const blob = new Blob([packed], { type: 'application/octet-stream' });
-    const file = new File([blob], (char.name || char.game) + '.nwcp');
+    const file = new File([blob], (char.name || char.role) + '.nwcp');
     const url = URL.createObjectURL(file);
     const a = document.createElement('a');
     a.setAttribute('download', file.name);

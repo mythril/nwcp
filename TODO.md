@@ -1,4 +1,4 @@
-# VaultDweller Character Planner
+# Nuclear Wasteland Character Planner
 
 Overall goals:
 
@@ -20,7 +20,7 @@ Overall goals:
 - [ ] improve flat menu look
 - [ ] Figure out a way to show currently hidden derived stats
 - [ ] Improve paper background (has issues with resizing?)
-- [ ] Release source when the "Chosen One" planner is in a "better than nothing" state and some collaboration guidelines are in place
+- [ ] Release source when the planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Extract push button and make it resizable
 - [ ] Include VB sprites?
 - [ ] Create an intro anim

@@ -8,7 +8,7 @@ import {
 } from '$lib/engines/ChosenOne/main';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
-import { Game } from '$lib/engines/all';
+import { Role } from '$lib/engines/all';
 import {
   OrderedDescriptors,
   base64ToChar,
@@ -38,7 +38,7 @@ const charGen = (): UnfinishedChar => {
   const sex = faker.person.sex();
 
   return {
-    game: Game.ChosenOne,
+    role: Role.ChosenOne,
     difficulty: faker.helpers.arrayElement(Object.values(Difficulty)),
     name: faker.person.firstName(sex === 'female' ? 'female' : 'male'),
     age: faker.number.int({ min: 16, max: 35 }),

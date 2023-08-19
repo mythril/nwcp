@@ -1,4 +1,4 @@
-import { Game } from '$lib/engines/all';
+import { Role } from '$lib/engines/all';
 import {
   Sex,
   Trait,
@@ -14,36 +14,36 @@ export class CodecError extends Error {}
 
 const currentVersion = 1; // increment on incompatible updates
 
-const gameToInt = (game: ObjectValues<typeof Game> & {}) => {
-  switch (game) {
+const roleToInt = (role: ObjectValues<typeof Role> & {}) => {
+  switch (role) {
     // zero is an error on purpose
-    case Game.VaultDweller:
+    case Role.VaultDweller:
       return 1;
-    case Game.ChosenOne:
+    case Role.ChosenOne:
       return 2;
-    case Game.LoneWanderer:
+    case Role.LoneWanderer:
       return 3;
-    case Game.Warrior:
+    case Role.Warrior:
       return 30;
-    case Game.Courier:
+    case Role.Courier:
       return 31;
     default:
       throw new CodecError('Unrecognized game.');
   }
 };
-const intToGame = (packed: number) => {
+const intToRole = (packed: number) => {
   switch (packed) {
     // zero is an error on purpose
     case 1:
-      return Game.VaultDweller;
+      return Role.VaultDweller;
     case 2:
-      return Game.ChosenOne;
+      return Role.ChosenOne;
     case 3:
-      return Game.LoneWanderer;
+      return Role.LoneWanderer;
     case 30:
-      return Game.Warrior;
+      return Role.Warrior;
     case 31:
-      return Game.Courier;
+      return Role.Courier;
     default:
       throw new CodecError('Unrecognized game.');
   }
@@ -120,20 +120,20 @@ type PackingDescriptor = FixedDescriptor | VariableDescriptor;
 export let OrderedDescriptors: PackingDescriptor[] = [];
 /* eslint-enable prefer-const */
 
-const gameDescriptor: FixedDescriptor = {
-  name: 'game',
+const roleDescriptor: FixedDescriptor = {
+  name: 'role',
   // in case they decide to make 31 games
   bits: 5,
-  encoder: () => gameToInt('Chosen One'),
+  encoder: () => roleToInt(Role.ChosenOne),
   decoder: (data: number, char: UnfinishedChar) => {
-    char.game = intToGame(data);
-    if (char.game !== Game.ChosenOne) {
+    char.role = intToRole(data);
+    if (char.role !== Role.ChosenOne) {
       throw new CodecError('This game is not yet supported.');
     }
   }
 };
 
-OrderedDescriptors.push(gameDescriptor);
+OrderedDescriptors.push(roleDescriptor);
 
 const versionDescriptor: FixedDescriptor = {
   name: 'version',
@@ -358,7 +358,7 @@ export function unpacker(packed: Uint8Array) {
   debug.disable();
   const mut: UnfinishedChar = {
     name: '',
-    game: Game.VaultDweller,
+    role: Role.VaultDweller,
     difficulty: Difficulty.Normal,
     tagged: [undefined, undefined, undefined],
     traits: [undefined, undefined],
