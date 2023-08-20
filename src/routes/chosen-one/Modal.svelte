@@ -8,13 +8,6 @@
 
   let showDialog = false;
 
-  export const commit = () => {
-    if (dispatch('modal-commit')) {
-      $modalShown = false;
-      showDialog = false;
-    }
-  };
-
   function cancelHandler(event: KeyboardEvent) {
     switch (event.code) {
       case 'Escape':
@@ -30,15 +23,23 @@
   export const show = async () => {
     $modalShown = true;
     showDialog = true;
-    return tick();
+    return await tick();
   };
 
-  export const hide = () => {
-    $modalShown = false;
+  export const hide = async () => {
     if (dispatch('modal-hide')) {
+      $modalShown = false;
       showDialog = false;
     }
+    return await tick();
   };
+
+  export const commit = async () => {
+    if (dispatch('modal-commit')) {
+      return await hide();
+    }
+  };
+
 </script>
 
 <svelte:body on:keydown={cancelHandler} />

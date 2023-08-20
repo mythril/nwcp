@@ -70,12 +70,12 @@
 </Menu>
 
 <DifficultySetting
-  on:hide={openMenu}
+  on:menu-close={openMenu}
   bind:this={diffMenu}
 />
 
 <SaveLoad
-  on:hide={openMenu}
+  on:modal-commit={openMenu}
   bind:this={saveLoad}
 />
 

@@ -18,7 +18,10 @@
 <Menu
   showBolts={false}
   class="difficultyMenu pitted"
-  on:hide
+  on:modal-commit
+  on:modal-hide
+  on:modal-cancel
+  on:menu-close
   bind:this={menu}
 >
   <div class="difficulty pitted">

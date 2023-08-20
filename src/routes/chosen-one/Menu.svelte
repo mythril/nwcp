@@ -25,12 +25,11 @@
   };
 
   export const hide = async () => {
-    if (!dispatch('menu-close')) {
-      return;
-    }
-    if (modal) {
-      modal.hide();
-      shown = false;
+    if (dispatch('menu-close')) {
+      if (modal) {
+        await modal.hide();
+        shown = false;
+      }
     }
   };
 
@@ -44,7 +43,10 @@
 </script>
 
 <Modal
-  on:hide
+  on:modal-hide
+  on:modal-commit
+  on:modal-cancel
+  on:menu-close
   bind:this={modal}
 >
   <Portal target="#planner">

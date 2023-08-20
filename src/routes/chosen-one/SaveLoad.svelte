@@ -145,13 +145,17 @@
 </script>
 
 <Menu
-  on:hide
+  on:menu-close
+  on:modal-cancel
+  on:modal-commit
+  on:modal-hide
   bind:this={menu}
 >
   <FlatButton on:click={saveToDisk}>Save To Disk</FlatButton>
   <FlatButton
     type="link"
     href={'#' + charHash}
+    on:click={menu.hide}
     target="_blank">Open link to char</FlatButton
   >
   {#if navigator.clipboard}
