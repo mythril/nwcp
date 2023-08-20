@@ -144,7 +144,10 @@
   }
 </script>
 
-<Menu on:hide bind:this={menu}>
+<Menu
+  on:hide
+  bind:this={menu}
+>
   <FlatButton on:click={saveToDisk}>Save To Disk</FlatButton>
   <FlatButton
     type="link"

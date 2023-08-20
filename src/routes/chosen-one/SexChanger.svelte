@@ -38,7 +38,7 @@
   <MiniDialog
     bind:this={dlg}
     commitListener={commit}
-    cancelListener={cancel}
+    on:cancel={cancel}
   >
     <div class="buttons">
       <SlateButton

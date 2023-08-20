@@ -7,17 +7,8 @@
   const dispatch = createEventDispatcher();
 
   let showDialog = false;
-  export let cancelListener = () => {
-    //intentional
-  };
   export let commitListener = () => {
     return true;
-  };
-
-  let cancel = () => {
-    cancelListener();
-    $modalShown = false;
-    showDialog = false;
   };
 
   export const commit = () => {
@@ -30,7 +21,9 @@
   function cancelHandler(event: KeyboardEvent) {
     switch (event.code) {
       case 'Escape':
-        cancel();
+        if (dispatch('cancel')) {
+          hide();
+        }
         return;
       default:
         return;

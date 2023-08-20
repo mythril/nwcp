@@ -66,7 +66,7 @@
   <MiniDialog
     bind:this={dlg}
     commitListener={commit}
-    cancelListener={cancel}
+    on:cancel={cancel}
   >
     <div
       on:wheel={wheel}

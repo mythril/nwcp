@@ -9,8 +9,7 @@ Overall goals:
 
 - [ ] Add an about page
 - [ ] add a better confirm dialog
-- [ ] add a modal stack manager
-- [ ] escape should leave a modal if it has a clean way to leave
+- [ ] Escape should leave a modal if it has a clean way to leave
 - [ ] Escape should bring up options menu when nothing is already open
 - [ ] Consider a real responsive design
 - [ ] consider file-save progressive enhancement
@@ -41,6 +40,7 @@ Overall goals:
 
 ### Done
 
+- [x] add a modal stack manager (sort of, added an event to solve the issue)
 - [x] Restore done button with toast to let user know nothing implemented
 - [x] "Level button" style toast should appear with some info
 - [x] Save / load should be merged into options menu

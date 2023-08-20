@@ -47,7 +47,7 @@
   <MiniDialog
     bind:this={dlg}
     commitListener={commit}
-    cancelListener={cancel}
+    on:cancel={cancel}
   >
     <BigCaret
       class="input-name sharp-inset-border"

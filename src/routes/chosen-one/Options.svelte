@@ -69,9 +69,15 @@
   <FlatButton on:click={resetChar}>Erase</FlatButton>
 </Menu>
 
-<DifficultySetting on:hide={openMenu} bind:this={diffMenu} />
+<DifficultySetting
+  on:hide={openMenu}
+  bind:this={diffMenu}
+/>
 
-<SaveLoad on:hide={openMenu} bind:this={saveLoad} />
+<SaveLoad
+  on:hide={openMenu}
+  bind:this={saveLoad}
+/>
 
 <PlateButton
   on:click={openMenu}

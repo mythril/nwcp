@@ -5,9 +5,6 @@
   let dialog: HTMLElement;
   let modal: Modal;
 
-  export let cancelListener = () => {
-    //intentional
-  };
   export let commitListener = () => {
     return true;
   };
@@ -30,7 +27,7 @@
 
 <div use:anchor={dialog} />
 <Modal
-  {cancelListener}
+  on:cancel
   {commitListener}
   bind:this={modal}
 >
