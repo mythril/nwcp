@@ -37,8 +37,8 @@
 <div class="root">
   <MiniDialog
     bind:this={dlg}
-    on:commit={commit}
-    on:cancel={cancel}
+    on:modal-commit={commit}
+    on:modal-cancel={cancel}
   >
     <div class="buttons">
       <SlateButton

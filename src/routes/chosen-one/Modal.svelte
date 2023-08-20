@@ -9,7 +9,7 @@
   let showDialog = false;
 
   export const commit = () => {
-    if (dispatch('commit')) {
+    if (dispatch('modal-commit')) {
       $modalShown = false;
       showDialog = false;
     }
@@ -18,7 +18,7 @@
   function cancelHandler(event: KeyboardEvent) {
     switch (event.code) {
       case 'Escape':
-        if (dispatch('cancel')) {
+        if (dispatch('modal-cancel')) {
           hide();
         }
         return;
@@ -35,7 +35,7 @@
 
   export const hide = () => {
     $modalShown = false;
-    if (dispatch('hide')) {
+    if (dispatch('modal-hide')) {
       showDialog = false;
     }
   };

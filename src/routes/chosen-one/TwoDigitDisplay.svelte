@@ -15,7 +15,7 @@
     realMax = Math.min(Math.round(max), 99);
   }
 
-  export let bonkDown = () => {
+  export const bonkDown = () => {
     onesDigitDisplay.bonkDown();
   };
 

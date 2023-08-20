@@ -3,8 +3,11 @@
   import FlatButton from './Buttons/FlatButton.svelte';
   import Bolthead from './Bolthead.svelte';
   import Portal from '$lib/components/Portal.svelte';
+  import { createEventDispatcher } from 'svelte';
   let menu: HTMLElement;
   let modal: Modal;
+
+  const dispatch = createEventDispatcher();
 
   export let showBolts = true;
   let shown = false;
@@ -21,12 +24,8 @@
     }
   };
 
-  export let onClose = () => {
-    return true;
-  };
-
   export const hide = async () => {
-    if (!onClose()) {
+    if (!dispatch('menu-close')) {
       return;
     }
     if (modal) {

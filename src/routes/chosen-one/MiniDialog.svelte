@@ -24,8 +24,9 @@
 
 <div use:anchor={dialog} />
 <Modal
-  on:cancel
-  on:commit
+  on:modal-cancel
+  on:modal-commit
+  on:modal-close
   bind:this={modal}
 >
   <div

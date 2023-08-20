@@ -19,7 +19,7 @@
 {#if $errorMessage.length > 0}
   <Menu
     bind:this={messageBox}
-    onClose={clearMessage}
+    on:menu-close={clearMessage}
   >
     <div class="error terminal-font-defaults">
       {$errorMessage}
