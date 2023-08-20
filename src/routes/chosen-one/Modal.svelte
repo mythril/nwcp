@@ -7,12 +7,9 @@
   const dispatch = createEventDispatcher();
 
   let showDialog = false;
-  export let commitListener = () => {
-    return true;
-  };
 
   export const commit = () => {
-    if (commitListener()) {
+    if (dispatch('commit')) {
       $modalShown = false;
       showDialog = false;
     }

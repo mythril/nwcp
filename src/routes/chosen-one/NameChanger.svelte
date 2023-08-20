@@ -46,7 +46,7 @@
 <div class="root">
   <MiniDialog
     bind:this={dlg}
-    commitListener={commit}
+    on:commit={commit}
     on:cancel={cancel}
   >
     <BigCaret

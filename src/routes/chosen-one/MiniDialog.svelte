@@ -5,9 +5,6 @@
   let dialog: HTMLElement;
   let modal: Modal;
 
-  export let commitListener = () => {
-    return true;
-  };
   export const show = async () => {
     if (modal) {
       await modal.show();
@@ -28,7 +25,7 @@
 <div use:anchor={dialog} />
 <Modal
   on:cancel
-  {commitListener}
+  on:commit
   bind:this={modal}
 >
   <div
