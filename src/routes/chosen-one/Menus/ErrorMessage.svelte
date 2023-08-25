@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Menu from './Menu.svelte';
-  import { errorMessage } from './stores';
+  import Menu from '../Widgets/Menu.svelte';
+  import { errorMessage } from '../stores';
 
   const clearMessage = () => {
     $errorMessage = '';

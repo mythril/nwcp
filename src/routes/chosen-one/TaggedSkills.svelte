@@ -3,7 +3,7 @@
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
-  import TwoDigitDisplay from './TwoDigitDisplay.svelte';
+  import TwoDigitDisplay from './Widgets/TwoDigitDisplay.svelte';
   import { baseSkills, taggedSkills, toast } from './stores';
 
   let skills = objectKeys(Skill);

@@ -1,15 +1,16 @@
 <script lang="ts">
   import '../app.postcss';
   import { modalShown } from './chosen-one/stores';
-  import Overlay from './chosen-one/Overlay.svelte';
+  import Overlay from './chosen-one/ImageGenerators/Overlay.svelte';
   import Scaler from './chosen-one/Scaler.svelte';
-  import WornText from './chosen-one/WornText.svelte';
   import { dev } from '$app/environment';
   import { onMount } from 'svelte';
   import debug from '$lib/debug';
-  import ErrorMessage from './chosen-one/ErrorMessage.svelte';
-  import Pitted from './chosen-one/Pitted.svelte';
-  import BrightnessVariance from './chosen-one/BrightnessVariance.svelte';
+  import ErrorMessage from './chosen-one/Menus/ErrorMessage.svelte';
+  import ModalManager from './chosen-one/Modals/ModalManager.svelte';
+  import WornText from './chosen-one/ImageGenerators/WornText.svelte';
+  import Pitted from './chosen-one/ImageGenerators/Pitted.svelte';
+  import BrightnessVariance from './chosen-one/ImageGenerators/BrightnessVariance.svelte';
 
   async function bootUp() {
     if ('serviceWorker' in navigator) {
@@ -45,11 +46,8 @@
 
 <ErrorMessage />
 
-<div id="modals">
-  {#if $modalShown}
-    <div id="backdrop" />
-  {/if}
-</div>
+<ModalManager />
+
 <div class="app pitted">
   <div id="planner">
     <div
@@ -62,18 +60,6 @@
 </div>
 
 <style lang="postcss">
-  #modals {
-    font-family: var(--terminal-font);
-  }
-  #backdrop {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.75);
-  }
   .app {
     font-family: var(--terminal-font);
     background-color: hsl(var(--bg));

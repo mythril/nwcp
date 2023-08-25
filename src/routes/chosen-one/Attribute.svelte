@@ -1,7 +1,7 @@
 <script lang="ts">
   import { clickSound, createDebouncer } from '$lib/utils';
   import { createEventDispatcher } from 'svelte';
-  import TwoDigitDisplay from './TwoDigitDisplay.svelte';
+  import TwoDigitDisplay from './Widgets/TwoDigitDisplay.svelte';
 
   export let label: string;
   export let value: number;

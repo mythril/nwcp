@@ -1,12 +1,10 @@
 <script lang="ts">
   import { grabFocus } from '$lib/actions/grabFocus';
-  import Portal from '$lib/components/Portal.svelte';
   import { createEventDispatcher, tick } from 'svelte';
-  import { modalShown } from './stores';
+  import { modalShown } from '../stores';
+  import Portal from './Portal.svelte';
 
   const dispatch = createEventDispatcher();
-
-  let showDialog = false;
 
   function cancelHandler(event: KeyboardEvent) {
     switch (event.code) {
@@ -22,14 +20,12 @@
 
   export const show = async () => {
     $modalShown = true;
-    showDialog = true;
     return await tick();
   };
 
   export const hide = async () => {
     if (dispatch('modal-hide')) {
       $modalShown = false;
-      showDialog = false;
     }
     return await tick();
   };
@@ -39,21 +35,18 @@
       return await hide();
     }
   };
-
 </script>
 
 <svelte:body on:keydown={cancelHandler} />
 
-{#if showDialog}
-  <Portal target="#modals">
-    <div
-      class="focus-grabber"
-      use:grabFocus
-    >
-      <slot />
-    </div>
-  </Portal>
-{/if}
+<Portal target="#modals">
+  <div
+    class="focus-grabber"
+    use:grabFocus
+  >
+    <slot />
+  </div>
+</Portal>
 
 <style lang="postcss">
   .focus-grabber {

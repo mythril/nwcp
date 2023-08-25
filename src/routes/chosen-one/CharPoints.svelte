@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Bolthead from './Bolthead.svelte';
+  import Bolthead from './Widgets/Bolthead.svelte';
   import HelpSource from './HelpSource.svelte';
-  import TwoDigitDisplay from './TwoDigitDisplay.svelte';
+  import TwoDigitDisplay from './Widgets/TwoDigitDisplay.svelte';
   import { charPointsRemaining, toast } from './stores';
 
   let tdd: TwoDigitDisplay;

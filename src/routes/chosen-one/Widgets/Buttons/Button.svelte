@@ -7,6 +7,8 @@
 {#if type === 'button'}
   <button
     on:click
+    on:mouseover
+    on:focus
     class={'btn ' + ($$props.class || '')}
   >
     <slot />
@@ -16,6 +18,8 @@
     {href}
     {target}
     on:click
+    on:mouseover
+    on:focus
     class={'btn ' + ($$props.class || '')}
   >
     <slot />

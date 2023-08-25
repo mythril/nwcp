@@ -1,4 +1,4 @@
-import { writable, derived } from 'svelte/store';
+import { writable, derived, get } from 'svelte/store';
 import { CharacterHelpLookup } from '$lib/engines/help';
 import { PerkHelpLookup } from '$lib/engines/perks';
 import { objectKeys } from 'tsafe/objectKeys';
@@ -16,9 +16,11 @@ import {
   DerivedStat,
   Difficulty,
   PassiveSkill,
-  ActiveSkill
+  ActiveSkill,
+  type UnfinishedChar
 } from '$lib/engines/ChosenOne/main';
 import type { ObjectValues } from '$lib/typeUtils';
+import { Role } from '$lib/engines/all';
 const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };
 
 export const helpSubject = writable<keyof typeof HelpLookup>('Strength');
@@ -312,3 +314,57 @@ function createToaster() {
 }
 
 export const toast = createToaster();
+
+
+export const loadFromChar = (char: UnfinishedChar) => {
+  name.set(char.name);
+  age.set(char.age);
+  sex.set(char.sex);
+  //$attributes
+  let temp: Attributes = {
+    [Special.Strength]: 0,
+    [Special.Perception]: 0,
+    [Special.Endurance]: 0,
+    [Special.Charisma]: 0,
+    [Special.Intelligence]: 0,
+    [Special.Agility]: 0,
+    [Special.Luck]: 0
+  }; 
+  for (let key of objectKeys(get(attributes))) {
+    temp[key] = char.attributes[key];
+  }
+  attributes.set(temp);
+  const isTrait = (
+    item: ObjectValues<typeof Trait> | undefined
+  ): item is ObjectValues<typeof Trait> => {
+    return !!item;
+  };
+  chosenTraits.set(char.traits.filter(isTrait));
+  const isTaggedSkill = (
+    item: ObjectValues<typeof Skill> | undefined
+  ): item is ObjectValues<typeof Skill> => {
+    return !!item;
+  };
+  taggedSkills.set(char.tagged.filter(isTaggedSkill));
+};
+
+export const resetCharacter = () => {
+  loadFromChar({
+    age: 25,
+    role: Role.ChosenOne,
+    difficulty: Difficulty.Normal,
+    name: '',
+    sex: Sex.Male,
+    tagged: [],
+    attributes: {
+      [Special.Strength]: 5,
+      [Special.Perception]: 5,
+      [Special.Endurance]: 5,
+      [Special.Charisma]: 5,
+      [Special.Intelligence]: 5,
+      [Special.Agility]: 5,
+      [Special.Luck]: 5
+    },
+    traits: []
+  });
+};

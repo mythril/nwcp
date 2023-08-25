@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
 - [ ] Add an about page
 - [ ] add a better confirm dialog
 - [ ] Escape should leave a modal if it has a clean way to leave

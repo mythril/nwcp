@@ -1,17 +1,16 @@
 <script lang="ts">
   import Help from './Help.svelte';
-  import PlateButton from './PlateButton.svelte';
-  import NameChanger from './NameChanger.svelte';
-  import AgeChanger from './AgeChanger.svelte';
-  import SexChanger from './SexChanger.svelte';
+  import PlateButton from './Widgets/Buttons/PlateButton.svelte';
+  import NameChanger from './Modals/NameChanger.svelte';
+  import AgeChanger from './Modals/AgeChanger.svelte';
+  import SexChanger from './Modals/SexChanger.svelte';
   import OptionalTraits from './OptionalTraits.svelte';
   import Health from './Health.svelte';
   import DerivedStats from './DerivedStats.svelte';
   import CharPoints from './CharPoints.svelte';
   import TaggedSkills from './TaggedSkills.svelte';
   import SpecialAttributes from './SpecialAttributes.svelte';
-  import { age, name, sex, toast } from './stores';
-  import Options from './Options.svelte';
+  import { age, modals, name, sex, toast } from './stores';
   import Toast from './Toast.svelte';
 
   let charPoints: CharPoints;
@@ -60,7 +59,10 @@
     <Help />
   </div>
   <div class="buttons">
-    <Options />
+    <PlateButton
+      on:click={() => showModal('Options')}
+      >Options</PlateButton
+    >
     <PlateButton on:click={() => toast.show({ message: 'Not implemented yet' })}
       >Done</PlateButton
     >

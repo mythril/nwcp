@@ -1,6 +1,6 @@
 <script lang="ts">
   import { AilmentStatus } from '$lib/engines/ChosenOne/main';
-  import Bolthead from './Bolthead.svelte';
+  import Bolthead from './Widgets/Bolthead.svelte';
   import HelpSource from './HelpSource.svelte';
   import { maxHitPoints } from './stores';
 </script>

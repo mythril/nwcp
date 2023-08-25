@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import MiniDialog from './MiniDialog.svelte';
-  import SlateButton from './SlateButton.svelte';
-  import BigCaret from './BigCaret.svelte';
+  import MiniDialog from '../Widgets/MiniDialog.svelte';
+  import SlateButton from '../Widgets/Buttons/SlateButton.svelte';
+  import BigCaret from '../Widgets/BigCaret.svelte';
 
   export let value = '';
 

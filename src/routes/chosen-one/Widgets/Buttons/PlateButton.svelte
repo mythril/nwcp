@@ -1,6 +1,6 @@
 <script lang="ts">
   import { clickSound } from '$lib/utils';
-  import Bolthead from './Bolthead.svelte';
+  import Bolthead from '../Bolthead.svelte';
   export let pushButton = true;
   export let wornText = true;
 </script>

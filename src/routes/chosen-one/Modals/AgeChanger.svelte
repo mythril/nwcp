@@ -1,10 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import MiniDialog from './MiniDialog.svelte';
-  import SlateButton from './SlateButton.svelte';
-  import Arrow from '$lib/components/icons/Arrow.svelte';
-  import TwoDigitDisplay from './TwoDigitDisplay.svelte';
-  import PlateButton from './PlateButton.svelte';
+  import MiniDialog from '../Widgets/MiniDialog.svelte';
+  import SlateButton from '../Widgets/Buttons/SlateButton.svelte';
+  import Arrow from '../Widgets/icons/Arrow.svelte';
+  import TwoDigitDisplay from '../Widgets/TwoDigitDisplay.svelte';
+  import PlateButton from '../Widgets/Buttons/PlateButton.svelte';
   import { clickSound, createDebouncer } from '$lib/utils';
 
   export let value = 25;

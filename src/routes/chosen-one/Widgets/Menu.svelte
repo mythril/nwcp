@@ -2,44 +2,12 @@
   import Modal from './Modal.svelte';
   import FlatButton from './Buttons/FlatButton.svelte';
   import Bolthead from './Bolthead.svelte';
-  import Portal from '$lib/components/Portal.svelte';
   import { createEventDispatcher } from 'svelte';
-  let menu: HTMLElement;
-  let modal: Modal;
+  import Portal from './Portal.svelte';
 
   const dispatch = createEventDispatcher();
 
   export let showBolts = true;
-  let shown = false;
-
-  export const show = async () => {
-    if (modal) {
-      await modal.show();
-      shown = true;
-      if (!menu) {
-        return;
-      }
-
-      menu.scrollIntoView(true);
-    }
-  };
-
-  export const hide = async () => {
-    if (dispatch('menu-close')) {
-      if (modal) {
-        await modal.hide();
-        shown = false;
-      }
-    }
-  };
-
-  export const toggle = async () => {
-    if (shown) {
-      return await hide();
-    } else {
-      return await show();
-    }
-  };
 </script>
 
 <Modal
@@ -47,7 +15,6 @@
   on:modal-commit
   on:modal-cancel
   on:menu-close
-  bind:this={modal}
 >
   <Portal target="#planner">
     <div class="centering">
@@ -55,7 +22,6 @@
         role="dialog"
         class={'menu ' +
           ($$props.class || ' brightness-variance b-offset-11 default')}
-        bind:this={menu}
       >
         {#if showBolts}
           <Bolthead dir="tl" />
@@ -67,9 +33,8 @@
           <slot />
           <slot
             name="closeButton"
-            hider={hide}
           >
-            <FlatButton on:click={hide}>Done</FlatButton>
+            <FlatButton on:click={() => dispatch('menu-close')}>Done</FlatButton>
           </slot>
         </div>
       </div>

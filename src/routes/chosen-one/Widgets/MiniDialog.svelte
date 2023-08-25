@@ -1,5 +1,5 @@
 <script lang="ts">
-  import PlateButton from './PlateButton.svelte';
+  import PlateButton from './Buttons/PlateButton.svelte';
   import { anchor } from '$lib/actions/anchor';
   import Modal from './Modal.svelte';
   let dialog: HTMLElement;

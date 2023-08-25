@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import MiniDialog from './MiniDialog.svelte';
-  import SlateButton from './SlateButton.svelte';
-  import Male from '$lib/components/icons/Male.svelte';
-  import Female from '$lib/components/icons/Female.svelte';
+  import MiniDialog from '../Widgets/MiniDialog.svelte';
+  import SlateButton from '../Widgets/Buttons/SlateButton.svelte';
+  import Male from '../Widgets/icons/Male.svelte';
+  import Female from '../Widgets/icons/Female.svelte';
   import { Sex } from '$lib/engines/ChosenOne/main';
   import type { ObjectValues } from '$lib/typeUtils';
 

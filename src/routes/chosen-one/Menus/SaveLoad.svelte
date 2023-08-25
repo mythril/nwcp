@@ -1,19 +1,20 @@
 <script lang="ts">
   import { charToBase64, packer } from '$lib/codec';
   import { Role } from '$lib/engines/all';
-  import FlatButton from './Buttons/FlatButton.svelte';
-  import Menu from './Menu.svelte';
+  import FlatButton from '../Widgets/Buttons/FlatButton.svelte';
+  import Menu from '../Widgets/Menu.svelte';
   import {
     age,
     attributes,
     chosenTraits,
     difficulty,
     errorMessage,
+    loadFromChar,
     name,
     sex,
     taggedSkills,
     toast
-  } from './stores';
+  } from '../stores';
   import { onMount } from 'svelte';
   import { CodecError, base64ToChar, unpacker } from '$lib/codec';
   import type {
@@ -21,8 +22,6 @@
     Trait,
     UnfinishedChar
   } from '$lib/engines/ChosenOne/main';
-  import type { ObjectValues } from '$lib/typeUtils';
-  import { objectKeys } from 'tsafe';
   import debug from '$lib/debug';
 
   let char: UnfinishedChar;
@@ -86,28 +85,6 @@
 
   let fileInput: HTMLInputElement;
 
-  export const loadFromChar = (char: UnfinishedChar) => {
-    $name = char.name;
-    $age = char.age;
-    $sex = char.sex;
-    //$attributes
-    for (let key of objectKeys($attributes)) {
-      $attributes[key] = char.attributes[key];
-    }
-    const isTrait = (
-      item: ObjectValues<typeof Trait> | undefined
-    ): item is ObjectValues<typeof Trait> => {
-      return !!item;
-    };
-    $chosenTraits = char.traits.filter(isTrait);
-    const isTaggedSkill = (
-      item: ObjectValues<typeof Skill> | undefined
-    ): item is ObjectValues<typeof Skill> => {
-      return !!item;
-    };
-    $taggedSkills = char.tagged.filter(isTaggedSkill);
-    menu.hide();
-  };
 
   onMount(() => {
     try {

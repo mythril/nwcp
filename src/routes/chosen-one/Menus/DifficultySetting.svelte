@@ -1,18 +1,23 @@
 <script lang="ts">
   import { Difficulty } from '$lib/engines/ChosenOne/main';
-  import Bolthead from './Bolthead.svelte';
-  import Menu from './Menu.svelte';
-  import PlateButton from './PlateButton.svelte';
-  import RadialSwitch from './RadialSwitch.svelte';
-  import { difficulty } from './stores';
+  import { createEventDispatcher } from 'svelte';
+  import Bolthead from '../Widgets/Bolthead.svelte';
+  import Menu from '../Widgets/Menu.svelte';
+  import PlateButton from '../Widgets/Buttons/PlateButton.svelte';
+  import RadialSwitch from '../Widgets/RadialSwitch.svelte';
+  import { difficulty } from '../stores';
 
   let menu: Menu;
 
-  export const show = () => {
-    if (menu) {
-      menu.show();
-    }
+  const dispatch = createEventDispatcher();
+
+  export const enter = () => {
+
   };
+
+  export const leave = () => {
+
+  }
 </script>
 
 <Menu
@@ -38,8 +43,7 @@
   <PlateButton
     slot="closeButton"
     class="diffClose"
-    let:hider
-    on:click={hider}>done</PlateButton
+    on:click={() => dispatch('modal-hide')}>done</PlateButton
   >
 </Menu>
 
