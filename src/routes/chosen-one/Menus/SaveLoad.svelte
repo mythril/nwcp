@@ -43,7 +43,6 @@
     // intentional
   };
 
-
   const saveToDisk = () => {
     const packed = packer(char);
     const blob = new Blob([packed], { type: 'application/octet-stream' });

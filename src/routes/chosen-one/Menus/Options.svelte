@@ -26,7 +26,6 @@
     resetCharacter();
     dispatch('modal-hide');
   };
-
 </script>
 
 <Menu

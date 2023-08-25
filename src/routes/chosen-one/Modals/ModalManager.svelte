@@ -28,13 +28,13 @@
     Options: '../Menus/Options',
     DifficultySetting: '../Menus/DifficultySetting',
     ErrorMessage: '../Menus/ErrorMessage',
-    SaveLoad: '../Menus/SaveLoad',
+    SaveLoad: '../Menus/SaveLoad'
   } as const;
 
   export const Modals = {
     AgeChanger: '../Modals/AgeChanger',
     SexChanger: '../Modals/SexChanger',
-    NameChanger: '../Modals/NameChanger',
+    NameChanger: '../Modals/NameChanger'
   } as const;
 
   export const loadModal = async (module: string) => {
