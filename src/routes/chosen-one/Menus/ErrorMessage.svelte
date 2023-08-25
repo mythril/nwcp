@@ -1,6 +1,14 @@
+<script
+  lang="ts"
+  context="module"
+>
+  import { writable } from 'svelte/store';
+
+  export const errorMessage = writable<string>('');
+</script>
+
 <script lang="ts">
   import Menu from '../Widgets/Menu.svelte';
-  import { errorMessage } from '../stores';
 
   const clearMessage = () => {
     $errorMessage = '';
@@ -20,6 +28,7 @@
   <Menu
     bind:this={messageBox}
     on:menu-close={clearMessage}
+    on:menu-close
   >
     <div class="error terminal-font-defaults">
       {$errorMessage}

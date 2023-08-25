@@ -31,10 +31,9 @@
         {/if}
         <div class="padding-wrapper">
           <slot />
-          <slot
-            name="closeButton"
-          >
-            <FlatButton on:click={() => dispatch('menu-close')}>Done</FlatButton>
+          <slot name="closeButton">
+            <FlatButton on:click={() => dispatch('menu-close')}>Done</FlatButton
+            >
           </slot>
         </div>
       </div>

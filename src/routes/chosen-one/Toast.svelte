@@ -1,7 +1,93 @@
+<script
+  lang="ts"
+  context="module"
+>
+  import { writable } from 'svelte/store';
+
+  type Toast = {
+    message: string;
+    duration: number;
+    color: string | undefined;
+  };
+
+  const EmptyToast: Toast = {
+    message: '',
+    duration: 5000,
+    color: undefined
+  } as const;
+
+  function createToaster() {
+    const { subscribe, set } = writable<Toast>({
+      message: '',
+      duration: 5000,
+      color: undefined
+    });
+
+    // eslint-disable-next-line no-undef
+    let timer: string | number | NodeJS.Timeout | undefined;
+
+    const w = {
+      subscribe,
+      show: ({
+        message = EmptyToast.message,
+        duration = EmptyToast.duration,
+        color = EmptyToast.color
+      }: Partial<Toast>) => {
+        if (timer) {
+          clearTimeout(timer);
+          timer = undefined;
+        }
+        set({ message, duration, color });
+        timer = setTimeout(w.reset, duration);
+      },
+      error: (tst: Error | Partial<Toast>) => {
+        if (tst instanceof Error) {
+          w.show({
+            message: tst.message,
+            color: 'red'
+          });
+          return;
+        }
+        w.show({
+          ...tst,
+          color: 'red'
+        });
+      },
+      info: (tst: Partial<Toast>) => {
+        w.show({
+          ...tst,
+          color: 'blue'
+        });
+      },
+      success: (tst: Partial<Toast>) => {
+        w.show({
+          ...tst,
+          color: 'green'
+        });
+      },
+      neutral: (tst: Partial<Toast>) => {
+        w.show({
+          ...tst,
+          color: 'gray'
+        });
+      },
+      reset: () => {
+        if (timer) {
+          clearTimeout(timer);
+          timer = undefined;
+        }
+        set({ ...EmptyToast });
+      }
+    };
+    return w;
+  }
+
+  export const toast = createToaster();
+</script>
+
 <script lang="ts">
   import { quintOut } from 'svelte/easing';
   import { fly } from 'svelte/transition';
-  import { toast } from './stores';
 
   const keyHandler = (ev: KeyboardEvent) => {
     if (ev.code === 'Enter') {

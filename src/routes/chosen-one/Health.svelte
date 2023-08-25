@@ -2,7 +2,7 @@
   import { AilmentStatus } from '$lib/engines/ChosenOne/main';
   import Bolthead from './Widgets/Bolthead.svelte';
   import HelpSource from './HelpSource.svelte';
-  import { maxHitPoints } from './stores';
+  import { maxHitPoints } from './CharacterStore';
 </script>
 
 <div class="display">

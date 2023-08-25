@@ -5,19 +5,19 @@
   import Menu from '../Widgets/Menu.svelte';
   import PlateButton from '../Widgets/Buttons/PlateButton.svelte';
   import RadialSwitch from '../Widgets/RadialSwitch.svelte';
-  import { difficulty } from '../stores';
+  import { difficulty } from '../CharacterStore';
 
   let menu: Menu;
 
   const dispatch = createEventDispatcher();
 
   export const enter = () => {
-
+    // intentional
   };
 
   export const leave = () => {
-
-  }
+    // intentional
+  };
 </script>
 
 <Menu

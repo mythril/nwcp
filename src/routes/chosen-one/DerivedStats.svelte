@@ -2,7 +2,7 @@
   import { DerivedStat } from '$lib/engines/ChosenOne/main';
   import Bolthead from './Widgets/Bolthead.svelte';
   import HelpSource from './HelpSource.svelte';
-  import { derivedStatsDisplay } from './stores';
+  import { derivedStatsDisplay } from './CharacterStore';
 </script>
 
 <div class="section">

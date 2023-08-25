@@ -1,16 +1,64 @@
+<script
+  lang="ts"
+  context="module"
+>
+  import type { ComponentType, SvelteComponent } from 'svelte';
+  import { get, writable } from 'svelte/store';
+
+  export interface Mode {
+    enter(): void;
+    leave(): void;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  export type ModeProps = Record<string, any> & Mode;
+
+  export type ModalComponentInstance = SvelteComponent & Mode;
+
+  export type ModalComponentConstructor = ComponentType<ModalComponentInstance>;
+
+  export const modals = writable<ModalComponentConstructor[]>([]);
+
+  const loaded: Record<
+    string,
+    Promise<{ default: ModalComponentConstructor }>
+  > = {};
+
+  export const Menus = {
+    Options: '../Menus/Options',
+    DifficultySetting: '../Menus/DifficultySetting',
+    ErrorMessage: '../Menus/ErrorMessage',
+    SaveLoad: '../Menus/SaveLoad',
+  } as const;
+
+  export const Modals = {
+    AgeChanger: '../Modals/AgeChanger',
+    SexChanger: '../Modals/SexChanger',
+    NameChanger: '../Modals/NameChanger',
+  } as const;
+
+  export const loadModal = async (module: string) => {
+    if (!loaded[module]) {
+      loaded[module] = import('./' + module + '.svelte');
+    }
+    return loaded[module];
+  };
+
+  export const showModal = async (module: string) => {
+    console.log('show', module);
+    get(modals).push((await loadModal(module)).default);
+    modals.set(get(modals));
+  };
+</script>
+
 <script lang="ts">
-  import { SvelteComponent, afterUpdate } from 'svelte';
-  import {
-    modals,
-    type ModalComponentConstructor,
-    type ModalComponentInstance
-  } from '../stores';
+  import { afterUpdate } from 'svelte';
   let constructor: ModalComponentConstructor;
   let instance: ModalComponentInstance | undefined;
 
   constructor = $modals[$modals.length - 1];
 
-  modals.subscribe(m => {
+  modals.subscribe((m) => {
     constructor = m[m.length - 1];
   });
 
@@ -28,21 +76,6 @@
       $modals = $modals;
     }
   };
-
-  const loaded: Record<string, Promise<{default: ModalComponentConstructor}>> = {};
-
-  export const loadModal = async (module: string) => {
-    if (!loaded[module]) {
-      loaded[module] = import('./' + module + '.svelte');
-    }
-    return loaded[module];
-  };
-
-  export const showModal = async (module: string) => {
-    console.log('show', module);
-    $modals.push((await loadModal(module)).default);
-    $modals = $modals;
-  };
 </script>
 
 <div id="modals">
@@ -50,9 +83,8 @@
     <div id="backdrop" />
     <svelte:component
       this={constructor}
-      {loadModal}
-      {showModal}
       on:modal-hide={hideHandler}
+      on:menu-close={hideHandler}
       bind:this={instance}
     />
   {/if}

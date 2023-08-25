@@ -10,8 +10,9 @@
   import CharPoints from './CharPoints.svelte';
   import TaggedSkills from './TaggedSkills.svelte';
   import SpecialAttributes from './SpecialAttributes.svelte';
-  import { age, modals, name, sex, toast } from './stores';
-  import Toast from './Toast.svelte';
+  import Toast, { toast } from './Toast.svelte';
+  import { age, name, sex } from './CharacterStore';
+  import { Menus, showModal } from './Modals/ModalManager.svelte';
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -59,10 +60,7 @@
     <Help />
   </div>
   <div class="buttons">
-    <PlateButton
-      on:click={() => showModal('Options')}
-      >Options</PlateButton
-    >
+    <PlateButton on:click={() => showModal(Menus.Options)}>Options</PlateButton>
     <PlateButton on:click={() => toast.show({ message: 'Not implemented yet' })}
       >Done</PlateButton
     >

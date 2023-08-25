@@ -3,33 +3,29 @@
   import { Role } from '$lib/engines/all';
   import FlatButton from '../Widgets/Buttons/FlatButton.svelte';
   import Menu from '../Widgets/Menu.svelte';
+  import { createEventDispatcher, onMount } from 'svelte';
+  import { CodecError, base64ToChar, unpacker } from '$lib/codec';
+  import type { UnfinishedChar } from '$lib/engines/ChosenOne/main';
+  import debug from '$lib/debug';
   import {
     age,
     attributes,
     chosenTraits,
     difficulty,
-    errorMessage,
     loadFromChar,
     name,
     sex,
-    taggedSkills,
-    toast
-  } from '../stores';
-  import { onMount } from 'svelte';
-  import { CodecError, base64ToChar, unpacker } from '$lib/codec';
-  import type {
-    Skill,
-    Trait,
-    UnfinishedChar
-  } from '$lib/engines/ChosenOne/main';
-  import debug from '$lib/debug';
+    taggedSkills
+  } from '../CharacterStore';
+  import { errorMessage } from './ErrorMessage.svelte';
+  import { toast } from '../Toast.svelte';
+
+  const dispatch = createEventDispatcher();
 
   let char: UnfinishedChar;
   let charHash: string;
 
-  let menu: Menu;
-
-  export const show = () => {
+  export const enter = () => {
     char = {
       role: Role.ChosenOne,
       difficulty: $difficulty,
@@ -41,10 +37,12 @@
       traits: $chosenTraits
     };
     charHash = charToBase64(char);
-    if (menu) {
-      menu.show();
-    }
   };
+
+  export const leave = () => {
+    // intentional
+  };
+
 
   const saveToDisk = () => {
     const packed = packer(char);
@@ -61,7 +59,7 @@
       URL.revokeObjectURL(url);
       a.remove();
     }, 1000);
-    menu.hide();
+    dispatch('menu-close');
   };
 
   const copyToClipboard = async (e: MouseEvent) => {
@@ -79,12 +77,11 @@
     }
     e.preventDefault();
     e.stopPropagation();
-    menu.hide();
+    dispatch('menu-close');
     return false;
   };
 
   let fileInput: HTMLInputElement;
-
 
   onMount(() => {
     try {
@@ -126,13 +123,12 @@
   on:modal-cancel
   on:modal-commit
   on:modal-hide
-  bind:this={menu}
 >
   <FlatButton on:click={saveToDisk}>Save To Disk</FlatButton>
   <FlatButton
     type="link"
     href={'#' + charHash}
-    on:click={menu.hide}
+    on:click={() => dispatch('menu-close')}
     target="_blank">Open link to char</FlatButton
   >
   {#if navigator.clipboard}

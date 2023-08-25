@@ -1,6 +1,3 @@
-import { writable, derived, get } from 'svelte/store';
-import { CharacterHelpLookup } from '$lib/engines/help';
-import { PerkHelpLookup } from '$lib/engines/perks';
 import { objectKeys } from 'tsafe/objectKeys';
 import {
   Special,
@@ -21,18 +18,7 @@ import {
 } from '$lib/engines/ChosenOne/main';
 import type { ObjectValues } from '$lib/typeUtils';
 import { Role } from '$lib/engines/all';
-const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };
-
-export const helpSubject = writable<keyof typeof HelpLookup>('Strength');
-
-export const helpText = derived(
-  helpSubject,
-  ($subject) => HelpLookup[$subject]
-);
-
-export const errorMessage = writable<string>('');
-
-export const modalShown = writable<boolean>(false);
+import { derived, get, writable } from 'svelte/store';
 
 export const difficulty = writable<ObjectValues<typeof Difficulty> & {}>(
   Difficulty.Normal
@@ -236,92 +222,12 @@ export const derivedStatsDisplay = derived(derivedStatsReal, (derivedStats) => {
   return stats;
 });
 
-type Toast = {
-  message: string;
-  duration: number;
-  color: string | undefined;
-};
-
-const EmptyToast: Toast = {
-  message: '',
-  duration: 5000,
-  color: undefined
-} as const;
-
-function createToaster() {
-  const { subscribe, set } = writable<Toast>({
-    message: '',
-    duration: 5000,
-    color: undefined
-  });
-
-  let timer: string | number | NodeJS.Timeout | undefined;
-
-  const w = {
-    subscribe,
-    show: ({
-      message = EmptyToast.message,
-      duration = EmptyToast.duration,
-      color = EmptyToast.color
-    }: Partial<Toast>) => {
-      if (timer) {
-        clearTimeout(timer);
-        timer = undefined;
-      }
-      set({ message, duration, color });
-      timer = setTimeout(w.reset, duration);
-    },
-    error: (tst: Error | Partial<Toast>) => {
-      if (tst instanceof Error) {
-        w.show({
-          message: tst.message,
-          color: 'red'
-        });
-        return;
-      }
-      w.show({
-        ...tst,
-        color: 'red'
-      });
-    },
-    info: (tst: Partial<Toast>) => {
-      w.show({
-        ...tst,
-        color: 'blue'
-      });
-    },
-    success: (tst: Partial<Toast>) => {
-      w.show({
-        ...tst,
-        color: 'green'
-      });
-    },
-    neutral: (tst: Partial<Toast>) => {
-      w.show({
-        ...tst,
-        color: 'gray'
-      });
-    },
-    reset: () => {
-      if (timer) {
-        clearTimeout(timer);
-        timer = undefined;
-      }
-      set({ ...EmptyToast });
-    }
-  };
-  return w;
-}
-
-export const toast = createToaster();
-
-
 export const loadFromChar = (char: UnfinishedChar) => {
   name.set(char.name);
   age.set(char.age);
   sex.set(char.sex);
   //$attributes
-  let temp: Attributes = {
+  const temp: Attributes = {
     [Special.Strength]: 0,
     [Special.Perception]: 0,
     [Special.Endurance]: 0,
@@ -329,8 +235,8 @@ export const loadFromChar = (char: UnfinishedChar) => {
     [Special.Intelligence]: 0,
     [Special.Agility]: 0,
     [Special.Luck]: 0
-  }; 
-  for (let key of objectKeys(get(attributes))) {
+  };
+  for (const key of objectKeys(get(attributes))) {
     temp[key] = char.attributes[key];
   }
   attributes.set(temp);

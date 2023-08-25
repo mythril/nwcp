@@ -4,7 +4,8 @@
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
   import TwoDigitDisplay from './Widgets/TwoDigitDisplay.svelte';
-  import { baseSkills, taggedSkills, toast } from './stores';
+  import { baseSkills, taggedSkills } from './CharacterStore';
+  import { toast } from './Toast.svelte';
 
   let skills = objectKeys(Skill);
 

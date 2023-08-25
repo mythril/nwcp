@@ -1,7 +1,6 @@
 <script lang="ts">
   import { grabFocus } from '$lib/actions/grabFocus';
   import { createEventDispatcher, tick } from 'svelte';
-  import { modalShown } from '../stores';
   import Portal from './Portal.svelte';
 
   const dispatch = createEventDispatcher();
@@ -19,15 +18,11 @@
   }
 
   export const show = async () => {
-    $modalShown = true;
     return await tick();
   };
 
   export const hide = async () => {
-    if (dispatch('modal-hide')) {
-      $modalShown = false;
-    }
-    return await tick();
+    dispatch('modal-hide');
   };
 
   export const commit = async () => {

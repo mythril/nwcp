@@ -2,19 +2,16 @@
   import { createEventDispatcher } from 'svelte';
   import FlatButton from '../Widgets/Buttons/FlatButton.svelte';
   import Menu from '../Widgets/Menu.svelte';
-  import { resetCharacter } from '../stores';
+  import { resetCharacter } from '../CharacterStore';
+  import { Menus, showModal } from '../Modals/ModalManager.svelte';
 
   const dispatch = createEventDispatcher();
 
-  export const enter = (): void => {};
-
-  export const leave = (): void => {};
-
-  export let showModal = (module: string) => {
+  export const enter = () => {
     // intentional
   };
 
-  export let loadModal = (module: string) => {
+  export const leave = () => {
     // intentional
   };
 
@@ -30,16 +27,15 @@
     dispatch('modal-hide');
   };
 
-  let optionsMenu: Menu;
 </script>
 
 <Menu
-  bind:this={optionsMenu}
   on:modal-hide
+  on:menu-close
 >
-  <FlatButton on:click={() => showModal('DifficultySetting')}
+  <FlatButton on:click={() => showModal(Menus.DifficultySetting)}
     >Preferences</FlatButton
   >
-  <FlatButton on:click={() => showModal('SaveLoad')}>Save/Load</FlatButton>
+  <FlatButton on:click={() => showModal(Menus.SaveLoad)}>Save/Load</FlatButton>
   <FlatButton on:click={resetChar}>Erase</FlatButton>
 </Menu>
