@@ -5,11 +5,8 @@
   let dialog: HTMLElement;
 
   import { createEventDispatcher } from 'svelte';
-  import {
-    CancelableEvents,
-    type CancelableEventsSignature
-  } from '../cancelable';
-  const dispatch = createEventDispatcher<CancelableEventsSignature>();
+  import { DataEvents, type DataEventsSignature } from '../DataEvents';
+  const dispatch = createEventDispatcher<DataEventsSignature>();
 
   export const enter = async () => {
     if (dialog) {
@@ -20,8 +17,8 @@
 
 <div use:anchor={dialog} />
 <Modal
-  on:cancelableCommit
-  on:cancelableCancel
+  on:dataCancel
+  on:dataCommit
   on:navBack
   on:navExit
 >
@@ -38,8 +35,7 @@
       <div class="button">
         <PlateButton
           class="btn-done"
-          on:click={() => dispatch(CancelableEvents.cancelableCommit)}
-          >Done</PlateButton
+          on:click={() => dispatch(DataEvents.dataCommit)}>Done</PlateButton
         >
       </div>
     </div>

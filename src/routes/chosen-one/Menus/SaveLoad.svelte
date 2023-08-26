@@ -123,8 +123,8 @@
 </script>
 
 <Menu
-  on:cancelableCommit
-  on:cancelableCancel
+  on:dataCommit
+  on:dataCancel
   on:navBack
   on:navExit
 >

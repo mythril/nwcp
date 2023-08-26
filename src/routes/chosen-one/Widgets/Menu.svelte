@@ -15,8 +15,8 @@
 </script>
 
 <Modal
-  on:cancelableCommit
-  on:cancelableCancel
+  on:dataCancel
+  on:dataCommit
   on:navBack
   on:navExit
 >

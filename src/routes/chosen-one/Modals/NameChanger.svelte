@@ -46,8 +46,8 @@
 
 <div class="root">
   <MiniDialog
-    on:cancelableCommit={commit}
-    on:cancelableCancel={cancel}
+    on:dataCommit={commit}
+    on:dataCancel={cancel}
     on:navBack
     on:navExit
   >

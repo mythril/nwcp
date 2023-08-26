@@ -40,6 +40,7 @@
   export const Modals = {
     DifficultySetting: ['Modals', 'DifficultySetting'],
     ErrorMessage: ['Modals', 'ErrorMessage'],
+    ErasePrompt: ['Modals', 'ErasePrompt'],
     AgeChanger: ['Modals', 'AgeChanger'],
     SexChanger: ['Modals', 'SexChanger'],
     NameChanger: ['Modals', 'NameChanger']

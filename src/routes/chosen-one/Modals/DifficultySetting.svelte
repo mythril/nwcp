@@ -27,8 +27,8 @@
 <Menu
   showBolts={false}
   class="difficultyMenu pitted"
-  on:cancelableCancel
-  on:cancelableCommit
+  on:dataCancel
+  on:dataCommit
   on:navExit
   on:navBack
   bind:this={menu}
