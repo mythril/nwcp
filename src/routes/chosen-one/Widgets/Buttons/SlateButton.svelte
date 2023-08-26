@@ -46,10 +46,10 @@
   }
   :global(.slate-button.checked),
   :global(.slate-button:active) {
-      filter: saturate(0.7) brightness(0.7);
-      /* prettier-ignore */
-      box-shadow:
+    filter: saturate(0.7) brightness(0.7);
+    /* prettier-ignore */
+    box-shadow:
         var(--slb-light-source-clear),
         var(--sunken);
-    }
+  }
 </style>

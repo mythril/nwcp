@@ -23,21 +23,30 @@
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
-      <ModalButton type="slate" modal={Modals.NameChanger}>
+      <ModalButton
+        type="slate"
+        modal={Modals.NameChanger}
+      >
         <div class="worn-text">
           {$name || 'none'}
         </div>
       </ModalButton>
     </div>
     <div class="age">
-      <ModalButton type="slate" modal={Modals.AgeChanger}>
+      <ModalButton
+        type="slate"
+        modal={Modals.AgeChanger}
+      >
         <div class="worn-text">
           {$age}
         </div>
       </ModalButton>
     </div>
     <div class="sex">
-      <ModalButton type="slate" modal={Modals.SexChanger}>
+      <ModalButton
+        type="slate"
+        modal={Modals.SexChanger}
+      >
         <div class="worn-text">
           {$sex}
         </div>
@@ -70,7 +79,10 @@
     <Help />
   </div>
   <div class="buttons">
-    <ModalButton type="plate" modal={Menus.Options}>Options</ModalButton>
+    <ModalButton
+      type="plate"
+      modal={Menus.Options}>Options</ModalButton
+    >
     <PlateButton on:click={() => toast.show({ message: 'Not implemented yet' })}
       >Done</PlateButton
     >

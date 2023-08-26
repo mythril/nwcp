@@ -5,10 +5,7 @@
   import { dev } from '$app/environment';
   import { onMount } from 'svelte';
   import debug from '$lib/debug';
-  import ErrorMessage from './chosen-one/Modals/ErrorMessage.svelte';
-  import ModalManager, {
-    modals
-  } from './chosen-one/ModalManager.svelte';
+  import ModalManager, { modals } from './chosen-one/ModalManager.svelte';
   import WornText from './chosen-one/ImageGenerators/WornText.svelte';
   import Pitted from './chosen-one/ImageGenerators/Pitted.svelte';
   import BrightnessVariance from './chosen-one/ImageGenerators/BrightnessVariance.svelte';
@@ -44,8 +41,6 @@
 <Pitted />
 
 <BrightnessVariance />
-
-<ErrorMessage />
 
 <ModalManager />
 

@@ -2,26 +2,28 @@
   import PlateButton from './Buttons/PlateButton.svelte';
   import { anchor } from '$lib/actions/anchor';
   import Modal from './Modal.svelte';
-  import { createEventDispatcher } from 'svelte';
   let dialog: HTMLElement;
-  let modal: Modal;
 
-  const dispatch = createEventDispatcher();
+  import { createEventDispatcher } from 'svelte';
+  import {
+    CancelableEvents,
+    type CancelableEventsSignature
+  } from '../cancelable';
+  const dispatch = createEventDispatcher<CancelableEventsSignature>();
 
   export const enter = async () => {
     if (dialog) {
       dialog.scrollIntoView(true);
     }
   };
-
 </script>
 
 <div use:anchor={dialog} />
 <Modal
-  on:modal-cancel
-  on:modal-commit
-  on:modal-hide
-  bind:this={modal}
+  on:cancelableCommit
+  on:cancelableCancel
+  on:navBack
+  on:navExit
 >
   <div
     role="dialog"
@@ -36,7 +38,8 @@
       <div class="button">
         <PlateButton
           class="btn-done"
-          on:click={() => dispatch('modal-commit')}>Done</PlateButton
+          on:click={() => dispatch(CancelableEvents.cancelableCommit)}
+          >Done</PlateButton
         >
       </div>
     </div>

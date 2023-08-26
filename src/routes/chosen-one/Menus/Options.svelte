@@ -1,11 +1,15 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import FlatButton from '../Widgets/Buttons/FlatButton.svelte';
   import Menu from '../Widgets/Menu.svelte';
   import { resetCharacter } from '../CharacterStore';
   import { Menus, Modals, showModal } from '../ModalManager.svelte';
 
-  const dispatch = createEventDispatcher();
+  import { createEventDispatcher } from 'svelte';
+  import {
+    ModalNavEvents,
+    type ModalEventSignature
+  } from '../ModalManager.svelte';
+  const dispatch = createEventDispatcher<ModalEventSignature>();
 
   export const enter = () => {
     // intentional
@@ -24,13 +28,13 @@
       return;
     }
     resetCharacter();
-    dispatch('modal-hide');
+    dispatch(ModalNavEvents.navExit);
   };
 </script>
 
 <Menu
-  on:modal-hide
-  on:menu-close
+  on:navBack
+  on:navExit
 >
   <FlatButton on:click={() => showModal(Modals.DifficultySetting)}
     >Preferences</FlatButton

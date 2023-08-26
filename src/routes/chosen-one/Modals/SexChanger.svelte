@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import MiniDialog from '../Widgets/MiniDialog.svelte';
   import SlateButton from '../Widgets/Buttons/SlateButton.svelte';
   import Male from '../Widgets/icons/Male.svelte';
@@ -7,36 +6,42 @@
   import { Sex } from '$lib/engines/ChosenOne/main';
   import type { ObjectValues } from '$lib/typeUtils';
   import { sex } from '../CharacterStore';
-  const dispatch = createEventDispatcher();
+
+  import { createEventDispatcher } from 'svelte';
+  import {
+    ModalNavEvents,
+    type ModalEventSignature
+  } from '../ModalManager.svelte';
+  const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let tmp: ObjectValues<typeof Sex> = $sex;
 
   const cancel = () => {
     tmp = $sex;
-    dispatch('modal-hide');
+    dispatch(ModalNavEvents.navBack);
   };
 
   const commit = () => {
     $sex = tmp;
-    dispatch('modal-hide');
+    dispatch(ModalNavEvents.navExit);
     return true;
   };
 
   export const enter = () => {
-    
+    //intentional
   };
 
   export const leave = () => {
-    
+    //intentional
   };
-
 </script>
 
 <div class="root">
   <MiniDialog
-    on:modal-commit={commit}
-    on:modal-cancel={cancel}
-    on:modal-hide
+    on:cancelableCommit={commit}
+    on:cancelableCancel={cancel}
+    on:navBack
+    on:navExit
   >
     <div class="buttons">
       <SlateButton

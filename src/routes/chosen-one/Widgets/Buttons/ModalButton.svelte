@@ -1,22 +1,26 @@
 <script lang="ts">
-  import type { ComponentType, SvelteComponent } from "svelte";
-  import FlatButton from "./FlatButton.svelte";
-  import PlateButton from "./PlateButton.svelte";
-  import SlateButton from "./SlateButton.svelte";
-  import { loadModal, showModal, type RegistryValue } from "../../ModalManager.svelte";
+  import type { ComponentType, SvelteComponent } from 'svelte';
+  import FlatButton from './FlatButton.svelte';
+  import PlateButton from './PlateButton.svelte';
+  import SlateButton from './SlateButton.svelte';
+  import {
+    loadModal,
+    showModal,
+    type RegistryValue
+  } from '../../ModalManager.svelte';
 
   export let modal: RegistryValue;
   export let type: 'flat' | 'plate' | 'slate' = 'flat';
   let btn: ComponentType<SvelteComponent>;
 
   switch (type) {
-    case "flat":
+    case 'flat':
       btn = FlatButton;
       break;
-    case "plate":
+    case 'plate':
       btn = PlateButton;
       break;
-    case "slate":
+    case 'slate':
       btn = SlateButton;
       break;
   }
@@ -27,9 +31,14 @@
 
   const show = () => {
     showModal(modal);
-  }
+  };
 </script>
 
-<svelte:component this={btn} on:mouseover={load} on:focus={load} on:click={show} >
+<svelte:component
+  this={btn}
+  on:mouseover={load}
+  on:focus={load}
+  on:click={show}
+>
   <slot />
 </svelte:component>

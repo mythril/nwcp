@@ -1,6 +1,5 @@
 <script lang="ts">
   import { Difficulty } from '$lib/engines/ChosenOne/main';
-  import { createEventDispatcher } from 'svelte';
   import Bolthead from '../Widgets/Bolthead.svelte';
   import Menu from '../Widgets/Menu.svelte';
   import PlateButton from '../Widgets/Buttons/PlateButton.svelte';
@@ -9,7 +8,12 @@
 
   let menu: Menu;
 
-  const dispatch = createEventDispatcher();
+  import { createEventDispatcher } from 'svelte';
+  import {
+    ModalNavEvents,
+    type ModalEventSignature
+  } from '../ModalManager.svelte';
+  const dispatch = createEventDispatcher<ModalEventSignature>();
 
   export const enter = () => {
     // intentional
@@ -23,10 +27,10 @@
 <Menu
   showBolts={false}
   class="difficultyMenu pitted"
-  on:modal-commit
-  on:modal-hide
-  on:modal-cancel
-  on:menu-close
+  on:cancelableCancel
+  on:cancelableCommit
+  on:navExit
+  on:navBack
   bind:this={menu}
 >
   <div class="difficulty pitted">
@@ -41,9 +45,9 @@
     />
   </div>
   <PlateButton
-    slot="closeButton"
+    slot="navButtons"
     class="diffClose"
-    on:click={() => dispatch('modal-hide')}>done</PlateButton
+    on:click={() => dispatch(ModalNavEvents.navExit)}>done</PlateButton
   >
 </Menu>
 

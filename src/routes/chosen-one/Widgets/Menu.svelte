@@ -2,19 +2,23 @@
   import Modal from './Modal.svelte';
   import FlatButton from './Buttons/FlatButton.svelte';
   import Bolthead from './Bolthead.svelte';
-  import { createEventDispatcher } from 'svelte';
   import Portal from './Portal.svelte';
 
-  const dispatch = createEventDispatcher();
+  import { createEventDispatcher } from 'svelte';
+  import {
+    ModalNavEvents,
+    type ModalEventSignature
+  } from '../ModalManager.svelte';
+  const dispatch = createEventDispatcher<ModalEventSignature>();
 
   export let showBolts = true;
 </script>
 
 <Modal
-  on:modal-hide
-  on:modal-commit
-  on:modal-cancel
-  on:menu-close
+  on:cancelableCommit
+  on:cancelableCancel
+  on:navBack
+  on:navExit
 >
   <Portal target="#planner">
     <div class="centering">
@@ -31,8 +35,9 @@
         {/if}
         <div class="padding-wrapper">
           <slot />
-          <slot name="closeButton">
-            <FlatButton on:click={() => dispatch('menu-close')}>Done</FlatButton
+          <slot name="navButtons">
+            <FlatButton on:click={() => dispatch(ModalNavEvents.navExit)}
+              >Done</FlatButton
             >
           </slot>
         </div>

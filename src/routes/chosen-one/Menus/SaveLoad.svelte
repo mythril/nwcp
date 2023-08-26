@@ -3,7 +3,7 @@
   import { Role } from '$lib/engines/all';
   import FlatButton from '../Widgets/Buttons/FlatButton.svelte';
   import Menu from '../Widgets/Menu.svelte';
-  import { createEventDispatcher, onMount } from 'svelte';
+  import { onMount } from 'svelte';
   import { CodecError, base64ToChar, unpacker } from '$lib/codec';
   import type { UnfinishedChar } from '$lib/engines/ChosenOne/main';
   import debug from '$lib/debug';
@@ -20,7 +20,12 @@
   import { errorMessage } from '../Modals/ErrorMessage.svelte';
   import { toast } from '../Toast.svelte';
 
-  const dispatch = createEventDispatcher();
+  import { createEventDispatcher } from 'svelte';
+  import {
+    ModalNavEvents,
+    type ModalEventSignature
+  } from '../ModalManager.svelte';
+  const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let char: UnfinishedChar;
   let charHash: string;
@@ -58,7 +63,7 @@
       URL.revokeObjectURL(url);
       a.remove();
     }, 1000);
-    dispatch('menu-close');
+    dispatch(ModalNavEvents.navExit);
   };
 
   const copyToClipboard = async (e: MouseEvent) => {
@@ -76,7 +81,7 @@
     }
     e.preventDefault();
     e.stopPropagation();
-    dispatch('menu-close');
+    dispatch(ModalNavEvents.navExit);
     return false;
   };
 
@@ -118,16 +123,16 @@
 </script>
 
 <Menu
-  on:menu-close
-  on:modal-cancel
-  on:modal-commit
-  on:modal-hide
+  on:cancelableCommit
+  on:cancelableCancel
+  on:navBack
+  on:navExit
 >
   <FlatButton on:click={saveToDisk}>Save To Disk</FlatButton>
   <FlatButton
     type="link"
     href={'#' + charHash}
-    on:click={() => dispatch('menu-close')}
+    on:click={() => dispatch(ModalNavEvents.navExit)}
     target="_blank">Open link to char</FlatButton
   >
   {#if navigator.clipboard}
@@ -150,5 +155,7 @@
       />
     </div>
     Load</FlatButton
+  >
+  <FlatButton on:click={() => dispatch(ModalNavEvents.navBack)}>Back</FlatButton
   >
 </Menu>

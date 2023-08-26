@@ -3,37 +3,36 @@
   context="module"
 >
   import { writable } from 'svelte/store';
+  import { Modals, showModal } from '../ModalManager.svelte';
 
   export const errorMessage = writable<string>('');
+
+  errorMessage.subscribe((m) => {
+    if (m !== '') {
+      showModal(Modals.ErrorMessage);
+    }
+  });
 </script>
+
 <script lang="ts">
   import Menu from '../Widgets/Menu.svelte';
 
-  const clearMessage = () => {
-    $errorMessage = '';
-    return true;
+  export const enter = () => {
+    // intentional
   };
-
-  let messageBox: Menu;
-
-  $: {
-    if (messageBox) {
-      messageBox.show();
-    }
-  }
+  export const leave = () => {
+    errorMessage.set('');
+  };
 </script>
 
-{#if $errorMessage.length > 0}
-  <Menu
-    bind:this={messageBox}
-    on:menu-close={clearMessage}
-    on:menu-close
-  >
-    <div class="error terminal-font-defaults">
-      {$errorMessage}
-    </div>
-  </Menu>
-{/if}
+<Menu
+  on:navBack
+  on:navExit
+>
+  <div class="error terminal-font-defaults">
+    {$errorMessage}
+  </div>
+</Menu>
 
 <style lang="postcss">
   .error {

@@ -2,30 +2,33 @@
   import MiniDialog from '../Widgets/MiniDialog.svelte';
   import BigCaret from '../Widgets/BigCaret.svelte';
   import { name } from '../CharacterStore';
+
   import { createEventDispatcher } from 'svelte';
+  import {
+    ModalNavEvents,
+    type ModalEventSignature
+  } from '../ModalManager.svelte';
+  const dispatch = createEventDispatcher<ModalEventSignature>();
 
-  const dispatch = createEventDispatcher();
-
-  let dlg: MiniDialog;
   let text = $name;
 
   const commit = () => {
     $name = text;
-    dispatch('modal-hide');
+    dispatch(ModalNavEvents.navExit);
     return true;
   };
 
   export const enter = () => {
-    dlg.enter();
+    // intentional
   };
 
   export const leave = () => {
-    
-  }
+    // intentional
+  };
 
   const cancel = () => {
     text = $name;
-    dispatch('modal-hide');
+    dispatch(ModalNavEvents.navBack);
   };
 
   function controlKeys(event: KeyboardEvent) {
@@ -37,17 +40,16 @@
         return;
     }
   }
-
 </script>
 
 <svelte:body on:keydown={controlKeys} />
 
 <div class="root">
   <MiniDialog
-    bind:this={dlg}
-    on:modal-commit={commit}
-    on:modal-cancel={cancel}
-    on:modal-hide
+    on:cancelableCommit={commit}
+    on:cancelableCancel={cancel}
+    on:navBack
+    on:navExit
   >
     <BigCaret
       class="input-name sharp-inset-border"

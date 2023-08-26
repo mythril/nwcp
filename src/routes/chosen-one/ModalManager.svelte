@@ -2,6 +2,14 @@
   lang="ts"
   context="module"
 >
+  export const ModalNavEvents = {
+    navBack: 'navBack',
+    navExit: 'navExit'
+  } as const;
+  export type ModalEventSignature = {
+    [k in keyof typeof ModalNavEvents]: null;
+  };
+
   import type { ComponentType, SvelteComponent } from 'svelte';
   import { get, writable } from 'svelte/store';
 
@@ -55,7 +63,7 @@
           loaded[key] = import(`./Menus/${module}.svelte`);
           break;
         default:
-          throw new Error("Invalid import.");
+          throw new Error('Invalid import.');
       }
     }
     return loaded[key];
@@ -85,13 +93,20 @@
     }
   });
 
-  const hideHandler = () => {
+  const navBack = () => {
     if (instance) {
       instance.leave();
       $modals.pop();
       instance = undefined;
       $modals = $modals;
     }
+  };
+  const navExit = () => {
+    if (instance) {
+      instance.leave();
+      instance = undefined;
+    }
+    $modals = [];
   };
 </script>
 
@@ -100,8 +115,8 @@
     <div id="backdrop" />
     <svelte:component
       this={constructor}
-      on:modal-hide={hideHandler}
-      on:menu-close={hideHandler}
+      on:navExit={navExit}
+      on:navBack={navBack}
       bind:this={instance}
     />
   {/if}

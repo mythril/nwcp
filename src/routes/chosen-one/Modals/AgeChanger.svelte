@@ -5,29 +5,34 @@
   import PlateButton from '../Widgets/Buttons/PlateButton.svelte';
   import { clickSound, createDebouncer } from '$lib/utils';
   import { age } from '../CharacterStore';
+
   import { createEventDispatcher } from 'svelte';
-  const dispatch = createEventDispatcher();
+  import {
+    ModalNavEvents,
+    type ModalEventSignature
+  } from '../ModalManager.svelte';
+  const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let tmp = $age;
   let ageDisplay: TwoDigitDisplay;
 
   const commit = () => {
     $age = tmp;
-    dispatch('modal-hide');
+    dispatch(ModalNavEvents.navExit);
     return true;
   };
 
   const cancel = () => {
     tmp = $age;
-    dispatch('modal-hide');
+    dispatch(ModalNavEvents.navBack);
   };
 
   export const enter = () => {
-    
+    //intentional
   };
 
   export const leave = () => {
-
+    //intentional
   };
 
   const increment = () => {
@@ -57,14 +62,14 @@
       increment();
     }
   }
-
 </script>
 
 <div class="root">
   <MiniDialog
-    on:modal-commit={commit}
-    on:modal-cancel={cancel}
-    on:modal-hide
+    on:cancelableCommit={commit}
+    on:cancelableCancel={cancel}
+    on:navBack
+    on:navExit
   >
     <div
       on:wheel={wheel}

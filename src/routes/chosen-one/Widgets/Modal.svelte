@@ -1,14 +1,18 @@
 <script lang="ts">
   import { grabFocus } from '$lib/actions/grabFocus';
-  import { createEventDispatcher, tick } from 'svelte';
   import Portal from './Portal.svelte';
 
-  const dispatch = createEventDispatcher();
+  import { createEventDispatcher } from 'svelte';
+  import {
+    ModalNavEvents,
+    type ModalEventSignature
+  } from '../ModalManager.svelte';
+  const dispatch = createEventDispatcher<ModalEventSignature>();
 
   function cancelHandler(event: KeyboardEvent) {
     switch (event.code) {
       case 'Escape':
-        dispatch('modal-hide');
+        dispatch(ModalNavEvents.navBack);
         return;
       default:
         return;
