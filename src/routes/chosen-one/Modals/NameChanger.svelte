@@ -1,44 +1,43 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import MiniDialog from '../Widgets/MiniDialog.svelte';
-  import SlateButton from '../Widgets/Buttons/SlateButton.svelte';
   import BigCaret from '../Widgets/BigCaret.svelte';
+  import { name } from '../CharacterStore';
+  import { createEventDispatcher } from 'svelte';
 
-  export let value = '';
+  const dispatch = createEventDispatcher();
 
   let dlg: MiniDialog;
-  let text = '';
+  let text = $name;
 
   const commit = () => {
-    value = text;
+    $name = text;
+    dispatch('modal-hide');
     return true;
   };
 
-  const cancel = () => {
-    text = value;
+  export const enter = () => {
+    dlg.enter();
   };
 
-  let show = () => {
-    //intentional
+  export const leave = () => {
+    
+  }
+
+  const cancel = () => {
+    text = $name;
+    dispatch('modal-hide');
   };
 
   function controlKeys(event: KeyboardEvent) {
     switch (event.key) {
       case 'Enter':
         commit();
-        dlg.hide();
         return;
       default:
         return;
     }
   }
 
-  onMount(() => {
-    show = () => {
-      text = value;
-      dlg.show();
-    };
-  });
 </script>
 
 <svelte:body on:keydown={controlKeys} />
@@ -48,17 +47,13 @@
     bind:this={dlg}
     on:modal-commit={commit}
     on:modal-cancel={cancel}
+    on:modal-hide
   >
     <BigCaret
       class="input-name sharp-inset-border"
       bind:value={text}
     />
   </MiniDialog>
-  <SlateButton on:click={show}>
-    <div class="worn-text">
-      {value || 'none'}
-    </div>
-  </SlateButton>
 </div>
 
 <style lang="postcss">

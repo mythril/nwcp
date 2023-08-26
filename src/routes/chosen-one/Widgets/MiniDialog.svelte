@@ -2,31 +2,25 @@
   import PlateButton from './Buttons/PlateButton.svelte';
   import { anchor } from '$lib/actions/anchor';
   import Modal from './Modal.svelte';
+  import { createEventDispatcher } from 'svelte';
   let dialog: HTMLElement;
   let modal: Modal;
 
-  export const show = async () => {
-    if (modal) {
-      await modal.show();
-      if (!dialog) {
-        return;
-      }
+  const dispatch = createEventDispatcher();
 
+  export const enter = async () => {
+    if (dialog) {
       dialog.scrollIntoView(true);
     }
   };
-  export const hide = async () => {
-    if (modal) {
-      modal.hide();
-    }
-  };
+
 </script>
 
 <div use:anchor={dialog} />
 <Modal
   on:modal-cancel
   on:modal-commit
-  on:modal-close
+  on:modal-hide
   bind:this={modal}
 >
   <div
@@ -42,7 +36,7 @@
       <div class="button">
         <PlateButton
           class="btn-done"
-          on:click={() => modal.commit()}>Done</PlateButton
+          on:click={() => dispatch('modal-commit')}>Done</PlateButton
         >
       </div>
     </div>

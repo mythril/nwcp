@@ -1,19 +1,23 @@
 <script lang="ts">
   import { clickSound } from '$lib/utils';
+  import Button from './Button.svelte';
   export let checked = false;
 </script>
 
-<button
-  class:checked
-  class={'button brightness-variance b-offset-7 ' + ($$props.class || '')}
+<Button
+  class={'slate-button brightness-variance b-offset-7 ' +
+    (checked ? ' checked ' : '') +
+    ($$props.class || '')}
   on:click={clickSound}
   on:click
+  on:mouseover
+  on:focus
 >
   <slot />
-</button>
+</Button>
 
 <style lang="postcss">
-  .button {
+  :global(.slate-button) {
     overflow: hidden;
     text-overflow: clip;
     white-space: nowrap;
@@ -39,13 +43,13 @@
     display: block;
     width: 100%;
     height: 30rem;
-    &.checked,
-    &:active {
+  }
+  :global(.slate-button.checked),
+  :global(.slate-button:active) {
       filter: saturate(0.7) brightness(0.7);
       /* prettier-ignore */
       box-shadow:
         var(--slb-light-source-clear),
         var(--sunken);
     }
-  }
 </style>

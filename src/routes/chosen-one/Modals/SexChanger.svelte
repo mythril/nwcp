@@ -1,44 +1,42 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
   import MiniDialog from '../Widgets/MiniDialog.svelte';
   import SlateButton from '../Widgets/Buttons/SlateButton.svelte';
   import Male from '../Widgets/icons/Male.svelte';
   import Female from '../Widgets/icons/Female.svelte';
   import { Sex } from '$lib/engines/ChosenOne/main';
   import type { ObjectValues } from '$lib/typeUtils';
+  import { sex } from '../CharacterStore';
+  const dispatch = createEventDispatcher();
 
-  export let value: ObjectValues<typeof Sex> = Sex.Male;
-
-  let dlg: MiniDialog;
-
-  let tmp: ObjectValues<typeof Sex> = Sex.Male;
+  let tmp: ObjectValues<typeof Sex> = $sex;
 
   const cancel = () => {
-    tmp = value;
+    tmp = $sex;
+    dispatch('modal-hide');
   };
 
   const commit = () => {
-    value = tmp;
+    $sex = tmp;
+    dispatch('modal-hide');
     return true;
   };
 
-  let show = () => {
-    cancel();
+  export const enter = () => {
+    
   };
 
-  onMount(() => {
-    show = () => {
-      cancel();
-      dlg.show();
-    };
-  });
+  export const leave = () => {
+    
+  };
+
 </script>
 
 <div class="root">
   <MiniDialog
-    bind:this={dlg}
     on:modal-commit={commit}
     on:modal-cancel={cancel}
+    on:modal-hide
   >
     <div class="buttons">
       <SlateButton
@@ -61,11 +59,6 @@
       </SlateButton>
     </div>
   </MiniDialog>
-  <SlateButton on:click={show}>
-    <div class="worn-text">
-      {value}
-    </div>
-  </SlateButton>
 </div>
 
 <style lang="postcss">

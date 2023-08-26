@@ -1,9 +1,6 @@
 <script lang="ts">
   import Help from './Help.svelte';
   import PlateButton from './Widgets/Buttons/PlateButton.svelte';
-  import NameChanger from './Modals/NameChanger.svelte';
-  import AgeChanger from './Modals/AgeChanger.svelte';
-  import SexChanger from './Modals/SexChanger.svelte';
   import OptionalTraits from './OptionalTraits.svelte';
   import Health from './Health.svelte';
   import DerivedStats from './DerivedStats.svelte';
@@ -11,8 +8,9 @@
   import TaggedSkills from './TaggedSkills.svelte';
   import SpecialAttributes from './SpecialAttributes.svelte';
   import Toast, { toast } from './Toast.svelte';
+  import { Menus, Modals } from './ModalManager.svelte';
+  import ModalButton from './Widgets/Buttons/ModalButton.svelte';
   import { age, name, sex } from './CharacterStore';
-  import { Menus, showModal } from './Modals/ModalManager.svelte';
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -25,13 +23,25 @@
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
-      <NameChanger bind:value={$name} />
+      <ModalButton type="slate" modal={Modals.NameChanger}>
+        <div class="worn-text">
+          {$name || 'none'}
+        </div>
+      </ModalButton>
     </div>
     <div class="age">
-      <AgeChanger bind:value={$age} />
+      <ModalButton type="slate" modal={Modals.AgeChanger}>
+        <div class="worn-text">
+          {$age}
+        </div>
+      </ModalButton>
     </div>
     <div class="sex">
-      <SexChanger bind:value={$sex} />
+      <ModalButton type="slate" modal={Modals.SexChanger}>
+        <div class="worn-text">
+          {$sex}
+        </div>
+      </ModalButton>
     </div>
   </div>
   <div class="special-section slate brightness-variance b-offset-1">
@@ -60,7 +70,7 @@
     <Help />
   </div>
   <div class="buttons">
-    <PlateButton on:click={() => showModal(Menus.Options)}>Options</PlateButton>
+    <ModalButton type="plate" modal={Menus.Options}>Options</ModalButton>
     <PlateButton on:click={() => toast.show({ message: 'Not implemented yet' })}
       >Done</PlateButton
     >

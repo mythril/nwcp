@@ -3,7 +3,7 @@
   import FlatButton from '../Widgets/Buttons/FlatButton.svelte';
   import Menu from '../Widgets/Menu.svelte';
   import { resetCharacter } from '../CharacterStore';
-  import { Menus, showModal } from '../Modals/ModalManager.svelte';
+  import { Menus, Modals, showModal } from '../ModalManager.svelte';
 
   const dispatch = createEventDispatcher();
 
@@ -32,7 +32,7 @@
   on:modal-hide
   on:menu-close
 >
-  <FlatButton on:click={() => showModal(Menus.DifficultySetting)}
+  <FlatButton on:click={() => showModal(Modals.DifficultySetting)}
     >Preferences</FlatButton
   >
   <FlatButton on:click={() => showModal(Menus.SaveLoad)}>Save/Load</FlatButton>

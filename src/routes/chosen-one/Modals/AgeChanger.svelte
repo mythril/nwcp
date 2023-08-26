@@ -1,29 +1,33 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import MiniDialog from '../Widgets/MiniDialog.svelte';
-  import SlateButton from '../Widgets/Buttons/SlateButton.svelte';
   import Arrow from '../Widgets/icons/Arrow.svelte';
   import TwoDigitDisplay from '../Widgets/TwoDigitDisplay.svelte';
   import PlateButton from '../Widgets/Buttons/PlateButton.svelte';
   import { clickSound, createDebouncer } from '$lib/utils';
+  import { age } from '../CharacterStore';
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
 
-  export let value = 25;
-  let tmp = 25;
+  let tmp = $age;
   let ageDisplay: TwoDigitDisplay;
 
-  let dlg: MiniDialog;
-
   const commit = () => {
-    value = tmp;
+    $age = tmp;
+    dispatch('modal-hide');
     return true;
   };
 
   const cancel = () => {
-    tmp = value;
+    tmp = $age;
+    dispatch('modal-hide');
   };
 
-  let show = () => {
-    cancel();
+  export const enter = () => {
+    
+  };
+
+  export const leave = () => {
+
   };
 
   const increment = () => {
@@ -54,19 +58,13 @@
     }
   }
 
-  onMount(() => {
-    show = () => {
-      cancel();
-      dlg.show();
-    };
-  });
 </script>
 
 <div class="root">
   <MiniDialog
-    bind:this={dlg}
     on:modal-commit={commit}
     on:modal-cancel={cancel}
+    on:modal-hide
   >
     <div
       on:wheel={wheel}
@@ -109,11 +107,6 @@
       </PlateButton>
     </div>
   </MiniDialog>
-  <SlateButton on:click={show}>
-    <div class="worn-text">
-      Age {value}
-    </div>
-  </SlateButton>
 </div>
 
 <style lang="postcss">

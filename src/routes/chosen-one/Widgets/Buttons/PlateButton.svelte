@@ -1,15 +1,19 @@
 <script lang="ts">
   import { clickSound } from '$lib/utils';
   import Bolthead from '../Bolthead.svelte';
+  import Button from './Button.svelte';
   export let pushButton = true;
   export let wornText = true;
 </script>
 
-<button
+<Button
   on:click={clickSound}
   on:click
-  class:pushButton
-  class={'button brightness-variance b-offset-8 ' + ($$props.class || '')}
+  on:mouseover
+  on:focus
+  class={'plate-button brightness-variance b-offset-8 ' +
+    (pushButton ? ' pushButton ' : '') +
+    ($$props.class || '')}
 >
   <Bolthead
     dir="tl"
@@ -30,10 +34,10 @@
   <div class="label {wornText ? 'worn-text' : ''}">
     <slot />
   </div>
-</button>
+</Button>
 
 <style lang="postcss">
-  .button {
+  :global(.plate-button) {
     position: relative;
     height: 23rem;
     padding: 0 10rem;
@@ -42,20 +46,34 @@
     background-color: hsl(var(--bg));
     border: 0;
     flex-grow: 1;
-    &.pushButton {
-      &::after {
-        content: ' ';
-        position: absolute;
-        left: 13rem;
-        top: 3rem;
-        width: 16rem;
-        height: 16rem;
-        border: 0;
-        outline: 0;
-        border-radius: 100%;
-        transition: box-shadow 0.1s linear;
-        /* prettier-ignore */
-        box-shadow: 
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 10rem 4rem;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 10rem 4rem;
+    /* prettier-ignore */
+    box-shadow: 
+      -1rem 1rem 2rem -1rem rgba(255, 255, 255, 0.5) inset,
+      -1rem -1rem 0 -3rem rgba(0,0,0, 0.5) inset;
+    .label {
+      font-size: 16rem;
+      text-align: left;
+      width: 100%;
+    }
+  }
+  :global(.pushButton) {
+    &::after {
+      content: ' ';
+      position: absolute;
+      left: 13rem;
+      top: 3rem;
+      width: 16rem;
+      height: 16rem;
+      border: 0;
+      outline: 0;
+      border-radius: 100%;
+      transition: box-shadow 0.1s linear;
+      /* prettier-ignore */
+      box-shadow: 
           -1rem 1rem 2rem 0 hsla(0deg, 0%, 0%, 1),
           2rem -2rem 1rem -1.2rem rgba(0, 0, 0, 0.75) inset,
           -2rem 2rem 1rem -1.2rem rgba(128, 128, 128, 0.75) inset,
@@ -67,10 +85,10 @@
           0 0 0 12rem rgb(89, 0, 0) inset,
           0 0 0 9rem hsl(0deg, 0%, 0%) inset,
           0 0 0 0.9rem hsl(0deg, 0%, 10%) inset;
-      }
-      &:active::after {
-        /* prettier-ignore */
-        box-shadow: 
+    }
+    &:active::after {
+      /* prettier-ignore */
+      box-shadow: 
           -1rem 1rem 2rem 0 hsla(0deg, 0%, 0%, 100%),
           2rem -2rem 1rem -1.2rem rgba(0, 0, 0, 0) inset,
           -2rem 2rem 1rem -1.2rem rgba(128, 128, 128, 0.75) inset,
@@ -82,23 +100,9 @@
           0 0 0 12rem rgb(89, 0, 0) inset,
           0 0 0 9rem hsl(0deg, 0%, 0%) inset,
           0 0 0 0.9rem hsl(0deg, 0%, 10%) inset;
-      }
-      .label {
-        padding-left: 25rem;
-      }
     }
     .label {
-      font-size: 16rem;
-      text-align: left;
-      width: 100%;
+      padding-left: 25rem;
     }
-    border-top-right-radius: 2rem;
-    border-bottom-right-radius: 10rem 4rem;
-    border-top-left-radius: 2rem;
-    border-bottom-left-radius: 10rem 4rem;
-    /* prettier-ignore */
-    box-shadow: 
-      -1rem 1rem 2rem -1rem rgba(255, 255, 255, 0.5) inset,
-      -1rem -1rem 0 -3rem rgba(0,0,0, 0.5) inset;
   }
 </style>

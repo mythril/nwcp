@@ -8,28 +8,12 @@
   function cancelHandler(event: KeyboardEvent) {
     switch (event.code) {
       case 'Escape':
-        if (dispatch('modal-cancel')) {
-          hide();
-        }
+        dispatch('modal-hide');
         return;
       default:
         return;
     }
   }
-
-  export const show = async () => {
-    return await tick();
-  };
-
-  export const hide = async () => {
-    dispatch('modal-hide');
-  };
-
-  export const commit = async () => {
-    if (dispatch('modal-commit')) {
-      return await hide();
-    }
-  };
 </script>
 
 <svelte:body on:keydown={cancelHandler} />

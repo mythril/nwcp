@@ -6,7 +6,6 @@
 
   export const errorMessage = writable<string>('');
 </script>
-
 <script lang="ts">
   import Menu from '../Widgets/Menu.svelte';
 

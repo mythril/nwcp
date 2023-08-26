@@ -12,7 +12,7 @@
   {target}
   class="flat-btn brightness-variance b-offset-12"
   on:click
-  on:hover
+  on:mouseover
   on:focus
 >
   <div class="worn-text">

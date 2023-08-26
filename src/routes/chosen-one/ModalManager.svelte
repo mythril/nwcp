@@ -25,27 +25,43 @@
   > = {};
 
   export const Menus = {
-    Options: '../Menus/Options',
-    DifficultySetting: '../Menus/DifficultySetting',
-    ErrorMessage: '../Menus/ErrorMessage',
-    SaveLoad: '../Menus/SaveLoad'
+    Options: ['Menus', 'Options'],
+    SaveLoad: ['Menus', 'SaveLoad']
   } as const;
 
   export const Modals = {
-    AgeChanger: '../Modals/AgeChanger',
-    SexChanger: '../Modals/SexChanger',
-    NameChanger: '../Modals/NameChanger'
+    DifficultySetting: ['Modals', 'DifficultySetting'],
+    ErrorMessage: ['Modals', 'ErrorMessage'],
+    AgeChanger: ['Modals', 'AgeChanger'],
+    SexChanger: ['Modals', 'SexChanger'],
+    NameChanger: ['Modals', 'NameChanger']
   } as const;
 
-  export const loadModal = async (module: string) => {
-    if (!loaded[module]) {
-      loaded[module] = import('./' + module + '.svelte');
+  export const Registry = { ...Menus, ...Modals };
+  export type RegistryValue = ObjectValues<typeof Registry>;
+
+  export const loadModal = async (rv: RegistryValue) => {
+    let [dir, module] = rv;
+    let key = rv.join('/');
+    if (!loaded[key]) {
+      // This reads like it's stupid but that's just because of how esoteric
+      // vite's dynamic import rules are, I'm just trying to ensure that
+      // there are only 2 dynamic bundles generated from this.
+      switch (dir) {
+        case 'Modals':
+          loaded[key] = import(`./Modals/${module}.svelte`);
+          break;
+        case 'Menus':
+          loaded[key] = import(`./Menus/${module}.svelte`);
+          break;
+        default:
+          throw new Error("Invalid import.");
+      }
     }
-    return loaded[module];
+    return loaded[key];
   };
 
-  export const showModal = async (module: string) => {
-    console.log('show', module);
+  export const showModal = async (module: RegistryValue) => {
     get(modals).push((await loadModal(module)).default);
     modals.set(get(modals));
   };
@@ -53,6 +69,7 @@
 
 <script lang="ts">
   import { afterUpdate } from 'svelte';
+  import type { ObjectValues } from '$lib/typeUtils';
   let constructor: ModalComponentConstructor;
   let instance: ModalComponentInstance | undefined;
 
