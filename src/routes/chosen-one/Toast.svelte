@@ -56,7 +56,7 @@
       info: (tst: Partial<Toast>) => {
         w.show({
           ...tst,
-          color: 'blue'
+          color: 'cyan'
         });
       },
       success: (tst: Partial<Toast>) => {

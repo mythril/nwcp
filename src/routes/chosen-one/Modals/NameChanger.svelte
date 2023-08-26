@@ -32,7 +32,7 @@
   };
 
   function controlKeys(event: KeyboardEvent) {
-    switch (event.key) {
+    switch (event.code) {
       case 'Enter':
         commit();
         return;

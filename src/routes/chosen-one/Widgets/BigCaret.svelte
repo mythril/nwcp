@@ -7,7 +7,7 @@
 
   function controlKeys(event: KeyboardEvent) {
     text.value = '';
-    if (event.key === 'Backspace' || event.key === 'Delete') {
+    if (event.code === 'Backspace' || event.code === 'Delete') {
       if (value.length === 0) {
         bonkSound();
       } else {

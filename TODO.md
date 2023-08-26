@@ -9,9 +9,6 @@ Overall goals:
 
 - [ ] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
 - [ ] Add an about page
-- [ ] add a better confirm dialog
-- [ ] Escape should leave a modal if it has a clean way to leave
-- [ ] Escape should bring up options menu when nothing is already open
 - [ ] Consider a real responsive design
 - [ ] consider file-save progressive enhancement
 
@@ -34,13 +31,17 @@ Overall goals:
 - [ ] Make the first event: create character
 - [ ] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
 - [ ] Add level up button
-- [ ] Build an event sourced store, keeping track of the character development as a log instead of just mangling an object
+- [ ] Build an event sourced / cqrs store, keeping track of the character development as a log instead of just mangling an object
+- [ ] bit-pack the log format to attempt to keep builds linkable
 - [ ] Build post-creation (level up) interface
 - [ ] Build basic, text based, item chooser
 - [ ] Build perk chooser
 
 ### Done
 
+- [x] Escape should bring up options menu when nothing is already open
+- [x] Escape should leave a modal if it has a clean way to leave
+- [x] add a better confirm dialog
 - [x] add a modal stack manager (sort of, added an event to solve the issue)
 - [x] Restore done button with toast to let user know nothing implemented
 - [x] "Level button" style toast should appear with some info

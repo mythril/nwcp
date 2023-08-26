@@ -109,7 +109,19 @@
     }
     $modals = [];
   };
+
+  const escapeMenu = (ev: KeyboardEvent) => {
+    switch (ev.code) {
+      case 'Escape':
+        if ($modals.length === 0) {
+          showModal(Menus.Options);
+        }
+        break;
+    }
+  };
 </script>
+
+<svelte:body on:keydown={escapeMenu} />
 
 <div id="modals">
   {#if $modals.length > 0}
