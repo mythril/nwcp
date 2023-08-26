@@ -1,8 +1,9 @@
 <script lang="ts">
   import PlateButton from './Buttons/PlateButton.svelte';
-  import { anchor } from '$lib/actions/anchor';
   import Modal from './Modal.svelte';
   let dialog: HTMLElement;
+  export let anchorTop = 0;
+  export let anchorLeft = 0;
 
   import { createEventDispatcher } from 'svelte';
   import { DataEvents, type DataEventsSignature } from '../DataEvents';
@@ -15,7 +16,6 @@
   };
 </script>
 
-<div use:anchor={dialog} />
 <Modal
   on:dataCancel
   on:dataCommit
@@ -25,8 +25,8 @@
   <div
     role="dialog"
     class="edit brightness-variance b-offset-10"
+    style={`--anchor-top: ${anchorTop}px; --anchor-left: ${anchorLeft}px`}
     bind:this={dialog}
-    style="left: var(--anchor-left); top: var(--anchor-top)"
   >
     <div class="padding-wrapper">
       <div class="main">
@@ -44,9 +44,9 @@
 
 <style lang="postcss">
   .edit {
+    left: calc(var(--anchor-left) + 2rem);
+    top: var(--anchor-top);
     position: absolute;
-    left: 2rem;
-    top: 0;
     z-index: 3;
     background-color: hsl(var(--bg));
     box-shadow: var(--basic-box-shadow),

@@ -11,6 +11,7 @@
     ModalNavEvents,
     type ModalEventSignature
   } from '../ModalManager.svelte';
+  import { anchors } from '../Widgets/Anchor.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let tmp = $age;
@@ -66,6 +67,8 @@
 
 <div class="root">
   <MiniDialog
+    anchorTop={$anchors['age'].top}
+    anchorLeft={$anchors['age'].left}
     on:dataCommit={commit}
     on:dataCancel={cancel}
     on:navBack

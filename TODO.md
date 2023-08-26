@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] fix anchor for modal editors
 - [ ] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
 - [ ] Add an about page
 - [ ] Consider a real responsive design
@@ -21,7 +22,7 @@ Overall goals:
 - [ ] Extract push button and make it resizable
 - [ ] Include VB sprites?
 - [ ] Create an intro anim
-- [ ] redirect to '/' when images are not yet generated
+- [ ] redirect to '/' when images are not yet generated?
 - [ ] Build an svg for 'screen' dialogs
 - [ ] embed stylistically similar music
 - [ ] embed this todo into the released site
@@ -36,6 +37,8 @@ Overall goals:
 - [ ] Build post-creation (level up) interface
 - [ ] Build basic, text based, item chooser
 - [ ] Build perk chooser
+- [ ] automatically store characters in local storage
+- [ ] allow user to select characters from local storage based on name
 
 ### Done
 

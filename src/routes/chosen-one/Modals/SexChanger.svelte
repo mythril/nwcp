@@ -12,6 +12,7 @@
     ModalNavEvents,
     type ModalEventSignature
   } from '../ModalManager.svelte';
+  import { anchors } from '../Widgets/Anchor.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let tmp: ObjectValues<typeof Sex> = $sex;
@@ -38,6 +39,8 @@
 
 <div class="root">
   <MiniDialog
+    anchorLeft={$anchors['sex'].left}
+    anchorTop={$anchors['sex'].top}
     on:dataCommit={commit}
     on:dataCancel={cancel}
     on:navBack

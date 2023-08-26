@@ -8,6 +8,7 @@
     ModalNavEvents,
     type ModalEventSignature
   } from '../ModalManager.svelte';
+  import { anchors } from '../Widgets/Anchor.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let text = $name;
@@ -46,6 +47,8 @@
 
 <div class="root">
   <MiniDialog
+    anchorLeft={$anchors['name'].left}
+    anchorTop={$anchors['name'].top}
     on:dataCommit={commit}
     on:dataCancel={cancel}
     on:navBack

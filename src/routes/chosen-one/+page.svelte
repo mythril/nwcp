@@ -11,6 +11,7 @@
   import { Menus, Modals } from './ModalManager.svelte';
   import ModalButton from './Widgets/Buttons/ModalButton.svelte';
   import { age, name, sex } from './CharacterStore';
+  import Anchor from './Widgets/Anchor.svelte';
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -23,6 +24,7 @@
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
+      <Anchor location="name" />
       <ModalButton
         type="slate"
         modal={Modals.NameChanger}
@@ -33,6 +35,7 @@
       </ModalButton>
     </div>
     <div class="age">
+      <Anchor location="age" />
       <ModalButton
         type="slate"
         modal={Modals.AgeChanger}
@@ -43,6 +46,7 @@
       </ModalButton>
     </div>
     <div class="sex">
+      <Anchor location="sex" />
       <ModalButton
         type="slate"
         modal={Modals.SexChanger}
