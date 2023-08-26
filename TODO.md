@@ -7,7 +7,6 @@ Overall goals:
 
 ### To do
 
-- [ ] fix anchor for modal editors
 - [ ] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
 - [ ] Add an about page
 - [ ] Consider a real responsive design
@@ -42,6 +41,7 @@ Overall goals:
 
 ### Done
 
+- [x] fix anchor for modal editors
 - [x] Escape should bring up options menu when nothing is already open
 - [x] Escape should leave a modal if it has a clean way to leave
 - [x] add a better confirm dialog
