@@ -8,7 +8,6 @@ Overall goals:
 ### To do
 
 - [ ] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
-- [ ] Consider a real responsive design
 - [ ] consider file-save progressive enhancement
 
 ### Maybe
@@ -27,6 +26,7 @@ Overall goals:
 
 ### After first release
 
+- [ ] get browser testing functioning, build a test to verify character linking
 - [ ] Make the first event: create character
 - [ ] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
 - [ ] Add level up button
@@ -40,6 +40,8 @@ Overall goals:
 
 ### Done
 
+- [x] fix linking to character
+- [x] Consider a real responsive design
 - [x] Add an about page
 - [x] fix anchor for modal editors
 - [x] Escape should bring up options menu when nothing is already open

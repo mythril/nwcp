@@ -3,8 +3,7 @@
   import { Role } from '$lib/engines/all';
   import FlatButton from '../Widgets/Buttons/FlatButton.svelte';
   import Menu from '../Widgets/Menu.svelte';
-  import { onMount } from 'svelte';
-  import { CodecError, base64ToChar, unpacker } from '$lib/codec';
+  import { CodecError, unpacker } from '$lib/codec';
   import type { UnfinishedChar } from '$lib/engines/ChosenOne/main';
   import debug from '$lib/debug';
   import {
@@ -86,21 +85,6 @@
   };
 
   let fileInput: HTMLInputElement;
-
-  onMount(() => {
-    try {
-      if (window.location.hash.length > 1) {
-        loadFromChar(base64ToChar(window.location.hash.slice(1)));
-      }
-    } catch (err) {
-      let em = 'Unknown error.';
-      if (err instanceof CodecError) {
-        em = err.message;
-      }
-      $errorMessage = em;
-      debug.error(err);
-    }
-  });
 
   let files: FileList;
 

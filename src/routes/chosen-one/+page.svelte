@@ -10,8 +10,12 @@
   import Toast, { toast } from './Toast.svelte';
   import { Menus, Modals } from './ModalManager.svelte';
   import ModalButton from './Widgets/Buttons/ModalButton.svelte';
-  import { age, name, sex } from './CharacterStore';
+  import { age, loadFromChar, name, sex } from './CharacterStore';
   import Anchor from './Widgets/Anchor.svelte';
+  import { onMount } from 'svelte';
+  import { CodecError, base64ToChar } from '$lib/codec';
+  import { errorMessage } from './Modals/ErrorMessage.svelte';
+  import debug from '$lib/debug';
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -19,6 +23,21 @@
       charPoints.bonkDown();
     }
   };
+
+  onMount(() => {
+    try {
+      if (window.location.hash.length > 1) {
+        loadFromChar(base64ToChar(window.location.hash.slice(1)));
+      }
+    } catch (err) {
+      let em = 'Unknown error.';
+      if (err instanceof CodecError) {
+        em = err.message;
+      }
+      $errorMessage = em;
+      debug.error(err);
+    }
+  });
 </script>
 
 <div class="parent">

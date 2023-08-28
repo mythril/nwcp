@@ -1,7 +1,6 @@
 <script lang="ts">
   import '../app.postcss';
   import Overlay from './chosen-one/ImageGenerators/Overlay.svelte';
-  import Scaler from './chosen-one/Scaler.svelte';
   import { dev } from '$app/environment';
   import { onMount } from 'svelte';
   import debug from '$lib/debug';
@@ -31,8 +30,6 @@
   }
   onMount(bootUp);
 </script>
-
-<Scaler />
 
 <Overlay />
 

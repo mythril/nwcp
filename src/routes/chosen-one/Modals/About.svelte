@@ -123,6 +123,9 @@
   :global(.aboutBox) {
     padding: 10rem;
     background-color: hsl(var(--bg));
+    border-radius: 4rem;
+    /* prettier-ignore */
+    box-shadow: var(--slb-light-source);
   }
   :global(.aboutClose) {
     filter: drop-shadow(-5rem 5rem 5rem rgba(0, 0, 0, 1));

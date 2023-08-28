@@ -58,6 +58,7 @@
   :global(.difficultyMenu) {
     padding: 10rem;
     background-color: hsl(var(--bg));
+    box-shadow: var(--slb-light-source);
   }
   :global(.diffClose) {
     filter: drop-shadow(-5rem 5rem 5rem rgba(0, 0, 0, 1));
