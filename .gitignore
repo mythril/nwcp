@@ -1,8 +1,10 @@
 .DS_Store
 node_modules
+/nwcp
 /build
 /.svelte-kit
 /package
+nwcp-*
 .env
 .env.*
 !.env.example
