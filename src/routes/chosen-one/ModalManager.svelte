@@ -38,6 +38,7 @@
   } as const;
 
   export const Modals = {
+    About: ['Modals', 'About'],
     DifficultySetting: ['Modals', 'DifficultySetting'],
     ErrorMessage: ['Modals', 'ErrorMessage'],
     ErasePrompt: ['Modals', 'ErasePrompt'],

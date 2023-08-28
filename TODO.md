@@ -8,7 +8,6 @@ Overall goals:
 ### To do
 
 - [ ] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
-- [ ] Add an about page
 - [ ] Consider a real responsive design
 - [ ] consider file-save progressive enhancement
 
@@ -41,6 +40,7 @@ Overall goals:
 
 ### Done
 
+- [x] Add an about page
 - [x] fix anchor for modal editors
 - [x] Escape should bring up options menu when nothing is already open
 - [x] Escape should leave a modal if it has a clean way to leave

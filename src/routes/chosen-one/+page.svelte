@@ -90,7 +90,10 @@
     <PlateButton on:click={() => toast.show({ message: 'Not implemented yet' })}
       >Done</PlateButton
     >
-    <PlateButton>About</PlateButton>
+    <ModalButton
+      type="plate"
+      modal={Modals.About}>About</ModalButton
+    >
   </div>
   <Toast />
 </div>
