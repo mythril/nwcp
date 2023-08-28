@@ -12,8 +12,11 @@
     ModalNavEvents,
     type ModalEventSignature
   } from '../ModalManager.svelte';
-  import { anchors } from '../Widgets/Anchor.svelte';
+  import { anchors, updateAnchors } from '../Widgets/Anchor.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
+
+  $updateAnchors.push('sex');
+  $updateAnchors = $updateAnchors;
 
   let tmp: ObjectValues<typeof Sex> = $sex;
 

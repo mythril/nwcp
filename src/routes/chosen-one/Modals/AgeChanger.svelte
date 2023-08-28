@@ -11,11 +11,14 @@
     ModalNavEvents,
     type ModalEventSignature
   } from '../ModalManager.svelte';
-  import { anchors } from '../Widgets/Anchor.svelte';
+  import { anchors, updateAnchors } from '../Widgets/Anchor.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let tmp = $age;
   let ageDisplay: TwoDigitDisplay;
+
+  $updateAnchors.push('age');
+  $updateAnchors = $updateAnchors;
 
   const commit = () => {
     $age = tmp;

@@ -7,6 +7,8 @@
   export const anchors = writable<
     Record<string, { top: number; left: number }>
   >({});
+
+  export const updateAnchors = writable<string[]>([]);
 </script>
 
 <script lang="ts">
@@ -27,6 +29,18 @@
     };
     $anchors = $anchors;
   };
+
+  // This is here because the onMount handler doesn't seem to fire when the
+  // layout is done, so instead I force an update right before rendering
+  // any component that needs the data by pushing the "location" of the
+  // anchor on to this stack, and then re-running the resizeHandler below
+  // this seems like an odd way to do this but svelte doesn't appear to have
+  // a better solution up it's sleeves as far as I can tell.
+  $: if ($updateAnchors[$updateAnchors.length - 1] === location) {
+    resizeHandler();
+    $updateAnchors.pop();
+    $updateAnchors = $updateAnchors;
+  }
 
   onMount(resizeHandler);
 </script>
