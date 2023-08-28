@@ -8,7 +8,6 @@ Overall goals:
 ### To do
 
 - [ ] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
-- [ ] consider file-save progressive enhancement
 
 ### Maybe
 
@@ -26,6 +25,7 @@ Overall goals:
 
 ### After first release
 
+- [ ] consider file-save progressive enhancement
 - [ ] get browser testing functioning, build a test to verify character linking
 - [ ] Make the first event: create character
 - [ ] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
