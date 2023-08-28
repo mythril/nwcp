@@ -40,7 +40,7 @@
     </div>
     <div class="display terminal-font-defaults">
       <h2>Who?</h2>
-      <p>Random internet enthusiast</p>
+      <p>Random internet enthusiast.</p>
       <h2>What?</h2>
       <p>
         A character planner for characters in everyone's favorite
