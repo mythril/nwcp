@@ -1,5 +1,7 @@
 # Nuclear Wasteland Character Planner
 
+# [Try it here](https://nwcp.vercel.app/)
+
 ## Road-map
 
 - Chosen One
