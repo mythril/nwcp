@@ -50,6 +50,13 @@
       <p>Many reasons:</p>
       <ul>
         <li>
+          <a
+            target="_blank"
+            href="https://www.youtube.com/@CainOnGames/featured">Tim Cain</a
+          > keeps talking about his involvement in the series, and it made me want
+          to play
+        </li>
+        <li>
           I was looking for a character planner online and no good ones stood
           out to me
         </li>
