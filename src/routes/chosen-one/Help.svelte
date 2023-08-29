@@ -120,7 +120,7 @@
     width: 289rem;
     height: 180rem;
     box-shadow: 0 0 10rem 5rem hsla(42.4, 100%, 14.7%, 0.4) inset;
-    background-color: hsla(32.3, 21.3%, 47.8%, 0);
+    background-color: hsl(32.3, 21.3%, 47.8%, 1);
     background-image: linear-gradient(
         0.3turn,
         hsla(32.3, 21.3%, 47.8%, 0),
