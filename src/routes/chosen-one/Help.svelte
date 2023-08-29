@@ -120,7 +120,8 @@
     width: 289rem;
     height: 180rem;
     box-shadow: 0 0 10rem 5rem hsla(42.4, 100%, 14.7%, 0.4) inset;
-    background: linear-gradient(
+    background-color: hsla(32.3, 21.3%, 47.8%, 0);
+    background-image: linear-gradient(
         0.3turn,
         hsla(32.3, 21.3%, 47.8%, 0),
         hsla(39.4, 52.2%, 39.4%, 0) 228rem,
