@@ -40,6 +40,14 @@
   });
 </script>
 
+<svelte:head>
+  {#if $name !== ''}
+  <title>{$name} - NWCP</title>
+  {:else}
+  <title>The Chosen One - NWCP</title>
+  {/if}
+</svelte:head>
+
 <div class="parent">
   <div class="name-age-sex">
     <div class="name">
