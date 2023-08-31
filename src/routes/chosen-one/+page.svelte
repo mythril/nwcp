@@ -16,6 +16,10 @@
   import { CodecError, base64ToChar } from '$lib/codec';
   import { errorMessage } from './Modals/ErrorMessage.svelte';
   import debug from '$lib/debug';
+  import { role } from '../+layout.svelte';
+  import { Role } from '$lib/engines/all';
+
+  $role = Role.ChosenOne;
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -42,9 +46,9 @@
 
 <svelte:head>
   {#if $name !== ''}
-  <title>{$name} - NWCP</title>
+    <title>{$name} - NWCP</title>
   {:else}
-  <title>The Chosen One - NWCP</title>
+    <title>The Chosen One - NWCP</title>
   {/if}
 </svelte:head>
 

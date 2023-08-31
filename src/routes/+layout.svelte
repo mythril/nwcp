@@ -1,3 +1,10 @@
+<script
+  lang="ts"
+  context="module"
+>
+  export const role = writable<ObjectValues<typeof Role> | undefined>();
+</script>
+
 <script lang="ts">
   import '../app.postcss';
   import Overlay from './chosen-one/ImageGenerators/Overlay.svelte';
@@ -8,6 +15,10 @@
   import WornText from './chosen-one/ImageGenerators/WornText.svelte';
   import Pitted from './chosen-one/ImageGenerators/Pitted.svelte';
   import BrightnessVariance from './chosen-one/ImageGenerators/BrightnessVariance.svelte';
+  import RoleDisplay from './RoleDisplay.svelte';
+  import type { ObjectValues } from '$lib/typeUtils';
+  import { writable } from 'svelte/store';
+  import type { Role } from '$lib/engines/all';
 
   async function bootUp() {
     if ('serviceWorker' in navigator) {
@@ -50,6 +61,7 @@
       <slot />
     </div>
   </div>
+  <RoleDisplay value={$role} />
 </div>
 
 <style lang="postcss">

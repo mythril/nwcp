@@ -7,7 +7,7 @@
 @for $i from 0 to 30 {
   @media (min-height: resolve(480px * (1.1 + $i * 0.1))) {
     :root {
-      font-size: resolve(1px * (1.1 + $i * 0.1));
+      font-size: resolve(1px * (1.1 + $i * 0.085));
     }
   }
 }
@@ -52,6 +52,9 @@
   --menu-bg-hs: 40, 27.3%;
   --menu-bg-l: 17.3%;
   --menu-bg: var(--menu-bg-hs), var(--menu-bg-l);
+  --bakelite-hs: 349.3, 50%;
+  --bakelite-l: 1%;
+  --bakelite: var(--bakelite-hs), var(--bakelite-l);
 }
 
 /* prettier-ignore */
@@ -217,4 +220,49 @@ body {
   max-height: 0;
   bottom: 100%;
   right: 100%;
+}
+
+.pushButton {
+  font-size: var(--push-button-size, 1rem);
+  &::after {
+    content: ' ';
+    position: absolute;
+    left: 13em;
+    top: 3em;
+    width: 16em;
+    height: 16em;
+    border: 0;
+    outline: 0;
+    border-radius: 100%;
+    transition: box-shadow 0.1s linear;
+    /* prettier-ignore */
+    box-shadow: 
+        -1em 1em 2em 0 hsla(0deg, 0%, 0%, 1),
+        2em -2em 1em -1.2em rgba(0, 0, 0, 0.75) inset,
+        -2em 2em 1em -1.2em rgba(128, 128, 128, 0.75) inset,
+        0 0 0 2.7em rgb(48, 48, 48) inset,
+        0 0 0 3.6em rgb(63, 0, 0) inset,
+        -2em 2em 1em 1.5em rgba(220, 0, 0, 1) inset,
+        2em -2em 3em 0.5em rgba(255, 0, 0, 1) inset,
+        0 0 0 4.5em rgb(100, 0, 0) inset,
+        0 0 0 12em rgb(89, 0, 0) inset,
+        0 0 0 9em hsl(0deg, 0%, 0%) inset,
+        0 0 0 0.9em hsl(0deg, 0%, 10%) inset;
+  }
+  &.active::after,
+  &:active::after {
+    /* prettier-ignore */
+    box-shadow: 
+        -1em 1em 2em 0 hsla(0deg, 0%, 0%, 100%),
+        2em -2em 1em -1.2em rgba(0, 0, 0, 0) inset,
+        -2em 2em 1em -1.2em rgba(128, 128, 128, 0.75) inset,
+        0 0 0 2.7em rgb(48, 48, 48) inset,
+        0 0 0 3.6em rgb(63, 0, 0) inset,
+        -2em 2em 1em 1.5em rgba(220, 0, 0, 0) inset,
+        2em -2em 3em 0.5em rgba(255, 0, 0, 0) inset,
+        0 0 0 4.5em rgb(100, 0, 0) inset,
+        0 0 0 12em rgb(89, 0, 0) inset,
+        0 0 0 9em hsl(0deg, 0%, 0%) inset,
+        0 0 0 0.9em hsl(0deg, 0%, 10%) inset;
+  }
 }
