@@ -17,13 +17,13 @@
     taggedSkills
   } from '../CharacterStore';
   import { errorMessage } from '../Modals/ErrorMessage.svelte';
-  import { toast } from '../Toast.svelte';
 
   import { createEventDispatcher } from 'svelte';
   import {
     ModalNavEvents,
     type ModalEventSignature
   } from '../ModalManager.svelte';
+  import { toast } from '../../Toast.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let char: UnfinishedChar;

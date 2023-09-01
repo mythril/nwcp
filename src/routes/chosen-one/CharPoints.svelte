@@ -2,8 +2,8 @@
   import Bolthead from './Widgets/Bolthead.svelte';
   import HelpSource from './HelpSource.svelte';
   import TwoDigitDisplay from './Widgets/TwoDigitDisplay.svelte';
-  import { toast } from './Toast.svelte';
   import { charPointsRemaining } from './CharacterStore';
+  import { toast } from '../Toast.svelte';
 
   let tdd: TwoDigitDisplay;
 

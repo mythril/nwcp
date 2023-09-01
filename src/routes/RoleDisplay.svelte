@@ -72,60 +72,56 @@
 </script>
 
 <div
-  class="placeholder"
+  class="nav-menu pitted"
+  class:navOpen
   style={`--tile-offset: ${tileOffset}`}
 >
-  <div
-    class="nav-menu pitted"
-    class:navOpen
-  >
-    <div class="navbar">
-      <Button
-        class={`open-chooser pushButton ${navOpen ? 'active' : ''}`}
-        disabled={navOpen}
-        on:click={navOpen ? closeNav : openNav}
-      />
-      <div class="panel">
+  <div class="navbar">
+    <Button
+      class={`open-chooser pushButton ${navOpen ? 'active' : ''}`}
+      disabled={navOpen}
+      on:click={navOpen ? closeNav : openNav}
+    />
+    <div class="panel">
+      <div class="viewport">
+        <div
+          style={`--small-offset: ${smallOffsets[0]}`}
+          class={`sequel-${sequel} tile `}
+        />
+      </div>
+      {#each display as d, i}
         <div class="viewport">
           <div
-            style={`--small-offset: ${smallOffsets[0]}`}
-            class={`sequel-${sequel} tile `}
-          />
-        </div>
-        {#each display as d, i}
-          <div class="viewport">
-            <div
-              style={`--small-offset: ${smallOffsets[i]}`}
-              class="tile"
-            >
-              <div class="l">
-                {d}
-              </div>
+            style={`--small-offset: ${smallOffsets[i]}`}
+            class="tile"
+          >
+            <div class="l">
+              {d}
             </div>
           </div>
-        {/each}
-      </div>
+        </div>
+      {/each}
     </div>
-    <div
-      class="chooser"
-      inert={!navOpen}
-    >
-      <div class="switch">
-        {#if $role !== undefined}
-          <RadialSwitch
-            options={Object.values(Role)}
-            disabled={enableToDisable(SupportedRoles)}
-            bind:value={chosenRole}
-          />
-        {/if}
-      </div>
-      <div class="button">
-        <PlateButton
-          on:click={makeChoice}
-          type="button"
-          href={'/' + roleLink}>Choose</PlateButton
-        >
-      </div>
+  </div>
+  <div
+    class="chooser"
+    inert={!navOpen}
+  >
+    <div class="switch">
+      {#if $role !== undefined}
+        <RadialSwitch
+          options={Object.values(Role)}
+          disabled={enableToDisable(SupportedRoles)}
+          bind:value={chosenRole}
+        />
+      {/if}
+    </div>
+    <div class="button">
+      <PlateButton
+        on:click={makeChoice}
+        type="button"
+        href={'/' + roleLink}>Choose</PlateButton
+      >
     </div>
   </div>
 </div>
@@ -141,16 +137,9 @@
     inherits: true;
     initial-value: 0;
   }
-  .placeholder {
+  .nav-menu {
     --tile-offset: 0;
     will-change: tile-offset;
-    width: 640rem;
-    margin: 0 auto;
-    height: 40rem;
-    position: relative;
-    z-index: 1;
-  }
-  .nav-menu {
     position: absolute;
     bottom: -168rem;
     display: flex;
@@ -303,8 +292,6 @@
       0 0 1rem hsla(var(--hs), 0%, 1),
       0 0 2rem hsla(var(--hs), 70%, 0.5),
       0 0 3rem hsla(var(--hs), 70%, 0.5);
-  }
-  .l {
   }
   [class^='sequel-'].tile {
     font-size: 10rem;

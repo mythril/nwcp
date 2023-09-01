@@ -17,7 +17,7 @@
 
   import { createEventDispatcher } from 'svelte';
   import Portal from '../Widgets/Portal.svelte';
-  import { toast } from '../Toast.svelte';
+  import { toast } from '../../Toast.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   const erase = () => {

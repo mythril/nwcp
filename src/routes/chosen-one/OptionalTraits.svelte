@@ -4,7 +4,7 @@
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
   import { chosenTraits } from './CharacterStore';
-  import { toast } from './Toast.svelte';
+  import { toast } from '../Toast.svelte';
 
   let traits = objectKeys(Trait);
   let leftTraits = traits.slice(0, 8);

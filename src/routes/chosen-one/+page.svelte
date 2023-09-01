@@ -7,7 +7,6 @@
   import CharPoints from './CharPoints.svelte';
   import TaggedSkills from './TaggedSkills.svelte';
   import SpecialAttributes from './SpecialAttributes.svelte';
-  import Toast, { toast } from './Toast.svelte';
   import { Menus, Modals } from './ModalManager.svelte';
   import ModalButton from './Widgets/Buttons/ModalButton.svelte';
   import { age, loadFromChar, name, sex } from './CharacterStore';
@@ -18,6 +17,7 @@
   import debug from '$lib/debug';
   import { role } from '../+layout.svelte';
   import { Role } from '$lib/engines/all';
+  import { toast } from '../Toast.svelte';
 
   $role = Role.ChosenOne;
 
@@ -126,7 +126,6 @@
       modal={Modals.About}>About</ModalButton
     >
   </div>
-  <Toast />
 </div>
 
 <style lang="postcss">

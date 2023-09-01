@@ -19,6 +19,7 @@
   import type { ObjectValues } from '$lib/typeUtils';
   import { writable } from 'svelte/store';
   import type { Role } from '$lib/engines/all';
+  import Toast from './Toast.svelte';
 
   async function bootUp() {
     if ('serviceWorker' in navigator) {
@@ -61,11 +62,22 @@
       <slot />
     </div>
   </div>
-  <RoleDisplay value={$role} />
+  <div class="footer">
+    <RoleDisplay value={$role} />
+    <Toast />
+  </div>
 </div>
 
 <style lang="postcss">
+  .footer {
+    width: 640rem;
+    margin: 0 auto;
+    height: 40rem;
+    position: relative;
+    z-index: 1;
+  }
   .app {
+    font-size: 8rem;
     font-family: var(--terminal-font);
     background-color: hsl(var(--bg));
     min-height: 100vh;
@@ -79,7 +91,6 @@
 
   #planner {
     font-family: var(--terminal-font);
-    font-size: 8rem;
     border: 0;
     display: grid;
     margin: auto;
