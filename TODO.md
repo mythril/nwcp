@@ -7,7 +7,8 @@ Overall goals:
 
 ### To do
 
-- [ ] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
+- [ ] add in Vault Dweller stat / trait / skill calculation
+- [ ] extract common subset out of RoleDisplay and Toast
 
 ### Maybe
 
@@ -40,6 +41,7 @@ Overall goals:
 
 ### Done
 
+- [x] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
 - [x] fix linking to character
 - [x] Consider a real responsive design
 - [x] Add an about page

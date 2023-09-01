@@ -70,6 +70,7 @@
 
 <style lang="postcss">
   .footer {
+    filter: drop-shadow(-5rem 5rem 5rem rgba(0, 0, 0, 1));
     width: 640rem;
     margin: 0 auto;
     height: 40rem;

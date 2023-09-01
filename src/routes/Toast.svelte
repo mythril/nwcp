@@ -159,7 +159,6 @@
     height: 46rem;
     background-color: hsl(var(--bg));
     box-shadow: var(--light-source);
-    filter: drop-shadow(-5rem 5rem 5rem rgba(0, 0, 0, 1));
     border-top-right-radius: 16rem;
     background-position-x: 329rem;
   }
@@ -264,13 +263,6 @@
     --hs: var(--toast-color-h), var(--toast-color-s);
     background-color: hsl(var(--hs), calc(var(--toast-color-l) / 8));
     /* prettier-ignore */
-    text-shadow:
-      0 0 0 hsla(var(--hs), 70%, 1),
-      0 0 1rem hsla(var(--hs), 0%, 1),
-      0 0 1rem hsla(var(--hs), 0%, 1),
-      0 0 1rem hsla(var(--hs), 0%, 1),
-      0 0 1rem hsla(var(--hs), 0%, 1),
-      0 0 2rem hsla(var(--hs), 70%, 0.5),
-      0 0 3rem hsla(var(--hs), 70%, 0.5);
+    text-shadow: 0 0 0 hsla(0, 0%, 70%, 1);
   }
 </style>

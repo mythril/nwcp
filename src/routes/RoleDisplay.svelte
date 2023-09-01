@@ -160,7 +160,6 @@
     box-shadow: var(--light-source);
     width: 329rem;
     height: 200rem;
-    filter: drop-shadow(-5rem 5rem 5rem rgba(0, 0, 0, 1));
     margin: 0 auto;
     border-top-left-radius: 16rem;
     padding: 4rem;
@@ -235,20 +234,20 @@
       /* prettier-ignore */
       background-image: 
         linear-gradient(
-            0.2turn,
-            transparent 149rem,
-            rgba(0,0,0,0.2) 150rem,
-            hsla(var(--hsl), 0.2) 151rem,
-            transparent 151rem
-          ),
-          linear-gradient(
-            0.3turn,
-            transparent 213rem,
-            hsla(var(--hsl), 0.2) 214rem,
-            rgba(0,0,0,0.2) 214rem,
-            rgba(0,0,0,0.2) 215rem,
-            transparent 215rem
-          )
+          0.2turn,
+          transparent 149rem,
+          rgba(0,0,0,0.2) 150rem,
+          hsla(var(--hsl), 0.2) 151rem,
+          transparent 151rem
+        ),
+        linear-gradient(
+          0.3turn,
+          transparent 213rem,
+          hsla(var(--hsl), 0.2) 214rem,
+          rgba(0,0,0,0.2) 214rem,
+          rgba(0,0,0,0.2) 215rem,
+          transparent 215rem
+        )
       ;
       /* prettier-ignore */
       box-shadow:
@@ -296,14 +295,7 @@
     color: transparent;
     --hs: 0, 0%;
     /* prettier-ignore */
-    text-shadow:
-      0 0 0 hsla(var(--hs), 70%, 1),
-      0 0 1rem hsla(var(--hs), 0%, 1),
-      0 0 1rem hsla(var(--hs), 0%, 1),
-      0 0 1rem hsla(var(--hs), 0%, 1),
-      0 0 1rem hsla(var(--hs), 0%, 1),
-      0 0 2rem hsla(var(--hs), 70%, 0.5),
-      0 0 3rem hsla(var(--hs), 70%, 0.5);
+    text-shadow: 0 0 0 hsla(0, 0%, 70%, 1);
   }
   [class^='sequel-'].tile {
     font-size: 10rem;
