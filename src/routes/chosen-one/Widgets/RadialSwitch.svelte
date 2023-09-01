@@ -2,24 +2,30 @@
   import { clickSound } from '$lib/utils';
 
   export let options: string[] = [];
+  export let disabled: Record<string, boolean> = {};
   export let value: string;
 
+  let enabled = options.filter((a) => !disabled[a]);
+
+  let enabledIndex: number;
   let index: number;
   let dir = 1;
 
-  index = options.indexOf(value);
+  enabledIndex = enabled.indexOf(value);
+  index = options.indexOf(enabled[enabledIndex]);
   $: {
-    index = options.indexOf(value);
-    if (index < 0) {
+    enabledIndex = enabled.indexOf(value);
+    index = options.indexOf(enabled[enabledIndex]);
+    if (enabledIndex < 0) {
       value = options[0];
     }
   }
 
   function clickHandler() {
-    if (!options[index + dir]) {
+    if (!enabled[enabledIndex + dir]) {
       dir = dir * -1;
     }
-    value = options[index + dir];
+    value = enabled[enabledIndex + dir];
     clickSound();
   }
 
@@ -142,7 +148,10 @@
     </svg>
   </div>
   {#each options as option}
-    <button on:click={createLabelHandler(option)}>{option}</button>
+    <button
+      on:click={createLabelHandler(option)}
+      disabled={!!disabled[option]}>{option}</button
+    >
   {/each}
 </div>
 
@@ -168,6 +177,10 @@
       font-family: var(--terminal-font);
       font-weight: 700;
       color: hsl(var(--title-color));
+    }
+    button:disabled {
+      text-decoration: line-through;
+      opacity: 0.5;
     }
     button:nth-of-type(1) {
       grid-area: t-left;

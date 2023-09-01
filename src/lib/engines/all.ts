@@ -15,3 +15,11 @@ export const RoleToSequel: { [key in ObjectValues<typeof Role>]: string } = {
   [Role.LoneWanderer]: '3',
   [Role.Courier]: 'NV'
 } as const;
+
+export const SupportedRoles: { [key in ObjectValues<typeof Role>]: boolean } = {
+  [Role.VaultDweller]: true,
+  [Role.ChosenOne]: true,
+  [Role.Warrior]: false,
+  [Role.LoneWanderer]: false,
+  [Role.Courier]: false
+} as const;

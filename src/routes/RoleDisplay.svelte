@@ -1,6 +1,6 @@
 <script lang="ts">
   import { preloadCode, preloadData } from '$app/navigation';
-  import { RoleToSequel, Role } from '$lib/engines/all';
+  import { RoleToSequel, Role, SupportedRoles } from '$lib/engines/all';
   import type { ObjectValues } from '$lib/typeUtils';
   import { clickSound, sleep } from '$lib/utils';
   import { role } from './+layout.svelte';
@@ -37,6 +37,11 @@
   const makeChoice = async () => {
     preloadData(roleLink);
     preloadCode(roleLink);
+    let a = document.createElement('a');
+    a.href = roleLink;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
     if (chosenRole === $role) {
       return;
     }
@@ -55,12 +60,15 @@
     clickSound();
     await sleep(500);
     closeNav();
-    let a = document.createElement('a');
-    a.href = roleLink;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
   };
+
+  function enableToDisable(enabledRecord: Record<string, boolean>) {
+    let disabledRecord: Record<string, boolean> = {};
+    for (let k of Object.keys(enabledRecord)) {
+      disabledRecord[k] = !enabledRecord[k];
+    }
+    return disabledRecord;
+  }
 </script>
 
 <div
@@ -106,6 +114,7 @@
         {#if $role !== undefined}
           <RadialSwitch
             options={Object.values(Role)}
+            disabled={enableToDisable(SupportedRoles)}
             bind:value={chosenRole}
           />
         {/if}
