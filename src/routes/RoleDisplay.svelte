@@ -1,6 +1,7 @@
 <script lang="ts">
   import { RoleToSequel, Role } from '$lib/engines/all';
   import type { ObjectValues } from '$lib/typeUtils';
+  import { clickSound, sleep } from '$lib/utils';
   import { role } from './+layout.svelte';
   import Button from './chosen-one/Widgets/Buttons/Button.svelte';
   import PlateButton from './chosen-one/Widgets/Buttons/PlateButton.svelte';
@@ -11,15 +12,18 @@
   let sequel: string;
   let chosenRole: ObjectValues<typeof Role> = $role || Role.ChosenOne;
   let roleLink = '';
+  let tileOffset = 0;
+  let smallOffsets: number[] = [];
 
   $: {
     display = (value || '').padEnd(13, '-').split('');
     sequel = value ? RoleToSequel[value] : '';
+    for (let i = 0; i < display.length; i += 1) {
+      smallOffsets[i] = Math.random() * 10;
+    }
   }
 
   $: roleLink = chosenRole.replace(' ', '-').toLowerCase();
-
-  $: console.log(chosenRole);
 
   let navOpen = true;
   const openNav = () => {
@@ -28,9 +32,33 @@
   const closeNav = () => {
     navOpen = false;
   };
+
+  const makeChoice = async () => {
+    if (chosenRole === $role) {
+      return;
+    }
+    tileOffset = 100;
+    clickSound();
+    await sleep(200);
+    for (let i = 0; i < 4; i += 1) {
+      await sleep(50);
+      clickSound();
+    }
+    await sleep(100);
+    value = chosenRole;
+    clickSound();
+    tileOffset = 1;
+    await sleep(200);
+    clickSound();
+    await sleep(500);
+    closeNav();
+  };
 </script>
 
-<div class="placeholder">
+<div
+  class="placeholder"
+  style={`--tile-offset: ${tileOffset}`}
+>
   <div
     class="nav-menu pitted"
     class:navOpen
@@ -43,11 +71,17 @@
       />
       <div class="panel">
         <div class="viewport">
-          <div class={`sequel-${sequel} tile `} />
+          <div
+            style={`--small-offset: ${smallOffsets[0]}`}
+            class={`sequel-${sequel} tile `}
+          />
         </div>
-        {#each display as d}
+        {#each display as d, i}
           <div class="viewport">
-            <div class="tile">
+            <div
+              style={`--small-offset: ${smallOffsets[i]}`}
+              class="tile"
+            >
               <div class="l">
                 {d}
               </div>
@@ -58,7 +92,7 @@
     </div>
     <div class="chooser">
       <div class="switch">
-        {#if typeof $role !== undefined}
+        {#if $role !== undefined}
           <RadialSwitch
             options={Object.values(Role)}
             bind:value={chosenRole}
@@ -67,9 +101,9 @@
       </div>
       <div class="button">
         <PlateButton
-          on:click={closeNav}
-          type="link"
-          href={'/' + roleLink}>Push</PlateButton
+          on:click={makeChoice}
+          type="button"
+          href={'/' + roleLink}>Choose</PlateButton
         >
       </div>
     </div>
@@ -77,7 +111,19 @@
 </div>
 
 <style lang="postcss">
+  @property --tile-offset {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --small-offset {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+  }
   .placeholder {
+    --tile-offset: 0;
+    will-change: tile-offset;
     width: 640rem;
     margin: 0 auto;
     height: 40rem;
@@ -92,7 +138,7 @@
     align-content: flex-start;
     background-color: hsl(var(--bg));
     box-shadow: var(--light-source);
-    width: 355rem;
+    width: 329rem;
     height: 200rem;
     filter: drop-shadow(-5rem 5rem 5rem rgba(0, 0, 0, 1));
     margin: 0 auto;
@@ -165,24 +211,24 @@
       right: 0;
       top: 0;
       bottom: 0;
-      /* background-color: rgba(196, 196, 255, 0.03); */
+      z-index: 1;
       /* prettier-ignore */
       background-image: 
-      linear-gradient(
-          0.2turn,
-          transparent 149rem,
-          rgba(0,0,0,0.2) 150rem,
-          hsla(var(--hsl), 0.2) 151rem,
-          transparent 151rem
-        ),
         linear-gradient(
-          0.3turn,
-          transparent 213rem,
-          hsla(var(--hsl), 0.2) 214rem,
-          rgba(0,0,0,0.2) 214rem,
-          rgba(0,0,0,0.2) 215rem,
-          transparent 215rem
-        )
+            0.2turn,
+            transparent 149rem,
+            rgba(0,0,0,0.2) 150rem,
+            hsla(var(--hsl), 0.2) 151rem,
+            transparent 151rem
+          ),
+          linear-gradient(
+            0.3turn,
+            transparent 213rem,
+            hsla(var(--hsl), 0.2) 214rem,
+            rgba(0,0,0,0.2) 214rem,
+            rgba(0,0,0,0.2) 215rem,
+            transparent 215rem
+          )
       ;
       /* prettier-ignore */
       box-shadow:
@@ -194,21 +240,33 @@
   }
   .viewport {
     width: 1em;
-    height: 22rem;
+    height: 26rem;
     text-align: center;
-    margin: 2rem;
+    margin: 1rem;
     background-color: rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
-    /* prettier-ignore */
-    box-shadow:
-      1rem -1rem 1rem 0 rgba(0, 0, 0, 0.1)
-      ,
-      -1rem 1rem 1rem 0 rgba(255, 255, 255, 0.1)
-      ;
+    border-top: 2rem solid hsl(0deg, 0%, 5%);
+    border-right: 2rem solid hsl(0deg, 0%, 7%);
+    border-bottom: 2rem solid hsl(0deg, 0%, 10%);
+    border-left: 2rem solid hsl(0deg, 0%, 15%);
+    &:after {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      top: 0;
+      box-shadow: inset -2rem 2rem 5rem 0 hsl(0deg, 0%, 0%);
+    }
   }
   .tile {
-    top: 1%;
+    --small-offset: 0;
+    will-change: small-offset;
+    transition-property: --small-offset, --tile-offset, top;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    top: calc((var(--tile-offset) + var(--small-offset)) * 1%);
     background-color: #111;
     height: 25rem;
     overflow: hidden;
