@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { preloadCode, preloadData } from '$app/navigation';
   import { RoleToSequel, Role } from '$lib/engines/all';
   import type { ObjectValues } from '$lib/typeUtils';
   import { clickSound, sleep } from '$lib/utils';
@@ -23,9 +24,9 @@
     }
   }
 
-  $: roleLink = chosenRole.replace(' ', '-').toLowerCase();
+  $: roleLink = '/' + chosenRole.replace(' ', '-').toLowerCase();
 
-  let navOpen = true;
+  let navOpen = false;
   const openNav = () => {
     navOpen = true;
   };
@@ -34,6 +35,8 @@
   };
 
   const makeChoice = async () => {
+    preloadData(roleLink);
+    preloadCode(roleLink);
     if (chosenRole === $role) {
       return;
     }
@@ -52,6 +55,11 @@
     clickSound();
     await sleep(500);
     closeNav();
+    let a = document.createElement('a');
+    a.href = roleLink;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 </script>
 
@@ -90,7 +98,10 @@
         {/each}
       </div>
     </div>
-    <div class="chooser">
+    <div
+      class="chooser"
+      inert={!navOpen}
+    >
       <div class="switch">
         {#if $role !== undefined}
           <RadialSwitch
