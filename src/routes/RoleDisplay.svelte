@@ -15,12 +15,14 @@
   let roleLink = '';
   let tileOffset = 0;
   let smallOffsets: number[] = [];
+  let rotoOffsets: number[] = [];
 
   $: {
     display = (value || '').padEnd(13, '-').split('');
     sequel = value ? RoleToSequel[value] : '';
     for (let i = 0; i < display.length; i += 1) {
       smallOffsets[i] = Math.random() * 10;
+      rotoOffsets[i] = 2.5 - Math.random() * 5;
     }
   }
 
@@ -37,15 +39,8 @@
   const makeChoice = async () => {
     preloadData(roleLink);
     preloadCode(roleLink);
-    let a = document.createElement('a');
-    a.href = roleLink;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    if (chosenRole === $role) {
-      return;
-    }
     tileOffset = 100;
+    await sleep(1);
     clickSound();
     await sleep(200);
     for (let i = 0; i < 4; i += 1) {
@@ -54,6 +49,16 @@
     }
     await sleep(100);
     value = chosenRole;
+    {
+      let a = document.createElement('a');
+      a.href = roleLink;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+    if (chosenRole === $role) {
+      return;
+    }
     clickSound();
     tileOffset = 1;
     await sleep(200);
@@ -85,14 +90,20 @@
     <div class="panel">
       <div class="viewport">
         <div
-          style={`--small-offset: ${smallOffsets[0]}`}
+          style={`
+          --small-offset: ${smallOffsets[0]};
+          --roto-offset: ${rotoOffsets[0]}
+          `}
           class={`sequel-${sequel} tile `}
         />
       </div>
       {#each display as d, i}
         <div class="viewport">
           <div
-            style={`--small-offset: ${smallOffsets[i]}`}
+            style={`
+            --small-offset: ${smallOffsets[i]};
+            --roto-offset: ${rotoOffsets[i]}
+            `}
             class="tile"
           >
             <div class="l">
@@ -275,7 +286,8 @@
     transition-property: --small-offset, --tile-offset, top;
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
-    top: calc((var(--tile-offset) + var(--small-offset)) * 1%);
+    transform: rotate(calc(var(--roto-offset) * 1deg))
+      translateY(calc((var(--tile-offset) + var(--small-offset)) * 0.23rem));
     background-color: #111;
     height: 25rem;
     overflow: hidden;

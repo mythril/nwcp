@@ -255,7 +255,7 @@
     transition-property: --toast-offset, top;
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
-    top: calc(var(--toast-offset) * 1%);
+    transform: translateY(calc(var(--toast-offset) * 0.23rem));
     height: 25rem;
     overflow: hidden;
     position: relative;
