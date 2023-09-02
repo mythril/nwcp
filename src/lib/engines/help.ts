@@ -6,77 +6,96 @@ export type HasHelpEntriesForEvery<T> = Equals<
   ObjectValues<T>
 >;
 
+/* eslint-disable no-sparse-arrays -- sparseness indicates no entry for that game */
 export const CharacterHelpLookup = {
   'Small Guns': [
     'The use, care and general knowledge of small firearms - pistols, SMGs and rifles.',
+    '35% + AG',
     '5% + (4 x AG)'
   ],
   'Big Guns': [
     'The operation and maintenance of really big guns - miniguns, rocket launchers, flamethrowers and such.',
+    '10% + AG',
     '0% + (2 x AG)'
   ],
   'Energy Weapons': [
     'The care and feeding of energy-based weapons.  How to arm and operate weapons that use laser or plasma technology.',
+    '10% + AG',
     '0% + (2 x AG)'
   ],
   Unarmed: [
     'A combination of martial arts, boxing and other hand-to-hand martial arts.  Combat with your hands and feet.',
+    '65% + ((ST + AG) / 2)',
     '30% + (2 x (AG + ST))'
   ],
   'Melee Weapons': [
     'Using non-ranged weapons in hand-to-hand, or melee combat - knives, sledgehammers, spears, clubs and so on.',
+    '55% + ((ST + AG) / 2)',
     '20% + (2 x (AG + ST))'
   ],
   Throwing: [
     'The skill of muscle-propelled ranged weapons, such as throwing knives, spears and grenades.',
+    '40% + AG',
     '0% + (4 x AG)'
   ],
   'First Aid': [
     'General healing skill.  Used to heal small cuts, abrasions and other minor ills.  In game terms, the use of first aid can heal more hit points over time than just rest.',
+    '30% + ((PE + IN) / 2)',
     '0% + (2 x (PE + IN))'
   ],
   Doctor: [
     'The healing of major wounds and crippled limbs.  Without this skill, it will take a much longer period of time to restore crippled limbs to use.',
+    '15% + ((PE + IN) / 2)',
     '5% + (PE + IN)'
   ],
   Sneak: [
     'Quiet movement, and the ability to remain unnoticed. If successful, you will be much harder to locate. You cannot run and sneak at the same time.',
+    '25% + AG',
     '5% + (3 x AG)'
   ],
   Lockpick: [
     'The skill of opening locks without the proper key. The use of lock-picks or electronic lock-picks will greatly enhance this skill.',
+    '20% + ((PE + AG) / 2)',
     '10% + (PE + AG)'
   ],
   Steal: [
     'The ability to make the things of others your own.  Can be used to steal from people or places.',
+    '20% + AG',
     '0% + (3 x AG)'
   ],
   Traps: [
     'The finding and removal of traps.  Also the setting of explosives for demolition purposes.',
+    '20% + ((PE + AG) / 2)',
     '10% + (PE + AG)'
   ],
   Science: [
     'Covers a variety of high technology skills, such as computers, biology, physics and geology.',
+    '25% + (2 x IN)',
     '0% + (4 x IN)'
   ],
   Repair: [
     'The practical application of the Science skill for fixing broken equipment, machinery and electronics.',
+    '20% + IN',
     '0% + (3 x IN)'
   ],
   Speech: [
     'The ability to communicate in a practical and efficient manner. The skill of convincing others that your position is correct. The ability to lie and not get caught.',
+    '25% + (2 x CH)',
     '0% + (5 x CH)'
   ],
   Barter: [
     'Trading and trade-related tasks. The ability to get better prices for items you sell, and lower prices for items you buy.',
+    '20% + (2 x CH)',
     '0% + (4 x CH)'
   ],
   Gambling: [
     'The knowledge and practical skills related to wagering. The skill at cards, dice and other games.',
+    '20% + (3 x LK)',
     '0% + (5 x LK)'
   ],
   Outdoorsman: [
     'Practical knowledge of the outdoors, and the ability to live off the land. The knowledge of plants and animals.',
+    '5% + ((EN + IN) / 2)',
     '0% + (2 x (EN + IN))'
   ],
   Strength:
@@ -146,6 +165,8 @@ export const CharacterHelpLookup = {
     'Chems only affect you half as long as normal, but your chance to be reliant is also only 50% of normal.',
   'Sex Appeal':
     'You\'ve got the "right" stuff.  Members of the opposite sex are attracted to you, but those of the same sex tend to become quite jealous.',
+  'Night Person':
+    'As a night-time person, you are more awake when the sun goes down. Your Intelligence and Perception are improved at night, but dulled during the day.',
   Skilled:
     'Since you spent more time improving your skills than a normal person, you gain 5 additional skill points per experience level. The tradeoff is that you do not gain as many extra abilities. You gain a perk every four levels.',
   Gifted:
@@ -193,3 +214,4 @@ export const CharacterHelpLookup = {
   // "Damage Resistance EMP": "Damage Resistance EMP",
   // "Damage Resistance Explosion": "Damage Resistance Explosion"
 };
+/* eslint-enable no-sparse-arrays */
