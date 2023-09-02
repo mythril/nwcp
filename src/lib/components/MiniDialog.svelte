@@ -6,7 +6,7 @@
   export let anchorLeft = 0;
 
   import { createEventDispatcher } from 'svelte';
-  import { DataEvents, type DataEventsSignature } from '../DataEvents';
+  import { DataEvents, type DataEventsSignature } from './DataEvents';
   const dispatch = createEventDispatcher<DataEventsSignature>();
 
   export const enter = async () => {

@@ -7,19 +7,19 @@
 
 <script lang="ts">
   import '../app.postcss';
-  import Overlay from './chosen-one/ImageGenerators/Overlay.svelte';
+  import Overlay from '$lib/components/ImageGenerators/Overlay.svelte';
   import { dev } from '$app/environment';
   import { onMount } from 'svelte';
   import debug from '$lib/debug';
-  import ModalManager, { modals } from './chosen-one/ModalManager.svelte';
-  import WornText from './chosen-one/ImageGenerators/WornText.svelte';
-  import Pitted from './chosen-one/ImageGenerators/Pitted.svelte';
-  import BrightnessVariance from './chosen-one/ImageGenerators/BrightnessVariance.svelte';
-  import RoleDisplay from './RoleDisplay.svelte';
+  import ModalManager, { modals } from '$lib/components/ModalManager.svelte';
+  import WornText from '$lib/components/ImageGenerators/WornText.svelte';
+  import Pitted from '$lib/components/ImageGenerators/Pitted.svelte';
+  import BrightnessVariance from '$lib/components/ImageGenerators/BrightnessVariance.svelte';
+  import RoleDisplay from '$lib/components/RoleDisplay.svelte';
   import type { ObjectValues } from '$lib/typeUtils';
   import { writable } from 'svelte/store';
   import type { Role } from '$lib/engines/all';
-  import Toast from './Toast.svelte';
+  import Toast from '$lib/components/Toast.svelte';
 
   async function bootUp() {
     if ('serviceWorker' in navigator) {

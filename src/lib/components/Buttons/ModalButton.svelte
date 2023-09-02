@@ -7,7 +7,7 @@
     loadModal,
     showModal,
     type RegistryValue
-  } from '../../ModalManager.svelte';
+  } from '../ModalManager.svelte';
 
   export let modal: RegistryValue;
   export let type: 'flat' | 'plate' | 'slate' = 'flat';

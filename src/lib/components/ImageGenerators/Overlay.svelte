@@ -1,7 +1,7 @@
 <script lang="ts">
-  import GeneratedImageCacher from '../Widgets/GeneratedImageCacher.svelte';
+  import GeneratedImageCacher from '$lib/components/GeneratedImageCacher.svelte';
   import { onMount } from 'svelte';
-  import Portal from '../Widgets/Portal.svelte';
+  import Portal from '$lib/components/Portal.svelte';
 
   let ready = false;
   let width: number;

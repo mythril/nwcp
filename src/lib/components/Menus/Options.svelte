@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Menu from '../Widgets/Menu.svelte';
+  import Menu from '$lib/components/Menu.svelte';
   import { Menus, Modals } from '../ModalManager.svelte';
 
-  import ModalButton from '../Widgets/Buttons/ModalButton.svelte';
+  import ModalButton from '$lib/components/Buttons/ModalButton.svelte';
 
   export const enter = () => {
     // intentional

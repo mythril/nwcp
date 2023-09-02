@@ -15,7 +15,7 @@
 </script>
 
 <script lang="ts">
-  import Menu from '../Widgets/Menu.svelte';
+  import Menu from '$lib/components/Menu.svelte';
 
   export const enter = () => {
     // intentional

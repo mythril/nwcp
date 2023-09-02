@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] add automatic hash-state update to url
 - [ ] add in Vault Dweller stat / trait / skill calculation
 - [ ] extract common subset out of RoleDisplay and Toast
 

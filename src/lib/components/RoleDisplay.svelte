@@ -3,10 +3,10 @@
   import { RoleToSequel, Role, SupportedRoles } from '$lib/engines/all';
   import type { ObjectValues } from '$lib/typeUtils';
   import { clickSound, sleep } from '$lib/utils';
-  import { role } from './+layout.svelte';
-  import Button from './chosen-one/Widgets/Buttons/Button.svelte';
-  import PlateButton from './chosen-one/Widgets/Buttons/PlateButton.svelte';
-  import RadialSwitch from './chosen-one/Widgets/RadialSwitch.svelte';
+  import Button from '$lib/components/Buttons/Button.svelte';
+  import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
+  import RadialSwitch from '$lib/components/RadialSwitch.svelte';
+  import { role } from '../../routes/+layout.svelte';
 
   export let value: ObjectValues<typeof Role> | undefined;
   let display: string[];

@@ -1,8 +1,8 @@
 <script lang="ts">
   import { charToBase64, packer } from '$lib/codec';
   import { Role } from '$lib/engines/all';
-  import FlatButton from '../Widgets/Buttons/FlatButton.svelte';
-  import Menu from '../Widgets/Menu.svelte';
+  import FlatButton from '$lib/components/Buttons/FlatButton.svelte';
+  import Menu from '$lib/components/Menu.svelte';
   import { CodecError, unpacker } from '$lib/codec';
   import type { UnfinishedChar } from '$lib/engines/ChosenOne/main';
   import debug from '$lib/debug';
@@ -15,15 +15,15 @@
     name,
     sex,
     taggedSkills
-  } from '../CharacterStore';
+  } from '../../../routes/chosen-one/CharacterStore';
   import { errorMessage } from '../Modals/ErrorMessage.svelte';
 
   import { createEventDispatcher } from 'svelte';
+  import { toast } from '../Toast.svelte';
   import {
     ModalNavEvents,
     type ModalEventSignature
-  } from '../ModalManager.svelte';
-  import { toast } from '../../Toast.svelte';
+  } from '$lib/components/Modal.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let char: UnfinishedChar;

@@ -1,23 +1,23 @@
 <script lang="ts">
   import Help from './Help.svelte';
-  import PlateButton from './Widgets/Buttons/PlateButton.svelte';
+  import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import OptionalTraits from './OptionalTraits.svelte';
   import Health from './Health.svelte';
   import DerivedStats from './DerivedStats.svelte';
   import CharPoints from './CharPoints.svelte';
   import TaggedSkills from './TaggedSkills.svelte';
   import SpecialAttributes from './SpecialAttributes.svelte';
-  import { Menus, Modals } from './ModalManager.svelte';
-  import ModalButton from './Widgets/Buttons/ModalButton.svelte';
+  import { Menus, Modals } from '$lib/components/ModalManager.svelte';
+  import ModalButton from '$lib/components/Buttons/ModalButton.svelte';
   import { age, loadFromChar, name, sex } from './CharacterStore';
-  import Anchor from './Widgets/Anchor.svelte';
+  import Anchor from '$lib/components/Anchor.svelte';
   import { onMount } from 'svelte';
   import { CodecError, base64ToChar } from '$lib/codec';
-  import { errorMessage } from './Modals/ErrorMessage.svelte';
+  import { errorMessage } from '$lib/components/Modals/ErrorMessage.svelte';
   import debug from '$lib/debug';
   import { role } from '../+layout.svelte';
   import { Role } from '$lib/engines/all';
-  import { toast } from '../Toast.svelte';
+  import { toast } from '$lib/components/Toast.svelte';
 
   $role = Role.ChosenOne;
 

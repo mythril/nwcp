@@ -1,5 +1,5 @@
 <script lang="ts">
-  import GeneratedImageCacher from '../Widgets/GeneratedImageCacher.svelte';
+  import GeneratedImageCacher from '$lib/components/GeneratedImageCacher.svelte';
   import './WornText.postcss';
 </script>
 

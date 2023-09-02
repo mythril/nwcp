@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import './Scaler.postcss';
+  /* deprecated */
 
   let devicePixelRatio = 0;
 

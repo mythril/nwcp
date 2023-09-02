@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Bolthead from '../Widgets/Bolthead.svelte';
-  import Menu from '../Widgets/Menu.svelte';
-  import PlateButton from '../Widgets/Buttons/PlateButton.svelte';
+  import Bolthead from '$lib/components/Bolthead.svelte';
+  import Menu from '$lib/components/Menu.svelte';
+  import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
 
   let menu: Menu;
 
@@ -9,7 +9,7 @@
   import {
     ModalNavEvents,
     type ModalEventSignature
-  } from '../ModalManager.svelte';
+  } from '$lib/components/Modal.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   export const enter = () => {

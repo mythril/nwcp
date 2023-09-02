@@ -1,18 +1,18 @@
 <script lang="ts">
-  import MiniDialog from '../Widgets/MiniDialog.svelte';
-  import SlateButton from '../Widgets/Buttons/SlateButton.svelte';
-  import Male from '../Widgets/icons/Male.svelte';
-  import Female from '../Widgets/icons/Female.svelte';
+  import MiniDialog from '$lib/components/MiniDialog.svelte';
+  import SlateButton from '$lib/components/Buttons/SlateButton.svelte';
+  import Male from '$lib/components/icons/Male.svelte';
+  import Female from '$lib/components/icons/Female.svelte';
   import { Sex } from '$lib/engines/ChosenOne/main';
   import type { ObjectValues } from '$lib/typeUtils';
-  import { sex } from '../CharacterStore';
+  import { sex } from '../../../routes/chosen-one/CharacterStore';
 
   import { createEventDispatcher } from 'svelte';
+  import { anchors, updateAnchors } from '$lib/components/Anchor.svelte';
   import {
     ModalNavEvents,
     type ModalEventSignature
-  } from '../ModalManager.svelte';
-  import { anchors, updateAnchors } from '../Widgets/Anchor.svelte';
+  } from '$lib/components/Modal.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   $updateAnchors.push('sex');

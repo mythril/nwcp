@@ -1,14 +1,13 @@
 <script lang="ts">
-  import Modal from './Modal.svelte';
+  import Modal, {
+    ModalNavEvents,
+    type ModalEventSignature
+  } from './Modal.svelte';
   import FlatButton from './Buttons/FlatButton.svelte';
   import Bolthead from './Bolthead.svelte';
   import Portal from './Portal.svelte';
 
   import { createEventDispatcher } from 'svelte';
-  import {
-    ModalNavEvents,
-    type ModalEventSignature
-  } from '../ModalManager.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   export let showBolts = true;

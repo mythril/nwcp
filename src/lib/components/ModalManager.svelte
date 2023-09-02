@@ -2,14 +2,6 @@
   lang="ts"
   context="module"
 >
-  export const ModalNavEvents = {
-    navBack: 'navBack',
-    navExit: 'navExit'
-  } as const;
-  export type ModalEventSignature = {
-    [k in keyof typeof ModalNavEvents]: null;
-  };
-
   import type { ComponentType, SvelteComponent } from 'svelte';
   import { get, writable } from 'svelte/store';
 

@@ -3,9 +3,9 @@
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from './HelpSource.svelte';
-  import TwoDigitDisplay from './Widgets/TwoDigitDisplay.svelte';
+  import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
   import { baseSkills, taggedSkills } from './CharacterStore';
-  import { toast } from '../Toast.svelte';
+  import { toast } from '$lib/components/Toast.svelte';
 
   let skills = objectKeys(Skill);
 

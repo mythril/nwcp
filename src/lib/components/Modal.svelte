@@ -1,12 +1,21 @@
+<script
+  lang="ts"
+  context="module"
+>
+  export const ModalNavEvents = {
+    navBack: 'navBack',
+    navExit: 'navExit'
+  } as const;
+  export type ModalEventSignature = {
+    [k in keyof typeof ModalNavEvents]: null;
+  };
+</script>
+
 <script lang="ts">
   import { grabFocus } from '$lib/actions/grabFocus';
   import Portal from './Portal.svelte';
 
   import { createEventDispatcher } from 'svelte';
-  import {
-    ModalNavEvents,
-    type ModalEventSignature
-  } from '../ModalManager.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   function cancelHandler(event: KeyboardEvent) {

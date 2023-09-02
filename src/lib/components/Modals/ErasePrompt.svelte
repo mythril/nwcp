@@ -1,11 +1,10 @@
 <script lang="ts">
-  import { resetCharacter } from '../CharacterStore';
-  import {
+  import { resetCharacter } from '../../../routes/chosen-one/CharacterStore';
+  import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
+  import Modal, {
     ModalNavEvents,
     type ModalEventSignature
-  } from '../ModalManager.svelte';
-  import PlateButton from '../Widgets/Buttons/PlateButton.svelte';
-  import Modal from '../Widgets/Modal.svelte';
+  } from '$lib/components/Modal.svelte';
 
   export const enter = () => {
     // intentional
@@ -16,8 +15,8 @@
   };
 
   import { createEventDispatcher } from 'svelte';
-  import Portal from '../Widgets/Portal.svelte';
-  import { toast } from '../../Toast.svelte';
+  import Portal from '$lib/components/Portal.svelte';
+  import { toast } from '../Toast.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   const erase = () => {

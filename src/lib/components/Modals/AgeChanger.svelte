@@ -1,17 +1,17 @@
 <script lang="ts">
-  import MiniDialog from '../Widgets/MiniDialog.svelte';
-  import Arrow from '../Widgets/icons/Arrow.svelte';
-  import TwoDigitDisplay from '../Widgets/TwoDigitDisplay.svelte';
-  import PlateButton from '../Widgets/Buttons/PlateButton.svelte';
+  import MiniDialog from '$lib/components/MiniDialog.svelte';
+  import Arrow from '$lib/components/icons/Arrow.svelte';
+  import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
+  import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import { clickSound, createDebouncer } from '$lib/utils';
-  import { age } from '../CharacterStore';
+  import { age } from '../../../routes/chosen-one/CharacterStore';
 
   import { createEventDispatcher } from 'svelte';
+  import { anchors, updateAnchors } from '$lib/components/Anchor.svelte';
   import {
     ModalNavEvents,
     type ModalEventSignature
-  } from '../ModalManager.svelte';
-  import { anchors, updateAnchors } from '../Widgets/Anchor.svelte';
+  } from '$lib/components/Modal.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let tmp = $age;

@@ -1,14 +1,14 @@
 <script lang="ts">
-  import MiniDialog from '../Widgets/MiniDialog.svelte';
-  import BigCaret from '../Widgets/BigCaret.svelte';
-  import { name } from '../CharacterStore';
+  import MiniDialog from '$lib/components/MiniDialog.svelte';
+  import BigCaret from '$lib/components/BigCaret.svelte';
+  import { name } from '../../../routes/chosen-one/CharacterStore';
 
   import { createEventDispatcher } from 'svelte';
+  import { anchors, updateAnchors } from '$lib/components/Anchor.svelte';
   import {
     ModalNavEvents,
     type ModalEventSignature
-  } from '../ModalManager.svelte';
-  import { anchors, updateAnchors } from '../Widgets/Anchor.svelte';
+  } from '$lib/components/Modal.svelte';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   $updateAnchors.push('name');
