@@ -11,7 +11,7 @@ import {
   Difficulty,
   PassiveSkill,
   ActiveSkill,
-  type UnfinishedChosenOne
+  UnfinishedChosenOne
 } from '$lib/engines/ChosenOne/main';
 import type { ObjectValues } from '$lib/typeUtils';
 import { Role, type Attributes, Special, Sex } from '$lib/engines/all';
@@ -254,22 +254,24 @@ export const loadFromChar = (char: UnfinishedChosenOne) => {
 };
 
 export const resetCharacter = () => {
-  loadFromChar({
-    age: 25,
-    role: Role.ChosenOne,
-    difficulty: Difficulty.Normal,
-    name: '',
-    sex: Sex.Male,
-    tagged: [],
-    attributes: {
-      [Special.Strength]: 5,
-      [Special.Perception]: 5,
-      [Special.Endurance]: 5,
-      [Special.Charisma]: 5,
-      [Special.Intelligence]: 5,
-      [Special.Agility]: 5,
-      [Special.Luck]: 5
-    },
-    traits: []
-  });
+  loadFromChar(
+    Object.assign(new UnfinishedChosenOne(), {
+      age: 25,
+      role: Role.ChosenOne,
+      difficulty: Difficulty.Normal,
+      name: '',
+      sex: Sex.Male,
+      tagged: [],
+      attributes: {
+        [Special.Strength]: 5,
+        [Special.Perception]: 5,
+        [Special.Endurance]: 5,
+        [Special.Charisma]: 5,
+        [Special.Intelligence]: 5,
+        [Special.Agility]: 5,
+        [Special.Luck]: 5
+      },
+      traits: []
+    })
+  );
 };

@@ -1,21 +1,18 @@
 import {
   Trait,
-  type UnfinishedChosenOne,
+  UnfinishedChosenOne,
   Skill,
-  Sex,
-  Special,
   Difficulty
 } from '$lib/engines/ChosenOne/main';
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
-import { Role } from '$lib/engines/all';
+import { Role, Sex, Special } from '$lib/engines/all';
+import { packer, unpacker } from '$lib/BitPacking';
 import {
   OrderedDescriptors,
   base64ToChar,
-  charToBase64,
-  packer,
-  unpacker
-} from '$lib/codec';
+  charToBase64
+} from '$lib/engines/ChosenOne/codec';
 
 const charGen = (): UnfinishedChosenOne => {
   const traits = faker.helpers.arrayElements(Object.values(Trait), {
@@ -37,7 +34,8 @@ const charGen = (): UnfinishedChosenOne => {
 
   const sex = faker.person.sex();
 
-  return {
+  const ret = new UnfinishedChosenOne();
+  const data = {
     role: Role.ChosenOne,
     difficulty: faker.helpers.arrayElement(Object.values(Difficulty)),
     name: faker.person.firstName(sex === 'female' ? 'female' : 'male'),
@@ -55,6 +53,7 @@ const charGen = (): UnfinishedChosenOne => {
     traits,
     tagged
   };
+  return Object.assign(ret, data);
 };
 
 function serialize(obj: {}) {
@@ -68,8 +67,12 @@ describe('Bit packing/unpacking a character', () => {
     let count = 0;
     for (let i = 0; i < 5000; i += 1) {
       const char = charGen();
-      const packed = packer(char);
-      const unpacked = unpacker(packed);
+      const packed = packer<UnfinishedChosenOne>(OrderedDescriptors, char);
+      const unpacked = unpacker<UnfinishedChosenOne>(
+        packed,
+        OrderedDescriptors,
+        new UnfinishedChosenOne()
+      );
       faker.helpers.shuffle(OrderedDescriptors, { inplace: true });
       if (serialize(char) !== serialize(unpacked)) {
         throw 'Pack/unpack issue detected.';

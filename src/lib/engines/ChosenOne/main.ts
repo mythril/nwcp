@@ -1,7 +1,8 @@
 import type { ObjectValues } from '$lib/typeUtils';
 import { assert } from 'tsafe';
-import { Role, type Attributes, Sex } from '../all';
+import { Role } from '../all';
 import type { HasHelpEntriesForEvery } from '../help';
+import { UnfinishedCharacter } from '../UnfinishedCharacter';
 
 export const CombatSkill = {
   SmallGuns: 'Small Guns',
@@ -111,34 +112,25 @@ export const Difficulty = {
   Hard: 'Hard'
 } as const;
 
-export type UnfinishedChosenOne = {
-  role: ObjectValues<typeof Role> & {};
-  difficulty: ObjectValues<typeof Difficulty> & {};
-  name: string;
-  age: number;
-  sex: ObjectValues<typeof Sex> & {};
-  attributes: Attributes;
-  traits: ((ObjectValues<typeof Trait> & {}) | undefined)[];
-  tagged: ((ObjectValues<typeof Skill> & {}) | undefined)[];
-};
-
-export const EmptyCharacter = (): UnfinishedChosenOne => {
-  return {
-    name: '',
-    role: Role.ChosenOne,
-    difficulty: Difficulty.Normal,
-    tagged: [undefined, undefined, undefined],
-    traits: [undefined, undefined],
-    age: 0,
-    attributes: {
-      Strength: 0,
-      Perception: 0,
-      Endurance: 0,
-      Charisma: 0,
-      Intelligence: 0,
-      Agility: 0,
-      Luck: 0
-    },
-    sex: Sex.Female
-  };
-};
+export class UnfinishedChosenOne extends UnfinishedCharacter<
+  typeof Trait,
+  typeof Skill,
+  typeof Difficulty
+> {
+  traits: ((ObjectValues<typeof Trait> & {}) | undefined)[] = [];
+  tagged: ((ObjectValues<typeof Skill> & {}) | undefined)[] = [];
+  difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
+  role: ObjectValues<typeof Role> & {} = Role.ChosenOne;
+  hasDifficultySetting(): boolean {
+    return true;
+  }
+  getDifficultyInfo(): typeof Difficulty {
+    return Difficulty;
+  }
+  getSkillInfo(): typeof Skill {
+    return Skill;
+  }
+  getTraitInfo(): typeof Trait {
+    return Trait;
+  }
+}

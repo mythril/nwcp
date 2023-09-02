@@ -1,11 +1,6 @@
 import { Role, Special } from '$lib/engines/all';
 
-import {
-  Trait,
-  Skill,
-  type UnfinishedChosenOne,
-  EmptyCharacter
-} from '$lib/engines/ChosenOne/main';
+import { Trait, Skill, UnfinishedChosenOne } from '$lib/engines/ChosenOne/main';
 
 import {
   CodecError,
@@ -38,9 +33,8 @@ const roleDescriptor: FixedDescriptor<UnfinishedChosenOne> = {
   // in case they decide to make 31 games
   bits: 5,
   encoder: () => roleToInt(Role.ChosenOne),
-  decoder: (data: number, char: UnfinishedChosenOne) => {
-    char.role = intToRole(data);
-    if (char.role !== Role.ChosenOne) {
+  decoder: (data: number, _char: UnfinishedChosenOne) => {
+    if (intToRole(data) !== Role.ChosenOne) {
       throw new CodecError('This game is not yet supported.');
     }
   }
@@ -194,6 +188,6 @@ export function base64ToChar(base64: string) {
   return unpacker<UnfinishedChosenOne>(
     base64ToBytes(base64),
     OrderedDescriptors,
-    EmptyCharacter()
+    new UnfinishedChosenOne()
   );
 }

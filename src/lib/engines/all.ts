@@ -70,7 +70,3 @@ export const Sex = {
   Male: 'Male',
   Female: 'Female'
 } as const;
-
-export interface UnfinishedChar {
-  getRole(): ObjectValues<typeof Role>;
-}

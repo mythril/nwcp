@@ -6,10 +6,6 @@
   import { Role } from '$lib/engines/all';
   import FlatButton from '$lib/components/Buttons/FlatButton.svelte';
   import Menu from '$lib/components/Menu.svelte';
-  import {
-    EmptyCharacter,
-    type UnfinishedChosenOne
-  } from '$lib/engines/ChosenOne/main';
   import debug from '$lib/debug';
   import {
     age,
@@ -30,13 +26,14 @@
     type ModalEventSignature
   } from '$lib/components/Modal.svelte';
   import { CodecError, packer, unpacker } from '$lib/BitPacking';
+  import { UnfinishedChosenOne } from '$lib/engines/ChosenOne/main';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let char: UnfinishedChosenOne;
   let charHash: string;
 
   export const enter = () => {
-    char = {
+    char = Object.assign(new UnfinishedChosenOne(), {
       role: Role.ChosenOne,
       difficulty: $difficulty,
       name: $name,
@@ -45,7 +42,7 @@
       attributes: $attributes,
       tagged: $taggedSkills,
       traits: $chosenTraits
-    };
+    });
     charHash = charToBase64(char);
   };
 
@@ -103,7 +100,7 @@
           unpacker<UnfinishedChosenOne>(
             new Uint8Array(data),
             OrderedDescriptors,
-            EmptyCharacter()
+            new UnfinishedChosenOne()
           )
         );
       })
