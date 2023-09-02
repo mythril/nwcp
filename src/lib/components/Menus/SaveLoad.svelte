@@ -1,10 +1,15 @@
 <script lang="ts">
-  import { charToBase64, packer } from '$lib/codec';
+  import {
+    OrderedDescriptors,
+    charToBase64
+  } from '$lib/engines/ChosenOne/codec';
   import { Role } from '$lib/engines/all';
   import FlatButton from '$lib/components/Buttons/FlatButton.svelte';
   import Menu from '$lib/components/Menu.svelte';
-  import { CodecError, unpacker } from '$lib/codec';
-  import type { UnfinishedChar } from '$lib/engines/ChosenOne/main';
+  import {
+    EmptyCharacter,
+    type UnfinishedChosenOne
+  } from '$lib/engines/ChosenOne/main';
   import debug from '$lib/debug';
   import {
     age,
@@ -24,9 +29,10 @@
     ModalNavEvents,
     type ModalEventSignature
   } from '$lib/components/Modal.svelte';
+  import { CodecError, packer, unpacker } from '$lib/BitPacking';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
-  let char: UnfinishedChar;
+  let char: UnfinishedChosenOne;
   let charHash: string;
 
   export const enter = () => {
@@ -48,7 +54,7 @@
   };
 
   const saveToDisk = () => {
-    const packed = packer(char);
+    const packed = packer<UnfinishedChosenOne>(OrderedDescriptors, char);
     const blob = new Blob([packed], { type: 'application/octet-stream' });
     const file = new File([blob], (char.name || char.role) + '.nwcp');
     const url = URL.createObjectURL(file);
@@ -93,7 +99,13 @@
       ?.item(0)
       ?.arrayBuffer()
       .then((data: ArrayBuffer) => {
-        loadFromChar(unpacker(new Uint8Array(data)));
+        loadFromChar(
+          unpacker<UnfinishedChosenOne>(
+            new Uint8Array(data),
+            OrderedDescriptors,
+            EmptyCharacter()
+          )
+        );
       })
       .catch((err) => {
         let em = 'Unknown error.';

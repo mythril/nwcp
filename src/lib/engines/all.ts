@@ -1,4 +1,6 @@
 import type { ObjectValues } from '$lib/typeUtils';
+import { assert } from 'tsafe';
+import type { HasHelpEntriesForEvery } from './help';
 
 export const Role = {
   VaultDweller: 'Vault Dweller',
@@ -23,3 +25,52 @@ export const SupportedRoles: { [key in ObjectValues<typeof Role>]: boolean } = {
   [Role.LoneWanderer]: false,
   [Role.Courier]: false
 } as const;
+
+export const Special = {
+  Strength: 'Strength',
+  Perception: 'Perception',
+  Endurance: 'Endurance',
+  Charisma: 'Charisma',
+  Intelligence: 'Intelligence',
+  Agility: 'Agility',
+  Luck: 'Luck'
+} as const;
+
+// type error below indicates that not all values in
+// Special are represented in CharacterHelpLookup
+// Could be a typo or missing help entry
+assert<HasHelpEntriesForEvery<typeof Special>>();
+
+export function SpecialAbbreviation(
+  special: ObjectValues<typeof Special>
+): string {
+  switch (special) {
+    case Special.Strength:
+      return 'ST';
+    case Special.Perception:
+      return 'PE';
+    case Special.Endurance:
+      return 'EN';
+    case Special.Charisma:
+      return 'CH';
+    case Special.Intelligence:
+      return 'IN';
+    case Special.Agility:
+      return 'AG';
+    case Special.Luck:
+      return 'LK';
+    default:
+      return '';
+  }
+}
+
+export type Attributes = Record<ObjectValues<typeof Special>, number>;
+
+export const Sex = {
+  Male: 'Male',
+  Female: 'Female'
+} as const;
+
+export interface UnfinishedChar {
+  getRole(): ObjectValues<typeof Role>;
+}

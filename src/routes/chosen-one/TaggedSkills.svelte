@@ -2,7 +2,7 @@
   import { Skill } from '$lib/engines/ChosenOne/main';
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
-  import HelpSource from './HelpSource.svelte';
+  import HelpSource from '../../lib/components/HelpSource.svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
   import { baseSkills, taggedSkills } from './CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';

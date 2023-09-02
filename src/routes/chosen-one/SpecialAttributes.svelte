@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { Special, SpecialAbbreviation } from '$lib/engines/ChosenOne/main';
   import Attribute from './Attribute.svelte';
   import {
     attributes,
     charPointsRemaining,
     displayAttributes
   } from './CharacterStore';
-  import HelpSource from './HelpSource.svelte';
+  import HelpSource from '$lib/components/HelpSource.svelte';
+  import { Special, SpecialAbbreviation } from '$lib/engines/all';
 </script>
 
 <div class="special">

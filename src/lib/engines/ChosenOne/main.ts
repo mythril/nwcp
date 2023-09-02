@@ -1,52 +1,7 @@
 import type { ObjectValues } from '$lib/typeUtils';
-import { assert, type Equals } from 'tsafe';
-import type { CharacterHelpLookup } from '../help';
-import type { Role } from '../all';
-
-type HasHelpEntriesForEvery<T> = Equals<
-  Extract<keyof typeof CharacterHelpLookup, ObjectValues<T>>,
-  ObjectValues<T>
->;
-
-export const Special = {
-  Strength: 'Strength',
-  Perception: 'Perception',
-  Endurance: 'Endurance',
-  Charisma: 'Charisma',
-  Intelligence: 'Intelligence',
-  Agility: 'Agility',
-  Luck: 'Luck'
-} as const;
-
-// type error below indicates that not all values in
-// Special are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof Special>>();
-
-export function SpecialAbbreviation(
-  special: ObjectValues<typeof Special>
-): string {
-  switch (special) {
-    case Special.Strength:
-      return 'ST';
-    case Special.Perception:
-      return 'PE';
-    case Special.Endurance:
-      return 'EN';
-    case Special.Charisma:
-      return 'CH';
-    case Special.Intelligence:
-      return 'IN';
-    case Special.Agility:
-      return 'AG';
-    case Special.Luck:
-      return 'LK';
-    default:
-      return '';
-  }
-}
-
-export type Attributes = Record<ObjectValues<typeof Special>, number>;
+import { assert } from 'tsafe';
+import { Role, type Attributes, Sex } from '../all';
+import type { HasHelpEntriesForEvery } from '../help';
 
 export const CombatSkill = {
   SmallGuns: 'Small Guns',
@@ -150,18 +105,13 @@ export type DerivedStats = Record<ObjectValues<typeof DerivedStat>, number>;
 // Could be a typo or missing help entry
 assert<HasHelpEntriesForEvery<typeof DerivedStat>>();
 
-export const Sex = {
-  Male: 'Male',
-  Female: 'Female'
-} as const;
-
 export const Difficulty = {
   Easy: 'Easy',
   Normal: 'Normal',
   Hard: 'Hard'
 } as const;
 
-export type UnfinishedChar = {
+export type UnfinishedChosenOne = {
   role: ObjectValues<typeof Role> & {};
   difficulty: ObjectValues<typeof Difficulty> & {};
   name: string;
@@ -170,4 +120,25 @@ export type UnfinishedChar = {
   attributes: Attributes;
   traits: ((ObjectValues<typeof Trait> & {}) | undefined)[];
   tagged: ((ObjectValues<typeof Skill> & {}) | undefined)[];
+};
+
+export const EmptyCharacter = (): UnfinishedChosenOne => {
+  return {
+    name: '',
+    role: Role.ChosenOne,
+    difficulty: Difficulty.Normal,
+    tagged: [undefined, undefined, undefined],
+    traits: [undefined, undefined],
+    age: 0,
+    attributes: {
+      Strength: 0,
+      Perception: 0,
+      Endurance: 0,
+      Charisma: 0,
+      Intelligence: 0,
+      Agility: 0,
+      Luck: 0
+    },
+    sex: Sex.Female
+  };
 };

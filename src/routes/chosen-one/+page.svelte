@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Help from './Help.svelte';
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import OptionalTraits from './OptionalTraits.svelte';
   import Health from './Health.svelte';
@@ -12,12 +11,14 @@
   import { age, loadFromChar, name, sex } from './CharacterStore';
   import Anchor from '$lib/components/Anchor.svelte';
   import { onMount } from 'svelte';
-  import { CodecError, base64ToChar } from '$lib/codec';
   import { errorMessage } from '$lib/components/Modals/ErrorMessage.svelte';
   import debug from '$lib/debug';
   import { role } from '../+layout.svelte';
   import { Role } from '$lib/engines/all';
   import { toast } from '$lib/components/Toast.svelte';
+  import { base64ToChar } from '$lib/engines/ChosenOne/codec';
+  import { CodecError } from '$lib/BitPacking';
+  import Help from '$lib/components/Help.svelte';
 
   $role = Role.ChosenOne;
 

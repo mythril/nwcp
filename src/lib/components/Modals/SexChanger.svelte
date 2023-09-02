@@ -3,7 +3,6 @@
   import SlateButton from '$lib/components/Buttons/SlateButton.svelte';
   import Male from '$lib/components/icons/Male.svelte';
   import Female from '$lib/components/icons/Female.svelte';
-  import { Sex } from '$lib/engines/ChosenOne/main';
   import type { ObjectValues } from '$lib/typeUtils';
   import { sex } from '../../../routes/chosen-one/CharacterStore';
 
@@ -13,6 +12,7 @@
     ModalNavEvents,
     type ModalEventSignature
   } from '$lib/components/Modal.svelte';
+  import { Sex } from '$lib/engines/all';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   $updateAnchors.push('sex');

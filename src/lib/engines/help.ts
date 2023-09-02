@@ -1,3 +1,11 @@
+import type { ObjectValues } from '$lib/typeUtils';
+import type { Equals } from 'tsafe';
+
+export type HasHelpEntriesForEvery<T> = Equals<
+  Extract<keyof typeof CharacterHelpLookup, ObjectValues<T>>,
+  ObjectValues<T>
+>;
+
 export const CharacterHelpLookup = {
   'Small Guns': [
     'The use, care and general knowledge of small firearms - pistols, SMGs and rifles.',

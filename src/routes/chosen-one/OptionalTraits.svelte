@@ -2,7 +2,7 @@
   import { Trait } from '$lib/engines/ChosenOne/main';
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
-  import HelpSource from './HelpSource.svelte';
+  import HelpSource from '../../lib/components/HelpSource.svelte';
   import { chosenTraits } from './CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
 

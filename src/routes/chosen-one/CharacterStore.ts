@@ -1,8 +1,5 @@
 import { objectKeys } from 'tsafe/objectKeys';
 import {
-  Special,
-  type Attributes,
-  Sex,
   type ChosenTraits,
   type TaggedSkills,
   type SkillSet,
@@ -14,11 +11,13 @@ import {
   Difficulty,
   PassiveSkill,
   ActiveSkill,
-  type UnfinishedChar
+  type UnfinishedChosenOne
 } from '$lib/engines/ChosenOne/main';
 import type { ObjectValues } from '$lib/typeUtils';
-import { Role } from '$lib/engines/all';
+import { Role, type Attributes, Special, Sex } from '$lib/engines/all';
 import { derived, get, writable } from 'svelte/store';
+
+// export const character = writable<UnfinishedChar>({});
 
 export const difficulty = writable<ObjectValues<typeof Difficulty> & {}>(
   Difficulty.Normal
@@ -222,7 +221,7 @@ export const derivedStatsDisplay = derived(derivedStatsReal, (derivedStats) => {
   return stats;
 });
 
-export const loadFromChar = (char: UnfinishedChar) => {
+export const loadFromChar = (char: UnfinishedChosenOne) => {
   name.set(char.name);
   age.set(char.age);
   sex.set(char.sex);

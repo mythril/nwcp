@@ -7,6 +7,8 @@ Overall goals:
 
 ### To do
 
+- [ ] build landing page
+- [ ] debug role chooser
 - [ ] add automatic hash-state update to url
 - [ ] add in Vault Dweller stat / trait / skill calculation
 - [ ] extract common subset out of RoleDisplay and Toast

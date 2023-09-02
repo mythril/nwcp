@@ -1,6 +1,6 @@
 import {
   Trait,
-  type UnfinishedChar,
+  type UnfinishedChosenOne,
   Skill,
   Sex,
   Special,
@@ -17,7 +17,7 @@ import {
   unpacker
 } from '$lib/codec';
 
-const charGen = (): UnfinishedChar => {
+const charGen = (): UnfinishedChosenOne => {
   const traits = faker.helpers.arrayElements(Object.values(Trait), {
     min: 0,
     max: 2
