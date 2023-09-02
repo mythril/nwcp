@@ -10,7 +10,7 @@
     leave(): void;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Svelte uses 'any', don't know a good way to narrow
   export type ModeProps = Record<string, any> & Mode;
 
   export type ModalComponentInstance = SvelteComponent & Mode;

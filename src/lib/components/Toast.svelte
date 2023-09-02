@@ -31,7 +31,7 @@
       color: 'yellow'
     });
 
-    // eslint-disable-next-line no-undef
+    // eslint-disable-next-line no-undef -- ?? some quirk with the language server
     let timer: string | number | NodeJS.Timeout | undefined;
 
     const w = {

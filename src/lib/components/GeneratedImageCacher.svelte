@@ -76,7 +76,7 @@
 
 <svelte:head>
   {#if styles.length > 0}
-    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -- not subject to user input -->
     {@html `
       <style type="text/css">${styles.join('\n')}</style>
     `}

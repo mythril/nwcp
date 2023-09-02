@@ -24,7 +24,7 @@ const sortedSpecial = Object.freeze(Object.values(Special).sort());
 const sortedTraits = Object.freeze(Object.values(Trait).sort());
 const sortedSkills = Object.freeze(Object.values(Skill).sort());
 
-/* eslint-disable prefer-const */
+/* eslint-disable prefer-const -- this needs to be malleable for testing purposes */
 export let OrderedDescriptors: PackingDescriptor<UnfinishedChosenOne>[] = [];
 /* eslint-enable prefer-const */
 
