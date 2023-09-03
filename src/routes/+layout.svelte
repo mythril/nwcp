@@ -1,10 +1,3 @@
-<script
-  lang="ts"
-  context="module"
->
-  export const role = writable<ObjectValues<typeof Role> | undefined>();
-</script>
-
 <script lang="ts">
   import '../app.postcss';
   import Overlay from '$lib/components/ImageGenerators/Overlay.svelte';
@@ -16,10 +9,8 @@
   import Pitted from '$lib/components/ImageGenerators/Pitted.svelte';
   import BrightnessVariance from '$lib/components/ImageGenerators/BrightnessVariance.svelte';
   import RoleDisplay from '$lib/components/RoleDisplay.svelte';
-  import type { ObjectValues } from '$lib/typeUtils';
-  import { writable } from 'svelte/store';
-  import type { Role } from '$lib/engines/all';
   import Toast from '$lib/components/Toast.svelte';
+  import { character } from './chosen-one/CharacterStore';
 
   async function bootUp() {
     if ('serviceWorker' in navigator) {
@@ -63,7 +54,7 @@
     </div>
   </div>
   <div class="footer">
-    <RoleDisplay value={$role} />
+    <RoleDisplay value={$character.role} />
     <Toast />
   </div>
 </div>
@@ -81,13 +72,13 @@
     font-size: 8rem;
     font-family: var(--terminal-font);
     background-color: hsl(var(--bg));
-    min-height: 100vh;
     position: relative;
     width: fit-content;
     min-width: 100vw;
     display: grid;
     margin: auto;
     overflow: hidden;
+    padding-top: 4rem;
   }
 
   #planner {

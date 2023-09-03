@@ -14,11 +14,11 @@
     toast.error({ message: 'YOU NEED MORE CHARACTER POINTS.' });
   };
 
-  character.subscribe((char) => {
+  $: {
     if (tdd) {
-      tdd.set(char.charPointsRemaining());
+      tdd.set($character.charPointsRemaining());
     }
-  });
+  }
 </script>
 
 <div class="char-points">

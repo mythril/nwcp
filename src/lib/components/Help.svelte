@@ -5,6 +5,8 @@
   import { writable, derived } from 'svelte/store';
   import { CharacterHelpLookup } from '$lib/engines/help';
   import { PerkHelpLookup } from '$lib/engines/perks';
+  import { character } from '../../routes/chosen-one/CharacterStore';
+  import { BidiRoleChronoLookup } from '$lib/engines/all';
 
   const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };
 
@@ -24,8 +26,9 @@
       text = $helpText;
       extra = '';
     } else {
+      let offset = BidiRoleChronoLookup[$character.role];
       text = $helpText[0] || '';
-      extra = $helpText[1] || '';
+      extra = $helpText[1 + offset] || '';
     }
   }
 </script>

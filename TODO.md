@@ -7,12 +7,14 @@ Overall goals:
 
 ### To do
 
+- [ ] use setters to precalculate derived stats / prevent mis-rendered data
 - [ ] add multi-game support to help system
 - [ ] build landing page
-- [ ] debug role chooser
 - [ ] add automatic hash-state update to url
 - [ ] add in Vault Dweller stat / trait / skill calculation
 - [ ] extract common subset out of RoleDisplay and Toast
+- [ ] inspect on phone
+- [ ] convert footer to position sticky, restore min-height 100vh on .app
 
 ### Maybe
 
@@ -45,6 +47,7 @@ Overall goals:
 
 ### Done
 
+- [x] debug role chooser
 - [x] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
 - [x] fix linking to character
 - [x] Consider a real responsive design

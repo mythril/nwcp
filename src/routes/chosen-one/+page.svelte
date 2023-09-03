@@ -13,15 +13,12 @@
   import { onMount } from 'svelte';
   import { errorMessage } from '$lib/components/Modals/ErrorMessage.svelte';
   import debug from '$lib/debug';
-  import { role } from '../+layout.svelte';
-  import { Role } from '$lib/engines/all';
   import { toast } from '$lib/components/Toast.svelte';
   import { base64ToChar } from '$lib/engines/ChosenOne/codec';
   import { CodecError } from '$lib/BitPacking';
   import Help from '$lib/components/Help.svelte';
   import { UnfinishedChosenOne } from '$lib/engines/ChosenOne/main';
 
-  $role = Role.ChosenOne;
   let char = new UnfinishedChosenOne();
   char.reset();
 

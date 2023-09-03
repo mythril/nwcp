@@ -1,8 +1,10 @@
 <script lang="ts">
-  import { Role } from '$lib/engines/all';
-  import { role } from '../+layout.svelte';
+  import { UnfinishedVaultDweller } from '$lib/engines/VaultDweller/main';
+  import { character } from '../chosen-one/CharacterStore';
 
-  $role = Role.VaultDweller;
+  const char = new UnfinishedVaultDweller();
+  char.reset();
+  $character = char;
 </script>
 
-{$role}
+{$character.role}

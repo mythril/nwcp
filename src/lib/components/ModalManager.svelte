@@ -70,16 +70,18 @@
 </script>
 
 <script lang="ts">
-  import { afterUpdate } from 'svelte';
+  import { afterUpdate, onDestroy } from 'svelte';
   import type { ObjectValues } from '$lib/typeUtils';
   let constructor: ModalComponentConstructor;
   let instance: ModalComponentInstance | undefined;
 
   constructor = $modals[$modals.length - 1];
 
-  modals.subscribe((m) => {
+  const unSubscriber = modals.subscribe((m) => {
     constructor = m[m.length - 1];
   });
+
+  onDestroy(unSubscriber);
 
   afterUpdate(async () => {
     if (instance) {

@@ -1,8 +1,10 @@
 <script lang="ts">
-  import { Role } from '$lib/engines/all';
-  import { role } from '../+layout.svelte';
+  import { UnfinishedWarrior } from '$lib/engines/Warrior/main';
+  import { character } from '../chosen-one/CharacterStore';
 
-  $role = Role.Warrior;
+  const char = new UnfinishedWarrior();
+  char.reset();
+  $character = char;
 </script>
 
-{$role}
+{$character.role}

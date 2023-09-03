@@ -153,7 +153,7 @@
     align-content: flex-start;
     position: absolute;
     right: 0;
-    bottom: -14rem;
+    bottom: -9rem;
     /* bottom: 20rem; */
     width: 308rem;
     height: 46rem;

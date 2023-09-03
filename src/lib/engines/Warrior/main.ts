@@ -121,7 +121,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   traits: ((ObjectValues<typeof Trait> & {}) | undefined)[] = [];
   tagged: ((ObjectValues<typeof Skill> & {}) | undefined)[] = [];
   difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
-  role: ObjectValues<typeof Role> & {} = Role.ChosenOne;
+  role: ObjectValues<typeof Role> & {} = Role.Warrior;
   readonly hasDifficultySetting = true;
   difficultyInfo = Difficulty;
   skillInfo = Skill;

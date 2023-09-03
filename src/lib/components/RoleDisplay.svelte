@@ -6,12 +6,12 @@
   import Button from '$lib/components/Buttons/Button.svelte';
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import RadialSwitch from '$lib/components/RadialSwitch.svelte';
-  import { role } from '../../routes/+layout.svelte';
+  import { character } from '../../routes/chosen-one/CharacterStore';
 
   export let value: ObjectValues<typeof Role> | undefined;
   let display: string[];
   let sequel: string;
-  let chosenRole: ObjectValues<typeof Role> = $role || Role.ChosenOne;
+  let chosenRole: ObjectValues<typeof Role> = $character.role || Role.ChosenOne;
   let roleLink = '';
   let tileOffset = 0;
   let smallOffsets: number[] = [];
@@ -49,16 +49,11 @@
     }
     await sleep(100);
     value = chosenRole;
-    {
-      let a = document.createElement('a');
-      a.href = roleLink;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    }
-    if (chosenRole === $role) {
-      return;
-    }
+    let a = document.createElement('a');
+    a.href = roleLink;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
     clickSound();
     tileOffset = 1;
     await sleep(200);
@@ -119,7 +114,7 @@
     inert={!navOpen}
   >
     <div class="switch">
-      {#if $role !== undefined}
+      {#if $character.role !== undefined}
         <RadialSwitch
           options={Object.values(Role)}
           disabled={enableToDisable(SupportedRoles)}
@@ -152,7 +147,7 @@
     --tile-offset: 0;
     will-change: tile-offset;
     position: absolute;
-    bottom: -168rem;
+    bottom: -163rem;
     display: flex;
     flex-flow: column;
     align-content: flex-start;
