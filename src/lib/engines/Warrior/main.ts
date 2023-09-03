@@ -118,8 +118,8 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   typeof Difficulty,
   typeof DerivedStat
 > {
-  traits: ((ObjectValues<typeof Trait> & {}) | undefined)[] = [];
-  tagged: ((ObjectValues<typeof Skill> & {}) | undefined)[] = [];
+  traits: (ObjectValues<typeof Trait> & {})[] = [];
+  tagged: (ObjectValues<typeof Skill> & {})[] = [];
   difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
   role: ObjectValues<typeof Role> & {} = Role.Warrior;
   readonly hasDifficultySetting = true;

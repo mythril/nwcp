@@ -34,9 +34,9 @@ export abstract class AbstractUnfinishedCharacter<
 
   abstract readonly hasTraits: boolean;
   abstract traitInfo: T;
-  abstract traits: (ObjectValues<T> | undefined)[];
+  abstract traits: ObjectValues<T>[];
 
-  abstract tagged: (ObjectValues<S> | undefined)[];
+  abstract tagged: ObjectValues<S>[];
   abstract skillInfo: S;
   abstract displayAttributes(): Attributes;
   abstract baseSkills(): Record<ObjectValues<S>, number>;

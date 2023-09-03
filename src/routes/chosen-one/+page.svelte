@@ -51,7 +51,7 @@
   {#if $character.name !== ''}
     <title>{$character.name} - NWCP</title>
   {:else}
-    <title>The Chosen One - NWCP</title>
+    <title>The {$character.role} - NWCP</title>
   {/if}
 </svelte:head>
 

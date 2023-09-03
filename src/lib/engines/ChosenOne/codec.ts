@@ -169,9 +169,7 @@ const traitsDescriptor: FixedDescriptor<UnfinishedChosenOne>[] = [0, 1].map(
       },
       decoder: (t: number, mut: UnfinishedChosenOne) => {
         if (t > 0) {
-          mut.traits[idx] = sortedTraits[t - 1];
-        } else {
-          mut.traits[idx] = undefined;
+          mut.traits.push(sortedTraits[t - 1]);
         }
       }
     };
@@ -196,9 +194,7 @@ const taggedDescriptor: FixedDescriptor<UnfinishedChosenOne>[] = [0, 1, 2].map(
       },
       decoder: (s: number, mut: UnfinishedChosenOne) => {
         if (s > 0) {
-          mut.tagged[idx] = sortedSkills[s - 1];
-        } else {
-          mut.tagged[idx] = undefined;
+          mut.tagged.push(sortedSkills[s - 1]);
         }
       }
     };
