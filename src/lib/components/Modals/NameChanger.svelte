@@ -1,7 +1,6 @@
 <script lang="ts">
   import MiniDialog from '$lib/components/MiniDialog.svelte';
   import BigCaret from '$lib/components/BigCaret.svelte';
-  import { name } from '../../../routes/chosen-one/CharacterStore';
 
   import { createEventDispatcher } from 'svelte';
   import { anchors, updateAnchors } from '$lib/components/Anchor.svelte';
@@ -9,15 +8,16 @@
     ModalNavEvents,
     type ModalEventSignature
   } from '$lib/components/Modal.svelte';
+  import { character } from '../../../routes/chosen-one/CharacterStore';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   $updateAnchors.push('name');
   $updateAnchors = $updateAnchors;
 
-  let text = $name;
+  let text = $character.name;
 
   const commit = () => {
-    $name = text;
+    $character.name = text;
     dispatch(ModalNavEvents.navExit);
     return true;
   };
@@ -31,7 +31,7 @@
   };
 
   const cancel = () => {
-    text = $name;
+    text = $character.name;
     dispatch(ModalNavEvents.navBack);
   };
 

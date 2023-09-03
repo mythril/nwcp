@@ -2,7 +2,7 @@
   import { AilmentStatus } from '$lib/engines/ChosenOne/main';
   import Bolthead from '$lib/components/Bolthead.svelte';
   import HelpSource from '../../lib/components/HelpSource.svelte';
-  import { maxHitPoints } from './CharacterStore';
+  import { character } from './CharacterStore';
 </script>
 
 <div class="display">
@@ -11,7 +11,7 @@
       role="link"
       tabindex="0"
     >
-      Hit Points {$maxHitPoints}/{$maxHitPoints}
+      Hit Points {$character.maxHitPoints()}/{$character.maxHitPoints()}
     </div>
   </HelpSource>
   <div class="ailments">

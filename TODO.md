@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] add multi-game support to help system
 - [ ] build landing page
 - [ ] debug role chooser
 - [ ] add automatic hash-state update to url

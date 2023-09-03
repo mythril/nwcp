@@ -4,7 +4,6 @@
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import { clickSound, createDebouncer } from '$lib/utils';
-  import { age } from '../../../routes/chosen-one/CharacterStore';
 
   import { createEventDispatcher } from 'svelte';
   import { anchors, updateAnchors } from '$lib/components/Anchor.svelte';
@@ -12,22 +11,23 @@
     ModalNavEvents,
     type ModalEventSignature
   } from '$lib/components/Modal.svelte';
+  import { character } from '../../../routes/chosen-one/CharacterStore';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
-  let tmp = $age;
+  let tmp = $character.age;
   let ageDisplay: TwoDigitDisplay;
 
   $updateAnchors.push('age');
   $updateAnchors = $updateAnchors;
 
   const commit = () => {
-    $age = tmp;
+    $character.age = tmp;
     dispatch(ModalNavEvents.navExit);
     return true;
   };
 
   const cancel = () => {
-    tmp = $age;
+    tmp = $character.age;
     dispatch(ModalNavEvents.navBack);
   };
 

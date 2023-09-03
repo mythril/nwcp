@@ -1,10 +1,6 @@
 <script lang="ts">
   import Attribute from './Attribute.svelte';
-  import {
-    attributes,
-    charPointsRemaining,
-    displayAttributes
-  } from './CharacterStore';
+  import { character } from './CharacterStore';
   import HelpSource from '$lib/components/HelpSource.svelte';
   import { Special, SpecialAbbreviation } from '$lib/engines/all';
 </script>
@@ -14,10 +10,10 @@
     <HelpSource subject={attr}>
       <Attribute
         label={SpecialAbbreviation(attr)}
-        bind:value={$attributes[attr]}
-        bind:display={$displayAttributes[attr]}
+        bind:value={$character.attributes[attr]}
+        display={$character.displayAttributes()[attr]}
         on:charPointsRemainingBonk
-        charPointsRemaining={$charPointsRemaining}
+        charPointsRemaining={$character.charPointsRemaining()}
       />
     </HelpSource>
   {/each}

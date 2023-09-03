@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { Trait } from '$lib/engines/ChosenOne/main';
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from '../../lib/components/HelpSource.svelte';
-  import { chosenTraits } from './CharacterStore';
+  import { character } from './CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
+
+  const Trait = $character.traitInfo;
 
   let traits = objectKeys(Trait);
   let leftTraits = traits.slice(0, 8);
@@ -12,7 +13,7 @@
 
   const traitHandler = (e: Event) => {
     const cb = e.target as HTMLInputElement;
-    if ($chosenTraits.length >= 2 && cb.checked) {
+    if ($character.traits.length >= 2 && cb.checked) {
       bonkSound();
       toast.error({ message: 'YOU CAN CHOOSE A MAXIMUM OF 2 TRAITS' });
       e.preventDefault();
@@ -55,13 +56,15 @@
                 type="checkbox"
                 class="checkbox-button"
                 on:click={traitHandler}
-                bind:group={$chosenTraits}
+                bind:group={$character.traits}
                 value={Trait[trait]}
               />
               <div
                 data-trait={trait}
                 role="link"
-                class={$chosenTraits.includes(Trait[trait]) ? 'selected' : ''}
+                class={$character.traits.includes(Trait[trait])
+                  ? 'selected'
+                  : ''}
               >
                 {Trait[trait]}
               </div>
@@ -77,13 +80,15 @@
                 type="checkbox"
                 class="checkbox-button"
                 on:click={traitHandler}
-                bind:group={$chosenTraits}
+                bind:group={$character.traits}
                 value={Trait[trait]}
               />
               <div
                 data-trait={trait}
                 role="link"
-                class={$chosenTraits.includes(Trait[trait]) ? 'selected' : ''}
+                class={$character.traits.includes(Trait[trait])
+                  ? 'selected'
+                  : ''}
               >
                 {Trait[trait]}
               </div>

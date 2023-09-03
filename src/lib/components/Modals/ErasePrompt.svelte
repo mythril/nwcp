@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { resetCharacter } from '../../../routes/chosen-one/CharacterStore';
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import Modal, {
     ModalNavEvents,
@@ -17,10 +16,12 @@
   import { createEventDispatcher } from 'svelte';
   import Portal from '$lib/components/Portal.svelte';
   import { toast } from '../Toast.svelte';
+  import { character } from '../../../routes/chosen-one/CharacterStore';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   const erase = () => {
-    resetCharacter();
+    $character.reset();
+    $character = $character;
     dispatch(ModalNavEvents.navExit);
     toast.success({ message: 'Character successfully erased.' });
   };

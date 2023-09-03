@@ -1,25 +1,26 @@
 <script lang="ts">
-  import { Skill } from '$lib/engines/ChosenOne/main';
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from '../../lib/components/HelpSource.svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
-  import { baseSkills, taggedSkills } from './CharacterStore';
+  import { character } from './CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
+
+  const Skill = $character.skillInfo;
 
   let skills = objectKeys(Skill);
 
   $: {
     if (tdd) {
-      if (!tdd.set(3 - $taggedSkills.length)) {
-        $taggedSkills = $taggedSkills;
+      if (!tdd.set(3 - $character.tagged.length)) {
+        $character.tagged = $character.tagged;
       }
     }
   }
 
   const skillHandler = (ev: Event) => {
     const cb = ev.target as HTMLInputElement;
-    if ($taggedSkills.length >= 3 && cb.checked) {
+    if ($character.tagged.length >= 3 && cb.checked) {
       bonkSound();
       toast.error({ message: 'YOU MUST TAG 3 SKILLS' });
       tdd.set(-1);
@@ -49,14 +50,16 @@
     {#each skills as key}
       <HelpSource subject={Skill[key]}>
         <div
-          class="skill {$taggedSkills.includes(Skill[key]) ? 'selected' : ''}"
+          class="skill {$character.tagged.includes(Skill[key])
+            ? 'selected'
+            : ''}"
         >
           <div class="button">
             <input
               type="checkbox"
               class="checkbox-button"
               on:click={skillHandler}
-              bind:group={$taggedSkills}
+              bind:group={$character.tagged}
               value={Skill[key]}
               name=""
               id=""
@@ -66,7 +69,7 @@
             {Skill[key]}
           </div>
           <div class="value">
-            {$baseSkills[Skill[key]]}%
+            {$character.baseSkills()[Skill[key]]}%
           </div>
         </div>
       </HelpSource>

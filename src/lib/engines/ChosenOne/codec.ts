@@ -1,13 +1,16 @@
 import { Role, Special } from '$lib/engines/all';
 
-import { Trait, Skill, UnfinishedChosenOne } from '$lib/engines/ChosenOne/main';
+import {
+  Trait,
+  Skill,
+  UnfinishedChosenOne,
+  Difficulty
+} from '$lib/engines/ChosenOne/main';
 
 import {
   CodecError,
   base64ToBytes,
   bytesToBase64,
-  difficultyToInt,
-  intToDifficulty,
   intToRole,
   intToSex,
   roleToInt,
@@ -19,6 +22,33 @@ import {
   packer,
   unpacker
 } from '$lib/BitPacking';
+import type { ObjectValues } from '$lib/typeUtils';
+
+export const difficultyToInt = (diff: ObjectValues<typeof Difficulty> & {}) => {
+  switch (diff) {
+    case Difficulty.Easy:
+      return 0;
+    case Difficulty.Normal:
+      return 1;
+    case Difficulty.Hard:
+      return 2;
+    default:
+      throw new CodecError('Unrecognized difficulty.');
+  }
+};
+
+export const intToDifficulty = (d: number) => {
+  switch (d) {
+    case 0:
+      return Difficulty.Easy;
+    case 1:
+      return Difficulty.Normal;
+    case 2:
+      return Difficulty.Hard;
+    default:
+      throw new CodecError('Unrecognized difficulty.');
+  }
+};
 
 const sortedSpecial = Object.freeze(Object.values(Special).sort());
 const sortedTraits = Object.freeze(Object.values(Trait).sort());

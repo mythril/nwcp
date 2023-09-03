@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { Difficulty } from '$lib/engines/ChosenOne/main';
   import Bolthead from '$lib/components/Bolthead.svelte';
   import Menu from '$lib/components/Menu.svelte';
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import RadialSwitch from '$lib/components/RadialSwitch.svelte';
-  import { difficulty } from '../../../routes/chosen-one/CharacterStore';
+  import { character } from '../../../routes/chosen-one/CharacterStore';
 
   let menu: Menu;
 
@@ -40,8 +39,8 @@
     <Bolthead dir="br" />
     <div class="title worn-text">Game Difficulty</div>
     <RadialSwitch
-      options={Object.values(Difficulty)}
-      bind:value={$difficulty}
+      options={Object.values($character.difficultyInfo)}
+      bind:value={$character.difficulty}
     />
   </div>
   <PlateButton

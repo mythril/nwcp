@@ -4,7 +4,6 @@
   import Male from '$lib/components/icons/Male.svelte';
   import Female from '$lib/components/icons/Female.svelte';
   import type { ObjectValues } from '$lib/typeUtils';
-  import { sex } from '../../../routes/chosen-one/CharacterStore';
 
   import { createEventDispatcher } from 'svelte';
   import { anchors, updateAnchors } from '$lib/components/Anchor.svelte';
@@ -13,20 +12,21 @@
     type ModalEventSignature
   } from '$lib/components/Modal.svelte';
   import { Sex } from '$lib/engines/all';
+  import { character } from '../../../routes/chosen-one/CharacterStore';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   $updateAnchors.push('sex');
   $updateAnchors = $updateAnchors;
 
-  let tmp: ObjectValues<typeof Sex> = $sex;
+  let tmp: ObjectValues<typeof Sex> = $character.sex;
 
   const cancel = () => {
-    tmp = $sex;
+    tmp = $character.sex;
     dispatch(ModalNavEvents.navBack);
   };
 
   const commit = () => {
-    $sex = tmp;
+    $character.sex = tmp;
     dispatch(ModalNavEvents.navExit);
     return true;
   };

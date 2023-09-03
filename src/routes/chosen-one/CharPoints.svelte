@@ -2,7 +2,7 @@
   import Bolthead from '$lib/components/Bolthead.svelte';
   import HelpSource from '../../lib/components/HelpSource.svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
-  import { charPointsRemaining } from './CharacterStore';
+  import { character } from './CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
 
   let tdd: TwoDigitDisplay;
@@ -14,9 +14,9 @@
     toast.error({ message: 'YOU NEED MORE CHARACTER POINTS.' });
   };
 
-  charPointsRemaining.subscribe((val) => {
+  character.subscribe((char) => {
     if (tdd) {
-      tdd.set(val);
+      tdd.set(char.charPointsRemaining());
     }
   });
 </script>

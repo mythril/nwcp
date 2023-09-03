@@ -2,7 +2,7 @@
   import { DerivedStat } from '$lib/engines/ChosenOne/main';
   import Bolthead from '$lib/components/Bolthead.svelte';
   import HelpSource from '../../lib/components/HelpSource.svelte';
-  import { derivedStatsDisplay } from './CharacterStore';
+  import { character } from './CharacterStore';
 </script>
 
 <div class="section">
@@ -23,7 +23,7 @@
             </th>
             <td>
               <HelpSource subject={derived}>
-                {$derivedStatsDisplay[derived]}
+                {$character.derivedStatsDisplay()[derived]}
               </HelpSource>
             </td>
           </tr>

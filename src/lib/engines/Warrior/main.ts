@@ -25,7 +25,7 @@ export const ActiveSkill = {
 } as const;
 
 export const PassiveSkill = {
-  Speech: 'Speech',
+  Pilot: 'Pilot',
   Barter: 'Barter',
   Gambling: 'Gambling',
   Outdoorsman: 'Outdoorsman'
@@ -112,7 +112,7 @@ export const Difficulty = {
   Hard: 'Hard'
 } as const;
 
-export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
+export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   typeof Trait,
   typeof Skill,
   typeof Difficulty,

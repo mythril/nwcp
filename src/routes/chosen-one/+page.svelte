@@ -8,7 +8,7 @@
   import SpecialAttributes from './SpecialAttributes.svelte';
   import { Menus, Modals } from '$lib/components/ModalManager.svelte';
   import ModalButton from '$lib/components/Buttons/ModalButton.svelte';
-  import { age, loadFromChar, name, sex } from './CharacterStore';
+  import { character, loadFromChar } from './CharacterStore';
   import Anchor from '$lib/components/Anchor.svelte';
   import { onMount } from 'svelte';
   import { errorMessage } from '$lib/components/Modals/ErrorMessage.svelte';
@@ -19,8 +19,13 @@
   import { base64ToChar } from '$lib/engines/ChosenOne/codec';
   import { CodecError } from '$lib/BitPacking';
   import Help from '$lib/components/Help.svelte';
+  import { UnfinishedChosenOne } from '$lib/engines/ChosenOne/main';
 
   $role = Role.ChosenOne;
+  let char = new UnfinishedChosenOne();
+  char.reset();
+
+  $character = char;
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -46,8 +51,8 @@
 </script>
 
 <svelte:head>
-  {#if $name !== ''}
-    <title>{$name} - NWCP</title>
+  {#if $character.name !== ''}
+    <title>{$character.name} - NWCP</title>
   {:else}
     <title>The Chosen One - NWCP</title>
   {/if}
@@ -62,7 +67,7 @@
         modal={Modals.NameChanger}
       >
         <div class="worn-text">
-          {$name || 'none'}
+          {$character.name || 'none'}
         </div>
       </ModalButton>
     </div>
@@ -73,7 +78,7 @@
         modal={Modals.AgeChanger}
       >
         <div class="worn-text">
-          {$age}
+          {$character.age}
         </div>
       </ModalButton>
     </div>
@@ -84,7 +89,7 @@
         modal={Modals.SexChanger}
       >
         <div class="worn-text">
-          {$sex}
+          {$character.sex}
         </div>
       </ModalButton>
     </div>

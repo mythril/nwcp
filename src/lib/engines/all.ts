@@ -36,6 +36,23 @@ export const Special = {
   Luck: 'Luck'
 } as const;
 
+export const BidiRoleChronoLookup = {
+  0: Role.VaultDweller,
+  [Role.VaultDweller]: 0,
+
+  1: Role.ChosenOne,
+  [Role.ChosenOne]: 1,
+
+  2: Role.Warrior,
+  [Role.Warrior]: 2,
+
+  3: Role.LoneWanderer,
+  [Role.LoneWanderer]: 3,
+
+  4: Role.Courier,
+  [Role.Courier]: 4
+} as const;
+
 // type error below indicates that not all values in
 // Special are represented in CharacterHelpLookup
 // Could be a typo or missing help entry

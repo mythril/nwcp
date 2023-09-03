@@ -24,8 +24,8 @@
       text = $helpText;
       extra = '';
     } else {
-      text = $helpText[0];
-      extra = $helpText[1];
+      text = $helpText[0] || '';
+      extra = $helpText[1] || '';
     }
   }
 </script>

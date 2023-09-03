@@ -1,5 +1,4 @@
 import debug from './debug';
-import { Difficulty } from './engines/ChosenOne/main';
 import { Role, Sex } from './engines/all';
 import type { ObjectValues } from './typeUtils';
 
@@ -61,32 +60,6 @@ export const intToSex = (s: number) => {
       return Sex.Male;
     default:
       throw new CodecError('Unrecognized sex.');
-  }
-};
-
-export const difficultyToInt = (diff: ObjectValues<typeof Difficulty> & {}) => {
-  switch (diff) {
-    case Difficulty.Easy:
-      return 0;
-    case Difficulty.Normal:
-      return 1;
-    case Difficulty.Hard:
-      return 2;
-    default:
-      throw new CodecError('Unrecognized difficulty.');
-  }
-};
-
-export const intToDifficulty = (d: number) => {
-  switch (d) {
-    case 0:
-      return Difficulty.Easy;
-    case 1:
-      return Difficulty.Normal;
-    case 2:
-      return Difficulty.Hard;
-    default:
-      throw new CodecError('Unrecognized difficulty.');
   }
 };
 

@@ -3,19 +3,12 @@
     OrderedDescriptors,
     charToBase64
   } from '$lib/engines/ChosenOne/codec';
-  import { Role } from '$lib/engines/all';
   import FlatButton from '$lib/components/Buttons/FlatButton.svelte';
   import Menu from '$lib/components/Menu.svelte';
   import debug from '$lib/debug';
   import {
-    age,
-    attributes,
-    chosenTraits,
-    difficulty,
-    loadFromChar,
-    name,
-    sex,
-    taggedSkills
+    character,
+    loadFromChar
   } from '../../../routes/chosen-one/CharacterStore';
   import { errorMessage } from '../Modals/ErrorMessage.svelte';
 
@@ -34,14 +27,14 @@
 
   export const enter = () => {
     char = Object.assign(new UnfinishedChosenOne(), {
-      role: Role.ChosenOne,
-      difficulty: $difficulty,
-      name: $name,
-      age: $age,
-      sex: $sex,
-      attributes: $attributes,
-      tagged: $taggedSkills,
-      traits: $chosenTraits
+      role: $character.role,
+      difficulty: $character.difficulty,
+      name: $character.name,
+      age: $character.age,
+      sex: $character.sex,
+      attributes: $character.attributes,
+      tagged: $character.tagged,
+      traits: $character.traits
     });
     charHash = charToBase64(char);
   };
