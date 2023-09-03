@@ -1,6 +1,6 @@
 <script lang="ts">
   import { UnfinishedWarrior } from '$lib/engines/Warrior/main';
-  import { character } from '../chosen-one/CharacterStore';
+  import { character } from '../CharacterStore';
 
   const char = new UnfinishedWarrior();
   char.reset();

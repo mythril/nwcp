@@ -6,7 +6,7 @@
   import Button from '$lib/components/Buttons/Button.svelte';
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import RadialSwitch from '$lib/components/RadialSwitch.svelte';
-  import { character } from '../../routes/chosen-one/CharacterStore';
+  import { character } from '../../routes/CharacterStore';
 
   export let value: ObjectValues<typeof Role> | undefined;
   let display: string[];

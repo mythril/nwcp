@@ -3,7 +3,7 @@
   import Menu from '$lib/components/Menu.svelte';
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import RadialSwitch from '$lib/components/RadialSwitch.svelte';
-  import { character } from '../../../routes/chosen-one/CharacterStore';
+  import { character } from '../../../routes/CharacterStore';
 
   let menu: Menu;
 

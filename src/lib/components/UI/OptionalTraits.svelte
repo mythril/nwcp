@@ -1,8 +1,8 @@
 <script lang="ts">
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
-  import HelpSource from '../../lib/components/HelpSource.svelte';
-  import { character } from './CharacterStore';
+  import HelpSource from '$lib/components/HelpSource.svelte';
+  import { character } from '../../../routes/CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
 
   const Trait = $character.traitInfo;

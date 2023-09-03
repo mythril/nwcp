@@ -12,7 +12,7 @@
     type ModalEventSignature
   } from '$lib/components/Modal.svelte';
   import { Sex } from '$lib/engines/all';
-  import { character } from '../../../routes/chosen-one/CharacterStore';
+  import { character } from '../../../routes/CharacterStore';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   $updateAnchors.push('sex');

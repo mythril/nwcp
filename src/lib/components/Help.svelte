@@ -5,7 +5,7 @@
   import { writable, derived } from 'svelte/store';
   import { CharacterHelpLookup } from '$lib/engines/help';
   import { PerkHelpLookup } from '$lib/engines/perks';
-  import { character } from '../../routes/chosen-one/CharacterStore';
+  import { character } from '../../routes/CharacterStore';
   import { BidiRoleChronoLookup } from '$lib/engines/all';
 
   const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };

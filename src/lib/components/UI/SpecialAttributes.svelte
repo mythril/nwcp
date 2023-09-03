@@ -1,6 +1,6 @@
 <script lang="ts">
   import Attribute from './Attribute.svelte';
-  import { character } from './CharacterStore';
+  import { character } from '../../../routes/CharacterStore';
   import HelpSource from '$lib/components/HelpSource.svelte';
   import { Special, SpecialAbbreviation } from '$lib/engines/all';
 </script>

@@ -11,7 +11,7 @@
     ModalNavEvents,
     type ModalEventSignature
   } from '$lib/components/Modal.svelte';
-  import { character } from '../../../routes/chosen-one/CharacterStore';
+  import { character } from '../../../routes/CharacterStore';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let tmp = $character.age;

@@ -1,8 +1,8 @@
 <script lang="ts">
   import Bolthead from '$lib/components/Bolthead.svelte';
-  import HelpSource from '../../lib/components/HelpSource.svelte';
+  import HelpSource from '$lib/components/HelpSource.svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
-  import { character } from './CharacterStore';
+  import { character } from '../../../routes/CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
 
   let tdd: TwoDigitDisplay;

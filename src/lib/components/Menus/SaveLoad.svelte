@@ -6,10 +6,7 @@
   import FlatButton from '$lib/components/Buttons/FlatButton.svelte';
   import Menu from '$lib/components/Menu.svelte';
   import debug from '$lib/debug';
-  import {
-    character,
-    loadFromChar
-  } from '../../../routes/chosen-one/CharacterStore';
+  import { character, loadFromChar } from '../../../routes/CharacterStore';
   import { errorMessage } from '../Modals/ErrorMessage.svelte';
 
   import { createEventDispatcher } from 'svelte';

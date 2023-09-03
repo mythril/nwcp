@@ -8,7 +8,6 @@ Overall goals:
 ### To do
 
 - [ ] use setters to precalculate derived stats / prevent mis-rendered data
-- [ ] add multi-game support to help system
 - [ ] build landing page
 - [ ] add automatic hash-state update to url
 - [ ] add in Vault Dweller stat / trait / skill calculation
@@ -47,6 +46,7 @@ Overall goals:
 
 ### Done
 
+- [x] add multi-game support to help system
 - [x] debug role chooser
 - [x] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
 - [x] fix linking to character

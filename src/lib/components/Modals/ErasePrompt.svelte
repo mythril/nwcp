@@ -16,7 +16,7 @@
   import { createEventDispatcher } from 'svelte';
   import Portal from '$lib/components/Portal.svelte';
   import { toast } from '../Toast.svelte';
-  import { character } from '../../../routes/chosen-one/CharacterStore';
+  import { character } from '../../../routes/CharacterStore';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   const erase = () => {

@@ -1,9 +1,9 @@
 <script lang="ts">
   import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
-  import HelpSource from '../../lib/components/HelpSource.svelte';
+  import HelpSource from '$lib/components/HelpSource.svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
-  import { character } from './CharacterStore';
+  import { character } from '../../../routes/CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
 
   const Skill = $character.skillInfo;

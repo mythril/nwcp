@@ -1,8 +1,8 @@
 <script lang="ts">
   import { AilmentStatus } from '$lib/engines/ChosenOne/main';
   import Bolthead from '$lib/components/Bolthead.svelte';
-  import HelpSource from '../../lib/components/HelpSource.svelte';
-  import { character } from './CharacterStore';
+  import HelpSource from '$lib/components/HelpSource.svelte';
+  import { character } from '../../../routes/CharacterStore';
 </script>
 
 <div class="display">

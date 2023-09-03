@@ -10,7 +10,7 @@
   import BrightnessVariance from '$lib/components/ImageGenerators/BrightnessVariance.svelte';
   import RoleDisplay from '$lib/components/RoleDisplay.svelte';
   import Toast from '$lib/components/Toast.svelte';
-  import { character } from './chosen-one/CharacterStore';
+  import { character } from './CharacterStore';
 
   async function bootUp() {
     if ('serviceWorker' in navigator) {
