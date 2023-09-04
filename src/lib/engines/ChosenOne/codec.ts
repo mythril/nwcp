@@ -119,9 +119,9 @@ const specialsDescriptor: FixedDescriptor<UnfinishedChosenOne>[] =
       name: key,
       // maximum is 10, so 2^4 = 16 > 10
       bits: 4,
-      encoder: (char: UnfinishedChosenOne) => char.attributes[key],
+      encoder: (char: UnfinishedChosenOne) => char[key],
       decoder: (a: number, mut: UnfinishedChosenOne) => {
-        mut.attributes[key] = a;
+        mut[key] = a;
       }
     };
   });

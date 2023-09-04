@@ -23,16 +23,7 @@
   let charHash: string;
 
   export const enter = () => {
-    char = Object.assign(new UnfinishedChosenOne(), {
-      role: $character.role,
-      difficulty: $character.difficulty,
-      name: $character.name,
-      age: $character.age,
-      sex: $character.sex,
-      attributes: $character.attributes,
-      tagged: $character.tagged,
-      traits: $character.traits
-    });
+    char = Object.assign(new UnfinishedChosenOne(), $character);
     charHash = charToBase64(char);
   };
 

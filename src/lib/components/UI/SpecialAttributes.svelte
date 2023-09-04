@@ -10,10 +10,10 @@
     <HelpSource subject={attr}>
       <Attribute
         label={SpecialAbbreviation(attr)}
-        bind:value={$character.attributes[attr]}
-        display={$character.displayAttributes()[attr]}
+        bind:value={$character[attr]}
+        display={$character.displayAttributes[attr]}
         on:charPointsRemainingBonk
-        charPointsRemaining={$character.charPointsRemaining()}
+        charPointsRemaining={$character.charPointsRemaining}
       />
     </HelpSource>
   {/each}

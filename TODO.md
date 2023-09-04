@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] put a visual indicator of route changes
 - [ ] use setters to precalculate derived stats / prevent mis-rendered data
 - [ ] build landing page
 - [ ] add automatic hash-state update to url

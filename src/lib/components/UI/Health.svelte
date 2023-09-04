@@ -11,7 +11,7 @@
       role="link"
       tabindex="0"
     >
-      Hit Points {$character.maxHitPoints()}/{$character.maxHitPoints()}
+      Hit Points {$character.maxHitPoints}/{$character.maxHitPoints}
     </div>
   </HelpSource>
   <div class="ailments">

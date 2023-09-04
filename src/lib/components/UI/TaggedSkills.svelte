@@ -69,7 +69,7 @@
             {Skill[key]}
           </div>
           <div class="value">
-            {$character.baseSkills()[Skill[key]]}%
+            {$character.baseSkills[Skill[key]]}%
           </div>
         </div>
       </HelpSource>

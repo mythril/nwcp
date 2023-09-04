@@ -1,8 +1,9 @@
 import type { ObjectValues } from '$lib/typeUtils';
 import { assert } from 'tsafe';
-import { Role, type Attributes, Sex } from '../all';
+import { Role, type Attributes, Sex, Special } from '../all';
 import type { HasHelpEntriesForEvery } from '../help';
 import { AbstractUnfinishedCharacter } from '../UnfinishedCharacter';
+import { defaultValuesOf } from '$lib/utils';
 
 export const CombatSkill = {
   SmallGuns: 'Small Guns',
@@ -127,28 +128,17 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   skillInfo = Skill;
   traitInfo = Trait;
   readonly hasTraits = true;
-  displayAttributes(): Attributes {
-    return this.attributes;
-  }
-  baseSkills(): Record<ObjectValues<typeof Skill>, number> {
-    return Object.assign({}, ...Object.keys(Skill).map((a) => ({ [a]: 0 })));
-  }
-  maxHitPoints(): number {
-    return Infinity;
-  }
-  derivedStatsDisplay(): Record<ObjectValues<typeof DerivedStat>, string> {
-    return Object.assign(
-      {},
-      ...Object.keys(DerivedStat).map((a) => ({ [a]: '' }))
-    );
-  }
+  displayAttributes: Attributes = defaultValuesOf(Special, 5);
+  baseSkills: Record<ObjectValues<typeof Skill>, number>  = defaultValuesOf(Skill, 0);
+  maxHitPoints = Infinity;
+  derivedStatsDisplay: Record<ObjectValues<typeof DerivedStat>, string> = defaultValuesOf(DerivedStat, '');
   reset(): void {
     this.age = 25;
     this.name = '';
     this.sex = Sex.Male;
-    this.attributes = Object.assign(
-      {},
-      ...Object.keys(this.attributes).map((a) => ({ [a]: 5 }))
+    Object.assign(
+      this,
+      ...Object.keys(Special).map((a) => ({ [a]: 5 }))
     );
     this.difficulty = Difficulty.Normal;
     this.traits = [];

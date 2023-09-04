@@ -15,8 +15,9 @@
   };
 
   $: {
+    console.log($character);
     if (tdd) {
-      tdd.set($character.charPointsRemaining());
+      tdd.set($character.charPointsRemaining);
     }
   }
 </script>

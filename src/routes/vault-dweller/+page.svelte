@@ -6,7 +6,7 @@
   let char = new UnfinishedVaultDweller();
   char.reset();
 
-  $character = char;
+  //$character = char;
 </script>
 
-<Main />
+<Main  />

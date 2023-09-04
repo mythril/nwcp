@@ -4,7 +4,7 @@
 
   const char = new UnfinishedWarrior();
   char.reset();
-  $character = char;
+  //$character = char;
 </script>
 
 {$character.role}

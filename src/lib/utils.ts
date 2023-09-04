@@ -81,3 +81,11 @@ export async function sleep(ms: number) {
     setTimeout(resolve, ms);
   });
 }
+
+export function includes<T extends U, U>(coll: ReadonlyArray<T>, el: U): el is T {
+  return coll.includes(el as T);
+}
+
+export function defaultValuesOf<T extends Object>(obj: T, defaultValue: unknown) {
+  return Object.assign({}, ...Object.values(obj).map(a => ({ [a]: defaultValue })))
+}
