@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] internationalize: npm i i18next
 - [ ] put a visual indicator of route changes
 - [ ] use setters to precalculate derived stats / prevent mis-rendered data
 - [ ] build landing page

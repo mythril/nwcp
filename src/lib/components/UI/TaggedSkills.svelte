@@ -1,21 +1,31 @@
+<script
+  lang="ts"
+  context="module"
+>
+  const chosenSkills = writable<string[]>([]);
+</script>
+
 <script lang="ts">
   import { objectKeys } from 'tsafe';
   import HelpSource from '$lib/components/HelpSource.svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
   import { character } from '../../../routes/CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
-  import type { ObjectValues } from '$lib/typeUtils';
   import { bonkSound, clickSound } from '$lib/browserUtils';
+  import { writable } from 'svelte/store';
 
   const Skill = $character.skillInfo;
 
   let skills = objectKeys(Skill);
 
-  let chosenSkills: (ObjectValues<typeof Skill> & {})[] =
-    $character.taggedAsArray();
+  $chosenSkills = $character.taggedAsArray();
 
-  $: if (chosenSkills) {
-    let ctSet = new Set(chosenSkills);
+  $: if ($character) {
+    $chosenSkills = $character.taggedAsArray();
+  }
+
+  $: if ($chosenSkills) {
+    let ctSet = new Set($chosenSkills);
 
     for (let skill of Object.values(Skill)) {
       if (ctSet.has(skill) && $character.hasTagged(skill) === false) {
@@ -29,7 +39,7 @@
 
   $: {
     if (tdd) {
-      tdd.set(3 - chosenSkills.length);
+      tdd.set(3 - $chosenSkills.length);
     }
   }
 
@@ -65,14 +75,14 @@
     {#each skills as key}
       <HelpSource subject={Skill[key]}>
         <div
-          class="skill {chosenSkills.includes(Skill[key]) ? 'selected' : ''}"
+          class="skill {$chosenSkills.includes(Skill[key]) ? 'selected' : ''}"
         >
           <div class="button">
             <input
               type="checkbox"
               class="checkbox-button"
               on:click={skillHandler}
-              bind:group={chosenSkills}
+              bind:group={$chosenSkills}
               value={Skill[key]}
               name=""
               id=""

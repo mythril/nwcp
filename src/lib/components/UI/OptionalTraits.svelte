@@ -1,22 +1,31 @@
+<script
+  lang="ts"
+  context="module"
+>
+  const chosenTraits = writable<string[]>([]);
+</script>
+
 <script lang="ts">
   import { objectKeys } from 'tsafe';
   import HelpSource from '$lib/components/HelpSource.svelte';
   import { character } from '../../../routes/CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
-  import type { ObjectValues } from '$lib/typeUtils';
   import { bonkSound, clickSound } from '$lib/browserUtils';
-
-  const Trait = $character.traitInfo;
+  import { get, writable } from 'svelte/store';
+  const Trait = get(character).traitInfo;
 
   let traits = objectKeys(Trait);
   let leftTraits = traits.slice(0, 8);
   let rightTraits = traits.slice(8, 16);
 
-  let chosenTraits: (ObjectValues<typeof Trait> & {})[] =
-    $character.traitsAsArray();
+  $chosenTraits = $character.traitsAsArray();
 
-  $: if (chosenTraits) {
-    let ctSet = new Set(chosenTraits);
+  $: if ($character) {
+    $chosenTraits = $character.traitsAsArray();
+  }
+
+  $: if ($chosenTraits) {
+    let ctSet = new Set($chosenTraits);
 
     for (let trait of Object.values(Trait)) {
       if (ctSet.has(trait) && $character.hasTrait(trait) === false) {
@@ -73,13 +82,13 @@
                 type="checkbox"
                 class="checkbox-button"
                 on:click={traitHandler}
-                bind:group={chosenTraits}
+                bind:group={$chosenTraits}
                 value={Trait[trait]}
               />
               <div
                 data-trait={trait}
                 role="link"
-                class={chosenTraits.includes(Trait[trait]) ? 'selected' : ''}
+                class={$chosenTraits.includes(Trait[trait]) ? 'selected' : ''}
               >
                 {Trait[trait]}
               </div>
@@ -95,13 +104,13 @@
                 type="checkbox"
                 class="checkbox-button"
                 on:click={traitHandler}
-                bind:group={chosenTraits}
+                bind:group={$chosenTraits}
                 value={Trait[trait]}
               />
               <div
                 data-trait={trait}
                 role="link"
-                class={chosenTraits.includes(Trait[trait]) ? 'selected' : ''}
+                class={$chosenTraits.includes(Trait[trait]) ? 'selected' : ''}
               >
                 {Trait[trait]}
               </div>
