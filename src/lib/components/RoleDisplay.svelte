@@ -2,11 +2,12 @@
   import { preloadCode, preloadData } from '$app/navigation';
   import { RoleToSequel, Role, SupportedRoles } from '$lib/engines/all';
   import type { ObjectValues } from '$lib/typeUtils';
-  import { clickSound, sleep } from '$lib/utils';
+  import { sleep } from '$lib/utils';
   import Button from '$lib/components/Buttons/Button.svelte';
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import RadialSwitch from '$lib/components/RadialSwitch.svelte';
   import { character } from '../../routes/CharacterStore';
+  import { clickSound } from '$lib/browserUtils';
 
   export let value: ObjectValues<typeof Role> | undefined;
   let display: string[];

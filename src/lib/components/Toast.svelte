@@ -94,8 +94,9 @@
 </script>
 
 <script lang="ts">
-  import { clickSound, sleep } from '$lib/utils';
+  import { sleep } from '$lib/utils';
   import type { ObjectValues } from '$lib/typeUtils';
+  import { clickSound } from '$lib/browserUtils';
 
   let offset = Math.random() * 5;
 

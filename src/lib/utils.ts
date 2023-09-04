@@ -1,6 +1,3 @@
-import clickFile from '$lib/sounds/click2.wav?inline';
-import bonkFile from '$lib/sounds/bonk.wav?inline';
-
 export const Raise = (message: string): never => {
   throw new Error(message);
 };
@@ -13,47 +10,6 @@ export function blobToDataURL(blob: Blob): Promise<string> {
     reader.onabort = () => reject(new Error('Read aborted'));
     reader.readAsDataURL(blob);
   });
-}
-
-// preload, only one instance (module singleton)
-const preloads: HTMLAudioElement[] = [];
-const clickAudio = new Audio(clickFile);
-preloads.push(clickAudio);
-const bonkAudio = new Audio(bonkFile);
-preloads.push(bonkAudio);
-
-async function preloader() {
-  for (const preload of preloads) {
-    try {
-      // keeps the audio from being truncated
-      preload.preload = 'auto';
-      preload.volume = 0;
-      await preload.play();
-    } catch {
-      // this is an expected error when we don't care if sound is played or not
-    } finally {
-      preload.volume = 1;
-    }
-  }
-}
-preloader();
-
-export async function clickSound() {
-  clickAudio.currentTime = 0;
-  try {
-    await clickAudio.play();
-  } catch (e) {
-    // silence the useless error
-  }
-}
-
-export async function bonkSound() {
-  bonkAudio.currentTime = 0;
-  try {
-    await bonkAudio.play();
-  } catch (e) {
-    // silence the useless error
-  }
 }
 
 // This is a fast debouncer, in that it allows the event to fire before the
@@ -82,10 +38,19 @@ export async function sleep(ms: number) {
   });
 }
 
-export function includes<T extends U, U>(coll: ReadonlyArray<T>, el: U): el is T {
+export function includes<T extends U, U>(
+  coll: ReadonlyArray<T>,
+  el: U
+): el is T {
   return coll.includes(el as T);
 }
 
-export function defaultValuesOf<T extends Object>(obj: T, defaultValue: unknown) {
-  return Object.assign({}, ...Object.values(obj).map(a => ({ [a]: defaultValue })))
+export function defaultValuesOf<T extends object>(
+  obj: T,
+  defaultValue: unknown
+) {
+  return Object.assign(
+    {},
+    ...Object.values(obj).map((a) => ({ [a]: defaultValue }))
+  );
 }

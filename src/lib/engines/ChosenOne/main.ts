@@ -119,15 +119,15 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
   typeof Difficulty,
   typeof DerivedStat
 > {
-  traits: (ObjectValues<typeof Trait> & {})[] = [];
-  tagged: (ObjectValues<typeof Skill> & {})[] = [];
+  _traits: Set<ObjectValues<typeof Trait>> = new Set();
+  _tagged: Set<ObjectValues<typeof Skill>> = new Set();
   difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
   role: ObjectValues<typeof Role> & {} = Role.ChosenOne;
-  readonly hasDifficultySetting = true;
+  readonly roleHasDifficultySetting = true;
   difficultyInfo = Difficulty;
   skillInfo = Skill;
   traitInfo = Trait;
-  readonly hasTraits = true;
+  readonly roleHasTraits = true;
   displayAttributes: Attributes = {
     Strength: this._Strength,
     Perception: this._Perception,
@@ -135,15 +135,19 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
     Charisma: this._Charisma,
     Intelligence: this._Intelligence,
     Agility: this._Agility,
-    Luck: this._Luck,
+    Luck: this._Luck
   };
 
-  #defaultDerivedAttribute(s: number, k: ObjectValues<typeof Special>, doMore: () => number = () => 0) {
+  #defaultDerivedAttribute(
+    s: number,
+    k: ObjectValues<typeof Special>,
+    doMore: () => number = () => 0
+  ) {
     let d = s;
-    if (this.traits.includes(Trait.Gifted)) {
+    if (this.hasTrait(Trait.Gifted)) {
       d += 1;
     }
-    d += doMore()
+    d += doMore();
     if (d > 10) {
       s = 10 - d + s;
     }
@@ -154,13 +158,19 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
     return s;
   }
 
-  baseSkills: Record<ObjectValues<typeof Skill>, number> = defaultValuesOf(Skill, 0);
+  baseSkills: Record<ObjectValues<typeof Skill>, number> = defaultValuesOf(
+    Skill,
+    0
+  );
 
-  #sd = (fn: (dal: Attributes) => number, skill: ObjectValues<typeof Skill> & {}) => {
+  #sd = (
+    fn: (dal: Attributes) => number,
+    skill: ObjectValues<typeof Skill> & {}
+  ) => {
     return () => {
-      const tagged = (this.tagged.includes(skill) ? 20 : 0);
+      const tagged = this.hasTagged(skill) ? 20 : 0;
       let goodNatured = 0;
-      if (this.traits.includes(Trait.GoodNatured)) {
+      if (this.hasTrait(Trait.GoodNatured)) {
         switch (skill) {
           case Skill.FirstAid:
           case Skill.Doctor:
@@ -179,7 +189,10 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
         }
       }
       let difficultyMod = 0;
-      if (includes(Object.values(PassiveSkill), skill) || includes(Object.values(ActiveSkill), skill)) {
+      if (
+        includes(Object.values(PassiveSkill), skill) ||
+        includes(Object.values(ActiveSkill), skill)
+      ) {
         switch (this.difficulty) {
           case Difficulty.Easy:
             difficultyMod += 20;
@@ -190,55 +203,110 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
         }
       }
 
-      const gifted = (this.traits.includes(Trait.Gifted) ? -10 : 0);
+      const gifted = this.hasTrait(Trait.Gifted) ? -10 : 0;
 
-      this.baseSkills[skill] = fn(this.displayAttributes) + tagged + goodNatured + gifted;
-    }
+      this.baseSkills[skill] =
+        fn(this.displayAttributes) +
+        tagged +
+        goodNatured +
+        gifted +
+        difficultyMod;
+    };
   };
 
-  maxHitPoints: number = 0;
+  maxHitPoints = 0;
 
   #maxHPDeriver = () => {
     this.maxHitPoints =
-      15 +
-      this[Special.Strength] +
-      2 * this[Special.Endurance];
-  }
-
-
-  skillDerivers = {
-    [Skill.Barter]: this.#sd((attrs) => 4 * attrs[Special.Charisma], Skill.Barter),
-    [Skill.BigGuns]: this.#sd((attrs) => 2 * attrs[Special.Agility], Skill.BigGuns),
-    [Skill.Doctor]: this.#sd((attrs) => 5 + attrs[Special.Perception] + attrs[Special.Intelligence], Skill.Doctor),
-    [Skill.EnergyWeapons]: this.#sd((attrs) => 2 * attrs[Special.Agility], Skill.EnergyWeapons),
-    [Skill.FirstAid]: this.#sd((attrs) =>
-      2 * (attrs[Special.Perception] + attrs[Special.Intelligence]), Skill.FirstAid),
-    [Skill.Gambling]: this.#sd((attrs) => 5 * attrs[Special.Luck], Skill.Gambling),
-    [Skill.LockPick]: this.#sd((attrs) => 10 + attrs[Special.Perception] + attrs[Special.Agility], Skill.LockPick),
-    [Skill.MeleeWeapons]: this.#sd((attrs) =>
-      20 + 2 * (attrs[Special.Strength] + attrs[Special.Agility]), Skill.MeleeWeapons),
-    [Skill.Outdoorsman]: this.#sd((attrs) =>
-      2 * (attrs[Special.Endurance] + attrs[Special.Intelligence]), Skill.Outdoorsman),
-    [Skill.Repair]: this.#sd((attrs) => 3 * attrs[Special.Intelligence], Skill.Repair),
-    [Skill.Science]: this.#sd((attrs) => 4 * attrs[Special.Intelligence], Skill.Science),
-    [Skill.SmallGuns]: this.#sd((attrs) => 5 + 4 * attrs[Special.Agility], Skill.SmallGuns),
-    [Skill.Sneak]: this.#sd((attrs) => 5 + 3 * attrs[Special.Agility], Skill.Sneak),
-    [Skill.Steal]: this.#sd((attrs) => 3 * attrs[Special.Agility], Skill.Steal),
-    [Skill.Throwing]: this.#sd((attrs) => 4 * attrs[Special.Agility], Skill.Throwing),
-    [Skill.Speech]: this.#sd((attrs) => 5 * attrs[Special.Charisma], Skill.Speech),
-    [Skill.Traps]: this.#sd((attrs) => 10 + attrs[Special.Perception] + attrs[Special.Agility], Skill.Traps),
-
-    [Skill.Unarmed]: this.#sd((attrs) =>
-      30 + 2 * (attrs[Special.Agility] + attrs[Special.Strength]), Skill.Unarmed)
+      15 + this[Special.Strength] + 2 * this[Special.Endurance];
   };
 
+  skillDerivers = {
+    [Skill.Barter]: this.#sd(
+      (attrs) => 4 * attrs[Special.Charisma],
+      Skill.Barter
+    ),
+    [Skill.BigGuns]: this.#sd(
+      (attrs) => 2 * attrs[Special.Agility],
+      Skill.BigGuns
+    ),
+    [Skill.Doctor]: this.#sd(
+      (attrs) => 5 + attrs[Special.Perception] + attrs[Special.Intelligence],
+      Skill.Doctor
+    ),
+    [Skill.EnergyWeapons]: this.#sd(
+      (attrs) => 2 * attrs[Special.Agility],
+      Skill.EnergyWeapons
+    ),
+    [Skill.FirstAid]: this.#sd(
+      (attrs) => 2 * (attrs[Special.Perception] + attrs[Special.Intelligence]),
+      Skill.FirstAid
+    ),
+    [Skill.Gambling]: this.#sd(
+      (attrs) => 5 * attrs[Special.Luck],
+      Skill.Gambling
+    ),
+    [Skill.LockPick]: this.#sd(
+      (attrs) => 10 + attrs[Special.Perception] + attrs[Special.Agility],
+      Skill.LockPick
+    ),
+    [Skill.MeleeWeapons]: this.#sd(
+      (attrs) => 20 + 2 * (attrs[Special.Strength] + attrs[Special.Agility]),
+      Skill.MeleeWeapons
+    ),
+    [Skill.Outdoorsman]: this.#sd(
+      (attrs) => 2 * (attrs[Special.Endurance] + attrs[Special.Intelligence]),
+      Skill.Outdoorsman
+    ),
+    [Skill.Repair]: this.#sd(
+      (attrs) => 3 * attrs[Special.Intelligence],
+      Skill.Repair
+    ),
+    [Skill.Science]: this.#sd(
+      (attrs) => 4 * attrs[Special.Intelligence],
+      Skill.Science
+    ),
+    [Skill.SmallGuns]: this.#sd(
+      (attrs) => 5 + 4 * attrs[Special.Agility],
+      Skill.SmallGuns
+    ),
+    [Skill.Sneak]: this.#sd(
+      (attrs) => 5 + 3 * attrs[Special.Agility],
+      Skill.Sneak
+    ),
+    [Skill.Steal]: this.#sd((attrs) => 3 * attrs[Special.Agility], Skill.Steal),
+    [Skill.Throwing]: this.#sd(
+      (attrs) => 4 * attrs[Special.Agility],
+      Skill.Throwing
+    ),
+    [Skill.Speech]: this.#sd(
+      (attrs) => 5 * attrs[Special.Charisma],
+      Skill.Speech
+    ),
+    [Skill.Traps]: this.#sd(
+      (attrs) => 10 + attrs[Special.Perception] + attrs[Special.Agility],
+      Skill.Traps
+    ),
+
+    [Skill.Unarmed]: this.#sd(
+      (attrs) => 30 + 2 * (attrs[Special.Agility] + attrs[Special.Strength]),
+      Skill.Unarmed
+    )
+  };
+
+  get Strength() {
+    return this._Strength;
+  }
   set Strength(s: number) {
     this._Strength = this.#defaultDerivedAttribute(s, Special.Strength, () => {
-      return this.traits.includes(Trait.Bruiser) ? 2 : 0;
+      return this.hasTrait(Trait.Bruiser) ? 2 : 0;
     });
     this.skillDerivers[Skill.MeleeWeapons]();
     this.skillDerivers[Skill.Unarmed]();
     this.#maxHPDeriver();
+  }
+  get Perception() {
+    return this._Perception;
   }
   set Perception(s: number) {
     this._Perception = this.#defaultDerivedAttribute(s, Special.Perception);
@@ -247,15 +315,24 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
     this.skillDerivers[Skill.LockPick]();
     this.skillDerivers[Skill.Traps]();
   }
+  get Endurance() {
+    return this._Endurance;
+  }
   set Endurance(s: number) {
     this._Endurance = this.#defaultDerivedAttribute(s, Special.Endurance);
     this.skillDerivers[Skill.Outdoorsman]();
     this.#maxHPDeriver();
   }
+  get Charisma() {
+    return this._Charisma;
+  }
   set Charisma(s: number) {
     this._Charisma = this.#defaultDerivedAttribute(s, Special.Charisma);
     this.skillDerivers[Skill.Barter]();
     this.skillDerivers[Skill.Speech]();
+  }
+  get Intelligence() {
+    return this._Intelligence;
   }
   set Intelligence(s: number) {
     this._Intelligence = this.#defaultDerivedAttribute(s, Special.Intelligence);
@@ -265,9 +342,12 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
     this.skillDerivers[Skill.Science]();
     this.skillDerivers[Skill.Repair]();
   }
+  get Agility() {
+    return this._Agility;
+  }
   set Agility(s: number) {
     this._Agility = this.#defaultDerivedAttribute(s, Special.Agility, () => {
-      return this.traits.includes(Trait.SmallFrame) ? 1 : 0;
+      return this.hasTrait(Trait.SmallFrame) ? 1 : 0;
     });
     this.skillDerivers[Skill.BigGuns]();
     this.skillDerivers[Skill.EnergyWeapons]();
@@ -279,83 +359,95 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
     this.skillDerivers[Skill.Throwing]();
     this.skillDerivers[Skill.Unarmed]();
   }
+  get Luck() {
+    return this._Luck;
+  }
   set Luck(s: number) {
     this._Luck = this.#defaultDerivedAttribute(s, Special.Luck);
     this.skillDerivers[Skill.Gambling]();
   }
 
+  derivedStatsDisplay: Record<ObjectValues<typeof DerivedStat>, string> =
+    defaultValuesOf(DerivedStat, '');
 
-  derivedStatsDisplay: Record<ObjectValues<typeof DerivedStat>, string> = defaultValuesOf(DerivedStat, "");
-
-  #dsd = (fn: (dal: Attributes, traits: (ObjectValues<typeof Trait> & {})[]) => string, stat: ObjectValues<typeof DerivedStat> & {}) => {
+  #dsd = (
+    fn: (dal: Attributes) => string,
+    stat: ObjectValues<typeof DerivedStat> & {}
+  ) => {
     return () => {
-      this.derivedStatsDisplay[stat] = fn(this.displayAttributes, this.traits);
-    }
+      this.derivedStatsDisplay[stat] = fn(this.displayAttributes);
+    };
   };
 
-
   statDerivers = {
-    [DerivedStat.ActionPoints]: this.#dsd(
-      (attrs, traits) => {
-        return "" + (5 + Math.floor(attrs[Special.Agility] / 2) + (traits.includes(Trait.Bruiser) ? -2 : 0));
-      },
-      DerivedStat.ActionPoints
-    ),
-    [DerivedStat.ArmorClass]: this.#dsd(
-      (attrs, traits) => {
-        return "" + (traits.includes(Trait.Kamikaze) ? 0 : attrs[Special.Agility]);
-      },
-      DerivedStat.ArmorClass
-    ),
-    [DerivedStat.CarryWeight]: this.#dsd(
-      (attrs, traits) => {
-        return "" + (25 + (traits.includes(Trait.SmallFrame) ? 15 : 25) * attrs[Special.Strength]);
-      },
-      DerivedStat.CarryWeight
-    ),
-    [DerivedStat.CriticalChance]: this.#dsd(
-      (attrs, traits) => {
-        return "" + (attrs[Special.Luck] + (traits.includes(Trait.Finesse) ? 10 : 0)) + "%";
-      },
-      DerivedStat.CriticalChance
-    ),
-    [DerivedStat.DamageRes]: this.#dsd(
-      () => {
-        return "" + 0 + "%";
-      },
-      DerivedStat.DamageRes
-    ),
-    [DerivedStat.HealingRate]: this.#dsd(
-      (attrs, traits) => {
-        return "" + (Math.floor(attrs[Special.Endurance] / 3) + (traits.includes(Trait.FastMetabolism) ? 2 : 0));
-      },
-      DerivedStat.HealingRate
-    ),
-    [DerivedStat.MeleeDamage]: this.#dsd(
-      (attrs, traits) => {
-        return "" + (Math.max(attrs[Special.Strength] - 5, 1) + (traits.includes(Trait.HeavyHanded) ? 4 : 0));
-      },
-      DerivedStat.MeleeDamage
-    ),
-    [DerivedStat.PoisonRes]: this.#dsd(
-      (attrs, traits) => {
-        return "" + (traits.includes(Trait.FastMetabolism) ? 0 : attrs[Special.Endurance] * 5) + "%";
-      },
-      DerivedStat.PoisonRes
-    ),
-    [DerivedStat.RadiationRes]: this.#dsd(
-      (attrs, traits) => {
-        return "" + (traits.includes(Trait.FastMetabolism) ? 0 : attrs[Special.Endurance] * 2) + "%";
-      },
-      DerivedStat.RadiationRes
-    ),
-    [DerivedStat.Sequence]: this.#dsd(
-      (attrs, traits) => {
-        return "" + (2 * attrs[Special.Perception] + (traits.includes(Trait.Kamikaze) ? 5 : 0));
-      },
-      DerivedStat.Sequence
-    ),
-  }
+    [DerivedStat.ActionPoints]: this.#dsd((attrs) => {
+      return (
+        '' +
+        (5 +
+          Math.floor(attrs[Special.Agility] / 2) +
+          (this.hasTrait(Trait.Bruiser) ? -2 : 0))
+      );
+    }, DerivedStat.ActionPoints),
+    [DerivedStat.ArmorClass]: this.#dsd((attrs) => {
+      return '' + (this.hasTrait(Trait.Kamikaze) ? 0 : attrs[Special.Agility]);
+    }, DerivedStat.ArmorClass),
+    [DerivedStat.CarryWeight]: this.#dsd((attrs) => {
+      return (
+        '' +
+        (25 +
+          (this.hasTrait(Trait.SmallFrame) ? 15 : 25) * attrs[Special.Strength])
+      );
+    }, DerivedStat.CarryWeight),
+    [DerivedStat.CriticalChance]: this.#dsd((attrs) => {
+      return (
+        '' +
+        (attrs[Special.Luck] + (this.hasTrait(Trait.Finesse) ? 10 : 0)) +
+        '%'
+      );
+    }, DerivedStat.CriticalChance),
+    [DerivedStat.DamageRes]: this.#dsd(() => {
+      return '' + 0 + '%';
+    }, DerivedStat.DamageRes),
+    [DerivedStat.HealingRate]: this.#dsd((attrs) => {
+      return (
+        '' +
+        (Math.floor(attrs[Special.Endurance] / 3) +
+          (this.hasTrait(Trait.FastMetabolism) ? 2 : 0))
+      );
+    }, DerivedStat.HealingRate),
+    [DerivedStat.MeleeDamage]: this.#dsd((attrs) => {
+      return (
+        '' +
+        (Math.max(attrs[Special.Strength] - 5, 1) +
+          (this.hasTrait(Trait.HeavyHanded) ? 4 : 0))
+      );
+    }, DerivedStat.MeleeDamage),
+    [DerivedStat.PoisonRes]: this.#dsd((attrs) => {
+      return (
+        '' +
+        (this.hasTrait(Trait.FastMetabolism)
+          ? 0
+          : attrs[Special.Endurance] * 5) +
+        '%'
+      );
+    }, DerivedStat.PoisonRes),
+    [DerivedStat.RadiationRes]: this.#dsd((attrs) => {
+      return (
+        '' +
+        (this.hasTrait(Trait.FastMetabolism)
+          ? 0
+          : attrs[Special.Endurance] * 2) +
+        '%'
+      );
+    }, DerivedStat.RadiationRes),
+    [DerivedStat.Sequence]: this.#dsd((attrs) => {
+      return (
+        '' +
+        (2 * attrs[Special.Perception] +
+          (this.hasTrait(Trait.Kamikaze) ? 5 : 0))
+      );
+    }, DerivedStat.Sequence)
+  };
 
   reset(): void {
     // TODO figure out how to trigger a reactive update here
@@ -363,13 +455,9 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
     this.name = '';
     this.sex = Sex.Male;
     this.Strength = 5;
-    Object.assign(
-      this,
-      ...Object.values(Special).map(a => ({[a]: 5}))
-    );
+    Object.assign(this, ...Object.values(Special).map((a) => ({ [a]: 5 })));
     this.difficulty = Difficulty.Normal;
-    this.traits = [];
-    this.tagged = [];
-    console.log(this);
+    this.clearTraits();
+    this.clearTagged();
   }
 }

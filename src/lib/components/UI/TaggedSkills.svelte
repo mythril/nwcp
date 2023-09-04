@@ -1,26 +1,41 @@
 <script lang="ts">
-  import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from '$lib/components/HelpSource.svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
   import { character } from '../../../routes/CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
+  import type { ObjectValues } from '$lib/typeUtils';
+  import { bonkSound, clickSound } from '$lib/browserUtils';
 
   const Skill = $character.skillInfo;
 
   let skills = objectKeys(Skill);
 
+  let chosenSkills: (ObjectValues<typeof Skill> & {})[] =
+    $character.taggedAsArray();
+
+  $: if (chosenSkills) {
+    let ctSet = new Set(chosenSkills);
+
+    for (let skill of Object.values(Skill)) {
+      if (ctSet.has(skill) && $character.hasTagged(skill) === false) {
+        $character.addTagged(skill);
+      }
+      if (ctSet.has(skill) === false && $character.hasTagged(skill)) {
+        $character.deleteTagged(skill);
+      }
+    }
+  }
+
   $: {
     if (tdd) {
-      if (!tdd.set(3 - $character.tagged.length)) {
-        $character.tagged = $character.tagged;
-      }
+      tdd.set(3 - chosenSkills.length);
     }
   }
 
   const skillHandler = (ev: Event) => {
     const cb = ev.target as HTMLInputElement;
-    if ($character.tagged.length >= 3 && cb.checked) {
+    if ($character.taggedCount() >= 3 && cb.checked) {
       bonkSound();
       toast.error({ message: 'YOU MUST TAG 3 SKILLS' });
       tdd.set(-1);
@@ -50,16 +65,14 @@
     {#each skills as key}
       <HelpSource subject={Skill[key]}>
         <div
-          class="skill {$character.tagged.includes(Skill[key])
-            ? 'selected'
-            : ''}"
+          class="skill {chosenSkills.includes(Skill[key]) ? 'selected' : ''}"
         >
           <div class="button">
             <input
               type="checkbox"
               class="checkbox-button"
               on:click={skillHandler}
-              bind:group={$character.tagged}
+              bind:group={chosenSkills}
               value={Skill[key]}
               name=""
               id=""

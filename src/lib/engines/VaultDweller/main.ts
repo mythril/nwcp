@@ -113,7 +113,7 @@ export const Difficulty = {
   Hard: 'Hard'
 } as const;
 
-export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
+export class UnfinishedVaultDweller /* extends AbstractUnfinishedCharacter<
   typeof Trait,
   typeof Skill,
   typeof Difficulty,
@@ -123,25 +123,27 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
   tagged: (ObjectValues<typeof Skill> & {})[] = [];
   difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
   role: ObjectValues<typeof Role> & {} = Role.VaultDweller;
-  readonly hasDifficultySetting = true;
+  readonly roleHasDifficultySetting = true;
   difficultyInfo = Difficulty;
   skillInfo = Skill;
   traitInfo = Trait;
-  readonly hasTraits = true;
+  readonly roleHasTraits = true;
   displayAttributes: Attributes = defaultValuesOf(Special, 5);
-  baseSkills: Record<ObjectValues<typeof Skill>, number> = defaultValuesOf(Skill, 0);
-  maxHitPoints: number  = Infinity;
-  derivedStatsDisplay: Record<ObjectValues<typeof DerivedStat>, string> = defaultValuesOf(DerivedStat, '');
+  baseSkills: Record<ObjectValues<typeof Skill>, number> = defaultValuesOf(
+    Skill,
+    0
+  );
+  maxHitPoints = Infinity;
+  derivedStatsDisplay: Record<ObjectValues<typeof DerivedStat>, string> =
+    defaultValuesOf(DerivedStat, '');
   reset(): void {
     this.age = 25;
     this.name = '';
     this.sex = Sex.Male;
-    Object.assign(
-      this,
-      ...Object.keys(Special).map((a) => ({ [a]: 5 }))
-    );
+    Object.assign(this, ...Object.keys(Special).map((a) => ({ [a]: 5 })));
     this.difficulty = Difficulty.Normal;
     this.traits = [];
     this.tagged = [];
   }
 }
+*/ {}

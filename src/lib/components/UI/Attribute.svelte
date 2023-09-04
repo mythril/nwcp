@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { clickSound, createDebouncer } from '$lib/utils';
+  import { createDebouncer } from '$lib/utils';
   import { createEventDispatcher } from 'svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
+  import { clickSound } from '$lib/browserUtils';
 
   export let label: string;
   export let value: number;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { clickSound } from '$lib/utils';
+  import { clickSound } from '$lib/browserUtils';
   import Button from './Button.svelte';
   export let checked = false;
 </script>

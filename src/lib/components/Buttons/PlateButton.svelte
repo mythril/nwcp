@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { clickSound } from '$lib/utils';
+  import { clickSound } from '$lib/browserUtils';
   import Bolthead from '../Bolthead.svelte';
   import Button from './Button.svelte';
   export let pushButton = true;

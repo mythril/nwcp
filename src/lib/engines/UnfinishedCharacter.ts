@@ -90,15 +90,52 @@ export abstract class AbstractUnfinishedCharacter<
     }
     this._Luck = s;
   }
-  abstract readonly hasDifficultySetting: boolean;
+  abstract readonly roleHasDifficultySetting: boolean;
   abstract difficultyInfo: D;
   abstract difficulty: ObjectValues<D>;
 
-  abstract readonly hasTraits: boolean;
+  abstract readonly roleHasTraits: boolean;
   abstract traitInfo: T;
-  abstract traits: ObjectValues<T>[];
+  abstract _traits: Set<ObjectValues<T>>;
+  hasTrait(trait: ObjectValues<T>) {
+    return this._traits.has(trait);
+  }
+  addTrait(trait: ObjectValues<T>) {
+    this._traits.add(trait);
+  }
+  deleteTrait(trait: ObjectValues<T>) {
+    this._traits.delete(trait);
+  }
+  clearTraits() {
+    this._traits.clear();
+  }
+  traitCount() {
+    return this._traits.size;
+  }
+  traitsAsArray() {
+    return [...this._traits];
+  }
 
-  abstract tagged: ObjectValues<S>[];
+  abstract _tagged: Set<ObjectValues<S>>;
+  hasTagged(tagged: ObjectValues<S>) {
+    return this._tagged.has(tagged);
+  }
+  addTagged(tagged: ObjectValues<S>) {
+    this._tagged.add(tagged);
+  }
+  deleteTagged(tagged: ObjectValues<S>) {
+    this._tagged.delete(tagged);
+  }
+  clearTagged() {
+    this._tagged.clear();
+  }
+  taggedCount() {
+    return this._tagged.size;
+  }
+  taggedAsArray() {
+    return [...this._tagged];
+  }
+
   abstract skillInfo: S;
   abstract displayAttributes: Attributes;
   abstract baseSkills: Record<ObjectValues<S>, number>;
@@ -107,12 +144,9 @@ export abstract class AbstractUnfinishedCharacter<
 
   get charPointsRemaining() {
     let cpr = 40;
-    console.log(this.Strength);
-    for (let key of Object.values(Special)) {
-      console.log(this[key]);
+    for (const key of Object.values(Special)) {
       cpr -= this[key];
     }
-    console.log(cpr);
     return cpr;
   }
 

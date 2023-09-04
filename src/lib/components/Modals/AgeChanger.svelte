@@ -3,7 +3,7 @@
   import Arrow from '$lib/components/icons/Arrow.svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
-  import { clickSound, createDebouncer } from '$lib/utils';
+  import { createDebouncer } from '$lib/utils';
 
   import { createEventDispatcher } from 'svelte';
   import { anchors, updateAnchors } from '$lib/components/Anchor.svelte';
@@ -12,6 +12,7 @@
     type ModalEventSignature
   } from '$lib/components/Modal.svelte';
   import { character } from '../../../routes/CharacterStore';
+  import { clickSound } from '$lib/browserUtils';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let tmp = $character.age;

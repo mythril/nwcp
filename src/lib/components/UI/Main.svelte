@@ -10,7 +10,6 @@
   import ModalButton from '$lib/components/Buttons/ModalButton.svelte';
   import { character, loadFromChar } from '../../../routes/CharacterStore';
   import Anchor from '$lib/components/Anchor.svelte';
-  import { onMount } from 'svelte';
   import { errorMessage } from '$lib/components/Modals/ErrorMessage.svelte';
   import debug from '$lib/debug';
   import { toast } from '$lib/components/Toast.svelte';
@@ -25,20 +24,19 @@
     }
   };
 
-  onMount(() => {
-    try {
-      if (window.location.hash.length > 1) {
-        loadFromChar(base64ToChar(window.location.hash.slice(1)));
-      }
-    } catch (err) {
-      let em = 'Unknown error.';
-      if (err instanceof CodecError) {
-        em = err.message;
-      }
-      $errorMessage = em;
-      debug.error(err);
+  try {
+    if (window.location.hash.length > 1) {
+      const fromHash = base64ToChar(window.location.hash.slice(1));
+      loadFromChar(fromHash);
     }
-  });
+  } catch (err) {
+    let em = 'Unknown error.';
+    if (err instanceof CodecError) {
+      em = err.message;
+    }
+    $errorMessage = em;
+    debug.error(err);
+  }
 </script>
 
 <svelte:head>

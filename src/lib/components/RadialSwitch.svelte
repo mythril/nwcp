@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { clickSound } from '$lib/utils';
+  import { clickSound } from '$lib/browserUtils';
 
   export let options: string[] = [];
   export let disabled: Record<string, boolean> = {};

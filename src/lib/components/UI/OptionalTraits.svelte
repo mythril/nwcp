@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { bonkSound, clickSound } from '$lib/utils';
   import { objectKeys } from 'tsafe';
   import HelpSource from '$lib/components/HelpSource.svelte';
   import { character } from '../../../routes/CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
+  import type { ObjectValues } from '$lib/typeUtils';
+  import { bonkSound, clickSound } from '$lib/browserUtils';
 
   const Trait = $character.traitInfo;
 
@@ -11,9 +12,25 @@
   let leftTraits = traits.slice(0, 8);
   let rightTraits = traits.slice(8, 16);
 
+  let chosenTraits: (ObjectValues<typeof Trait> & {})[] =
+    $character.traitsAsArray();
+
+  $: if (chosenTraits) {
+    let ctSet = new Set(chosenTraits);
+
+    for (let trait of Object.values(Trait)) {
+      if (ctSet.has(trait) && $character.hasTrait(trait) === false) {
+        $character.addTrait(trait);
+      }
+      if (ctSet.has(trait) === false && $character.hasTrait(trait)) {
+        $character.deleteTrait(trait);
+      }
+    }
+  }
+
   const traitHandler = (e: Event) => {
     const cb = e.target as HTMLInputElement;
-    if ($character.traits.length >= 2 && cb.checked) {
+    if ($character.traitCount() >= 2 && cb.checked) {
       bonkSound();
       toast.error({ message: 'YOU CAN CHOOSE A MAXIMUM OF 2 TRAITS' });
       e.preventDefault();
@@ -56,15 +73,13 @@
                 type="checkbox"
                 class="checkbox-button"
                 on:click={traitHandler}
-                bind:group={$character.traits}
+                bind:group={chosenTraits}
                 value={Trait[trait]}
               />
               <div
                 data-trait={trait}
                 role="link"
-                class={$character.traits.includes(Trait[trait])
-                  ? 'selected'
-                  : ''}
+                class={chosenTraits.includes(Trait[trait]) ? 'selected' : ''}
               >
                 {Trait[trait]}
               </div>
@@ -80,15 +95,13 @@
                 type="checkbox"
                 class="checkbox-button"
                 on:click={traitHandler}
-                bind:group={$character.traits}
+                bind:group={chosenTraits}
                 value={Trait[trait]}
               />
               <div
                 data-trait={trait}
                 role="link"
-                class={$character.traits.includes(Trait[trait])
-                  ? 'selected'
-                  : ''}
+                class={chosenTraits.includes(Trait[trait]) ? 'selected' : ''}
               >
                 {Trait[trait]}
               </div>

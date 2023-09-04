@@ -3,10 +3,10 @@
   import Main from '$lib/components/UI/Main.svelte';
   import { UnfinishedVaultDweller } from '$lib/engines/VaultDweller/main';
 
-  let char = new UnfinishedVaultDweller();
-  char.reset();
+  // let char = new UnfinishedVaultDweller();
+  // char.reset();
 
-  //$character = char;
+  // $character = char;
 </script>
 
-<Main  />
+<Main />

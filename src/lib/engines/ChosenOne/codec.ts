@@ -161,7 +161,8 @@ const traitsDescriptor: FixedDescriptor<UnfinishedChosenOne>[] = [0, 1].map(
       // forcing us to use an extra bit
       bits: 5,
       encoder: (char: UnfinishedChosenOne) => {
-        const trait = char.traits[idx];
+        const traitArr = char.traitsAsArray();
+        const trait = traitArr[idx];
         if (!trait) {
           return 0;
         }
@@ -169,7 +170,7 @@ const traitsDescriptor: FixedDescriptor<UnfinishedChosenOne>[] = [0, 1].map(
       },
       decoder: (t: number, mut: UnfinishedChosenOne) => {
         if (t > 0) {
-          mut.traits.push(sortedTraits[t - 1]);
+          mut.addTrait(sortedTraits[t - 1]);
         }
       }
     };
@@ -186,7 +187,8 @@ const taggedDescriptor: FixedDescriptor<UnfinishedChosenOne>[] = [0, 1, 2].map(
       // 2^5 = 32
       bits: 5,
       encoder: (char: UnfinishedChosenOne) => {
-        const skill = char.tagged[idx];
+        const skillArr = char.taggedAsArray();
+        const skill = skillArr[idx];
         if (!skill) {
           return 0;
         }
@@ -194,7 +196,7 @@ const taggedDescriptor: FixedDescriptor<UnfinishedChosenOne>[] = [0, 1, 2].map(
       },
       decoder: (s: number, mut: UnfinishedChosenOne) => {
         if (s > 0) {
-          mut.tagged.push(sortedSkills[s - 1]);
+          mut.addTagged(sortedSkills[s - 1]);
         }
       }
     };

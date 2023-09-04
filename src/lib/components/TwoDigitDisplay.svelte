@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { bonkSound } from '$lib/utils';
+  import { bonkSound } from '$lib/browserUtils';
   import EmptyDigitDisplay from './EmptyDigitDisplay.svelte';
   import OneDigitDisplay from './OneDigitDisplay.svelte';
 

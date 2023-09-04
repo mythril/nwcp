@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { bonkSound, clickSound } from '$lib/utils';
+  import { bonkSound, clickSound } from '$lib/browserUtils';
   import { onMount } from 'svelte';
 
   export let value = '';
