@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] debug special/trait issues
 - [ ] internationalize: npm i i18next
 - [ ] put a visual indicator of route changes
 - [ ] use setters to precalculate derived stats / prevent mis-rendered data

@@ -16,12 +16,11 @@
   import { createEventDispatcher } from 'svelte';
   import Portal from '$lib/components/Portal.svelte';
   import { toast } from '../Toast.svelte';
-  import { character } from '../../../routes/CharacterStore';
+  import { resetChar } from '../../../routes/CharacterStore';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   const erase = () => {
-    $character.reset();
-    $character = $character;
+    resetChar();
     dispatch(ModalNavEvents.navExit);
     toast.success({ message: 'Character successfully erased.' });
   };

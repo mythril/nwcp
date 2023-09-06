@@ -1,10 +1,10 @@
 <script lang="ts">
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
-  import OptionalTraits from './OptionalTraits.svelte';
+  import OptionalTraits, { chosenTraits } from './OptionalTraits.svelte';
   import Health from './Health.svelte';
   import DerivedStats from './DerivedStats.svelte';
   import CharPoints from './CharPoints.svelte';
-  import TaggedSkills from './TaggedSkills.svelte';
+  import TaggedSkills, { chosenSkills } from './TaggedSkills.svelte';
   import SpecialAttributes from './SpecialAttributes.svelte';
   import { Menus, Modals } from '$lib/components/ModalManager.svelte';
   import ModalButton from '$lib/components/Buttons/ModalButton.svelte';
@@ -36,6 +36,33 @@
     }
     $errorMessage = em;
     debug.error(err);
+  }
+
+  $: {
+    const Skill = $character.skillInfo;
+    const Trait = $character.traitInfo;
+
+    let ctSet = new Set($chosenTraits);
+
+    for (let trait of Object.values(Trait)) {
+      if (ctSet.has(trait) && $character.hasTrait(trait) === false) {
+        $character.addTrait(trait);
+      }
+      if (ctSet.has(trait) === false && $character.hasTrait(trait)) {
+        $character.deleteTrait(trait);
+      }
+    }
+    let csSet = new Set($chosenSkills);
+
+    for (let skill of Object.values(Skill)) {
+      if (csSet.has(skill) && $character.hasTagged(skill) === false) {
+        $character.addTagged(skill);
+      }
+      if (csSet.has(skill) === false && $character.hasTagged(skill)) {
+        $character.deleteTagged(skill);
+      }
+      $character = $character;
+    }
   }
 </script>
 

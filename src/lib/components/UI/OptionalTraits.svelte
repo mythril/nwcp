@@ -2,7 +2,7 @@
   lang="ts"
   context="module"
 >
-  const chosenTraits = writable<string[]>([]);
+  export const chosenTraits = writable<string[]>([]);
 </script>
 
 <script lang="ts">
@@ -17,25 +17,6 @@
   let traits = objectKeys(Trait);
   let leftTraits = traits.slice(0, 8);
   let rightTraits = traits.slice(8, 16);
-
-  $chosenTraits = $character.traitsAsArray();
-
-  $: if ($character) {
-    $chosenTraits = $character.traitsAsArray();
-  }
-
-  $: if ($chosenTraits) {
-    let ctSet = new Set($chosenTraits);
-
-    for (let trait of Object.values(Trait)) {
-      if (ctSet.has(trait) && $character.hasTrait(trait) === false) {
-        $character.addTrait(trait);
-      }
-      if (ctSet.has(trait) === false && $character.hasTrait(trait)) {
-        $character.deleteTrait(trait);
-      }
-    }
-  }
 
   const traitHandler = (e: Event) => {
     const cb = e.target as HTMLInputElement;

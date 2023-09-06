@@ -2,7 +2,7 @@
   lang="ts"
   context="module"
 >
-  const chosenSkills = writable<string[]>([]);
+  export const chosenSkills = writable<string[]>([]);
 </script>
 
 <script lang="ts">
@@ -17,25 +17,6 @@
   const Skill = $character.skillInfo;
 
   let skills = objectKeys(Skill);
-
-  $chosenSkills = $character.taggedAsArray();
-
-  $: if ($character) {
-    $chosenSkills = $character.taggedAsArray();
-  }
-
-  $: if ($chosenSkills) {
-    let ctSet = new Set($chosenSkills);
-
-    for (let skill of Object.values(Skill)) {
-      if (ctSet.has(skill) && $character.hasTagged(skill) === false) {
-        $character.addTagged(skill);
-      }
-      if (ctSet.has(skill) === false && $character.hasTagged(skill)) {
-        $character.deleteTagged(skill);
-      }
-    }
-  }
 
   $: {
     if (tdd) {

@@ -90,24 +90,35 @@ export abstract class AbstractUnfinishedCharacter<
     }
     this._Luck = s;
   }
+
+  constructor() {
+    /* should probably look to the reactive store instead of the model */
+    // intentionally empty
+  }
+
   abstract readonly roleHasDifficultySetting: boolean;
   abstract difficultyInfo: D;
-  abstract difficulty: ObjectValues<D>;
+  abstract _difficulty: ObjectValues<D>;
 
   abstract readonly roleHasTraits: boolean;
   abstract traitInfo: T;
   abstract _traits: Set<ObjectValues<T>>;
+  abstract reactToTrait(trait: ObjectValues<T>): void;
+  abstract reactToAllTraits(): void;
   hasTrait(trait: ObjectValues<T>) {
     return this._traits.has(trait);
   }
   addTrait(trait: ObjectValues<T>) {
     this._traits.add(trait);
+    this.reactToTrait(trait);
   }
   deleteTrait(trait: ObjectValues<T>) {
     this._traits.delete(trait);
+    this.reactToTrait(trait);
   }
   clearTraits() {
     this._traits.clear();
+    this.reactToAllTraits();
   }
   traitCount() {
     return this._traits.size;
@@ -117,17 +128,22 @@ export abstract class AbstractUnfinishedCharacter<
   }
 
   abstract _tagged: Set<ObjectValues<S>>;
+  abstract reactToSkill(skill: ObjectValues<S>): void;
+  abstract reactToAllSkills(): void;
   hasTagged(tagged: ObjectValues<S>) {
     return this._tagged.has(tagged);
   }
   addTagged(tagged: ObjectValues<S>) {
     this._tagged.add(tagged);
+    this.reactToSkill(tagged);
   }
   deleteTagged(tagged: ObjectValues<S>) {
     this._tagged.delete(tagged);
+    this.reactToSkill(tagged);
   }
   clearTagged() {
     this._tagged.clear();
+    this.reactToAllSkills();
   }
   taggedCount() {
     return this._tagged.size;
@@ -150,5 +166,6 @@ export abstract class AbstractUnfinishedCharacter<
     return cpr;
   }
 
-  abstract reset(): void;
+  /* should probably look to the reactive store instead of the model */
+  abstract _reset(): void;
 }

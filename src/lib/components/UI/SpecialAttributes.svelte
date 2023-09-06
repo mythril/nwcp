@@ -11,7 +11,7 @@
       <Attribute
         label={SpecialAbbreviation(attr)}
         bind:value={$character[attr]}
-        display={$character.displayAttributes[attr]}
+        bind:display={$character.displayAttributes[attr]}
         on:charPointsRemainingBonk
         charPointsRemaining={$character.charPointsRemaining}
       />
