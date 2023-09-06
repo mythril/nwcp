@@ -82,10 +82,17 @@
           >
         </li>
         <li>
+          <a
+            target="_blank"
+            href="https://github.com/mythril/nwcp/issues"
+            >Bug reports go here.</a
+          >
+        </li>
+        <li>
           <a href=".">Right here</a>
         </li>
       </ul>
-      <h2>What if I don't have the game?</h2>
+      <h2>What if I don't have the game(s)?</h2>
       <ul>
         <li>
           <a
