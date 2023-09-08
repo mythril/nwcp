@@ -12,15 +12,14 @@ import {
   GoodNaturedPositiveSkills,
   CombatSkill,
   PassiveSkill,
-  ActiveSkill
+  ActiveSkill,
+  OneHanderPositiveSkills
 } from './data';
 
 const noOp = () => {
   //intentional
 };
 
-// TODO: update skill calculators
-// TODO: validate traits
 // TODO: compare created character w/ game
 
 export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
@@ -64,13 +63,22 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   ) => {
     return () => {
       const tagged = this.hasTagged(skill) ? 20 : 0;
-      let goodNatured: -10 | 0 | 15 = 0;
+      let goodNatured: -10 | 0 | 20 = 0;
       if (this.hasTrait(Trait.GoodNatured)) {
         if (includes(GoodNaturedPositiveSkills, skill)) {
-          goodNatured = 15;
+          goodNatured = 20;
         }
         if (includes(Object.values(CombatSkill), skill)) {
           goodNatured = -10;
+        }
+      }
+      let oneHander: -30 | 0 | 10 = 0;
+      if (this.hasTrait(Trait.OneHander)) {
+        if (includes(OneHanderPositiveSkills, skill)) {
+          oneHander = 10;
+        }
+        if (skill === Skill.BigGuns) {
+          oneHander = -30;
         }
       }
       let difficultyMod: -10 | 0 | 20 = 0;
@@ -94,6 +102,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
         fn(this.displayAttributes) +
         tagged +
         goodNatured +
+        oneHander +
         gifted +
         difficultyMod;
     };
@@ -107,41 +116,42 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   };
 
   _skillReactors = {
-    [Skill.Barter]: this._skillReactor(
-      (attrs) => 4 * attrs[Special.Charisma],
-      Skill.Barter
-    ),
     [Skill.BigGuns]: this._skillReactor(
       (attrs) => 2 * attrs[Special.Agility],
       Skill.BigGuns
-    ),
-    [Skill.Doctor]: this._skillReactor(
-      (attrs) => 5 + attrs[Special.Perception] + attrs[Special.Intelligence],
-      Skill.Doctor
     ),
     [Skill.EnergyWeapons]: this._skillReactor(
       (attrs) => 2 * attrs[Special.Agility],
       Skill.EnergyWeapons
     ),
-    [Skill.FirstAid]: this._skillReactor(
-      (attrs) => 2 * (attrs[Special.Perception] + attrs[Special.Intelligence]),
-      Skill.FirstAid
-    ),
-    [Skill.Gambling]: this._skillReactor(
-      (attrs) => 5 * attrs[Special.Luck],
-      Skill.Gambling
-    ),
-    [Skill.LockPick]: this._skillReactor(
-      (attrs) => 10 + attrs[Special.Perception] + attrs[Special.Agility],
-      Skill.LockPick
-    ),
     [Skill.MeleeWeapons]: this._skillReactor(
       (attrs) => 20 + 2 * (attrs[Special.Strength] + attrs[Special.Agility]),
       Skill.MeleeWeapons
     ),
-    [Skill.Outdoorsman]: this._skillReactor(
-      (attrs) => 2 * (attrs[Special.Endurance] + attrs[Special.Intelligence]),
-      Skill.Outdoorsman
+    [Skill.SmallGuns]: this._skillReactor(
+      (attrs) => 5 + 4 * attrs[Special.Agility],
+      Skill.SmallGuns
+    ),
+    [Skill.Throwing]: this._skillReactor(
+      (attrs) => 4 * attrs[Special.Agility],
+      Skill.Throwing
+    ),
+    [Skill.Unarmed]: this._skillReactor(
+      (attrs) => 30 + 2 * (attrs[Special.Agility] + attrs[Special.Strength]),
+      Skill.Unarmed
+    ),
+    [Skill.Doctor]: this._skillReactor(
+      (attrs) => attrs[Special.Perception] + attrs[Special.Intelligence],
+      Skill.Doctor
+    ),
+    [Skill.FirstAid]: this._skillReactor(
+      (attrs) =>
+        30 + 2 * (attrs[Special.Perception] + attrs[Special.Intelligence]),
+      Skill.FirstAid
+    ),
+    [Skill.LockPick]: this._skillReactor(
+      (attrs) => 10 + attrs[Special.Perception] + attrs[Special.Agility],
+      Skill.LockPick
     ),
     [Skill.Repair]: this._skillReactor(
       (attrs) => 3 * attrs[Special.Intelligence],
@@ -151,34 +161,33 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
       (attrs) => 4 * attrs[Special.Intelligence],
       Skill.Science
     ),
-    [Skill.SmallGuns]: this._skillReactor(
-      (attrs) => 5 + 4 * attrs[Special.Agility],
-      Skill.SmallGuns
-    ),
     [Skill.Sneak]: this._skillReactor(
-      (attrs) => 5 + 3 * attrs[Special.Agility],
+      (attrs) => 0 + 3 * attrs[Special.Agility],
       Skill.Sneak
     ),
     [Skill.Steal]: this._skillReactor(
       (attrs) => 3 * attrs[Special.Agility],
       Skill.Steal
     ),
-    [Skill.Throwing]: this._skillReactor(
-      (attrs) => 4 * attrs[Special.Agility],
-      Skill.Throwing
-    ),
-    [Skill.Pilot]: this._skillReactor(
-      (attrs) => 2 * (attrs[Special.Perception] + attrs[Special.Agility]),
-      Skill.Pilot
-    ),
     [Skill.Traps]: this._skillReactor(
       (attrs) => 10 + attrs[Special.Perception] + attrs[Special.Agility],
       Skill.Traps
     ),
-
-    [Skill.Unarmed]: this._skillReactor(
-      (attrs) => 30 + 2 * (attrs[Special.Agility] + attrs[Special.Strength]),
-      Skill.Unarmed
+    [Skill.Barter]: this._skillReactor(
+      (attrs) => 4 * attrs[Special.Charisma],
+      Skill.Barter
+    ),
+    [Skill.Gambling]: this._skillReactor(
+      (attrs) => 5 * attrs[Special.Luck],
+      Skill.Gambling
+    ),
+    [Skill.Outdoorsman]: this._skillReactor(
+      (attrs) => 2 * (attrs[Special.Endurance] + attrs[Special.Intelligence]),
+      Skill.Outdoorsman
+    ),
+    [Skill.Pilot]: this._skillReactor(
+      (attrs) => 2 * (attrs[Special.Perception] + attrs[Special.Agility]),
+      Skill.Pilot
     )
   };
 
@@ -353,7 +362,8 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
       return (
         '' +
         (25 +
-          (this.hasTrait(Trait.SmallFrame) ? 15 : 25) * attrs[Special.Strength])
+          (this.hasTrait(Trait.SmallFrame) ? -50 : 0) +
+          25 * attrs[Special.Strength])
       );
     }, DerivedStat.CarryWeight),
     [DerivedStat.CriticalChance]: this._derivedStatReactor((attrs) => {
@@ -462,7 +472,12 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
       this._specialReactors[Special.Agility]();
       this._derivedStatReactors[DerivedStat.CarryWeight]();
     },
-    [Trait.OneHander]: noOp,
+    [Trait.OneHander]: () => {
+      this._skillReactors[Skill.SmallGuns]();
+      this._skillReactors[Skill.Throwing]();
+      this._skillReactors[Skill.Unarmed]();
+      this._skillReactors[Skill.SmallGuns]();
+    },
     [Trait.NightPerson]: noOp,
     [Trait.Skilled]: noOp
   };

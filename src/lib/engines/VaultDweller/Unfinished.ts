@@ -72,6 +72,10 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
           goodNatured = -10;
         }
       }
+      let skilled: 0 | 10 = 0;
+      if (this.hasTrait(Trait.Skilled)) {
+        skilled = 10;
+      }
       let difficultyMod: -10 | 0 | 20 = 0;
       if (
         includes(Object.values(PassiveSkill), skill) ||
@@ -92,6 +96,7 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
       this.baseSkills[skill] =
         Math.floor(fn(this.displayAttributes)) +
         tagged +
+        skilled +
         goodNatured +
         gifted +
         difficultyMod;
@@ -464,7 +469,11 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
     },
     [Trait.OneHander]: noOp,
     [Trait.NightPerson]: noOp,
-    [Trait.Skilled]: noOp
+    [Trait.Skilled]: () => {
+      for (const skill of Object.values(Skill)) {
+        this._skillReactors[skill]();
+      }
+    }
   };
 
   reactToTrait(trait: ObjectValues<typeof Trait>): void {

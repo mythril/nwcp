@@ -42,7 +42,13 @@ export const GoodNaturedPositiveSkills = [
   Skill.Doctor,
   Skill.Barter,
   Skill.FirstAid
-];
+] as const;
+
+export const OneHanderPositiveSkills = [
+  Skill.SmallGuns,
+  Skill.Throwing,
+  Skill.Unarmed
+] as const;
 
 // type error below indicates that not all values in
 // Skills are represented in CharacterHelpLookup

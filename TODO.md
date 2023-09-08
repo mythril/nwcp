@@ -7,13 +7,13 @@ Overall goals:
 
 ### To do
 
-- [ ] debug special/trait issues
+- [ ] debug role chooser
+- [ ] enable warrior Role
+- [ ] factor out common character elements into mid-class
 - [ ] internationalize: npm i i18next
 - [ ] put a visual indicator of route changes
-- [ ] use setters to precalculate derived stats / prevent mis-rendered data
 - [ ] build landing page
 - [ ] add automatic hash-state update to url
-- [ ] add in Vault Dweller stat / trait / skill calculation
 - [ ] extract common subset out of RoleDisplay and Toast
 - [ ] inspect on phone
 - [ ] convert footer to position sticky, restore min-height 100vh on .app
@@ -49,6 +49,9 @@ Overall goals:
 
 ### Done
 
+- [x] add in Vault Dweller stat / trait / skill calculation
+- [x] use setters to precalculate derived stats / prevent mis-rendered data
+- [x] debug special/trait issues
 - [x] add multi-game support to help system
 - [x] debug role chooser
 - [x] update https://discord.com/channels/457912077277855764/1143773994844180541 if you can figure out instance references
