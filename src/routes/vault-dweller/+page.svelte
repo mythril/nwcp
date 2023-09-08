@@ -1,12 +1,10 @@
 <script lang="ts">
-  import { character } from '../CharacterStore';
+  import { loadFromChar, resetChar } from '../CharacterStore';
+  import { UnfinishedVaultDweller } from '$lib/engines/VaultDweller/Unfinished';
   import Main from '$lib/components/UI/Main.svelte';
-  import { UnfinishedVaultDweller } from '$lib/engines/VaultDweller/main';
 
-  // let char = new UnfinishedVaultDweller();
-  // char.reset();
-
-  // $character = char;
+  loadFromChar(new UnfinishedVaultDweller());
+  resetChar();
 </script>
 
 <Main />

@@ -3,6 +3,7 @@ import { assert } from 'tsafe';
 import type { HasHelpEntriesForEvery } from './help';
 
 export const Role = {
+  None: 'None',
   VaultDweller: 'Vault Dweller',
   ChosenOne: 'Chosen One',
   Warrior: 'Warrior',
@@ -11,6 +12,7 @@ export const Role = {
 } as const;
 
 export const RoleToSequel: { [key in ObjectValues<typeof Role>]: string } = {
+  [Role.None]: '',
   [Role.VaultDweller]: '1',
   [Role.ChosenOne]: '2',
   [Role.Warrior]: 'T',
@@ -19,11 +21,21 @@ export const RoleToSequel: { [key in ObjectValues<typeof Role>]: string } = {
 } as const;
 
 export const SupportedRoles: { [key in ObjectValues<typeof Role>]: boolean } = {
+  [Role.None]: true,
   [Role.VaultDweller]: true,
   [Role.ChosenOne]: true,
   [Role.Warrior]: false,
   [Role.LoneWanderer]: false,
   [Role.Courier]: false
+} as const;
+
+export const RoleRoutes: { [key in ObjectValues<typeof Role>]: string } = {
+  [Role.None]: '/',
+  [Role.VaultDweller]: '/vault-dweller',
+  [Role.ChosenOne]: '/chosen-one',
+  [Role.Warrior]: '/warrior',
+  [Role.LoneWanderer]: '/lone-wanderer',
+  [Role.Courier]: '/courier'
 } as const;
 
 export const Special = {
@@ -36,7 +48,10 @@ export const Special = {
   Luck: 'Luck'
 } as const;
 
-export const BidiRoleChronoLookup = {
+type TBidiRoleChronoLookup = Record<ObjectValues<typeof Role>, number> &
+  Record<number, ObjectValues<typeof Role>>;
+
+export const BidiRoleChronoLookup: TBidiRoleChronoLookup = {
   0: Role.VaultDweller,
   [Role.VaultDweller]: 0,
 
@@ -50,7 +65,10 @@ export const BidiRoleChronoLookup = {
   [Role.LoneWanderer]: 3,
 
   4: Role.Courier,
-  [Role.Courier]: 4
+  [Role.Courier]: 4,
+
+  [NaN]: Role.None,
+  [Role.None]: NaN
 } as const;
 
 // type error below indicates that not all values in

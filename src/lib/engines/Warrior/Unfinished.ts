@@ -1,130 +1,29 @@
 import type { ObjectValues } from '$lib/typeUtils';
-import { assert } from 'tsafe';
-import { Role, type Attributes, Special, Sex } from '../all';
-import type { HasHelpEntriesForEvery } from '../help';
-import { AbstractUnfinishedCharacter } from '../UnfinishedCharacter';
 import { defaultValuesOf, includes } from '$lib/utils';
-
-export const CombatSkill = {
-  SmallGuns: 'Small Guns',
-  BigGuns: 'Big Guns',
-  EnergyWeapons: 'Energy Weapons',
-  Unarmed: 'Unarmed',
-  MeleeWeapons: 'Melee Weapons',
-  Throwing: 'Throwing'
-} as const;
-
-export const ActiveSkill = {
-  FirstAid: 'First Aid',
-  Doctor: 'Doctor',
-  Sneak: 'Sneak',
-  LockPick: 'Lockpick',
-  Steal: 'Steal',
-  Traps: 'Traps',
-  Science: 'Science',
-  Repair: 'Repair'
-} as const;
-
-export const PassiveSkill = {
-  Speech: 'Speech',
-  Barter: 'Barter',
-  Gambling: 'Gambling',
-  Outdoorsman: 'Outdoorsman'
-} as const;
-
-export const Skill = {
-  ...CombatSkill,
-  ...ActiveSkill,
-  ...PassiveSkill
-} as const;
-
-const GoodNaturedPositiveSkills = [
-  Skill.FirstAid,
-  Skill.Doctor,
-  Skill.Speech,
-  Skill.Barter
-];
-
-export type SkillSet = Record<ObjectValues<typeof Skill>, number>;
-export type TaggedSkills = ObjectValues<typeof Skill>[];
-
-// type error below indicates that not all values in
-// Skills are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof Skill>>();
-
-export const Trait = {
-  FastMetabolism: 'Fast Metabolism',
-  Bruiser: 'Bruiser',
-  SmallFrame: 'Small Frame',
-  OneHander: 'One Hander',
-  Finesse: 'Finesse',
-  Kamikaze: 'Kamikaze',
-  HeavyHanded: 'Heavy Handed',
-  FastShot: 'Fast Shot',
-  BloodyMess: 'Bloody Mess',
-  Jinxed: 'Jinxed',
-  GoodNatured: 'Good Natured',
-  ChemReliant: 'Chem Reliant',
-  ChemResistant: 'Chem Resistant',
-  SexAppeal: 'Sex Appeal',
-  Skilled: 'Skilled',
-  Gifted: 'Gifted'
-} as const;
-
-export type ChosenTraits = (ObjectValues<typeof Trait> & {})[];
-
-// type error below indicates that not all values in
-// Traits are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof Trait>>();
-
-export const AilmentStatus = {
-  Poisoned: 'Poisoned',
-  Radiated: 'Radiated',
-  EyeDamage: 'Eye Damage',
-  CrippledRightArm: 'Crippled Right Arm',
-  CrippledLeftArm: 'Crippled Left Arm',
-  CrippledRightLeg: 'Crippled Right Leg',
-  CrippledLeftLeg: 'Crippled Left Leg'
-} as const;
-
-// type error below indicates that not all values in
-// AilmentStatus are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof AilmentStatus>>();
-
-export const DerivedStat = {
-  ArmorClass: 'Armor Class',
-  ActionPoints: 'Action Points',
-  CarryWeight: 'Carry Weight',
-  MeleeDamage: 'Melee Damage',
-  DamageRes: 'Damage Res.',
-  PoisonRes: 'Poison Res.',
-  RadiationRes: 'Radiation Res.',
-  Sequence: 'Sequence',
-  HealingRate: 'Healing Rate',
-  CriticalChance: 'Critical Chance'
-} as const;
-
-export type DerivedStats = Record<ObjectValues<typeof DerivedStat>, number>;
-
-// type error below indicates that not all values in
-// DerivedStats are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof DerivedStat>>();
-
-export const Difficulty = {
-  Easy: 'Easy',
-  Normal: 'Normal',
-  Hard: 'Hard'
-} as const;
+import type { IPackingDescriptor } from '../BitPacking';
+import { AbstractUnfinishedCharacter } from '../UnfinishedCharacter';
+import { Role, type Attributes, Special, Sex } from '../all';
+import { OrderedDescriptors } from './codec';
+import {
+  Difficulty,
+  DerivedStat,
+  Skill,
+  Trait,
+  GoodNaturedPositiveSkills,
+  CombatSkill,
+  PassiveSkill,
+  ActiveSkill
+} from './data';
 
 const noOp = () => {
   //intentional
 };
 
-export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
+// TODO: update skill calculators
+// TODO: validate traits
+// TODO: compare created character w/ game
+
+export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   typeof Trait,
   typeof Skill,
   typeof Difficulty,
@@ -268,9 +167,9 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
       (attrs) => 4 * attrs[Special.Agility],
       Skill.Throwing
     ),
-    [Skill.Speech]: this._skillReactor(
-      (attrs) => 5 * attrs[Special.Charisma],
-      Skill.Speech
+    [Skill.Pilot]: this._skillReactor(
+      (attrs) => 2 * (attrs[Special.Perception] + attrs[Special.Agility]),
+      Skill.Pilot
     ),
     [Skill.Traps]: this._skillReactor(
       (attrs) => 10 + attrs[Special.Perception] + attrs[Special.Agility],
@@ -335,6 +234,7 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
       this._skillReactors[Skill.FirstAid]();
       this._skillReactors[Skill.LockPick]();
       this._skillReactors[Skill.Traps]();
+      this._skillReactors[Skill.Pilot]();
       this._derivedStatReactors[DerivedStat.Sequence]();
     },
     [Special.Endurance]: (s: number | undefined = undefined) => {
@@ -349,7 +249,6 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
     [Special.Charisma]: (s: number | undefined = undefined) => {
       this._Charisma = this._specialReactor(s, Special.Charisma);
       this._skillReactors[Skill.Barter]();
-      this._skillReactors[Skill.Speech]();
     },
     [Special.Intelligence]: (s: number | undefined = undefined) => {
       this._Intelligence = this._specialReactor(s, Special.Intelligence);
@@ -372,6 +271,7 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
       this._skillReactors[Skill.Steal]();
       this._skillReactors[Skill.Throwing]();
       this._skillReactors[Skill.Unarmed]();
+      this._skillReactors[Skill.Pilot]();
       this._derivedStatReactors[DerivedStat.ArmorClass]();
       this._derivedStatReactors[DerivedStat.ActionPoints]();
     },
@@ -425,7 +325,7 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
     this._specialReactors[Special.Luck](s);
   }
 
-  derivedStatsDisplay: Record<ObjectValues<typeof DerivedStat>, string> =
+  _derivedStatsDisplay: Record<ObjectValues<typeof DerivedStat>, string> =
     defaultValuesOf(DerivedStat, '');
 
   _derivedStatReactor = (
@@ -433,7 +333,7 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
     stat: ObjectValues<typeof DerivedStat> & {}
   ) => {
     return () => {
-      this.derivedStatsDisplay[stat] = fn(this.displayAttributes);
+      this._derivedStatsDisplay[stat] = fn(this.displayAttributes);
     };
   };
 
@@ -563,7 +463,7 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
       this._derivedStatReactors[DerivedStat.CarryWeight]();
     },
     [Trait.OneHander]: noOp,
-    [Trait.SexAppeal]: noOp,
+    [Trait.NightPerson]: noOp,
     [Trait.Skilled]: noOp
   };
 
@@ -575,6 +475,35 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
     for (const trait of Object.values(Trait)) {
       this._traitReactors[trait]();
     }
+  }
+
+  toJSON() {
+    return {
+      name: this.name,
+      role: this.role,
+      age: this.age,
+      sex: this.sex,
+      difficulty: this.difficulty,
+      tagged: this.taggedAsArray().sort(),
+      traits: this.traitsAsArray().sort(),
+      [Special.Strength]: this._Strength,
+      [Special.Perception]: this._Perception,
+      [Special.Endurance]: this._Endurance,
+      [Special.Charisma]: this._Charisma,
+      [Special.Intelligence]: this._Intelligence,
+      [Special.Agility]: this._Agility,
+      [Special.Luck]: this._Luck
+    };
+  }
+
+  getPackingDescriptors(): IPackingDescriptor[] {
+    return OrderedDescriptors;
+  }
+
+  _shufflePackingDescriptors(
+    shuffler: (pd: IPackingDescriptor[]) => void
+  ): void {
+    shuffler(OrderedDescriptors);
   }
 
   /* should probably look to the reactive store instead of the model */

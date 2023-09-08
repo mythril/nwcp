@@ -1,28 +1,126 @@
 import type { ObjectValues } from '$lib/typeUtils';
-import type { UnfinishedChosenOne } from './ChosenOne/main';
-import type { UnfinishedVaultDweller } from './VaultDweller/main';
-import type { UnfinishedWarrior } from './Warrior/main';
-import { Sex, type Role, type Attributes, Special } from './all';
+import type { IPackingDescriptor } from './BitPacking';
+import { Sex, Role, type Attributes, Special } from './all';
+import type { CharacterHelpLookup } from './help';
 
-// export type UnfinishedCharacter =
-//   | UnfinishedVaultDweller
-//   | UnfinishedChosenOne
-//   | UnfinishedWarrior;
-export type UnfinishedCharacter = UnfinishedChosenOne;
+interface ITrait {
+  [key: string]: keyof typeof CharacterHelpLookup;
+}
+
+interface ISkill {
+  [key: string]: keyof typeof CharacterHelpLookup;
+}
+
+interface IDifficulty {
+  [key: string]: string; // this has no help entries, and doesn't need any
+}
+
+interface IDerivedStat {
+  [key: string]: keyof typeof CharacterHelpLookup;
+}
+
+export interface SerializedUnfinishedCharacter
+  extends Record<ObjectValues<typeof Special>, number> {
+  role: ObjectValues<typeof Role> & {};
+  name: string;
+  age?: number;
+  sex: ObjectValues<typeof Sex> & {};
+  difficulty: ObjectValues<IDifficulty>;
+  tagged: ObjectValues<ISkill>[];
+  traits?: ObjectValues<ITrait>[];
+}
+
+export abstract class AbstractSerializedUnfinishedCharacter<
+  T extends ITrait,
+  S extends ISkill,
+  D extends IDifficulty
+> implements SerializedUnfinishedCharacter
+{
+  abstract role: ObjectValues<typeof Role> & {};
+  abstract name: string;
+  abstract age?: number;
+  abstract [Special.Strength]: number;
+  abstract [Special.Perception]: number;
+  abstract [Special.Endurance]: number;
+  abstract [Special.Charisma]: number;
+  abstract [Special.Intelligence]: number;
+  abstract [Special.Agility]: number;
+  abstract [Special.Luck]: number;
+  abstract sex: ObjectValues<typeof Sex> & {};
+  abstract difficulty: ObjectValues<D>;
+  abstract tagged: ObjectValues<S>[];
+  abstract traits?: ObjectValues<T>[];
+}
+
+export interface UnfinishedCharacter
+  extends Record<ObjectValues<typeof Special>, number> {
+  readonly role: ObjectValues<typeof Role> & {};
+  name: string;
+  age: number;
+  sex: ObjectValues<typeof Sex> & {};
+
+  readonly roleHasDifficultySetting: boolean;
+  difficultyInfo: IDifficulty;
+  difficulty: ObjectValues<IDifficulty>;
+
+  readonly roleHasTraits: boolean;
+  traitInfo: ITrait;
+  _traits: Set<ObjectValues<ITrait>>;
+  reactToTrait(trait: ObjectValues<ITrait>): void;
+  reactToAllTraits(): void;
+  hasTrait(trait: ObjectValues<ITrait>): boolean;
+  addTrait(trait: ObjectValues<ITrait>): void;
+  deleteTrait(trait: ObjectValues<ITrait>): void;
+  clearTraits(): void;
+  traitCount(): number;
+  traitsAsArray(): ObjectValues<ITrait>[];
+
+  _tagged: Set<ObjectValues<ISkill>>;
+  reactToSkill(skill: ObjectValues<ISkill>): void;
+  reactToAllSkills(): void;
+  hasTagged(tagged: ObjectValues<ISkill>): boolean;
+  addTagged(tagged: ObjectValues<ISkill>): void;
+  deleteTagged(tagged: ObjectValues<ISkill>): void;
+  clearTagged(): void;
+  taggedCount(): number;
+  taggedAsArray(): ObjectValues<ISkill>[];
+
+  skillInfo: ISkill;
+  displayAttributes: Attributes;
+  baseSkills: Partial<Record<ObjectValues<ISkill>, number>>;
+  maxHitPoints: number;
+  _derivedStatsDisplay: Partial<Record<ObjectValues<IDerivedStat>, string>>;
+
+  charPointsRemaining: number;
+
+  /* should probably look to the reactive store instead of the model */
+  _reset(): void;
+
+  toJSON(): SerializedUnfinishedCharacter;
+  getPackingDescriptors(): IPackingDescriptor[];
+
+  /* this is just for testing the robustness of the packing algorithm */
+  _shufflePackingDescriptors(
+    shuffler: (pd: IPackingDescriptor[]) => void
+  ): void;
+}
 
 export abstract class AbstractUnfinishedCharacter<
-  T extends Record<keyof T, ObjectValues<T>>,
-  S extends Record<keyof S, ObjectValues<S>>,
-  D extends Record<keyof D, ObjectValues<D>>,
-  DS extends Record<keyof DS, ObjectValues<DS>>
-> {
+  T extends ITrait,
+  S extends ISkill,
+  D extends IDifficulty,
+  DS extends IDerivedStat
+> implements UnfinishedCharacter
+{
   abstract readonly role: ObjectValues<typeof Role> & {};
   name = '';
   age = 0;
   sex: ObjectValues<typeof Sex> & {} = Sex.Male;
+
+  abstract displayAttributes: Attributes;
   _Strength = 0;
   get Strength() {
-    return this._Strength;
+    return this.displayAttributes[Special.Strength];
   }
   set Strength(s: number) {
     if (s > 10) {
@@ -32,7 +130,7 @@ export abstract class AbstractUnfinishedCharacter<
   }
   _Perception = 0;
   get Perception() {
-    return this._Perception;
+    return this.displayAttributes[Special.Perception];
   }
   set Perception(s: number) {
     if (s > 10) {
@@ -42,7 +140,7 @@ export abstract class AbstractUnfinishedCharacter<
   }
   _Endurance = 0;
   get Endurance() {
-    return this._Endurance;
+    return this.displayAttributes[Special.Endurance];
   }
   set Endurance(s: number) {
     if (s > 10) {
@@ -52,7 +150,7 @@ export abstract class AbstractUnfinishedCharacter<
   }
   _Charisma = 0;
   get Charisma() {
-    return this._Charisma;
+    return this.displayAttributes[Special.Charisma];
   }
   set Charisma(s: number) {
     if (s > 10) {
@@ -62,7 +160,7 @@ export abstract class AbstractUnfinishedCharacter<
   }
   _Intelligence = 0;
   get Intelligence() {
-    return this._Intelligence;
+    return this.displayAttributes[Special.Intelligence];
   }
   set Intelligence(s: number) {
     if (s > 10) {
@@ -72,7 +170,7 @@ export abstract class AbstractUnfinishedCharacter<
   }
   _Agility = 0;
   get Agility() {
-    return this._Agility;
+    return this.displayAttributes[Special.Agility];
   }
   set Agility(s: number) {
     if (s > 10) {
@@ -82,7 +180,7 @@ export abstract class AbstractUnfinishedCharacter<
   }
   _Luck = 0;
   get Luck() {
-    return this._Luck;
+    return this.displayAttributes[Special.Luck];
   }
   set Luck(s: number) {
     if (s > 10) {
@@ -96,9 +194,15 @@ export abstract class AbstractUnfinishedCharacter<
     // intentionally empty
   }
 
+  getConstructor() {
+    return this.constructor;
+  }
+
   abstract readonly roleHasDifficultySetting: boolean;
   abstract difficultyInfo: D;
   abstract _difficulty: ObjectValues<D>;
+  abstract get difficulty(): ObjectValues<D>;
+  abstract set difficulty(s: ObjectValues<D>);
 
   abstract readonly roleHasTraits: boolean;
   abstract traitInfo: T;
@@ -153,10 +257,9 @@ export abstract class AbstractUnfinishedCharacter<
   }
 
   abstract skillInfo: S;
-  abstract displayAttributes: Attributes;
   abstract baseSkills: Record<ObjectValues<S>, number>;
   abstract maxHitPoints: number;
-  abstract derivedStatsDisplay: Record<ObjectValues<DS>, string>;
+  abstract _derivedStatsDisplay: Record<ObjectValues<DS>, string>;
 
   get charPointsRemaining() {
     let cpr = 40;
@@ -165,6 +268,13 @@ export abstract class AbstractUnfinishedCharacter<
     }
     return cpr;
   }
+
+  abstract toJSON(): AbstractSerializedUnfinishedCharacter<T, S, D>;
+
+  abstract getPackingDescriptors(): IPackingDescriptor[];
+  abstract _shufflePackingDescriptors(
+    shuffler: (pd: IPackingDescriptor[]) => void
+  ): void;
 
   /* should probably look to the reactive store instead of the model */
   abstract _reset(): void;

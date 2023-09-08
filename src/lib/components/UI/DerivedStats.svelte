@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DerivedStat } from '$lib/engines/ChosenOne/main';
+  import { DerivedStat } from '$lib/engines/ChosenOne/data';
   import Bolthead from '$lib/components/Bolthead.svelte';
   import HelpSource from '$lib/components/HelpSource.svelte';
   import { character } from '../../../routes/CharacterStore';
@@ -23,7 +23,7 @@
             </th>
             <td>
               <HelpSource subject={derived}>
-                {$character.derivedStatsDisplay[derived]}
+                {$character._derivedStatsDisplay[derived]}
               </HelpSource>
             </td>
           </tr>

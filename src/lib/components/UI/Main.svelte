@@ -13,8 +13,7 @@
   import { errorMessage } from '$lib/components/Modals/ErrorMessage.svelte';
   import debug from '$lib/debug';
   import { toast } from '$lib/components/Toast.svelte';
-  import { base64ToChar } from '$lib/engines/ChosenOne/codec';
-  import { CodecError } from '$lib/BitPacking';
+  import { CodecError, base64ToChar } from '$lib/engines/BitPacking';
   import Help from '$lib/components/Help.svelte';
 
   let charPoints: CharPoints;
@@ -26,7 +25,12 @@
 
   try {
     if (window.location.hash.length > 1) {
-      const fromHash = base64ToChar(window.location.hash.slice(1));
+      const cTor = Object.getPrototypeOf($character).constructor;
+      const fromHash = base64ToChar(
+        window.location.hash.slice(1),
+        new cTor()
+        //new ($character.constructor)();
+      );
       loadFromChar(fromHash);
     }
   } catch (err) {
@@ -52,6 +56,7 @@
         $character.deleteTrait(trait);
       }
     }
+
     let csSet = new Set($chosenSkills);
 
     for (let skill of Object.values(Skill)) {
@@ -68,7 +73,9 @@
 
 <svelte:head>
   {#if $character.name !== ''}
-    <title>{$character.name} - NWCP</title>
+    {#key $character}
+      <title>{$character.name} - NWCP</title>
+    {/key}
   {:else}
     <title>The {$character.role} - NWCP</title>
   {/if}

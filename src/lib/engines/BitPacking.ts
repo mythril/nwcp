@@ -1,6 +1,10 @@
-import debug from './debug';
-import { Role, Sex } from './engines/all';
-import type { ObjectValues } from './typeUtils';
+import debug from '../debug';
+import { Role, Sex } from './all';
+import type { ObjectValues } from '../typeUtils';
+import type {
+  SerializedUnfinishedCharacter,
+  UnfinishedCharacter
+} from './UnfinishedCharacter';
 
 export class CodecError extends Error {}
 
@@ -82,25 +86,28 @@ export function b2s(b: number, l = 8) {
   return '0b' + b.toString(2).padStart(l, '0');
 }
 
-export type FixedDescriptor<T> = {
+export interface IFixedDescriptor {
   name: string;
   bits: number;
-  encoder: (char: T) => number;
-  decoder: (alreadyAligned: number, mut: T) => void;
-};
+  encoder: (char: SerializedUnfinishedCharacter) => number;
+  decoder: (alreadyAligned: number, mut: UnfinishedCharacter) => void;
+}
 
-export type VariableDescriptor<T> = {
+export interface IVariableDescriptor {
   name: string;
-  encoder: (char: T) => Uint8Array;
-  decoder: (data: Uint8Array, mut: T) => void;
-};
+  encoder: (char: SerializedUnfinishedCharacter) => Uint8Array;
+  decoder: (data: Uint8Array, mut: UnfinishedCharacter) => void;
+}
 
-export type PackingDescriptor<T> = FixedDescriptor<T> | VariableDescriptor<T>;
+export type IPackingDescriptor = IFixedDescriptor | IVariableDescriptor;
 
-export function packer<T>(orderedDescriptors: PackingDescriptor<T>[], char: T) {
+export function packer<T extends UnfinishedCharacter>(
+  orderedDescriptors: IPackingDescriptor[],
+  char: ReturnType<T['toJSON']>
+) {
   debug.disable();
   const buffer: number[] = [];
-  let desc: PackingDescriptor<T>;
+  let desc: IPackingDescriptor;
   let bigWorkpiece: Uint8Array;
   let workpiece = 0;
   let bitsUsed = 0;
@@ -176,14 +183,14 @@ export function packer<T>(orderedDescriptors: PackingDescriptor<T>[], char: T) {
   return Uint8Array.from(buffer, (v) => v + 0);
 }
 
-export function unpacker<T>(
+export function unpacker<T extends UnfinishedCharacter>(
   packed: Uint8Array,
-  orderedDescriptors: PackingDescriptor<T>[],
+  orderedDescriptors: IPackingDescriptor[],
   mut: T
 ) {
   debug.disable();
 
-  let desc: PackingDescriptor<T>;
+  let desc: IPackingDescriptor;
   let pos = 0;
   let start = 0;
   let workpiece = 0;
@@ -224,4 +231,16 @@ export function unpacker<T>(
     }
   }
   return mut;
+}
+
+export function charToBase64(char: UnfinishedCharacter) {
+  return bytesToBase64(packer(char.getPackingDescriptors(), char.toJSON()));
+}
+
+export function base64ToChar(base64: string, newChar: UnfinishedCharacter) {
+  return unpacker(
+    base64ToBytes(base64),
+    newChar.getPackingDescriptors(),
+    newChar
+  );
 }

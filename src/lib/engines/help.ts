@@ -95,6 +95,7 @@ export const CharacterHelpLookup = {
   Pilot: [
     'The ability to operate and maintain all vehicles effectively.',
     ,
+    ,
     '0% + (2 x (PE + AG))'
   ],
   Speech: [

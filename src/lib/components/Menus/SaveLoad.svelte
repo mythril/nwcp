@@ -1,8 +1,4 @@
 <script lang="ts">
-  import {
-    OrderedDescriptors,
-    charToBase64
-  } from '$lib/engines/ChosenOne/codec';
   import FlatButton from '$lib/components/Buttons/FlatButton.svelte';
   import Menu from '$lib/components/Menu.svelte';
   import debug from '$lib/debug';
@@ -15,15 +11,21 @@
     ModalNavEvents,
     type ModalEventSignature
   } from '$lib/components/Modal.svelte';
-  import { CodecError, packer, unpacker } from '$lib/BitPacking';
-  import { UnfinishedChosenOne } from '$lib/engines/ChosenOne/main';
+  import {
+    CodecError,
+    charToBase64,
+    packer,
+    unpacker
+  } from '$lib/engines/BitPacking';
+  import type { UnfinishedCharacter } from '$lib/engines/UnfinishedCharacter';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
-  let char: UnfinishedChosenOne;
+  let char: UnfinishedCharacter;
   let charHash: string;
 
   export const enter = () => {
-    char = Object.assign(new UnfinishedChosenOne(), $character);
+    const cTor = Object.getPrototypeOf($character).constructor;
+    char = Object.assign(new cTor(), $character);
     charHash = charToBase64(char);
   };
 
@@ -32,7 +34,7 @@
   };
 
   const saveToDisk = () => {
-    const packed = packer<UnfinishedChosenOne>(OrderedDescriptors, char);
+    const packed = packer(char.getPackingDescriptors(), char.toJSON());
     const blob = new Blob([packed], { type: 'application/octet-stream' });
     const file = new File([blob], (char.name || char.role) + '.nwcp');
     const url = URL.createObjectURL(file);
@@ -73,16 +75,14 @@
   let files: FileList;
 
   $: if (files != null && files.length > 0) {
+    const cTor = Object.getPrototypeOf($character).constructor;
+    let mut = new cTor();
     files
       ?.item(0)
       ?.arrayBuffer()
       .then((data: ArrayBuffer) => {
         loadFromChar(
-          unpacker<UnfinishedChosenOne>(
-            new Uint8Array(data),
-            OrderedDescriptors,
-            new UnfinishedChosenOne()
-          )
+          unpacker(new Uint8Array(data), mut.getPackingDescriptors(), mut)
         );
       })
       .catch((err) => {

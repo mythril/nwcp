@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { UnfinishedWarrior } from '$lib/engines/Warrior/main';
-  import { character } from '../CharacterStore';
+  import { loadFromChar, resetChar } from '../CharacterStore';
+  import { UnfinishedWarrior } from '$lib/engines/Warrior/Unfinished';
+  import Main from '$lib/components/UI/Main.svelte';
 
-  // const char = new UnfinishedWarrior();
-  // char.reset();
-  // $character = char;
+  loadFromChar(new UnfinishedWarrior());
+  resetChar();
 </script>
 
-{$character.role}
+<Main />

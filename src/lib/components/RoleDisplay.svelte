@@ -1,6 +1,11 @@
 <script lang="ts">
   import { preloadCode, preloadData } from '$app/navigation';
-  import { RoleToSequel, Role, SupportedRoles } from '$lib/engines/all';
+  import {
+    RoleToSequel,
+    Role,
+    SupportedRoles,
+    RoleRoutes
+  } from '$lib/engines/all';
   import type { ObjectValues } from '$lib/typeUtils';
   import { sleep } from '$lib/utils';
   import Button from '$lib/components/Buttons/Button.svelte';
@@ -12,7 +17,7 @@
   export let value: ObjectValues<typeof Role> | undefined;
   let display: string[];
   let sequel: string;
-  let chosenRole: ObjectValues<typeof Role> = $character.role || Role.ChosenOne;
+  let chosenRole: ObjectValues<typeof Role> = $character.role;
   let roleLink = '';
   let tileOffset = 0;
   let smallOffsets: number[] = [];
@@ -27,7 +32,7 @@
     }
   }
 
-  $: roleLink = '/' + chosenRole.replace(' ', '-').toLowerCase();
+  $: roleLink = RoleRoutes[chosenRole];
 
   let navOpen = false;
   const openNav = () => {
@@ -93,7 +98,7 @@
           class={`sequel-${sequel} tile `}
         />
       </div>
-      {#each display as d, i}
+      {#each display as d, i (i)}
         <div class="viewport">
           <div
             style={`

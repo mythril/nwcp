@@ -1,9 +1,6 @@
 import type { ObjectValues } from '$lib/typeUtils';
 import { assert } from 'tsafe';
-import { Role, type Attributes, Sex, Special } from '../all';
 import type { HasHelpEntriesForEvery } from '../help';
-import { AbstractUnfinishedCharacter } from '../UnfinishedCharacter';
-import { defaultValuesOf } from '$lib/utils';
 
 export const CombatSkill = {
   SmallGuns: 'Small Guns',
@@ -38,6 +35,13 @@ export const Skill = {
   ...PassiveSkill
 } as const;
 
+export const GoodNaturedPositiveSkills = [
+  Skill.FirstAid,
+  Skill.Doctor,
+  Skill.Speech,
+  Skill.Barter
+];
+
 export type SkillSet = Record<ObjectValues<typeof Skill>, number>;
 export type TaggedSkills = ObjectValues<typeof Skill>[];
 
@@ -60,7 +64,7 @@ export const Trait = {
   GoodNatured: 'Good Natured',
   ChemReliant: 'Chem Reliant',
   ChemResistant: 'Chem Resistant',
-  NightPerson: 'Night Person',
+  SexAppeal: 'Sex Appeal',
   Skilled: 'Skilled',
   Gifted: 'Gifted'
 } as const;
@@ -112,38 +116,3 @@ export const Difficulty = {
   Normal: 'Normal',
   Hard: 'Hard'
 } as const;
-
-export class UnfinishedVaultDweller /* extends AbstractUnfinishedCharacter<
-  typeof Trait,
-  typeof Skill,
-  typeof Difficulty,
-  typeof DerivedStat
-> {
-  traits: (ObjectValues<typeof Trait> & {})[] = [];
-  tagged: (ObjectValues<typeof Skill> & {})[] = [];
-  difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
-  role: ObjectValues<typeof Role> & {} = Role.VaultDweller;
-  readonly roleHasDifficultySetting = true;
-  difficultyInfo = Difficulty;
-  skillInfo = Skill;
-  traitInfo = Trait;
-  readonly roleHasTraits = true;
-  displayAttributes: Attributes = defaultValuesOf(Special, 5);
-  baseSkills: Record<ObjectValues<typeof Skill>, number> = defaultValuesOf(
-    Skill,
-    0
-  );
-  maxHitPoints = Infinity;
-  derivedStatsDisplay: Record<ObjectValues<typeof DerivedStat>, string> =
-    defaultValuesOf(DerivedStat, '');
-  reset(): void {
-    this.age = 25;
-    this.name = '';
-    this.sex = Sex.Male;
-    Object.assign(this, ...Object.keys(Special).map((a) => ({ [a]: 5 })));
-    this.difficulty = Difficulty.Normal;
-    this.traits = [];
-    this.tagged = [];
-  }
-}
-*/ {}
