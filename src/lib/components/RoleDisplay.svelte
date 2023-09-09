@@ -11,13 +11,13 @@
   import Button from '$lib/components/Buttons/Button.svelte';
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import RadialSwitch from '$lib/components/RadialSwitch.svelte';
-  import { character } from '../../routes/CharacterStore';
   import { clickSound } from '$lib/browserUtils';
+  import { role } from '../../routes/RoleStore';
 
-  export let value: ObjectValues<typeof Role> | undefined;
+  export let value: ObjectValues<typeof Role>;
   let display: string[];
   let sequel: string;
-  let chosenRole: ObjectValues<typeof Role> = $character.role;
+  let chosenRole: ObjectValues<typeof Role> = $role;
   let roleLink = '';
   let tileOffset = 0;
   let smallOffsets: number[] = [];
@@ -120,13 +120,11 @@
     inert={!navOpen}
   >
     <div class="switch">
-      {#if $character.role !== undefined}
-        <RadialSwitch
-          options={Object.values(Role)}
-          disabled={enableToDisable(SupportedRoles)}
-          bind:value={chosenRole}
-        />
-      {/if}
+      <RadialSwitch
+        options={Object.values(Role)}
+        disabled={enableToDisable(SupportedRoles)}
+        bind:value={chosenRole}
+      />
     </div>
     <div class="button">
       <PlateButton

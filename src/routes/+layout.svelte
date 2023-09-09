@@ -10,7 +10,7 @@
   import BrightnessVariance from '$lib/components/ImageGenerators/BrightnessVariance.svelte';
   import RoleDisplay from '$lib/components/RoleDisplay.svelte';
   import Toast from '$lib/components/Toast.svelte';
-  import { character } from './CharacterStore';
+  import { role } from './RoleStore';
 
   async function bootUp() {
     if ('serviceWorker' in navigator) {
@@ -54,7 +54,7 @@
     </div>
   </div>
   <div class="footer">
-    <RoleDisplay value={$character.role} />
+    <RoleDisplay value={$role} />
     <Toast />
   </div>
 </div>

@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] update help file with variances of traits
 - [ ] debug role chooser
 - [ ] enable warrior Role
 - [ ] factor out common character elements into mid-class
