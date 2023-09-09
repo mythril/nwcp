@@ -65,8 +65,7 @@
               on:click={skillHandler}
               bind:group={$chosenSkills}
               value={Skill[key]}
-              name=""
-              id=""
+              name={'check-' + Skill[key]}
             />
           </div>
           <div class="label">

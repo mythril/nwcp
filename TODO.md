@@ -7,9 +7,9 @@ Overall goals:
 
 ### To do
 
+- [ ] write save/load integrity tests for each role type
+- [ ] detect when embedded and reduce graphical fidelity / freeze input
 - [ ] update help file with variances of traits
-- [ ] debug role chooser
-- [ ] enable warrior Role
 - [ ] factor out common character elements into mid-class
 - [ ] internationalize: npm i i18next
 - [ ] put a visual indicator of route changes
@@ -50,6 +50,8 @@ Overall goals:
 
 ### Done
 
+- [x] enable warrior Role
+- [x] debug role chooser
 - [x] add in Vault Dweller stat / trait / skill calculation
 - [x] use setters to precalculate derived stats / prevent mis-rendered data
 - [x] debug special/trait issues

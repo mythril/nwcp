@@ -65,6 +65,7 @@
                 on:click={traitHandler}
                 bind:group={$chosenTraits}
                 value={Trait[trait]}
+                name={'check-' + Trait[trait]}
               />
               <div
                 data-trait={trait}
@@ -87,6 +88,7 @@
                 on:click={traitHandler}
                 bind:group={$chosenTraits}
                 value={Trait[trait]}
+                name={'check-' + Trait[trait]}
               />
               <div
                 data-trait={trait}

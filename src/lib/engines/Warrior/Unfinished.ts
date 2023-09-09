@@ -476,7 +476,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
       this._skillReactors[Skill.SmallGuns]();
       this._skillReactors[Skill.Throwing]();
       this._skillReactors[Skill.Unarmed]();
-      this._skillReactors[Skill.SmallGuns]();
+      this._skillReactors[Skill.BigGuns]();
     },
     [Trait.NightPerson]: noOp,
     [Trait.Skilled]: noOp

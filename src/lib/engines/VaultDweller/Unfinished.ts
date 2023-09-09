@@ -19,7 +19,6 @@ const noOp = () => {
   //intentional
 };
 
-// TODO: validate traits
 // TODO: compare created character w/ game
 
 export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
