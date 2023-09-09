@@ -28,7 +28,6 @@
   import Help from '$lib/components/Help.svelte';
   import { fly } from 'svelte/transition';
   import { writable } from 'svelte/store';
-  import { onMount } from 'svelte';
   import { quintOut } from 'svelte/easing';
 
   let charPoints: CharPoints;
@@ -88,19 +87,7 @@
   }
 
   $: history.replaceState(undefined, '', '#' + charToBase64($character));
-
-  onMount(() => ($hideMain = false));
 </script>
-
-<svelte:head>
-  {#if $character.name !== ''}
-    {#key $character}
-      <title>{$character.name} - NWCP</title>
-    {/key}
-  {:else}
-    <title>The {$character.role} - NWCP</title>
-  {/if}
-</svelte:head>
 
 {#if $hideMain === false}
   <div

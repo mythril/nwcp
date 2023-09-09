@@ -11,6 +11,8 @@
   import RoleDisplay from '$lib/components/RoleDisplay.svelte';
   import Toast from '$lib/components/Toast.svelte';
   import { role } from './RoleStore';
+  import { character } from './CharacterStore';
+  import { Role } from '$lib/engines/all';
 
   async function bootUp() {
     addEventListener('popstate', () => location.reload());
@@ -34,6 +36,22 @@
   }
   onMount(bootUp);
 </script>
+
+<svelte:head>
+  {#key $role}
+    {#key $character}
+      {#if $role !== Role.None}
+        {#if $character.name !== ''}
+          <title>{$character.name} - NWCP</title>
+        {:else}
+          <title>The {$character.role} - NWCP</title>
+        {/if}
+      {:else}
+        <title>Nuclear Wasteland Character Planner - NWCP</title>
+      {/if}
+    {/key}
+  {/key}
+</svelte:head>
 
 <Overlay />
 

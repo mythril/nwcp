@@ -68,6 +68,7 @@
     clickSound();
     await sleep(500);
     closeNav();
+    $hideMain = false;
   };
 
   function enableToDisable(enabledRecord: Record<string, boolean>) {

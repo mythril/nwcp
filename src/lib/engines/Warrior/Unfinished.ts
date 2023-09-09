@@ -31,7 +31,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   _traits: Set<ObjectValues<typeof Trait>> = new Set();
   _tagged: Set<ObjectValues<typeof Skill>> = new Set();
   _difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
-  role: ObjectValues<typeof Role> & {} = Role.ChosenOne;
+  role: ObjectValues<typeof Role> & {} = Role.Warrior;
   readonly roleHasDifficultySetting = true;
   difficultyInfo = Difficulty;
   skillInfo = Skill;
