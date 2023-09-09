@@ -1,3 +1,10 @@
+<script
+  lang="ts"
+  context="module"
+>
+  export const hideMain = writable<boolean>(false);
+</script>
+
 <script lang="ts">
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
   import OptionalTraits, { chosenTraits } from './OptionalTraits.svelte';
@@ -19,6 +26,10 @@
     charToBase64
   } from '$lib/engines/BitPacking';
   import Help from '$lib/components/Help.svelte';
+  import { fly } from 'svelte/transition';
+  import { writable } from 'svelte/store';
+  import { onMount } from 'svelte';
+  import { quintOut } from 'svelte/easing';
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -77,6 +88,8 @@
   }
 
   $: history.replaceState(undefined, '', '#' + charToBase64($character));
+
+  onMount(() => ($hideMain = false));
 </script>
 
 <svelte:head>
@@ -89,104 +102,111 @@
   {/if}
 </svelte:head>
 
-<div class="parent">
-  <div class="name-age-sex">
-    <div class="name">
-      <slot name="name">
-        <Anchor location="name" />
-        <ModalButton
-          type="slate"
-          modal={Modals.NameChanger}
-        >
-          <div class="worn-text">
-            {$character.name || 'none'}
-          </div>
-        </ModalButton>
-      </slot>
-    </div>
-    <div class="age">
-      <slot name="age">
-        <Anchor location="age" />
-        <ModalButton
-          type="slate"
-          modal={Modals.AgeChanger}
-        >
-          <div class="worn-text">
-            {$character.age}
-          </div>
-        </ModalButton>
-      </slot>
-    </div>
-    <div class="sex">
-      <slot name="sex">
-        <Anchor location="sex" />
-        <ModalButton
-          type="slate"
-          modal={Modals.SexChanger}
-        >
-          <div class="worn-text">
-            {$character.sex}
-          </div>
-        </ModalButton>
-      </slot>
-    </div>
-  </div>
-  <div class="special-section slate brightness-variance b-offset-1">
-    <slot name="special">
-      <SpecialAttributes on:charPointsRemainingBonk={charPointsRemainingBonk} />
-    </slot>
-  </div>
+{#if $hideMain === false}
   <div
-    class="health-section slate monitor terminal-font-defaults brightness-variance"
+    class="parent"
+    transition:fly={{ y: '-150%', duration: 500, opacity: 1, easing: quintOut }}
   >
-    <slot name="health">
-      <Health />
-    </slot>
+    <div class="name-age-sex">
+      <div class="name">
+        <slot name="name">
+          <Anchor location="name" />
+          <ModalButton
+            type="slate"
+            modal={Modals.NameChanger}
+          >
+            <div class="worn-text">
+              {$character.name || 'none'}
+            </div>
+          </ModalButton>
+        </slot>
+      </div>
+      <div class="age">
+        <slot name="age">
+          <Anchor location="age" />
+          <ModalButton
+            type="slate"
+            modal={Modals.AgeChanger}
+          >
+            <div class="worn-text">
+              {$character.age}
+            </div>
+          </ModalButton>
+        </slot>
+      </div>
+      <div class="sex">
+        <slot name="sex">
+          <Anchor location="sex" />
+          <ModalButton
+            type="slate"
+            modal={Modals.SexChanger}
+          >
+            <div class="worn-text">
+              {$character.sex}
+            </div>
+          </ModalButton>
+        </slot>
+      </div>
+    </div>
+    <div class="special-section slate brightness-variance b-offset-1">
+      <slot name="special">
+        <SpecialAttributes
+          on:charPointsRemainingBonk={charPointsRemainingBonk}
+        />
+      </slot>
+    </div>
+    <div
+      class="health-section slate monitor terminal-font-defaults brightness-variance"
+    >
+      <slot name="health">
+        <Health />
+      </slot>
+    </div>
+    <div
+      class="derived-stats slate monitor terminal-font-defaults brightness-variance b-offset-1"
+    >
+      <slot name="derived-stats">
+        <DerivedStats />
+      </slot>
+    </div>
+    <div class="char-points-section slate brightness-variance b-offset-2">
+      <slot name="char-points">
+        <CharPoints bind:this={charPoints} />
+      </slot>
+    </div>
+    <div class="traits-section">
+      <slot name="traits">
+        <OptionalTraits />
+      </slot>
+    </div>
+    <div class="tagged-skills-section">
+      <slot name="tagged-skills">
+        <TaggedSkills />
+      </slot>
+    </div>
+    <div class="help-section">
+      <slot name="help">
+        <Help />
+      </slot>
+    </div>
+    <div class="buttons">
+      <slot name="buttons">
+        <ModalButton
+          type="plate"
+          modal={Menus.Options}>Options</ModalButton
+        >
+        <PlateButton
+          on:click={() => toast.show({ message: 'Not implemented yet' })}
+          >Done</PlateButton
+        >
+        <ModalButton
+          type="plate"
+          modal={Modals.About}>About</ModalButton
+        >
+      </slot>
+    </div>
   </div>
-  <div
-    class="derived-stats slate monitor terminal-font-defaults brightness-variance b-offset-1"
-  >
-    <slot name="derived-stats">
-      <DerivedStats />
-    </slot>
-  </div>
-  <div class="char-points-section slate brightness-variance b-offset-2">
-    <slot name="char-points">
-      <CharPoints bind:this={charPoints} />
-    </slot>
-  </div>
-  <div class="traits-section">
-    <slot name="traits">
-      <OptionalTraits />
-    </slot>
-  </div>
-  <div class="tagged-skills-section">
-    <slot name="tagged-skills">
-      <TaggedSkills />
-    </slot>
-  </div>
-  <div class="help-section">
-    <slot name="help">
-      <Help />
-    </slot>
-  </div>
-  <div class="buttons">
-    <slot name="buttons">
-      <ModalButton
-        type="plate"
-        modal={Menus.Options}>Options</ModalButton
-      >
-      <PlateButton
-        on:click={() => toast.show({ message: 'Not implemented yet' })}
-        >Done</PlateButton
-      >
-      <ModalButton
-        type="plate"
-        modal={Modals.About}>About</ModalButton
-      >
-    </slot>
-  </div>
-</div>
+{/if}
 
 <style lang="postcss">
   .parent {

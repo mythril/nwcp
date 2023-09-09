@@ -7,14 +7,12 @@ Overall goals:
 
 ### To do
 
+- [ ] build landing page
 - [ ] write save/load integrity tests for each role type
 - [ ] detect when embedded and reduce graphical fidelity / freeze input
 - [ ] update help file with variances of traits
 - [ ] factor out common character elements into mid-class
 - [ ] internationalize: npm i i18next
-- [ ] put a visual indicator of route changes
-- [ ] build landing page
-- [ ] add automatic hash-state update to url
 - [ ] extract common subset out of RoleDisplay and Toast
 - [ ] inspect on phone
 - [ ] convert footer to position sticky, restore min-height 100vh on .app
@@ -50,6 +48,8 @@ Overall goals:
 
 ### Done
 
+- [x] put a visual indicator of route changes (animated)
+- [x] add automatic hash-state update to url
 - [x] enable warrior Role
 - [x] debug role chooser
 - [x] add in Vault Dweller stat / trait / skill calculation

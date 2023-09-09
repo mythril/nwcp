@@ -13,6 +13,7 @@
   import RadialSwitch from '$lib/components/RadialSwitch.svelte';
   import { clickSound } from '$lib/browserUtils';
   import { role } from '../../routes/RoleStore';
+  import { hideMain } from './UI/Main.svelte';
 
   export let value: ObjectValues<typeof Role>;
   let display: string[];
@@ -45,6 +46,7 @@
   const makeChoice = async () => {
     preloadData(roleLink);
     preloadCode(roleLink);
+    $hideMain = true;
     tileOffset = 100;
     await sleep(1);
     clickSound();
