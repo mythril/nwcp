@@ -13,6 +13,7 @@
   import { role } from './RoleStore';
 
   async function bootUp() {
+    addEventListener('popstate', () => location.reload());
     if ('serviceWorker' in navigator) {
       debug.log('registering service worker');
       navigator.serviceWorker

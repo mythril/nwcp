@@ -13,7 +13,11 @@
   import { errorMessage } from '$lib/components/Modals/ErrorMessage.svelte';
   import debug from '$lib/debug';
   import { toast } from '$lib/components/Toast.svelte';
-  import { CodecError, base64ToChar } from '$lib/engines/BitPacking';
+  import {
+    CodecError,
+    base64ToChar,
+    charToBase64
+  } from '$lib/engines/BitPacking';
   import Help from '$lib/components/Help.svelte';
 
   let charPoints: CharPoints;
@@ -23,24 +27,26 @@
     }
   };
 
-  try {
-    if (window.location.hash.length > 1) {
-      const cTor = Object.getPrototypeOf($character).constructor;
-      const fromHash = base64ToChar(
-        window.location.hash.slice(1),
-        new cTor()
-        //new ($character.constructor)();
-      );
-      loadFromChar(fromHash);
+  function loadFromHash() {
+    try {
+      if (window.location.hash.length > 1) {
+        const cTor = Object.getPrototypeOf($character).constructor;
+        const fromHash = base64ToChar(
+          window.location.hash.slice(1),
+          new cTor()
+        );
+        loadFromChar(fromHash);
+      }
+    } catch (err) {
+      let em = 'Unknown error.';
+      if (err instanceof CodecError) {
+        em = err.message;
+      }
+      $errorMessage = em;
+      debug.error(err);
     }
-  } catch (err) {
-    let em = 'Unknown error.';
-    if (err instanceof CodecError) {
-      em = err.message;
-    }
-    $errorMessage = em;
-    debug.error(err);
   }
+  loadFromHash();
 
   $: {
     const Skill = $character.skillInfo;
@@ -69,6 +75,8 @@
       $character = $character;
     }
   }
+
+  $: history.replaceState(undefined, '', '#' + charToBase64($character));
 </script>
 
 <svelte:head>
