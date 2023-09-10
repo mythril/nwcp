@@ -93,7 +93,7 @@
 
 {#if $hideMain === false}
   <div
-    class="parent"
+    class="parent interface-structure"
     in:fly={{ y: '-150%', duration: 300, opacity: 1, easing: quintOut }}
     out:fly={{ y: '-150%', duration: 300, opacity: 1, easing: quintIn }}
   >
@@ -200,13 +200,6 @@
 
 <style lang="postcss">
   .parent {
-    padding-left: 10rem;
-    padding-bottom: 8rem;
-    display: grid;
-    grid-template-columns: 160rem 157rem 3rem 305rem;
-    grid-template-rows: 32rem 129rem 90rem 12rem 50rem 128rem 32rem;
-    row-gap: 2rem;
-    column-gap: 2rem;
     grid-template-areas:
       'nas nas . skills'
       'special health . skills'
@@ -215,11 +208,6 @@
       'points derived . help'
       'traits traits . help'
       'traits traits . buttons';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    top: 0;
-    right: 0;
     filter: drop-shadow(-4rem 4rem 3rem #000) drop-shadow(-4rem 4rem 3rem #000);
   }
 

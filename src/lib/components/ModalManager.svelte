@@ -72,6 +72,8 @@
 <script lang="ts">
   import { afterUpdate, onDestroy } from 'svelte';
   import type { ObjectValues } from '$lib/typeUtils';
+  import { Role } from '$lib/engines/all';
+  import { role } from '../../routes/RoleStore';
   let constructor: ModalComponentConstructor;
   let instance: ModalComponentInstance | undefined;
 
@@ -108,12 +110,16 @@
   const escapeMenu = (ev: KeyboardEvent) => {
     switch (ev.code) {
       case 'Escape':
-        if ($modals.length === 0) {
+        if ($modals.length === 0 && $role !== Role.None) {
           showModal(Menus.Options);
         }
         break;
     }
   };
+
+  $: if ($role === Role.None) {
+    navExit();
+  }
 </script>
 
 <svelte:body on:keydown={escapeMenu} />

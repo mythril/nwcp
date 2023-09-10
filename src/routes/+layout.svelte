@@ -13,6 +13,7 @@
   import { role } from './RoleStore';
   import { character } from './CharacterStore';
   import { Role } from '$lib/engines/all';
+  import type { ObjectValues } from '$lib/typeUtils';
 
   async function bootUp() {
     addEventListener('popstate', () => location.reload());
@@ -34,6 +35,16 @@
       };
     }
   }
+
+  const roleToCSSClassName: Record<ObjectValues<typeof Role>, string> = {
+    [Role.None]: 'role-none',
+    [Role.VaultDweller]: 'role-vault-dweller',
+    [Role.ChosenOne]: 'role-chosen-one',
+    [Role.Warrior]: 'role-warrior',
+    [Role.LoneWanderer]: 'role-lone-wanderer',
+    [Role.Courier]: 'role-courier'
+  } as const;
+
   onMount(bootUp);
 </script>
 
@@ -63,7 +74,7 @@
 
 <ModalManager />
 
-<div class="app pitted">
+<div class={'app pitted ' + roleToCSSClassName[$role]}>
   <div id="planner">
     <div
       class="interface"
@@ -116,4 +127,20 @@
     min-height: 480rem;
     position: relative;
   }
+
+  /*
+
+  .role-none .interface {
+    height:0;
+    min-height:0;
+  }
+
+  .role-none .footer {
+    height: 520rem;
+  }
+
+  .role-none .footer :global(.nav-menu) {
+    bottom: -50rem;
+  }
+  */
 </style>

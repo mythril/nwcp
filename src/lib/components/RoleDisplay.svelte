@@ -35,11 +35,14 @@
 
   $: roleLink = RoleRoutes[chosenRole];
 
-  let navOpen = false;
+  let navOpen = $role === Role.None ? true : false;
   const openNav = () => {
     navOpen = true;
   };
   const closeNav = () => {
+    if ($role === Role.None) {
+      return;
+    }
     navOpen = false;
   };
 
@@ -90,6 +93,7 @@
       class={`open-chooser pushButton ${navOpen ? 'active' : ''}`}
       disabled={navOpen}
       on:click={navOpen ? closeNav : openNav}
+      on:click={clickSound}
     />
     <div class="panel">
       <div class="viewport">
@@ -120,7 +124,7 @@
   </div>
   <div
     class="chooser"
-    inert={!navOpen}
+    inert={!navOpen && $role !== Role.None}
   >
     <div class="switch">
       <RadialSwitch
@@ -169,13 +173,14 @@
     transition: bottom 0.2s ease-in-out;
   }
   .navOpen {
-    bottom: -60rem;
+    bottom: -5rem;
   }
   .chooser {
+    margin: 15rem 0;
     display: flex;
     flex-flow: column;
     align-items: center;
-    gap: 5rem;
+    gap: 15rem;
     .switch {
       width: 230rem;
     }
