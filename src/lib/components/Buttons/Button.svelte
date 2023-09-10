@@ -17,6 +17,8 @@
   <a
     {href}
     {target}
+    data-sveltekit-preload-data
+    data-sveltekit-preload-code
     on:click
     on:mouseover
     on:focus

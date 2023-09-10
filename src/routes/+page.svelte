@@ -1,6 +1,11 @@
 <script lang="ts">
   import Bolthead from '$lib/components/Bolthead.svelte';
-  import { Role, RoleToSequel, SupportedRoles } from '$lib/engines/all';
+  import {
+    Role,
+    RoleRoutes,
+    RoleToSequel,
+    SupportedRoles
+  } from '$lib/engines/all';
   import type { ObjectValues } from '$lib/typeUtils';
   import { onMount } from 'svelte';
   import { role } from './RoleStore';
@@ -57,6 +62,26 @@
     }
   ];
   onMount(() => ($hideMain = false));
+  const order: ('tl' | 'tr' | 'bl' | 'br')[] = ['tl', 'tr', 'bl', 'br'];
+  function shuffle(array: ('tl' | 'tr' | 'bl' | 'br')[]) {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex > 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex]
+      ];
+    }
+
+    return array;
+  }
 </script>
 
 {#if $hideMain === false}
@@ -136,9 +161,18 @@
           </div>
           <div class="button-section slate brightness-variance">
             <div class={'tile tile-sequel-' + RoleToSequel[ri.role]}>
+              {#each shuffle(order) as dir}
+                <Bolthead
+                  {dir}
+                  size={4}
+                />
+              {/each}
               {RoleToSequel[ri.role]}
             </div>
-            <PanicPlunger />
+            <PanicPlunger
+              type={'link'}
+              href={RoleRoutes[ri.role]}
+            />
           </div>
         </div>
       {/each}
@@ -172,7 +206,7 @@
     gap: 5rem;
   }
   .role-history:not(.supported) {
-    //filter: grayscale(100%) brightness(0.5);
+    filter: grayscale(100%) brightness(0.5);
   }
   .button-section {
     flex-grow: 1;
@@ -183,6 +217,7 @@
     gap: 10rem;
   }
   .tile {
+    position: relative;
     font-family: var(--label-font);
     font-weight: 700;
     font-size: 20rem;
@@ -191,8 +226,16 @@
     text-shadow: 0 0 0 hsla(0, 0%, 70%, 1);
     --hs: var(--terminal-color-hs);
     background-color: hsla(var(--terminal-color-hs), 5%);
-    box-shadow: 1rem -1rem 0rem 0 rgba(0, 0, 0, 0.7),
-      -1rem 1rem 0rem 0 rgba(255, 255, 255, 0.3);
+    border-left: 1rem solid rgba(0, 0, 0, 0.7);
+    border-bottom: 1rem solid rgba(0, 0, 0, 0.7);
+    border-top: 1rem solid rgba(255, 255, 255, 0.3);
+    border-right: 1rem solid rgba(255, 255, 255, 0.3);
+    /* prettier-ignore */
+    /*
+    box-shadow: 
+      -1rem 1rem 0 1rem rgba(0, 0, 0, 0.7),
+      1rem -1rem 0 1rem rgba(255, 255, 255, 0.3);
+      */
   }
   .tile.tile-sequel-T {
     --hs: 0, 100%;
