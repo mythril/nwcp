@@ -8,6 +8,8 @@ Overall goals:
 ### To do
 
 - [ ] build landing page
+- [ ] implement lone wanderer logic
+- [ ] implement courier logic
 - [ ] write save/load integrity tests for each role type
 - [ ] detect when embedded and reduce graphical fidelity / freeze input
 - [ ] update help file with variances of traits

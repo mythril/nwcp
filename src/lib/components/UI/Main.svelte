@@ -28,7 +28,8 @@
   import Help from '$lib/components/Help.svelte';
   import { fly } from 'svelte/transition';
   import { writable } from 'svelte/store';
-  import { quintOut } from 'svelte/easing';
+  import { quintIn, quintOut } from 'svelte/easing';
+  import { onMount } from 'svelte';
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -87,12 +88,14 @@
   }
 
   $: history.replaceState(undefined, '', '#' + charToBase64($character));
+  onMount(() => ($hideMain = false));
 </script>
 
 {#if $hideMain === false}
   <div
     class="parent"
-    transition:fly={{ y: '-150%', duration: 500, opacity: 1, easing: quintOut }}
+    in:fly={{ y: '-150%', duration: 300, opacity: 1, easing: quintOut }}
+    out:fly={{ y: '-150%', duration: 300, opacity: 1, easing: quintIn }}
   >
     <div class="name-age-sex">
       <div class="name">
