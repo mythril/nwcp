@@ -1,12 +1,13 @@
 <script lang="ts">
   import Bolthead from '$lib/components/Bolthead.svelte';
-  import { Role } from '$lib/engines/all';
+  import { Role, RoleToSequel, SupportedRoles } from '$lib/engines/all';
   import type { ObjectValues } from '$lib/typeUtils';
   import { onMount } from 'svelte';
   import { role } from './RoleStore';
   import { hideMain } from '$lib/components/UI/Main.svelte';
   import { fly } from 'svelte/transition';
   import { quintIn, quintOut } from 'svelte/easing';
+  import PanicPlunger from '$lib/components/Buttons/PanicPlunger.svelte';
 
   $role = Role.None;
 
@@ -96,34 +97,48 @@
 
     <div class="history">
       {#each roleInfo as ri}
-        <div class="slate terminal-font-defaults brightness-variance">
-          <Bolthead dir="bl" />
-          <Bolthead dir="tr" />
-          <Bolthead dir="br" />
-          <Bolthead dir="tl" />
-          <div class="display">
-            <table>
-              <tr>
-                <th> Role </th>
-                <td> {ri.role} </td>
-              </tr>
-              <tr>
-                <th> Born </th>
-                <td> {ri.born} </td>
-              </tr>
-              <tr>
-                <th> Area </th>
-                <td> {ri.area} </td>
-              </tr>
-              <tr>
-                <th> Mission </th>
-                <td> {ri.mission} </td>
-              </tr>
-              <tr>
-                <th> Year </th>
-                <td> {ri.year} </td>
-              </tr>
-            </table>
+        <div
+          class={'role-history sequel-' + RoleToSequel[ri.role]}
+          class:supported={SupportedRoles[ri.role]}
+          inert={!SupportedRoles[ri.role]}
+        >
+          <div
+            class="description slate terminal-font-defaults brightness-variance"
+          >
+            <Bolthead dir="bl" />
+            <Bolthead dir="tr" />
+            <Bolthead dir="br" />
+            <Bolthead dir="tl" />
+            <div class="display">
+              <table>
+                <tr>
+                  <th> Role </th>
+                  <td> {ri.role} </td>
+                </tr>
+                <tr>
+                  <th> Born </th>
+                  <td> {ri.born} </td>
+                </tr>
+                <tr>
+                  <th> Area </th>
+                  <td> {ri.area} </td>
+                </tr>
+                <tr>
+                  <th> Mission </th>
+                  <td> {ri.mission} </td>
+                </tr>
+                <tr>
+                  <th> Year </th>
+                  <td> {ri.year} </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="button-section slate brightness-variance">
+            <div class={'tile tile-sequel-' + RoleToSequel[ri.role]}>
+              {RoleToSequel[ri.role]}
+            </div>
+            <PanicPlunger />
           </div>
         </div>
       {/each}
@@ -151,6 +166,42 @@
       box-shadow: var(--inset);
     }
   }
+  .role-history {
+    display: flex;
+    flex-flow: row;
+    gap: 5rem;
+  }
+  .role-history:not(.supported) {
+    //filter: grayscale(100%) brightness(0.5);
+  }
+  .button-section {
+    flex-grow: 1;
+    border-radius: 5rem;
+    display: flex;
+    flex-flow: column;
+    padding: 10rem;
+    gap: 10rem;
+  }
+  .tile {
+    font-family: var(--label-font);
+    font-weight: 700;
+    font-size: 20rem;
+    text-align: center;
+    color: transparent;
+    text-shadow: 0 0 0 hsla(0, 0%, 70%, 1);
+    --hs: var(--terminal-color-hs);
+    background-color: hsla(var(--terminal-color-hs), 5%);
+    box-shadow: 1rem -1rem 0rem 0 rgba(0, 0, 0, 0.7),
+      -1rem 1rem 0rem 0 rgba(255, 255, 255, 0.3);
+  }
+  .tile.tile-sequel-T {
+    --hs: 0, 100%;
+    background-color: hsl(0, 100%, 5%);
+  }
+  .tile.tile-sequel-NV {
+    --hs: var(--title-color-hs);
+    background-color: hsla(var(--title-color-hs), 10%);
+  }
   .explain-chooser {
     grid-area: explain;
     position: relative;
@@ -167,7 +218,7 @@
     display: flex;
     flex-flow: column;
     gap: 4rem;
-    .slate {
+    .description {
       width: 230rem;
       border-radius: 5rem;
       position: relative;
