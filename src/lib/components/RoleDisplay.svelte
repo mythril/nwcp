@@ -1,3 +1,10 @@
+<script
+  lang="ts"
+  context="module"
+>
+  export const navTo = writable<ObjectValues<typeof Role> | null>(null);
+</script>
+
 <script lang="ts">
   import { preloadCode, preloadData } from '$app/navigation';
   import {
@@ -14,6 +21,7 @@
   import { clickSound } from '$lib/browserUtils';
   import { role } from '../../routes/RoleStore';
   import { hideMain } from './UI/Main.svelte';
+  import { writable } from 'svelte/store';
 
   export let value: ObjectValues<typeof Role>;
   let display: string[];
@@ -34,6 +42,12 @@
   }
 
   $: roleLink = RoleRoutes[chosenRole];
+
+  $: if ($navTo) {
+    chosenRole = $navTo;
+    makeChoice();
+    $navTo = null;
+  }
 
   let navOpen = $role === Role.None ? true : false;
   const openNav = () => {

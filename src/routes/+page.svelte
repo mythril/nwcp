@@ -2,7 +2,6 @@
   import Bolthead from '$lib/components/Bolthead.svelte';
   import {
     Role,
-    RoleRoutes,
     RoleToSequel,
     SupportedRoles
   } from '$lib/engines/all';
@@ -13,6 +12,7 @@
   import { fly } from 'svelte/transition';
   import { quintIn, quintOut } from 'svelte/easing';
   import PanicPlunger from '$lib/components/Buttons/PanicPlunger.svelte';
+  import { navTo } from '$lib/components/RoleDisplay.svelte';
 
   $role = Role.None;
 
@@ -61,8 +61,11 @@
       year: '2281'
     }
   ];
+
   onMount(() => ($hideMain = false));
+
   const order: ('tl' | 'tr' | 'bl' | 'br')[] = ['tl', 'tr', 'bl', 'br'];
+
   function shuffle(array: ('tl' | 'tr' | 'bl' | 'br')[]) {
     let currentIndex = array.length,
       randomIndex;
@@ -82,6 +85,12 @@
 
     return array;
   }
+
+  const animNav = (role: ObjectValues<typeof Role>) => {
+    return async (_e: MouseEvent) => {
+      $navTo = role;
+    };
+  };
 </script>
 
 {#if $hideMain === false}
@@ -130,10 +139,9 @@
           <div
             class="description slate terminal-font-defaults brightness-variance"
           >
-            <Bolthead dir="bl" />
-            <Bolthead dir="tr" />
-            <Bolthead dir="br" />
-            <Bolthead dir="tl" />
+            {#each shuffle(order) as dir}
+              <Bolthead {dir} />
+            {/each}
             <div class="display">
               <table>
                 <tr>
@@ -170,8 +178,8 @@
               {RoleToSequel[ri.role]}
             </div>
             <PanicPlunger
-              type={'link'}
-              href={RoleRoutes[ri.role]}
+              type={'button'}
+              on:click={animNav(ri.role)}
             />
           </div>
         </div>
@@ -215,6 +223,11 @@
     flex-flow: column;
     padding: 10rem;
     gap: 10rem;
+  }
+  .landing :global(button.btn) {
+    background-color: transparent;
+    border: none;
+    appearance: none;
   }
   .tile {
     position: relative;
