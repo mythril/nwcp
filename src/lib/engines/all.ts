@@ -24,7 +24,7 @@ export const SupportedRoles: { [key in ObjectValues<typeof Role>]: boolean } = {
   [Role.None]: true,
   [Role.VaultDweller]: true,
   [Role.ChosenOne]: true,
-  [Role.Warrior]: true,
+  [Role.Warrior]: false,
   [Role.LoneWanderer]: false,
   [Role.Courier]: false
 } as const;

@@ -1,0 +1,4 @@
+- [ ] enable warrior Role when base character creation functions well
+- [ ] figure out a good solution for representing race 
+- [ ] fix age range / codec
+- [ ] figure out a way to customize the style a bit?

@@ -7,7 +7,6 @@ Overall goals:
 
 ### To do
 
-- [ ] fix warrior age range
 - [ ] implement lone wanderer logic
 - [ ] implement courier logic
 - [ ] write save/load integrity tests for each role type
@@ -54,7 +53,6 @@ Overall goals:
 - [x] build landing page
 - [x] put a visual indicator of route changes (animated)
 - [x] add automatic hash-state update to url
-- [x] enable warrior Role
 - [x] debug role chooser
 - [x] add in Vault Dweller stat / trait / skill calculation
 - [x] use setters to precalculate derived stats / prevent mis-rendered data

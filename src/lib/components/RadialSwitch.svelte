@@ -221,7 +221,7 @@
     color: hsl(var(--bakelite));
     svg {
       fill: currentColor;
-      transform: translateY(-3rem) rotate(calc(-60deg + (var(--rsi) * 60deg)));
+      transform: rotate(calc(-60deg + (var(--rsi) * 60deg)));
       transform-origin: 50% 50%;
       transition-property: --rsi, transform;
       transition-duration: 0.1s;
