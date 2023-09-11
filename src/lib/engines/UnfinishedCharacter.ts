@@ -89,7 +89,7 @@ export interface UnfinishedCharacter
   displayAttributes: Attributes;
   baseSkills: Partial<Record<ObjectValues<ISkill>, number>>;
   maxHitPoints: number;
-  _derivedStatsDisplay: Partial<Record<ObjectValues<IDerivedStat>, string>>;
+  derivedStatsDisplay: Partial<Record<ObjectValues<IDerivedStat>, string>>;
 
   charPointsRemaining: number;
 
@@ -259,7 +259,7 @@ export abstract class AbstractUnfinishedCharacter<
   abstract skillInfo: S;
   abstract baseSkills: Record<ObjectValues<S>, number>;
   abstract maxHitPoints: number;
-  abstract _derivedStatsDisplay: Record<ObjectValues<DS>, string>;
+  abstract derivedStatsDisplay: Record<ObjectValues<DS>, string>;
 
   get charPointsRemaining() {
     let cpr = 40;

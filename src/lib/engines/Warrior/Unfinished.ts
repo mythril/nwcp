@@ -280,6 +280,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
       this._skillReactors[Skill.SmallGuns]();
       this._skillReactors[Skill.Sneak]();
       this._skillReactors[Skill.Steal]();
+      this._skillReactors[Skill.Traps]();
       this._skillReactors[Skill.Throwing]();
       this._skillReactors[Skill.Unarmed]();
       this._skillReactors[Skill.Pilot]();
@@ -336,7 +337,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
     this._specialReactors[Special.Luck](s);
   }
 
-  _derivedStatsDisplay: Record<ObjectValues<typeof DerivedStat>, string> =
+  derivedStatsDisplay: Record<ObjectValues<typeof DerivedStat>, string> =
     defaultValuesOf(DerivedStat, '');
 
   _derivedStatReactor = (
@@ -344,7 +345,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
     stat: ObjectValues<typeof DerivedStat> & {}
   ) => {
     return () => {
-      this._derivedStatsDisplay[stat] = fn(this.displayAttributes);
+      this.derivedStatsDisplay[stat] = fn(this.displayAttributes);
     };
   };
 

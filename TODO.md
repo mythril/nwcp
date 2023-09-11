@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] fix warrior age range
 - [ ] implement lone wanderer logic
 - [ ] implement courier logic
 - [ ] write save/load integrity tests for each role type

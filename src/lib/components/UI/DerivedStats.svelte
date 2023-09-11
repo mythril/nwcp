@@ -23,7 +23,7 @@
             </th>
             <td>
               <HelpSource subject={derived}>
-                {$character._derivedStatsDisplay[derived]}
+                {$character.derivedStatsDisplay[derived]}
               </HelpSource>
             </td>
           </tr>

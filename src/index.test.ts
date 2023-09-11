@@ -1,14 +1,17 @@
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker';
-import { Sex, Special } from '$lib/engines/all';
+import { Role, Sex, Special } from '$lib/engines/all';
 import {
   base64ToChar,
   charToBase64,
   packer,
   unpacker
 } from '$lib/engines/BitPacking';
-import { UnfinishedChosenOne } from '$lib/engines/ChosenOne/Unfinished';
 import type { UnfinishedCharacter } from '$lib/engines/UnfinishedCharacter';
+import { UnfinishedChosenOne } from '$lib/engines/ChosenOne/Unfinished';
+import { UnfinishedVaultDweller } from '$lib/engines/VaultDweller/Unfinished';
+import { UnfinishedWarrior } from '$lib/engines/Warrior/Unfinished';
+import { DerivedStat } from '$lib/engines/ChosenOne/data';
 
 const fake = (char: UnfinishedCharacter) => {
   const traits = faker.helpers.arrayElements(Object.values(char.traitInfo), {
@@ -45,64 +48,82 @@ function serialize(obj: {}) {
 }
 
 describe('Bit packing/unpacking a character', () => {
-  it('packs and unpacks even with randomized descriptor order, 5,000 times', () => {
-    faker.seed(45);
-
-    let count = 0;
-    for (let i = 0; i < 5000; i += 1) {
-      const char = new UnfinishedChosenOne();
-      fake(char);
-      const packed = packer(char.getPackingDescriptors(), char.toJSON());
-      const unpacked = unpacker(
-        packed,
-        char.getPackingDescriptors(),
-        new UnfinishedChosenOne()
-      );
-      char._shufflePackingDescriptors((pd) => faker.helpers.shuffle(pd));
-      if (serialize(char) !== serialize(unpacked)) {
-        throw 'Pack/unpack issue detected.';
+  faker.seed(45);
+  for (const unfinished of [
+    UnfinishedVaultDweller,
+    UnfinishedChosenOne,
+    UnfinishedWarrior
+  ]) {
+    const max = 1000;
+    it(
+      unfinished.name +
+        ' packs and unpacks even with randomized descriptor order, 1,000 times',
+      () => {
+        let count = 0;
+        for (let i = 0; i < max; i += 1) {
+          const char: UnfinishedCharacter = new unfinished();
+          fake(char);
+          const packed = packer(char.getPackingDescriptors(), char.toJSON());
+          const unpacked = unpacker(
+            packed,
+            char.getPackingDescriptors(),
+            new unfinished()
+          );
+          char._shufflePackingDescriptors((pd) => faker.helpers.shuffle(pd));
+          if (serialize(char) !== serialize(unpacked)) {
+            throw 'Pack/unpack issue detected.';
+          }
+          count += 1;
+        }
+        expect(count).toEqual(max);
       }
-      count += 1;
-    }
-    expect(count).toEqual(5000);
-  });
-  it('packs and unpacks cleanly through base64 encoding', () => {
-    const source = new UnfinishedChosenOne();
-    fake(source);
-    const b64 = charToBase64(source);
-    const newChar = new UnfinishedChosenOne();
-    const dest = base64ToChar(b64, newChar);
-    expect(serialize(source)).toEqual(serialize(dest));
-  });
-  it('survives serialization and un-serialization with all data intact', () => {
-    const source = new UnfinishedChosenOne();
-    source._reset();
-    source.addTrait('Chem Reliant');
-    source.addTrait('Chem Resistant');
-    source.addTagged('Barter');
-    source.addTagged('Big Guns');
-    source.addTagged('Doctor');
-    source.Strength = 10;
-    source.age = 16;
-    source.name = "I'm the BOS";
-    source.sex = Sex.Male;
-    const b64 = charToBase64(source);
-    const newChar = new UnfinishedChosenOne();
-    const dest = base64ToChar(b64, newChar);
-    expect(dest.hasTrait('Chem Reliant')).toBe(true);
-    expect(dest.hasTrait('Chem Resistant')).toBe(true);
-    expect(dest.hasTagged('Barter')).toBe(true);
-    expect(dest.hasTagged('Big Guns')).toBe(true);
-    expect(dest.hasTagged('Doctor')).toBe(true);
-    expect(dest.Strength).toEqual(10);
-    expect(dest.age).toEqual(16);
-    expect(dest.name).toEqual("I'm the BOS");
-    expect(dest.sex).toEqual('Male');
-  });
-  it('unpacks link build correctly', () => {
+    );
+    it(
+      unfinished.name + ' packs and unpacks cleanly through base64 encoding',
+      () => {
+        const source = new unfinished();
+        fake(source);
+        const b64 = charToBase64(source);
+        const newChar = new unfinished();
+        const dest = base64ToChar(b64, newChar);
+        expect(serialize(source)).toEqual(serialize(dest));
+      }
+    );
+    it(
+      unfinished.name +
+        ' survives serialization and un-serialization with all data intact',
+      () => {
+        const source = new unfinished();
+        source._reset();
+        source.addTrait('Chem Reliant');
+        source.addTrait('Chem Resistant');
+        source.addTagged('Barter');
+        source.addTagged('Big Guns');
+        source.addTagged('Doctor');
+        source.Strength = 10;
+        source.age = 16;
+        source.name = "I'm the BOS";
+        source.sex = Sex.Male;
+        const b64 = charToBase64(source);
+        const newChar = new unfinished();
+        const dest = base64ToChar(b64, newChar);
+        expect(dest.hasTrait('Chem Reliant')).toBe(true);
+        expect(dest.hasTrait('Chem Resistant')).toBe(true);
+        expect(dest.hasTagged('Barter')).toBe(true);
+        expect(dest.hasTagged('Big Guns')).toBe(true);
+        expect(dest.hasTagged('Doctor')).toBe(true);
+        expect(dest.Strength).toEqual(10);
+        expect(dest.age).toEqual(16);
+        expect(dest.name).toEqual("I'm the BOS");
+        expect(dest.sex).toEqual('Male');
+      }
+    );
+  }
+  it('unpacks chosen-one link build correctly', () => {
     const hashPacked = 'EAFkTh2akyBMcApXaXRjaHVudGVy';
     const newChar = new UnfinishedChosenOne();
     const dest = base64ToChar(hashPacked, newChar);
+    const Skill = dest.skillInfo;
     expect(dest.hasTrait('Fast Shot')).toBe(true);
     expect(dest.hasTrait('Gifted')).toBe(true);
     expect(dest.hasTagged('Small Guns')).toBe(true);
@@ -116,7 +137,88 @@ describe('Bit packing/unpacking a character', () => {
     expect(dest.displayAttributes.Agility).toEqual(10);
     expect(dest.displayAttributes.Luck).toEqual(8);
     expect(dest.age).toEqual(25);
+    expect(dest.role).toEqual(Role.ChosenOne);
     expect(dest.name).toEqual('Witchunter');
     expect(dest.sex).toEqual('Male');
+    expect(dest.maxHitPoints).toEqual(30);
+    expect(dest.derivedStatsDisplay[DerivedStat.ArmorClass]).toBe('10');
+    expect(dest.derivedStatsDisplay[DerivedStat.ActionPoints]).toBe('10');
+    expect(dest.derivedStatsDisplay[DerivedStat.CarryWeight]).toBe('200');
+    expect(dest.derivedStatsDisplay[DerivedStat.MeleeDamage]).toBe('2');
+    expect(dest.derivedStatsDisplay[DerivedStat.DamageRes]).toBe('0%');
+    expect(dest.derivedStatsDisplay[DerivedStat.PoisonRes]).toBe('20%');
+    expect(dest.derivedStatsDisplay[DerivedStat.RadiationRes]).toBe('8%');
+    expect(dest.derivedStatsDisplay[DerivedStat.Sequence]).toBe('14');
+    expect(dest.derivedStatsDisplay[DerivedStat.HealingRate]).toBe('1');
+    expect(dest.derivedStatsDisplay[DerivedStat.CriticalChance]).toBe('8%');
+    expect(dest.baseSkills[Skill.SmallGuns]).toBe(55);
+    expect(dest.baseSkills[Skill.BigGuns]).toBe(30);
+    expect(dest.baseSkills[Skill.EnergyWeapons]).toBe(10);
+    expect(dest.baseSkills[Skill.Unarmed]).toBe(54);
+    expect(dest.baseSkills[Skill.MeleeWeapons]).toBe(44);
+    expect(dest.baseSkills[Skill.Throwing]).toBe(30);
+    expect(dest.baseSkills[Skill.FirstAid]).toBe(22);
+    expect(dest.baseSkills[Skill.Doctor]).toBe(11);
+    expect(dest.baseSkills[Skill.Sneak]).toBe(25);
+    expect(dest.baseSkills[Skill.LockPick]).toBe(17);
+    expect(dest.baseSkills[Skill.Steal]).toBe(20);
+    expect(dest.baseSkills[Skill.Traps]).toBe(17);
+    expect(dest.baseSkills[Skill.Science]).toBe(26);
+    expect(dest.baseSkills[Skill.Repair]).toBe(17);
+    expect(dest.baseSkills[Skill.Speech]).toBe(20);
+    expect(dest.baseSkills[Skill.Barter]).toBe(-2);
+    expect(dest.baseSkills[Skill.Gambling]).toBe(30);
+    expect(dest.baseSkills[Skill.Outdoorsman]).toBe(16);
+  });
+  it('unpacks vault-dweller link build correctly', () => {
+    const hashPacked = 'CAFkVWWUkyGECAdMaWx1cmEx';
+    const newChar = new UnfinishedVaultDweller();
+    const dest = base64ToChar(hashPacked, newChar);
+    const Skill = dest.skillInfo;
+    expect(dest.hasTrait('Fast Shot')).toBe(true);
+    expect(dest.hasTrait('Gifted')).toBe(true);
+    expect(dest.hasTagged('Small Guns')).toBe(true);
+    expect(dest.hasTagged('Energy Weapons')).toBe(true);
+    expect(dest.hasTagged('Barter')).toBe(true);
+    expect(dest.displayAttributes.Strength).toEqual(6);
+    expect(dest.displayAttributes.Perception).toEqual(7);
+    expect(dest.displayAttributes.Endurance).toEqual(6);
+    expect(dest.displayAttributes.Charisma).toEqual(2);
+    expect(dest.displayAttributes.Intelligence).toEqual(6);
+    expect(dest.displayAttributes.Agility).toEqual(10);
+    expect(dest.displayAttributes.Luck).toEqual(10);
+    expect(dest.role).toEqual(Role.VaultDweller);
+    expect(dest.age).toEqual(25);
+    expect(dest.name).toEqual('Lilura1');
+    expect(dest.sex).toEqual('Female');
+    expect(dest.maxHitPoints).toEqual(33);
+    expect(dest.derivedStatsDisplay[DerivedStat.ArmorClass]).toBe('10');
+    expect(dest.derivedStatsDisplay[DerivedStat.ActionPoints]).toBe('10');
+    expect(dest.derivedStatsDisplay[DerivedStat.CarryWeight]).toBe('175');
+    expect(dest.derivedStatsDisplay[DerivedStat.MeleeDamage]).toBe('1');
+    expect(dest.derivedStatsDisplay[DerivedStat.DamageRes]).toBe('0%');
+    expect(dest.derivedStatsDisplay[DerivedStat.PoisonRes]).toBe('30%');
+    expect(dest.derivedStatsDisplay[DerivedStat.RadiationRes]).toBe('12%');
+    expect(dest.derivedStatsDisplay[DerivedStat.Sequence]).toBe('14');
+    expect(dest.derivedStatsDisplay[DerivedStat.HealingRate]).toBe('2');
+    expect(dest.derivedStatsDisplay[DerivedStat.CriticalChance]).toBe('10%');
+    expect(dest.baseSkills[Skill.SmallGuns]).toBe(55);
+    expect(dest.baseSkills[Skill.BigGuns]).toBe(10);
+    expect(dest.baseSkills[Skill.EnergyWeapons]).toBe(30);
+    expect(dest.baseSkills[Skill.Unarmed]).toBe(63);
+    expect(dest.baseSkills[Skill.MeleeWeapons]).toBe(53);
+    expect(dest.baseSkills[Skill.Throwing]).toBe(40);
+    expect(dest.baseSkills[Skill.FirstAid]).toBe(26);
+    expect(dest.baseSkills[Skill.Doctor]).toBe(11);
+    expect(dest.baseSkills[Skill.Sneak]).toBe(25);
+    expect(dest.baseSkills[Skill.LockPick]).toBe(18);
+    expect(dest.baseSkills[Skill.Steal]).toBe(20);
+    expect(dest.baseSkills[Skill.Traps]).toBe(18);
+    expect(dest.baseSkills[Skill.Science]).toBe(27);
+    expect(dest.baseSkills[Skill.Repair]).toBe(16);
+    expect(dest.baseSkills[Skill.Speech]).toBe(19);
+    expect(dest.baseSkills[Skill.Barter]).toBe(34);
+    expect(dest.baseSkills[Skill.Gambling]).toBe(40);
+    expect(dest.baseSkills[Skill.Outdoorsman]).toBe(1);
   });
 });
