@@ -1,10 +1,6 @@
 <script lang="ts">
   import Bolthead from '$lib/components/Bolthead.svelte';
-  import {
-    Role,
-    RoleToSequel,
-    SupportedRoles
-  } from '$lib/engines/all';
+  import { Role, RoleToSequel, SupportedRoles } from '$lib/engines/all';
   import type { ObjectValues } from '$lib/typeUtils';
   import { onMount } from 'svelte';
   import { role } from './RoleStore';

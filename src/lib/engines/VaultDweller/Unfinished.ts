@@ -106,7 +106,9 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
 
   _maxHPReactor = () => {
     this.maxHitPoints =
-      15 + this[Special.Strength] + 2 * this[Special.Endurance];
+      15 +
+      this.displayAttributes[Special.Strength] +
+      2 * this.displayAttributes[Special.Endurance];
   };
 
   _skillReactors = {

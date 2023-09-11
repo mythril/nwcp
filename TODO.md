@@ -7,7 +7,6 @@ Overall goals:
 
 ### To do
 
-- [ ] animate landing page animation
 - [ ] implement lone wanderer logic
 - [ ] implement courier logic
 - [ ] write save/load integrity tests for each role type
@@ -50,6 +49,7 @@ Overall goals:
 
 ### Done
 
+- [x] animate landing page animation
 - [x] build landing page
 - [x] put a visual indicator of route changes (animated)
 - [x] add automatic hash-state update to url
