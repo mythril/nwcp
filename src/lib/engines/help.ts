@@ -26,6 +26,12 @@ export const CharacterHelpLookup = {
     '0% + (2 x AG)',
     '0% + (2 x AG)'
   ],
+  Explosives: [
+    'The ability to handle things that go boom. Throwing / placing / avoiding blast zones. Grenades, mines, detonation packs, etc.',
+    ,
+    ,
+    '2% + (2 x PE) + (LK / 2)'
+  ],
   Unarmed: [
     'A combination of martial arts, boxing and other hand-to-hand martial arts.  Combat with your hands and feet.',
     '65% + ((ST + AG) / 2)',
@@ -55,6 +61,13 @@ export const CharacterHelpLookup = {
     '15% + ((PE + IN) / 2)',
     '5% + (PE + IN)',
     '0% + (PE + IN)'
+  ],
+  Medicine: [
+    'General healing skill. Improves the effectiveness of healing related tools, medicines and unknown goos of many varieties.',
+    ,
+    ,
+    ,
+    '2% + (2 x IN) + (LK / 2)'
   ],
   Sneak: [
     'Quiet movement, and the ability to remain unnoticed. If successful, you will be much harder to locate. You cannot run and sneak at the same time.',
@@ -156,6 +169,8 @@ export const CharacterHelpLookup = {
   'Radiation Res.':
     'The amount of radiation you are exposed to is reduced by this percentage. Radiation Resistance can be modified by the type of armor worn, and anti-radiation chems.',
   'Poison Res.': 'Reduces poison damage by this amount.',
+  'Fire Res.': 'Reduces fire damage by this amount.',
+  'Skill Rate': 'How many skill points you will receive at your next level.',
   Age: 'Age',
   Gender: 'Gender',
   'Current Poison Level': 'Current Poison Level',
