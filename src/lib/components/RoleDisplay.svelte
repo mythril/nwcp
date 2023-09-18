@@ -203,7 +203,7 @@
     display: flex;
     align-items: center;
   }
-  :global(.open-chooser) {
+  :global(.open-chooser.btn) {
     padding: 0;
     border: 0;
     margin: 0;
