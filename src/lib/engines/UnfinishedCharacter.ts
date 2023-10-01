@@ -56,6 +56,8 @@ export interface UnfinishedCharacter
   extends Record<ObjectValues<typeof Special>, number> {
   readonly role: ObjectValues<typeof Role> & {};
   name: string;
+
+  readonly ageIsReadOnly: boolean;
   age: number;
   sex: ObjectValues<typeof Sex> & {};
 
@@ -90,6 +92,7 @@ export interface UnfinishedCharacter
   baseSkills: Partial<Record<ObjectValues<ISkill>, number>>;
   maxHitPoints: number;
   derivedStatsDisplay: Partial<Record<ObjectValues<IDerivedStat>, string>>;
+  derivedStatInfo: IDerivedStat;
 
   charPointsRemaining: number;
 
@@ -114,6 +117,7 @@ export abstract class AbstractUnfinishedCharacter<
 {
   abstract readonly role: ObjectValues<typeof Role> & {};
   name = '';
+  ageIsReadOnly = false;
   age = 0;
   sex: ObjectValues<typeof Sex> & {} = Sex.Male;
 
@@ -260,6 +264,7 @@ export abstract class AbstractUnfinishedCharacter<
   abstract baseSkills: Record<ObjectValues<S>, number>;
   abstract maxHitPoints: number;
   abstract derivedStatsDisplay: Record<ObjectValues<DS>, string>;
+  abstract derivedStatInfo: IDerivedStat;
 
   get charPointsRemaining() {
     let cpr = 40;

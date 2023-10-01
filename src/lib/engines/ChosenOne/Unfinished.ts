@@ -33,6 +33,7 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
   difficultyInfo = Difficulty;
   skillInfo = Skill;
   traitInfo = Trait;
+  derivedStatInfo = DerivedStat;
   readonly roleHasTraits = true;
   displayAttributes: Attributes = {
     Strength: this._Strength,

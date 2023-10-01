@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { DerivedStat } from '$lib/engines/ChosenOne/data';
   import Bolthead from '$lib/components/Bolthead.svelte';
   import HelpSource from '$lib/components/HelpSource.svelte';
   import { character } from '../../../routes/CharacterStore';
+  const DerivedStat = $character.derivedStatInfo;
 </script>
 
 <div class="section">
@@ -45,5 +45,9 @@
   }
   .section {
     margin-top: 2rem;
+  }
+  td,
+  th {
+    white-space: nowrap;
   }
 </style>

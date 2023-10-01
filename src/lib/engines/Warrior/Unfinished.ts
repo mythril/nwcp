@@ -21,6 +21,8 @@ const noOp = () => {
 };
 
 // TODO: compare created character w/ game
+// TODO: age range
+// TODO: choose race
 
 export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   typeof Trait,

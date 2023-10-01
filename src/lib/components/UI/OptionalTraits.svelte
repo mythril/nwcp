@@ -29,9 +29,14 @@
     }
     clickSound();
   };
+
+  let disabled = !$character.roleHasTraits;
 </script>
 
-<div class="traits">
+<div
+  class="traits"
+  class:disabled
+>
   <HelpSource subject="Optional Traits">
     <div
       role="link"
@@ -186,6 +191,12 @@
     background-color: hsl(var(--ruddy));
     position: relative;
     color: hsl(var(--terminal-color));
+    &.disabled {
+      filter: grayscale(100%) brightness(0.5);
+      .title .worn-text {
+        opacity: 0;
+      }
+    }
     .title {
       position: relative;
       z-index: 1;
@@ -207,6 +218,7 @@
         var(--underbelly-shadow);
     }
     .terminal {
+      min-height: resolve(8 * 8 * 1.7rem);
       height: 100%;
       display: flex;
       flex-flow: row;

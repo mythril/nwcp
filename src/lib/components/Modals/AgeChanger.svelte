@@ -33,7 +33,9 @@
   };
 
   export const enter = () => {
-    //intentional
+    if ($character.ageIsReadOnly) {
+      cancel();
+    }
   };
 
   export const leave = () => {

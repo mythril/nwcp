@@ -16,11 +16,13 @@ export class UnfinishedLoneWanderer extends AbstractUnfinishedCharacter<
   _tagged: Set<ObjectValues<typeof Skill>> = new Set();
   _difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
   role: ObjectValues<typeof Role> & {} = Role.LoneWanderer;
-  readonly age = 19;
+  ageIsReadOnly = true;
+  age = 19;
   readonly roleHasDifficultySetting = false;
   difficultyInfo = Difficulty;
   skillInfo = Skill;
   traitInfo = Trait;
+  derivedStatInfo = DerivedStat;
   readonly roleHasTraits = false;
   displayAttributes: Attributes = {
     Strength: this._Strength,
@@ -80,8 +82,8 @@ export class UnfinishedLoneWanderer extends AbstractUnfinishedCharacter<
       this.baseSkills[skill] =
         2 +
         this.displayAttributes[attr] * 2 +
-        Math.ceil(this.displayAttributes[Special.Luck] / 2);
-      tagged;
+        Math.ceil(this.displayAttributes[Special.Luck] / 2) +
+        tagged;
     };
   };
 
@@ -273,21 +275,21 @@ export class UnfinishedLoneWanderer extends AbstractUnfinishedCharacter<
     [DerivedStat.PoisonRes]: this._derivedStatReactor(
       Special.Endurance,
       (endurance) => {
-        return (endurance - 1) * 5 + '';
+        return (endurance - 1) * 5 + '%';
       },
       DerivedStat.PoisonRes
     ),
     [DerivedStat.RadiationRes]: this._derivedStatReactor(
       Special.Endurance,
       (endurance) => {
-        return (endurance - 1) * 5 + '';
+        return (endurance - 1) * 2 + '%';
       },
       DerivedStat.RadiationRes
     ),
     [DerivedStat.SkillRate]: this._derivedStatReactor(
       Special.Intelligence,
       (intelligence) => {
-        return 10 + intelligence + '%';
+        return 10 + intelligence + '';
       },
       DerivedStat.SkillRate
     ),

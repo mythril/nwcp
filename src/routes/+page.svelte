@@ -23,14 +23,14 @@
   const roleInfo: RoleInfo[] = [
     {
       role: Role.VaultDweller,
-      born: '2141',
+      born: '2141 (canonical)',
       area: 'New California',
       mission: 'Locate water chip, save vault',
       year: '2161'
     },
     {
       role: Role.ChosenOne,
-      born: '2221 March 23',
+      born: '2221 March 23 (canonical)',
       area: 'New California',
       mission: 'Locate G.E.C.K., save tribe',
       year: '2241'
@@ -44,7 +44,7 @@
     },
     {
       role: Role.LoneWanderer,
-      born: 'July 13, 2258',
+      born: 'July 13, 2258 (canonical)',
       area: 'Capitol Wasteland',
       mission: 'Locate father',
       year: '2277'

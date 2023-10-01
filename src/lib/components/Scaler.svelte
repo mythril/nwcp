@@ -1,33 +1,34 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import './Scaler.postcss';
-  /* deprecated */
 
-  let devicePixelRatio = 0;
-
-  const setRem = () => {
-    let cfs = parseFloat(getComputedStyle(document.documentElement).fontSize);
-
-    // keep the user's zoom level
-    let fontSize = cfs * devicePixelRatio;
-
+  let ruler: HTMLDivElement;
+  onMount(async () => {
     const style = document.documentElement.style;
 
-    // This allows zooming to happen by freezing the font-size
+    let fontSize = ruler.clientHeight / 525;
+
     style.fontSize = fontSize + 'px';
-    style.setProperty('--px-ratio', devicePixelRatio.toString());
-    style.setProperty('--rem-ratio', fontSize.toString());
-  };
-
-  const waitForDevicePixelRatio = () => {
-    if (devicePixelRatio !== 0) {
-      setTimeout(setRem, 1);
-    } else {
-      setTimeout(waitForDevicePixelRatio, 20);
-    }
-  };
-
-  onMount(waitForDevicePixelRatio);
+  });
 </script>
 
-<svelte:window bind:devicePixelRatio />
+<div
+  bind:this={ruler}
+  class="ruler"
+/>
+
+<style lang="postcss">
+  .ruler {
+    position: absolute;
+    width: 1px;
+    height: 100vh;
+  }
+  :global(html) {
+    /* attempts to render largest in-frame window possible */
+    font-size: resolve(100vh / 525);
+    overflow-y: hidden;
+    min-width: 640rem;
+  }
+  :global(body) {
+    overflow-y: hidden;
+  }
+</style>

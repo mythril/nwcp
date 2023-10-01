@@ -3,6 +3,7 @@
   import { Menus, Modals } from '../ModalManager.svelte';
 
   import ModalButton from '$lib/components/Buttons/ModalButton.svelte';
+  import { character } from '../../../routes/CharacterStore';
 
   export const enter = () => {
     // intentional
@@ -17,10 +18,12 @@
   on:navBack
   on:navExit
 >
-  <ModalButton
-    type="flat"
-    modal={Modals.DifficultySetting}>Preferences</ModalButton
-  >
+  {#if $character.roleHasDifficultySetting}
+    <ModalButton
+      type="flat"
+      modal={Modals.DifficultySetting}>Preferences</ModalButton
+    >
+  {/if}
   <ModalButton
     type="flat"
     modal={Menus.SaveLoad}>Save/Load</ModalButton

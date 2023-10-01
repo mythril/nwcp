@@ -14,6 +14,7 @@
   import { character } from './CharacterStore';
   import { Role } from '$lib/engines/all';
   import type { ObjectValues } from '$lib/typeUtils';
+  import Scaler from '$lib/components/Scaler.svelte';
 
   async function bootUp() {
     addEventListener('popstate', () => location.reload());
@@ -63,6 +64,8 @@
     {/key}
   {/key}
 </svelte:head>
+
+<Scaler />
 
 <Overlay />
 
