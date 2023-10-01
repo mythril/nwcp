@@ -87,7 +87,19 @@
     }
   }
 
-  $: history.replaceState(undefined, '', '#' + charToBase64($character));
+  $: {
+    let cTor = Object.getPrototypeOf($character).constructor;
+    let blankChar = new cTor();
+    blankChar._reset();
+    let blank = charToBase64(blankChar);
+    let hash = charToBase64($character);
+    if (blank === hash) {
+      history.replaceState(undefined, '', ' ');
+    } else {
+      history.replaceState(undefined, '', '#' + hash);
+    }
+  }
+
   onMount(() => ($hideMain = false));
 </script>
 
