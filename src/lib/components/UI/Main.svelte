@@ -30,6 +30,8 @@
   import { writable } from 'svelte/store';
   import { quintIn, quintOut } from 'svelte/easing';
   import { onMount } from 'svelte';
+  import type { ObjectValues } from '$lib/typeUtils';
+  import type { Role } from '$lib/engines/all';
 
   let charPoints: CharPoints;
   const charPointsRemainingBonk = () => {
@@ -87,13 +89,17 @@
     }
   }
 
+  let blanks: Partial<Record<ObjectValues<typeof Role>, string>> = {};
+
   $: {
-    let cTor = Object.getPrototypeOf($character).constructor;
-    let blankChar = new cTor();
-    blankChar._reset();
-    let blank = charToBase64(blankChar);
+    if (!($character.role in blanks)) {
+      let cTor = Object.getPrototypeOf($character).constructor;
+      let blankChar = new cTor();
+      blankChar._reset();
+      blanks[$character.role] = charToBase64(blankChar);
+    }
     let hash = charToBase64($character);
-    if (blank === hash) {
+    if (blanks[$character.role] === hash) {
       history.replaceState(undefined, '', ' ');
     } else {
       history.replaceState(undefined, '', '#' + hash);
