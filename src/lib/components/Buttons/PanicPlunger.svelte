@@ -16,7 +16,7 @@
 </Button>
 
 <style lang="postcss">
-  :global(.btn) {
+  :global(.btn.panic-plunger) {
     display: block;
     width: 100%;
     flex-grow: 1;

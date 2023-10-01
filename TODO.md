@@ -7,6 +7,7 @@ Overall goals:
 
 ### To do
 
+- [ ] ensure release script can do base-url changing
 - [ ] implement lone wanderer logic
 - [ ] implement courier logic
 - [ ] write save/load integrity tests for each role type

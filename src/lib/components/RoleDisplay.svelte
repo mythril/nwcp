@@ -204,11 +204,11 @@
     align-items: center;
   }
   :global(.open-chooser.btn) {
+    --push-button-size: 1.9rem;
     padding: 0;
     border: 0;
     margin: 0;
     background-color: transparent;
-    --push-button-size: 1.9rem;
     appearance: none;
     width: 16em;
     height: 16em;

@@ -509,7 +509,6 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
     this.age = 25;
     this.name = '';
     this.sex = Sex.Male;
-    this.Strength = 5;
     Object.assign(this, ...Object.values(Special).map((a) => ({ [a]: 5 })));
     this.difficulty = Difficulty.Normal;
     this.clearTraits();
