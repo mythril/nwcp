@@ -7,11 +7,13 @@ Overall goals:
 
 ### To do
 
+- [ ] add share menu, move link management / embedding to share menu
+- [ ] ensure min / max age come from the model
 - [ ] ensure release script can do base-url changing
-- [ ] implement lone wanderer logic
 - [ ] implement courier logic
 - [ ] write save/load integrity tests for each role type
 - [ ] detect when embedded and reduce graphical fidelity / freeze input
+- [ ] add embed router for simplified embeds
 - [ ] update help file with variances of traits
 - [ ] factor out common character elements into mid-class
 - [ ] internationalize: npm i i18next
@@ -21,6 +23,7 @@ Overall goals:
 
 ### Maybe
 
+- [ ] theme variations for each role
 - [ ] improve flat menu look
 - [ ] Figure out a way to show currently hidden derived stats
 - [ ] Improve paper background (has issues with resizing?)
@@ -36,6 +39,7 @@ Overall goals:
 ### After first release
 
 - [ ] consider file-save progressive enhancement
+- [ ] consider autosaving to local cache
 - [ ] get browser testing functioning, build a test to verify character linking
 - [ ] Make the first event: create character
 - [ ] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
@@ -50,6 +54,7 @@ Overall goals:
 
 ### Done
 
+- [x] implement lone wanderer logic
 - [x] animate landing page animation
 - [x] build landing page
 - [x] put a visual indicator of route changes (animated)

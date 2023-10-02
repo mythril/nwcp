@@ -6,6 +6,8 @@ export type HasHelpEntriesForEvery<T> = Equals<
   ObjectValues<T>
 >;
 
+// TODO, see if descriptions for various games need custom entries traits / skills in particular
+
 /* eslint-disable no-sparse-arrays -- sparseness indicates no entry for that game */
 export const CharacterHelpLookup = {
   'Small Guns': [
@@ -19,6 +21,14 @@ export const CharacterHelpLookup = {
     '10% + AG',
     '0% + (2 x AG)',
     '0% + (2 x AG)'
+  ],
+  Guns: [
+    'Proficiency at using weapons that fire standard ammunition.',
+    ,
+    ,
+    ,
+    ,
+    ,
   ],
   'Energy Weapons': [
     'The care and feeding of energy-based weapons.  How to arm and operate weapons that use laser or plasma technology.',
@@ -116,6 +126,14 @@ export const CharacterHelpLookup = {
     '25% + (2 x CH)',
     '0% + (5 x CH)'
   ],
+  Survival: [
+    'Proficiency at cooking, making poisons, and crafting "natural" equipment and consumables. Also Yields increased benefits from food.',
+    ,
+    ,
+    ,
+    ,
+    ,
+  ],
   Barter: [
     'Trading and trade-related tasks. The ability to get better prices for items you sell, and lower prices for items you buy.',
     '20% + (2 x CH)',
@@ -158,6 +176,28 @@ export const CharacterHelpLookup = {
     'The amount of bonus damage your character does in hand-to-hand combat.',
   'Carry Weight':
     'The maximum amount of equipment your character can carry, in pounds.',
+  'Companion Nerve':
+    'How much bonus damage and defense your companions receive.',
+  'Built To Destroy':
+    'The flamer that burns twice as bright burns half as long. All weapons have +3% chance to Critical Hit, but equipment condition decays 15% faster.',
+  'Four Eyes':
+    'While wearing any type of glasses, you have +1 PER. Without glasses, you have -1 PER.',
+  'Loose Cannon':
+    'From frag grenades to throwing spears, you can throw weapons 30% faster at the cost of 25% less range.',
+  'Trigger Discipline':
+    'While using Guns and Energy Weapons, you fire 20% more slowly, but are 20% more accurate.',
+  'Wild Wasteland':
+    'Wild wasteland unleashes the most bizarre and silly elements of post-apocalyptic America. Not for the faint of heart or the serious of temperament.',
+  Claustrophobia:
+    'You have a fear of enclosed spaces (probably because of the mutants that live there). You gain +1 to SPECIAL attributes when outside, but suffer -1 when indoors.',
+  'Early Bird':
+    "Hey early risers! Enjoy a +2 to each of your SPECIAL attributes from 6 am to 12 pm, but suffer -1 from 6 pm to 6 am when you're not at your best.",
+  Hoarder:
+    "You gain +25 lbs. to your carrying capacity, but suffer a -1 to all attributes any time the weight you're carrying drops below 160 lbs.",
+  'Hot Blooded':
+    'When your health drops below 50% you gain 10% more damage, but you also suffer -2 to your Agility and Perception attributes.',
+  "Logan's Loophole":
+    "No one's going to put you out to pasture 'cause you're going to stay young (and level 30) forever! You'll Never again become addicted to chems, and they'll last twice as long... but after 30 you can kiss experience, perks, and skill points goodbye!",
   Sequence: 'Determines how soon in a combat turn your character can react.',
   'Healing Rate':
     'At the end of each day, your character will heal 1 HP for each point of Healing Rate.  When you rest, you heal every six hours.',

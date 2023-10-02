@@ -117,7 +117,7 @@ export abstract class AbstractUnfinishedCharacter<
 {
   abstract readonly role: ObjectValues<typeof Role> & {};
   name = '';
-  ageIsReadOnly = false;
+  abstract readonly ageIsReadOnly: boolean;
   age = 0;
   sex: ObjectValues<typeof Sex> & {} = Sex.Male;
 

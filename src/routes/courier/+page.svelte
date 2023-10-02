@@ -1,13 +1,13 @@
 <script lang="ts">
   import { loadFromChar, resetChar } from '../CharacterStore';
-  // import { UnfinishedWarrior } from '$lib/engines/Warrior/Unfinished';
   import Main from '$lib/components/UI/Main.svelte';
   import { role } from '../RoleStore';
   import { Role } from '$lib/engines/all';
+  import { UnfinishedCourier } from '$lib/engines/Courier/Unfinished';
 
   $role = Role.Courier;
-  // loadFromChar(new UnfinishedWarrior());
-  // resetChar();
+  loadFromChar(new UnfinishedCourier());
+  resetChar();
 </script>
 
 <Main />

@@ -34,6 +34,8 @@
   */
   .ruler {
     position: absolute;
+    left: -1px;
+    bottom: 100vh;
     width: 1px;
     height: 100vh;
   }
