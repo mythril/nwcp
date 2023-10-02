@@ -18,6 +18,22 @@ export const Skill = {
   Unarmed: 'Unarmed'
 } as const;
 
+export const GoodNaturedPositiveSkills = [
+  Skill.Speech,
+  Skill.Medicine,
+  Skill.Repair,
+  Skill.Science,
+  Skill.Barter
+] as const;
+
+export const GoodNaturedNegativeSkills = [
+  Skill.EnergyWeapons,
+  Skill.Explosives,
+  Skill.Guns,
+  Skill.MeleeWeapons,
+  Skill.Unarmed
+] as const;
+
 export type SkillSet = Record<ObjectValues<typeof Skill>, number>;
 export type TaggedSkills = ObjectValues<typeof Skill>[];
 

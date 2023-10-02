@@ -1,12 +1,24 @@
 import type { ObjectValues } from '$lib/typeUtils';
-import { defaultValuesOf } from '$lib/utils';
+import { defaultValuesOf, includes } from '$lib/utils';
 import type { IPackingDescriptor } from '../BitPacking';
 import { AbstractUnfinishedCharacter } from '../UnfinishedCharacter';
 import { Role, type Attributes, Special, Sex } from '../all';
 import { OrderedDescriptors } from './codec';
-import { Difficulty, DerivedStat, Skill, Trait } from './data';
+import {
+  Difficulty,
+  DerivedStat,
+  Skill,
+  Trait,
+  GoodNaturedPositiveSkills,
+  GoodNaturedNegativeSkills
+} from './data';
+
+const noOp = () => {
+  // intentional
+};
 
 // TODO: trait reactors
+// TODO: damage resistance for kamikaze
 
 export class UnfinishedCourier extends AbstractUnfinishedCharacter<
   typeof Trait,
@@ -80,11 +92,24 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
     this._skillReactorsByStat[Special.Luck].push(skill);
     return () => {
       const tagged = this.hasTagged(skill) ? 15 : 0;
+      let goodNatured: -5 | 0 | 5 = 0;
+      const skilled: 0 | 5 = this.hasTrait(Trait.Skilled) ? 5 : 0;
+
+      if (this.hasTrait(Trait.GoodNatured)) {
+        if (includes(GoodNaturedPositiveSkills, skill)) {
+          goodNatured = 5;
+        }
+        if (includes(GoodNaturedNegativeSkills, skill)) {
+          goodNatured = -5;
+        }
+      }
 
       this.baseSkills[skill] =
         2 +
         this.displayAttributes[attr] * 2 +
         Math.ceil(this.displayAttributes[Special.Luck] / 2) +
+        goodNatured +
+        skilled +
         tagged;
     };
   };
@@ -92,8 +117,8 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
   maxHitPoints = 0;
 
   _maxHPReactor = () => {
-    this.maxHitPoints = 90 + 20 * this.displayAttributes[Special.Endurance];
-    1 * 10;
+    this.maxHitPoints = 100 + 20 * this.displayAttributes[Special.Endurance];
+    1 * 5;
   };
 
   _skillReactors = {
@@ -158,7 +183,9 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
       this._Strength = this._specialReactor(s, Special.Strength);
     },
     [Special.Perception]: (s: number | undefined = undefined) => {
-      this._Perception = this._specialReactor(s, Special.Perception);
+      this._Perception = this._specialReactor(s, Special.Perception, () => {
+        return this.hasTrait(Trait.FourEyes) ? -1 : 0;
+      });
     },
     [Special.Endurance]: (s: number | undefined = undefined) => {
       this._Endurance = this._specialReactor(s, Special.Endurance);
@@ -171,7 +198,9 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
       this._Intelligence = this._specialReactor(s, Special.Intelligence);
     },
     [Special.Agility]: (s: number | undefined = undefined) => {
-      this._Agility = this._specialReactor(s, Special.Agility);
+      this._Agility = this._specialReactor(s, Special.Agility, () => {
+        return this.hasTrait(Trait.SmallFrame) ? 1 : 0;
+      });
     },
     [Special.Luck]: (s: number | undefined = undefined) => {
       this._Luck = this._specialReactor(s, Special.Luck);
@@ -239,14 +268,16 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
     [DerivedStat.ActionPoints]: this._derivedStatReactor(
       Special.Agility,
       (agility) => {
-        return '' + (65 + agility * 3);
+        const kamikaze = this.hasTrait(Trait.Kamikaze) ? 10 : 0;
+        return '' + (65 + kamikaze + agility * 3);
       },
       DerivedStat.ActionPoints
     ),
     [DerivedStat.CarryWeight]: this._derivedStatReactor(
       Special.Strength,
       (strength) => {
-        return '' + (150 + strength * 10);
+        const hoarder = this.hasTrait(Trait.Hoarder) ? 25 : 0;
+        return '' + (hoarder + 150 + strength * 10);
       },
       DerivedStat.CarryWeight
     ),
@@ -260,7 +291,8 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
     [DerivedStat.CriticalChance]: this._derivedStatReactor(
       Special.Luck,
       (luck) => {
-        return luck + '%';
+        const btdBonus = this.hasTrait(Trait.BuiltToDestroy) ? 3 : 0;
+        return luck + btdBonus + '%';
       },
       DerivedStat.CriticalChance
     ),
@@ -319,14 +351,54 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
     }
   }
 
-  _traitReactors = {};
+  _traitReactors: Record<ObjectValues<typeof Trait>, () => void> = {
+    [Trait.BuiltToDestroy]: () => {
+      this._derivedStatReactors[DerivedStat.CriticalChance]();
+    },
+    [Trait.FourEyes]: () => {
+      this._specialReactors[Special.Perception]();
+    },
+    [Trait.GoodNatured]: () => {
+      for (const skill of [
+        ...GoodNaturedPositiveSkills,
+        ...GoodNaturedNegativeSkills
+      ]) {
+        this._skillReactors[skill]();
+      }
+    },
+    [Trait.Kamikaze]: () => {
+      this._derivedStatReactors[DerivedStat.ActionPoints]();
+    },
+    [Trait.SmallFrame]: () => {
+      this._specialReactors[Special.Agility]();
+    },
+    [Trait.Hoarder]: () => {
+      this._derivedStatReactors[DerivedStat.CarryWeight]();
+    },
+    [Trait.Skilled]: () => {
+      for (const skill of Object.values(Skill)) {
+        this._skillReactors[skill]();
+      }
+    },
+    [Trait.EarlyBird]: noOp,
+    [Trait.Claustrophobia]: noOp,
+    [Trait.FastShot]: noOp,
+    [Trait.HeavyHanded]: noOp,
+    [Trait.HotBlooded]: noOp,
+    [Trait.LogansLoophole]: noOp,
+    [Trait.LooseCannon]: noOp,
+    [Trait.TriggerDiscipline]: noOp,
+    [Trait.WildWasteland]: noOp
+  };
 
-  reactToTrait(_trait: ObjectValues<typeof Trait>): void {
-    // intentional
+  reactToTrait(trait: ObjectValues<typeof Trait>): void {
+    this._traitReactors[trait]();
   }
 
   reactToAllTraits(): void {
-    // intentional
+    for (const trait of Object.values(Trait)) {
+      this._traitReactors[trait]();
+    }
   }
 
   toJSON() {
