@@ -17,6 +17,21 @@
 />
 
 <style lang="postcss">
+  /*
+  @media (min-height: 0) {
+    :root {
+      font-size: 1px;
+    }
+  }
+
+  @for $i from 0 to 30 {
+    @media (min-height: resolve(480px * (1.1 + $i * 0.1))) {
+      :root {
+        font-size: resolve(1px * (1.1 + $i * 0.0875));
+      }
+    }
+  }
+  */
   .ruler {
     position: absolute;
     width: 1px;

@@ -277,7 +277,11 @@
     }
     .display {
       table {
-        line-height: 1.3;
+        line-height: 1.6;
+      }
+      th,
+      td {
+        white-space: nowrap;
       }
       th {
         width: 40rem;
