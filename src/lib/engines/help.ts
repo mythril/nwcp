@@ -14,13 +14,15 @@ export const CharacterHelpLookup = {
     'The use, care and general knowledge of small firearms - pistols, SMGs and rifles.',
     '35% + AG',
     '5% + (4 x AG)',
-    '5% + (4 x AG)'
+    '5% + (4 x AG)',
+    '2% + (AG x 2) + (LK / 2)',
   ],
   'Big Guns': [
     'The operation and maintenance of really big guns - miniguns, rocket launchers, flamethrowers and such.',
     '10% + AG',
     '0% + (2 x AG)',
-    '0% + (2 x AG)'
+    '0% + (2 x AG)',
+    '2% + (EN x 2) + (LK / 2)',
   ],
   Guns: [
     'Proficiency at using weapons that fire standard ammunition.',
@@ -28,31 +30,39 @@ export const CharacterHelpLookup = {
     ,
     ,
     ,
-    ,
+    '2% + (AG x 2) + (LK / 2)',
   ],
   'Energy Weapons': [
     'The care and feeding of energy-based weapons.  How to arm and operate weapons that use laser or plasma technology.',
     '10% + AG',
     '0% + (2 x AG)',
-    '0% + (2 x AG)'
+    '0% + (2 x AG)',
+    '2% + (PE x 2) + (LK / 2)',
+    '2% + (PE x 2) + (LK / 2)'
   ],
   Explosives: [
     'The ability to handle things that go boom. Throwing / placing / avoiding blast zones. Grenades, mines, detonation packs, etc.',
     ,
     ,
-    '2% + (2 x PE) + (LK / 2)'
+    ,
+    '2% + (PE x 2) + (LK / 2)',
+    '2% + (PE x 2) + (LK / 2)'
   ],
   Unarmed: [
     'A combination of martial arts, boxing and other hand-to-hand martial arts.  Combat with your hands and feet.',
     '65% + ((ST + AG) / 2)',
     '30% + (2 x (AG + ST))',
-    '30% + (2 x (AG + ST))'
+    '30% + (2 x (AG + ST))',
+    '2% + (EN x 2) + (LK / 2)',
+    '2% + (EN x 2) + (LK / 2)',
   ],
   'Melee Weapons': [
     'Using non-ranged weapons in hand-to-hand, or melee combat - knives, sledgehammers, spears, clubs and so on.',
     '55% + ((ST + AG) / 2)',
     '20% + (2 x (AG + ST))',
-    '20% + (2 x (AG + ST))'
+    '20% + (2 x (AG + ST))',
+    '2% + (ST x 2) + (LK / 2)',
+    '2% + (ST x 2) + (LK / 2)',
   ],
   Throwing: [
     'The skill of muscle-propelled ranged weapons, such as throwing knives, spears and grenades.',
@@ -77,19 +87,24 @@ export const CharacterHelpLookup = {
     ,
     ,
     ,
-    '2% + (2 x IN) + (LK / 2)'
+    '2% + (IN x 2) + (LK / 2)',
+    '2% + (IN x 2) + (LK / 2)',
   ],
   Sneak: [
     'Quiet movement, and the ability to remain unnoticed. If successful, you will be much harder to locate. You cannot run and sneak at the same time.',
     '25% + AG',
     '5% + (3 x AG)',
-    '0% + (3 x AG)'
+    '0% + (3 x AG)',
+    '2% + (AG x 2) + (LK / 2)',
+    '2% + (AG x 2) + (LK / 2)',
   ],
   Lockpick: [
     'The skill of opening locks without the proper key. The use of lock-picks or electronic lock-picks will greatly enhance this skill.',
     '20% + ((PE + AG) / 2)',
     '10% + (PE + AG)',
-    '10% + (PE + AG)'
+    '10% + (PE + AG)',
+    '2% + (PE x 2) + (LK / 2)',
+    '2% + (PE x 2) + (LK / 2)',
   ],
   Steal: [
     'The ability to make the things of others your own.  Can be used to steal from people or places.',
@@ -107,13 +122,17 @@ export const CharacterHelpLookup = {
     'Covers a variety of high technology skills, such as computers, biology, physics and geology.',
     '25% + (2 x IN)',
     '0% + (4 x IN)',
-    '0% + (4 x IN)'
+    '0% + (4 x IN)',
+    '2% + (IN x 2) + (LK / 2)',
+    '2% + (IN x 2) + (LK / 2)',
   ],
   Repair: [
     'The practical application of the Science skill for fixing broken equipment, machinery and electronics.',
     '20% + IN',
     '0% + (3 x IN)',
-    '0% + (3 x IN)'
+    '0% + (3 x IN)',
+    '2% + (IN x 2) + (LK / 2)',
+    '2% + (IN x 2) + (LK / 2)',
   ],
   Pilot: [
     'The ability to operate and maintain all vehicles effectively.',
@@ -124,7 +143,10 @@ export const CharacterHelpLookup = {
   Speech: [
     'The ability to communicate in a practical and efficient manner. The skill of convincing others that your position is correct. The ability to lie and not get caught.',
     '25% + (2 x CH)',
-    '0% + (5 x CH)'
+    '0% + (5 x CH)',
+    ,
+    '2% + (CH x 2) + (LK / 2)',
+    '2% + (CH x 2) + (LK / 2)',
   ],
   Survival: [
     'Proficiency at cooking, making poisons, and crafting "natural" equipment and consumables. Also Yields increased benefits from food.',
@@ -132,13 +154,15 @@ export const CharacterHelpLookup = {
     ,
     ,
     ,
-    ,
+    '2% + (EN x 2) + (LK / 2)',
   ],
   Barter: [
     'Trading and trade-related tasks. The ability to get better prices for items you sell, and lower prices for items you buy.',
     '20% + (2 x CH)',
     '0% + (4 x CH)',
-    '0% + (4 x CH)'
+    '0% + (4 x CH)',
+    '2% + (CH x 2) + (LK / 2)',
+    '2% + (CH x 2) + (LK / 2)',
   ],
   Gambling: [
     'The knowledge and practical skills related to wagering. The skill at cards, dice and other games.',
