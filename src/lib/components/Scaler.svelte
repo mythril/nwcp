@@ -2,14 +2,17 @@
   import { onMount } from 'svelte';
 
   let ruler: HTMLDivElement;
-  onMount(async () => {
+  const resizeHandler = async () => {
     const style = document.documentElement.style;
 
     let fontSize = ruler.clientHeight / 525;
 
     style.fontSize = fontSize + 'px';
-  });
+  }
+  onMount(resizeHandler);
 </script>
+
+<svelte:window on:resize={resizeHandler} />
 
 <div
   bind:this={ruler}
@@ -17,21 +20,6 @@
 />
 
 <style lang="postcss">
-  /*
-  @media (min-height: 0) {
-    :root {
-      font-size: 1px;
-    }
-  }
-
-  @for $i from 0 to 30 {
-    @media (min-height: resolve(480px * (1.1 + $i * 0.1))) {
-      :root {
-        font-size: resolve(1px * (1.1 + $i * 0.0875));
-      }
-    }
-  }
-  */
   .ruler {
     position: absolute;
     left: -1px;

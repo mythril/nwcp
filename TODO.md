@@ -10,16 +10,12 @@ Overall goals:
 - [ ] add share menu, move link management / embedding to share menu
 - [ ] ensure min / max age come from the model
 - [ ] ensure release script can do base-url changing
-- [ ] implement courier logic
 - [ ] write save/load integrity tests for each role type
 - [ ] detect when embedded and reduce graphical fidelity / freeze input
 - [ ] add embed router for simplified embeds
 - [ ] update help file with variances of traits
-- [ ] factor out common character elements into mid-class
 - [ ] internationalize: npm i i18next
 - [ ] extract common subset out of RoleDisplay and Toast
-- [ ] inspect on phone
-- [ ] convert footer to position sticky, restore min-height 100vh on .app
 
 ### Maybe
 
@@ -54,6 +50,7 @@ Overall goals:
 
 ### Done
 
+- [x] implement courier logic
 - [x] implement lone wanderer logic
 - [x] animate landing page animation
 - [x] build landing page

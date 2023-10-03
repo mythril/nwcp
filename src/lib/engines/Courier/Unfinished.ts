@@ -19,6 +19,7 @@ const noOp = () => {
 
 // TODO: trait reactors
 // TODO: damage resistance for kamikaze
+// TODO: reassess age range
 
 export class UnfinishedCourier extends AbstractUnfinishedCharacter<
   typeof Trait,
