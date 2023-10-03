@@ -163,19 +163,21 @@
         />
       </slot>
     </div>
-    <div
-      class="health-section slate monitor terminal-font-defaults brightness-variance"
-    >
-      <slot name="health">
-        <Health />
-      </slot>
-    </div>
-    <div
-      class="derived-stats slate monitor terminal-font-defaults brightness-variance b-offset-1"
-    >
-      <slot name="derived-stats">
-        <DerivedStats />
-      </slot>
+    <div class="derived-section">
+      <div
+        class="health slate monitor terminal-font-defaults brightness-variance"
+      >
+        <slot name="health">
+          <Health />
+        </slot>
+      </div>
+      <div
+        class="derived-stats slate monitor terminal-font-defaults brightness-variance b-offset-1"
+      >
+        <slot name="derived-stats">
+          <DerivedStats />
+        </slot>
+      </div>
     </div>
     <div class="char-points-section slate brightness-variance b-offset-2">
       <slot name="char-points">
@@ -220,7 +222,7 @@
   .parent {
     grid-template-areas:
       'nas nas . skills'
-      'special health . skills'
+      'special derived . skills'
       'special derived . skills'
       'special derived . help'
       'points derived . help'
@@ -247,11 +249,6 @@
     }
   }
 
-  .health-section {
-    grid-area: health;
-    z-index: -1;
-  }
-
   .special-section {
     grid-area: special;
     border-radius: 2rem;
@@ -259,8 +256,19 @@
   .char-points-section {
     grid-area: points;
   }
-  .derived-stats {
+  .derived-section {
     grid-area: derived;
+    display: flex;
+    flex-flow: column;
+    justify-content: stretch;
+    gap: 2rem;
+    .health,
+    .derived-stats {
+      height: fit-content;
+    }
+    .health {
+      flex-grow: 1;
+    }
   }
   .tagged-skills-section {
     grid-area: skills;
