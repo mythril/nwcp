@@ -3,7 +3,7 @@
   import Menu from '$lib/components/Menu.svelte';
   import debug from '$lib/debug';
   import { character, loadFromChar } from '../../../routes/CharacterStore';
-  import { errorMessage } from '../Modals/ErrorMessage.svelte';
+  import { errorMessage } from '../ErrorMessageStore';
 
   import { createEventDispatcher } from 'svelte';
   import { toast } from '../Toast.svelte';
@@ -85,7 +85,7 @@
           unpacker(new Uint8Array(data), mut.getPackingDescriptors(), mut)
         );
       })
-      .catch((err) => {
+      .catch(async (err) => {
         let em = 'Unknown error.';
         if (err instanceof CodecError) {
           em = err.message;

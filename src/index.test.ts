@@ -12,6 +12,8 @@ import { UnfinishedChosenOne } from '$lib/engines/ChosenOne/Unfinished';
 import { UnfinishedVaultDweller } from '$lib/engines/VaultDweller/Unfinished';
 import { UnfinishedWarrior } from '$lib/engines/Warrior/Unfinished';
 import { DerivedStat } from '$lib/engines/ChosenOne/data';
+import { UnfinishedCourier } from '$lib/engines/Courier/Unfinished';
+import { UnfinishedLoneWanderer } from '$lib/engines/LoneWanderer/Unfinished';
 
 const fake = (char: UnfinishedCharacter) => {
   const traits = faker.helpers.arrayElements(Object.values(char.traitInfo), {
@@ -30,7 +32,7 @@ const fake = (char: UnfinishedCharacter) => {
     Object.values(char.difficultyInfo)
   );
   char.name = faker.person.firstName(sex === 'female' ? 'female' : 'male');
-  char.age = faker.number.int({ min: 16, max: 35 });
+  char.age = faker.number.int({ min: char.minAge, max: char.maxAge });
   char.sex = sex === 'female' ? Sex.Female : Sex.Male;
   char[Special.Strength] = faker.number.int({ min: 1, max: 10 });
   char[Special.Perception] = faker.number.int({ min: 1, max: 10 });
@@ -52,7 +54,9 @@ describe('Bit packing/unpacking a character', () => {
   for (const unfinished of [
     UnfinishedVaultDweller,
     UnfinishedChosenOne,
-    UnfinishedWarrior
+    UnfinishedWarrior,
+    UnfinishedLoneWanderer,
+    UnfinishedCourier
   ]) {
     const max = 1000;
     it(
@@ -89,35 +93,31 @@ describe('Bit packing/unpacking a character', () => {
         expect(serialize(source)).toEqual(serialize(dest));
       }
     );
-    it(
-      unfinished.name +
-        ' survives serialization and un-serialization with all data intact',
-      () => {
-        const source = new unfinished();
-        source._reset();
-        source.addTrait('Chem Reliant');
-        source.addTrait('Chem Resistant');
-        source.addTagged('Barter');
-        source.addTagged('Big Guns');
-        source.addTagged('Doctor');
-        source.Strength = 10;
-        source.age = 16;
-        source.name = "I'm the BOS";
-        source.sex = Sex.Male;
-        const b64 = charToBase64(source);
-        const newChar = new unfinished();
-        const dest = base64ToChar(b64, newChar);
-        expect(dest.hasTrait('Chem Reliant')).toBe(true);
-        expect(dest.hasTrait('Chem Resistant')).toBe(true);
-        expect(dest.hasTagged('Barter')).toBe(true);
-        expect(dest.hasTagged('Big Guns')).toBe(true);
-        expect(dest.hasTagged('Doctor')).toBe(true);
-        expect(dest.Strength).toEqual(10);
-        expect(dest.age).toEqual(16);
-        expect(dest.name).toEqual("I'm the BOS");
-        expect(dest.sex).toEqual('Male');
-      }
-    );
+    it('Chosen-one survives serialization and un-serialization with all data intact', () => {
+      const source = new UnfinishedChosenOne();
+      source._reset();
+      source.addTrait('Chem Reliant');
+      source.addTrait('Chem Resistant');
+      source.addTagged('Barter');
+      source.addTagged('Big Guns');
+      source.addTagged('Doctor');
+      source.Strength = 10;
+      source.age = 16;
+      source.name = "I'm the BOS";
+      source.sex = Sex.Male;
+      const b64 = charToBase64(source);
+      const newChar = new UnfinishedChosenOne();
+      const dest = base64ToChar(b64, newChar);
+      expect(dest.hasTrait('Chem Reliant')).toBe(true);
+      expect(dest.hasTrait('Chem Resistant')).toBe(true);
+      expect(dest.hasTagged('Barter')).toBe(true);
+      expect(dest.hasTagged('Big Guns')).toBe(true);
+      expect(dest.hasTagged('Doctor')).toBe(true);
+      expect(dest.Strength).toEqual(10);
+      expect(dest.age).toEqual(16);
+      expect(dest.name).toEqual("I'm the BOS");
+      expect(dest.sex).toEqual('Male');
+    });
   }
   it('unpacks chosen-one link build correctly', () => {
     const hashPacked = 'EAFkTh2akyBMcApXaXRjaHVudGVy';

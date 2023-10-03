@@ -17,7 +17,7 @@
   import ModalButton from '$lib/components/Buttons/ModalButton.svelte';
   import { character, loadFromChar } from '../../../routes/CharacterStore';
   import Anchor from '$lib/components/Anchor.svelte';
-  import { errorMessage } from '$lib/components/Modals/ErrorMessage.svelte';
+  import { errorMessage } from '$lib/components/ErrorMessageStore';
   import debug from '$lib/debug';
   import { toast } from '$lib/components/Toast.svelte';
   import {
