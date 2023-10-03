@@ -6,8 +6,6 @@ export type HasHelpEntriesForEvery<T> = Equals<
   ObjectValues<T>
 >;
 
-// TODO, see if descriptions for various games need custom entries traits / skills in particular
-
 /* eslint-disable no-sparse-arrays -- sparseness indicates no entry for that game */
 export const CharacterHelpLookup = {
   'Small Guns': [
@@ -83,7 +81,7 @@ export const CharacterHelpLookup = {
     '0% + (PE + IN)'
   ],
   Medicine: [
-    'General healing skill. Improves the effectiveness of healing related tools, medicines and unknown goos of many varieties.',
+    'This skill determines the effectiveness of stimpaks, super stimpaks, Rad-X and RadAway.',
     ,
     ,
     ,

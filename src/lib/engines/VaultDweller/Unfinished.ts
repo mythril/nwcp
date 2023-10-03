@@ -20,8 +20,6 @@ const noOp = () => {
   //intentional
 };
 
-// TODO: compare created character w/ game
-
 export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
   typeof Trait,
   typeof Skill,

@@ -98,10 +98,10 @@ OrderedDescriptors.push(sexDescriptor);
 
 const ageDescriptor: IFixedDescriptor = {
   name: 'age',
-  // valid age range is 16-35 so we can subtract 16 from age, giving us a
-  // range of 19, 5 bits can fit up to 32.
-  bits: 5,
-  encoder: (char: SerializedUnfinishedCharacter) => (char.age || 32) - 16,
+  // valid age range is 16-65 so we can subtract 16 from age, giving us a
+  // range of 49, 6 bits can fit up to 64.
+  bits: 6,
+  encoder: (char: SerializedUnfinishedCharacter) => (char.age || 65) - 16,
   decoder: (data: number, mut: UnfinishedCharacter) => {
     mut.age = data + 16;
   }

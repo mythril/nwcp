@@ -7,14 +7,14 @@ Overall goals:
 
 ### To do
 
+- [ ] announce new release https://www.reddit.com/r/gaming/comments/16un3r7/i_still_think_fallout_classic_has_one_of_the_best/
+- [ ] add cascading override to help entry structure
+- [ ] internationalize: npm i i18next ?
 - [ ] add share menu, move link management / embedding to share menu
-- [ ] ensure min / max age come from the model
 - [ ] ensure release script can do base-url changing
 - [ ] write save/load integrity tests for each role type
 - [ ] detect when embedded and reduce graphical fidelity / freeze input
 - [ ] add embed router for simplified embeds
-- [ ] update help file with variances of traits
-- [ ] internationalize: npm i i18next
 - [ ] extract common subset out of RoleDisplay and Toast
 
 ### Maybe
@@ -50,6 +50,7 @@ Overall goals:
 
 ### Done
 
+- [x] ensure min / max age come from the model
 - [x] implement courier logic
 - [x] implement lone wanderer logic
 - [x] animate landing page animation

@@ -18,10 +18,6 @@ const noOp = () => {
   // intentional
 };
 
-// TODO: trait reactors
-// TODO: damage resistance for kamikaze
-// TODO: reassess age range
-
 export class UnfinishedCourier extends AbstractUnfinishedCharacter<
   typeof Trait,
   typeof Skill,
@@ -300,11 +296,6 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
         return luck + btdBonus + '%';
       },
       DerivedStat.CriticalChance
-    ),
-    [DerivedStat.FireRes]: this._derivedStatReactor(
-      Special.Strength,
-      (_attrs) => '0%',
-      DerivedStat.FireRes
     ),
     [DerivedStat.MeleeDamage]: this._derivedStatReactor(
       Special.Strength,

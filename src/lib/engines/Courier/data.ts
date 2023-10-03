@@ -1,4 +1,3 @@
-import type { ObjectValues } from '$lib/typeUtils';
 import { assert } from 'tsafe';
 import type { HasHelpEntriesForEvery } from '../help';
 
@@ -77,10 +76,9 @@ assert<HasHelpEntriesForEvery<typeof AilmentStatus>>();
 
 export const DerivedStat = {
   ActionPoints: 'Action Points',
-  CompanionNerve: 'Companion Nerve',
   CarryWeight: 'Carry Weight',
+  CompanionNerve: 'Companion Nerve',
   CriticalChance: 'Critical Chance',
-  FireRes: 'Fire Res.',
   MeleeDamage: 'Melee Damage',
   PoisonRes: 'Poison Res.',
   RadiationRes: 'Radiation Res.',

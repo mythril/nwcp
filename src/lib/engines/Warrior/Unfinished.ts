@@ -21,9 +21,6 @@ const noOp = () => {
   //intentional
 };
 
-// TODO: compare created character w/ game
-// TODO: age range
-
 export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   typeof Trait,
   typeof Skill,
@@ -274,6 +271,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
       this._skillReactors[Skill.Outdoorsman]();
       this._skillReactors[Skill.Science]();
       this._skillReactors[Skill.Repair]();
+      this._derivedStatReactors[DerivedStat.SkillRate]();
     },
     [Special.Agility]: (s: number | undefined = undefined) => {
       this._Agility = this._specialReactor(s, Special.Agility, () => {
@@ -417,11 +415,17 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
         '%'
       );
     }, DerivedStat.RadiationRes),
-    [DerivedStat.BonusDamage]: this._derivedStatReactor((attrs) => {
+    [DerivedStat.BonusDamage]: this._derivedStatReactor((_attrs) => {
       const kamikaze = this.hasTrait(Trait.Kamikaze) ? 25 : 0;
       const finesse = this.hasTrait(Trait.Finesse) ? -25 : 0;
       return kamikaze + finesse + '%';
-    }, DerivedStat.BonusDamage)
+    }, DerivedStat.BonusDamage),
+    [DerivedStat.SkillRate]: this._derivedStatReactor((attrs) => {
+      return '' + (attrs.Intelligence * 2 + 5);
+    }, DerivedStat.SkillRate),
+    [DerivedStat.PerkRate]: this._derivedStatReactor((_attrs) => {
+      return '' + (this.hasTrait(Trait.Skilled) ? 4 : 3);
+    }, DerivedStat.PerkRate)
   };
 
   reactToSkill(skill: ObjectValues<typeof Skill>): void {
@@ -487,7 +491,9 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
       this._skillReactors[Skill.BigGuns]();
     },
     [Trait.NightPerson]: noOp,
-    [Trait.Skilled]: noOp
+    [Trait.Skilled]: () => {
+      this._derivedStatReactors[DerivedStat.PerkRate]();
+    }
   };
 
   reactToTrait(trait: ObjectValues<typeof Trait>): void {
@@ -529,15 +535,29 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
     shuffler(OrderedDescriptors);
   }
 
+  _triggerReactors() {
+    for (const special of Object.values(Special)) {
+      this._specialReactors[special]();
+    }
+    this._maxHPReactor();
+    this.reactToAllSkills();
+    this.reactToAllTraits();
+    for (const derived of Object.values(DerivedStat)) {
+      this._derivedStatReactors[derived]();
+    }
+  }
+
   /* should probably look to the reactive store instead of the model */
   _reset(): void {
     this.age = 25;
     this.name = '';
     this.sex = Sex.Male;
-    this.Strength = 5;
-    Object.assign(this, ...Object.values(Special).map((a) => ({ [a]: 5 })));
+    for (const special of Object.values(Special)) {
+      this[special] = 5;
+    }
     this.difficulty = Difficulty.Normal;
     this.clearTraits();
     this.clearTagged();
+    this._triggerReactors();
   }
 }

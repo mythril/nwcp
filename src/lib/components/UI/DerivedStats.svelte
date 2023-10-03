@@ -40,9 +40,6 @@
 </div>
 
 <style lang="postcss">
-  .display {
-    height: fit-content;
-  }
   .display :global(.activeHelpSubject) {
     color: hsl(var(--terminal-color-active));
   }

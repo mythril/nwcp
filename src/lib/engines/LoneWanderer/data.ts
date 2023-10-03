@@ -1,4 +1,3 @@
-import type { ObjectValues } from '$lib/typeUtils';
 import { assert } from 'tsafe';
 import type { HasHelpEntriesForEvery } from '../help';
 
