@@ -10,7 +10,8 @@ import {
   Skill,
   Trait,
   GoodNaturedPositiveSkills,
-  GoodNaturedNegativeSkills
+  GoodNaturedNegativeSkills,
+  AilmentStatus
 } from './data';
 
 const noOp = () => {
@@ -25,19 +26,22 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
   typeof Trait,
   typeof Skill,
   typeof Difficulty,
-  typeof DerivedStat
+  typeof DerivedStat,
+  typeof AilmentStatus
 > {
+  minAge = 16;
+  maxAge = 65;
   _traits: Set<ObjectValues<typeof Trait>> = new Set();
   _tagged: Set<ObjectValues<typeof Skill>> = new Set();
   _difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
   role: ObjectValues<typeof Role> & {} = Role.Courier;
-  readonly ageIsReadOnly = false;
   age = 30;
   readonly roleHasDifficultySetting = false;
   difficultyInfo = Difficulty;
   skillInfo = Skill;
   traitInfo = Trait;
   derivedStatInfo = DerivedStat;
+  ailmentStatusInfo = AilmentStatus;
   readonly roleHasTraits = true;
   displayAttributes: Attributes = {
     Strength: this._Strength,

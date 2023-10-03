@@ -35,9 +35,6 @@ export const Skill = {
   ...PassiveSkill
 } as const;
 
-export type SkillSet = Record<ObjectValues<typeof Skill>, number>;
-export type TaggedSkills = ObjectValues<typeof Skill>[];
-
 export const GoodNaturedPositiveSkills = [
   Skill.Doctor,
   Skill.Barter,
@@ -74,22 +71,12 @@ export const Trait = {
   Gifted: 'Gifted'
 } as const;
 
-export type ChosenTraits = (ObjectValues<typeof Trait> & {})[];
-
 // type error below indicates that not all values in
 // Traits are represented in CharacterHelpLookup
 // Could be a typo or missing help entry
 assert<HasHelpEntriesForEvery<typeof Trait>>();
 
-export const AilmentStatus = {
-  Poisoned: 'Poisoned',
-  Radiated: 'Radiated',
-  EyeDamage: 'Eye Damage',
-  CrippledRightArm: 'Crippled Right Arm',
-  CrippledLeftArm: 'Crippled Left Arm',
-  CrippledRightLeg: 'Crippled Right Leg',
-  CrippledLeftLeg: 'Crippled Left Leg'
-} as const;
+export const AilmentStatus = {} as const;
 
 // type error below indicates that not all values in
 // AilmentStatus are represented in CharacterHelpLookup
@@ -98,18 +85,18 @@ assert<HasHelpEntriesForEvery<typeof AilmentStatus>>();
 
 export const DerivedStat = {
   ArmorClass: 'Armor Class',
-  ActionPoints: 'Action Points',
-  CarryWeight: 'Carry Weight',
   MeleeDamage: 'Melee Damage',
+  BonusDamage: 'Bonus Damage',
   DamageRes: 'Damage Res.',
   PoisonRes: 'Poison Res.',
   RadiationRes: 'Radiation Res.',
-  Sequence: 'Sequence',
+  ActionPoints: 'Action Points',
+  CarryWeight: 'Carry Weight',
   HealingRate: 'Healing Rate',
-  CriticalChance: 'Critical Chance'
+  CriticalChance: 'Critical Chance',
+  SkillRate: 'Skill Rate',
+  PerkRate: 'Perk Rate'
 } as const;
-
-export type DerivedStats = Record<ObjectValues<typeof DerivedStat>, number>;
 
 // type error below indicates that not all values in
 // DerivedStats are represented in CharacterHelpLookup

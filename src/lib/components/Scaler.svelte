@@ -8,7 +8,7 @@
     let fontSize = ruler.clientHeight / 525;
 
     style.fontSize = fontSize + 'px';
-  }
+  };
   onMount(resizeHandler);
 </script>
 

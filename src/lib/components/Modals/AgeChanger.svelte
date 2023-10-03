@@ -17,6 +17,7 @@
 
   let tmp = $character.age;
   let ageDisplay: TwoDigitDisplay;
+  let ageIsReadOnly = $character.minAge === $character.maxAge;
 
   $updateAnchors.push('age');
   $updateAnchors = $updateAnchors;
@@ -33,7 +34,7 @@
   };
 
   export const enter = () => {
-    if ($character.ageIsReadOnly) {
+    if (ageIsReadOnly) {
       cancel();
     }
   };
@@ -103,8 +104,8 @@
         <TwoDigitDisplay
           bind:this={ageDisplay}
           bind:value={tmp}
-          min={16}
-          max={35}
+          min={$character.minAge}
+          max={$character.maxAge}
         />
       </div>
       <PlateButton

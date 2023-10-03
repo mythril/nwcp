@@ -19,6 +19,10 @@ interface IDerivedStat {
   [key: string]: keyof typeof CharacterHelpLookup;
 }
 
+interface IAilmentStatus {
+  [key: string]: keyof typeof CharacterHelpLookup;
+}
+
 export interface SerializedUnfinishedCharacter
   extends Record<ObjectValues<typeof Special>, number> {
   role: ObjectValues<typeof Role> & {};
@@ -57,7 +61,8 @@ export interface UnfinishedCharacter
   readonly role: ObjectValues<typeof Role> & {};
   name: string;
 
-  readonly ageIsReadOnly: boolean;
+  minAge: number;
+  maxAge: number;
   age: number;
   sex: ObjectValues<typeof Sex> & {};
 
@@ -93,6 +98,7 @@ export interface UnfinishedCharacter
   maxHitPoints: number;
   derivedStatsDisplay: Partial<Record<ObjectValues<IDerivedStat>, string>>;
   derivedStatInfo: IDerivedStat;
+  ailmentStatusInfo: IAilmentStatus;
 
   charPointsRemaining: number;
 
@@ -112,12 +118,14 @@ export abstract class AbstractUnfinishedCharacter<
   T extends ITrait,
   S extends ISkill,
   D extends IDifficulty,
-  DS extends IDerivedStat
+  DS extends IDerivedStat,
+  A extends IAilmentStatus
 > implements UnfinishedCharacter
 {
   abstract readonly role: ObjectValues<typeof Role> & {};
   name = '';
-  abstract readonly ageIsReadOnly: boolean;
+  abstract minAge: number;
+  abstract maxAge: number;
   age = 0;
   sex: ObjectValues<typeof Sex> & {} = Sex.Male;
 
@@ -264,7 +272,8 @@ export abstract class AbstractUnfinishedCharacter<
   abstract baseSkills: Record<ObjectValues<S>, number>;
   abstract maxHitPoints: number;
   abstract derivedStatsDisplay: Record<ObjectValues<DS>, string>;
-  abstract derivedStatInfo: IDerivedStat;
+  abstract derivedStatInfo: DS;
+  abstract ailmentStatusInfo: A;
 
   get charPointsRemaining() {
     let cpr = 40;

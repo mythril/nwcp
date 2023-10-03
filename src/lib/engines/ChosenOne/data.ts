@@ -42,9 +42,6 @@ export const GoodNaturedPositiveSkills = [
   Skill.Barter
 ];
 
-export type SkillSet = Record<ObjectValues<typeof Skill>, number>;
-export type TaggedSkills = ObjectValues<typeof Skill>[];
-
 // type error below indicates that not all values in
 // Skills are represented in CharacterHelpLookup
 // Could be a typo or missing help entry
@@ -68,8 +65,6 @@ export const Trait = {
   Skilled: 'Skilled',
   Gifted: 'Gifted'
 } as const;
-
-export type ChosenTraits = (ObjectValues<typeof Trait> & {})[];
 
 // type error below indicates that not all values in
 // Traits are represented in CharacterHelpLookup
@@ -103,8 +98,6 @@ export const DerivedStat = {
   HealingRate: 'Healing Rate',
   CriticalChance: 'Critical Chance'
 } as const;
-
-export type DerivedStats = Record<ObjectValues<typeof DerivedStat>, number>;
 
 // type error below indicates that not all values in
 // DerivedStats are represented in CharacterHelpLookup

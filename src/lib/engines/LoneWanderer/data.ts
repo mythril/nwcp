@@ -18,17 +18,12 @@ export const Skill = {
   Unarmed: 'Unarmed'
 } as const;
 
-export type SkillSet = Record<ObjectValues<typeof Skill>, number>;
-export type TaggedSkills = ObjectValues<typeof Skill>[];
-
 // type error below indicates that not all values in
 // Skills are represented in CharacterHelpLookup
 // Could be a typo or missing help entry
 assert<HasHelpEntriesForEvery<typeof Skill>>();
 
 export const Trait = {} as const;
-
-export type ChosenTraits = (ObjectValues<typeof Trait> & {})[];
 
 // type error below indicates that not all values in
 // Traits are represented in CharacterHelpLookup
@@ -54,8 +49,6 @@ export const DerivedStat = {
   SkillRate: 'Skill Rate',
   UnarmedDamage: 'Unarmed Damage'
 } as const;
-
-export type DerivedStats = Record<ObjectValues<typeof DerivedStat>, number>;
 
 // type error below indicates that not all values in
 // DerivedStats are represented in CharacterHelpLookup

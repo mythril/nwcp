@@ -13,7 +13,8 @@ import {
   CombatSkill,
   PassiveSkill,
   ActiveSkill,
-  OneHanderPositiveSkills
+  OneHanderPositiveSkills,
+  AilmentStatus
 } from './data';
 
 const noOp = () => {
@@ -22,15 +23,16 @@ const noOp = () => {
 
 // TODO: compare created character w/ game
 // TODO: age range
-// TODO: choose race
 
 export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   typeof Trait,
   typeof Skill,
   typeof Difficulty,
-  typeof DerivedStat
+  typeof DerivedStat,
+  typeof AilmentStatus
 > {
-  readonly ageIsReadOnly = false;
+  minAge = 16;
+  maxAge = 65;
   _traits: Set<ObjectValues<typeof Trait>> = new Set();
   _tagged: Set<ObjectValues<typeof Skill>> = new Set();
   _difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
@@ -39,6 +41,8 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   difficultyInfo = Difficulty;
   skillInfo = Skill;
   traitInfo = Trait;
+  derivedStatInfo = DerivedStat;
+  ailmentStatusInfo = AilmentStatus;
   readonly roleHasTraits = true;
   displayAttributes: Attributes = {
     Strength: this._Strength,
@@ -249,7 +253,6 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
       this._skillReactors[Skill.LockPick]();
       this._skillReactors[Skill.Traps]();
       this._skillReactors[Skill.Pilot]();
-      this._derivedStatReactors[DerivedStat.Sequence]();
     },
     [Special.Endurance]: (s: number | undefined = undefined) => {
       this._Endurance = this._specialReactor(s, Special.Endurance);
@@ -414,13 +417,11 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
         '%'
       );
     }, DerivedStat.RadiationRes),
-    [DerivedStat.Sequence]: this._derivedStatReactor((attrs) => {
-      return (
-        '' +
-        (2 * attrs[Special.Perception] +
-          (this.hasTrait(Trait.Kamikaze) ? 5 : 0))
-      );
-    }, DerivedStat.Sequence)
+    [DerivedStat.BonusDamage]: this._derivedStatReactor((attrs) => {
+      const kamikaze = this.hasTrait(Trait.Kamikaze) ? 25 : 0;
+      const finesse = this.hasTrait(Trait.Finesse) ? -25 : 0;
+      return kamikaze + finesse + '%';
+    }, DerivedStat.BonusDamage)
   };
 
   reactToSkill(skill: ObjectValues<typeof Skill>): void {
@@ -451,6 +452,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
     },
     [Trait.Finesse]: () => {
       this._derivedStatReactors[DerivedStat.CriticalChance]();
+      this._derivedStatReactors[DerivedStat.BonusDamage]();
     },
     [Trait.Gifted]: () => {
       for (const special of Object.values(Special)) {
@@ -471,7 +473,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
     },
     [Trait.Jinxed]: noOp,
     [Trait.Kamikaze]: () => {
-      this._derivedStatReactors[DerivedStat.Sequence]();
+      this._derivedStatReactors[DerivedStat.BonusDamage]();
       this._derivedStatReactors[DerivedStat.ArmorClass]();
     },
     [Trait.SmallFrame]: () => {

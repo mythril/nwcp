@@ -4,15 +4,17 @@ import type { IPackingDescriptor } from '../BitPacking';
 import { AbstractUnfinishedCharacter } from '../UnfinishedCharacter';
 import { Role, type Attributes, Special, Sex } from '../all';
 import { OrderedDescriptors } from './codec';
-import { Difficulty, DerivedStat, Skill, Trait } from './data';
+import { Difficulty, DerivedStat, Skill, Trait, AilmentStatus } from './data';
 
 export class UnfinishedLoneWanderer extends AbstractUnfinishedCharacter<
   typeof Trait,
   typeof Skill,
   typeof Difficulty,
-  typeof DerivedStat
+  typeof DerivedStat,
+  typeof AilmentStatus
 > {
-  readonly ageIsReadOnly = true;
+  minAge = 19;
+  maxAge = 19;
   _traits: Set<ObjectValues<typeof Trait>> = new Set();
   _tagged: Set<ObjectValues<typeof Skill>> = new Set();
   _difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
@@ -23,6 +25,7 @@ export class UnfinishedLoneWanderer extends AbstractUnfinishedCharacter<
   skillInfo = Skill;
   traitInfo = Trait;
   derivedStatInfo = DerivedStat;
+  ailmentStatusInfo = AilmentStatus;
   readonly roleHasTraits = false;
   displayAttributes: Attributes = {
     Strength: this._Strength,

@@ -12,7 +12,8 @@ import {
   CombatSkill,
   PassiveSkill,
   ActiveSkill,
-  GoodNaturedPositiveSkills
+  GoodNaturedPositiveSkills,
+  AilmentStatus
 } from './data';
 
 const noOp = () => {
@@ -25,9 +26,11 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
   typeof Trait,
   typeof Skill,
   typeof Difficulty,
-  typeof DerivedStat
+  typeof DerivedStat,
+  typeof AilmentStatus
 > {
-  readonly ageIsReadOnly = false;
+  minAge = 16;
+  maxAge = 35;
   _traits: Set<ObjectValues<typeof Trait>> = new Set();
   _tagged: Set<ObjectValues<typeof Skill>> = new Set();
   _difficulty: ObjectValues<typeof Difficulty> & {} = Difficulty.Normal;
@@ -37,6 +40,7 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
   skillInfo = Skill;
   traitInfo = Trait;
   derivedStatInfo = DerivedStat;
+  ailmentStatusInfo = AilmentStatus;
   readonly roleHasTraits = true;
   displayAttributes: Attributes = {
     Strength: this._Strength,

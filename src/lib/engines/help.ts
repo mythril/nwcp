@@ -202,6 +202,8 @@ export const CharacterHelpLookup = {
     'The maximum amount of equipment your character can carry, in pounds.',
   'Companion Nerve':
     'How much bonus damage and defense your companions receive.',
+  'Bonus Damage':
+    'The percentage of bonus your character does in all forms of combat.',
   'Built To Destroy':
     'The flamer that burns twice as bright burns half as long. All weapons have +3% chance to Critical Hit, but equipment condition decays 15% faster.',
   'Four Eyes':
@@ -235,6 +237,8 @@ export const CharacterHelpLookup = {
   'Poison Res.': 'Reduces poison damage by this amount.',
   'Fire Res.': 'Reduces fire damage by this amount.',
   'Skill Rate': 'How many skill points you will receive at your next level.',
+  'Perk Rate':
+    'The amount of levels a character will have to gain in order to gain a perk. (Lower is better).',
   Age: 'Age',
   Gender: 'Gender',
   'Current Poison Level': 'Current Poison Level',
