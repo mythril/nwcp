@@ -87,6 +87,14 @@
       $navTo = role;
     };
   };
+
+  const animNavKeyboard = (role: ObjectValues<typeof Role>) => {
+    return async (e: KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        $navTo = role;
+      }
+    };
+  };
 </script>
 
 {#if $hideMain === false}
@@ -128,9 +136,13 @@
     <div class="history">
       {#each roleInfo as ri}
         <div
+          role="button"
+          tabindex="0"
           class={'role-history sequel-' + RoleToSequel[ri.role]}
           class:supported={SupportedRoles[ri.role]}
           inert={!SupportedRoles[ri.role]}
+          on:click={animNav(ri.role)}
+          on:keydown={animNavKeyboard(ri.role)}
         >
           <div
             class="description slate terminal-font-defaults brightness-variance"
@@ -208,6 +220,7 @@
     display: flex;
     flex-flow: row;
     gap: 5rem;
+    cursor: pointer;
   }
   .role-history:not(.supported) {
     filter: grayscale(100%) brightness(0.5);
