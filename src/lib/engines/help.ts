@@ -166,7 +166,7 @@ export const CharacterHelpLookup = {
     'The knowledge and practical skills related to wagering. The skill at cards, dice and other games.',
     '20% + (3 x LK)',
     '0% + (5 x LK)',
-    '0% + (5 x LK)'
+    '0% + (3 x LK) + (2 x IN)'
   ],
   Outdoorsman: [
     'Practical knowledge of the outdoors, and the ability to live off the land. The knowledge of plants and animals.',

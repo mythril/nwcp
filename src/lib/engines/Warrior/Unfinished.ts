@@ -54,6 +54,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   /* should probably look to the reactive store instead of the model */
   constructor() {
     super();
+    this._triggerReactors();
   }
 
   baseSkills: Record<ObjectValues<typeof Skill>, number> = defaultValuesOf(
@@ -184,7 +185,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
       Skill.Barter
     ),
     [Skill.Gambling]: this._skillReactor(
-      (attrs) => 5 * attrs[Special.Luck],
+      (attrs) => 3 * attrs[Special.Luck] + 2 * attrs[Special.Intelligence],
       Skill.Gambling
     ),
     [Skill.Outdoorsman]: this._skillReactor(
@@ -421,7 +422,8 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
       return kamikaze + finesse + '%';
     }, DerivedStat.BonusDamage),
     [DerivedStat.SkillRate]: this._derivedStatReactor((attrs) => {
-      return '' + (attrs.Intelligence * 2 + 5);
+      const gifted = this.hasTrait(Trait.Gifted) ? -5 : 0;
+      return '' + (attrs.Intelligence * 2 + 5 + gifted);
     }, DerivedStat.SkillRate),
     [DerivedStat.PerkRate]: this._derivedStatReactor((_attrs) => {
       return '' + (this.hasTrait(Trait.Skilled) ? 4 : 3);
@@ -462,6 +464,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
       for (const special of Object.values(Special)) {
         this._specialReactors[special]();
       }
+      this._derivedStatReactors[DerivedStat.SkillRate]();
     },
     [Trait.GoodNatured]: () => {
       for (const skill of GoodNaturedPositiveSkills) {
