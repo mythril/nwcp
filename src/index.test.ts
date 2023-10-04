@@ -223,7 +223,7 @@ describe('Bit packing/unpacking a character', () => {
     expect(dest.baseSkills[Skill.Outdoorsman]).toBe(1);
   });
   it('unpacks courier link build correctly', () => {
-    const hashPacked = 'EAGBWGZuJXEKsAtDb3VyaWVyVGVzdA==';
+    const hashPacked = '+AGBWGZuJXEKsAtDb3VyaWVyVGVzdA==';
     const newChar = new UnfinishedCourier();
     const dest = base64ToChar(hashPacked, newChar);
     const Skill = dest.skillInfo;
@@ -269,7 +269,7 @@ describe('Bit packing/unpacking a character', () => {
     expect(dest.baseSkills[Skill.Unarmed]).toBe(15);
   });
   it('unpacks warrior link build correctly', () => {
-    const hashPacked = 'CAFdESYS6dB2uANCcm8=';
+    const hashPacked = '8AFdESYS6dB2uANCcm8=';
     const newChar = new UnfinishedWarrior();
     const dest = base64ToChar(hashPacked, newChar);
     const Skill = dest.skillInfo;

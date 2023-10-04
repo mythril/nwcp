@@ -57,9 +57,9 @@ const roleDescriptor: IFixedDescriptor = {
   name: 'role',
   // in case they decide to make 31 games
   bits: 5,
-  encoder: () => roleToInt(Role.VaultDweller),
+  encoder: () => roleToInt(Role.Warrior),
   decoder: (data: number, _char: UnfinishedCharacter) => {
-    if (intToRole(data) !== Role.VaultDweller) {
+    if (intToRole(data) !== Role.Warrior) {
       throw new CodecError('This game is not yet supported.');
     }
   }
