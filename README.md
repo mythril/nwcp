@@ -2,11 +2,7 @@
 
 # [Try it here](https://nwcp.vercel.app/)
 
-
-
 https://github.com/mythril/nwcp/assets/169342/f88b3da0-da1f-4530-bf46-969c7c42e79a
-
-
 
 ## Road-map
 
