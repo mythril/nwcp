@@ -1,12 +1,14 @@
 <script lang="ts">
   import Button from './Button.svelte';
-  export let type: 'link' | 'button' = 'button';
+  export let type: 'button' | 'link' = 'button';
   export let href = '';
+  export let target = '_self';
 </script>
 
 <Button
   {type}
   {href}
+  {target}
   on:click
   class="panic-plunger"
 >

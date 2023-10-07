@@ -54,3 +54,11 @@ export function defaultValuesOf<T extends object>(
     ...Object.values(obj).map((a) => ({ [a]: defaultValue }))
   );
 }
+
+export function isEmbedded() {
+  try {
+    return window.self !== window.top;
+  } catch (_e) {
+    return true;
+  }
+}

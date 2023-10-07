@@ -2,12 +2,18 @@
   import { clickSound } from '$lib/browserUtils';
   import Button from './Button.svelte';
   export let checked = false;
+  export let type: 'button' | 'link' = 'button';
+  export let href = '';
+  export let target = '_self';
 </script>
 
 <Button
   class={'slate-button brightness-variance b-offset-7 ' +
     (checked ? ' checked ' : '') +
     ($$props.class || '')}
+  {type}
+  {href}
+  {target}
   on:click={clickSound}
   on:click
   on:mouseover
@@ -35,7 +41,7 @@
     transition: filter 0.2s linear, box-shadow 0.01s linear;
     font-family: var(--title-font);
     text-align: center;
-    font-size: 16rem;
+    font-size: inherit;
     line-height: 30rem;
     appearance: none;
     padding: 0;
@@ -43,6 +49,7 @@
     display: block;
     width: 100%;
     height: 30rem;
+    text-decoration: none;
   }
   :global(.slate-button.checked),
   :global(.slate-button:active) {

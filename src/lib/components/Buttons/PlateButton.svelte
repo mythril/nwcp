@@ -6,6 +6,7 @@
   export let wornText = true;
   export let type: 'button' | 'link' = 'button';
   export let href = '';
+  export let target = '_self';
 </script>
 
 <Button
@@ -15,6 +16,7 @@
   on:focus
   {type}
   {href}
+  {target}
   class={'plate-button brightness-variance b-offset-8 ' +
     (pushButton ? ' pushButton ' : '') +
     ($$props.class || '')}

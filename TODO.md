@@ -7,8 +7,6 @@ Overall goals:
 
 ### To do
 
-- [ ] add embed router for simplified embeds
-- [ ] detect when embedded and reduce graphical fidelity / freeze input
 - [ ] add share menu, move link management / embedding to share menu
 - [ ] add cascading override to help entry structure
 - [ ] internationalize: npm i i18next ?
@@ -45,6 +43,8 @@ Overall goals:
 
 ### Done
 
+- [x] detect when embedded and reduce graphical fidelity / freeze input
+- [x] add embed router for simplified embeds
 - [x] write save/load integrity tests for each role type
 - [x] Extract push button and make it resizable
 - [x] Figure out a way to show currently hidden derived stats

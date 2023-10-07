@@ -15,6 +15,8 @@
   import { Role } from '$lib/engines/all';
   import type { ObjectValues } from '$lib/typeUtils';
   import Scaler from '$lib/components/Scaler.svelte';
+  import { isEmbedded } from '$lib/utils';
+  import Button from '$lib/components/Buttons/Button.svelte';
 
   async function bootUp() {
     addEventListener('popstate', () => location.reload());
@@ -77,22 +79,46 @@
 
 <ModalManager />
 
-<div class={'app pitted ' + roleToCSSClassName[$role]}>
+{#if isEmbedded()}
+  <Button
+    class="embeddedBailerLink"
+    type="link"
+    target="_blank"
+    href={window.location.href}
+  />
+{/if}
+
+<div
+  class={`app pitted ${roleToCSSClassName[$role]}  ${
+    isEmbedded() ? 'isEmbedded' : ''
+  }`}
+>
   <div id="planner">
     <div
       class="interface"
-      inert={$modals.length > 0}
+      inert={$modals.length > 0 || isEmbedded()}
     >
       <slot />
     </div>
   </div>
-  <div class="footer">
-    <RoleDisplay value={$role} />
-    <Toast />
-  </div>
+  {#if isEmbedded() === false}
+    <div class="footer">
+      <RoleDisplay value={$role} />
+      <Toast />
+    </div>
+  {/if}
 </div>
 
 <style lang="postcss">
+  :global(.embeddedBailerLink) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    z-index: 2;
+  }
   .footer {
     filter: drop-shadow(-5rem 5rem 5rem rgba(0, 0, 0, 1));
     width: 640rem;
@@ -112,6 +138,38 @@
     margin: auto;
     overflow: hidden;
     padding-top: 4rem;
+    &.isEmbedded {
+      padding: 0;
+      &::before {
+        z-index: 1;
+        content: ' ';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background-color: black;
+        opacity: 0;
+        transition: opacity 0.2s ease-out;
+        cursor: pointer;
+      }
+      :global(body:hover) &::before {
+        opacity: 0.85;
+      }
+      :global(body:hover) &::after {
+        cursor: pointer;
+        z-index: 1;
+        color: hsl(var(--terminal-color));
+        font-size: 50rem;
+        content: 'OPEN IN FULL SITE';
+        position: absolute;
+        line-height: 480rem;
+        left: 0;
+        right: 0;
+        text-align: center;
+        top: 0;
+      }
+    }
   }
 
   #planner {

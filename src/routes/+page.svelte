@@ -9,6 +9,9 @@
   import { quintIn, quintOut } from 'svelte/easing';
   import PanicPlunger from '$lib/components/Buttons/PanicPlunger.svelte';
   import { navTo } from '$lib/components/RoleDisplay.svelte';
+  import { isEmbedded } from '$lib/utils';
+  import SlateButton from '$lib/components/Buttons/SlateButton.svelte';
+  import Portal from '$lib/components/Portal.svelte';
 
   $role = Role.None;
 
@@ -108,91 +111,108 @@
       <Bolthead dir="ml" />
       <h1 class="worn-text">Nuclear Wasteland Character Planner</h1>
     </div>
-    <div
-      class="explain-chooser slate terminal-font-defaults brightness-variance"
-    >
-      <Bolthead dir="tr" />
-      <Bolthead dir="bl" />
-      <Bolthead dir="tl" />
-      <Bolthead dir="mr" />
-      <Bolthead dir="br" />
-      <Bolthead dir="ml" />
-      <div class="display">
-        <p>
-          Turn the dial in the area below until the switch points to the role
-          you wish to plan for, then press choose.
-        </p>
-        <p>
-          If you are not familiar with what is meant by these roles, a brief
-          summary of each is on the right.
-        </p>
-        <p>
-          The roles are listed in the order that their respective games were
-          released.
-        </p>
-      </div>
-    </div>
 
-    <div class="history">
-      {#each roleInfo as ri}
-        <div
-          role="button"
-          tabindex="0"
-          class={'role-history sequel-' + RoleToSequel[ri.role]}
-          class:supported={SupportedRoles[ri.role]}
-          inert={!SupportedRoles[ri.role]}
-          on:click={animNav(ri.role)}
-          on:keydown={animNavKeyboard(ri.role)}
-        >
-          <div
-            class="description slate terminal-font-defaults brightness-variance"
+    {#if isEmbedded()}
+      <Portal>
+        <div class="embeddedBailer">
+          <div class="worn-text">
+            This page is not designed for embedded use.
+          </div>
+          <SlateButton
+            type="link"
+            target="_blank"
+            href=".">Open Full Site</SlateButton
           >
-            {#each shuffle(order) as dir}
-              <Bolthead {dir} />
-            {/each}
-            <div class="display">
-              <table>
-                <tr>
-                  <th> Role </th>
-                  <td> {ri.role} </td>
-                </tr>
-                <tr>
-                  <th> Born </th>
-                  <td> {ri.born} </td>
-                </tr>
-                <tr>
-                  <th> Area </th>
-                  <td> {ri.area} </td>
-                </tr>
-                <tr>
-                  <th> Mission </th>
-                  <td> {ri.mission} </td>
-                </tr>
-                <tr>
-                  <th> Year </th>
-                  <td> {ri.year} </td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <div class="button-section slate brightness-variance">
-            <div class={'tile tile-sequel-' + RoleToSequel[ri.role]}>
-              {#each shuffle(order) as dir}
-                <Bolthead
-                  {dir}
-                  size={4}
-                />
-              {/each}
-              {RoleToSequel[ri.role]}
-            </div>
-            <PanicPlunger
-              type={'button'}
-              on:click={animNav(ri.role)}
-            />
-          </div>
         </div>
-      {/each}
-    </div>
+      </Portal>
+    {/if}
+    {#if !isEmbedded()}
+      <div
+        class="explain-chooser slate terminal-font-defaults brightness-variance"
+      >
+        <Bolthead dir="tr" />
+        <Bolthead dir="bl" />
+        <Bolthead dir="tl" />
+        <Bolthead dir="mr" />
+        <Bolthead dir="br" />
+        <Bolthead dir="ml" />
+        <div class="display">
+          <p>
+            Turn the dial in the area below until the switch points to the role
+            you wish to plan for, then press choose.
+          </p>
+          <p>
+            If you are not familiar with what is meant by these roles, a brief
+            summary of each is on the right.
+          </p>
+          <p>
+            The roles are listed in the order that their respective games were
+            released.
+          </p>
+        </div>
+      </div>
+
+      <div class="history">
+        {#each roleInfo as ri}
+          <div
+            role="button"
+            tabindex="0"
+            class={'role-history sequel-' + RoleToSequel[ri.role]}
+            class:supported={SupportedRoles[ri.role]}
+            inert={!SupportedRoles[ri.role]}
+            on:click={animNav(ri.role)}
+            on:keydown={animNavKeyboard(ri.role)}
+          >
+            <div
+              class="description slate terminal-font-defaults brightness-variance"
+            >
+              {#each shuffle(order) as dir}
+                <Bolthead {dir} />
+              {/each}
+              <div class="display">
+                <table>
+                  <tr>
+                    <th> Role </th>
+                    <td> {ri.role} </td>
+                  </tr>
+                  <tr>
+                    <th> Born </th>
+                    <td> {ri.born} </td>
+                  </tr>
+                  <tr>
+                    <th> Area </th>
+                    <td> {ri.area} </td>
+                  </tr>
+                  <tr>
+                    <th> Mission </th>
+                    <td> {ri.mission} </td>
+                  </tr>
+                  <tr>
+                    <th> Year </th>
+                    <td> {ri.year} </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="button-section slate brightness-variance">
+              <div class={'tile tile-sequel-' + RoleToSequel[ri.role]}>
+                {#each shuffle(order) as dir}
+                  <Bolthead
+                    {dir}
+                    size={4}
+                  />
+                {/each}
+                {RoleToSequel[ri.role]}
+              </div>
+              <PanicPlunger
+                type={'button'}
+                on:click={animNav(ri.role)}
+              />
+            </div>
+          </div>
+        {/each}
+      </div>
+    {/if}
   </div>
 {/if}
 
@@ -205,7 +225,7 @@
       'explain explain . history'
       'explain explain . history'
       'explain explain . history'
-      '. . .  history'
+      'f f .  history'
     ;
     filter: drop-shadow(-5rem 5rem 5rem black);
     .display {
@@ -214,6 +234,18 @@
       margin: 10rem;
       background-color: hsl(var(--terminal-bg));
       box-shadow: var(--inset);
+    }
+  }
+  .embeddedBailer {
+    font-size: 30rem !important;
+    position: absolute;
+    top: 200rem;
+    left: 100rem;
+    right: 100rem;
+    bottom: auto;
+    .worn-text {
+      text-align: center;
+      margin: 15rem 0;
     }
   }
   .role-history {

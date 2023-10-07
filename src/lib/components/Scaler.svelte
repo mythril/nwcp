@@ -1,12 +1,17 @@
 <script lang="ts">
+  import { isEmbedded } from '$lib/utils';
   import { onMount } from 'svelte';
 
   let ruler: HTMLDivElement;
+  let denominator = isEmbedded() ? 480 : 525;
+
   const resizeHandler = async () => {
     const style = document.documentElement.style;
 
-    let fontSize = ruler.clientHeight / 525;
+    let fontSize = ruler.clientHeight / denominator;
 
+    style.setProperty('--root-em-denominator', denominator.toString());
+    style.setProperty('--root-em', fontSize + 'px');
     style.fontSize = fontSize + 'px';
   };
   onMount(resizeHandler);
@@ -29,7 +34,7 @@
   }
   :global(html) {
     /* attempts to render largest in-frame window possible */
-    font-size: resolve(100vh / 525);
+    font-size: var(--root-em, resolve(100vh / 525));
     overflow-y: hidden;
     min-width: 640rem;
   }

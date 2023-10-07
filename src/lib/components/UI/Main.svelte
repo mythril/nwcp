@@ -235,6 +235,7 @@
     grid-area: nas;
     display: flex;
     justify-content: center;
+    font-size: 16rem;
     .name {
       position: relative;
       width: 136rem;
