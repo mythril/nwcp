@@ -86,7 +86,9 @@
         const bytes = new Uint8Array(data);
         const role = detectRoleBinary(bytes);
         if (role !== $character.role) {
-          window.location.replace(RoleRoutes[role] + '#' + bytesToBase64(bytes));
+          window.location.replace(
+            RoleRoutes[role] + '#' + bytesToBase64(bytes)
+          );
         }
         const mut = await constructFromRole(role);
         loadFromChar(
