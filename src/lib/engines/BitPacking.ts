@@ -6,9 +6,31 @@ import type {
   UnfinishedCharacter
 } from './UnfinishedCharacter';
 
-export class CodecError extends Error {}
+export class CodecError extends Error { }
 
 export const CURRENT_VERSION = 1; // increment on incompatible updates
+
+export const constructFromRole = async (role: ObjectValues<typeof Role> & {}): Promise<UnfinishedCharacter> => {
+  switch (role) {
+    case Role.VaultDweller:
+      const { UnfinishedVaultDweller } = await import('$lib/engines/VaultDweller/Unfinished');
+      return new UnfinishedVaultDweller();
+    case Role.ChosenOne:
+      const { UnfinishedChosenOne } = await import('$lib/engines/ChosenOne/Unfinished');
+      return new UnfinishedChosenOne();
+    case Role.Warrior:
+      const { UnfinishedWarrior } = await import('$lib/engines/Warrior/Unfinished');
+      return new UnfinishedWarrior();
+    case Role.ChosenOne:
+      const { UnfinishedLoneWanderer } = await import('$lib/engines/LoneWanderer/Unfinished');
+      return new UnfinishedLoneWanderer();
+    case Role.ChosenOne:
+      const { UnfinishedCourier } = await import('$lib/engines/Courier/Unfinished');
+      return new UnfinishedCourier();
+    default:
+      throw new CodecError('Unrecognized game.');
+  }
+};
 
 export const roleToInt = (role: ObjectValues<typeof Role> & {}) => {
   switch (role) {
@@ -231,6 +253,11 @@ export function unpacker<T extends UnfinishedCharacter>(
     }
   }
   return mut;
+}
+
+export function detectRoleBase64(base64: string) {
+  const bytes = base64ToBytes(base64);
+  return intToRole(bytes[0] >> 3);
 }
 
 export function charToBase64(char: UnfinishedCharacter) {

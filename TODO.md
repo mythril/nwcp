@@ -7,24 +7,20 @@ Overall goals:
 
 ### To do
 
-- [ ] announce new release https://www.reddit.com/r/gaming/comments/16un3r7/i_still_think_fallout_classic_has_one_of_the_best/
+- [ ] add embed router for simplified embeds
+- [ ] detect when embedded and reduce graphical fidelity / freeze input
+- [ ] add share menu, move link management / embedding to share menu
 - [ ] add cascading override to help entry structure
 - [ ] internationalize: npm i i18next ?
-- [ ] add share menu, move link management / embedding to share menu
 - [ ] ensure release script can do base-url changing
-- [ ] write save/load integrity tests for each role type
-- [ ] detect when embedded and reduce graphical fidelity / freeze input
-- [ ] add embed router for simplified embeds
 - [ ] extract common subset out of RoleDisplay and Toast
 
 ### Maybe
 
-- [ ] theme variations for each role
+- [ ] theme variations for each role - tan interface for Warrior, amber terminal text for Courier
 - [ ] improve flat menu look
-- [ ] Figure out a way to show currently hidden derived stats
 - [ ] Improve paper background (has issues with resizing?)
 - [ ] Release source when the planner is in a "better than nothing" state and some collaboration guidelines are in place
-- [ ] Extract push button and make it resizable
 - [ ] Include VB sprites?
 - [ ] Create an intro anim
 - [ ] redirect to '/' when images are not yet generated?
@@ -34,8 +30,7 @@ Overall goals:
 
 ### After first release
 
-- [ ] consider file-save progressive enhancement
-- [ ] consider autosaving to local cache
+- [ ] consider autosaving to local cache - latest non-blank character for each role should be stored
 - [ ] get browser testing functioning, build a test to verify character linking
 - [ ] Make the first event: create character
 - [ ] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
@@ -50,6 +45,10 @@ Overall goals:
 
 ### Done
 
+- [x] write save/load integrity tests for each role type
+- [x] Extract push button and make it resizable
+- [x] Figure out a way to show currently hidden derived stats
+- [x] consider file-save progressive enhancement - bad idea, interface does not lend itself to file-handle workflow
 - [x] ensure min / max age come from the model
 - [x] implement courier logic
 - [x] implement lone wanderer logic

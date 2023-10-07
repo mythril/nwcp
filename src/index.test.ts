@@ -4,6 +4,7 @@ import { Role, Sex, Special } from '$lib/engines/all';
 import {
   base64ToChar,
   charToBase64,
+  detectRoleBase64,
   packer,
   unpacker
 } from '$lib/engines/BitPacking';
@@ -120,6 +121,8 @@ describe('Bit packing/unpacking a character', () => {
   }
   it('unpacks chosen-one link build correctly', () => {
     const hashPacked = 'EAFkTh2akyBMcApXaXRjaHVudGVy';
+    const detectedRole = detectRoleBase64(hashPacked);
+    expect(detectedRole).toBe(Role.ChosenOne);
     const newChar = new UnfinishedChosenOne();
     const dest = base64ToChar(hashPacked, newChar);
     const Skill = dest.skillInfo;
@@ -172,6 +175,8 @@ describe('Bit packing/unpacking a character', () => {
   });
   it('unpacks vault-dweller link build correctly', () => {
     const hashPacked = 'CAFkVWWUkyGECAdMaWx1cmEx';
+    const detectedRole = detectRoleBase64(hashPacked);
+    expect(detectedRole).toBe(Role.VaultDweller);
     const newChar = new UnfinishedVaultDweller();
     const dest = base64ToChar(hashPacked, newChar);
     const Skill = dest.skillInfo;
@@ -224,6 +229,8 @@ describe('Bit packing/unpacking a character', () => {
   });
   it('unpacks courier link build correctly', () => {
     const hashPacked = '+AGBWGZuJXEKsAtDb3VyaWVyVGVzdA==';
+    const detectedRole = detectRoleBase64(hashPacked);
+    expect(detectedRole).toBe(Role.Courier);
     const newChar = new UnfinishedCourier();
     const dest = base64ToChar(hashPacked, newChar);
     const Skill = dest.skillInfo;
@@ -270,6 +277,8 @@ describe('Bit packing/unpacking a character', () => {
   });
   it('unpacks warrior link build correctly', () => {
     const hashPacked = '8AFdESYS6dB2uANCcm8=';
+    const detectedRole = detectRoleBase64(hashPacked);
+    expect(detectedRole).toBe(Role.Warrior);
     const newChar = new UnfinishedWarrior();
     const dest = base64ToChar(hashPacked, newChar);
     const Skill = dest.skillInfo;
@@ -321,5 +330,45 @@ describe('Bit packing/unpacking a character', () => {
     expect(dest.baseSkills[Skill.Barter]).toBe(10);
     expect(dest.baseSkills[Skill.Gambling]).toBe(30);
     expect(dest.baseSkills[Skill.Outdoorsman]).toBe(10);
+  });
+  it('unpacks lone wanderer link build correctly', () => {
+    const hashPacked = 'GAGBWVdZVMALSmluZ2xlIEphbmc=';
+    const detectedRole = detectRoleBase64(hashPacked);
+    expect(detectedRole).toBe(Role.LoneWanderer);
+    const newChar = new UnfinishedLoneWanderer();
+    const dest = base64ToChar(hashPacked, newChar);
+    const Skill = dest.skillInfo;
+    const DerivedStat = dest.derivedStatInfo;
+    expect(dest.hasTagged('Small Guns')).toBe(true);
+    expect(dest.hasTagged('Lockpick')).toBe(true);
+    expect(dest.hasTagged('Speech')).toBe(true);
+    expect(dest.displayAttributes.Strength).toEqual(5);
+    expect(dest.displayAttributes.Perception).toEqual(7);
+    expect(dest.displayAttributes.Endurance).toEqual(5);
+    expect(dest.displayAttributes.Charisma).toEqual(1);
+    expect(dest.displayAttributes.Intelligence).toEqual(9);
+    expect(dest.displayAttributes.Agility).toEqual(8);
+    expect(dest.displayAttributes.Luck).toEqual(5);
+    expect(dest.role).toEqual(Role.LoneWanderer);
+    expect(dest.age).toEqual(19);
+    expect(dest.name).toEqual('Jingle Jang');
+    expect(dest.sex).toEqual('Male');
+    expect(dest.maxHitPoints).toEqual(200);
+    expect(dest.derivedStatsDisplay[DerivedStat.ActionPoints]).toBe('81');
+    expect(dest.derivedStatsDisplay[DerivedStat.CarryWeight]).toBe('200');
+    expect(dest.derivedStatsDisplay[DerivedStat.CriticalChance]).toBe('5%'); //assumed from wiki
+    expect(dest.baseSkills[Skill.Barter]).toBe(7);
+    expect(dest.baseSkills[Skill.BigGuns]).toBe(15);
+    expect(dest.baseSkills[Skill.EnergyWeapons]).toBe(19);
+    expect(dest.baseSkills[Skill.Explosives]).toBe(19);
+    expect(dest.baseSkills[Skill.LockPick]).toBe(34);
+    expect(dest.baseSkills[Skill.Medicine]).toBe(23);
+    expect(dest.baseSkills[Skill.MeleeWeapons]).toBe(15);
+    expect(dest.baseSkills[Skill.Repair]).toBe(23);
+    expect(dest.baseSkills[Skill.Science]).toBe(23);
+    expect(dest.baseSkills[Skill.SmallGuns]).toBe(36);
+    expect(dest.baseSkills[Skill.Sneak]).toBe(21);
+    expect(dest.baseSkills[Skill.Speech]).toBe(22);
+    expect(dest.baseSkills[Skill.Unarmed]).toBe(15);
   });
 });
