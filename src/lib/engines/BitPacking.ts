@@ -6,27 +6,44 @@ import type {
   UnfinishedCharacter
 } from './UnfinishedCharacter';
 
-export class CodecError extends Error { }
+export class CodecError extends Error {}
 
 export const CURRENT_VERSION = 1; // increment on incompatible updates
 
-export const constructFromRole = async (role: ObjectValues<typeof Role> & {}): Promise<UnfinishedCharacter> => {
+export const constructFromRole = async (
+  role: ObjectValues<typeof Role> & {}
+): Promise<UnfinishedCharacter> => {
   switch (role) {
-    case Role.VaultDweller:
-      const { UnfinishedVaultDweller } = await import('$lib/engines/VaultDweller/Unfinished');
+    case Role.VaultDweller: {
+      const { UnfinishedVaultDweller } = await import(
+        '$lib/engines/VaultDweller/Unfinished'
+      );
       return new UnfinishedVaultDweller();
-    case Role.ChosenOne:
-      const { UnfinishedChosenOne } = await import('$lib/engines/ChosenOne/Unfinished');
+    }
+    case Role.ChosenOne: {
+      const { UnfinishedChosenOne } = await import(
+        '$lib/engines/ChosenOne/Unfinished'
+      );
       return new UnfinishedChosenOne();
-    case Role.Warrior:
-      const { UnfinishedWarrior } = await import('$lib/engines/Warrior/Unfinished');
+    }
+    case Role.Warrior: {
+      const { UnfinishedWarrior } = await import(
+        '$lib/engines/Warrior/Unfinished'
+      );
       return new UnfinishedWarrior();
-    case Role.ChosenOne:
-      const { UnfinishedLoneWanderer } = await import('$lib/engines/LoneWanderer/Unfinished');
+    }
+    case Role.LoneWanderer: {
+      const { UnfinishedLoneWanderer } = await import(
+        '$lib/engines/LoneWanderer/Unfinished'
+      );
       return new UnfinishedLoneWanderer();
-    case Role.ChosenOne:
-      const { UnfinishedCourier } = await import('$lib/engines/Courier/Unfinished');
+    }
+    case Role.Courier: {
+      const { UnfinishedCourier } = await import(
+        '$lib/engines/Courier/Unfinished'
+      );
       return new UnfinishedCourier();
+    }
     default:
       throw new CodecError('Unrecognized game.');
   }

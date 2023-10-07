@@ -93,7 +93,8 @@ export class UnfinishedLoneWanderer extends AbstractUnfinishedCharacter<
   maxHitPoints = 0;
 
   _maxHPReactor = () => {
-    this.maxHitPoints = 90 + 20 * this.displayAttributes[Special.Endurance] + 1 * 10;
+    this.maxHitPoints =
+      90 + 20 * this.displayAttributes[Special.Endurance] + 1 * 10;
   };
 
   _skillReactors = {
