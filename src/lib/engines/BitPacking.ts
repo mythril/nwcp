@@ -272,9 +272,12 @@ export function unpacker<T extends UnfinishedCharacter>(
   return mut;
 }
 
-export function detectRoleBase64(base64: string) {
-  const bytes = base64ToBytes(base64);
+export function detectRoleBinary(bytes: Uint8Array) {
   return intToRole(bytes[0] >> 3);
+}
+
+export function detectRoleBase64(base64: string) {
+  return detectRoleBinary(base64ToBytes(base64));
 }
 
 export function charToBase64(char: UnfinishedCharacter) {

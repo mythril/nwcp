@@ -13,11 +13,15 @@
   } from '$lib/components/Modal.svelte';
   import {
     CodecError,
+    bytesToBase64,
     charToBase64,
+    constructFromRole,
+    detectRoleBinary,
     packer,
     unpacker
   } from '$lib/engines/BitPacking';
   import type { UnfinishedCharacter } from '$lib/engines/UnfinishedCharacter';
+  import { RoleRoutes } from '$lib/engines/all';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let char: UnfinishedCharacter;
@@ -75,12 +79,16 @@
   let files: FileList;
 
   $: if (files != null && files.length > 0) {
-    const cTor = Object.getPrototypeOf($character).constructor;
-    let mut = new cTor();
     files
       ?.item(0)
       ?.arrayBuffer()
-      .then((data: ArrayBuffer) => {
+      .then(async (data: ArrayBuffer) => {
+        const bytes = new Uint8Array(data);
+        const role = detectRoleBinary(bytes);
+        if (role !== $character.role) {
+          window.location.replace(RoleRoutes[role] + '#' + bytesToBase64(bytes));
+        }
+        const mut = await constructFromRole(role);
         loadFromChar(
           unpacker(new Uint8Array(data), mut.getPackingDescriptors(), mut)
         );
