@@ -19,18 +19,17 @@ Also with a custom element I can simplify the "code" of the embed.
 
 ### Via Share Menu <a id="share" href="#share">&#128279;</a>
 
-Open options menu  
+Open options menu
 
 ![Open options menu](EMBEDDING1.png)
 
-Open share menu  
+Open share menu
 
 ![Open share menu](EMBEDDING2.png)
 
-Choose Embed type<a id="embed4"></a>  
+Choose Embed type<a id="embed4"></a>
 
 ![Choose Embed type](EMBEDDING3,4.png)
-
 
 ### Via Custom Embed Element <a id="custom" href="#custom">&#128279;</a>
 
@@ -75,8 +74,12 @@ Following the [XenForo custom bbcode guide](https://xenforo.com/docs/xf2/bbcode/
   type="text/javascript"
   src="https://nwcp.vercel.app/c.js"
 ></script>
-<nw-cp char="{option}"></nw-cp>
+<nw-cp
+  char="{option}"
+  width="640"
+></nw-cp>
 ```
 
-5. **Optional**: set icon to [radiation](https://fontawesome.com/icons/radiation?f=classic&s=solid)
-6. Characters can now be embedded in your forum posts with the **BBCode** option from the share menu [Mark #4](#embed4).
+5. **Optional**: set width inside the HTML replace to a size that makes sense for your website (in pixels)
+6. **Optional**: set icon to [radiation](https://fontawesome.com/icons/radiation?f=classic&s=solid)
+7. Characters can now be embedded in your forum posts with the **BBCode** option from the share menu [Mark #4](#embed4).

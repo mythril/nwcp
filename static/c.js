@@ -15,6 +15,12 @@ if (
     connectedCallback() {
       const shadow = this.attachShadow({ mode: 'closed' });
       const charUrl = `${baseURL}/embed#${this.getAttribute('char')}`;
+      const rawWidth = this.hasAttribute('width')
+        ? this.getAttribute('width')
+        : '#';
+      const parsedWidth = parseInt(rawWidth.trim(), 10);
+      const widthIsNumeric = !isNaN(parsedWidth);
+      const width = widthIsNumeric ? `${parsedWidth}px` : '100%';
 
       const style = document.createElement('style');
       style.textContent = `
@@ -24,7 +30,7 @@ if (
           display:block;
           clear:both;
           aspect-ratio: 4/3;
-          width:100%;
+          width:${width};
         }
       `;
       shadow.appendChild(style);
