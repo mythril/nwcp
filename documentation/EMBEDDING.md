@@ -14,8 +14,8 @@ TODO: update when share menu is ready
 <script
   type="text/javascript"
   src="https://nwcp.vercel.app/c.js"
-/>
-<nw-cp char="#EMBED_CODE#" />
+></script>
+<nw-cp char="#EMBED_CODE#"></nw-cp>
 ```
 
 Where `#EMBED_CODE#` is the encoded data after the hash-mark in your character's URL.
@@ -33,8 +33,9 @@ Following the [XenForo custom bbcode guide](https://xenforo.com/docs/xf2/bbcode/
 <script
   type="text/javascript"
   src="https://nwcp.vercel.app/c.js"
-/>
-<nw-cp char="{option}" />
+></script>
+<nw-cp char="{option}"></nw-cp>
 ```
 
 5. **Optional**: set icon to [radiation](https://fontawesome.com/icons/radiation?f=classic&s=solid)
+5. Characters can now be embedded in your forum posts with the **BBCode** option from the share menu.
