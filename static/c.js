@@ -8,10 +8,6 @@ if (
   const baseURL = `${src.origin}`;
 
   class NWCPEmbed extends HTMLElement {
-    constructor() {
-      super();
-    }
-
     connectedCallback() {
       const shadow = this.attachShadow({ mode: 'closed' });
       const charUrl = `${baseURL}/embed#${this.getAttribute('char')}`;
@@ -21,11 +17,16 @@ if (
       const parsedWidth = parseInt(rawWidth.trim(), 10);
       const widthIsNumeric = !isNaN(parsedWidth);
       const width = widthIsNumeric ? `${parsedWidth}px` : '100%';
+      const preload = document.createElement('link');
+      preload.setAttribute('rel', 'preload');
+      preload.setAttribute('href', charUrl);
+      preload.setAttribute('as', 'document');
 
       const style = document.createElement('style');
       style.textContent = `
         iframe,
         :host {
+          border:0;
           background-color:hsl(40, 27.3%, 17.3%);
           display:block;
           clear:both;
@@ -34,10 +35,11 @@ if (
         }
       `;
       shadow.appendChild(style);
+      shadow.appendChild(preload);
 
       const iframe = document.createElement('iframe');
 
-      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('scrolling', 'no');
       shadow.appendChild(iframe);
 
       const observer = new IntersectionObserver((entries) => {

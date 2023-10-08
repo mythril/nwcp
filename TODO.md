@@ -7,7 +7,6 @@ Overall goals:
 
 ### To do
 
-- [ ] add share menu, move link management / embedding to share menu
 - [ ] add cascading override to help entry structure
 - [ ] internationalize: npm i i18next ?
 - [ ] ensure release script can do base-url changing
@@ -43,6 +42,7 @@ Overall goals:
 
 ### Done
 
+- [x] add share menu, move link management / embedding to share menu
 - [x] detect when embedded and reduce graphical fidelity / freeze input
 - [x] add embed router for simplified embeds
 - [x] write save/load integrity tests for each role type
