@@ -6,7 +6,6 @@
   import { errorMessage } from '../ErrorMessageStore';
 
   import { createEventDispatcher } from 'svelte';
-  import { toast } from '../Toast.svelte';
   import {
     ModalNavEvents,
     type ModalEventSignature
@@ -14,7 +13,6 @@
   import {
     CodecError,
     bytesToBase64,
-    charToBase64,
     constructFromRole,
     detectRoleBinary,
     packer,
@@ -25,12 +23,10 @@
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   let char: UnfinishedCharacter;
-  let charHash: string;
 
   export const enter = () => {
     const cTor = Object.getPrototypeOf($character).constructor;
     char = Object.assign(new cTor(), $character);
-    charHash = charToBase64(char);
   };
 
   export const leave = () => {
@@ -53,25 +49,6 @@
       a.remove();
     }, 1000);
     dispatch(ModalNavEvents.navExit);
-  };
-
-  const copyToClipboard = async (e: MouseEvent) => {
-    if (!e.target) {
-      return;
-    }
-    const charLink = window.location.href.split('#')[0] + '#' + charHash;
-    try {
-      await navigator.clipboard.writeText(charLink);
-      toast.success({ message: 'CHARACTER LINK COPIED' });
-    } catch (err) {
-      if (err instanceof Error) {
-        toast.error(err);
-      }
-    }
-    e.preventDefault();
-    e.stopPropagation();
-    dispatch(ModalNavEvents.navExit);
-    return false;
   };
 
   let fileInput: HTMLInputElement;
@@ -113,15 +90,6 @@
   on:navExit
 >
   <FlatButton on:click={saveToDisk}>Save To Disk</FlatButton>
-  <FlatButton
-    type="link"
-    href={'#' + charHash}
-    on:click={() => dispatch(ModalNavEvents.navExit)}
-    target="_blank">Open link to char</FlatButton
-  >
-  {#if navigator.clipboard}
-    <FlatButton on:click={copyToClipboard}>Copy link to char</FlatButton>
-  {/if}
 
   <FlatButton
     on:click={() => {

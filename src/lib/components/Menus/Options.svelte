@@ -26,6 +26,10 @@
   {/if}
   <ModalButton
     type="flat"
+    modal={Menus.Share}>Share</ModalButton
+  >
+  <ModalButton
+    type="flat"
     modal={Menus.SaveLoad}>Save/Load</ModalButton
   >
   <ModalButton

@@ -26,7 +26,8 @@
 
   export const Menus = {
     Options: ['Menus', 'Options'],
-    SaveLoad: ['Menus', 'SaveLoad']
+    SaveLoad: ['Menus', 'SaveLoad'],
+    Share: ['Menus', 'Share']
   } as const;
 
   export const Modals = {
