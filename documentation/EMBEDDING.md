@@ -19,13 +19,18 @@ Also with a custom element I can simplify the "code" of the embed.
 
 ### Via Share Menu <a id="share" href="#share">&#128279;</a>
 
-Open options menu
+Open options menu  
+
 ![Open options menu](EMBEDDING1.png)
-Open share menu
+
+Open share menu  
+
 ![Open share menu](EMBEDDING2.png)
-Choose Embed type
-<a id="#embed4"></a>
+
+Choose Embed type<a id="embed4"></a>  
+
 ![Choose Embed type](EMBEDDING3,4.png)
+
 
 ### Via Custom Embed Element <a id="custom" href="#custom">&#128279;</a>
 
