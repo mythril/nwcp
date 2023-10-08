@@ -17,10 +17,6 @@ if (
       const parsedWidth = parseInt(rawWidth.trim(), 10);
       const widthIsNumeric = !isNaN(parsedWidth);
       const width = widthIsNumeric ? `${parsedWidth}px` : '100%';
-      const preload = document.createElement('link');
-      preload.setAttribute('rel', 'preload');
-      preload.setAttribute('href', charUrl);
-      preload.setAttribute('as', 'document');
 
       const style = document.createElement('style');
       style.textContent = `
@@ -35,7 +31,6 @@ if (
         }
       `;
       shadow.appendChild(style);
-      shadow.appendChild(preload);
 
       const iframe = document.createElement('iframe');
 
@@ -49,6 +44,7 @@ if (
       });
 
       observer.observe(this);
+      fetch(charUrl, { cache: 'default' });
     }
   }
 
