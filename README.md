@@ -4,6 +4,8 @@
 
 https://github.com/mythril/nwcp/assets/169342/f88b3da0-da1f-4530-bf46-969c7c42e79a
 
+You can now [embed](documentation/EMBEDDING.md) character builds in your pages.
+
 ## Road-map
 
 - For all supported roles, eventually:

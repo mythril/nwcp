@@ -14,4 +14,3 @@ src/lib/images/mask.png
 ignored/**
 .vscode/launch.json
 src/lib/images/
-static/*test.html
