@@ -43,7 +43,7 @@ Overall goals:
 ### Done
 
 - [x] add share menu, move link management / embedding to share menu
-- [x] detect when embedded and reduce graphical fidelity / freeze input
+- [x] detect when embedded and reduce graphical fidelity / freeze input - performance seems good enough to leave graphical fidelity where it is, unless there are complaints
 - [x] add embed router for simplified embeds
 - [x] write save/load integrity tests for each role type
 - [x] Extract push button and make it resizable
