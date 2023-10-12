@@ -1,26 +1,35 @@
 import type { ObjectValues } from '$lib/typeUtils';
 import type { IPackingDescriptor } from './BitPacking';
 import { Sex, Role, type Attributes, Special } from './all';
-import type { CharacterHelpLookup } from './help';
+import { CharacterHelpLookup } from './help';
 
 interface ITrait {
-  [key: string]: keyof typeof CharacterHelpLookup;
+  [key: string]: string;
 }
 
 interface ISkill {
-  [key: string]: keyof typeof CharacterHelpLookup;
+  [key: string]: string;
 }
 
 interface IDifficulty {
-  [key: string]: string; // this has no help entries, and doesn't need any
+  [key: string]: string;
 }
 
 interface IDerivedStat {
-  [key: string]: keyof typeof CharacterHelpLookup;
+  [key: string]: string;
 }
 
 interface IAilmentStatus {
-  [key: string]: keyof typeof CharacterHelpLookup;
+  [key: string]: string;
+}
+
+export interface IRoleHelp {
+  formulas: {
+    [key: string]: string;
+  };
+  help: {
+    [key: string]: string;
+  };
 }
 
 export interface SerializedUnfinishedCharacter
@@ -101,6 +110,8 @@ export interface UnfinishedCharacter
   ailmentStatusInfo: IAilmentStatus;
 
   charPointsRemaining: number;
+  help: IRoleHelp;
+  getHelp(subject: string): string;
 
   /* should probably look to the reactive store instead of the model */
   _reset(): void;
@@ -119,7 +130,8 @@ export abstract class AbstractUnfinishedCharacter<
   S extends ISkill,
   D extends IDifficulty,
   DS extends IDerivedStat,
-  A extends IAilmentStatus
+  A extends IAilmentStatus,
+  H extends IRoleHelp
 > implements UnfinishedCharacter
 {
   abstract readonly role: ObjectValues<typeof Role> & {};
@@ -274,6 +286,10 @@ export abstract class AbstractUnfinishedCharacter<
   abstract derivedStatsDisplay: Record<ObjectValues<DS>, string>;
   abstract derivedStatInfo: DS;
   abstract ailmentStatusInfo: A;
+  abstract help: H;
+  getHelp(subject: string): string {
+    return this.help.help[subject] || CharacterHelpLookup[subject] || '';
+  }
 
   get charPointsRemaining() {
     let cpr = 40;

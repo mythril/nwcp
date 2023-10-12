@@ -1,6 +1,3 @@
-import { assert } from 'tsafe';
-import type { HasHelpEntriesForEvery } from '../help';
-
 export const Skill = {
   Barter: 'Barter',
   Guns: 'Guns',
@@ -33,11 +30,6 @@ export const GoodNaturedNegativeSkills = [
   Skill.Unarmed
 ] as const;
 
-// type error below indicates that not all values in
-// Skills are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof Skill>>();
-
 export const BaseTrait = {
   BuiltToDestroy: 'Built To Destroy',
   FastShot: 'Fast Shot',
@@ -62,17 +54,7 @@ export const OldWorldBluesTrait = {
 
 export const Trait = { ...BaseTrait, ...OldWorldBluesTrait } as const;
 
-// type error below indicates that not all values in
-// Traits are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof Trait>>();
-
 export const AilmentStatus = {} as const;
-
-// type error below indicates that not all values in
-// AilmentStatus are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof AilmentStatus>>();
 
 export const DerivedStat = {
   ActionPoints: 'Action Points',
@@ -85,11 +67,6 @@ export const DerivedStat = {
   SkillRate: 'Skill Rate',
   UnarmedDamage: 'Unarmed Damage'
 } as const;
-
-// type error below indicates that not all values in
-// DerivedStats are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof DerivedStat>>();
 
 export const Difficulty = {
   Normal: 'Normal'

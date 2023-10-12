@@ -17,20 +17,16 @@ Overall goals:
 - [ ] theme variations for each role - tan interface for Warrior, amber terminal text for Courier
 - [ ] improve flat menu look
 - [ ] Improve paper background (has issues with resizing?)
-- [ ] Release source when the planner is in a "better than nothing" state and some collaboration guidelines are in place
 - [ ] Include VB sprites?
 - [ ] Create an intro anim
-- [ ] redirect to '/' when images are not yet generated?
 - [ ] Build an svg for 'screen' dialogs
 - [ ] embed stylistically similar music
-- [ ] embed this todo into the released site
 
 ### After first release
 
-- [ ] consider autosaving to local cache - latest non-blank character for each role should be stored
+- [ ] warn when navigating away from a non-blank character or consider autosaving to local cache - latest non-blank character for each role should be stored
 - [ ] get browser testing functioning, build a test to verify character linking
 - [ ] Make the first event: create character
-- [ ] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
 - [ ] Add level up button
 - [ ] Build an event sourced / cqrs store, keeping track of the character development as a log instead of just mangling an object
 - [ ] bit-pack the log format to attempt to keep builds linkable
@@ -38,10 +34,13 @@ Overall goals:
 - [ ] Build basic, text based, item chooser
 - [ ] Build perk chooser
 - [ ] automatically store characters in local storage
-- [ ] allow user to select characters from local storage based on name
 
 ### Done
 
+- [x] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
+- [ ] ~~embed this todo into the released site~~
+- [x] Release source when the planner is in a "better than nothing" state and some collaboration guidelines are in place
+- [ ] ~~redirect to '/' when images are not yet generated? - no~~
 - [x] add share menu, move link management / embedding to share menu
 - [x] detect when embedded and reduce graphical fidelity / freeze input - performance seems good enough to leave graphical fidelity where it is, unless there are complaints
 - [x] add embed router for simplified embeds

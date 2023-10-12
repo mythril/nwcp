@@ -1,6 +1,3 @@
-import { assert } from 'tsafe';
-import type { HasHelpEntriesForEvery } from '../help';
-
 export const CombatSkill = {
   SmallGuns: 'Small Guns',
   BigGuns: 'Big Guns',
@@ -41,11 +38,6 @@ export const GoodNaturedPositiveSkills = [
   Skill.Barter
 ];
 
-// type error below indicates that not all values in
-// Skills are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof Skill>>();
-
 export const Trait = {
   FastMetabolism: 'Fast Metabolism',
   Bruiser: 'Bruiser',
@@ -65,11 +57,6 @@ export const Trait = {
   Gifted: 'Gifted'
 } as const;
 
-// type error below indicates that not all values in
-// Traits are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof Trait>>();
-
 export const AilmentStatus = {
   Poisoned: 'Poisoned',
   Radiated: 'Radiated',
@@ -79,11 +66,6 @@ export const AilmentStatus = {
   CrippledRightLeg: 'Crippled Right Leg',
   CrippledLeftLeg: 'Crippled Left Leg'
 } as const;
-
-// type error below indicates that not all values in
-// AilmentStatus are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof AilmentStatus>>();
 
 export const DerivedStat = {
   ArmorClass: 'Armor Class',
@@ -97,11 +79,6 @@ export const DerivedStat = {
   HealingRate: 'Healing Rate',
   CriticalChance: 'Critical Chance'
 } as const;
-
-// type error below indicates that not all values in
-// DerivedStats are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof DerivedStat>>();
 
 export const Difficulty = {
   Easy: 'Easy',

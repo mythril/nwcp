@@ -1,179 +1,46 @@
-import type { ObjectValues } from '$lib/typeUtils';
-import type { Equals } from 'tsafe';
-
-export type HasHelpEntriesForEvery<T> = Equals<
-  Extract<keyof typeof CharacterHelpLookup, ObjectValues<T>>,
-  ObjectValues<T>
->;
-
-/* eslint-disable no-sparse-arrays -- sparseness indicates no entry for that game */
-export const CharacterHelpLookup = {
-  'Small Guns': [
+export const CharacterHelpLookup: { [k: string]: string } = {
+  'Small Guns':
     'The use, care and general knowledge of small firearms - pistols, SMGs and rifles.',
-    '35% + AG',
-    '5% + (4 x AG)',
-    '5% + (4 x AG)',
-    '2% + (AG x 2) + (LK / 2)'
-  ],
-  'Big Guns': [
+  'Big Guns':
     'The operation and maintenance of really big guns - miniguns, rocket launchers, flamethrowers and such.',
-    '10% + AG',
-    '0% + (2 x AG)',
-    '0% + (2 x AG)',
-    '2% + (EN x 2) + (LK / 2)'
-  ],
-  Guns: [
-    'Proficiency at using weapons that fire standard ammunition.',
-    ,
-    ,
-    ,
-    ,
-    '2% + (AG x 2) + (LK / 2)'
-  ],
-  'Energy Weapons': [
+  'Energy Weapons':
     'The care and feeding of energy-based weapons.  How to arm and operate weapons that use laser or plasma technology.',
-    '10% + AG',
-    '0% + (2 x AG)',
-    '0% + (2 x AG)',
-    '2% + (PE x 2) + (LK / 2)',
-    '2% + (PE x 2) + (LK / 2)'
-  ],
-  Explosives: [
+  Explosives:
     'The ability to handle things that go boom. Throwing / placing / avoiding blast zones. Grenades, mines, detonation packs, etc.',
-    ,
-    ,
-    ,
-    '2% + (PE x 2) + (LK / 2)',
-    '2% + (PE x 2) + (LK / 2)'
-  ],
-  Unarmed: [
+  Unarmed:
     'A combination of martial arts, boxing and other hand-to-hand martial arts.  Combat with your hands and feet.',
-    '65% + ((ST + AG) / 2)',
-    '30% + (2 x (AG + ST))',
-    '30% + (2 x (AG + ST))',
-    '2% + (EN x 2) + (LK / 2)',
-    '2% + (EN x 2) + (LK / 2)'
-  ],
-  'Melee Weapons': [
+  'Melee Weapons':
     'Using non-ranged weapons in hand-to-hand, or melee combat - knives, sledgehammers, spears, clubs and so on.',
-    '55% + ((ST + AG) / 2)',
-    '20% + (2 x (AG + ST))',
-    '20% + (2 x (AG + ST))',
-    '2% + (ST x 2) + (LK / 2)',
-    '2% + (ST x 2) + (LK / 2)'
-  ],
-  Throwing: [
+  Throwing:
     'The skill of muscle-propelled ranged weapons, such as throwing knives, spears and grenades.',
-    '40% + AG',
-    '0% + (4 x AG)',
-    '0% + (4 x AG)'
-  ],
-  'First Aid': [
+  'First Aid':
     'General healing skill.  Used to heal small cuts, abrasions and other minor ills.  In game terms, the use of first aid can heal more hit points over time than just rest.',
-    '30% + ((PE + IN) / 2)',
-    '0% + (2 x (PE + IN))',
-    '30% + (2 x (PE + IN))'
-  ],
-  Doctor: [
+  Doctor:
     'The healing of major wounds and crippled limbs.  Without this skill, it will take a much longer period of time to restore crippled limbs to use.',
-    '15% + ((PE + IN) / 2)',
-    '5% + (PE + IN)',
-    '0% + (PE + IN)'
-  ],
-  Medicine: [
+  Medicine:
     'This skill determines the effectiveness of stimpaks, super stimpaks, Rad-X and RadAway.',
-    ,
-    ,
-    ,
-    '2% + (IN x 2) + (LK / 2)',
-    '2% + (IN x 2) + (LK / 2)'
-  ],
-  Sneak: [
+  Sneak:
     'Quiet movement, and the ability to remain unnoticed. If successful, you will be much harder to locate. You cannot run and sneak at the same time.',
-    '25% + AG',
-    '5% + (3 x AG)',
-    '0% + (3 x AG)',
-    '2% + (AG x 2) + (LK / 2)',
-    '2% + (AG x 2) + (LK / 2)'
-  ],
-  Lockpick: [
+  Lockpick:
     'The skill of opening locks without the proper key. The use of lock-picks or electronic lock-picks will greatly enhance this skill.',
-    '20% + ((PE + AG) / 2)',
-    '10% + (PE + AG)',
-    '10% + (PE + AG)',
-    '2% + (PE x 2) + (LK / 2)',
-    '2% + (PE x 2) + (LK / 2)'
-  ],
-  Steal: [
+  Steal:
     'The ability to make the things of others your own.  Can be used to steal from people or places.',
-    '20% + AG',
-    '0% + (3 x AG)',
-    '0% + (3 x AG)'
-  ],
-  Traps: [
+  Traps:
     'The finding and removal of traps.  Also the setting of explosives for demolition purposes.',
-    '20% + ((PE + AG) / 2)',
-    '10% + (PE + AG)',
-    '10% + (PE + AG)'
-  ],
-  Science: [
+  Science:
     'Covers a variety of high technology skills, such as computers, biology, physics and geology.',
-    '25% + (2 x IN)',
-    '0% + (4 x IN)',
-    '0% + (4 x IN)',
-    '2% + (IN x 2) + (LK / 2)',
-    '2% + (IN x 2) + (LK / 2)'
-  ],
-  Repair: [
+  Repair:
     'The practical application of the Science skill for fixing broken equipment, machinery and electronics.',
-    '20% + IN',
-    '0% + (3 x IN)',
-    '0% + (3 x IN)',
-    '2% + (IN x 2) + (LK / 2)',
-    '2% + (IN x 2) + (LK / 2)'
-  ],
-  Pilot: [
-    'The ability to operate and maintain all vehicles effectively.',
-    ,
-    ,
-    '0% + (2 x (PE + AG))'
-  ],
-  Speech: [
+  Speech:
     'The ability to communicate in a practical and efficient manner. The skill of convincing others that your position is correct. The ability to lie and not get caught.',
-    '25% + (2 x CH)',
-    '0% + (5 x CH)',
-    ,
-    '2% + (CH x 2) + (LK / 2)',
-    '2% + (CH x 2) + (LK / 2)'
-  ],
-  Survival: [
+  Survival:
     'Proficiency at cooking, making poisons, and crafting "natural" equipment and consumables. Also Yields increased benefits from food.',
-    ,
-    ,
-    ,
-    ,
-    '2% + (EN x 2) + (LK / 2)'
-  ],
-  Barter: [
+  Barter:
     'Trading and trade-related tasks. The ability to get better prices for items you sell, and lower prices for items you buy.',
-    '20% + (2 x CH)',
-    '0% + (4 x CH)',
-    '0% + (4 x CH)',
-    '2% + (CH x 2) + (LK / 2)',
-    '2% + (CH x 2) + (LK / 2)'
-  ],
-  Gambling: [
+  Gambling:
     'The knowledge and practical skills related to wagering. The skill at cards, dice and other games.',
-    '20% + (3 x LK)',
-    '0% + (5 x LK)',
-    '0% + (3 x LK) + (2 x IN)'
-  ],
-  Outdoorsman: [
+  Outdoorsman:
     'Practical knowledge of the outdoors, and the ability to live off the land. The knowledge of plants and animals.',
-    '5% + ((EN + IN) / 2)',
-    '0% + (2 x (EN + IN))',
-    '0% + (2 x (EN + IN))'
-  ],
   Strength:
     'Raw physical strength. A high Strength is good for physical characters. Modifies: Hit Points, Melee Damage, and Carry Weight.',
   Perception:
@@ -303,19 +170,4 @@ export const CharacterHelpLookup = {
     'The general competency of the player character. A measure of your experience and abilities.',
   Experience:
     'A reward for completing specific tasks, or defeating enemies in combat. More experience points are required to attain higher Levels.'
-
-  // "Skill Points": "Use free skill points to increase the level of a skill.  As you get better at a given skill, however, it takes more points to raise that skill.  Mastering a skill can take a lot of time and effort.",
-  // "Damage Threshold Laser": "Damage Threshold Laser",
-  // "Damage Threshold Fire": "Damage Threshold Fire",
-  // "Damage Threshold Plasma": "Damage Threshold Plasma",
-  // "Damage Threshold Electrical": "Damage Threshold Electrical",
-  // "Damage Threshold EMP": "Damage Threshold EMP",
-  // "Damage Threshold Explosion": "Damage Threshold Explosion",
-  // "Damage Resistance Laser": "Damage Resistance Laser",
-  // "Damage Resistance Fire": "Damage Resistance Fire",
-  // "Damage Resistance Plasma": "Damage Resistance Plasma",
-  // "Damage Resistance Electrical": "Damage Resistance Electrical",
-  // "Damage Resistance EMP": "Damage Resistance EMP",
-  // "Damage Resistance Explosion": "Damage Resistance Explosion"
-};
-/* eslint-enable no-sparse-arrays */
+} as const;

@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type { CharacterHelpLookup } from '$lib/engines/help';
   import { helpSubject } from './Help.svelte';
 
-  export let subject: keyof typeof CharacterHelpLookup;
+  export let subject: string;
   let activeHelpSubject = subject === $helpSubject;
   $: activeHelpSubject = subject === $helpSubject;
 </script>

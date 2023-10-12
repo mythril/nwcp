@@ -5,14 +5,17 @@ import { AbstractUnfinishedCharacter } from '../UnfinishedCharacter';
 import { Role, type Attributes, Special, Sex } from '../all';
 import { OrderedDescriptors } from './codec';
 import { Difficulty, DerivedStat, Skill, Trait, AilmentStatus } from './data';
+import { Help } from './help';
 
 export class UnfinishedLoneWanderer extends AbstractUnfinishedCharacter<
   typeof Trait,
   typeof Skill,
   typeof Difficulty,
   typeof DerivedStat,
-  typeof AilmentStatus
+  typeof AilmentStatus,
+  typeof Help
 > {
+  help = Help;
   minAge = 19;
   maxAge = 19;
   _traits: Set<ObjectValues<typeof Trait>> = new Set();

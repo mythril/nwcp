@@ -13,6 +13,7 @@ import {
   GoodNaturedNegativeSkills,
   AilmentStatus
 } from './data';
+import { Help } from './help';
 
 const noOp = () => {
   // intentional
@@ -23,8 +24,10 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
   typeof Skill,
   typeof Difficulty,
   typeof DerivedStat,
-  typeof AilmentStatus
+  typeof AilmentStatus,
+  typeof Help
 > {
+  help = Help;
   minAge = 16;
   maxAge = 65;
   _traits: Set<ObjectValues<typeof Trait>> = new Set();

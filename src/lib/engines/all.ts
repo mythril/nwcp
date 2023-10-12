@@ -1,6 +1,4 @@
 import type { ObjectValues } from '$lib/typeUtils';
-import { assert } from 'tsafe';
-import type { HasHelpEntriesForEvery } from './help';
 
 export const Role = {
   None: 'None',
@@ -70,11 +68,6 @@ export const BidiRoleChronoLookup: TBidiRoleChronoLookup = {
   [NaN]: Role.None,
   [Role.None]: NaN
 } as const;
-
-// type error below indicates that not all values in
-// Special are represented in CharacterHelpLookup
-// Could be a typo or missing help entry
-assert<HasHelpEntriesForEvery<typeof Special>>();
 
 export function SpecialAbbreviation(
   special: ObjectValues<typeof Special>

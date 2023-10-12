@@ -3,18 +3,13 @@
   context="module"
 >
   import { writable, derived } from 'svelte/store';
-  import { CharacterHelpLookup } from '$lib/engines/help';
-  import { PerkHelpLookup } from '$lib/engines/perks';
   import { character } from '../../routes/CharacterStore';
-  import { BidiRoleChronoLookup } from '$lib/engines/all';
 
-  const HelpLookup = { ...CharacterHelpLookup, ...PerkHelpLookup };
-
-  export const helpSubject = writable<keyof typeof HelpLookup>('Strength');
+  export const helpSubject = writable<string>('Strength');
 
   export const helpText = derived(
-    helpSubject,
-    ($subject) => HelpLookup[$subject]
+    [helpSubject, character],
+    ([$subject, $char]) => $char.getHelp($subject)
   );
 </script>
 
@@ -22,13 +17,11 @@
   let text = '';
   let extra = '';
   $: {
-    if (typeof $helpText === 'string') {
-      text = $helpText;
-      extra = '';
+    text = $helpText;
+    if ($helpSubject in $character.help.formulas) {
+      extra = $character.help.formulas[$helpSubject];
     } else {
-      let offset = BidiRoleChronoLookup[$character.role];
-      text = $helpText[0] || '';
-      extra = $helpText[1 + offset] || '';
+      extra = '';
     }
   }
 </script>

@@ -15,6 +15,7 @@ import {
   GoodNaturedPositiveSkills,
   AilmentStatus
 } from './data';
+import { Help } from './help';
 
 const noOp = () => {
   //intentional
@@ -25,8 +26,10 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
   typeof Skill,
   typeof Difficulty,
   typeof DerivedStat,
-  typeof AilmentStatus
+  typeof AilmentStatus,
+  typeof Help
 > {
+  help = Help;
   minAge = 16;
   maxAge = 35;
   _traits: Set<ObjectValues<typeof Trait>> = new Set();

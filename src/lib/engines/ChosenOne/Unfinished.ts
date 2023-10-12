@@ -15,6 +15,7 @@ import {
   ActiveSkill,
   AilmentStatus
 } from './data';
+import { Help } from './help';
 
 const noOp = () => {
   //intentional
@@ -25,7 +26,8 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
   typeof Skill,
   typeof Difficulty,
   typeof DerivedStat,
-  typeof AilmentStatus
+  typeof AilmentStatus,
+  typeof Help
 > {
   minAge = 16;
   maxAge = 35;
@@ -480,6 +482,8 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
       this._traitReactors[trait]();
     }
   }
+
+  help = Help;
 
   toJSON() {
     return {
