@@ -16,8 +16,6 @@ export const Skill = {
 
 export const Trait = {} as const;
 
-export const AilmentStatus = {} as const;
-
 export const DerivedStat = {
   ActionPoints: 'Action Points',
   CarryWeight: 'Carry Weight',

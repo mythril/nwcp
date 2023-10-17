@@ -12,8 +12,7 @@ import {
   GoodNaturedPositiveSkills,
   CombatSkill,
   PassiveSkill,
-  ActiveSkill,
-  AilmentStatus
+  ActiveSkill
 } from './data';
 import { Help } from './help';
 
@@ -26,7 +25,6 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
   typeof Skill,
   typeof Difficulty,
   typeof DerivedStat,
-  typeof AilmentStatus,
   typeof Help
 > {
   minAge = 16;
@@ -40,7 +38,6 @@ export class UnfinishedChosenOne extends AbstractUnfinishedCharacter<
   skillInfo = Skill;
   traitInfo = Trait;
   derivedStatInfo = DerivedStat;
-  ailmentStatusInfo = AilmentStatus;
   readonly roleHasTraits = true;
   displayAttributes: Attributes = {
     Strength: this._Strength,

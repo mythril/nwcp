@@ -19,10 +19,6 @@ interface IDerivedStat {
   [key: string]: string;
 }
 
-interface IAilmentStatus {
-  [key: string]: string;
-}
-
 export interface IRoleHelp {
   formulas: {
     [key: string]: string;
@@ -107,7 +103,6 @@ export interface UnfinishedCharacter
   maxHitPoints: number;
   derivedStatsDisplay: Partial<Record<ObjectValues<IDerivedStat>, string>>;
   derivedStatInfo: IDerivedStat;
-  ailmentStatusInfo: IAilmentStatus;
 
   charPointsRemaining: number;
   help: IRoleHelp;
@@ -130,7 +125,6 @@ export abstract class AbstractUnfinishedCharacter<
   S extends ISkill,
   D extends IDifficulty,
   DS extends IDerivedStat,
-  A extends IAilmentStatus,
   H extends IRoleHelp
 > implements UnfinishedCharacter
 {
@@ -285,7 +279,6 @@ export abstract class AbstractUnfinishedCharacter<
   abstract maxHitPoints: number;
   abstract derivedStatsDisplay: Record<ObjectValues<DS>, string>;
   abstract derivedStatInfo: DS;
-  abstract ailmentStatusInfo: A;
   abstract help: H;
   getHelp(subject: string): string {
     return this.help.help[subject] || CharacterHelpLookup[subject] || '';

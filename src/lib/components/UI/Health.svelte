@@ -2,7 +2,6 @@
   import Bolthead from '$lib/components/Bolthead.svelte';
   import HelpSource from '$lib/components/HelpSource.svelte';
   import { character } from '../../../routes/CharacterStore';
-  const AilmentStatus = $character.ailmentStatusInfo;
 </script>
 
 <div class="display">
@@ -14,18 +13,7 @@
       Hit Points {$character.maxHitPoints}/{$character.maxHitPoints}
     </div>
   </HelpSource>
-  <div class="ailments">
-    {#each Object.values(AilmentStatus) as ailment}
-      <HelpSource subject={ailment}>
-        <div
-          role="link"
-          tabindex="0"
-        >
-          {ailment}
-        </div>
-      </HelpSource>
-    {/each}
-  </div>
+  <div class="ailments" />
 </div>
 <Bolthead dir="tl" />
 <Bolthead dir="tr" />

@@ -12,8 +12,7 @@ const getInfos = (a: UnfinishedCharacter) => {
   return {
     ...a.skillInfo,
     ...a.traitInfo,
-    ...a.derivedStatInfo,
-    ...a.ailmentStatusInfo
+    ...a.derivedStatInfo
   };
 };
 

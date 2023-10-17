@@ -54,8 +54,6 @@ export const OldWorldBluesTrait = {
 
 export const Trait = { ...BaseTrait, ...OldWorldBluesTrait } as const;
 
-export const AilmentStatus = {} as const;
-
 export const DerivedStat = {
   ActionPoints: 'Action Points',
   CarryWeight: 'Carry Weight',

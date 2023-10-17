@@ -13,8 +13,7 @@ import {
   CombatSkill,
   PassiveSkill,
   ActiveSkill,
-  OneHanderPositiveSkills,
-  AilmentStatus
+  OneHanderPositiveSkills
 } from './data';
 import { Help } from './help';
 
@@ -27,7 +26,6 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   typeof Skill,
   typeof Difficulty,
   typeof DerivedStat,
-  typeof AilmentStatus,
   typeof Help
 > {
   help = Help;
@@ -42,7 +40,6 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
   skillInfo = Skill;
   traitInfo = Trait;
   derivedStatInfo = DerivedStat;
-  ailmentStatusInfo = AilmentStatus;
   readonly roleHasTraits = true;
   displayAttributes: Attributes = {
     Strength: this._Strength,

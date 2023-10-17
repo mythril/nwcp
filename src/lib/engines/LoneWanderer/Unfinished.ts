@@ -4,7 +4,7 @@ import type { IPackingDescriptor } from '../BitPacking';
 import { AbstractUnfinishedCharacter } from '../UnfinishedCharacter';
 import { Role, type Attributes, Special, Sex } from '../all';
 import { OrderedDescriptors } from './codec';
-import { Difficulty, DerivedStat, Skill, Trait, AilmentStatus } from './data';
+import { Difficulty, DerivedStat, Skill, Trait } from './data';
 import { Help } from './help';
 
 export class UnfinishedLoneWanderer extends AbstractUnfinishedCharacter<
@@ -12,7 +12,6 @@ export class UnfinishedLoneWanderer extends AbstractUnfinishedCharacter<
   typeof Skill,
   typeof Difficulty,
   typeof DerivedStat,
-  typeof AilmentStatus,
   typeof Help
 > {
   help = Help;
@@ -28,7 +27,6 @@ export class UnfinishedLoneWanderer extends AbstractUnfinishedCharacter<
   skillInfo = Skill;
   traitInfo = Trait;
   derivedStatInfo = DerivedStat;
-  ailmentStatusInfo = AilmentStatus;
   readonly roleHasTraits = false;
   displayAttributes: Attributes = {
     Strength: this._Strength,

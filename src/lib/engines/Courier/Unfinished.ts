@@ -10,8 +10,7 @@ import {
   Skill,
   Trait,
   GoodNaturedPositiveSkills,
-  GoodNaturedNegativeSkills,
-  AilmentStatus
+  GoodNaturedNegativeSkills
 } from './data';
 import { Help } from './help';
 
@@ -24,7 +23,6 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
   typeof Skill,
   typeof Difficulty,
   typeof DerivedStat,
-  typeof AilmentStatus,
   typeof Help
 > {
   help = Help;
@@ -40,7 +38,6 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
   skillInfo = Skill;
   traitInfo = Trait;
   derivedStatInfo = DerivedStat;
-  ailmentStatusInfo = AilmentStatus;
   readonly roleHasTraits = true;
   displayAttributes: Attributes = {
     Strength: this._Strength,

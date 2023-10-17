@@ -12,8 +12,7 @@ import {
   CombatSkill,
   PassiveSkill,
   ActiveSkill,
-  GoodNaturedPositiveSkills,
-  AilmentStatus
+  GoodNaturedPositiveSkills
 } from './data';
 import { Help } from './help';
 
@@ -26,7 +25,6 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
   typeof Skill,
   typeof Difficulty,
   typeof DerivedStat,
-  typeof AilmentStatus,
   typeof Help
 > {
   help = Help;
@@ -41,7 +39,6 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
   skillInfo = Skill;
   traitInfo = Trait;
   derivedStatInfo = DerivedStat;
-  ailmentStatusInfo = AilmentStatus;
   readonly roleHasTraits = true;
   displayAttributes: Attributes = {
     Strength: this._Strength,

@@ -57,8 +57,6 @@ export const Trait = {
   Gifted: 'Gifted'
 } as const;
 
-export const AilmentStatus = {} as const;
-
 export const DerivedStat = {
   ArmorClass: 'Armor Class',
   ActionPoints: 'Action Points',
