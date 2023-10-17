@@ -29,7 +29,10 @@
 <div class="help">
   <div class="paper-bg" />
   <div class="content">
-    <h3 class="subject">
+    <h3
+      class="subject"
+      class:empty={$helpSubject.length === 0}
+    >
       {$helpSubject}
       <span class="extra">{extra}</span>
     </h3>
@@ -94,6 +97,9 @@
       margin-bottom: 10rem;
       font-size: 21rem;
       line-height: 33rem;
+      &.empty{
+        border-bottom:0;
+      }
       .extra {
         &:not(:empty)::before {
           content: 'Base: ';
