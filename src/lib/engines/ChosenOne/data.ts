@@ -57,15 +57,7 @@ export const Trait = {
   Gifted: 'Gifted'
 } as const;
 
-export const AilmentStatus = {
-  Poisoned: 'Poisoned',
-  Radiated: 'Radiated',
-  EyeDamage: 'Eye Damage',
-  CrippledRightArm: 'Crippled Right Arm',
-  CrippledLeftArm: 'Crippled Left Arm',
-  CrippledRightLeg: 'Crippled Right Leg',
-  CrippledLeftLeg: 'Crippled Left Leg'
-} as const;
+export const AilmentStatus = {} as const;
 
 export const DerivedStat = {
   ArmorClass: 'Armor Class',
@@ -77,7 +69,9 @@ export const DerivedStat = {
   RadiationRes: 'Radiation Res.',
   Sequence: 'Sequence',
   HealingRate: 'Healing Rate',
-  CriticalChance: 'Critical Chance'
+  CriticalChance: 'Critical Chance',
+  SkillRate: 'Skill Rate',
+  PerkRate: 'Perk Rate'
 } as const;
 
 export const Difficulty = {

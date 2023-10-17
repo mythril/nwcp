@@ -1,5 +1,5 @@
 import type { IRoleHelp } from '../UnfinishedCharacter';
-import { Skill } from './data';
+import { Skill, Trait } from './data';
 
 export const Help: IRoleHelp = {
   formulas: {
@@ -22,5 +22,10 @@ export const Help: IRoleHelp = {
     [Skill.Gambling]: '20% + (3 x LK)',
     [Skill.Outdoorsman]: '5% + ((EN + IN) / 2)'
   },
-  help: {}
+  help: {
+    [Trait.FastShot]:
+      "You don't have time to aim for a targeted attack, because you attack faster than normal people. It costs you one less action point to use a weapon.",
+    [Trait.Skilled]:
+      'Since you spend more time improving your skills than a normal person, you start with better skills levels. The tradeoff is that you do not gain as many extra abilities. You will gain a perk every four levels.'
+  }
 } as const;

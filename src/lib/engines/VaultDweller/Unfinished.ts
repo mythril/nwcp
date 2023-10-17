@@ -271,6 +271,7 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
       this._skillReactors[Skill.Outdoorsman]();
       this._skillReactors[Skill.Science]();
       this._skillReactors[Skill.Repair]();
+      this._derivedStatReactors[DerivedStat.SkillRate]();
     },
     [Special.Agility]: (s: number | undefined = undefined) => {
       this._Agility = this._specialReactor(s, Special.Agility, () => {
@@ -418,7 +419,17 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
         (2 * attrs[Special.Perception] +
           (this.hasTrait(Trait.Kamikaze) ? 5 : 0))
       );
-    }, DerivedStat.Sequence)
+    }, DerivedStat.Sequence),
+    [DerivedStat.SkillRate]: this._derivedStatReactor((attrs) => {
+      return (
+        '' +
+        (2 * attrs[Special.Intelligence] +
+          (this.hasTrait(Trait.Gifted) ? 0 : 5))
+      );
+    }, DerivedStat.SkillRate),
+    [DerivedStat.PerkRate]: this._derivedStatReactor((_attrs) => {
+      return '' + (this.hasTrait(Trait.Skilled) ? 4 : 3);
+    }, DerivedStat.PerkRate)
   };
 
   reactToSkill(skill: ObjectValues<typeof Skill>): void {
@@ -454,6 +465,7 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
       for (const special of Object.values(Special)) {
         this._specialReactors[special]();
       }
+      this._derivedStatReactors[DerivedStat.SkillRate]();
     },
     [Trait.GoodNatured]: () => {
       for (const skill of GoodNaturedPositiveSkills) {
@@ -482,6 +494,7 @@ export class UnfinishedVaultDweller extends AbstractUnfinishedCharacter<
       for (const skill of Object.values(Skill)) {
         this._skillReactors[skill]();
       }
+      this._derivedStatReactors[DerivedStat.PerkRate]();
     }
   };
 

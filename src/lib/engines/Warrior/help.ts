@@ -1,5 +1,5 @@
 import type { IRoleHelp } from '../UnfinishedCharacter';
-import { Skill } from './data';
+import { Skill, Trait } from './data';
 
 export const Help: IRoleHelp = {
   formulas: {
@@ -23,6 +23,9 @@ export const Help: IRoleHelp = {
     [Skill.Outdoorsman]: '0% + (2 x (EN + IN))'
   },
   help: {
-    Pilot: 'The ability to operate and maintain all vehicles effectively.'
+    [Skill.Pilot]:
+      'The ability to operate and maintain all vehicles effectively.',
+    [Trait.GoodNatured]:
+      'You studied less-combative skills as you were growing up. Your combat skills start at a lower level, but other skills are substantially improved.'
   }
 } as const;

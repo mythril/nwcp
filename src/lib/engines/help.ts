@@ -154,18 +154,6 @@ export const CharacterHelpLookup: { [k: string]: string } = {
     'Tag skills are skills your character specializes in.  Each tag skill gains +20%, and increases twice as fast.  You must pick three tag skills.',
   'Optional Traits':
     'Optional traits describe your character in more detail.  All traits will have positive and negative effects.  You may choose up to two traits during creation.',
-  Poisoned:
-    'Your character has been poisoned.  Poison will do damage over a period of time, until cured or it passes from your system.',
-  Radiated:
-    'Your character is suffering from a significant amount of Radiation poisoning.  The more radiation damage, the more deadly the effect.',
-  'Eye Damage':
-    'This means your character has been seriously hit in one or both of your eyes.  This affects your Perception.',
-  'Crippled Right Arm':
-    'The right arm has been severely hurt, and cannot function well.  If one arm has been crippled, you cannot use two-handed weapons.  If both arms have been crippled, you cannot attack with weapons.',
-  'Crippled Left Arm':
-    "Your character's left arm has been severely hurt, and cannot function well.  If one arm has been crippled, you cannot use two-handed weapons.  If both arms have been crippled, you cannot attack with weapons.",
-  'Crippled Right Leg': 'Your character has a crippled right leg.',
-  'Crippled Left Leg': 'Your character has a crippled left leg.',
   Level:
     'The general competency of the player character. A measure of your experience and abilities.',
   Experience:

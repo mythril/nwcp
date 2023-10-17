@@ -426,7 +426,8 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
     }, DerivedStat.BonusDamage),
     [DerivedStat.SkillRate]: this._derivedStatReactor((attrs) => {
       const gifted = this.hasTrait(Trait.Gifted) ? -5 : 0;
-      return '' + (attrs.Intelligence * 2 + 5 + gifted);
+      const skilled = this.hasTrait(Trait.Skilled) ? 5 : 0;
+      return '' + (attrs.Intelligence * 2 + 5 + gifted + skilled);
     }, DerivedStat.SkillRate),
     [DerivedStat.PerkRate]: this._derivedStatReactor((_attrs) => {
       return '' + (this.hasTrait(Trait.Skilled) ? 4 : 3);
@@ -499,6 +500,7 @@ export class UnfinishedWarrior extends AbstractUnfinishedCharacter<
     [Trait.NightPerson]: noOp,
     [Trait.Skilled]: () => {
       this._derivedStatReactors[DerivedStat.PerkRate]();
+      this._derivedStatReactors[DerivedStat.SkillRate]();
     }
   };
 

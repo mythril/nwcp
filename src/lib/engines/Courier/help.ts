@@ -1,5 +1,5 @@
 import type { IRoleHelp } from '../UnfinishedCharacter';
-import { Skill } from './data';
+import { Skill, Trait } from './data';
 
 export const Help: IRoleHelp = {
   formulas: {
@@ -18,6 +18,18 @@ export const Help: IRoleHelp = {
     [Skill.Unarmed]: '2% + (EN x 2) + (LK / 2)'
   },
   help: {
-    Guns: 'Proficiency at using weapons that fire standard ammunition.'
+    [Skill.Guns]: 'Proficiency at using weapons that fire standard ammunition.',
+    [Trait.FastShot]:
+      'While using Guns and Energy Weapons, you fire 20% more quickly but your shots are 20% less accurate.',
+    [Trait.GoodNatured]:
+      "You're Good Natured at heart, more prone to solving problems with your mind than violence. You gain +5 to Barter, Medicine, Repair, Science, and Speech, but have -5 to Energy Weapons, Explosives, Guns, Melee Weapons, and Unarmed.",
+    [Trait.HeavyHanded]:
+      'Your melee and unarmed attacks do more damage, but less critical hit damage.',
+    [Trait.Kamikaze]:
+      'You have +10 Action Points but your reckless nature causes you to have -2 Damage Threshold.',
+    [Trait.SmallFrame]:
+      'Due to your small size, you have +1 Agility but your limbs are more easily crippled (25% extra limb damage).',
+    [Trait.Skilled]:
+      "You're skilled, but not experienced. You gain +5 points to every skill, but you suffer -10% from experience gained from now on."
   }
 } as const;
