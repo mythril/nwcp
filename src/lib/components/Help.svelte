@@ -97,8 +97,8 @@
       margin-bottom: 10rem;
       font-size: 21rem;
       line-height: 33rem;
-      &.empty{
-        border-bottom:0;
+      &.empty {
+        border-bottom: 0;
       }
       .extra {
         &:not(:empty)::before {

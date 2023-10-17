@@ -7,7 +7,6 @@ Overall goals:
 
 ### To do
 
-- [ ] add cascading override to help entry structure
 - [ ] internationalize: npm i i18next ?
 - [ ] ensure release script can do base-url changing
 - [ ] extract common subset out of RoleDisplay and Toast
@@ -37,6 +36,7 @@ Overall goals:
 
 ### Done
 
+- [x] add cascading override to help entry structure
 - [x] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
 - [ ] ~~embed this todo into the released site~~
 - [x] Release source when the planner is in a "better than nothing" state and some collaboration guidelines are in place
