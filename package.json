@@ -44,8 +44,5 @@
     "vite": "^4.3.6",
     "vitest": "^0.32.2"
   },
-  "type": "module",
-  "dependencies": {
-    "postcss-for": "^2.1.1"
-  }
+  "type": "module"
 }
