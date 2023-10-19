@@ -36,6 +36,8 @@ Overall goals:
 
 ### Done
 
+- [x] suppress sound until first click in document (iframe noises are annoying)
+- [x] run all non-triggered derived stats after reset
 - [x] add cascading override to help entry structure
 - [x] Figure out UI to change between planners and about pages / whatever else is added in (escape menu?)
 - [ ] ~~embed this todo into the released site~~

@@ -25,11 +25,7 @@
   } as const;
 
   function createToaster() {
-    const { subscribe, set } = writable<Toast>({
-      message: '',
-      duration: 5000,
-      color: 'yellow'
-    });
+    const { subscribe, set } = writable<Toast>(EmptyToast);
 
     // eslint-disable-next-line no-undef -- ?? some quirk with the language server
     let timer: string | number | NodeJS.Timeout | undefined;
@@ -114,11 +110,19 @@
     clickSound();
   };
 
-  $: if ($toast.message) {
-    changeToast();
-  } else {
-    offset = 100;
-    clickSound();
+  $: {
+    let messageHasBeenSet = false;
+    if ($toast.message !== EmptyToast.message) {
+      messageHasBeenSet = true;
+    }
+    if ($toast.message) {
+      changeToast();
+    } else {
+      offset = 100;
+      if (messageHasBeenSet) {
+        clickSound();
+      }
+    }
   }
 </script>
 

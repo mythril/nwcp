@@ -426,6 +426,18 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
     shuffler(OrderedDescriptors);
   }
 
+  _triggerReactors() {
+    for (const special of Object.values(Special)) {
+      this._specialReactors[special]();
+    }
+    this._maxHPReactor();
+    this.reactToAllSkills();
+    this.reactToAllTraits();
+    for (const derived of Object.values(DerivedStat)) {
+      this._derivedStatReactors[derived]();
+    }
+  }
+
   /* should probably look to the reactive store instead of the model */
   _reset(): void {
     this.name = '';
@@ -435,5 +447,6 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
     this.difficulty = Difficulty.Normal;
     this.clearTraits();
     this.clearTagged();
+    this._triggerReactors();
   }
 }
