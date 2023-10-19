@@ -2,33 +2,10 @@ import clickFile from '$lib/sounds/click2.wav?inline';
 import bonkFile from '$lib/sounds/bonk.wav?inline';
 import { isEmbedded } from './utils';
 
-// preload, only one instance (module singleton)
-const preloads: HTMLAudioElement[] = [];
-const clickAudio = new Audio(clickFile);
-preloads.push(clickAudio);
-const bonkAudio = new Audio(bonkFile);
-preloads.push(bonkAudio);
-
 const whenSoundShouldBePlayed = +new Date() + 1000;
 const now = () => {
   return +new Date();
 };
-
-async function preloader() {
-  for (const preload of preloads) {
-    try {
-      // keeps the audio from being truncated
-      preload.preload = 'auto';
-      preload.volume = 0;
-      await preload.play();
-    } catch {
-      // this is an expected error when we don't care if sound is played or not
-    } finally {
-      preload.volume = 1;
-    }
-  }
-}
-preloader();
 
 export async function clickSound() {
   if (isEmbedded()) {
@@ -37,6 +14,7 @@ export async function clickSound() {
   if (now() < whenSoundShouldBePlayed) {
     return;
   }
+  const clickAudio = new Audio(clickFile);
   clickAudio.currentTime = 0;
   try {
     await clickAudio.play();
@@ -52,6 +30,7 @@ export async function bonkSound() {
   if (now() < whenSoundShouldBePlayed) {
     return;
   }
+  const bonkAudio = new Audio(bonkFile);
   bonkAudio.currentTime = 0;
   try {
     await bonkAudio.play();
