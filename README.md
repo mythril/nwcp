@@ -6,6 +6,13 @@ https://github.com/mythril/nwcp/assets/169342/f88b3da0-da1f-4530-bf46-969c7c42e7
 
 You can now [embed](documentation/EMBEDDING.md) character builds in your pages.
 
+## To prepare site to be hosted from a subdirectory:
+
+```bash
+VITE_BASE_PATH=/subdirectory npm run release
+```
+Replace `/subdirectory` above with the subdirectory you intend to host the site from
+
 ## Road-map
 
 - For all supported roles, eventually:
@@ -16,3 +23,4 @@ You can now [embed](documentation/EMBEDDING.md) character builds in your pages.
   - Difficulty manipulation and other common exploits
 - No intention to support any other games in this repository, forks welcome
 - Event sourced data store will be the method of storage. (Journaled events style)
+- Translations are tabled for now

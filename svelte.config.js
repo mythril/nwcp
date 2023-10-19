@@ -12,7 +12,11 @@ export default {
       precompress: false,
       strict: true
     }),
-    serviceWorker: { register: false }
+    serviceWorker: { register: false },
+    paths: {
+      relative: false,
+      base: process.env.VITE_BASE_PATH
+    }
   },
   preprocess: [vitePreprocess({})]
 };

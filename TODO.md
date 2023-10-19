@@ -7,12 +7,11 @@ Overall goals:
 
 ### To do
 
-- [ ] internationalize: npm i i18next ?
-- [ ] ensure release script can do base-url changing
 - [ ] extract common subset out of RoleDisplay and Toast
 
 ### Maybe
 
+- [ ] internationalize: `npm i i18next --save-dev` - requires additional font(s) and scaling options per language - need interested translator before it'll be worth while
 - [ ] theme variations for each role - tan interface for Warrior, amber terminal text for Courier
 - [ ] improve flat menu look
 - [ ] Improve paper background (has issues with resizing?)
@@ -36,6 +35,7 @@ Overall goals:
 
 ### Done
 
+- [x] ensure release script can do base-url changing - set VITE_BASE_PATH env variable during build
 - [x] suppress sound until first click in document (iframe noises are annoying)
 - [x] run all non-triggered derived stats after reset
 - [x] add cascading override to help entry structure

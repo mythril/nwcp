@@ -22,6 +22,7 @@
   import { role } from '../../routes/RoleStore';
   import { hideMain } from './UI/Main.svelte';
   import { writable } from 'svelte/store';
+  import { base } from '$app/paths';
 
   export let value: ObjectValues<typeof Role>;
   let display: string[];
@@ -61,8 +62,9 @@
   };
 
   const makeChoice = async () => {
-    preloadData(roleLink);
-    preloadCode(roleLink);
+    const navLink = `${base}${roleLink}`;
+    preloadData(navLink);
+    preloadCode(navLink);
     $hideMain = true;
     tileOffset = 100;
     await sleep(1);
@@ -75,7 +77,7 @@
     await sleep(100);
     value = chosenRole;
     let a = document.createElement('a');
-    a.href = roleLink;
+    a.href = navLink;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -151,7 +153,7 @@
       <PlateButton
         on:click={makeChoice}
         type="button"
-        href={'/' + roleLink}>Choose</PlateButton
+        href={`${base}${roleLink}`}>Choose</PlateButton
       >
     </div>
   </div>
