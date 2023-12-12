@@ -11,6 +11,7 @@ You can now [embed](documentation/EMBEDDING.md) character builds in your pages.
 ```bash
 VITE_BASE_PATH=/subdirectory npm run release
 ```
+
 Replace `/subdirectory` above with the subdirectory you intend to host the site from
 
 ## Road-map
