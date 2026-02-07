@@ -19,11 +19,11 @@
   "devDependencies": {
     "@davidwells/postcss-math": "^1.0.3",
     "@faker-js/faker": "^8.0.2",
-    "@playwright/test": "1.29.0",
+    "@playwright/test": "1.29.1",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/adapter-static": "^2.0.2",
     "@sveltejs/kit": "^1.20.4",
-    "@typescript-eslint/eslint-plugin": "5.46.1",
+    "@typescript-eslint/eslint-plugin": "5.47.0",
     "@typescript-eslint/parser": "5.47.0",
     "@vite-pwa/sveltekit": "^0.2.5",
     "autoprefixer": "^10.4.14",
