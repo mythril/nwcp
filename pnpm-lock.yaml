@@ -54,7 +54,7 @@ importers:
         specifier: 8.4.31
         version: 8.4.31
       postcss-load-config:
-        specifier: ^4.0.1
+        specifier: 4.0.2
         version: 4.0.2(postcss@8.4.31)
       postcss-nested:
         specifier: ^6.0.1
