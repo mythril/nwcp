@@ -72,8 +72,8 @@ importers:
         specifier: 3.6.3
         version: 3.6.3(@babel/core@7.29.0)(postcss-load-config@5.0.2(postcss@8.4.33))(postcss@8.4.33)(svelte@4.2.8)
       tsafe:
-        specifier: 1.6.5
-        version: 1.6.5
+        specifier: 1.6.6
+        version: 1.6.6
       tslib:
         specifier: 2.6.2
         version: 2.6.2
@@ -2991,8 +2991,8 @@ packages:
     peerDependencies:
       typescript: '>=4.2.0'
 
-  tsafe@1.6.5:
-    resolution: {integrity: sha512-895zss8xqqHKTc28sHGIfZKnt3C5jrstB1DyPr/h3/flK0zojsZUMQL1/W4ytdDW6KI4Oth62nb9rrxmA3s3Iw==}
+  tsafe@1.6.6:
+    resolution: {integrity: sha512-gzkapsdbMNwBnTIjgO758GujLCj031IgHK/PKr2mrmkCSJMhSOR5FeOuSxKLMUoYc0vAA4RGEYYbjt/v6afD3g==}
 
   tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
@@ -6408,7 +6408,7 @@ snapshots:
     dependencies:
       typescript: 5.3.3
 
-  tsafe@1.6.5: {}
+  tsafe@1.6.6: {}
 
   tslib@2.6.2: {}
 
