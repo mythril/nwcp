@@ -38,7 +38,7 @@
     "svelte": "4.2.0",
     "svelte-check": "3.5.0",
     "tsafe": "^1.6.4",
-    "tslib": "2.6.1",
+    "tslib": "2.6.2",
     "typescript": "5.1.6",
     "vite": "4.4.9",
     "vitest": "0.34.2"
