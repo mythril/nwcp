@@ -24,7 +24,7 @@
     "@sveltejs/adapter-static": "^2.0.2",
     "@sveltejs/kit": "1.22.1",
     "@typescript-eslint/eslint-plugin": "5.61.0",
-    "@typescript-eslint/parser": "5.61.0",
+    "@typescript-eslint/parser": "5.62.0",
     "@vite-pwa/sveltekit": "^0.2.5",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
@@ -35,12 +35,12 @@
     "postcss-load-config": "^4.0.1",
     "postcss-nested": "^6.0.1",
     "prettier-plugin-svelte": "^2.10.1",
-    "svelte": "4.0.4",
+    "svelte": "4.0.5",
     "svelte-check": "^3.4.6",
     "tsafe": "^1.6.4",
     "tslib": "2.6.0",
     "typescript": "5.1.6",
-    "vite": "4.4.1",
+    "vite": "4.4.2",
     "vitest": "0.33.0"
   },
   "type": "module"
