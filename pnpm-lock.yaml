@@ -31,10 +31,10 @@ importers:
         version: 3.1.1(svelte@4.2.18)(vite@5.3.1(@types/node@25.2.1)(terser@5.46.0))
       '@typescript-eslint/eslint-plugin':
         specifier: 7.14.0
-        version: 7.14.0(@typescript-eslint/parser@7.14.0(eslint@9.5.0)(typescript@5.5.2))(eslint@9.5.0)(typescript@5.5.2)
+        version: 7.14.0(@typescript-eslint/parser@7.14.1(eslint@9.5.0)(typescript@5.5.2))(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/parser':
-        specifier: 7.14.0
-        version: 7.14.0(eslint@9.5.0)(typescript@5.5.2)
+        specifier: 7.14.1
+        version: 7.14.1(eslint@9.5.0)(typescript@5.5.2)
       '@vite-pwa/sveltekit':
         specifier: 0.5.0
         version: 0.5.0(@sveltejs/kit@2.5.17(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.1(@types/node@25.2.1)(terser@5.46.0)))(svelte@4.2.18)(vite@5.3.1(@types/node@25.2.1)(terser@5.46.0)))(vite-plugin-pwa@0.21.2(vite@5.3.1(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0))
@@ -1087,8 +1087,8 @@ packages:
       typescript:
         optional: true
 
-  '@typescript-eslint/parser@7.14.0':
-    resolution: {integrity: sha512-xGY6hY3RuT3F5aKHCc96cTNKZsxN7vTPt+Flz0IEmHiIAoI2szTJxxS1B8eUqzrGn1Y5vHiDgfISArcz2C6PrA==}
+  '@typescript-eslint/parser@7.14.1':
+    resolution: {integrity: sha512-8lKUOebNLcR0D7RvlcloOacTOWzOqemWEWkKSVpMZVF/XVcwjPR+3MD08QzbW9TCGJ+DwIc6zUSGZ9vd8cO1IA==}
     engines: {node: ^18.18.0 || >=20.0.0}
     peerDependencies:
       eslint: ^8.56.0
@@ -1099,6 +1099,10 @@ packages:
 
   '@typescript-eslint/scope-manager@7.14.0':
     resolution: {integrity: sha512-Plcp2+3jkQz/WD7YKJxqtQ/1uqVkyFTv2TgG3K4e4cVt5fNbVNaojX89PpCAZ9eKbSs596s1n9eiZQkQPorsJg==}
+    engines: {node: ^18.18.0 || >=20.0.0}
+
+  '@typescript-eslint/scope-manager@7.14.1':
+    resolution: {integrity: sha512-gPrFSsoYcsffYXTOZ+hT7fyJr95rdVe4kGVX1ps/dJ+DfmlnjFN/GcMxXcVkeHDKqsq6uAcVaQaIi3cFffmAbA==}
     engines: {node: ^18.18.0 || >=20.0.0}
 
   '@typescript-eslint/type-utils@7.14.0':
@@ -1115,8 +1119,21 @@ packages:
     resolution: {integrity: sha512-m5s+5+QQ/2cFLMmsPq2SlgNnK6V3UhcedMve20k6ctRPZnarIR4MV2nBw4dFEDxSRre7SQnUX6mXOpxVhJbUFg==}
     engines: {node: ^18.18.0 || >=20.0.0}
 
+  '@typescript-eslint/types@7.14.1':
+    resolution: {integrity: sha512-mL7zNEOQybo5R3AavY+Am7KLv8BorIv7HCYS5rKoNZKQD9tsfGUpO4KdAn3sSUvTiS4PQkr2+K0KJbxj8H9NDg==}
+    engines: {node: ^18.18.0 || >=20.0.0}
+
   '@typescript-eslint/typescript-estree@7.14.0':
     resolution: {integrity: sha512-M6K5sw1anuswkxgUvjPgSVKbiw/2qeOrq+81ts0U48PS+ocA/YT1F+MAJ2JQkB7CGJXL8ENvo61KBLW5DmMSmA==}
+    engines: {node: ^18.18.0 || >=20.0.0}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  '@typescript-eslint/typescript-estree@7.14.1':
+    resolution: {integrity: sha512-k5d0VuxViE2ulIO6FbxxSZaxqDVUyMbXcidC8rHvii0I56XZPv8cq+EhMns+d/EVIL41sMXqRbK3D10Oza1bbA==}
     engines: {node: ^18.18.0 || >=20.0.0}
     peerDependencies:
       typescript: '*'
@@ -1132,6 +1149,10 @@ packages:
 
   '@typescript-eslint/visitor-keys@7.14.0':
     resolution: {integrity: sha512-OjXoB9vX6YnLI2qHPGO6EFZjzYZ92eWeev6aJITlhjpebc00zw70hZ0vONC+IhTkEvdedh3XhglNIZA8DtN7zw==}
+    engines: {node: ^18.18.0 || >=20.0.0}
+
+  '@typescript-eslint/visitor-keys@7.14.1':
+    resolution: {integrity: sha512-Crb+F75U1JAEtBeQGxSKwI60hZmmzaqA3z9sYsVm8X7W5cwLEm5bRe0/uXS6+MR/y8CVpKSR/ontIAIEPFcEkA==}
     engines: {node: ^18.18.0 || >=20.0.0}
 
   '@vite-pwa/sveltekit@0.5.0':
@@ -4321,10 +4342,10 @@ snapshots:
 
   '@types/trusted-types@2.0.7': {}
 
-  '@typescript-eslint/eslint-plugin@7.14.0(@typescript-eslint/parser@7.14.0(eslint@9.5.0)(typescript@5.5.2))(eslint@9.5.0)(typescript@5.5.2)':
+  '@typescript-eslint/eslint-plugin@7.14.0(@typescript-eslint/parser@7.14.1(eslint@9.5.0)(typescript@5.5.2))(eslint@9.5.0)(typescript@5.5.2)':
     dependencies:
       '@eslint-community/regexpp': 4.12.2
-      '@typescript-eslint/parser': 7.14.0(eslint@9.5.0)(typescript@5.5.2)
+      '@typescript-eslint/parser': 7.14.1(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/scope-manager': 7.14.0
       '@typescript-eslint/type-utils': 7.14.0(eslint@9.5.0)(typescript@5.5.2)
       '@typescript-eslint/utils': 7.14.0(eslint@9.5.0)(typescript@5.5.2)
@@ -4339,12 +4360,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@7.14.0(eslint@9.5.0)(typescript@5.5.2)':
+  '@typescript-eslint/parser@7.14.1(eslint@9.5.0)(typescript@5.5.2)':
     dependencies:
-      '@typescript-eslint/scope-manager': 7.14.0
-      '@typescript-eslint/types': 7.14.0
-      '@typescript-eslint/typescript-estree': 7.14.0(typescript@5.5.2)
-      '@typescript-eslint/visitor-keys': 7.14.0
+      '@typescript-eslint/scope-manager': 7.14.1
+      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/typescript-estree': 7.14.1(typescript@5.5.2)
+      '@typescript-eslint/visitor-keys': 7.14.1
       debug: 4.4.3
       eslint: 9.5.0
     optionalDependencies:
@@ -4356,6 +4377,11 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 7.14.0
       '@typescript-eslint/visitor-keys': 7.14.0
+
+  '@typescript-eslint/scope-manager@7.14.1':
+    dependencies:
+      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/visitor-keys': 7.14.1
 
   '@typescript-eslint/type-utils@7.14.0(eslint@9.5.0)(typescript@5.5.2)':
     dependencies:
@@ -4371,10 +4397,27 @@ snapshots:
 
   '@typescript-eslint/types@7.14.0': {}
 
+  '@typescript-eslint/types@7.14.1': {}
+
   '@typescript-eslint/typescript-estree@7.14.0(typescript@5.5.2)':
     dependencies:
       '@typescript-eslint/types': 7.14.0
       '@typescript-eslint/visitor-keys': 7.14.0
+      debug: 4.4.3
+      globby: 11.1.0
+      is-glob: 4.0.3
+      minimatch: 9.0.5
+      semver: 7.7.4
+      ts-api-utils: 1.4.3(typescript@5.5.2)
+    optionalDependencies:
+      typescript: 5.5.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@typescript-eslint/typescript-estree@7.14.1(typescript@5.5.2)':
+    dependencies:
+      '@typescript-eslint/types': 7.14.1
+      '@typescript-eslint/visitor-keys': 7.14.1
       debug: 4.4.3
       globby: 11.1.0
       is-glob: 4.0.3
@@ -4400,6 +4443,11 @@ snapshots:
   '@typescript-eslint/visitor-keys@7.14.0':
     dependencies:
       '@typescript-eslint/types': 7.14.0
+      eslint-visitor-keys: 3.4.3
+
+  '@typescript-eslint/visitor-keys@7.14.1':
+    dependencies:
+      '@typescript-eslint/types': 7.14.1
       eslint-visitor-keys: 3.4.3
 
   '@vite-pwa/sveltekit@0.5.0(@sveltejs/kit@2.5.17(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.1(@types/node@25.2.1)(terser@5.46.0)))(svelte@4.2.18)(vite@5.3.1(@types/node@25.2.1)(terser@5.46.0)))(vite-plugin-pwa@0.21.2(vite@5.3.1(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0))':
