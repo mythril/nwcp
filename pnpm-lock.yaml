@@ -42,8 +42,8 @@ importers:
         specifier: 10.4.20
         version: 10.4.20(postcss@8.4.41)
       cssnano:
-        specifier: 7.0.4
-        version: 7.0.4(postcss@8.4.41)
+        specifier: 7.0.5
+        version: 7.0.5(postcss@8.4.41)
       eslint:
         specifier: 9.8.0
         version: 9.8.0
@@ -1418,8 +1418,8 @@ packages:
     peerDependencies:
       postcss: ^8.4.32
 
-  cssnano@7.0.4:
-    resolution: {integrity: sha512-rQgpZra72iFjiheNreXn77q1haS2GEy69zCMbu4cpXCFPMQF+D4Ik5V7ktMzUF/sA7xCIgcqHwGPnCD+0a1vHg==}
+  cssnano@7.0.5:
+    resolution: {integrity: sha512-Aq0vqBLtpTT5Yxj+hLlLfNPFuRQCDIjx5JQAhhaedQKLNDvDGeVziF24PS+S1f0Z5KCxWvw0QVI3VNHNBITxVQ==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.31
@@ -4689,7 +4689,7 @@ snapshots:
     dependencies:
       postcss: 8.4.41
 
-  cssnano@7.0.4(postcss@8.4.41):
+  cssnano@7.0.5(postcss@8.4.41):
     dependencies:
       cssnano-preset-default: 7.0.10(postcss@8.4.41)
       lilconfig: 3.1.3
