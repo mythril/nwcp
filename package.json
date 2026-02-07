@@ -28,7 +28,7 @@
     "@typescript-eslint/parser": "7.15.0",
     "@vite-pwa/sveltekit": "0.6.0",
     "autoprefixer": "10.4.19",
-    "cssnano": "7.0.3",
+    "cssnano": "7.0.4",
     "eslint": "9.6.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-svelte": "2.41.0",
@@ -42,7 +42,7 @@
     "tslib": "2.6.3",
     "typescript": "5.5.3",
     "vite": "5.3.3",
-    "vitest": "1.6.0"
+    "vitest": "2.0.1"
   },
   "type": "module"
 }
