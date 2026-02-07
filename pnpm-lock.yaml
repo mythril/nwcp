@@ -33,8 +33,8 @@ importers:
         specifier: 6.13.2
         version: 6.13.2(eslint@8.55.0)(typescript@5.3.3)
       '@vite-pwa/sveltekit':
-        specifier: 0.2.9
-        version: 0.2.9(@sveltejs/kit@1.27.7(svelte@4.2.8)(vite@5.0.6(@types/node@25.2.1)(terser@5.46.0)))(vite-plugin-pwa@0.21.2(vite@5.0.6(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0))
+        specifier: 0.2.10
+        version: 0.2.10(@sveltejs/kit@1.27.7(svelte@4.2.8)(vite@5.0.6(@types/node@25.2.1)(terser@5.46.0)))(vite-plugin-pwa@0.21.2(vite@5.0.6(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0))
       autoprefixer:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.32)
@@ -1146,8 +1146,8 @@ packages:
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
-  '@vite-pwa/sveltekit@0.2.9':
-    resolution: {integrity: sha512-O/aH/0fj0r5D3+w2P5jrRzp1RcqoQeWJ/GXvaSvuv57KdGS/yO5eOkzsE60r/pLySVcwOtvwgKaseWS9Ct8uaA==}
+  '@vite-pwa/sveltekit@0.2.10':
+    resolution: {integrity: sha512-58acO/8vL7tVqBNH6IZnB34b2TLco39AF3wN41FEevrxUoM9BNY5VNZAKG2va4LPnzbeB8svSKhZjYGZ34aJQQ==}
     engines: {node: '>=16.14 || >=18'}
     peerDependencies:
       '@sveltejs/kit': ^1.3.1
@@ -4410,7 +4410,7 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@vite-pwa/sveltekit@0.2.9(@sveltejs/kit@1.27.7(svelte@4.2.8)(vite@5.0.6(@types/node@25.2.1)(terser@5.46.0)))(vite-plugin-pwa@0.21.2(vite@5.0.6(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0))':
+  '@vite-pwa/sveltekit@0.2.10(@sveltejs/kit@1.27.7(svelte@4.2.8)(vite@5.0.6(@types/node@25.2.1)(terser@5.46.0)))(vite-plugin-pwa@0.21.2(vite@5.0.6(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0))':
     dependencies:
       '@sveltejs/kit': 1.27.7(svelte@4.2.8)(vite@5.0.6(@types/node@25.2.1)(terser@5.46.0))
       kolorist: 1.8.0
