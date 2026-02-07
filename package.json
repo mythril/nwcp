@@ -19,7 +19,7 @@
   "devDependencies": {
     "@davidwells/postcss-math": "^1.0.3",
     "@faker-js/faker": "^8.0.2",
-    "@playwright/test": "1.36.1",
+    "@playwright/test": "1.36.2",
     "@sveltejs/adapter-auto": "2.1.0",
     "@sveltejs/adapter-static": "^2.0.2",
     "@sveltejs/kit": "1.22.3",
@@ -34,7 +34,7 @@
     "postcss": "^8.4.27",
     "postcss-load-config": "^4.0.1",
     "postcss-nested": "^6.0.1",
-    "prettier-plugin-svelte": "3.0.0",
+    "prettier-plugin-svelte": "3.0.2",
     "svelte": "4.1.1",
     "svelte-check": "^3.4.6",
     "tsafe": "^1.6.4",
