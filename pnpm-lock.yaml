@@ -18,8 +18,8 @@ importers:
         specifier: 1.40.1
         version: 1.40.1
       '@sveltejs/adapter-auto':
-        specifier: 3.0.1
-        version: 3.0.1(@sveltejs/kit@2.0.6(@sveltejs/vite-plugin-svelte@3.0.1(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0)))
+        specifier: 3.1.0
+        version: 3.1.0(@sveltejs/kit@2.0.6(@sveltejs/vite-plugin-svelte@3.0.1(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0)))
       '@sveltejs/adapter-static':
         specifier: 3.0.1
         version: 3.0.1(@sveltejs/kit@2.0.6(@sveltejs/vite-plugin-svelte@3.0.1(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0)))
@@ -1020,8 +1020,8 @@ packages:
   '@surma/rollup-plugin-off-main-thread@2.2.3':
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
 
-  '@sveltejs/adapter-auto@3.0.1':
-    resolution: {integrity: sha512-OpilmvRN136lUgOa9F0zpSI6g+PouOmk+YvJQrB+/hAtllLghjjYuoyfUsrF7U6oJ52cxCtAJTPXgZdyyCffrQ==}
+  '@sveltejs/adapter-auto@3.1.0':
+    resolution: {integrity: sha512-igS5hqCwdiXWb8NoWzThKCVQQj9tKgUkbTtzfxBPgSLOyFjkiGNDX0SgCoY2QIUWBqOkfGTOqGlrW5Ynw9oUvw==}
     peerDependencies:
       '@sveltejs/kit': ^2.0.0
 
@@ -4242,7 +4242,7 @@ snapshots:
       magic-string: 0.25.9
       string.prototype.matchall: 4.0.12
 
-  '@sveltejs/adapter-auto@3.0.1(@sveltejs/kit@2.0.6(@sveltejs/vite-plugin-svelte@3.0.1(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0)))':
+  '@sveltejs/adapter-auto@3.1.0(@sveltejs/kit@2.0.6(@sveltejs/vite-plugin-svelte@3.0.1(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0)))':
     dependencies:
       '@sveltejs/kit': 2.0.6(@sveltejs/vite-plugin-svelte@3.0.1(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@4.2.8)(vite@5.0.10(@types/node@25.2.1)(terser@5.46.0))
       import-meta-resolve: 4.2.0
