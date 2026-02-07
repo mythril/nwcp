@@ -4,7 +4,7 @@ import { loadEnv } from 'vite';
 import fs from 'fs';
 
 export default ({ mode }: { mode: string }) => {
-  Object.assign(process.env, loadEnv(mode, process.cwd()));
+  const env = loadEnv(mode, process.cwd(), '');
 
   return defineConfig({
     plugins: [sveltekit()],
@@ -12,17 +12,18 @@ export default ({ mode }: { mode: string }) => {
       include: ['src/**/*.{test,spec}.{js,ts}']
     },
     server: {
-      // host: process.env.VITE_DEV_HOST || 'localhost',
-      host: true,
-      port: parseInt(process.env.VITE_DEV_PORT || '8080', 10),
+      host: env.VITE_DEV_HOST || 'localhost',
+      // host: true,
+      port: parseInt(env.VITE_DEV_PORT || '8080', 10),
       https: {
-        cert: process.env.VITE_CERT_FILE
-          ? fs.readFileSync(process.env.VITE_CERT_FILE)
+        cert: env.VITE_CERT_FILE
+          ? fs.readFileSync(env.VITE_CERT_FILE)
           : undefined,
-        key: process.env.VITE_KEY_FILE
-          ? fs.readFileSync(process.env.VITE_KEY_FILE)
+        key: env.VITE_KEY_FILE
+          ? fs.readFileSync(env.VITE_KEY_FILE)
           : undefined
-      }
+      },
+      proxy: {}
     },
     build: {
       rollupOptions: {
