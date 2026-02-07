@@ -36,7 +36,7 @@
     "postcss-load-config": "5.0.3",
     "postcss-nested": "^6.0.1",
     "prettier-plugin-svelte": "3.2.3",
-    "svelte": "4.2.14",
+    "svelte": "4.2.15",
     "svelte-check": "3.6.9",
     "tsafe": "1.6.6",
     "tslib": "2.6.2",
