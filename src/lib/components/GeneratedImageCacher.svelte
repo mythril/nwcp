@@ -23,6 +23,8 @@
     ctx.fillRect(width, height, width, height);
   };
 
+  const StyleTagNameToAvoidPreprocessorError = "style";
+
   let canvas: HTMLCanvasElement;
 
   // Use rendered to remove the support materials from the document when done
@@ -78,7 +80,7 @@
   {#if styles.length > 0}
     <!-- eslint-disable-next-line svelte/no-at-html-tags -- not subject to user input -->
     {@html `
-      <style type="text/css">${styles.join('\n')}</style>
+      <${StyleTagNameToAvoidPreprocessorError} type="text/css">${styles.join('\n')}</${StyleTagNameToAvoidPreprocessorError}>
     `}
   {/if}
 </svelte:head>
