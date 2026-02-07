@@ -31,10 +31,10 @@ importers:
         version: 3.1.2(svelte@4.2.19)(vite@5.4.3(@types/node@25.2.1)(terser@5.46.0))
       '@typescript-eslint/eslint-plugin':
         specifier: 8.4.0
-        version: 8.4.0(@typescript-eslint/parser@8.4.0(eslint@9.10.0)(typescript@5.5.4))(eslint@9.10.0)(typescript@5.5.4)
+        version: 8.4.0(@typescript-eslint/parser@8.4.0(eslint@9.10.0)(typescript@5.6.2))(eslint@9.10.0)(typescript@5.6.2)
       '@typescript-eslint/parser':
         specifier: 8.4.0
-        version: 8.4.0(eslint@9.10.0)(typescript@5.5.4)
+        version: 8.4.0(eslint@9.10.0)(typescript@5.6.2)
       '@vite-pwa/sveltekit':
         specifier: 0.6.5
         version: 0.6.5(@sveltejs/kit@2.5.26(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.3(@types/node@25.2.1)(terser@5.46.0)))(svelte@4.2.19)(vite@5.4.3(@types/node@25.2.1)(terser@5.46.0)))(vite-plugin-pwa@0.21.2(vite@5.4.3(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0))
@@ -70,7 +70,7 @@ importers:
         version: 4.2.19
       svelte-check:
         specifier: 4.0.1
-        version: 4.0.1(picomatch@4.0.3)(svelte@4.2.19)(typescript@5.5.4)
+        version: 4.0.1(picomatch@4.0.3)(svelte@4.2.19)(typescript@5.6.2)
       tsafe:
         specifier: 1.7.2
         version: 1.7.2
@@ -78,8 +78,8 @@ importers:
         specifier: 2.7.0
         version: 2.7.0
       typescript:
-        specifier: 5.5.4
-        version: 5.5.4
+        specifier: 5.6.2
+        version: 5.6.2
       vite:
         specifier: 5.4.3
         version: 5.4.3(@types/node@25.2.1)(terser@5.46.0)
@@ -2889,8 +2889,8 @@ packages:
     resolution: {integrity: sha512-bctQIOqx2iVbWGDGPWwIm18QScpu2XRmkC19D8rQGFsjKSgteq/o1hTZvIG/wuDq8fanpBDrLkLq+aEN/6y5XQ==}
     engines: {node: '>= 10'}
 
-  typescript@5.5.4:
-    resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
+  typescript@5.6.2:
+    resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -4156,34 +4156,34 @@ snapshots:
 
   '@types/trusted-types@2.0.7': {}
 
-  '@typescript-eslint/eslint-plugin@8.4.0(@typescript-eslint/parser@8.4.0(eslint@9.10.0)(typescript@5.5.4))(eslint@9.10.0)(typescript@5.5.4)':
+  '@typescript-eslint/eslint-plugin@8.4.0(@typescript-eslint/parser@8.4.0(eslint@9.10.0)(typescript@5.6.2))(eslint@9.10.0)(typescript@5.6.2)':
     dependencies:
       '@eslint-community/regexpp': 4.12.2
-      '@typescript-eslint/parser': 8.4.0(eslint@9.10.0)(typescript@5.5.4)
+      '@typescript-eslint/parser': 8.4.0(eslint@9.10.0)(typescript@5.6.2)
       '@typescript-eslint/scope-manager': 8.4.0
-      '@typescript-eslint/type-utils': 8.4.0(eslint@9.10.0)(typescript@5.5.4)
-      '@typescript-eslint/utils': 8.4.0(eslint@9.10.0)(typescript@5.5.4)
+      '@typescript-eslint/type-utils': 8.4.0(eslint@9.10.0)(typescript@5.6.2)
+      '@typescript-eslint/utils': 8.4.0(eslint@9.10.0)(typescript@5.6.2)
       '@typescript-eslint/visitor-keys': 8.4.0
       eslint: 9.10.0
       graphemer: 1.4.0
       ignore: 5.3.2
       natural-compare: 1.4.0
-      ts-api-utils: 1.4.3(typescript@5.5.4)
+      ts-api-utils: 1.4.3(typescript@5.6.2)
     optionalDependencies:
-      typescript: 5.5.4
+      typescript: 5.6.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@8.4.0(eslint@9.10.0)(typescript@5.5.4)':
+  '@typescript-eslint/parser@8.4.0(eslint@9.10.0)(typescript@5.6.2)':
     dependencies:
       '@typescript-eslint/scope-manager': 8.4.0
       '@typescript-eslint/types': 8.4.0
-      '@typescript-eslint/typescript-estree': 8.4.0(typescript@5.5.4)
+      '@typescript-eslint/typescript-estree': 8.4.0(typescript@5.6.2)
       '@typescript-eslint/visitor-keys': 8.4.0
       debug: 4.4.3
       eslint: 9.10.0
     optionalDependencies:
-      typescript: 5.5.4
+      typescript: 5.6.2
     transitivePeerDependencies:
       - supports-color
 
@@ -4192,21 +4192,21 @@ snapshots:
       '@typescript-eslint/types': 8.4.0
       '@typescript-eslint/visitor-keys': 8.4.0
 
-  '@typescript-eslint/type-utils@8.4.0(eslint@9.10.0)(typescript@5.5.4)':
+  '@typescript-eslint/type-utils@8.4.0(eslint@9.10.0)(typescript@5.6.2)':
     dependencies:
-      '@typescript-eslint/typescript-estree': 8.4.0(typescript@5.5.4)
-      '@typescript-eslint/utils': 8.4.0(eslint@9.10.0)(typescript@5.5.4)
+      '@typescript-eslint/typescript-estree': 8.4.0(typescript@5.6.2)
+      '@typescript-eslint/utils': 8.4.0(eslint@9.10.0)(typescript@5.6.2)
       debug: 4.4.3
-      ts-api-utils: 1.4.3(typescript@5.5.4)
+      ts-api-utils: 1.4.3(typescript@5.6.2)
     optionalDependencies:
-      typescript: 5.5.4
+      typescript: 5.6.2
     transitivePeerDependencies:
       - eslint
       - supports-color
 
   '@typescript-eslint/types@8.4.0': {}
 
-  '@typescript-eslint/typescript-estree@8.4.0(typescript@5.5.4)':
+  '@typescript-eslint/typescript-estree@8.4.0(typescript@5.6.2)':
     dependencies:
       '@typescript-eslint/types': 8.4.0
       '@typescript-eslint/visitor-keys': 8.4.0
@@ -4215,18 +4215,18 @@ snapshots:
       is-glob: 4.0.3
       minimatch: 9.0.5
       semver: 7.7.4
-      ts-api-utils: 1.4.3(typescript@5.5.4)
+      ts-api-utils: 1.4.3(typescript@5.6.2)
     optionalDependencies:
-      typescript: 5.5.4
+      typescript: 5.6.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.4.0(eslint@9.10.0)(typescript@5.5.4)':
+  '@typescript-eslint/utils@8.4.0(eslint@9.10.0)(typescript@5.6.2)':
     dependencies:
       '@eslint-community/eslint-utils': 4.9.1(eslint@9.10.0)
       '@typescript-eslint/scope-manager': 8.4.0
       '@typescript-eslint/types': 8.4.0
-      '@typescript-eslint/typescript-estree': 8.4.0(typescript@5.5.4)
+      '@typescript-eslint/typescript-estree': 8.4.0(typescript@5.6.2)
       eslint: 9.10.0
     transitivePeerDependencies:
       - supports-color
@@ -5996,7 +5996,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@4.0.1(picomatch@4.0.3)(svelte@4.2.19)(typescript@5.5.4):
+  svelte-check@4.0.1(picomatch@4.0.3)(svelte@4.2.19)(typescript@5.6.2):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       chokidar: 3.6.0
@@ -6004,7 +6004,7 @@ snapshots:
       picocolors: 1.1.1
       sade: 1.8.1
       svelte: 4.2.19
-      typescript: 5.5.4
+      typescript: 5.6.2
     transitivePeerDependencies:
       - picomatch
 
@@ -6097,9 +6097,9 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  ts-api-utils@1.4.3(typescript@5.5.4):
+  ts-api-utils@1.4.3(typescript@5.6.2):
     dependencies:
-      typescript: 5.5.4
+      typescript: 5.6.2
 
   tsafe@1.7.2: {}
 
@@ -6146,7 +6146,7 @@ snapshots:
 
   typed-function@2.1.0: {}
 
-  typescript@5.5.4: {}
+  typescript@5.6.2: {}
 
   unbox-primitive@1.1.0:
     dependencies:
