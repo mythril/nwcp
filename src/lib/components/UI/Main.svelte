@@ -41,6 +41,9 @@
   };
 
   function loadFromHash() {
+    if (typeof window === 'undefined') {
+      return;
+    }
     try {
       if (window.location.hash.length > 1) {
         const cTor = Object.getPrototypeOf($character).constructor;
