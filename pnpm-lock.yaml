@@ -72,8 +72,8 @@ importers:
         specifier: 4.0.4
         version: 4.0.4(picomatch@4.0.3)(svelte@4.2.19)(typescript@5.6.2)
       tsafe:
-        specifier: 1.7.4
-        version: 1.7.4
+        specifier: 1.7.5
+        version: 1.7.5
       tslib:
         specifier: 2.7.0
         version: 2.7.0
@@ -2826,8 +2826,8 @@ packages:
     peerDependencies:
       typescript: '>=4.2.0'
 
-  tsafe@1.7.4:
-    resolution: {integrity: sha512-4BrLklZMJ14dEtA+CkhY9OtID3al4+/GJhaeocWPtUuoZPr4SJkaqoPemyFgkLC1Y3LRNXF9zxa94SwssRGMaQ==}
+  tsafe@1.7.5:
+    resolution: {integrity: sha512-tbNyyBSbwfbilFfiuXkSOj82a6++ovgANwcoqBAcO9/REPoZMEQoE8kWPeO0dy5A2D/2Lajr8Ohue5T0ifIvLQ==}
 
   tslib@2.7.0:
     resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
@@ -6036,7 +6036,7 @@ snapshots:
     dependencies:
       typescript: 5.6.2
 
-  tsafe@1.7.4: {}
+  tsafe@1.7.5: {}
 
   tslib@2.7.0: {}
 
