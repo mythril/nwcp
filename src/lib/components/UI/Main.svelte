@@ -99,10 +99,12 @@
       blanks[$character.role] = charToBase64(blankChar);
     }
     let hash = charToBase64($character);
-    if (blanks[$character.role] === hash) {
-      history.replaceState(undefined, '', ' ');
-    } else {
-      history.replaceState(undefined, '', '#' + hash);
+    if (typeof window !== 'undefined') {
+      if (blanks[$character.role] === hash) {
+        history.replaceState(undefined, '', ' ');
+      } else {
+        history.replaceState(undefined, '', '#' + hash);
+      }
     }
   }
 

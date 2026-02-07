@@ -17,8 +17,14 @@
   import Scaler from '$lib/components/Scaler.svelte';
   import { isEmbedded } from '$lib/utils';
   import Button from '$lib/components/Buttons/Button.svelte';
+  
+  let href = "";
 
   async function bootUp() {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    href = window.location.href;
     addEventListener('popstate', () => location.reload());
     if ('serviceWorker' in navigator) {
       debug.log('registering service worker');
@@ -84,7 +90,7 @@
     class="embeddedBailerLink"
     type="link"
     target="_blank"
-    href={window.location.href}
+    {href}
   />
 {/if}
 
