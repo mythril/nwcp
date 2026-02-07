@@ -57,8 +57,8 @@ importers:
         specifier: 8.4.35
         version: 8.4.35
       postcss-load-config:
-        specifier: 5.0.2
-        version: 5.0.2(postcss@8.4.35)
+        specifier: 5.0.3
+        version: 5.0.3(postcss@8.4.35)
       postcss-nested:
         specifier: ^6.0.1
         version: 6.2.0(postcss@8.4.35)
@@ -70,7 +70,7 @@ importers:
         version: 4.2.10
       svelte-check:
         specifier: 3.6.3
-        version: 3.6.3(@babel/core@7.29.0)(postcss-load-config@5.0.2(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.10)
+        version: 3.6.3(@babel/core@7.29.0)(postcss-load-config@5.0.3(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.10)
       tsafe:
         specifier: 1.6.6
         version: 1.6.6
@@ -2404,8 +2404,8 @@ packages:
       ts-node:
         optional: true
 
-  postcss-load-config@5.0.2:
-    resolution: {integrity: sha512-Q8QR3FYbqOKa0bnC1UQ2bFq9/ulHX5Bi34muzitMr8aDtUelO5xKeJEYC/5smE0jNE9zdB/NBnOwXKexELbRlw==}
+  postcss-load-config@5.0.3:
+    resolution: {integrity: sha512-90pBBI5apUVruIEdCxZic93Wm+i9fTrp7TXbgdUCH+/L+2WnfpITSpq5dFU/IPvbv7aNiMlQISpUkAm3fEcvgQ==}
     engines: {node: '>= 18'}
     peerDependencies:
       jiti: '>=1.21.0'
@@ -5773,7 +5773,7 @@ snapshots:
     optionalDependencies:
       postcss: 8.4.35
 
-  postcss-load-config@5.0.2(postcss@8.4.35):
+  postcss-load-config@5.0.3(postcss@8.4.35):
     dependencies:
       lilconfig: 3.1.3
       yaml: 2.8.2
@@ -6282,7 +6282,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@3.6.3(@babel/core@7.29.0)(postcss-load-config@5.0.2(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.10):
+  svelte-check@3.6.3(@babel/core@7.29.0)(postcss-load-config@5.0.3(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.10):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       chokidar: 3.6.0
@@ -6291,7 +6291,7 @@ snapshots:
       picocolors: 1.1.1
       sade: 1.8.1
       svelte: 4.2.10
-      svelte-preprocess: 5.1.4(@babel/core@7.29.0)(postcss-load-config@5.0.2(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.10)(typescript@5.3.3)
+      svelte-preprocess: 5.1.4(@babel/core@7.29.0)(postcss-load-config@5.0.3(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.10)(typescript@5.3.3)
       typescript: 5.3.3
     transitivePeerDependencies:
       - '@babel/core'
@@ -6318,7 +6318,7 @@ snapshots:
     dependencies:
       svelte: 4.2.10
 
-  svelte-preprocess@5.1.4(@babel/core@7.29.0)(postcss-load-config@5.0.2(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.10)(typescript@5.3.3):
+  svelte-preprocess@5.1.4(@babel/core@7.29.0)(postcss-load-config@5.0.3(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.10)(typescript@5.3.3):
     dependencies:
       '@types/pug': 2.0.10
       detect-indent: 6.1.0
@@ -6329,7 +6329,7 @@ snapshots:
     optionalDependencies:
       '@babel/core': 7.29.0
       postcss: 8.4.35
-      postcss-load-config: 5.0.2(postcss@8.4.35)
+      postcss-load-config: 5.0.3(postcss@8.4.35)
       typescript: 5.3.3
 
   svelte@4.2.10:
