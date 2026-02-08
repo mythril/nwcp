@@ -25,7 +25,7 @@
     "@sveltejs/kit": "2.15.0",
     "@sveltejs/vite-plugin-svelte": "5.0.3",
     "@typescript-eslint/eslint-plugin": "8.18.1",
-    "@typescript-eslint/parser": "8.18.1",
+    "@typescript-eslint/parser": "8.18.2",
     "@vite-pwa/sveltekit": "0.6.6",
     "autoprefixer": "10.4.20",
     "cssnano": "7.0.6",
