@@ -60,8 +60,8 @@ importers:
         specifier: 6.0.1
         version: 6.0.1(postcss@8.4.47)(yaml@2.8.2)
       postcss-nested:
-        specifier: 7.0.1
-        version: 7.0.1(postcss@8.4.47)
+        specifier: 7.0.2
+        version: 7.0.2(postcss@8.4.47)
       prettier-plugin-svelte:
         specifier: 3.2.7
         version: 3.2.7(prettier@3.8.1)(svelte@5.1.9)
@@ -2355,8 +2355,8 @@ packages:
     peerDependencies:
       postcss: ^8.4.32
 
-  postcss-nested@7.0.1:
-    resolution: {integrity: sha512-4CDBQTsPHZL+cPpPAeDD5cvHe9mIJKiIffnsHC7Nx4oMGPu27aqrYSuGZyRlp1cv1Ms1koF2lO9QYLRdmUhAFw==}
+  postcss-nested@7.0.2:
+    resolution: {integrity: sha512-5osppouFc0VR9/VYzYxO03VaDa3e8F23Kfd6/9qcZTUI8P58GIYlArOET2Wq0ywSl2o2PjELhYOFI4W7l5QHKw==}
     engines: {node: '>=18.0'}
     peerDependencies:
       postcss: ^8.2.14
@@ -5497,7 +5497,7 @@ snapshots:
       postcss: 8.4.47
       postcss-selector-parser: 7.1.1
 
-  postcss-nested@7.0.1(postcss@8.4.47):
+  postcss-nested@7.0.2(postcss@8.4.47):
     dependencies:
       postcss: 8.4.47
       postcss-selector-parser: 7.1.1
