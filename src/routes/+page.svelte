@@ -154,7 +154,7 @@
       </div>
 
       <div class="history">
-        {#each roleInfo as ri}
+        {#each roleInfo as ri (ri.role)}
           <div
             role="button"
             tabindex="0"
@@ -167,7 +167,7 @@
             <div
               class="description slate terminal-font-defaults brightness-variance"
             >
-              {#each shuffle(order) as dir}
+              {#each shuffle(order) as dir (dir)}
                 <Bolthead {dir} />
               {/each}
               <div class="display">
@@ -199,7 +199,7 @@
             </div>
             <div class="button-section slate brightness-variance">
               <div class={'tile tile-sequel-' + RoleToSequel[ri.role]}>
-                {#each shuffle(order) as dir}
+                {#each shuffle(order) as dir (dir)}
                   <Bolthead
                     {dir}
                     size={4}
@@ -208,7 +208,7 @@
                 {RoleToSequel[ri.role]}
               </div>
               <PanicPlunger
-                type={'button'}
+                type="button"
                 on:click={animNav(ri.role)}
               />
             </div>

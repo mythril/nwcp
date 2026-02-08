@@ -153,7 +153,7 @@
       </g>
     </svg>
   </div>
-  {#each options as option}
+  {#each options as option (option)}
     <button
       onclick={createLabelHandler(option)}
       disabled={!!disabled[option]}>{option}</button

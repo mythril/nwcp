@@ -25,8 +25,12 @@ export default defineConfig([
       'no-undef': 'off',
       '@typescript-eslint/no-unused-vars': [
         'warn',
-        { argsIgnorePattern: '^_' }
+        {
+          argsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_'
+        }
       ],
+      'svelte/no-navigation-without-resolve': 'off',
       'no-warning-comments': [
         1,
         { terms: ['todo', 'fixme'], location: 'anywhere' }

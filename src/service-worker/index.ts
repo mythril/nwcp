@@ -81,7 +81,7 @@ self.addEventListener('fetch', (event) => {
       }
 
       return response;
-    } catch (e) {
+    } catch (_e) {
       return orUnavailable(cache.match(event.request.clone()));
     }
   }

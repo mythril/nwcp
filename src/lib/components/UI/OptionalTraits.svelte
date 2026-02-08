@@ -61,7 +61,7 @@
     </div>
     <div class="terminal terminal-font-defaults">
       <div class="leftTraits">
-        {#each leftTraits as trait}
+        {#each leftTraits as trait (trait)}
           <div class="trait">
             <HelpSource subject={Trait[trait]}>
               <input
@@ -84,7 +84,7 @@
         {/each}
       </div>
       <div class="rightTraits">
-        {#each rightTraits as trait}
+        {#each rightTraits as trait (trait)}
           <div class="trait">
             <HelpSource subject={Trait[trait]}>
               <input

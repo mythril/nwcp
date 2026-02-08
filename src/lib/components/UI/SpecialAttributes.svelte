@@ -6,7 +6,7 @@
 </script>
 
 <div class="special">
-  {#each Object.values(Special) as attr}
+  {#each Object.values(Special) as attr (attr)}
     <HelpSource subject={attr}>
       <Attribute
         label={SpecialAbbreviation(attr)}

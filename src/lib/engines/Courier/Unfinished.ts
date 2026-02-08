@@ -119,7 +119,6 @@ export class UnfinishedCourier extends AbstractUnfinishedCharacter<
 
   _maxHPReactor = () => {
     this.maxHitPoints = 100 + 20 * this.displayAttributes[Special.Endurance];
-    1 * 5;
   };
 
   _skillReactors = {

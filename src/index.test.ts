@@ -45,7 +45,7 @@ const fake = (char: UnfinishedCharacter) => {
   tagged.forEach((v) => char.addTagged(v));
 };
 
-function serialize(obj: {}) {
+function serialize(obj: object) {
   return JSON.stringify(obj);
 }
 

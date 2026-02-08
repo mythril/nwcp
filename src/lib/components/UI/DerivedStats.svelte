@@ -9,7 +9,7 @@
   <div class="display">
     <table class="highlighted">
       <tbody>
-        {#each Object.values(DerivedStat) as derived}
+        {#each Object.values(DerivedStat) as derived (derived)}
           <tr>
             <th>
               <HelpSource subject={derived}>

@@ -54,7 +54,7 @@
     </div>
   </HelpSource>
   <div class="skills terminal-font-defaults">
-    {#each skills as key}
+    {#each skills as key (key)}
       <HelpSource subject={Skill[key]}>
         <div
           class="skill {$chosenSkills.includes(Skill[key]) ? 'selected' : ''}"
@@ -80,7 +80,7 @@
     {/each}
   </div>
   <div class="skills-remaining brightness-variance b-offset-6">
-    <HelpSource subject={'Tag Skills'}>
+    <HelpSource subject="Tag Skills">
       <div
         role="link"
         tabindex="0"

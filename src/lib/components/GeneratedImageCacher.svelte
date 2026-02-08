@@ -8,12 +8,19 @@
     getCached
   } from '$lib/GeneratedImageTools';
 
+  type RenderFN = (
+    ctx: CanvasRenderingContext2D,
+    name: string,
+    width: number,
+    height: number
+  ) => void;
+
   interface Props {
     name: string;
     width: number;
     height: number;
     applyToProperties?: string[];
-    render?: any;
+    render?: RenderFN;
     children?: import('svelte').Snippet;
   }
 

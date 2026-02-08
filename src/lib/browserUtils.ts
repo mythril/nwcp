@@ -18,7 +18,7 @@ export async function clickSound() {
   clickAudio.currentTime = 0;
   try {
     await clickAudio.play();
-  } catch (e) {
+  } catch (_e) {
     // silence the useless error
   }
 }
@@ -34,7 +34,7 @@ export async function bonkSound() {
   bonkAudio.currentTime = 0;
   try {
     await bonkAudio.play();
-  } catch (e) {
+  } catch (_e) {
     // silence the useless error
   }
 }
