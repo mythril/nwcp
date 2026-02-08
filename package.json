@@ -31,7 +31,7 @@
     "cssnano": "7.0.6",
     "eslint": "9.22.0",
     "eslint-config-prettier": "10.1.1",
-    "eslint-plugin-svelte": "3.3.2",
+    "eslint-plugin-svelte": "3.3.3",
     "postcss": "8.5.3",
     "postcss-load-config": "6.0.1",
     "postcss-nested": "7.0.2",
