@@ -16,7 +16,7 @@
   }
 
   let { modal, type = 'flat', children }: Props = $props();
-  let btn: ComponentType<SvelteComponent> = $state();
+  let btn: ComponentType<SvelteComponent> | undefined = $state();
 
   switch (type) {
     case 'flat':
