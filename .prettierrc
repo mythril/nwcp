@@ -8,7 +8,6 @@
   "bracketSameLine": false,
   "singleAttributePerLine": true,
   "plugins": ["prettier-plugin-svelte"],
-  "pluginSearchDirs": ["."],
   "overrides": [
     {
       "files": "*.svelte",
