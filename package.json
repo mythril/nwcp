@@ -19,7 +19,7 @@
   "devDependencies": {
     "@davidwells/postcss-math": "^1.0.3",
     "@faker-js/faker": "10.0.0",
-    "@playwright/test": "1.55.0",
+    "@playwright/test": "1.55.1",
     "@sveltejs/adapter-auto": "6.1.0",
     "@sveltejs/adapter-static": "3.0.9",
     "@sveltejs/kit": "2.43.1",
