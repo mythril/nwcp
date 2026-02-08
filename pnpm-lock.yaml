@@ -19,16 +19,16 @@ importers:
         version: 1.49.0
       '@sveltejs/adapter-auto':
         specifier: 3.3.1
-        version: 3.3.1(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))
+        version: 3.3.1(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))
       '@sveltejs/adapter-static':
         specifier: 3.0.6
-        version: 3.0.6(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))
+        version: 3.0.6(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))
       '@sveltejs/kit':
         specifier: 2.8.5
-        version: 2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
+        version: 2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
       '@sveltejs/vite-plugin-svelte':
         specifier: 5.0.1
-        version: 5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
+        version: 5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
       '@typescript-eslint/eslint-plugin':
         specifier: 8.16.0
         version: 8.16.0(@typescript-eslint/parser@8.16.0(eslint@9.15.0)(typescript@5.7.2))(eslint@9.15.0)(typescript@5.7.2)
@@ -37,7 +37,7 @@ importers:
         version: 8.16.0(eslint@9.15.0)(typescript@5.7.2)
       '@vite-pwa/sveltekit':
         specifier: 0.6.6
-        version: 0.6.6(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(vite-plugin-pwa@0.21.2(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0)(workbox-window@7.4.0))
+        version: 0.6.6(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(vite-plugin-pwa@0.21.2(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0)(workbox-window@7.4.0))
       autoprefixer:
         specifier: 10.4.20
         version: 10.4.20(postcss@8.4.49)
@@ -81,8 +81,8 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
       vite:
-        specifier: 6.0.0
-        version: 6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
+        specifier: 6.0.1
+        version: 6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
       vitest:
         specifier: 2.1.6
         version: 2.1.6(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
@@ -2934,8 +2934,8 @@ packages:
       '@vite-pwa/assets-generator':
         optional: true
 
-  vite@6.0.0:
-    resolution: {integrity: sha512-Q2+5yQV79EdnpbNxjD3/QHVMCBaQ3Kpd4/uL51UGuh38bIIM+s4o3FqyCzRvTRwFb+cWIUeZvaWwS9y2LD2qeQ==}
+  vite@6.0.1:
+    resolution: {integrity: sha512-Ldn6gorLGr4mCdFnmeAOLweJxZ34HjKnDm4HGo6P66IEqTxQb36VEdFJQENKxWjupNfoIjvRUnswjn1hpYEpjQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -4101,18 +4101,18 @@ snapshots:
       magic-string: 0.25.9
       string.prototype.matchall: 4.0.12
 
-  '@sveltejs/adapter-auto@3.3.1(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))':
+  '@sveltejs/adapter-auto@3.3.1(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))':
     dependencies:
-      '@sveltejs/kit': 2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
+      '@sveltejs/kit': 2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
       import-meta-resolve: 4.2.0
 
-  '@sveltejs/adapter-static@3.0.6(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))':
+  '@sveltejs/adapter-static@3.0.6(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))':
     dependencies:
-      '@sveltejs/kit': 2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
+      '@sveltejs/kit': 2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
 
-  '@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))':
+  '@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
+      '@sveltejs/vite-plugin-svelte': 5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
       '@types/cookie': 0.6.0
       cookie: 0.6.0
       devalue: 5.6.2
@@ -4126,27 +4126,27 @@ snapshots:
       sirv: 3.0.2
       svelte: 5.2.9
       tiny-glob: 0.2.9
-      vite: 6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
+      vite: 6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
 
-  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))':
+  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
+      '@sveltejs/vite-plugin-svelte': 5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
       debug: 4.4.3
       svelte: 5.2.9
-      vite: 6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
+      vite: 6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))':
+  '@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
+      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
       debug: 4.4.3
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.21
       svelte: 5.2.9
-      vite: 6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
-      vitefu: 1.1.1(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
+      vite: 6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
+      vitefu: 1.1.1(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
     transitivePeerDependencies:
       - supports-color
 
@@ -4249,12 +4249,12 @@ snapshots:
       '@typescript-eslint/types': 8.16.0
       eslint-visitor-keys: 4.2.1
 
-  '@vite-pwa/sveltekit@0.6.6(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(vite-plugin-pwa@0.21.2(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0)(workbox-window@7.4.0))':
+  '@vite-pwa/sveltekit@0.6.6(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(vite-plugin-pwa@0.21.2(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0)(workbox-window@7.4.0))':
     dependencies:
-      '@sveltejs/kit': 2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
+      '@sveltejs/kit': 2.8.5(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)))(svelte@5.2.9)(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
       kolorist: 1.8.0
       tinyglobby: 0.2.15
-      vite-plugin-pwa: 0.21.2(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0)(workbox-window@7.4.0)
+      vite-plugin-pwa: 0.21.2(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0)(workbox-window@7.4.0)
 
   '@vitest/expect@2.1.6':
     dependencies:
@@ -4263,13 +4263,13 @@ snapshots:
       chai: 5.3.3
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.6(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))':
+  '@vitest/mocker@2.1.6(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))':
     dependencies:
       '@vitest/spy': 2.1.6
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
+      vite: 6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
 
   '@vitest/pretty-format@2.1.6':
     dependencies:
@@ -6138,7 +6138,7 @@ snapshots:
       debug: 4.4.3
       es-module-lexer: 1.7.0
       pathe: 1.1.2
-      vite: 6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
+      vite: 6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -6153,18 +6153,18 @@ snapshots:
       - tsx
       - yaml
 
-  vite-plugin-pwa@0.21.2(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0)(workbox-window@7.4.0):
+  vite-plugin-pwa@0.21.2(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0)(workbox-window@7.4.0):
     dependencies:
       debug: 4.4.3
       pretty-bytes: 6.1.1
       tinyglobby: 0.2.15
-      vite: 6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
+      vite: 6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
       workbox-build: 7.4.0
       workbox-window: 7.4.0
     transitivePeerDependencies:
       - supports-color
 
-  vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2):
+  vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.4.49
@@ -6175,14 +6175,14 @@ snapshots:
       terser: 5.46.0
       yaml: 2.8.2
 
-  vitefu@1.1.1(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)):
+  vitefu@1.1.1(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)):
     optionalDependencies:
-      vite: 6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
+      vite: 6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
 
   vitest@2.1.6(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2):
     dependencies:
       '@vitest/expect': 2.1.6
-      '@vitest/mocker': 2.1.6(vite@6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
+      '@vitest/mocker': 2.1.6(vite@6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2))
       '@vitest/pretty-format': 2.1.9
       '@vitest/runner': 2.1.6
       '@vitest/snapshot': 2.1.6
@@ -6198,7 +6198,7 @@ snapshots:
       tinyexec: 0.3.2
       tinypool: 1.1.1
       tinyrainbow: 1.2.0
-      vite: 6.0.0(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
+      vite: 6.0.1(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
       vite-node: 2.1.6(@types/node@25.2.1)(terser@5.46.0)(yaml@2.8.2)
       why-is-node-running: 2.3.0
     optionalDependencies:
