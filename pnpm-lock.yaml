@@ -19,13 +19,13 @@ importers:
         version: 1.48.2
       '@sveltejs/adapter-auto':
         specifier: 3.3.1
-        version: 3.3.1(@sveltejs/kit@2.7.3(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))
+        version: 3.3.1(@sveltejs/kit@2.7.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))
       '@sveltejs/adapter-static':
         specifier: 3.0.6
-        version: 3.0.6(@sveltejs/kit@2.7.3(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))
+        version: 3.0.6(@sveltejs/kit@2.7.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))
       '@sveltejs/kit':
-        specifier: 2.7.3
-        version: 2.7.3(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))
+        specifier: 2.7.4
+        version: 2.7.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))
       '@sveltejs/vite-plugin-svelte':
         specifier: ^4.0.0
         version: 4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))
@@ -37,7 +37,7 @@ importers:
         version: 8.12.2(eslint@9.13.0)(typescript@5.6.3)
       '@vite-pwa/sveltekit':
         specifier: 0.6.6
-        version: 0.6.6(@sveltejs/kit@2.7.3(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(vite-plugin-pwa@0.21.2(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0))
+        version: 0.6.6(@sveltejs/kit@2.7.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(vite-plugin-pwa@0.21.2(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0))
       autoprefixer:
         specifier: 10.4.20
         version: 10.4.20(postcss@8.4.47)
@@ -1049,8 +1049,8 @@ packages:
     peerDependencies:
       '@sveltejs/kit': ^2.0.0
 
-  '@sveltejs/kit@2.7.3':
-    resolution: {integrity: sha512-Vx7nq5MJ86I8qXYsVidC5PX6xm+uxt8DydvOdmJoyOK7LvGP18OFEG359yY+aa51t6pENvqZAMqAREQQx1OI2Q==}
+  '@sveltejs/kit@2.7.4':
+    resolution: {integrity: sha512-3DOPQYck3CpAmPgGq/HuhJMCCz8GF0ukbompPJQ2zShoSzrEKW9iG/l0nZmaxMvuOO3NNLmZj8F3W9uzqmkNdw==}
     engines: {node: '>=18.13'}
     hasBin: true
     peerDependencies:
@@ -4073,16 +4073,16 @@ snapshots:
       magic-string: 0.25.9
       string.prototype.matchall: 4.0.12
 
-  '@sveltejs/adapter-auto@3.3.1(@sveltejs/kit@2.7.3(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))':
+  '@sveltejs/adapter-auto@3.3.1(@sveltejs/kit@2.7.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))':
     dependencies:
-      '@sveltejs/kit': 2.7.3(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))
+      '@sveltejs/kit': 2.7.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))
       import-meta-resolve: 4.2.0
 
-  '@sveltejs/adapter-static@3.0.6(@sveltejs/kit@2.7.3(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))':
+  '@sveltejs/adapter-static@3.0.6(@sveltejs/kit@2.7.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))':
     dependencies:
-      '@sveltejs/kit': 2.7.3(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))
+      '@sveltejs/kit': 2.7.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))
 
-  '@sveltejs/kit@2.7.3(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))':
+  '@sveltejs/kit@2.7.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))
       '@types/cookie': 0.6.0
@@ -4220,9 +4220,9 @@ snapshots:
       '@typescript-eslint/types': 8.12.2
       eslint-visitor-keys: 3.4.3
 
-  '@vite-pwa/sveltekit@0.6.6(@sveltejs/kit@2.7.3(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(vite-plugin-pwa@0.21.2(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0))':
+  '@vite-pwa/sveltekit@0.6.6(@sveltejs/kit@2.7.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(vite-plugin-pwa@0.21.2(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0))':
     dependencies:
-      '@sveltejs/kit': 2.7.3(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))
+      '@sveltejs/kit': 2.7.4(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0)))(svelte@5.1.9)(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))
       kolorist: 1.8.0
       tinyglobby: 0.2.15
       vite-plugin-pwa: 0.21.2(vite@5.4.10(@types/node@25.2.1)(terser@5.46.0))(workbox-build@7.4.0)(workbox-window@7.4.0)
