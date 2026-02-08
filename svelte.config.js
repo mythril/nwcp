@@ -14,5 +14,5 @@ export default {
     }),
     serviceWorker: { register: false }
   },
-  preprocess: [vitePreprocess({})]
+  preprocess: [vitePreprocess({ script: true })]
 };
