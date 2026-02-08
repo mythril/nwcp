@@ -20,7 +20,7 @@
     "@davidwells/postcss-math": "^1.0.3",
     "@faker-js/faker": "9.0.3",
     "@playwright/test": "1.48.1",
-    "@sveltejs/adapter-auto": "3.3.0",
+    "@sveltejs/adapter-auto": "3.3.1",
     "@sveltejs/adapter-static": "3.0.5",
     "@sveltejs/kit": "2.7.2",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
