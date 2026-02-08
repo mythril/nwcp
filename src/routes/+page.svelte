@@ -172,26 +172,28 @@
               {/each}
               <div class="display">
                 <table>
-                  <tr>
-                    <th> Role </th>
-                    <td> {ri.role} </td>
-                  </tr>
-                  <tr>
-                    <th> Born </th>
-                    <td> {ri.born} </td>
-                  </tr>
-                  <tr>
-                    <th> Area </th>
-                    <td> {ri.area} </td>
-                  </tr>
-                  <tr>
-                    <th> Mission </th>
-                    <td> {ri.mission} </td>
-                  </tr>
-                  <tr>
-                    <th> Year </th>
-                    <td> {ri.year} </td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <th> Role </th>
+                      <td> {ri.role} </td>
+                    </tr>
+                    <tr>
+                      <th> Born </th>
+                      <td> {ri.born} </td>
+                    </tr>
+                    <tr>
+                      <th> Area </th>
+                      <td> {ri.area} </td>
+                    </tr>
+                    <tr>
+                      <th> Mission </th>
+                      <td> {ri.mission} </td>
+                    </tr>
+                    <tr>
+                      <th> Year </th>
+                      <td> {ri.year} </td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             </div>
