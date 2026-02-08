@@ -24,7 +24,7 @@
     "@sveltejs/adapter-static": "3.0.8",
     "@sveltejs/kit": "2.20.8",
     "@sveltejs/vite-plugin-svelte": "5.0.3",
-    "@typescript-eslint/eslint-plugin": "8.32.0",
+    "@typescript-eslint/eslint-plugin": "8.32.1",
     "@typescript-eslint/parser": "8.32.1",
     "@vite-pwa/sveltekit": "1.0.0",
     "autoprefixer": "10.4.21",
