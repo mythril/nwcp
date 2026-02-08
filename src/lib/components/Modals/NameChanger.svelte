@@ -14,7 +14,7 @@
   $updateAnchors.push('name');
   $updateAnchors = $updateAnchors;
 
-  let text = $character.name;
+  let text = $state($character.name);
 
   const commit = () => {
     $character.name = text;
@@ -46,7 +46,7 @@
   }
 </script>
 
-<svelte:body on:keydown={controlKeys} />
+<svelte:body onkeydown={controlKeys} />
 
 <div class="root">
   <MiniDialog

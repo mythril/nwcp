@@ -9,9 +9,14 @@
     type RegistryValue
   } from '../ModalManager.svelte';
 
-  export let modal: RegistryValue;
-  export let type: 'flat' | 'plate' | 'slate' = 'flat';
-  let btn: ComponentType<SvelteComponent>;
+  interface Props {
+    modal: RegistryValue;
+    type?: 'flat' | 'plate' | 'slate';
+    children?: import('svelte').Snippet;
+  }
+
+  let { modal, type = 'flat', children }: Props = $props();
+  let btn: ComponentType<SvelteComponent> = $state();
 
   switch (type) {
     case 'flat':
@@ -32,13 +37,14 @@
   const show = () => {
     showModal(modal);
   };
+
+  const SvelteComponent_1 = $derived(btn);
 </script>
 
-<svelte:component
-  this={btn}
+<SvelteComponent_1
   on:mouseover={load}
   on:focus={load}
   on:click={show}
 >
-  <slot />
-</svelte:component>
+  {@render children?.()}
+</SvelteComponent_1>

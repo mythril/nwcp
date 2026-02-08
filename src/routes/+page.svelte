@@ -1,3 +1,4 @@
+<!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
 <script lang="ts">
   import Bolthead from '$lib/components/Bolthead.svelte';
   import { Role, RoleToSequel, SupportedRoles } from '$lib/engines/all';

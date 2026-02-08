@@ -8,12 +8,22 @@
     getCached
   } from '$lib/GeneratedImageTools';
 
-  export let name: string;
-  export let width: number;
-  export let height: number;
-  export let applyToProperties: string[] = [];
 
-  export let render = (
+  interface Props {
+    name: string;
+    width: number;
+    height: number;
+    applyToProperties?: string[];
+    render?: any;
+    children?: import('svelte').Snippet;
+  }
+
+  let {
+    name,
+    width,
+    height,
+    applyToProperties = [],
+    render = (
     ctx: CanvasRenderingContext2D,
     name: string,
     width: number,
@@ -21,15 +31,17 @@
   ) => {
     ctx.filter = `url(#${name})`;
     ctx.fillRect(width, height, width, height);
-  };
+  },
+    children
+  }: Props = $props();
 
   const StyleTagNameToAvoidPreprocessorError = "style";
 
-  let canvas: HTMLCanvasElement;
+  let canvas: HTMLCanvasElement = $state();
 
   // Use rendered to remove the support materials from the document when done
-  let rendered = false;
-  let styles: string[] = [];
+  let rendered = $state(false);
+  let styles: string[] = $state([]);
 
   onMount(async () => {
     let ctx = canvas.getContext('2d');
@@ -87,8 +99,8 @@
 
 {#if !rendered}
   <div class="offscreen">
-    <slot />
+    {@render children?.()}
 
-    <canvas bind:this={canvas} />
+    <canvas bind:this={canvas}></canvas>
   </div>
 {/if}

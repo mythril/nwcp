@@ -1,17 +1,23 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import { sleep } from '$lib/utils';
   import EmptyDigitDisplay from './EmptyDigitDisplay.svelte';
 
-  export let value: number;
+  interface Props {
+    value: number;
+  }
+
+  let { value }: Props = $props();
   let oldValue = value;
 
-  let up: number;
-  let current: number;
-  let down: number;
+  let up: number = $state();
+  let current: number = $state();
+  let down: number = $state();
 
-  let offset = 0;
+  let offset = $state(0);
 
-  let varWrap: HTMLDivElement;
+  let varWrap: HTMLDivElement = $state();
 
   const fromTo = async (f = '0', t = '0') => {
     varWrap.style.setProperty('transition-property', '');
@@ -44,7 +50,9 @@
       fromTo(offset.toString());
     }
   }
-  $: update(value);
+  run(() => {
+    update(value);
+  });
 
   export const bonkUp = () => {
     fromTo('0.2');

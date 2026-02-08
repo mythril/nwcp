@@ -17,8 +17,13 @@
   import Scaler from '$lib/components/Scaler.svelte';
   import { isEmbedded } from '$lib/utils';
   import Button from '$lib/components/Buttons/Button.svelte';
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
   
-  let href = "";
+  let href = $state("");
 
   async function bootUp() {
     if (typeof window === 'undefined') {
@@ -104,7 +109,7 @@
       class="interface"
       inert={$modals.length > 0 || isEmbedded()}
     >
-      <slot />
+      {@render children?.()}
     </div>
   </div>
   {#if isEmbedded() === false}

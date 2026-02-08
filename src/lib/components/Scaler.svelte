@@ -2,7 +2,7 @@
   import { isEmbedded } from '$lib/utils';
   import { onMount } from 'svelte';
 
-  let ruler: HTMLDivElement;
+  let ruler: HTMLDivElement = $state();
   let denominator = isEmbedded() ? 480 : 525;
 
   const resizeHandler = async () => {
@@ -17,12 +17,12 @@
   onMount(resizeHandler);
 </script>
 
-<svelte:window on:resize={resizeHandler} />
+<svelte:window onresize={resizeHandler} />
 
 <div
   bind:this={ruler}
   class="ruler"
-/>
+></div>
 
 <style lang="postcss">
   .ruler {

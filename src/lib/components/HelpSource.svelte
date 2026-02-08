@@ -1,3 +1,6 @@
+<!-- @migration-task Error while migrating Svelte code: Cannot split a chunk that has already been edited (15:20 – "on:click={() => {
+    helpSubject.set(subject);
+  }}") -->
 <script lang="ts">
   import { helpSubject } from './Help.svelte';
 

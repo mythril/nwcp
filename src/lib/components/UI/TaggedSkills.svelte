@@ -1,11 +1,13 @@
 <script
   lang="ts"
-  context="module"
+  module
 >
   export const chosenSkills = writable<string[]>([]);
 </script>
 
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import { objectKeys } from 'tsafe';
   import HelpSource from '$lib/components/HelpSource.svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
@@ -18,11 +20,6 @@
 
   let skills = objectKeys(Skill);
 
-  $: {
-    if (tdd) {
-      tdd.set(3 - $chosenSkills.length);
-    }
-  }
 
   const skillHandler = (ev: Event) => {
     const cb = ev.target as HTMLInputElement;
@@ -37,7 +34,12 @@
     clickSound();
   };
 
-  let tdd: TwoDigitDisplay;
+  let tdd: TwoDigitDisplay = $state();
+  run(() => {
+    if (tdd) {
+      tdd.set(3 - $chosenSkills.length);
+    }
+  });
 </script>
 
 <div class="skill-content">
@@ -62,7 +64,7 @@
             <input
               type="checkbox"
               class="checkbox-button"
-              on:click={skillHandler}
+              onclick={skillHandler}
               bind:group={$chosenSkills}
               value={Skill[key]}
               name={'check-' + Skill[key]}

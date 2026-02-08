@@ -1,11 +1,13 @@
 <script
   lang="ts"
-  context="module"
+  module
 >
   export const navTo = writable<ObjectValues<typeof Role> | null>(null);
 </script>
 
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import { preloadCode, preloadData } from '$app/navigation';
   import {
     RoleToSequel,
@@ -23,33 +25,23 @@
   import { hideMain } from './UI/Main.svelte';
   import { writable } from 'svelte/store';
 
-  export let value: ObjectValues<typeof Role>;
-  let display: string[];
-  let sequel: string;
-  let chosenRole: ObjectValues<typeof Role> = $role;
-  let roleLink = '';
-  let tileOffset = 0;
-  let smallOffsets: number[] = [];
-  let rotoOffsets: number[] = [];
-
-  $: {
-    display = (value || '').padEnd(13, '-').split('');
-    sequel = value ? RoleToSequel[value] : '';
-    for (let i = 0; i < display.length; i += 1) {
-      smallOffsets[i] = Math.random() * 10;
-      rotoOffsets[i] = 2.5 - Math.random() * 5;
-    }
+  interface Props {
+    value: ObjectValues<typeof Role>;
   }
 
-  $: roleLink = RoleRoutes[chosenRole];
+  let { value = $bindable() }: Props = $props();
+  let display: string[] = $state();
+  let sequel: string = $state();
+  let chosenRole: ObjectValues<typeof Role> = $state($role);
+  let roleLink = $state('');
+  let tileOffset = $state(0);
+  let smallOffsets: number[] = $state([]);
+  let rotoOffsets: number[] = $state([]);
 
-  $: if ($navTo) {
-    chosenRole = $navTo;
-    makeChoice();
-    $navTo = null;
-  }
 
-  let navOpen = $role === Role.None ? true : false;
+
+
+  let navOpen = $state($role === Role.None ? true : false);
   const openNav = () => {
     navOpen = true;
   };
@@ -95,6 +87,24 @@
     }
     return disabledRecord;
   }
+  run(() => {
+    display = (value || '').padEnd(13, '-').split('');
+    sequel = value ? RoleToSequel[value] : '';
+    for (let i = 0; i < display.length; i += 1) {
+      smallOffsets[i] = Math.random() * 10;
+      rotoOffsets[i] = 2.5 - Math.random() * 5;
+    }
+  });
+  run(() => {
+    if ($navTo) {
+      chosenRole = $navTo;
+      makeChoice();
+      $navTo = null;
+    }
+  });
+  run(() => {
+    roleLink = RoleRoutes[chosenRole];
+  });
 </script>
 
 <div
@@ -117,7 +127,7 @@
           --roto-offset: ${rotoOffsets[0]}
           `}
           class={`sequel-${sequel} tile `}
-        />
+></div>
       </div>
       {#each display as d, i (i)}
         <div class="viewport">

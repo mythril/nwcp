@@ -1,6 +1,10 @@
 <script lang="ts">
-  export let message = '';
-  export let color: string | undefined = undefined;
+  interface Props {
+    message?: string;
+    color?: string | undefined;
+  }
+
+  let { message = '', color = undefined }: Props = $props();
 </script>
 
 {#if message != ''}

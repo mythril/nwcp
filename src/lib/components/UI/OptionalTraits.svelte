@@ -1,6 +1,6 @@
 <script
   lang="ts"
-  context="module"
+  module
 >
   export const chosenTraits = writable<string[]>([]);
 </script>
@@ -48,16 +48,16 @@
   </HelpSource>
   <div class="flanges">
     <div class="fl-left">
-      <div class="flange" />
-      <div class="flange" />
-      <div class="flange" />
-      <div class="flange" />
+      <div class="flange"></div>
+      <div class="flange"></div>
+      <div class="flange"></div>
+      <div class="flange"></div>
     </div>
     <div class="fl-right">
-      <div class="flange" />
-      <div class="flange" />
-      <div class="flange" />
-      <div class="flange" />
+      <div class="flange"></div>
+      <div class="flange"></div>
+      <div class="flange"></div>
+      <div class="flange"></div>
     </div>
     <div class="terminal terminal-font-defaults">
       <div class="leftTraits">
@@ -67,7 +67,7 @@
               <input
                 type="checkbox"
                 class="checkbox-button"
-                on:click={traitHandler}
+                onclick={traitHandler}
                 bind:group={$chosenTraits}
                 value={Trait[trait]}
                 name={'check-' + Trait[trait]}
@@ -90,7 +90,7 @@
               <input
                 type="checkbox"
                 class="checkbox-button"
-                on:click={traitHandler}
+                onclick={traitHandler}
                 bind:group={$chosenTraits}
                 value={Trait[trait]}
                 name={'check-' + Trait[trait]}
@@ -108,7 +108,7 @@
       </div>
     </div>
   </div>
-  <div class="footer brightness-variance b-offset-4" />
+  <div class="footer brightness-variance b-offset-4"></div>
 </div>
 
 <style lang="postcss">

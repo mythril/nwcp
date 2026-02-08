@@ -1,25 +1,31 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import { clickSound } from '$lib/browserUtils';
 
-  export let options: string[] = [];
-  export let disabled: Record<string, boolean> = {};
-  export let value: string;
+  interface Props {
+    options?: string[];
+    disabled?: Record<string, boolean>;
+    value: string;
+  }
+
+  let { options = [], disabled = {}, value = $bindable() }: Props = $props();
 
   let enabled = options.filter((a) => !disabled[a]);
 
-  let enabledIndex: number;
-  let index: number;
+  let enabledIndex: number = $state();
+  let index: number = $state();
   let dir = 1;
 
   enabledIndex = enabled.indexOf(value);
   index = options.indexOf(enabled[enabledIndex]);
-  $: {
+  run(() => {
     enabledIndex = enabled.indexOf(value);
     index = options.indexOf(enabled[enabledIndex]);
     if (enabledIndex < 0) {
       value = options[0];
     }
-  }
+  });
 
   function clickHandler() {
     if (!enabled[enabledIndex + dir]) {
@@ -118,8 +124,8 @@
     tabindex="0"
     class="switch-wrap"
     style={`--rsi: ${index}`}
-    on:click={clickHandler}
-    on:keydown={keyHandler}
+    onclick={clickHandler}
+    onkeydown={keyHandler}
   >
     <svg viewBox="0 0 9.5 11.6">
       <g transform="translate(-76.7 -52.8)">
@@ -136,8 +142,8 @@
     tabindex="0"
     class="switch-wrap"
     style={`--rsi: ${index}`}
-    on:click={clickHandler}
-    on:keydown={keyHandler}
+    onclick={clickHandler}
+    onkeydown={keyHandler}
   >
     <svg viewBox="0 0 9.5 11.6">
       <g transform="translate(-76.7 -52.8)">
@@ -149,7 +155,7 @@
   </div>
   {#each options as option}
     <button
-      on:click={createLabelHandler(option)}
+      onclick={createLabelHandler(option)}
       disabled={!!disabled[option]}>{option}</button
     >
   {/each}

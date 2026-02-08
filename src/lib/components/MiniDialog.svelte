@@ -1,12 +1,17 @@
 <script lang="ts">
   import PlateButton from './Buttons/PlateButton.svelte';
   import Modal from './Modal.svelte';
-  let dialog: HTMLElement;
-  export let anchorTop = 0;
-  export let anchorLeft = 0;
+  let dialog: HTMLElement = $state();
 
   import { createEventDispatcher } from 'svelte';
   import { DataEvents, type DataEventsSignature } from './DataEvents';
+  interface Props {
+    anchorTop?: number;
+    anchorLeft?: number;
+    children?: import('svelte').Snippet;
+  }
+
+  let { anchorTop = 0, anchorLeft = 0, children }: Props = $props();
   const dispatch = createEventDispatcher<DataEventsSignature>();
 
   export const enter = async () => {
@@ -30,7 +35,7 @@
   >
     <div class="padding-wrapper">
       <div class="main">
-        <slot />
+        {@render children?.()}
       </div>
       <div class="button">
         <PlateButton

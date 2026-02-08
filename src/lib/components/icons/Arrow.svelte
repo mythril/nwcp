@@ -1,8 +1,6 @@
 <script lang="ts">
   import type { ObjectValues } from '$lib/typeUtils';
 
-  export let stout = false;
-  export let wornText = false;
   const Direction = {
     Left: 'Left',
     Right: 'Right',
@@ -11,9 +9,15 @@
   } as const;
   type DIRECTION = ObjectValues<typeof Direction>;
 
-  export let dir: DIRECTION = 'Right';
+  interface Props {
+    stout?: boolean;
+    wornText?: boolean;
+    dir?: DIRECTION;
+  }
 
-  let dirDegrees = 0;
+  let { stout = false, wornText = false, dir = 'Right' }: Props = $props();
+
+  let dirDegrees = $state(0);
   switch (dir) {
     case Direction.Left:
       dirDegrees = 180;

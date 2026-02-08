@@ -1,6 +1,6 @@
 <script
   lang="ts"
-  context="module"
+  module
 >
   import { writable } from 'svelte/store';
 
@@ -12,11 +12,17 @@
 </script>
 
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import { onMount } from 'svelte';
 
-  export let location: string;
+  interface Props {
+    location: string;
+  }
 
-  let anchor: HTMLDivElement;
+  let { location }: Props = $props();
+
+  let anchor: HTMLDivElement = $state();
 
   const resizeHandler = () => {
     if (!anchor) {
@@ -36,21 +42,23 @@
   // anchor on to this stack, and then re-running the resizeHandler below
   // this seems like an odd way to do this but svelte doesn't appear to have
   // a better solution up it's sleeves as far as I can tell.
-  $: if ($updateAnchors[$updateAnchors.length - 1] === location) {
-    resizeHandler();
-    $updateAnchors.pop();
-    $updateAnchors = $updateAnchors;
-  }
+  run(() => {
+    if ($updateAnchors[$updateAnchors.length - 1] === location) {
+      resizeHandler();
+      $updateAnchors.pop();
+      $updateAnchors = $updateAnchors;
+    }
+  });
 
   onMount(resizeHandler);
 </script>
 
-<svelte:window on:resize={resizeHandler} />
+<svelte:window onresize={resizeHandler} />
 
 <div
   class="anchor"
   bind:this={anchor}
-/>
+></div>
 
 <style lang="postcss">
   .anchor {

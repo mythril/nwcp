@@ -1,9 +1,19 @@
 <script lang="ts">
   import Button from './Button.svelte';
 
-  export let type: 'button' | 'link' = 'button';
-  export let href = '';
-  export let target = '_self';
+  interface Props {
+    type?: 'button' | 'link';
+    href?: string;
+    target?: string;
+    children?: import('svelte').Snippet;
+  }
+
+  let {
+    type = 'button',
+    href = '',
+    target = '_self',
+    children
+  }: Props = $props();
 </script>
 
 <Button
@@ -16,7 +26,7 @@
   on:focus
 >
   <div class="worn-text">
-    <slot />
+    {@render children?.()}
   </div>
 </Button>
 

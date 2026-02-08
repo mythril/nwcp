@@ -1,13 +1,17 @@
 <script lang="ts">
-  export let dir: 'tl' | 'tr' | 'bl' | 'br' | 'ml' | 'mr';
-  export let size = 6;
+  interface Props {
+    dir: 'tl' | 'tr' | 'bl' | 'br' | 'ml' | 'mr';
+    size?: number;
+  }
+
+  let { dir, size = 6 }: Props = $props();
 </script>
 
 <div
   style="--in-size: {size}"
   class:bolthead={true}
   class={dir}
-/>
+></div>
 
 <style lang="postcss">
   .bolthead {

@@ -1,11 +1,13 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import Bolthead from '$lib/components/Bolthead.svelte';
   import HelpSource from '$lib/components/HelpSource.svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
   import { character } from '../../../routes/CharacterStore';
   import { toast } from '$lib/components/Toast.svelte';
 
-  let tdd: TwoDigitDisplay;
+  let tdd: TwoDigitDisplay = $state();
 
   export const bonkDown = () => {
     if (tdd) {
@@ -14,11 +16,11 @@
     toast.error({ message: 'YOU NEED MORE CHARACTER POINTS.' });
   };
 
-  $: {
+  run(() => {
     if (tdd) {
       tdd.set($character.charPointsRemaining);
     }
-  }
+  });
 </script>
 
 <div class="char-points">

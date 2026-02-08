@@ -9,7 +9,7 @@
   import { charToBase64 } from '$lib/engines/BitPacking';
   const dispatch = createEventDispatcher<ModalEventSignature>();
   let char: UnfinishedCharacter;
-  let charHash: string;
+  let charHash: string = $state();
 
   export const enter = () => {
     const cTor = Object.getPrototypeOf($character).constructor;

@@ -18,7 +18,7 @@
   $updateAnchors.push('sex');
   $updateAnchors = $updateAnchors;
 
-  let tmp: ObjectValues<typeof Sex> = $character.sex;
+  let tmp: ObjectValues<typeof Sex> = $state($character.sex);
 
   const cancel = () => {
     tmp = $character.sex;

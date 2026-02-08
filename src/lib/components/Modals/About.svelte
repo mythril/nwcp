@@ -3,7 +3,7 @@
   import Menu from '$lib/components/Menu.svelte';
   import PlateButton from '$lib/components/Buttons/PlateButton.svelte';
 
-  let menu: Menu;
+  let menu: Menu = $state();
 
   import { createEventDispatcher } from 'svelte';
   import {
@@ -111,11 +111,13 @@
       </ul>
     </div>
   </div>
-  <PlateButton
-    slot="navButtons"
-    class="aboutClose"
-    on:click={() => dispatch(ModalNavEvents.navExit)}>done</PlateButton
-  >
+  {#snippet navButtons()}
+    <PlateButton
+      
+      class="aboutClose"
+      on:click={() => dispatch(ModalNavEvents.navExit)}>done</PlateButton
+    >
+  {/snippet}
 </Menu>
 
 <style lang="postcss">

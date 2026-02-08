@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import FlatButton from '$lib/components/Buttons/FlatButton.svelte';
   import Menu from '$lib/components/Menu.svelte';
   import debug from '$lib/debug';
@@ -51,36 +53,38 @@
     dispatch(ModalNavEvents.navExit);
   };
 
-  let fileInput: HTMLInputElement;
+  let fileInput: HTMLInputElement = $state();
 
-  let files: FileList;
+  let files: FileList = $state();
 
-  $: if (files != null && files.length > 0) {
-    files
-      ?.item(0)
-      ?.arrayBuffer()
-      .then(async (data: ArrayBuffer) => {
-        const bytes = new Uint8Array(data);
-        const role = detectRoleBinary(bytes);
-        if (role !== $character.role) {
-          window.location.replace(
-            RoleRoutes[role] + '#' + bytesToBase64(bytes)
+  run(() => {
+    if (files != null && files.length > 0) {
+      files
+        ?.item(0)
+        ?.arrayBuffer()
+        .then(async (data: ArrayBuffer) => {
+          const bytes = new Uint8Array(data);
+          const role = detectRoleBinary(bytes);
+          if (role !== $character.role) {
+            window.location.replace(
+              RoleRoutes[role] + '#' + bytesToBase64(bytes)
+            );
+          }
+          const mut = await constructFromRole(role);
+          loadFromChar(
+            unpacker(new Uint8Array(data), mut.getPackingDescriptors(), mut)
           );
-        }
-        const mut = await constructFromRole(role);
-        loadFromChar(
-          unpacker(new Uint8Array(data), mut.getPackingDescriptors(), mut)
-        );
-      })
-      .catch(async (err) => {
-        let em = 'Unknown error.';
-        if (err instanceof CodecError) {
-          em = err.message;
-        }
-        $errorMessage = em;
-        debug.error(err);
-      });
-  }
+        })
+        .catch(async (err) => {
+          let em = 'Unknown error.';
+          if (err instanceof CodecError) {
+            em = err.message;
+          }
+          $errorMessage = em;
+          debug.error(err);
+        });
+    }
+  });
 </script>
 
 <Menu

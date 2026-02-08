@@ -1,19 +1,30 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import { bonkSound } from '$lib/browserUtils';
   import EmptyDigitDisplay from './EmptyDigitDisplay.svelte';
   import OneDigitDisplay from './OneDigitDisplay.svelte';
 
-  export let value = 0;
-  export let min: number;
-  export let max: number;
-  export let display: number | undefined = undefined;
-  let realMin: number;
-  let realMax: number;
+  interface Props {
+    value?: number;
+    min: number;
+    max: number;
+    display?: number | undefined;
+  }
 
-  $: {
+  let {
+    value = $bindable(0),
+    min,
+    max,
+    display = undefined
+  }: Props = $props();
+  let realMin: number = $state();
+  let realMax: number = $state();
+
+  run(() => {
     realMin = Math.max(Math.round(min), 0);
     realMax = Math.min(Math.round(max), 99);
-  }
+  });
 
   export const bonkDown = () => {
     onesDigitDisplay.bonkDown();
@@ -78,14 +89,14 @@
     throw 'Could not set initial value. Check your min & max.';
   }
 
-  let tensDigit: number;
-  let onesDigit: number;
-  $: {
+  let tensDigit: number = $state();
+  let onesDigit: number = $state();
+  run(() => {
     tensDigit = Math.floor((display || value) / 10);
     onesDigit = Math.round((display || value) - tensDigit * 10);
-  }
-  let tensDigitDisplay: OneDigitDisplay;
-  let onesDigitDisplay: OneDigitDisplay;
+  });
+  let tensDigitDisplay: OneDigitDisplay = $state();
+  let onesDigitDisplay: OneDigitDisplay = $state();
 </script>
 
 <div class="window">

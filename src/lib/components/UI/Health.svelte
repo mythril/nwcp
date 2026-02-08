@@ -13,7 +13,7 @@
       Hit Points {$character.maxHitPoints}/{$character.maxHitPoints}
     </div>
   </HelpSource>
-  <div class="ailments" />
+  <div class="ailments"></div>
 </div>
 <Bolthead dir="tl" />
 <Bolthead dir="tr" />

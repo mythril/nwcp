@@ -1,6 +1,6 @@
 <script
   lang="ts"
-  context="module"
+  module
 >
   import { writable } from 'svelte/store';
 
@@ -90,14 +90,16 @@
 </script>
 
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import { sleep } from '$lib/utils';
   import type { ObjectValues } from '$lib/typeUtils';
   import { clickSound } from '$lib/browserUtils';
 
-  let offset = Math.random() * 5;
+  let offset = $state(Math.random() * 5);
 
-  let message = '';
-  let color: ObjectValues<typeof ToastColors> = ToastColors.yellow;
+  let message = $state('');
+  let color: ObjectValues<typeof ToastColors> = $state(ToastColors.yellow);
 
   const changeToast = async () => {
     if (offset !== 100) {
@@ -110,7 +112,7 @@
     clickSound();
   };
 
-  $: {
+  run(() => {
     let messageHasBeenSet = false;
     if ($toast.message !== EmptyToast.message) {
       messageHasBeenSet = true;
@@ -123,7 +125,7 @@
         clickSound();
       }
     }
-  }
+  });
 </script>
 
 <div class="toast-frame pitted">

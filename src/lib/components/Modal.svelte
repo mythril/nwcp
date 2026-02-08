@@ -1,6 +1,6 @@
 <script
   lang="ts"
-  context="module"
+  module
 >
   export const ModalNavEvents = {
     navBack: 'navBack',
@@ -16,6 +16,11 @@
   import Portal from './Portal.svelte';
 
   import { createEventDispatcher } from 'svelte';
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
   function cancelHandler(event: KeyboardEvent) {
@@ -29,14 +34,14 @@
   }
 </script>
 
-<svelte:body on:keydown={cancelHandler} />
+<svelte:body onkeydown={cancelHandler} />
 
 <Portal target="#modals">
   <div
     class="focus-grabber"
     use:grabFocus
   >
-    <slot />
+    {@render children?.()}
   </div>
 </Portal>
 

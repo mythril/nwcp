@@ -1,6 +1,6 @@
 <script
   lang="ts"
-  context="module"
+  module
 >
   import { writable, derived } from 'svelte/store';
   import { character } from '../../routes/CharacterStore';
@@ -14,20 +14,22 @@
 </script>
 
 <script lang="ts">
-  let text = '';
-  let extra = '';
-  $: {
+  import { run } from 'svelte/legacy';
+
+  let text = $state('');
+  let extra = $state('');
+  run(() => {
     text = $helpText;
     if ($helpSubject in $character.help.formulas) {
       extra = $character.help.formulas[$helpSubject];
     } else {
       extra = '';
     }
-  }
+  });
 </script>
 
 <div class="help">
-  <div class="paper-bg" />
+  <div class="paper-bg"></div>
   <div class="content">
     <h3
       class="subject"
@@ -40,7 +42,7 @@
       <div class="text">
         {text}
       </div>
-      <div class="image" />
+      <div class="image"></div>
     </div>
   </div>
 </div>

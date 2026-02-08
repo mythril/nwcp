@@ -15,8 +15,8 @@
   import { clickSound } from '$lib/browserUtils';
   const dispatch = createEventDispatcher<ModalEventSignature>();
 
-  let tmp = $character.age;
-  let ageDisplay: TwoDigitDisplay;
+  let tmp = $state($character.age);
+  let ageDisplay: TwoDigitDisplay = $state();
   let ageIsReadOnly = $character.minAge === $character.maxAge;
 
   $updateAnchors.push('age');
@@ -82,7 +82,7 @@
     on:navExit
   >
     <div
-      on:wheel={wheel}
+      onwheel={wheel}
       class="age-editor"
     >
       <PlateButton

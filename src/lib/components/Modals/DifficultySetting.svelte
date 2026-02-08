@@ -5,7 +5,7 @@
   import RadialSwitch from '$lib/components/RadialSwitch.svelte';
   import { character } from '../../../routes/CharacterStore';
 
-  let menu: Menu;
+  let menu: Menu = $state();
 
   import { createEventDispatcher } from 'svelte';
   import {
@@ -43,11 +43,13 @@
       bind:value={$character.difficulty}
     />
   </div>
-  <PlateButton
-    slot="navButtons"
-    class="diffClose"
-    on:click={() => dispatch(ModalNavEvents.navExit)}>done</PlateButton
-  >
+  {#snippet navButtons()}
+    <PlateButton
+      
+      class="diffClose"
+      on:click={() => dispatch(ModalNavEvents.navExit)}>done</PlateButton
+    >
+  {/snippet}
 </Menu>
 
 <style lang="postcss">

@@ -3,9 +3,9 @@
   import { onMount } from 'svelte';
   import Portal from '$lib/components/Portal.svelte';
 
-  let ready = false;
-  let width: number;
-  let height: number;
+  let ready = $state(false);
+  let width: number = $state();
+  let height: number = $state();
 
   function render(
     ctx: CanvasRenderingContext2D,
@@ -25,7 +25,7 @@
     ctx.stroke();
   }
 
-  let devicePixelRatio = 0;
+  let devicePixelRatio = $state(0);
   // this feels like a hack, I'm not certain why it works
   // it's only a guess that the document is layed out by the time
   // devicePixelRatio is read and onMount() has fired
@@ -45,7 +45,7 @@
 <svelte:window bind:devicePixelRatio />
 
 <Portal target=".app">
-  <div class="overlay" />
+  <div class="overlay"></div>
 </Portal>
 
 {#if ready}

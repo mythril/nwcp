@@ -1,14 +1,26 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import { createDebouncer } from '$lib/utils';
   import { createEventDispatcher } from 'svelte';
   import TwoDigitDisplay from '$lib/components/TwoDigitDisplay.svelte';
   import { clickSound } from '$lib/browserUtils';
 
-  export let label: string;
-  export let value: number;
-  export let display: number;
-  export let min = 1;
-  export let charPointsRemaining = 10;
+  interface Props {
+    label: string;
+    value: number;
+    display: number;
+    min?: number;
+    charPointsRemaining?: number;
+  }
+
+  let {
+    label,
+    value = $bindable(),
+    display = $bindable(),
+    min = 1,
+    charPointsRemaining = 10
+  }: Props = $props();
 
   let dispatcher = createEventDispatcher();
 
@@ -24,10 +36,12 @@
     'Exclnt',
     'Heroic'
   ];
-  let attr: TwoDigitDisplay;
-  let descIndex = 0;
+  let attr: TwoDigitDisplay = $state();
+  let descIndex = $state(0);
 
-  $: descIndex = display - 1;
+  run(() => {
+    descIndex = display - 1;
+  });
 
   const increment = () => {
     if (attr.increment()) {
@@ -63,14 +77,14 @@
 </script>
 
 <div
-  on:wheel={wheel}
+  onwheel={wheel}
   class="attribute"
 >
   <div class="label worn-text">
     {label}
   </div>
   <div class="two-digit-attr">
-    <div class="beforeDash worn-text" />
+    <div class="beforeDash worn-text"></div>
     <div class="two-digit-border">
       <TwoDigitDisplay
         bind:this={attr}
@@ -80,7 +94,7 @@
         max={Math.min(10, value + charPointsRemaining)}
       />
     </div>
-    <div class="afterDash worn-text" />
+    <div class="afterDash worn-text"></div>
   </div>
   <div class="description terminal-font-defaults sharp-inset-border">
     {descriptors[descIndex]}
@@ -88,11 +102,11 @@
   <div class="manipulators">
     <button
       class="incr"
-      on:click={increment}>+</button
+      onclick={increment}>+</button
     >
     <button
       class="decr"
-      on:click={decrement}>-</button
+      onclick={decrement}>-</button
     >
   </div>
 </div>
