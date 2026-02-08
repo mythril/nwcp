@@ -27,7 +27,7 @@
     "@typescript-eslint/eslint-plugin": "8.26.0",
     "@typescript-eslint/parser": "8.26.0",
     "@vite-pwa/sveltekit": "0.6.7",
-    "autoprefixer": "10.4.20",
+    "autoprefixer": "10.4.21",
     "cssnano": "7.0.6",
     "eslint": "9.22.0",
     "eslint-config-prettier": "10.1.1",
