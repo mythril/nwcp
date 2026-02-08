@@ -113,7 +113,6 @@
   </div>
   {#snippet navButtons()}
     <PlateButton
-      
       class="aboutClose"
       on:click={() => dispatch(ModalNavEvents.navExit)}>done</PlateButton
     >

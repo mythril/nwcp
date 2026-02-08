@@ -15,33 +15,28 @@ export const constructFromRole = async (
 ): Promise<UnfinishedCharacter> => {
   switch (role) {
     case Role.VaultDweller: {
-      const { UnfinishedVaultDweller } = await import(
-        '$lib/engines/VaultDweller/Unfinished'
-      );
+      const { UnfinishedVaultDweller } =
+        await import('$lib/engines/VaultDweller/Unfinished');
       return new UnfinishedVaultDweller();
     }
     case Role.ChosenOne: {
-      const { UnfinishedChosenOne } = await import(
-        '$lib/engines/ChosenOne/Unfinished'
-      );
+      const { UnfinishedChosenOne } =
+        await import('$lib/engines/ChosenOne/Unfinished');
       return new UnfinishedChosenOne();
     }
     case Role.Warrior: {
-      const { UnfinishedWarrior } = await import(
-        '$lib/engines/Warrior/Unfinished'
-      );
+      const { UnfinishedWarrior } =
+        await import('$lib/engines/Warrior/Unfinished');
       return new UnfinishedWarrior();
     }
     case Role.LoneWanderer: {
-      const { UnfinishedLoneWanderer } = await import(
-        '$lib/engines/LoneWanderer/Unfinished'
-      );
+      const { UnfinishedLoneWanderer } =
+        await import('$lib/engines/LoneWanderer/Unfinished');
       return new UnfinishedLoneWanderer();
     }
     case Role.Courier: {
-      const { UnfinishedCourier } = await import(
-        '$lib/engines/Courier/Unfinished'
-      );
+      const { UnfinishedCourier } =
+        await import('$lib/engines/Courier/Unfinished');
       return new UnfinishedCourier();
     }
     default:

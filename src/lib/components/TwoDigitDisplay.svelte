@@ -12,12 +12,7 @@
     display?: number | undefined;
   }
 
-  let {
-    value = $bindable(0),
-    min,
-    max,
-    display = undefined
-  }: Props = $props();
+  let { value = $bindable(0), min, max, display = undefined }: Props = $props();
   let realMin: number = $state();
   let realMax: number = $state();
 

@@ -254,8 +254,8 @@
     }
   }
   .tile {
-    --toast-color: var(--toast-color-h), var(--toast-color-s),
-      var(--toast-color-l);
+    --toast-color:
+      var(--toast-color-h), var(--toast-color-s), var(--toast-color-l);
     --toast-offset: 100;
     will-change: --toast-offset, top;
     transition-property: --toast-offset, top;

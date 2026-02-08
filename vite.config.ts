@@ -19,9 +19,7 @@ export default ({ mode }: { mode: string }) => {
         cert: env.VITE_CERT_FILE
           ? fs.readFileSync(env.VITE_CERT_FILE)
           : undefined,
-        key: env.VITE_KEY_FILE
-          ? fs.readFileSync(env.VITE_KEY_FILE)
-          : undefined
+        key: env.VITE_KEY_FILE ? fs.readFileSync(env.VITE_KEY_FILE) : undefined
       },
       proxy: {}
     },

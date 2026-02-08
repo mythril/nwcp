@@ -28,8 +28,10 @@ export interface IRoleHelp {
   };
 }
 
-export interface SerializedUnfinishedCharacter
-  extends Record<ObjectValues<typeof Special>, number> {
+export interface SerializedUnfinishedCharacter extends Record<
+  ObjectValues<typeof Special>,
+  number
+> {
   role: ObjectValues<typeof Role> & {};
   name: string;
   age?: number;
@@ -43,8 +45,7 @@ export abstract class AbstractSerializedUnfinishedCharacter<
   T extends ITrait,
   S extends ISkill,
   D extends IDifficulty
-> implements SerializedUnfinishedCharacter
-{
+> implements SerializedUnfinishedCharacter {
   abstract role: ObjectValues<typeof Role> & {};
   abstract name: string;
   abstract age?: number;
@@ -61,8 +62,10 @@ export abstract class AbstractSerializedUnfinishedCharacter<
   abstract traits?: ObjectValues<T>[];
 }
 
-export interface UnfinishedCharacter
-  extends Record<ObjectValues<typeof Special>, number> {
+export interface UnfinishedCharacter extends Record<
+  ObjectValues<typeof Special>,
+  number
+> {
   readonly role: ObjectValues<typeof Role> & {};
   name: string;
 
@@ -126,8 +129,7 @@ export abstract class AbstractUnfinishedCharacter<
   D extends IDifficulty,
   DS extends IDerivedStat,
   H extends IRoleHelp
-> implements UnfinishedCharacter
-{
+> implements UnfinishedCharacter {
   abstract readonly role: ObjectValues<typeof Role> & {};
   name = '';
   abstract minAge: number;

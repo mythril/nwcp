@@ -38,9 +38,6 @@
   let smallOffsets: number[] = $state([]);
   let rotoOffsets: number[] = $state([]);
 
-
-
-
   let navOpen = $state($role === Role.None ? true : false);
   const openNav = () => {
     navOpen = true;
@@ -127,7 +124,7 @@
           --roto-offset: ${rotoOffsets[0]}
           `}
           class={`sequel-${sequel} tile `}
-></div>
+        ></div>
       </div>
       {#each display as d, i (i)}
         <div class="viewport">

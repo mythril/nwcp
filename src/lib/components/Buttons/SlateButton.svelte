@@ -39,7 +39,9 @@
     box-shadow:
       var(--slb-light-source),
       var(--sunken-clear);
-    transition: filter 0.2s linear, box-shadow 0.01s linear;
+    transition:
+      filter 0.2s linear,
+      box-shadow 0.01s linear;
     font-family: var(--title-font);
     text-align: center;
     font-size: inherit;

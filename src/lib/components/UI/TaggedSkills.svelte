@@ -20,7 +20,6 @@
 
   let skills = objectKeys(Skill);
 
-
   const skillHandler = (ev: Event) => {
     const cb = ev.target as HTMLInputElement;
     if ($character.taggedCount() >= 3 && cb.checked) {

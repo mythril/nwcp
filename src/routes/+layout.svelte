@@ -22,8 +22,8 @@
   }
 
   let { children }: Props = $props();
-  
-  let href = $state("");
+
+  let href = $state('');
 
   async function bootUp() {
     if (typeof window === 'undefined') {

@@ -45,7 +45,6 @@
   </div>
   {#snippet navButtons()}
     <PlateButton
-      
       class="diffClose"
       on:click={() => dispatch(ModalNavEvents.navExit)}>done</PlateButton
     >

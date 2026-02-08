@@ -8,7 +8,6 @@
     getCached
   } from '$lib/GeneratedImageTools';
 
-
   interface Props {
     name: string;
     width: number;
@@ -24,18 +23,18 @@
     height,
     applyToProperties = [],
     render = (
-    ctx: CanvasRenderingContext2D,
-    name: string,
-    width: number,
-    height: number
-  ) => {
-    ctx.filter = `url(#${name})`;
-    ctx.fillRect(width, height, width, height);
-  },
+      ctx: CanvasRenderingContext2D,
+      name: string,
+      width: number,
+      height: number
+    ) => {
+      ctx.filter = `url(#${name})`;
+      ctx.fillRect(width, height, width, height);
+    },
     children
   }: Props = $props();
 
-  const StyleTagNameToAvoidPreprocessorError = "style";
+  const StyleTagNameToAvoidPreprocessorError = 'style';
 
   let canvas: HTMLCanvasElement = $state();
 
