@@ -128,7 +128,7 @@
 
 <div id="modals">
   {#if $modals.length > 0}
-    <div id="backdrop" />
+    <div id="backdrop"></div>
     <svelte:component
       this={constructor}
       on:navExit={navExit}
