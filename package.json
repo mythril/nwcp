@@ -22,7 +22,7 @@
     "@playwright/test": "1.48.2",
     "@sveltejs/adapter-auto": "3.3.1",
     "@sveltejs/adapter-static": "3.0.6",
-    "@sveltejs/kit": "2.7.4",
+    "@sveltejs/kit": "2.7.6",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "8.13.0",
     "@typescript-eslint/parser": "8.13.0",
