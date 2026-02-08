@@ -21,7 +21,7 @@
     "@faker-js/faker": "9.3.0",
     "@playwright/test": "1.49.1",
     "@sveltejs/adapter-auto": "3.3.1",
-    "@sveltejs/adapter-static": "3.0.6",
+    "@sveltejs/adapter-static": "3.0.8",
     "@sveltejs/kit": "2.14.0",
     "@sveltejs/vite-plugin-svelte": "5.0.3",
     "@typescript-eslint/eslint-plugin": "8.18.1",
